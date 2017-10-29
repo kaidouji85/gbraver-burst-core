@@ -1,0 +1,14 @@
+{
+  "name": "gbraver-burst-core",
+  "version": "0.1.0",
+  "description": "braver burst core",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "y.takeuchi",
+  "license": "ISC",
+  "devDependencies": {
+    "flow-bin": "^0.57.3"
+  }
+}
