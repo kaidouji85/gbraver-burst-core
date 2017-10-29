@@ -11,7 +11,7 @@ export const ArmDozerIdList = {
 export type ArmDozerId = $Keys<typeof ArmDozerIdList>;
 
 /** アームドーザ基本ステータス */
-export type ArmDozerBasic = {
+export type ArmDozerBasicStatus = {
   /** アームドーザID */
   id: ArmDozerId;
   /** 名前 */
@@ -27,9 +27,28 @@ export type ArmDozerBasic = {
 };
 
 /** 戦闘時のアームドーザ状態 */
-export type ArmDozerBattleState = ArmDozerBasic & {
+export type ArmDozerBattleState = ArmDozerBasicStatus & {
   /** 現在のHP */
   hp: number;
   /** 現在のバッテリー */
   battery: number;
 };
+
+/** プレイヤーID */
+export type PlayerId = string;
+
+/** プレイヤーの情報 */
+export type PlayerBattleState = {
+  playerId: PlayerId;
+  armDozer: ArmDozerBattleState;
+};
+
+/** ゲーム全体の状態 */
+export type BattleStatus = {
+  /** プレイヤー毎の状態 */
+  players: PlayerBattleState[];
+  /** 現在攻撃側のプレイヤーのIDをセットする */
+  turn: PlayerId;
+  /** ターンカウント */
+  count: number;
+}
