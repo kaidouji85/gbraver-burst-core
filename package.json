@@ -10,7 +10,8 @@
     "copy-flow": "flow-copy-source src lib"
   },
   "files": [
-    "lib/"
+    "lib/",
+    "src/"
   ],
   "author": "y.takeuchi",
   "license": "ISC",
