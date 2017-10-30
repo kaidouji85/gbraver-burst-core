@@ -2,15 +2,13 @@
   "name": "gbraver-burst-core",
   "version": "0.1.0",
   "description": "braver burst core",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "npm-run-all build-babel copy-flow",
     "build-babel": "babel src/ -d lib/",
     "copy-flow": "flow-copy-source src lib"
   },
-  "files": [
-    "lib"
-  ],
   "author": "y.takeuchi",
   "license": "ISC",
   "devDependencies": {
