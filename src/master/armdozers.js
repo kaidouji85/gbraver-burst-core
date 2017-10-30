@@ -1,6 +1,6 @@
 // @flow
-import type {ArmDozerBasicStatus} from './flow-type';
-import {ArmDozerIdList} from './flow-type';
+import type {ArmDozerBasicStatus} from '../flow-type';
+import {ArmDozerIdList} from '../flow-type';
 
 
 /** アームドーザのマスターデータ */
