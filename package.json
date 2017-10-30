@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
+    "install": "npm run build",
     "build": "npm-run-all build-babel copy-flow",
     "build-babel": "babel src/ -d lib/",
     "copy-flow": "flow-copy-source src lib"
