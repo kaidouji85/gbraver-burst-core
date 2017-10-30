@@ -9,6 +9,9 @@
     "build-babel": "babel src/ -d lib/",
     "copy-flow": "flow-copy-source src lib"
   },
+  "files": [
+    "lib/"
+  ],
   "author": "y.takeuchi",
   "license": "ISC",
   "devDependencies": {
