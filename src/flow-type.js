@@ -27,7 +27,7 @@ export type ArmDozerBasicStatus = {
 };
 
 /** 戦闘時のアームドーザ状態 */
-export type ArmDozerBattleState = ArmDozerBasicStatus & {
+export type ArmDozerBattleStatus = ArmDozerBasicStatus & {
   /** 現在のHP */
   hp: number;
   /** 現在のバッテリー */
@@ -40,7 +40,7 @@ export type PlayerId = string;
 /** プレイヤーの情報 */
 export type PlayerBattleState = {
   playerId: PlayerId;
-  armDozer: ArmDozerBattleState;
+  armDozer: ArmDozerBattleStatus;
 };
 
 /** ゲーム全体の状態 */
