@@ -1,14 +1,11 @@
 // @flow
 
-/**プロジェクト全体で使うデータ型をまとめたもの */
-
-export const ArmDozerIdList = {
-  SHIN_BRAVER: 'SHIN_BRAVER',
-  NEO_LANDOZER: 'NEO_LANDOZER',
-}
+/**
+ * プロジェクト全体で使うデータ型をまとめたもの
+ */
 
 /** アームドーザID */
-export type ArmDozerId = $Keys<typeof ArmDozerIdList>;
+export type ArmDozerId = string;
 
 /** アームドーザ基本ステータス */
 export type ArmDozerBasicStatus = {
@@ -44,7 +41,7 @@ export type PlayerBattleState = {
 };
 
 /** ゲーム全体の状態 */
-export type BattleStatus = {
+export type BattleState = {
   /** プレイヤー毎の状態 */
   players: PlayerBattleState[];
   /** 現在攻撃側のプレイヤーのIDをセットする */

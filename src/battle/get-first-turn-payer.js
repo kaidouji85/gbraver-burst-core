@@ -11,15 +11,12 @@ import type {PlayerId, PlayerBattleState} from '../flow-type';
  * @return 先行プレイヤーのID
  */
 export function getFirstTurnPlayer(player1: PlayerBattleState, player2: PlayerBattleState): PlayerId {
-  if (player2.armDozer.speed < player1.armDozer.speed) {
-    return player1.playerId;
+  if (player1.armDozer.speed === player2.armDozer.speed) {
+    return randomPlayerId(player1.playerId, player2.playerId);
   }
 
-  if (player1.armDozer.speed < player2.armDozer.speed) {
-    return player2.playerId;
-  }
-
-  return randomPlayerId(player1.playerId, player2.playerId);
+  const isPlayer1Faster = player2.armDozer.speed < player1.armDozer.speed;
+  return isPlayer1Faster ? player1.playerId : player2.playerId;
 }
 
 /**
@@ -27,6 +24,7 @@ export function getFirstTurnPlayer(player1: PlayerBattleState, player2: PlayerBa
  *
  * @param player1
  * @param player2
+ * @param 先行となるプレイヤーID
  */
 function randomPlayerId(playerId1: PlayerId, playerId2: PlayerId): PlayerId {
   const MAX_VALUE = 1000;
