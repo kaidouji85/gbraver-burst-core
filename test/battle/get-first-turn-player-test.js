@@ -1,7 +1,7 @@
 // @flow
 import test from 'ava';
 import {getFirstTurnPlayer} from "../../src/battle/get-first-turn-payer";
-import {ArmDozerIdList} from "../../src/flow-type";
+import {ArmDozerIdList} from "../../src/master/armdozers";
 import type {ArmDozerBattleStatus, PlayerBattleState, PlayerId} from "../../src/flow-type";
 
 const TEST_ARMDOZER: ArmDozerBattleStatus = {

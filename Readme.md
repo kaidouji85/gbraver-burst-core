@@ -8,9 +8,9 @@
 
 ```javascript
 import {createInitialState, ArmDozerIdList} from 'gbraver-burst-core';
-import type {BattleStatus} from 'gbraver-burst-core/lib/flow-type';
+import type {BattleState} from 'gbraver-burst-core/lib/flow-type';
 
-const state: BattleStatus = createInitialState(
+const state: BattleState = createInitialState(
   {playerId: 'test01', armDozerId: ArmDozerIdList.SHIN_BRAVER},
   {playerId: 'test02', armDozerId: ArmDozerIdList.NEO_LANDOZER}
 );

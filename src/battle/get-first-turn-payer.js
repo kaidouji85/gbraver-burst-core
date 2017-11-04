@@ -24,6 +24,7 @@ export function getFirstTurnPlayer(player1: PlayerBattleState, player2: PlayerBa
  *
  * @param player1
  * @param player2
+ * @param 先行となるプレイヤーID
  */
 function randomPlayerId(playerId1: PlayerId, playerId2: PlayerId): PlayerId {
   const MAX_VALUE = 1000;

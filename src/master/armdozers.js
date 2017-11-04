@@ -1,10 +1,13 @@
 // @flow
 import type {ArmDozerBasicStatus} from '../flow-type';
-import {ArmDozerIdList} from '../flow-type';
 
+/** アームドーザIDリスト */
+export const ArmDozerIdList = {
+  SHIN_BRAVER: 'SHIN_BRAVER',
+  NEO_LANDOZER: 'NEO_LANDOZER',
+}
 
 /** アームドーザのマスターデータ */
-
 export const armDozers: ArmDozerBasicStatus[] = [
   {
     id: ArmDozerIdList.SHIN_BRAVER,
