@@ -4,26 +4,19 @@
 サーバサイド、ブラウザで同じロジックを使い回せるように、npmパッケージにしました。
 
 ## 使い方
-### flowが使える
 
 ```javascript
-import {createInitialState, ArmDozerIdList} from 'gbraver-burst-core';
+import {start, ArmDozers, ArmDozerIdList} from 'gbraver-burst-core';
 import type {BattleState} from 'gbraver-burst-core/lib/flow-type';
 
-const state: BattleState = createInitialState(
-  {playerId: 'test01', armDozerId: ArmDozerIdList.SHIN_BRAVER},
-  {playerId: 'test02', armDozerId: ArmDozerIdList.NEO_LANDOZER}
-);
-console.log(state);
-```
-
-### 通常jsの場合
-```javascript
-import {createInitialState, ArmDozerIdList} from 'gbraver-burst-core';
-
-const state = createInitialState(
-  {playerId: 'test01', armDozerId: ArmDozerIdList.SHIN_BRAVER},
-  {playerId: 'test02', armDozerId: ArmDozerIdList.NEO_LANDOZER}
+const state: BattleState = start(
+  {
+    playerId: 'test01',
+    armDozerId: ArmDozers.find(v => v.id === ArmDozerIdList.SHIN_BRAVER) || ArmDozers[0]
+  }, {
+    playerId: 'test02',
+    armDozerId: ArmDozers.find(v => v.id === ArmDozerIdList.NEO_LANDOZER) || ArmDozers[0]
+  }
 );
 console.log(state);
 ```

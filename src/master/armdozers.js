@@ -1,14 +1,14 @@
 // @flow
-import type {ArmDozerBasicStatus} from '../flow-type';
+import type {ArmDozerBasicStatus, ArmDozerId} from '../flow-type';
 
 /** アームドーザIDリスト */
 export const ArmDozerIdList = {
   SHIN_BRAVER: 'SHIN_BRAVER',
   NEO_LANDOZER: 'NEO_LANDOZER',
-}
+};
 
 /** アームドーザのマスターデータ */
-export const armDozers: ArmDozerBasicStatus[] = [
+export const ArmDozers: ArmDozerBasicStatus[] = [
   {
     id: ArmDozerIdList.SHIN_BRAVER,
     name: 'シンブレイバー',
@@ -16,7 +16,6 @@ export const armDozers: ArmDozerBasicStatus[] = [
     maxBattery: 5,
     power: 2000,
     speed: 2000
-
   },
   {
     id: ArmDozerIdList.NEO_LANDOZER,

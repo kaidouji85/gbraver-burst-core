@@ -1,6 +1,6 @@
 // @flow
 import test from 'ava';
-import {getFirstTurnPlayer} from "../../src/battle/get-first-turn-payer";
+import {getFirstTurnPlayer} from "../../src/initial-state/get-first-turn-payer";
 import {ArmDozerIdList} from "../../src/master/armdozers";
 import type {ArmDozerBattleStatus, PlayerBattleState, PlayerId} from "../../src/flow-type";
 
