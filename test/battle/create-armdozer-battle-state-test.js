@@ -1,6 +1,6 @@
 // @flow
 import test from 'ava';
-import {createArmDozerBattleState} from "../../src/battle/create-armdozer-battle-state";
+import {createArmDozerBattleState} from "../../src/initial-state/create-armdozer-battle-state";
 import type {ArmDozerBasicStatus} from "../../src/flow-type";
 import {ArmDozerIdList} from "../../src/master/armdozers";
 
