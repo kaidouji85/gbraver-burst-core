@@ -1,5 +1,5 @@
 // @flow
-import type {GameState} from '../state/game-state';
+import type {GameState} from '../game-state';
 import {createArmdozerGameState} from '../../armdozer/armdozer-game-state';
 import {getFirstTurnPlayer} from './first-turn-payer';
 import type {Player} from "../../player/player";
