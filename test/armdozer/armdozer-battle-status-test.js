@@ -1,11 +1,11 @@
 // @flow
 import test from 'ava';
-import {createArmDozerBattleState} from "../../src/initial-state/create-armdozer-battle-state";
-import type {ArmDozerBasicStatus} from "../../src/flow-type";
+import {createArmDozerBattleStatus} from "../../src/armdozer/armdozer-battle-status";
+import type {ArmdozerStatus} from "../../src/armdozer/armdozer-status";
 import {ArmDozerIdList} from "../../src/master/armdozers";
 
 test('追加されたパラメータに正しい値がセットされている', t => {
-  const testData: ArmDozerBasicStatus = {
+  const testData: ArmdozerStatus = {
     id: ArmDozerIdList.SHIN_BRAVER,
     name: 'name',
     maxHp: 3000,
@@ -13,7 +13,7 @@ test('追加されたパラメータに正しい値がセットされている',
     power: 2000,
     speed: 2000
   };
-  const ret = createArmDozerBattleState(testData);
+  const ret = createArmDozerBattleStatus(testData);
   t.is(ret.hp, testData.maxHp);
   t.is(ret.battery, testData.maxBattery);
 });
