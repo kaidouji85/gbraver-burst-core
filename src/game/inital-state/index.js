@@ -16,19 +16,19 @@ export type PlayerInfo = {
 /**
  * ゲームの初期状態を生成する
  *
- * @param player1
- * @param player2
+ * @param player1 プレイヤー1の情報
+ * @param player2 プレイヤー2の情報
+ * @return ゲーム初期状態
  */
-export function start(player1: PlayerInfo, player2: PlayerInfo): BattleState {
+export function start(player1: PlayerInfo, player2: PlayerInfo): BattleState[] {
   const players = [player1, player2]
-    .map(p => {
-      const armDozer = createArmDozerBattleStatus(p.armDozer);
-      return {playerId: p.playerId, armDozer};
-    });
+    .map(v => ({
+      playerId: v.playerId,
+      armDozer: createArmDozerBattleStatus(v.armDozer)
+    }));
 
-  return {
+  return [{
     players,
-    turn: getFirstTurnPlayer(players[0], players[1]),
-    count: 0
-  };
+    turn: getFirstTurnPlayer(players[0], players[1])
+  }];
 }
