@@ -3,8 +3,8 @@
 /** アームドーザID */
 export type ArmDozerId = string;
 
-/** アームドーザ基本ステータス */
-export type ArmdozerStatus = {
+/** アームドーザ基本情報 */
+export type Armdozer = {
   /** アームドーザID */
   id: ArmDozerId;
   /** 名前 */

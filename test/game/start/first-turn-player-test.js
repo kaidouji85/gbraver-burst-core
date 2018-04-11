@@ -1,12 +1,12 @@
 // @flow
 import test from 'ava';
-import {getFirstTurnPlayer} from "../../../src/game/inital-state/first-turn-payer";
+import {getFirstTurnPlayer} from "../../../src/game/start/first-turn-payer";
 import {ArmDozerIdList} from "../../../src/master/armdozers";
-import type {PlayerState} from "../../../src/player/player-state";
-import type {ArmDozerBattleStatus} from "../../../src/armdozer/armdozer-battle-status";
-import type {PlayerId} from "../../../src/player/player-state";
+import type {PlayerGameState} from "../../../src/player/player-game-state";
+import type {ArmdozerGameState} from "../../../src/armdozer/armdozer-game-state";
+import type {PlayerId} from "../../../src/player/player";
 
-const TEST_ARMDOZER: ArmDozerBattleStatus = {
+const TEST_ARMDOZER: ArmdozerGameState = {
   id: ArmDozerIdList.SHIN_BRAVER,
   name: 'test',
   hp: 3000,
@@ -18,11 +18,11 @@ const TEST_ARMDOZER: ArmDozerBattleStatus = {
 };
 
 test('スピードが高いプレイヤーが先行', t => {
-  const player1: PlayerState = {
+  const player1: PlayerGameState = {
     playerId: 'player1',
     armDozer: {...TEST_ARMDOZER, speed: 3000}
   };
-  const player2: PlayerState = {
+  const player2: PlayerGameState = {
     playerId: 'player2',
     armDozer: {...TEST_ARMDOZER, speed: 1000}
   };
@@ -34,11 +34,11 @@ test('スピードが高いプレイヤーが先行', t => {
 });
 
 test('スピードが同じ場合にはランダムで先行を決定', t => {
-  const player1: PlayerState = {
+  const player1: PlayerGameState = {
     playerId: 'player1',
     armDozer: {...TEST_ARMDOZER, speed: 1000}
   };
-  const player2: PlayerState = {
+  const player2: PlayerGameState = {
     playerId: 'player2',
     armDozer: {...TEST_ARMDOZER, speed: 1000}
   };
