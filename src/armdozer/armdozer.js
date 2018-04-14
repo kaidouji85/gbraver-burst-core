@@ -3,6 +3,8 @@
 /** アームドーザID */
 export type ArmDozerId = string;
 
+// TODO バーストの種類を追加する
+
 /** アームドーザ基本情報 */
 export type Armdozer = {
   /** アームドーザID */

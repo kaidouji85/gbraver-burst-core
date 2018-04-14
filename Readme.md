@@ -11,11 +11,11 @@ import type {GameState} from 'gbraver-burst-core/lib/flow-type';
 
 const player1 = {
   playerId: 'player1',
-  armDozer: ArmDozers.find(v => v.id === ArmDozerIdList.SHIN_BRAVER) || ArmDozers[0]
+  armdozer: ArmDozers.find(v => v.id === ArmDozerIdList.SHIN_BRAVER) || ArmDozers[0]
 };
 const player2 = {
   playerId: 'player2',
-  armDozer: ArmDozers.find(v => v.id === ArmDozerIdList.NEO_LANDOZER) || ArmDozers[0]
+  armdozer: ArmDozers.find(v => v.id === ArmDozerIdList.NEO_LANDOZER) || ArmDozers[0]
 };
 const state = start(player1, player2);
 console.log(state);

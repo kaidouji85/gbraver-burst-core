@@ -1,9 +1,9 @@
 // @flow
 import type {GameState} from '../game-state/index';
-import {createArmdozerGameState} from '../game-state/armdozer-game-state';
 import {getFirstTurnPlayer} from './first-turn-payer';
 import type {Player} from "../player/player";
 import {PhaseNameList} from "../phase/phase-name";
+import {createOpenPlayerState} from "../game-state/open-player-state";
 
 /**
  * ゲームの初期状態を生成する
@@ -12,16 +12,24 @@ import {PhaseNameList} from "../phase/phase-name";
  * @param player2 プレイヤー2
  * @return ゲーム初期状態
  */
-export function start(player1: Player, player2: Player): GameState[] {
-  const players = [player1, player2]
+export function start(player1: Player, player2: Player): GameState {
+  const openPlayerStateList = [player1, player2].map(v => createOpenPlayerState(v));
+  const secretPlayerStateList = [player1, player2]
     .map(v => ({
       playerId: v.playerId,
-      armDozer: createArmdozerGameState(v.armDozer)
+      lastCommand: {type: 'EMPTY_COMMAND'}
     }));
-  const firstState: GameState = {
-    players,
-    phase: PhaseNameList.COMMAND_PHASE,
-    activePlayerId: getFirstTurnPlayer(players[0], players[1])
+
+  return {
+    steps: [{
+      openState: {
+        players: openPlayerStateList,
+        phase: PhaseNameList.COMMAND_PHASE,
+        activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1])
+      },
+      secretState: {
+        players: secretPlayerStateList
+      }
+    }]
   };
-  return [firstState];
 }

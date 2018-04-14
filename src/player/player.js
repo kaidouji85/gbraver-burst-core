@@ -10,5 +10,5 @@ export type Player = {
   /** プレイヤーID */
   playerId: PlayerId;
   /** アームドーザデータ */
-  armDozer: Armdozer;
+  armdozer: Armdozer;
 };

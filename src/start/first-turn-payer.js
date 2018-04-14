@@ -1,6 +1,6 @@
 // @flow
 
-import type {PlayerGameState} from '../game-state/player-game-state';
+import type {OpenPlayerState} from '../game-state/open-player-state';
 import type {PlayerId} from "../player/player";
 
 /**
@@ -11,12 +11,12 @@ import type {PlayerId} from "../player/player";
  * @param player2 2人目プレイヤーの状態
  * @return 先行プレイヤーのID
  */
-export function getFirstTurnPlayer(player1: PlayerGameState, player2: PlayerGameState): PlayerId {
-  if (player1.armDozer.speed === player2.armDozer.speed) {
+export function getFirstTurnPlayer(player1: OpenPlayerState, player2: OpenPlayerState): PlayerId {
+  if (player1.armdozer.speed === player2.armdozer.speed) {
     return randomPlayerId(player1.playerId, player2.playerId);
   }
 
-  const isPlayer1Faster = player2.armDozer.speed < player1.armDozer.speed;
+  const isPlayer1Faster = player2.armdozer.speed < player1.armdozer.speed;
   return isPlayer1Faster ? player1.playerId : player2.playerId;
 }
 
