@@ -3,10 +3,10 @@ import test from 'ava';
 import {getFirstTurnPlayer} from "../../src/start/first-turn-payer";
 import {ArmDozerIdList} from "../../src/master/armdozers";
 import type {OpenPlayerState} from "../../src/game-state/open-player-state";
-import type {ArmdozerGameState} from "../../src/game-state/armdozer-game-state";
+import type {ArmdozerState} from "../../src/game-state/armdozer-state";
 import type {PlayerId} from "../../src/player/player";
 
-const TEST_ARMDOZER: ArmdozerGameState = {
+const TEST_ARMDOZER: ArmdozerState = {
   id: ArmDozerIdList.SHIN_BRAVER,
   name: 'test',
   hp: 3000,

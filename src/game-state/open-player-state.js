@@ -1,12 +1,12 @@
 // @flow
-import type {ArmdozerGameState} from "./armdozer-game-state";
-import {createArmdozerGameState} from "./armdozer-game-state";
+import type {ArmdozerState} from "./armdozer-state";
+import {createArmdozerState} from "./armdozer-state";
 import type {Player, PlayerId} from "../player/player";
 
 /** 公開可能なプレイヤーの状態 */
 export type OpenPlayerState = {
   playerId: PlayerId,
-  armdozer: ArmdozerGameState,
+  armdozer: ArmdozerState,
 };
 
 /**
@@ -18,6 +18,6 @@ export type OpenPlayerState = {
 export function createOpenPlayerState(player: Player): OpenPlayerState {
   return {
     playerId: player.playerId,
-    armdozer: createArmdozerGameState(player.armdozer)
+    armdozer: createArmdozerState(player.armdozer)
   };
 }

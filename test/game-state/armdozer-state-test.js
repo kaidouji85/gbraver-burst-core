@@ -1,6 +1,6 @@
 // @flow
 import test from 'ava';
-import {createArmdozerGameState} from "../../src/game-state/armdozer-game-state";
+import {createArmdozerState} from "../../src/game-state/armdozer-state";
 import type {Armdozer} from "../../src/armdozer/armdozer";
 import {ArmDozerIdList} from "../../src/master/armdozers";
 
@@ -13,7 +13,7 @@ test('追加されたパラメータに正しい値がセットされている',
     power: 2000,
     speed: 2000
   };
-  const ret = createArmdozerGameState(testData);
+  const ret = createArmdozerState(testData);
   t.is(ret.hp, testData.maxHp);
   t.is(ret.battery, testData.maxBattery);
 });

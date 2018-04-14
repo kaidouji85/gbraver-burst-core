@@ -1,7 +1,7 @@
 import type {Armdozer} from "../armdozer/armdozer";
 
-/** 戦闘時のアームドーザ状態 */
-export type ArmdozerGameState = Armdozer & {
+/** アームドーザの状態 */
+export type ArmdozerState = Armdozer & {
   /** 現在のHP */
   hp: number;
   /** 現在のバッテリー */
@@ -14,6 +14,6 @@ export type ArmdozerGameState = Armdozer & {
  * @param basic 基本ステータス
  * @return 戦闘状態
  */
-export function createArmdozerGameState(basic: Armdozer): ArmdozerGameState {
+export function createArmdozerState(basic: Armdozer): ArmdozerState {
   return {...basic, hp: basic.maxHp, battery: basic.maxBattery};
 }
