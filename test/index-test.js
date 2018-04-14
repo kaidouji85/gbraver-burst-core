@@ -2,8 +2,8 @@
 import test from 'ava';
 import {start} from "../src/index";
 import {ArmDozerIdList, ArmDozers} from "../src/master/armdozers";
-import type {GameState} from "../src/game/game-state";
-import {PhaseNameList} from "../src/game/phase-name";
+import type {GameState} from "../src/game-state/index";
+import {PhaseNameList} from "../src/phase/phase-name";
 
 test('初期状態を正しく作ることができる', t => {
   const player1 = {

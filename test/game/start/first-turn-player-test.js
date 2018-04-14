@@ -1,9 +1,9 @@
 // @flow
 import test from 'ava';
-import {getFirstTurnPlayer} from "../../../src/game/start/first-turn-payer";
+import {getFirstTurnPlayer} from "../../../src/start/first-turn-payer";
 import {ArmDozerIdList} from "../../../src/master/armdozers";
-import type {PlayerGameState} from "../../../src/player/player-game-state";
-import type {ArmdozerGameState} from "../../../src/armdozer/armdozer-game-state";
+import type {PlayerGameState} from "../../../src/game-state/player-game-state";
+import type {ArmdozerGameState} from "../../../src/game-state/armdozer-game-state";
 import type {PlayerId} from "../../../src/player/player";
 
 const TEST_ARMDOZER: ArmdozerGameState = {

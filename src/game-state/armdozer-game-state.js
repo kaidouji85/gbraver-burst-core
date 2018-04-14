@@ -1,4 +1,4 @@
-import type {Armdozer} from "./armdozer";
+import type {Armdozer} from "../armdozer/armdozer";
 
 /** 戦闘時のアームドーザ状態 */
 export type ArmdozerGameState = Armdozer & {

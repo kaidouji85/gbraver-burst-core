@@ -1,6 +1,6 @@
-import type {PlayerGameState} from "../player/player-game-state";
+import type {PlayerGameState} from "./player-game-state";
 import type {PlayerId} from "../player/player";
-import {PhaseName} from "./phase-name";
+import {PhaseName} from "../phase/phase-name";
 
 /** 現在のゲーム状態 */
 export type GameState = {

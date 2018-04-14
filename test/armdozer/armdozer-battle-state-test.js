@@ -1,6 +1,6 @@
 // @flow
 import test from 'ava';
-import {createArmdozerGameState} from "../../src/armdozer/armdozer-game-state";
+import {createArmdozerGameState} from "../../src/game-state/armdozer-game-state";
 import type {Armdozer} from "../../src/armdozer/armdozer";
 import {ArmDozerIdList} from "../../src/master/armdozers";
 

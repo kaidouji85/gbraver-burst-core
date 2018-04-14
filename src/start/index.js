@@ -1,9 +1,9 @@
 // @flow
-import type {GameState} from '../game-state';
-import {createArmdozerGameState} from '../../armdozer/armdozer-game-state';
+import type {GameState} from '../game-state/index';
+import {createArmdozerGameState} from '../game-state/armdozer-game-state';
 import {getFirstTurnPlayer} from './first-turn-payer';
-import type {Player} from "../../player/player";
-import {PhaseNameList} from "../phase-name";
+import type {Player} from "../player/player";
+import {PhaseNameList} from "../phase/phase-name";
 
 /**
  * ゲームの初期状態を生成する
