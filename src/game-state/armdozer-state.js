@@ -3,9 +3,11 @@ import type {Armdozer} from "../armdozer/armdozer";
 /** アームドーザの状態 */
 export type ArmdozerState = Armdozer & {
   /** 現在のHP */
-  hp: number;
+  hp: number,
   /** 現在のバッテリー */
-  battery: number;
+  battery: number,
+  /** バーストが使えるか否か、trueで使える */
+  enableBurst: boolean,
 };
 
 /**
@@ -15,5 +17,5 @@ export type ArmdozerState = Armdozer & {
  * @return 戦闘状態
  */
 export function createArmdozerState(basic: Armdozer): ArmdozerState {
-  return {...basic, hp: basic.maxHp, battery: basic.maxBattery};
+  return {...basic, hp: basic.maxHp, battery: basic.maxBattery, enableBurst: true};
 }

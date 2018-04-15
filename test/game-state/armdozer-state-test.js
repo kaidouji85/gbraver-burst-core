@@ -16,4 +16,5 @@ test('追加されたパラメータに正しい値がセットされている',
   const ret = createArmdozerState(testData);
   t.is(ret.hp, testData.maxHp);
   t.is(ret.battery, testData.maxBattery);
+  t.is(ret.enableBurst, true);
 });
