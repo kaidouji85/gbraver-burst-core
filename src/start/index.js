@@ -4,6 +4,9 @@ import {getFirstTurnPlayer} from './first-turn-payer';
 import type {Player} from "../player/player";
 import {PhaseNameList} from "../phase/phase-name";
 import {createOpenPlayerState} from "../game-state/open-player-state";
+import type {EnableCommand, InputCommand} from "../effect/input-command";
+import {getEnableBatteryCommand} from "../effect/input-command/enable-battery-command";
+import {getEnableCommand} from "../effect/input-command";
 
 /**
  * ゲームの初期状態を生成する
@@ -14,6 +17,10 @@ import {createOpenPlayerState} from "../game-state/open-player-state";
  */
 export function start(player1: Player, player2: Player): GameState {
   const openPlayerStateList = [player1, player2].map(v => createOpenPlayerState(v));
+  const enableCommand: EnableCommand[] = openPlayerStateList.map(v => ({
+    playerId: v.playerId,
+    command: getEnableCommand(v)
+  }));
   const secretPlayerStateList = [player1, player2]
     .map(v => ({
       playerId: v.playerId,
@@ -25,7 +32,11 @@ export function start(player1: Player, player2: Player): GameState {
       openState: {
         players: openPlayerStateList,
         phase: PhaseNameList.COMMAND_PHASE,
-        activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1])
+        activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1]),
+        effect: {
+          name: 'INPUT_COMMAND',
+          players: enableCommand
+        }
       },
       secretState: {
         players: secretPlayerStateList
