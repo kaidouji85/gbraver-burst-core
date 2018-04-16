@@ -1,7 +1,7 @@
 // @flow
 import test from 'ava';
-import {getEnableCommandList} from "../../src/effect/input-command";
-import type {Command} from "../../src/command/command";
+import {getEnableBatteryCommand} from "../../../src/effect/input-command/enable-battery-command";
+import type {Command} from "../../../src/command/command";
 
 const ARMDOZER_STATE = {
   id: 'test',
@@ -16,7 +16,7 @@ const ARMDOZER_STATE = {
 };
 
 test('バッテリーが満タンなら0〜最大値まで入力可能', t => {
-  const result: Command[] = getEnableCommandList(ARMDOZER_STATE);
+  const result: Command[] = getEnableBatteryCommand(ARMDOZER_STATE);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 0).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 1).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 2).length, 1);
@@ -26,7 +26,7 @@ test('バッテリーが満タンなら0〜最大値まで入力可能', t => {
 });
 
 test('バッテリーが0なら0以外は入力不可能', t => {
-  const result: Command[] = getEnableCommandList({...ARMDOZER_STATE, battery: 0});
+  const result: Command[] = getEnableBatteryCommand({...ARMDOZER_STATE, battery: 0});
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 0).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 1).length, 0);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 2).length, 0);
@@ -36,21 +36,11 @@ test('バッテリーが0なら0以外は入力不可能', t => {
 });
 
 test('バッテリーが3なら0〜3まで入力可能', t => {
-  const result: Command[] = getEnableCommandList({...ARMDOZER_STATE, battery: 3});
+  const result: Command[] = getEnableBatteryCommand({...ARMDOZER_STATE, battery: 3});
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 0).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 1).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 2).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 3).length, 1);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 4).length, 0);
   t.is(result.filter(v => v.type === 'BATTERY_COMMAND'&& v.battery === 5).length, 0);
-});
-
-test('バーストフラグがONならバーストが使える', t => {
-  const result: Command[] = getEnableCommandList({...ARMDOZER_STATE});
-  t.is(result.filter(v => v.type === 'BURST_COMMAND').length, 1);
-});
-
-test('バーストフラグがOFFならバーストが使える', t => {
-  const result: Command[] = getEnableCommandList({...ARMDOZER_STATE, enableBurst: false});
-  t.is(result.filter(v => v.type === 'BURST_COMMAND').length, 0);
 });
