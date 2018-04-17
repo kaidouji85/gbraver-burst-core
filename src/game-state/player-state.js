@@ -4,7 +4,7 @@ import {createArmdozerState} from "./armdozer-state";
 import type {Player, PlayerId} from "../player/player";
 
 /** 公開可能なプレイヤーの状態 */
-export type OpenPlayerState = {
+export type PlayerState = {
   playerId: PlayerId,
   armdozer: ArmdozerState,
 };
@@ -15,7 +15,7 @@ export type OpenPlayerState = {
  * @param player プレイヤー情報
  * @return 生成結果
  */
-export function createOpenPlayerState(player: Player): OpenPlayerState {
+export function createOpenPlayerState(player: Player): PlayerState {
   return {
     playerId: player.playerId,
     armdozer: createArmdozerState(player.armdozer)

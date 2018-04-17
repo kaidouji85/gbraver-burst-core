@@ -19,7 +19,7 @@ test('初期状態を正しく作ることができる', t => {
   const result: GameState[] = start(player1, player2);
   console.log(util.inspect(result, {depth: null}));
   t.is(result.length > 0, true);
-  t.is(result[result.length - 1].openState.phase, PhaseNameList.COMMAND_PHASE);
+  t.is(result[result.length - 1].phase, PhaseNameList.COMMAND_PHASE);
 
   t.pass();
 });

@@ -1,11 +1,17 @@
 // @flow
-import type {SecretGameState} from "./secret-game-state";
-import type {OpenGameState} from "./open-game-state";
+import type {PlayerState} from "./player-state";
+import type {PlayerId} from "../player/player";
+import type {PhaseName} from "../phase/phase-name";
+import type {Effect} from "../effect";
 
-/** ゲームの状態 */
+/** ゲーム状態 */
 export type GameState = {
-  /** 全プレイヤーに公開可能な状態 */
-  openState: OpenGameState,
-  /** 特定のプレイヤーにしか公開しない状態 */
-  secretState: SecretGameState
+  /** プレイヤー毎の状態 */
+  players: PlayerState[],
+  /** 攻撃側のプレイヤーのID */
+  activePlayerId: PlayerId,
+  /** フェイズ名 */
+  phase: PhaseName,
+  /** このステップで発生した効果 */
+  effect: Effect,
 };

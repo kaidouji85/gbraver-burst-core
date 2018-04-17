@@ -2,7 +2,7 @@
 import test from 'ava';
 import {getFirstTurnPlayer} from "../../src/start/first-turn-payer";
 import {ArmDozerIdList} from "../../src/master/armdozers";
-import type {OpenPlayerState} from "../../src/game-state/open-player-state";
+import type {PlayerState} from "../../src/game-state/player-state";
 import type {ArmdozerState} from "../../src/game-state/armdozer-state";
 import type {PlayerId} from "../../src/player/player";
 
@@ -18,11 +18,11 @@ const TEST_ARMDOZER: ArmdozerState = {
 };
 
 test('スピードが高いプレイヤーが先行', t => {
-  const player1: OpenPlayerState = {
+  const player1: PlayerState = {
     playerId: 'player1',
     armdozer: {...TEST_ARMDOZER, speed: 3000}
   };
-  const player2: OpenPlayerState = {
+  const player2: PlayerState = {
     playerId: 'player2',
     armdozer: {...TEST_ARMDOZER, speed: 1000}
   };
@@ -34,11 +34,11 @@ test('スピードが高いプレイヤーが先行', t => {
 });
 
 test('スピードが同じ場合にはランダムで先行を決定', t => {
-  const player1: OpenPlayerState = {
+  const player1: PlayerState = {
     playerId: 'player1',
     armdozer: {...TEST_ARMDOZER, speed: 1000}
   };
-  const player2: OpenPlayerState = {
+  const player2: PlayerState = {
     playerId: 'player2',
     armdozer: {...TEST_ARMDOZER, speed: 1000}
   };
