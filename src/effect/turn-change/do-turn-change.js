@@ -8,7 +8,7 @@ export function doTurnChange(lastState: GameState, phase: PhaseName): GameState 
   return {
     ...lastState,
     phase,
-    activePlayer: getNextActivePlayer(lastState),
+    activePlayerId: getNextActivePlayer(lastState),
     effect: {name: 'TurnChange'}
   };
 }
