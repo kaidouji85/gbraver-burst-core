@@ -1,24 +1,17 @@
 // @flow
-
-import type {PlayerId} from "../../player/player";
+import type {OpenPlayerState} from "../../game-state/open-player-state";
 import type {Command} from "../../command/command";
-import type {GameState} from "../../game-state/game-state";
 import {getEnableBatteryCommand} from "./enable-battery-command";
 import {getEnableBurstCommand} from "./enable-burst-command";
-import type {OpenPlayerState} from "../../game-state/open-player-state";
+import type {GameState} from "../../game-state/game-state";
+import type {EnableCommand, InputCommand} from "./input-command";
 
-/** コマンド入力 */
-export type InputCommand = {
-  name: 'InputCommand',
-  players: EnableCommand[]
-};
-
-/** プレイヤー毎の入力可能コマンドをまとめたもの */
-export type EnableCommand = {
-  playerId: PlayerId,
-  command: Command[]
-};
-
+/**
+ * コマンド入力状態に移行する
+ *
+ * @param state 現在の状態
+ * @return 更新した状態
+ */
 export function doInputCommand(state: GameState): GameState {
   const players: EnableCommand[] = state.openState.players.map(v => ({
     playerId: v.playerId,
