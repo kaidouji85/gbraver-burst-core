@@ -5,6 +5,7 @@ import type {PhaseName} from "../phase/phase-name";
 import {PhaseNameList} from "../phase/phase-name";
 import type {PlayerCommand} from "../command/player-command";
 import {doEndPhase} from "../phase/end-phase";
+import {doCommandPhase} from "../phase/comand-phase";
 
 /**
  * ゲームを進める
@@ -44,6 +45,8 @@ function executePhase(phase: PhaseName, lastState: GameState, commands: PlayerCo
   switch(phase) {
     case PhaseNameList.END_PHASE:
       return doEndPhase(lastState);
+    case PhaseNameList.COMMAND_PHASE:
+      return doCommandPhase(lastState);
     default:
       return [];
   }
