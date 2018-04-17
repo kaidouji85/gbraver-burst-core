@@ -2,7 +2,7 @@
 
 import type {PlayerId} from "../../player/player";
 import type {Command} from "../../command/command";
-import type {GameStateStep} from "../../game-state/game-state-step";
+import type {GameState} from "../../game-state/game-state";
 import {getEnableBatteryCommand} from "./enable-battery-command";
 import {getEnableBurstCommand} from "./enable-burst-command";
 import type {OpenPlayerState} from "../../game-state/open-player-state";
@@ -19,7 +19,7 @@ export type EnableCommand = {
   command: Command[]
 };
 
-export function doInputCommand(state: GameStateStep): GameStateStep {
+export function doInputCommand(state: GameState): GameState {
   const players: EnableCommand[] = state.openState.players.map(v => ({
     playerId: v.playerId,
     command: getEnableCommand(v)

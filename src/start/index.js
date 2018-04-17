@@ -1,12 +1,11 @@
 // @flow
-import type {GameState} from '../game-state/index';
 import {getFirstTurnPlayer} from './first-turn-payer';
 import type {Player} from "../player/player";
 import {PhaseNameList} from "../phase/phase-name";
 import {createOpenPlayerState} from "../game-state/open-player-state";
-import type {EnableCommand, InputCommand} from "../effect/input-command";
-import {getEnableBatteryCommand} from "../effect/input-command/enable-battery-command";
+import type {EnableCommand} from "../effect/input-command";
 import {getEnableCommand} from "../effect/input-command";
+import type {GameState} from "../game-state/game-state";
 
 /**
  * ゲームの初期状態を生成する
@@ -15,7 +14,7 @@ import {getEnableCommand} from "../effect/input-command";
  * @param player2 プレイヤー2
  * @return ゲーム初期状態
  */
-export function start(player1: Player, player2: Player): GameState {
+export function start(player1: Player, player2: Player): GameState[] {
   const openPlayerStateList = [player1, player2].map(v => createOpenPlayerState(v));
   const enableCommand: EnableCommand[] = openPlayerStateList.map(v => ({
     playerId: v.playerId,
@@ -27,20 +26,18 @@ export function start(player1: Player, player2: Player): GameState {
       lastCommand: {type: 'EMPTY_COMMAND'}
     }));
 
-  return {
-    steps: [{
+  return [{
       openState: {
         players: openPlayerStateList,
         phase: PhaseNameList.COMMAND_PHASE,
         activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1]),
         effect: {
-          name: 'INPUT_COMMAND',
+          name: 'InputCommand',
           players: enableCommand
         }
       },
       secretState: {
         players: secretPlayerStateList
       }
-    }]
-  };
+    }];
 }

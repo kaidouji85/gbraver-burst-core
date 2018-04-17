@@ -7,7 +7,7 @@
 
 ```javascript
 import {start, ArmDozers, ArmDozerIdList} from 'gbraver-burst-core';
-import type {GameState} from 'gbraver-burst-core/lib/flow-type';
+import type {DepricatedGameState} from 'gbraver-burst-core/lib/flow-type';
 
 const player1 = {
   playerId: 'player1',

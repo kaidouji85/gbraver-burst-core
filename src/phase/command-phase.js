@@ -1,4 +1,4 @@
-import {GameState} from "../game-state/index";
+import type {GameState} from "../game-state/game-state";
 
 /**
  * コマンドフェイズを実行する
