@@ -1,7 +1,6 @@
 // @flow
 import {getFirstTurnPlayer} from './first-turn-payer';
 import type {Player} from "../player/player";
-import {PhaseNameList} from "../phase/phase-name";
 import {createOpenPlayerState} from "../game-state/player-state";
 import type {EnableCommand} from "../effect/input-command/input-command";
 import {getEnableCommand} from "../effect/input-command/enable-command";
@@ -23,7 +22,6 @@ export function start(player1: Player, player2: Player): GameState[] {
 
   return [{
     players: openPlayerStateList,
-    phase: PhaseNameList.COMMAND_PHASE,
     activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1]),
     effect: {
       name: 'InputCommand',

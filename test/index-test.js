@@ -2,7 +2,6 @@
 import test from 'ava';
 import {start} from "../src/index";
 import {ArmDozerIdList, ArmDozers} from "../src/master/armdozers";
-import {PhaseNameList} from "../src/phase/phase-name";
 import type {Player} from "../src/player/player";
 import * as util from "util";
 import type {GameState} from "../src/game-state/game-state";
@@ -20,8 +19,7 @@ test('初期状態を正しく作ることができる', t => {
   const result: GameState[] = start(player1, player2);
   console.log(util.inspect(result, {depth: null}));
   t.is(result.length > 0, true);
-  t.is(result[result.length - 1].phase, PhaseNameList.COMMAND_PHASE);
-
+  t.is(result[0].effect.name, 'InputCommand');
   t.pass();
 });
 
