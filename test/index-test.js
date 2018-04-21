@@ -3,7 +3,6 @@ import test from 'ava';
 import {start} from "../src/index";
 import {ArmDozerIdList, ArmDozers} from "../src/master/armdozers";
 import type {Player} from "../src/player/player";
-import * as util from "util";
 import type {GameState} from "../src/game-state/game-state";
 import {progress} from "../src/progress";
 
@@ -17,7 +16,6 @@ test('初期状態を正しく作ることができる', t => {
     armdozer: ArmDozers.find(v => v.id === ArmDozerIdList.NEO_LANDOZER) || ArmDozers[0]
   };
   const result: GameState[] = start(player1, player2);
-  console.log(util.inspect(result, {depth: null}));
   t.is(result.length > 0, true);
   t.is(result[0].effect.name, 'InputCommand');
   t.pass();
@@ -49,8 +47,6 @@ test('startで作った初期状態からゲームを進めることができる
     }
   };
   const update = progress(initialState[0], [command1, command2]);
-  console.log('ゲーム進行テスト');
-  console.log(util.inspect(update, {depth: null}));
-
+  t.is(update.length > 0, true);
   t.pass();
 });
