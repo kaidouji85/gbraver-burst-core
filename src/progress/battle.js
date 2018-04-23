@@ -6,7 +6,7 @@ import {doTurnChange} from "../effect/turn-change/do-turn-change";
 import {doInputCommand} from "../effect/input-command/do-input-command";
 
 /** ゲーム状態を更新する関数 */
-type StateUpdater = (state: GameState) => GameState[];
+type StateUpdater = (state: GameState) => GameState;
 
 /**
  * 戦闘フェイズを実行
@@ -17,8 +17,8 @@ type StateUpdater = (state: GameState) => GameState[];
  */
 export function doBattle(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   const effects: StateUpdater[] = [
-    state => [doTurnChange(state)],
-    state => [doInputCommand(state)]
+    state => doTurnChange(state),
+    state => doInputCommand(state)
   ];
 
   const updateList = effects.reduce((stateList: GameState[], update: StateUpdater) =>{
