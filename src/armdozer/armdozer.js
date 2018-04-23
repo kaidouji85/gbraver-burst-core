@@ -8,15 +8,17 @@ export type ArmDozerId = string;
 /** アームドーザ基本情報 */
 export type Armdozer = {
   /** アームドーザID */
-  id: ArmDozerId;
+  id: ArmDozerId,
   /** 名前 */
-  name: string;
+  name: string,
   /** 最大HP */
-  maxHp: number;
+  maxHp: number,
   /** 最大バッテリー */
-  maxBattery: number;
+  maxBattery: number,
   /** 攻撃 */
-  power: number;
+  power: number,
   /** スピード */
-  speed: number;
+  speed: number,
+  /** アームドーザの外見を指定する */
+  appearance: string,
 };

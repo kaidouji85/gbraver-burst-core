@@ -11,7 +11,8 @@ test('追加されたパラメータに正しい値がセットされている',
     maxHp: 3000,
     maxBattery: 5,
     power: 2000,
-    speed: 2000
+    speed: 2000,
+    appearance: 'shin-braver'
   };
   const ret = createArmdozerState(testData);
   t.is(ret.hp, testData.maxHp);

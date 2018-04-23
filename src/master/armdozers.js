@@ -15,7 +15,8 @@ export const ArmDozers: Armdozer[] = [
     maxHp: 3000,
     maxBattery: 5,
     power: 2000,
-    speed: 2000
+    speed: 2000,
+    appearance: 'shin-braver',
   },
   {
     id: ArmDozerIdList.NEO_LANDOZER,
@@ -23,6 +24,7 @@ export const ArmDozers: Armdozer[] = [
     maxHp: 3300,
     maxBattery: 5,
     power: 2300,
-    speed: 1500
+    speed: 1500,
+    appearance: 'neo-landozer',
   }
 ];
