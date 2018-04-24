@@ -6,8 +6,8 @@
 ## 使い方
 
 ```javascript
-import {start, ArmDozers, ArmDozerIdList} from 'gbraver-burst-core';
-import type {DepricatedGameState} from 'gbraver-burst-core/lib/flow-type';
+import {start, progress} from 'gbraver-burst-core';
+import type {GameState} from 'gbraver-burst-core/lib/game-state/game-state';
 
 const player1 = {
   playerId: 'player1',
