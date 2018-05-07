@@ -9,14 +9,15 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "test": "ava",
-    "test:all": "ava test",
+    "test": "npm-run-all flow:test ava:all",
     "build": "npm-run-all flow clean babel copy-flow",
     "babel": "babel src/ -d lib/",
     "flow": "flow check src",
     "flow:test": "flow check test",
     "copy-flow": "flow-copy-source src lib",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "ava": "ava",
+    "ava:all": "ava test/"
   },
   "files": [
     "lib/"
