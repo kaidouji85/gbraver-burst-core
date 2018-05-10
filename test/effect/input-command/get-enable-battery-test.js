@@ -1,7 +1,7 @@
 // @flow
+
 import test from 'ava';
 import {getEnableBattery} from "../../../src/effect/input-command/enable-battery-command";
-import type {Command} from "../../../src/command/command";
 
 const ARMDOZER_STATE = {
   id: 'test',
