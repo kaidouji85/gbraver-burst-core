@@ -3,7 +3,7 @@
 import type {GameState} from "../game-state/game-state";
 import type {PlayerCommand} from "../command/player-command";
 import {doTurnChange} from "../effect/turn-change/do-turn-change";
-import {doInputCommand} from "../effect/input-command/do-input-command";
+import {doInputCommand} from "../effect/input-command/index";
 
 /** ゲーム状態を更新する関数 */
 type StateUpdater = (state: GameState) => GameState;

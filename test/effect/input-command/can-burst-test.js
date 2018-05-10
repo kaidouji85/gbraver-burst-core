@@ -1,7 +1,6 @@
 // @flow
 import test from 'ava';
-import {enableBurst} from "../../../src/effect/input-command/enable-burst-command";
-import type {Command} from "../../../src/command/command";
+import {canBurst} from "../../../src/effect/input-command/enable-burst-command";
 
 const ARMDOZER_STATE = {
   id: 'test',
@@ -16,9 +15,9 @@ const ARMDOZER_STATE = {
 };
 
 test('バーストフラグがONならバーストが使える', t => {
-  t.true(enableBurst(ARMDOZER_STATE));
+  t.true(canBurst(ARMDOZER_STATE));
 });
 
 test('バーストフラグがOFFならバーストが使える', t => {
-  t.false(enableBurst({...ARMDOZER_STATE, enableBurst: false}));
+  t.false(canBurst({...ARMDOZER_STATE, enableBurst: false}));
 });
