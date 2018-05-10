@@ -3,12 +3,11 @@ import type {ArmdozerState} from "../../game-state/armdozer-state";
 import type {Command} from "../../command/command";
 
 /**
- * アームドーザの状態から、バースト系コマンドで使えるものを返す
- * 使えるコマンドがない場合は空配列を返す
+ * アームドーザの状態から、バーストが使えるか否かを判定する
  *
  * @param armdozer アームドーザの状態
- * @return 計算結果
+ * @return 判定結果、trueでバーストが使える
  */
-export function getEnableBurstCommand(armdozer: ArmdozerState): Command[] {
-  return armdozer.enableBurst ? [{type: 'BURST_COMMAND'}] : [];
+export function enableBurst(armdozer: ArmdozerState): boolean {
+  return armdozer.enableBurst;
 }
