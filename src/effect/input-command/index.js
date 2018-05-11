@@ -6,7 +6,7 @@ import type {Command} from "../../command/command";
 import {getEnableBatteryCommand} from "./enable-battery-command";
 import {getEnableBurstCommand} from "./enable-burst-command";
 
-export function doInputCommand(lastState: GameState): GameState {
+export function inputCommand(lastState: GameState): GameState {
   return {
     ...lastState,
     effect: {

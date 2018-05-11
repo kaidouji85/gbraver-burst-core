@@ -5,6 +5,8 @@ import {createOpenPlayerState} from "../game-state/player-state";
 import type {EnableCommand} from "../effect/input-command/input-command";
 import {getEnableCommand} from "../effect/input-command/index";
 import type {GameState} from "../game-state/game-state";
+import {startGame} from "../effect/start-game";
+import {inputCommand} from "../effect/input-command";
 
 /**
  * ゲームの初期状態を生成する
@@ -14,18 +16,8 @@ import type {GameState} from "../game-state/game-state";
  * @return ゲーム初期状態
  */
 export function start(player1: Player, player2: Player): GameState[] {
-  const openPlayerStateList = [player1, player2].map(v => createOpenPlayerState(v));
-  const enableCommand: EnableCommand[] = openPlayerStateList.map(v => ({
-    playerId: v.playerId,
-    command: getEnableCommand(v)
-  }));
-
-  return [{
-    players: openPlayerStateList,
-    activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1]),
-    effect: {
-      name: 'InputCommand',
-      players: enableCommand
-    }
-  }];
+  const initialState = startGame(player1, player2);
+  return [
+    inputCommand(initialState)
+  ];
 }
