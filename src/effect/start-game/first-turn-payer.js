@@ -1,7 +1,7 @@
 // @flow
 
-import type {PlayerState} from '../game-state/player-state';
-import type {PlayerId} from "../player/player";
+import type {PlayerState} from '../../game-state/player-state';
+import type {PlayerId} from "../../player/player";
 
 /**
  * 先行ターンのプレイヤーを判定する
