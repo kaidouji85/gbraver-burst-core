@@ -1,6 +1,5 @@
 // @flow
 import type {ArmdozerState} from "../../game-state/armdozer-state";
-import type {Command} from "../../command/command";
 import type {BurstCommand} from "../../command/burst";
 
 /**
