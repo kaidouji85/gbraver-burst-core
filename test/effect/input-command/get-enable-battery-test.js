@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {getEnableBattery} from "../../../src/effect/input-command/enable-battery-command";
+import {getEnableBatteryCommand} from "../../../src/effect/input-command/enable-battery-command";
 
 const ARMDOZER_STATE = {
   id: 'test',
@@ -16,13 +16,27 @@ const ARMDOZER_STATE = {
 };
 
 test('バッテリーが満タンなら0〜最大値まで入力可能', t => {
-  t.deepEqual(getEnableBattery(ARMDOZER_STATE), [0, 1, 2, 3, 4, 5]);
+  t.deepEqual(getEnableBatteryCommand(ARMDOZER_STATE), [
+    {type: 'BATTERY_COMMAND', battery: 0},
+    {type: 'BATTERY_COMMAND', battery: 1},
+    {type: 'BATTERY_COMMAND', battery: 2},
+    {type: 'BATTERY_COMMAND', battery: 3},
+    {type: 'BATTERY_COMMAND', battery: 4},
+    {type: 'BATTERY_COMMAND', battery: 5}
+  ]);
 });
 
 test('バッテリーが0なら0以外は入力不可能', t => {
-  t.deepEqual(getEnableBattery({...ARMDOZER_STATE, battery: 0}), [0]);
+  t.deepEqual(getEnableBatteryCommand({...ARMDOZER_STATE, battery: 0}), [
+    {type: 'BATTERY_COMMAND', battery: 0}
+  ]);
 });
 
 test('バッテリーが3なら0〜3まで入力可能', t => {
-  t.deepEqual(getEnableBattery({...ARMDOZER_STATE, battery: 3}), [0, 1, 2, 3]);
+  t.deepEqual(getEnableBatteryCommand({...ARMDOZER_STATE, battery: 3}), [
+    {type: 'BATTERY_COMMAND', battery: 0},
+    {type: 'BATTERY_COMMAND', battery: 1},
+    {type: 'BATTERY_COMMAND', battery: 2},
+    {type: 'BATTERY_COMMAND', battery: 3}
+  ]);
 });
