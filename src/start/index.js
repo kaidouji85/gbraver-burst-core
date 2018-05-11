@@ -3,7 +3,7 @@ import {getFirstTurnPlayer} from './first-turn-payer';
 import type {Player} from "../player/player";
 import {createOpenPlayerState} from "../game-state/player-state";
 import type {EnableCommand} from "../effect/input-command/input-command";
-import {getEnableCommand} from "../effect/input-command/enable-command";
+import {getEnableCommand} from "../effect/input-command/index";
 import type {GameState} from "../game-state/game-state";
 
 /**
