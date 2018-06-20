@@ -17,13 +17,7 @@ const DEFENDER: PlayerState = {
   armdozer: createArmdozerState({...EMPTY_ARMDOZER})
 };
 
-test('攻撃バッテリ - 防御バッテリ = 1 なら ダメージ = 攻撃力', t => {
-  const attackerBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 3};
-  const defenderBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 2};
-  t.is(normalHitDamage(ATTACKER, attackerBattery, DEFENDER, defenderBattery), 2000);
-});
-
-test('攻撃バッテリ - 防御バッテリ >= 2 なら ダメージ = 攻撃力 + 100 * (攻撃バッテリ - 防御バッテリ - 1)', t => {
+test('ダメージ = 攻撃力 + 100 * (攻撃バッテリ - 防御バッテリ - 1)', t => {
   const attackerBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 5};
   const defenderBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 2};
   t.is(normalHitDamage(ATTACKER, attackerBattery, DEFENDER, defenderBattery), 2200);
