@@ -1,6 +1,6 @@
 // @flow
 
-import type {Armdozer} from "../src/armdozer/armdozer";
+import type {Armdozer} from "../../src/armdozer/armdozer";
 
 /** テストのベースとなるアームドーザデータ */
 export const EMPTY_ARMDOZER: Armdozer = {

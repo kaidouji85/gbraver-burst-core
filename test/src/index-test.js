@@ -1,10 +1,10 @@
 // @flow
 import test from 'ava';
-import {start} from "../src/index";
-import {ArmDozerIdList, ArmDozers} from "../src/master/armdozers";
-import type {Player} from "../src/player/player";
-import type {GameState} from "../src/game-state/game-state";
-import {progress} from "../src/progress";
+import {start} from "../../src/index";
+import {ArmDozerIdList, ArmDozers} from "../../src/master/armdozers";
+import type {Player} from "../../src/player/player";
+import type {GameState} from "../../src/game-state/game-state";
+import {progress} from "../../src/progress/index";
 
 test('初期状態を正しく作ることができる', t => {
   const player1: Player = {

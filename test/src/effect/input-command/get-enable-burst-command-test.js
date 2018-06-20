@@ -1,6 +1,6 @@
 // @flow
 import test from 'ava';
-import {getEnableBurstCommand} from "../../../src/effect/input-command/enable-burst-command";
+import {getEnableBurstCommand} from "../../../../src/effect/input-command/enable-burst-command";
 
 const ARMDOZER_STATE = {
   id: 'test',

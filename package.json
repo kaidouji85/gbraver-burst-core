@@ -17,7 +17,7 @@
     "copy-flow": "flow-copy-source src lib",
     "clean": "rimraf lib",
     "ava": "ava",
-    "ava:all": "ava test/"
+    "ava:all": "ava test/src/"
   },
   "files": [
     "lib/"
