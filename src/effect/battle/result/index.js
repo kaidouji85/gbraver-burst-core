@@ -1,10 +1,15 @@
 // @flow
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {BattleResult} from "../battle";
+import type {BattleResult, Feint, Miss} from "../battle";
 import {normalHit} from "./normal-hit";
 import {guard} from "./guard";
 import {criticalHit} from "./critical-hit";
+import {feint} from "./feint";
+
+const MISS: Miss = {
+  name: 'Miss'
+};
 
 /**
  * 戦闘結果を生成して返す
@@ -16,6 +21,10 @@ import {criticalHit} from "./critical-hit";
  * @return 戦闘結果
  */
 export function battleResult(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): BattleResult {
+  if (attackerCommand.battery === 0) {
+    return feint(defenderCommand);
+  }
+
   if (attackerCommand.battery === defenderCommand.battery) {
     return guard(attacker);
   }
@@ -28,8 +37,6 @@ export function battleResult(attacker: PlayerState, attackerCommand: BatteryComm
     return normalHit(attacker, attackerCommand, defender, defenderCommand);
   }
 
-  return {
-    name: 'Miss'
-  };
+  return MISS;
 }
 

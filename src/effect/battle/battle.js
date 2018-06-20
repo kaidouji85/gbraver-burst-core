@@ -12,7 +12,7 @@ export type Battle = {
 }
 
 /** 戦闘結果をまとめたもの */
-export type BattleResult = NormalHit | Guard | CriticalHit | Miss;
+export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;
 
 /** 攻撃ヒット */
 export type NormalHit = {
@@ -36,3 +36,9 @@ export type CriticalHit = {
 export type Miss = {
   name: 'Miss'
 };
+
+/** フェイント */
+export type Feint = {
+  name: 'Feint',
+  isEnemyMoved: boolean
+}

@@ -44,3 +44,10 @@ test('攻撃バッテリーが1以上 and 防御バッテリーが0 ならクリ
   const result = battleResult(ATTACKER, attackerBattery, DEFENDER, defenderBattery);
   t.is(result.name, 'CriticalHit');
 });
+
+test('攻撃バッテリーが0ならフェイント', t => {
+  const attackerBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 0};
+  const defenderBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 0};
+  const result = battleResult(ATTACKER, attackerBattery, DEFENDER, defenderBattery);
+  t.is(result.name, 'Feint');
+});
