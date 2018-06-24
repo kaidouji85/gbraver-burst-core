@@ -2,7 +2,7 @@
 
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {NormalHit} from "../battle";
+import type {NormalHit} from "../battle/battle-result";
 import {normalHitDamage} from "./damage";
 
 /**

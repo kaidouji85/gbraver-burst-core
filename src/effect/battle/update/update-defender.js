@@ -2,7 +2,7 @@
 
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {BattleResult} from "../battle";
+import type {BattleResult} from "../battle/battle-result";
 
 /**
  * コマンド、戦闘結果に応じて防御側ステータスを更新する

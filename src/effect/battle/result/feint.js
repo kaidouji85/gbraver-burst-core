@@ -1,6 +1,6 @@
 // @flow
 
-import type {Feint} from "../battle";
+import type {Feint} from "../battle/battle-result";
 import type {BatteryCommand} from "../../../command/battery";
 
 /**
