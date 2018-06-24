@@ -40,5 +40,5 @@ export type Miss = {
 /** フェイント */
 export type Feint = {
   name: 'Feint',
-  isEnemyMoved: boolean
+  isDefenderMoved: boolean
 }

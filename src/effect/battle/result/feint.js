@@ -12,6 +12,6 @@ import type {BatteryCommand} from "../../../command/battery";
 export function feint(defenderCommand: BatteryCommand): Feint {
   return {
     name: 'Feint',
-    isEnemyMoved: 0 < defenderCommand.battery
+    isDefenderMoved: 0 < defenderCommand.battery
   };
 }

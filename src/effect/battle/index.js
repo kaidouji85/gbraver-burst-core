@@ -4,6 +4,9 @@ import type {GameState} from "../../game-state/game-state";
 import type {PlayerCommand} from "../../command/player-command";
 import type {PlayerState} from "../../game-state/player-state";
 import {battleResult} from "./result/index";
+import type {BatteryCommand} from "../../command/battery";
+import {updateAttacker} from "./update/update-attacker";
+import {updateDefender} from "./update/update-defender";
 
 export function battle(lastState: GameState, commands: PlayerCommand[]): GameState {
   const attacker: ?PlayerState = lastState.players.find(v => v.playerId === lastState.activePlayerId);
@@ -17,13 +20,21 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   if (!attackerCommand || !defenderCommand) {
     return lastState;
   }
+
   if (attackerCommand.command.type !== 'BATTERY_COMMAND' || defenderCommand.command.type !== 'BATTERY_COMMAND') {
     return lastState;
   }
+  const attackerBattery: BatteryCommand = attackerCommand.command;
+  const defenderBattery: BatteryCommand = defenderCommand.command;
 
-  const result = battleResult(attacker, attackerCommand.command, defender, defenderCommand.command);
+  const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
+  const updatePlayers = [
+    updateAttacker(attacker, attackerBattery),
+    updateDefender(result, defender, defenderBattery)
+  ];
   return {
     ...lastState,
+    players: updatePlayers,
     effect: {
       name: 'Battle',
       attacker: attacker.playerId,
