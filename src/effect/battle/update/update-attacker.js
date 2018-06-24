@@ -1,5 +1,5 @@
 // @flow
-import type {BattleResult} from "../battle";
+
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 

@@ -3,7 +3,7 @@
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 import type {NormalHit} from "../battle";
-import {normalHitDamage} from "../damage";
+import {normalHitDamage} from "./damage";
 
 /**
  * 攻撃ヒットの戦闘結果を生成する

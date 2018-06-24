@@ -1,11 +1,11 @@
 // @flow
 
 import test from 'ava';
-import {normalHitDamage} from "../../../../src/effect/battle/damage";
-import {createArmdozerState} from "../../../../src/game-state/armdozer-state";
-import {EMPTY_ARMDOZER} from "../../../data/empty-armdozer";
-import type {BatteryCommand} from "../../../../src/command/battery";
-import type {PlayerState} from "../../../../src/game-state/player-state";
+import {normalHitDamage} from "../../../../../src/effect/battle/result/damage";
+import {createArmdozerState} from "../../../../../src/game-state/armdozer-state";
+import {EMPTY_ARMDOZER} from "../../../../data/empty-armdozer";
+import type {BatteryCommand} from "../../../../../src/command/battery";
+import type {PlayerState} from "../../../../../src/game-state/player-state";
 
 const ATTACKER: PlayerState = {
   playerId: 'player1',
