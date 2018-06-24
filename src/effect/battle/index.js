@@ -8,6 +8,13 @@ import type {BatteryCommand} from "../../command/battery";
 import {updateAttacker} from "./update/update-attacker";
 import {updateDefender} from "./update/update-defender";
 
+/**
+ * 戦闘を行う
+ *
+ * @param lastState 更新前の状態
+ * @param commands プレイヤーのコマンド
+ * @return 更新結果
+ */
 export function battle(lastState: GameState, commands: PlayerCommand[]): GameState {
   const attacker: ?PlayerState = lastState.players.find(v => v.playerId === lastState.activePlayerId);
   const defender: ?PlayerState = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
