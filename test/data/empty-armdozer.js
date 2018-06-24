@@ -1,6 +1,8 @@
 // @flow
 
 import type {Armdozer} from "../../src/armdozer/armdozer";
+import type {ArmdozerState} from "../../src/game-state/armdozer-state";
+import {createArmdozerState} from "../../src/game-state/armdozer-state";
 
 /** テストのベースとなるアームドーザデータ */
 export const EMPTY_ARMDOZER: Armdozer = {
@@ -12,3 +14,6 @@ export const EMPTY_ARMDOZER: Armdozer = {
   speed: 2000,
   appearance: 'appearance',
 };
+
+/** テストのベースとなるアームドーザ(ゲーム状態) */
+export const EMPTY_ARMDOZER_STATE: ArmdozerState = createArmdozerState(EMPTY_ARMDOZER);
