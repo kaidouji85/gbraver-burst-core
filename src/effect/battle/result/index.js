@@ -1,12 +1,12 @@
 // @flow
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {Feint} from "../battle/battle-result";
+import type {Feint} from "./battle-result";
 import {normalHit} from "./normal-hit";
 import {guard} from "./guard";
 import {criticalHit} from "./critical-hit";
 import {feint} from "./feint";
-import type {BattleResult, Miss} from "../battle/battle-result";
+import type {BattleResult, Miss} from "./battle-result";
 
 const MISS: Miss = {
   name: 'Miss'

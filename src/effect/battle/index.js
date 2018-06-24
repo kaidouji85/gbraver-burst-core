@@ -7,6 +7,7 @@ import {battleResult} from "./result/index";
 import type {BatteryCommand} from "../../command/battery";
 import {updateAttacker} from "./update/update-attacker";
 import {updateDefender} from "./update/update-defender";
+import {battleEffect} from "./effect/battle-effect";
 
 /**
  * 戦闘を行う
@@ -35,6 +36,7 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   const defenderBattery: BatteryCommand = defenderCommand.command;
 
   const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
+  const effect = battleEffect(result, attacker, attackerBattery, defender, defenderBattery);
   const updatePlayers = [
     updateAttacker(attacker, attackerBattery),
     updateDefender(result, defender, defenderBattery)
@@ -42,13 +44,6 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   return {
     ...lastState,
     players: updatePlayers,
-    effect: {
-      name: 'Battle',
-      attacker: attacker.playerId,
-      attackerBattery: attackerBattery.battery,
-      defenderBattery: defenderBattery.battery,
-      result: result
-    }
+    effect: effect
   }
 }
-
