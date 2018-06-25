@@ -1,7 +1,7 @@
 // @flow
 
 import type {InputCommand} from "./input-command/input-command";
-import type {Battle} from "./battle/battle";
+import type {Battle} from "./battle/effect/index";
 import type {TurnChange} from "./turn-change/turn-change";
 import type {StartGame} from "./start-game/start-game";
 
