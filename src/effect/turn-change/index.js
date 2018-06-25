@@ -3,7 +3,7 @@
 import type {GameState} from "../../game-state/game-state";
 import {getNextActivePlayer} from "./next-active-player";
 
-export function doTurnChange(lastState: GameState): GameState {
+export function turnChange(lastState: GameState): GameState {
   return {
     ...lastState,
     activePlayerId: getNextActivePlayer(

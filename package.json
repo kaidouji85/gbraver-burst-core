@@ -1,6 +1,6 @@
 {
   "name": "gbraver-burst-core",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "braver burst core",
   "repository": {
     "type": "git",
@@ -10,14 +10,14 @@
   "scripts": {
     "prepublish": "npm run build",
     "test": "npm-run-all flow:test ava:all",
-    "build": "npm-run-all flow clean babel copy-flow",
+    "build": "npm-run-all clean test babel copy-flow",
     "babel": "babel src/ -d lib/",
     "flow": "flow check src",
     "flow:test": "flow check test",
     "copy-flow": "flow-copy-source src lib",
     "clean": "rimraf lib",
     "ava": "ava",
-    "ava:all": "ava test/"
+    "ava:all": "ava test/src/"
   },
   "files": [
     "lib/"
@@ -29,10 +29,10 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
-    "flow-bin": "^0.72.0",
-    "flow-copy-source": "^1.3.0",
+    "flow-bin": "^0.73.0",
+    "flow-copy-source": "^2.0.0",
     "npm-run-all": "^4.1.2",
     "rimraf": "^2.6.2"
   },

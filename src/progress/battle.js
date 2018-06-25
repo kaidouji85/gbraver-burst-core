@@ -2,8 +2,9 @@
 
 import type {GameState} from "../game-state/game-state";
 import type {PlayerCommand} from "../command/player-command";
-import {doTurnChange} from "../effect/turn-change/do-turn-change";
-import {doInputCommand} from "../effect/input-command/index";
+import {turnChange} from "../effect/turn-change/index";
+import {inputCommand} from "../effect/input-command/index";
+import {battle} from "../effect/battle";
 
 /** ゲーム状態を更新する関数 */
 type StateUpdater = (state: GameState) => GameState;
@@ -17,8 +18,9 @@ type StateUpdater = (state: GameState) => GameState;
  */
 export function doBattle(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   const effects: StateUpdater[] = [
-    state => doTurnChange(state),
-    state => doInputCommand(state)
+    state => battle(state, commands),
+    state => turnChange(state),
+    state => inputCommand(state)
   ];
 
   const updateList = effects.reduce((stateList: GameState[], update: StateUpdater) =>{
