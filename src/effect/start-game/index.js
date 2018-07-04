@@ -19,7 +19,7 @@ export function startGame(player1: Player, player2: Player): GameState {
     players: openPlayerStateList,
     activePlayerId: getFirstTurnPlayer(openPlayerStateList[0], openPlayerStateList[1]),
     effect: {
-      name: 'START_GAME'
+      name: 'StartGame'
     }
   };
 }

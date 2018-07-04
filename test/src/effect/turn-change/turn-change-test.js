@@ -29,19 +29,25 @@ const PLAYER2: PlayerState = {
 const LAST_STATE: GameState = {
   players: [PLAYER1, PLAYER2],
   activePlayerId: 'player1',
-  effect: {name: 'START_GAME'}
+  effect: {name: 'StartGame'}
 };
 
 test('ターンチェンジが正しくできる', t => {
-  const updated = turnChange(LAST_STATE);
-  const updatedPlayer1 = updated.players.find(v => v.playerId === PLAYER1.playerId);
-  const updatedPlayer2 = updated.players.find(v => v.playerId === PLAYER2.playerId);
-
-  if (!updatedPlayer1 || !updatedPlayer2) {
-    t.fail('プレイヤー1、プレイヤー2が更新結果に含まれていません');
-    return;
-  }
-  t.is(updated.activePlayerId, 'player2', '攻撃プレイヤーが変更されている');
-  t.is(updatedPlayer2.armdozer.battery, 5, 'ターンチェンジしたプレイヤーのバッテリーが回復する');
-  t.is(updatedPlayer1.armdozer.battery, 2, '前回攻撃したプレイヤーのバッテリーは回復しない');
+  const result = turnChange(LAST_STATE);
+  const expected = {
+    ...LAST_STATE,
+    activePlayerId: 'player2',
+    players: [
+      PLAYER1,
+      {
+        ...PLAYER2,
+        armdozer: {
+          ...PLAYER2.armdozer,
+          battery: 5
+        }
+      }
+    ],
+    effect: {name: 'TurnChange'}
+  };
+  t.deepEqual(result, expected);
 });
