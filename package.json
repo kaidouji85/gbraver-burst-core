@@ -10,7 +10,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "test": "npm-run-all flow:test ava:all",
-    "coverage": "npm-run-all flow:test ava:all nyc:html",
+    "coverage": "npm-run-all flow:test nyc",
+    "coverage:html": "npm-run-all flow:test nyc:html",
     "build": "npm-run-all clean test babel copy-flow",
     "babel": "cross-env BABEL_ENV=production babel src/ -d lib/",
     "flow": "flow check src",
@@ -18,9 +19,9 @@
     "copy-flow": "flow-copy-source src lib",
     "clean": "rimraf lib",
     "ava": "ava",
-    "ava:all": "nyc ava test/src/",
-    "nyc": "nyc",
-    "nyc:html": "nyc report --reporter=html"
+    "ava:all": "ava test/src/",
+    "nyc": "nyc report ava test/src/",
+    "nyc:html": "nyc report --reporter=html ava test/src/"
   },
   "files": [
     "lib/"
