@@ -1,20 +1,19 @@
 // @flow
 
 import test from 'ava';
-import {createArmdozerState} from "../../../../../src/game-state/armdozer-state";
 import type {PlayerState} from "../../../../../src/game-state/player-state";
 import type {BatteryCommand} from "../../../../../src/command/battery";
-import {EMPTY_ARMDOZER} from "../../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../data/empty-armdozer";
 import {battleResult} from "../../../../../src/effect/battle/result";
 
 const ATTACKER: PlayerState = {
   playerId: 'player1',
-  armdozer: createArmdozerState({...EMPTY_ARMDOZER})
+  armdozer: {...EMPTY_ARMDOZER_STATE}
 };
 
 const DEFENDER: PlayerState = {
   playerId: 'player2',
-  armdozer: createArmdozerState({...EMPTY_ARMDOZER})
+  armdozer: {...EMPTY_ARMDOZER_STATE}
 };
 
 test('防御バッテリー < 攻撃バッテリー なら攻撃ヒット', t => {

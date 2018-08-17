@@ -16,4 +16,8 @@ export const EMPTY_ARMDOZER: Armdozer = {
 };
 
 /** テストのベースとなるアームドーザ(ゲーム状態) */
-export const EMPTY_ARMDOZER_STATE: ArmdozerState = createArmdozerState(EMPTY_ARMDOZER);
+export const EMPTY_ARMDOZER_STATE: ArmdozerState = {
+  ...EMPTY_ARMDOZER,
+  battery: EMPTY_ARMDOZER.maxBattery,
+  hp: EMPTY_ARMDOZER.maxHp
+}
