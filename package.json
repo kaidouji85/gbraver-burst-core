@@ -1,6 +1,6 @@
 {
   "name": "gbraver-burst-core",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "braver burst core",
   "repository": {
     "type": "git",
@@ -9,15 +9,17 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "test": "npm-run-all flow:test ava:all",
-    "build": "npm-run-all clean test babel copy-flow",
-    "babel": "babel src/ -d lib/",
-    "flow": "flow check src",
-    "flow:test": "flow check test",
+    "build": "npm-run-all clean:build type-check:src type-check:test test transpile copy-flow",
+    "transpile": "cross-env BABEL_ENV=production babel src/ -d lib/",
+    "type-check:src": "flow check src",
+    "type-check:test": "flow check test",
     "copy-flow": "flow-copy-source src lib",
-    "clean": "rimraf lib",
-    "ava": "ava",
-    "ava:all": "ava test/src/"
+    "clean:build": "rimraf lib",
+    "clean:coverage": "rimraf .nyc_output coverage",
+    "test": "ava test/src/",
+    "test:target": "ava",
+    "coverage": "nyc ava test/src/",
+    "coverage:html": "nyc report --reporter=html ava test/src/"
   },
   "files": [
     "lib/"
@@ -31,16 +33,20 @@
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
-    "flow-bin": "^0.73.0",
+    "cross-env": "^5.2.0",
+    "flow-bin": "^0.79.0",
     "flow-copy-source": "^2.0.0",
     "npm-run-all": "^4.1.2",
+    "nyc": "^12.0.2",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
     "ramda": "^0.25.0"
   },
   "ava": {
-    "require": "babel-register",
+    "require": [
+      "babel-core/register"
+    ],
     "babel": "inherit"
   }
 }

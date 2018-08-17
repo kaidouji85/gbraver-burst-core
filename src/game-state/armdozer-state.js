@@ -17,5 +17,10 @@ export type ArmdozerState = Armdozer & {
  * @return 戦闘状態
  */
 export function createArmdozerState(basic: Armdozer): ArmdozerState {
-  return {...basic, hp: basic.maxHp, battery: basic.maxBattery, enableBurst: true};
+  return {
+    ...basic,
+    hp: basic.maxHp,
+    battery: basic.maxBattery,
+    enableBurst: true
+  };
 }

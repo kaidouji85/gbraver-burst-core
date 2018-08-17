@@ -2,19 +2,18 @@
 
 import test from 'ava';
 import {normalHitDamage} from "../../../../../src/effect/battle/result/damage";
-import {createArmdozerState} from "../../../../../src/game-state/armdozer-state";
-import {EMPTY_ARMDOZER} from "../../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../data/empty-armdozer";
 import type {BatteryCommand} from "../../../../../src/command/battery";
 import type {PlayerState} from "../../../../../src/game-state/player-state";
 
 const ATTACKER: PlayerState = {
   playerId: 'player1',
-  armdozer: createArmdozerState({...EMPTY_ARMDOZER, power: 2000})
+  armdozer: {...EMPTY_ARMDOZER_STATE, power: 2000}
 };
 
 const DEFENDER: PlayerState = {
   playerId: 'player2',
-  armdozer: createArmdozerState({...EMPTY_ARMDOZER})
+  armdozer: {...EMPTY_ARMDOZER_STATE}
 };
 
 test('ダメージ = 攻撃力 + 100 * (攻撃バッテリ - 防御バッテリ - 1)', t => {
