@@ -1,7 +1,6 @@
 // @flow
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {Feint} from "./battle-result";
 import {normalHit} from "./normal-hit";
 import {guard} from "./guard";
 import {criticalHit} from "./critical-hit";
