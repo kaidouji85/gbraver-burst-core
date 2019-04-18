@@ -2,9 +2,15 @@
 
 import type {Armdozer} from "../../src/armdozer/armdozer";
 import type {ArmdozerState} from "../../src/game-state/armdozer-state";
-import {createArmdozerState} from "../../src/game-state/armdozer-state";
+import type {Burst} from "../../src/armdozer/burst";
 
-/** テストのベースとなるアームドーザデータ */
+/** 空のバースト */
+export const EMPTY_BURST: Burst = {
+  type: 'RecoverBattery',
+  recoverBattery: 0,
+};
+
+/** 空のアームドーザデータ */
 export const EMPTY_ARMDOZER: Armdozer = {
   id: 'id',
   name: 'name',
@@ -13,13 +19,10 @@ export const EMPTY_ARMDOZER: Armdozer = {
   power: 2000,
   speed: 2000,
   appearance: 'appearance',
-  burst: {
-    type: 'RecoverBattery',
-    recoverBattery: 0,
-  }
+  burst: EMPTY_BURST
 };
 
-/** テストのベースとなるアームドーザ(ゲーム状態) */
+/** 空のアームドーザゲームステート */
 export const EMPTY_ARMDOZER_STATE: ArmdozerState = {
   ...EMPTY_ARMDOZER,
   battery: EMPTY_ARMDOZER.maxBattery,

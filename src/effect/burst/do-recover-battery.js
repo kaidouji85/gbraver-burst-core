@@ -1,7 +1,7 @@
 // @flow
 
 import type {PlayerState} from "../../game-state/player-state";
-import {getRecoverBattery} from "./get-recover-battery";
+import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 
 /**
  * バースト効果 バッテリー回復
@@ -20,7 +20,7 @@ export function doRecoverBattery(burstPlayer: PlayerState, otherPlayer: PlayerSt
       ...burstPlayer,
       armodzer: {
         ...burstPlayer.armdozer,
-        battery: getRecoverBattery(burstPlayer),
+        battery: getBurstRecoverBattery(burstPlayer.armdozer),
         enableBurst: false,
       }
     },

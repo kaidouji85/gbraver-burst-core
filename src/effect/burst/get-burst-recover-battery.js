@@ -1,6 +1,7 @@
 // @flow
 
 import type {PlayerState} from "../../game-state/player-state";
+import type {ArmdozerState} from "../../game-state/armdozer-state";
 
 /**
  * バーストで回復した後のバッテリー値を計算する
@@ -8,6 +9,6 @@ import type {PlayerState} from "../../game-state/player-state";
  * @param player バーストするプレイヤーの状態
  * @return バースト実施後のバッテリー値
  */
-export function getRecoverBattery(player: PlayerState): number {
-  return Math.min(player.armdozer.battery + player.armdozer.burst.recoverBattery, player.armdozer.maxBattery);
+export function getBurstRecoverBattery(armdozer: ArmdozerState): number {
+  return Math.min(armdozer.battery + armdozer.burst.recoverBattery, armdozer.maxBattery);
 }
