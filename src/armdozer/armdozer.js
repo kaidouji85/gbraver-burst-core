@@ -1,9 +1,9 @@
 // @flow
 
+import type {Burst} from "./burst";
+
 /** アームドーザID */
 export type ArmDozerId = string;
-
-// TODO バーストの種類を追加する
 
 /** アームドーザ基本情報 */
 export type Armdozer = {
@@ -21,4 +21,6 @@ export type Armdozer = {
   speed: number,
   /** アームドーザの外見を指定する */
   appearance: string,
+  /** バースト */
+  burst: Burst,
 };

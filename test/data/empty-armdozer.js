@@ -13,6 +13,10 @@ export const EMPTY_ARMDOZER: Armdozer = {
   power: 2000,
   speed: 2000,
   appearance: 'appearance',
+  burst: {
+    type: 'RecoverBattery',
+    recoverBattery: 0,
+  }
 };
 
 /** テストのベースとなるアームドーザ(ゲーム状態) */
