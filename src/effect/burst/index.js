@@ -20,6 +20,11 @@ export function doBurst(lastState: GameState, burstPlayerId: PlayerId): GameStat
 
   return {
     ...lastState,
-    players: updateForBurst(burstPlayer, otherPlayer)
+    players: updateForBurst(burstPlayer, otherPlayer),
+    effect: {
+      name: 'BurstEffect',
+      burstPlayer: burstPlayer.playerId,
+      burst: burstPlayer.armdozer.burst,
+    }
   };
 }
