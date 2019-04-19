@@ -2,11 +2,14 @@
 
 import test from 'ava';
 import type {ArmdozerState} from "../../../../src/game-state/armdozer-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {doRecoverBattery} from "../../../../src/effect/burst/do-recover-battery";
+import type {PlayerState} from "../../../../src/game-state/player-state";
+import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
 test('バースト効果バッテリー回復が正しく適用される', t => {
-  const burstPlayer: ArmdozerState  = {
+  const burstPlayer: PlayerState  = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player01',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
@@ -19,7 +22,8 @@ test('バースト効果バッテリー回復が正しく適用される', t => 
       }
     },
   };
-  const otherPlayer: ArmdozerState = {
+  const otherPlayer: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player02',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE

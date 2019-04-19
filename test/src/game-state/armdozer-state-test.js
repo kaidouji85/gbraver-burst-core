@@ -2,7 +2,7 @@
 import test from 'ava';
 import {createArmdozerState} from "../../../src/game-state/armdozer-state";
 import type {Armdozer} from "../../../src/armdozer/armdozer";
-import {EMPTY_ARMDOZER} from "../../data/empty-armdozer";
+import {EMPTY_ARMDOZER} from "../../data/armdozer";
 
 test('追加されたパラメータに正しい値がセットされている', t => {
   const data: Armdozer = {

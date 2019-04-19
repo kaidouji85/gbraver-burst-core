@@ -3,7 +3,7 @@
 import test from 'ava';
 import {turnChange} from "../../../../src/effect/turn-change";
 import type {PlayerState} from "../../../../src/game-state/player-state";
-import {EMPTY_ARMDOZER, EMPTY_ARMDOZER_STATE} from "../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER, EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {createArmdozerState} from "../../../../src/game-state/armdozer-state";
 import type {GameState} from "../../../../src/game-state/game-state";
 import {inspect} from 'util';
