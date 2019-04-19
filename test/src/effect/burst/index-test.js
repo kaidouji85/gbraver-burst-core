@@ -33,7 +33,6 @@ test('バースト効果適用処理が正しく実行されている', t => {
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [player1, player2],
-    activePlayerId: 'player1',
   };
 
   const result = doBurst(lastState, 'player1');
