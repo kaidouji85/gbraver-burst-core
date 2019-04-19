@@ -1,7 +1,11 @@
 // @flow
 import type {GameState} from "../game-state/game-state";
 import type {PlayerCommand} from "../command/player-command";
-import {doBattle} from "./battle";
+import {battle} from "../effect/battle";
+import {turnChange} from "../effect/turn-change";
+import {inputCommand} from "../effect/input-command";
+import type {ApplyEffect} from "./apply-effects";
+import {applyEffects} from "./apply-effects";
 
 /**
  * ゲームを進める
@@ -13,5 +17,20 @@ import {doBattle} from "./battle";
  */
 export function progress(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   // TODO 戦闘、バーストの分岐を作る
-  return doBattle(lastState, commands);
+  const effects = doBattle(commands);
+  return applyEffects(lastState, effects);
+}
+
+/**
+ * 戦闘を実行する
+ *
+ * @param commands
+ * @returns {(function(*=): GameState)[]}
+ */
+function doBattle(commands: PlayerCommand[]): ApplyEffect[] {
+  return [
+    state => battle(state, commands),
+    state => turnChange(state),
+    state => inputCommand(state)
+  ];
 }
