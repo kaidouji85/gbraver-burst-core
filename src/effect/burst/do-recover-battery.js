@@ -18,7 +18,7 @@ export function doRecoverBattery(burstPlayer: PlayerState, otherPlayer: PlayerSt
   return [
     {
       ...burstPlayer,
-      armodzer: {
+      armdozer: {
         ...burstPlayer.armdozer,
         battery: getBurstRecoverBattery(burstPlayer.armdozer),
         enableBurst: false,
