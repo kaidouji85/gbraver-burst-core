@@ -3,9 +3,7 @@
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "node": "8.11"
-        }
+        "targets": "last 2 versions"
       }
     ],
     "@babel/preset-flow"
