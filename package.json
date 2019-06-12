@@ -1,6 +1,6 @@
 {
   "name": "gbraver-burst-core",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "braver burst core",
   "repository": {
     "type": "git",
@@ -9,17 +9,18 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "npm-run-all clean flow flow:test test transpile copy-flow",
+    "build": "npm-run-all clean type-check type-check:test test transpile copy-type-definition",
     "transpile": "cross-env BABEL_ENV=production babel src/ -d lib/",
-    "flow": "flow check src",
-    "flow:test": "flow check test",
-    "copy-flow": "flow-copy-source src lib",
+    "type-check": "flow check src",
+    "type-check:test": "flow check test",
+    "copy-type-definition": "flow-copy-source src lib",
     "clean": "rimraf lib",
     "clean:coverage": "rimraf .nyc_output coverage",
-    "test": "ava test/src/",
-    "ava": "ava",
-    "coverage": "nyc ava test/src/",
-    "coverage:html": "nyc report --reporter=html ava test/src/"
+    "test": "ava",
+    "lint": "eslint src",
+    "lint:test": "eslint test",
+    "coverage": "nyc ava",
+    "coverage:html": "nyc report --reporter=html ava"
   },
   "files": [
     "lib/"
@@ -27,18 +28,21 @@
   "author": "y.takeuchi",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-transform-flow-strip-types": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "ava": "^1.2.1",
+    "@babel/register": "^7.4.4",
+    "ava": "^2.1.0",
+    "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
-    "flow-bin": "^0.94.0",
-    "flow-copy-source": "^2.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-flowtype": "^3.10.1",
+    "flow-bin": "^0.101.0",
+    "flow-copy-source": "^2.0.6",
     "npm-run-all": "^4.1.5",
-    "nyc": "^13.3.0",
+    "nyc": "^14.1.1",
     "rimraf": "^2.6.3"
   },
   "dependencies": {
@@ -49,6 +53,9 @@
     "compileEnhancements": false,
     "require": [
       "@babel/register"
+    ],
+    "files": [
+      "test/src/**/*-test.js"
     ]
   }
 }

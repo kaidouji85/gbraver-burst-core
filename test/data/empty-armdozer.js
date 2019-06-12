@@ -2,7 +2,6 @@
 
 import type {Armdozer} from "../../src/armdozer/armdozer";
 import type {ArmdozerState} from "../../src/game-state/armdozer-state";
-import {createArmdozerState} from "../../src/game-state/armdozer-state";
 
 /** テストのベースとなるアームドーザデータ */
 export const EMPTY_ARMDOZER: Armdozer = {
