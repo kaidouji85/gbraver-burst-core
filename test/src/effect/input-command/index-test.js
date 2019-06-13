@@ -1,11 +1,70 @@
 // @flow
 
 import test from 'ava';
-import {inputCommandAfterBurst} from "../../../../src/effect/input-command";
+import {inputCommand, inputCommandAfterBurst} from "../../../../src/effect/input-command";
 import type {GameState} from "../../../../src/game-state/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import type {PlayerCommand} from "../../../../src/command/player-command";
+
+test('コマンド入力フェイズの効果が正しく適用される', t => {
+  const lastState: GameState = {
+    ...EMPTY_ARMDOZER_STATE,
+    players: [
+      {
+        ...EMPTY_PLAYER_STATE,
+        playerId: 'player01',
+        armdozer: {
+          ...EMPTY_ARMDOZER_STATE,
+          battery: 5,
+          maxBattery: 5,
+          enableBurst: true,
+        }
+      },
+      {
+        ...EMPTY_PLAYER_STATE,
+        playerId: 'player02',
+        armdozer: {
+          ...EMPTY_ARMDOZER_STATE,
+          battery: 3,
+          maxBattery: 5,
+          enableBurst: false
+        }
+      }
+    ]
+  };
+
+  const result = inputCommand(lastState);
+  t.deepEqual(result, {
+    ...lastState,
+    effect: {
+      name: 'InputCommand',
+      players: [
+        {
+          playerId: 'player01',
+          command: [
+            {type: 'BATTERY_COMMAND', battery: 0},
+            {type: 'BATTERY_COMMAND', battery: 1},
+            {type: 'BATTERY_COMMAND', battery: 2},
+            {type: 'BATTERY_COMMAND', battery: 3},
+            {type: 'BATTERY_COMMAND', battery: 4},
+            {type: 'BATTERY_COMMAND', battery: 5},
+            {type: 'BURST_COMMAND'}
+          ]
+        },
+        {
+          playerId: 'player02',
+          command: [
+            {type: 'BATTERY_COMMAND', battery: 0},
+            {type: 'BATTERY_COMMAND', battery: 1},
+            {type: 'BATTERY_COMMAND', battery: 2},
+            {type: 'BATTERY_COMMAND', battery: 3},
+          ]
+        }
+      ]
+    }
+  });
+});
 
 test('バースト後のコマンド入力フェイズ効果が正しく適用される', t => {
   const lastState: GameState = {
@@ -28,6 +87,7 @@ test('バースト後のコマンド入力フェイズ効果が正しく適用�
           ...EMPTY_ARMDOZER_STATE,
           battery: 3,
           maxBattery: 5,
+          enableBurst: false
         }
       }
     ]
