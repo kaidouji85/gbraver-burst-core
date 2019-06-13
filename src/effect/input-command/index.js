@@ -8,6 +8,7 @@ import {selectableCommandAfterBurst} from "./selectable-command-after-burst";
 
 /**
  * コマンド入力フェイズのステートを生成する
+ * ゲーム開始時、誰もバーストコマンドを選択したなかった場合、本関数でコマンド入力フェイズの効果を解決すること
  *
  * @param lastState 更新前の状態
  * @return コマンド入力状態
@@ -30,6 +31,7 @@ export function inputCommand(lastState: GameState): GameState {
 
 /**
  * バーストフェイズ後のコマンド入力フェイズのステートを生成する
+ * 本関数はいずれかのプレイヤーがバーストコマンドを選択した場合に、実行される
  *
  * @param lastState 更新前の状態
  * @param commands バーストフェイズ発生時に各プレイヤーが選択したコマンド
