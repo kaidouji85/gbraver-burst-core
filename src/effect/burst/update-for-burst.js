@@ -3,6 +3,7 @@
 import type {PlayerState} from "../../game-state/player-state";
 import {doRecoverBattery} from "./do-recover-battery";
 
+// TODO 更新前後でプレイヤーステートの順番を変えないようにする
 /**
  * 各プレイヤーのステータスをバースト実施後のものに更新する
  *
