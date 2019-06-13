@@ -1,10 +1,6 @@
 // @flow
 
 import type {GameState} from "../game-state/game-state";
-import type {PlayerCommand} from "../command/player-command";
-import {turnChange} from "../effect/turn-change/index";
-import {inputCommand} from "../effect/input-command/index";
-import {battle} from "../effect/battle";
 
 /** 効果適用関数 */
 export type ApplyEffect = (state: GameState) => GameState;

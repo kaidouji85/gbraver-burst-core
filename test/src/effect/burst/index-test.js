@@ -26,9 +26,6 @@ test('バースト効果適用処理が正しく実行されている', t => {
   const player2: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-    }
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
