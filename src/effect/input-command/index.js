@@ -1,8 +1,8 @@
 // @flow
 
 import type {GameState} from "../../game-state/game-state";
-import {getEnableBatteryCommand} from "./enable-battery-command";
-import {getEnableBurstCommand} from "./enable-burst-command";
+import {selectableBatteryCommand} from "./selectable-battery-command";
+import {selectableBurstCommand} from "./selectable-burst-command";
 import type {PlayerCommand} from "../../command/player-command";
 import {selectableCommandAfterBurst} from "./selectable-command-after-burst";
 
@@ -20,8 +20,8 @@ export function inputCommand(lastState: GameState): GameState {
       players: lastState.players.map(v => ({
         playerId: v.playerId,
         command: [
-          ...getEnableBatteryCommand(v.armdozer),
-          ...getEnableBurstCommand(v.armdozer)
+          ...selectableBatteryCommand(v.armdozer),
+          ...selectableBurstCommand(v.armdozer)
         ]
       }))
     }

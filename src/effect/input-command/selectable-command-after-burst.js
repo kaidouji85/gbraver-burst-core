@@ -2,7 +2,7 @@
 
 import type {PlayerState} from "../../game-state/player-state";
 import type {Command} from "../../command/command";
-import {getEnableBatteryCommand} from "./enable-battery-command";
+import {selectableBatteryCommand} from "./selectable-battery-command";
 
 /**
  * バーストフェイズ後に選択可能なコマンドを取得する
@@ -16,9 +16,9 @@ export function selectableCommandAfterBurst(player: PlayerState, command: Comman
     case 'BATTERY_COMMAND':
       return [command];
     case 'BURST_COMMAND':
-      // getEnableBatteryCommand(player.armdozer)をそのまま返すと、flowでエラーになる
+      // selectableBatteryCommand(player.armdozer)をそのまま返すと、flowでエラーになる
       // それを回避するために、配列を詰めなおしている
-      return [...getEnableBatteryCommand(player.armdozer)];
+      return [...selectableBatteryCommand(player.armdozer)];
     default:
       return [];
   }
