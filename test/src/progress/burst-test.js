@@ -1,6 +1,7 @@
 // @flow
 
 import test from 'ava';
+import * as R from 'ramda';
 import type {Player} from "../../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 import type {GameState} from "../../../src/game-state/game-state";
@@ -22,15 +23,6 @@ const attacker: Player = {
   }
 };
 
-const afterBurstAttacker: Player = {
-  ...attacker,
-  armdozer: {
-    ...attacker.armdozer,
-    battery: 5,
-    enableBurst: false
-  }
-};
-
 const defender: Player = {
   playerId: 'defender',
   armdozer: {
@@ -43,15 +35,6 @@ const defender: Player = {
       recoverBattery: 5
     }
   },
-};
-
-const afterBurstDefender: Player = {
-  ...defender,
-  armdozer: {
-    ...defender.armdozer,
-    battery: 5,
-    enableBurst: false
-  }
 };
 
 test('攻撃側:バースト、防御側:バッテリー のケースが正しく適用される', t => {
@@ -69,46 +52,12 @@ test('攻撃側:バースト、防御側:バッテリー のケースが正し�
   }];
 
   const result = progress(lastState, commands);
-  t.deepEqual(result, [
-    {
-      activePlayerId: 'attacker',
-      players: [afterBurstAttacker, defender],
-      effect: {
-        name: 'BurstEffect',
-        burstPlayer: 'attacker',
-        burst: {
-          type: 'RecoverBattery',
-          recoverBattery: 5,
-        }
-      }
-    },
-    {
-      activePlayerId: 'attacker',
-      players: [afterBurstAttacker, defender],
-      effect: {
-        name: 'InputCommand',
-        players: [
-          {
-            playerId: 'attacker',
-            command: [
-              {type: 'BATTERY_COMMAND', battery: 0},
-              {type: 'BATTERY_COMMAND', battery: 1},
-              {type: 'BATTERY_COMMAND', battery: 2},
-              {type: 'BATTERY_COMMAND', battery: 3},
-              {type: 'BATTERY_COMMAND', battery: 4},
-              {type: 'BATTERY_COMMAND', battery: 5},
-            ]
-          },
-          {
-            playerId: 'defender',
-            command: [
-              {type: 'BATTERY_COMMAND', battery: 2},
-            ]
-          }
-        ]
-      }
-    }
-  ]);
+  t.is(result.length, 2);
+  t.deepEqual(
+    R.pick(['name', 'burstPlayer'], result[0].effect),
+    {name: 'BurstEffect', burstPlayer: 'attacker'}
+  );
+  t.is(result[1].effect.name, 'InputCommand');
 });
 
 test('攻撃側:バッテリー、防御側:バースト のケースが正しく適用される', t => {
@@ -126,46 +75,12 @@ test('攻撃側:バッテリー、防御側:バースト のケースが正し�
   }];
 
   const result = progress(lastState, commands);
-  t.deepEqual(result, [
-    {
-      activePlayerId: 'attacker',
-      players: [attacker, afterBurstDefender],
-      effect: {
-        name: 'BurstEffect',
-        burstPlayer: 'defender',
-        burst: {
-          type: 'RecoverBattery',
-          recoverBattery: 5,
-        }
-      }
-    },
-    {
-      activePlayerId: 'attacker',
-      players: [attacker, afterBurstDefender],
-      effect: {
-        name: 'InputCommand',
-        players: [
-          {
-            playerId: 'attacker',
-            command: [
-              {type: 'BATTERY_COMMAND', battery: 2},
-            ]
-          },
-          {
-            playerId: 'defender',
-            command: [
-              {type: 'BATTERY_COMMAND', battery: 0},
-              {type: 'BATTERY_COMMAND', battery: 1},
-              {type: 'BATTERY_COMMAND', battery: 2},
-              {type: 'BATTERY_COMMAND', battery: 3},
-              {type: 'BATTERY_COMMAND', battery: 4},
-              {type: 'BATTERY_COMMAND', battery: 5},
-            ]
-          }
-        ]
-      }
-    }
-  ]);
+  t.is(result.length, 2);
+  t.deepEqual(
+    R.pick(['name', 'burstPlayer'], result[0].effect),
+    {name: 'BurstEffect', burstPlayer: 'defender'}
+  );
+  t.is(result[1].effect.name, 'InputCommand');
 });
 
 test('攻撃側:バースト、防御側:バースト のケースが正しく適用される', t => {
@@ -183,61 +98,14 @@ test('攻撃側:バースト、防御側:バースト のケースが正しく�
   }];
 
   const result = progress(lastState, commands);
-  t.deepEqual(result, [
-    {
-      activePlayerId: 'attacker',
-      players: [afterBurstAttacker, defender],
-      effect: {
-        name: 'BurstEffect',
-        burstPlayer: 'attacker',
-        burst: {
-          type: 'RecoverBattery',
-          recoverBattery: 5,
-        }
-      }
-    },
-    {
-      activePlayerId: 'attacker',
-      players: [afterBurstAttacker, afterBurstDefender],
-      effect: {
-        name: 'BurstEffect',
-        burstPlayer: 'defender',
-        burst: {
-          type: 'RecoverBattery',
-          recoverBattery: 5,
-        }
-      }
-    },
-    {
-      activePlayerId: 'attacker',
-      players: [afterBurstAttacker, afterBurstDefender],
-      effect: {
-        name: 'InputCommand',
-        players: [
-          {
-            playerId: 'attacker',
-            command: [
-              {type: 'BATTERY_COMMAND', battery: 0},
-              {type: 'BATTERY_COMMAND', battery: 1},
-              {type: 'BATTERY_COMMAND', battery: 2},
-              {type: 'BATTERY_COMMAND', battery: 3},
-              {type: 'BATTERY_COMMAND', battery: 4},
-              {type: 'BATTERY_COMMAND', battery: 5},
-            ]
-          },
-          {
-            playerId: 'defender',
-            command: [
-              {type: 'BATTERY_COMMAND', battery: 0},
-              {type: 'BATTERY_COMMAND', battery: 1},
-              {type: 'BATTERY_COMMAND', battery: 2},
-              {type: 'BATTERY_COMMAND', battery: 3},
-              {type: 'BATTERY_COMMAND', battery: 4},
-              {type: 'BATTERY_COMMAND', battery: 5},
-            ]
-          }
-        ]
-      }
-    }
-  ]);
+  t.is(result.length, 3);
+  t.deepEqual(
+    R.pick(['name', 'burstPlayer'], result[0].effect),
+    {name: 'BurstEffect', burstPlayer: 'attacker'}
+  );
+  t.deepEqual(
+    R.pick(['name', 'burstPlayer'], result[1].effect),
+    {name: 'BurstEffect', burstPlayer: 'defender'}
+  );
+  t.is(result[2].effect.name, 'InputCommand');
 });

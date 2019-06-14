@@ -16,5 +16,5 @@ test('追加されたパラメータに正しい値がセットされている',
     maxHp: 3000,
     maxBattery: 5,
     enableBurst: true
-  })
+  });
 });
