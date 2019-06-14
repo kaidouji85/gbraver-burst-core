@@ -36,7 +36,7 @@ test('バースト効果適用処理が正しく実行されている', t => {
 
   const result = burst(lastState, 'player2');
   t.deepEqual(
-    R.pick(['name', 'BurstPlayer'], result.effect),
+    R.pick(['name', 'burstPlayer'], result.effect),
     {name: 'BurstEffect', burstPlayer: 'player2'},
     "player2がバーストを発動している"
   );
