@@ -1,14 +1,13 @@
 // @flow
 
 import test from 'ava';
-import type {ArmdozerState} from "../../../../src/game-state/armdozer-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
-import {doRecoverBattery} from "../../../../src/effect/burst/do-recover-battery";
+import {recoverBattery} from "../../../../src/effect/burst/recover-battery";
 import type {PlayerState} from "../../../../src/game-state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
 test('バースト効果バッテリー回復が正しく適用される', t => {
-  const burstPlayer: PlayerState  = {
+  const burstPlayer  = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player01',
     armdozer: {
@@ -30,7 +29,7 @@ test('バースト効果バッテリー回復が正しく適用される', t => 
     },
   };
 
-  const result = doRecoverBattery(burstPlayer, otherPlayer);
+  const result = recoverBattery(burstPlayer, otherPlayer);
   t.deepEqual(result, [
     {
       ...burstPlayer,
@@ -44,29 +43,3 @@ test('バースト効果バッテリー回復が正しく適用される', t => 
   ]);
 });
 
-test('バースト効果バッテリー回復以外は入力したプレイヤーステートをそのまま返す', t => {
-  const burstPlayer: ArmdozerState  = {
-    playerId: 'player01',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-      battery: 0,
-      maxBattery: 5,
-      enableBurst: true,
-      burst: {
-        type: 'PlusPower',
-        recoverBattery: 3,
-        plusPower: 1000,
-        duration: 2
-      }
-    },
-  };
-  const otherPlayer: ArmdozerState = {
-    playerId: 'player02',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE
-    },
-  };
-
-  const result = doRecoverBattery(burstPlayer, otherPlayer);
-  t.deepEqual(result, [burstPlayer, otherPlayer]);
-});

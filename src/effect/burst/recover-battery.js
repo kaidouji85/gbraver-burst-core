@@ -2,6 +2,8 @@
 
 import type {PlayerState} from "../../game-state/player-state";
 import {getBurstRecoverBattery} from "./get-burst-recover-battery";
+import type {BurstPlayer} from "./burst-player";
+import type {RecoverBattery} from "../../armdozer/burst";
 
 /**
  * バースト効果 バッテリー回復
@@ -10,11 +12,7 @@ import {getBurstRecoverBattery} from "./get-burst-recover-battery";
  * @param otherPlayer それ以外のプレイヤーの状態
  * @return バースト実施後の状態
  */
-export function doRecoverBattery(burstPlayer: PlayerState, otherPlayer: PlayerState): PlayerState[] {
-  if (burstPlayer.armdozer.burst.type !== 'RecoverBattery') {
-    return [burstPlayer, otherPlayer];
-  }
-
+export function recoverBattery(burstPlayer: BurstPlayer<RecoverBattery>, otherPlayer: PlayerState): PlayerState[] {
   return [
     {
       ...burstPlayer,

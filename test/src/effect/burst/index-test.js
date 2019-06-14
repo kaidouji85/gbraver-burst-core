@@ -12,6 +12,10 @@ test('バースト効果適用処理が正しく実行されている', t => {
   const player1: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
+  };
+  const player2: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'player2',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       battery: 0,
@@ -23,32 +27,29 @@ test('バースト効果適用処理が正しく実行されている', t => {
       }
     }
   };
-  const player2: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'player2',
-  };
+
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [player1, player2],
   };
 
-  const result = burst(lastState, 'player1');
+  const result = burst(lastState, 'player2');
   t.deepEqual(result, {
     ...lastState,
     players: [
+      player1,
       {
-        ...player1,
+        ...player2,
         armdozer: {
-          ...player1.armdozer,
+          ...player2.armdozer,
           battery: 5,
           enableBurst: false,
         }
       },
-      player2
     ],
     effect: {
       name: 'BurstEffect',
-      burstPlayer: 'player1',
+      burstPlayer: 'player2',
       burst: {
         type: 'RecoverBattery',
         recoverBattery: 5,

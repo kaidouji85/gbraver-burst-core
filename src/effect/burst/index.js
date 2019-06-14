@@ -3,7 +3,7 @@
 import type {GameState} from "../../game-state/game-state";
 import type {PlayerId} from "../../player/player";
 import type {PlayerState} from "../../game-state/player-state";
-import {doRecoverBattery} from "./do-recover-battery";
+import {recoverBattery} from "./recover-battery";
 
 /**
  * バーストを実施する
@@ -43,7 +43,7 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState 
 export function updateForBurst(burstPlayer: PlayerState, otherPlayer: PlayerState): PlayerState[] {
   switch (burstPlayer.armdozer.burst.type) {
     case 'RecoverBattery':
-      return doRecoverBattery(burstPlayer, otherPlayer);
+      return recoverBattery(burstPlayer, otherPlayer);
     default:
       return [burstPlayer, otherPlayer];
   }
