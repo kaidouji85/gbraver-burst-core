@@ -167,3 +167,77 @@ test('攻撃側:バッテリー、防御側:バースト のケースが正し�
     }
   ]);
 });
+
+test('攻撃側:バースト、防御側:バースト のケースが正しく適用される', t => {
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [attacker, defender],
+    activePlayerId: 'attacker',
+  };
+  const commands: PlayerCommand[] = [{
+    playerId: 'attacker',
+    command: {type: 'BURST_COMMAND'}
+  }, {
+    playerId: 'defender',
+    command: {type: 'BURST_COMMAND'}
+  }];
+
+  const result = progress(lastState, commands);
+  t.deepEqual(result, [
+    {
+      activePlayerId: 'attacker',
+      players: [afterBurstAttacker, defender],
+      effect: {
+        name: 'BurstEffect',
+        burstPlayer: 'attacker',
+        burst: {
+          type: 'RecoverBattery',
+          recoverBattery: 5,
+        }
+      }
+    },
+    {
+      activePlayerId: 'attacker',
+      players: [afterBurstAttacker, afterBurstDefender],
+      effect: {
+        name: 'BurstEffect',
+        burstPlayer: 'defender',
+        burst: {
+          type: 'RecoverBattery',
+          recoverBattery: 5,
+        }
+      }
+    },
+    {
+      activePlayerId: 'attacker',
+      players: [afterBurstAttacker, afterBurstDefender],
+      effect: {
+        name: 'InputCommand',
+        players: [
+          {
+            playerId: 'attacker',
+            command: [
+              {type: 'BATTERY_COMMAND', battery: 0},
+              {type: 'BATTERY_COMMAND', battery: 1},
+              {type: 'BATTERY_COMMAND', battery: 2},
+              {type: 'BATTERY_COMMAND', battery: 3},
+              {type: 'BATTERY_COMMAND', battery: 4},
+              {type: 'BATTERY_COMMAND', battery: 5},
+            ]
+          },
+          {
+            playerId: 'defender',
+            command: [
+              {type: 'BATTERY_COMMAND', battery: 0},
+              {type: 'BATTERY_COMMAND', battery: 1},
+              {type: 'BATTERY_COMMAND', battery: 2},
+              {type: 'BATTERY_COMMAND', battery: 3},
+              {type: 'BATTERY_COMMAND', battery: 4},
+              {type: 'BATTERY_COMMAND', battery: 5},
+            ]
+          }
+        ]
+      }
+    }
+  ]);
+});
