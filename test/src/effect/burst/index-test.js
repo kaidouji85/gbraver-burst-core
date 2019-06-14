@@ -1,6 +1,7 @@
 // @flow
 
 import test from 'ava';
+import * as R from 'ramda';
 import type {GameState} from "../../../../src/game-state/game-state";
 import type {PlayerState} from "../../../../src/game-state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
@@ -34,26 +35,9 @@ test('バースト効果適用処理が正しく実行されている', t => {
   };
 
   const result = burst(lastState, 'player2');
-  t.deepEqual(result, {
-    ...lastState,
-    players: [
-      player1,
-      {
-        ...player2,
-        armdozer: {
-          ...player2.armdozer,
-          battery: 5,
-          enableBurst: false,
-        }
-      },
-    ],
-    effect: {
-      name: 'BurstEffect',
-      burstPlayer: 'player2',
-      burst: {
-        type: 'RecoverBattery',
-        recoverBattery: 5,
-      }
-    }
-  });
+  t.deepEqual(
+    R.pick(['name', 'BurstPlayer'], result.effect),
+    {name: 'BurstEffect', burstPlayer: 'player2'},
+    "player2がバーストを発動している"
+  );
 });
