@@ -6,7 +6,7 @@ import type {PlayerState} from "../../../../src/game-state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import {doBurst} from "../../../../src/effect/burst";
+import {burst} from "../../../../src/effect/burst";
 
 test('バースト効果適用処理が正しく実行されている', t => {
   const player1: PlayerState = {
@@ -32,7 +32,7 @@ test('バースト効果適用処理が正しく実行されている', t => {
     players: [player1, player2],
   };
 
-  const result = doBurst(lastState, 'player1');
+  const result = burst(lastState, 'player1');
   t.deepEqual(result, {
     ...lastState,
     players: [

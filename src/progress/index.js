@@ -6,7 +6,7 @@ import {turnChange} from "../effect/turn-change";
 import {inputCommand, inputCommandAfterBurst} from "../effect/input-command";
 import type {ApplyEffect} from "./apply-effects";
 import {applyEffects} from "./apply-effects";
-import {doBurst} from "../effect/burst";
+import {burst} from "../effect/burst";
 import type {PlayerId} from "../player/player";
 
 /**
@@ -49,10 +49,10 @@ function burstFlow(activePlayerId: PlayerId, commands: PlayerCommand[]): ApplyEf
   }
 
   const attackerEffect = attackerCommand.command.type === 'BURST_COMMAND'
-    ? [(state: GameState) => doBurst(state, attackerCommand.playerId)]
+    ? [(state: GameState) => burst(state, attackerCommand.playerId)]
     : [];
   const defenderEffect = defenderCommand.command.type === 'BURST_COMMAND'
-    ? [(state: GameState) => doBurst(state, defenderCommand.playerId)]
+    ? [(state: GameState) => burst(state, defenderCommand.playerId)]
     : [];
   return [
       ...attackerEffect,

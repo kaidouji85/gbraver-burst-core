@@ -12,7 +12,7 @@ import {doRecoverBattery} from "./do-recover-battery";
  * @param burstPlayerId バーストするプレイヤーID
  * @return バースト実施後の状態
  */
-export function doBurst(lastState: GameState, burstPlayerId: PlayerId): GameState {
+export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   const otherPlayer = lastState.players.find(v => v.playerId !== burstPlayerId);
   if (!burstPlayer || !otherPlayer) {
