@@ -2,20 +2,19 @@
 import test from 'ava';
 import {createArmdozerState} from "../../../src/game-state/armdozer-state";
 import type {Armdozer} from "../../../src/armdozer/armdozer";
-import {ArmDozerIdList} from "../../../src/master/armdozers";
+import {EMPTY_ARMDOZER} from "../../data/armdozer";
 
 test('追加されたパラメータに正しい値がセットされている', t => {
-  const testData: Armdozer = {
-    id: ArmDozerIdList.SHIN_BRAVER,
-    name: 'name',
+  const data: Armdozer = {
+    ...EMPTY_ARMDOZER,
+    hp: 3000,
+    battery: 5
+  };
+  const result = createArmdozerState(data);
+  t.deepEqual(result, {
+    ...data,
     maxHp: 3000,
     maxBattery: 5,
-    power: 2000,
-    speed: 2000,
-    appearance: 'shin-braver'
-  };
-  const ret = createArmdozerState(testData);
-  t.is(ret.hp, testData.maxHp);
-  t.is(ret.battery, testData.maxBattery);
-  t.is(ret.enableBurst, true);
+    enableBurst: true
+  });
 });

@@ -17,6 +17,10 @@ export const ArmDozers: Armdozer[] = [
     power: 2000,
     speed: 2000,
     appearance: 'shin-braver',
+    burst: {
+      type: 'RecoverBattery',
+      recoverBattery: 5,
+    },
   },
   {
     id: ArmDozerIdList.NEO_LANDOZER,
@@ -26,5 +30,11 @@ export const ArmDozers: Armdozer[] = [
     power: 2300,
     speed: 1500,
     appearance: 'neo-landozer',
+    burst: {
+      type: 'PlusPower',
+      recoverBattery: 3,
+      plusPower: 1000,
+      duration: 2
+    }
   }
 ];

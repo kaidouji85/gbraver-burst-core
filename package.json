@@ -20,7 +20,7 @@
     "lint": "eslint src",
     "lint:test": "eslint test",
     "coverage": "nyc ava",
-    "coverage:html": "nyc report --reporter=html ava"
+    "coverage:html": "nyc --reporter=lcov --reporter=text-summary ava"
   },
   "files": [
     "lib/"

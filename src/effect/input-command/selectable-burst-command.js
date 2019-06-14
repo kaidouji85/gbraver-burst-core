@@ -8,6 +8,6 @@ import type {BurstCommand} from "../../command/burst";
  * @param armdozer アームドーザの状態
  * @returns 計算結果
  */
-export function getEnableBurstCommand(armdozer: ArmdozerState): BurstCommand[] {
+export function selectableBurstCommand(armdozer: ArmdozerState): BurstCommand[] {
   return armdozer.enableBurst ? [{type: 'BURST_COMMAND'}] : [];
 }

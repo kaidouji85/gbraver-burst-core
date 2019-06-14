@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {normalHitDamage} from "../../../../../src/effect/battle/result/damage";
-import {EMPTY_ARMDOZER_STATE} from "../../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
 import type {BatteryCommand} from "../../../../../src/command/battery";
 import type {PlayerState} from "../../../../../src/game-state/player-state";
 
