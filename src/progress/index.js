@@ -74,4 +74,3 @@ function battleFlow(commands: PlayerCommand[]): ApplyEffect[] {
     state => inputCommand(state)
   ];
 }
-
