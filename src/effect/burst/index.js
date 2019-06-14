@@ -2,7 +2,8 @@
 
 import type {GameState} from "../../game-state/game-state";
 import type {PlayerId} from "../../player/player";
-import {updateForBurst} from "./update-for-burst";
+import type {PlayerState} from "../../game-state/player-state";
+import {doRecoverBattery} from "./do-recover-battery";
 
 /**
  * バーストを実施する
@@ -18,13 +19,32 @@ export function doBurst(lastState: GameState, burstPlayerId: PlayerId): GameStat
     return lastState;
   }
 
+  const updatedPlayers = updateForBurst(burstPlayer, otherPlayer);
+  const sortedPlayers = lastState.players
+    .map(player => updatedPlayers.find(v => v.playerId === player.playerId) || player);
   return {
     ...lastState,
-    players: updateForBurst(burstPlayer, otherPlayer),
+    players: sortedPlayers,
     effect: {
       name: 'BurstEffect',
       burstPlayer: burstPlayer.playerId,
       burst: burstPlayer.armdozer.burst,
     }
   };
+}
+
+/**
+ * 各プレイヤーのステータスをバースト実施後のものに更新する
+ *
+ * @param burstPlayer バーストするプレイヤーの状態
+ * @param otherPlayer それ以外のプレイヤーの状態
+ * @return バースト実施後の状態
+ */
+export function updateForBurst(burstPlayer: PlayerState, otherPlayer: PlayerState): PlayerState[] {
+  switch (burstPlayer.armdozer.burst.type) {
+    case 'RecoverBattery':
+      return doRecoverBattery(burstPlayer, otherPlayer);
+    default:
+      return [burstPlayer, otherPlayer];
+  }
 }
