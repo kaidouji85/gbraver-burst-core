@@ -23,12 +23,14 @@ const INPUT_COMMAND: InputCommand = {
   players: [
     {
       playerId: 'player1',
+      selectable: true,
       command: new Array(6).map((_, index) => ({
         type: 'BATTERY_COMMAND', battery: index
       }))
     },
     {
       playerId: 'player2',
+      selectable: true,
       command: new Array(6).map((_, index) => ({
         type: 'BATTERY_COMMAND', battery: index
       }))
