@@ -6,11 +6,30 @@ import type {Command} from "../../command/command";
 /** コマンド入力 */
 export type InputCommand = {
   name: 'InputCommand',
-  players: EnableCommand[]
+  players: Array<Selectable | NoChoice >
 };
 
-/** プレイヤー毎の入力可能コマンドをまとめたもの */
-export type EnableCommand = {
+/**
+ * コマンドが自由に選択できるケース
+ * selectable = trueなら、このデータ型になる
+ */
+export type Selectable = {
+  /** プレイヤーID */
   playerId: PlayerId,
-  command: Command[]
+  /** コマンドが選択できるか否かのフラグ*/
+  selectable: true,
+  command: Command[],
 };
+
+/**
+ * コマンドが強制されているケース
+ * selectable = falseなら、このデータ型になる
+ */
+export type NoChoice = {
+  /** プレイヤーID */
+  playerId: PlayerId,
+  /** コマンドが選択できるか否かのフラグ*/
+  selectable: false,
+  /** プレイヤーが次のターンに実行するコマンド */
+  nextTurnCommand: Command,
+}
