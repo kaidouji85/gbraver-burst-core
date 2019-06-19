@@ -4,7 +4,10 @@ import type {GameState} from "../../game-state/game-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import type {PlayerCommand} from "../../command/player-command";
-import {selectableCommandAfterBurst} from "./selectable-command-after-burst";
+import type {NoChoice, Selectable} from "./input-command";
+import type {Player} from "../../player/player";
+import type {Command} from "../../command/command";
+import {isSelectableCommand} from "./is-selectable-command";
 
 /**
  * コマンド入力フェイズのステートを生成する
@@ -20,6 +23,7 @@ export function inputCommand(lastState: GameState): GameState {
       name: 'InputCommand',
       players: lastState.players.map(v => ({
         playerId: v.playerId,
+        selectable: true,
         command: [
           ...selectableBatteryCommand(v.armdozer),
           ...selectableBurstCommand(v.armdozer)
@@ -44,12 +48,32 @@ export function inputCommandAfterBurst(lastState: GameState, commands: PlayerCom
       name: 'InputCommand',
       players: lastState.players.map(player => {
         const playerCommand = commands.find(v => v.playerId === player.playerId);
-        const command = playerCommand ? selectableCommandAfterBurst(player, playerCommand.command) : [];
-        return {
-          playerId: player.playerId,
-          command: command
+        if (!playerCommand) {
+          return selectable(player);
         }
+
+        return isSelectableCommand(playerCommand.command)
+          ? selectable(player)
+          : noChoice(player, playerCommand.command);
       })
     }
+  };
+}
+
+function selectable(player: Player): Selectable {
+  return {
+    playerId: player.playerId,
+    selectable: true,
+    command: [
+      ...selectableBatteryCommand(player.armdozer)
+    ]
+  };
+}
+
+function noChoice(player: Player, command: Command): NoChoice {
+  return {
+    playerId: player.playerId,
+    selectable: false,
+    nextTurnCommand: command
   };
 }

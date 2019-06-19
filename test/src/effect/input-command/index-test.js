@@ -42,6 +42,7 @@ test('コマンド入力フェイズの効果が正しく適用される', t => 
       players: [
         {
           playerId: 'player01',
+          selectable: true,
           command: [
             {type: 'BATTERY_COMMAND', battery: 0},
             {type: 'BATTERY_COMMAND', battery: 1},
@@ -54,6 +55,7 @@ test('コマンド入力フェイズの効果が正しく適用される', t => 
         },
         {
           playerId: 'player02',
+          selectable: true,
           command: [
             {type: 'BATTERY_COMMAND', battery: 0},
             {type: 'BATTERY_COMMAND', battery: 1},
@@ -111,12 +113,13 @@ test('バースト後のコマンド入力フェイズ効果が正しく適用�
       players: [
         {
           playerId: 'player01',
-          command: [
-            {type: 'BATTERY_COMMAND', battery: 3}
-          ]
+          selectable: false,
+          nextTurnCommand: {type: 'BATTERY_COMMAND', battery: 3}
+
         },
         {
           playerId: 'player02',
+          selectable: true,
           command: [
             {type: 'BATTERY_COMMAND', battery: 0},
             {type: 'BATTERY_COMMAND', battery: 1},
