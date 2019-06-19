@@ -9,6 +9,6 @@ test('バーストフェイズ時にバーストコマンドを選択した場�
 });
 
 test('バーストフェイズ時にバーストコマンド以外を選択した場合、次のターンでコマンド選択不可能', t => {
-  const result = isSelectableCommand({type: 'BATTERY_COMMAND'});
+  const result = isSelectableCommand({type: 'BATTERY_COMMAND', battery: 3});
   t.false(result);
 });
