@@ -1,6 +1,6 @@
 {
   "name": "gbraver-burst-core",
-  "version": "0.2.14",
+  "version": "0.3.0",
   "description": "braver burst core",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "lint": "eslint src",
     "lint:test": "eslint test",
     "coverage": "nyc ava",
-    "coverage:html": "nyc report --reporter=html ava"
+    "coverage:html": "nyc --reporter=lcov --reporter=text-summary ava"
   },
   "files": [
     "lib/"
@@ -38,7 +38,7 @@
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-flowtype": "^3.10.1",
+    "eslint-plugin-flowtype": "^3.10.3",
     "flow-bin": "^0.101.0",
     "flow-copy-source": "^2.0.6",
     "npm-run-all": "^4.1.5",

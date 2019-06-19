@@ -6,7 +6,7 @@ import type {GameState} from "../../../../src/game-state/game-state";
 import type {PlayerCommand} from "../../../../src/command/player-command";
 import {battle} from "../../../../src/effect/battle";
 import type {PlayerState} from "../../../../src/game-state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 
 const ATTACKER: PlayerState = {
   playerId: 'player1',

@@ -2,7 +2,7 @@
 
 import test from 'ava'
 import type {PlayerState} from "../../../../../src/game-state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
 import {updateDefender} from "../../../../../src/effect/battle/update/update-defender";
 import type {CriticalHit, Feint, Guard, Miss, NormalHit} from "../../../../../src/effect/battle/result/battle-result";
 

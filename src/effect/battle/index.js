@@ -41,9 +41,11 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
     updateAttacker(attacker, attackerBattery),
     updateDefender(result, defender, defenderBattery)
   ];
+  const sortedPlayers = lastState.players
+    .map(player => updatePlayers.find(v => v.playerId === player.playerId) || player);
   return {
     ...lastState,
-    players: updatePlayers,
+    players: sortedPlayers,
     effect: effect
   }
 }

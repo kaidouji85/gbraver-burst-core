@@ -1,6 +1,6 @@
 import test from 'ava';
 import type {Player} from "../../../../src/player/player";
-import {EMPTY_ARMDOZER} from "../../../data/empty-armdozer";
+import {EMPTY_ARMDOZER} from "../../../data/armdozer";
 import {startGame} from "../../../../src/effect/start-game";
 import {GameState} from "../../../../src/game-state/game-state";
 
