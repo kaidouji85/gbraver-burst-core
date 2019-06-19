@@ -60,6 +60,7 @@ export function inputCommandAfterBurst(lastState: GameState, commands: PlayerCom
   };
 }
 
+/** コマンド選択可能なケース */
 function selectable(player: Player): Selectable {
   return {
     playerId: player.playerId,
@@ -70,6 +71,7 @@ function selectable(player: Player): Selectable {
   };
 }
 
+/** コマンド選択が不可能なケース */
 function noChoice(player: Player, command: Command): NoChoice {
   return {
     playerId: player.playerId,
