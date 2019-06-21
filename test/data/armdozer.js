@@ -29,3 +29,4 @@ export const EMPTY_ARMDOZER_STATE: ArmdozerState = {
   battery: EMPTY_ARMDOZER.maxBattery,
   hp: EMPTY_ARMDOZER.maxHp
 };
+
