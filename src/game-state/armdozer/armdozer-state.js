@@ -1,4 +1,5 @@
-import type {Armdozer} from "../armdozer/armdozer";
+import type {Armdozer} from "../../armdozer/armdozer";
+import type {ArmdozerEffect} from "./armdozer-effects";
 
 /** アームドーザの状態 */
 export type ArmdozerState = Armdozer & {
@@ -8,6 +9,8 @@ export type ArmdozerState = Armdozer & {
   battery: number,
   /** バーストが使えるか否か、trueで使える */
   enableBurst: boolean,
+  /** 現在有効な各種効果 */
+  effects: ArmdozerEffect[],
 };
 
 /**
@@ -21,6 +24,7 @@ export function createArmdozerState(basic: Armdozer): ArmdozerState {
     ...basic,
     hp: basic.maxHp,
     battery: basic.maxBattery,
-    enableBurst: true
+    enableBurst: true,
+    effects: [],
   };
 }

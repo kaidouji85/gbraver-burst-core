@@ -1,6 +1,6 @@
 // @flow
 import test from 'ava';
-import {createArmdozerState} from "../../../src/game-state/armdozer-state";
+import {createArmdozerState} from "../../../src/game-state/armdozer/armdozer-state";
 import type {Armdozer} from "../../../src/armdozer/armdozer";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 
@@ -15,6 +15,7 @@ test('追加されたパラメータに正しい値がセットされている',
     ...data,
     maxHp: 3000,
     maxBattery: 5,
-    enableBurst: true
+    enableBurst: true,
+    effects: [],
   });
 });
