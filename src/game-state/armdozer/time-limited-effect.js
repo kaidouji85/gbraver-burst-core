@@ -17,5 +17,5 @@ export function isTimeLimitedEffect(effect: any): boolean {
     return false;
   }
 
-  return (typeof effect.remainingTurn === 'number') && (isFinite(effect.remainingTurn));
+  return Number.isInteger(effect.remainingTurn);
 }
