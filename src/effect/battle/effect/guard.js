@@ -1,7 +1,12 @@
 // @flow
 
 import type {PlayerState} from "../../../game-state/player-state";
-import type {Guard} from "./battle-result";
+
+/** ガード */
+export type Guard = {
+  name: 'Guard',
+  damage: number
+};
 
 /**
  * 防御の戦闘結果を生成する

@@ -3,7 +3,7 @@
 import test from 'ava';
 import type {PlayerState} from "../../../../../src/game-state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
-import {guard} from "../../../../../src/effect/battle/result/guard";
+import {guard} from "../../../../../src/effect/battle/effect/guard";
 
 const ATTACKER: PlayerState = {
   playerId: 'player1',

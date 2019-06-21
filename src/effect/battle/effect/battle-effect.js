@@ -1,8 +1,21 @@
 // @flow
-import type {BattleResult} from "../result/battle-result";
+import type {BattleResult} from "./battle-result";
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {Battle} from "./index";
+import type {PlayerId} from "../../../player/player";
+
+/** 戦闘 */
+export type Battle = {
+  name: 'Battle',
+  /** 攻撃側プレイヤー */
+  attacker: PlayerId,
+  /** 攻撃側バッテリー */
+  attackerBattery: number,
+  /** 防御側バッテリー */
+  defenderBattery: number,
+  /** 戦闘結果 */
+  result: BattleResult
+};
 
 /**
  * 戦闘効果を生成する
