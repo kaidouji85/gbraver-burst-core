@@ -1,5 +1,5 @@
 import type {Armdozer} from "../../armdozer/armdozer";
-import type {ArmdozerEffect} from "./armdozer-effects";
+import type {ArmdozerEffect} from "./armdozer-effect";
 
 /** アームドーザの状態 */
 export type ArmdozerState = Armdozer & {
