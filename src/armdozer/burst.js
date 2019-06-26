@@ -1,7 +1,7 @@
 // @flow
 
 /** バースト */
-export type Burst = RecoverBattery | PlusPower;
+export type Burst = RecoverBattery | BuffPower;
 
 /** バッテリー回復 */
 export type RecoverBattery = {
@@ -11,12 +11,12 @@ export type RecoverBattery = {
 };
 
 /** 攻撃力バフ */
-export type PlusPower = {
-  type: 'PlusPower',
+export type BuffPower = {
+  type: 'BuffPower',
   /** バッテリー回復料 */
   recoverBattery: number,
   /** 攻撃力アップ */
-  plusPower: number,
+  buffPower: number,
   /** バフ継続ターン数 */
   duration: number
 };

@@ -3,7 +3,7 @@
 import type {GameState} from "../../game-state/game-state";
 import type {PlayerCommand} from "../../command/player-command";
 import type {PlayerState} from "../../game-state/player-state";
-import {battleResult} from "./result/index";
+import {battleResult} from "./effect/battle-result";
 import type {BatteryCommand} from "../../command/battery";
 import {updateAttacker} from "./update/update-attacker";
 import {updateDefender} from "./update/update-defender";

@@ -2,8 +2,13 @@
 
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import type {CriticalHit} from "./battle-result";
-import {normalHitDamage} from "./damage";
+import {normalHitDamage} from "../damage/damage";
+
+/** クリティカルヒット */
+export type CriticalHit = {
+  name: 'CriticalHit',
+  damage: number
+};
 
 /**
  * クリティカルヒットの戦闘結果を生成する

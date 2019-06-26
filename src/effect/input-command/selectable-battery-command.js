@@ -1,5 +1,5 @@
 // @flow
-import type {ArmdozerState} from "../../game-state/armdozer-state";
+import type {ArmdozerState} from "../../game-state/armdozer/armdozer-state";
 import * as R from "ramda";
 import type {BatteryCommand} from "../../command/battery";
 

@@ -3,7 +3,7 @@ import test from 'ava';
 import {getFirstTurnPlayer} from "../../../../src/effect/start-game/first-turn-payer";
 import {ArmDozerIdList} from "../../../../src/master/armdozers";
 import type {PlayerState} from "../../../../src/game-state/player-state";
-import type {ArmdozerState} from "../../../../src/game-state/armdozer-state";
+import type {ArmdozerState} from "../../../../src/game-state/armdozer/armdozer-state";
 import type {PlayerId} from "../../../../src/player/player";
 
 const TEST_ARMDOZER: ArmdozerState = {

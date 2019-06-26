@@ -4,6 +4,7 @@ import type {GameState} from "../../game-state/game-state";
 import {getNextActivePlayer} from "./next-active-player";
 import {getRecoveredBattery} from "./get-recovered-battery";
 import type {PlayerState} from "../../game-state/player-state";
+import {updateRemainingTurn} from "./update-remaining-turn";
 
 /** ターンチェンジの際に回復するバッテリー */
 export const BATTERY_RECOVERY_VALUE = 3;
@@ -19,7 +20,7 @@ export function turnChange(lastState: GameState): GameState {
   const nextActivePlayerId = getNextActivePlayer(lastState.activePlayerId, playerIdList);
   const updatedPlayerList = lastState.players.map(player => {
     const isNextActive = player.playerId === nextActivePlayerId;
-    return isNextActive ? recoverPlayerBattery(player) : player;
+    return isNextActive ? updateAttacker(player) : updateDefender(player);
   });
 
   return {
@@ -31,17 +32,34 @@ export function turnChange(lastState: GameState): GameState {
 }
 
 /**
- * プレイヤーバッテリーを回復するヘルパー関数
+ * ターンチェンジ 攻撃側のステータス更新
  *
- * @param player 更新前のプレイヤーステート
- * @return バッテリー回復後のプレイヤーステート
+ * @param player 更新前の攻撃側ステート
+ * @return 更新結果
  */
-function recoverPlayerBattery(player: PlayerState): PlayerState {
+function updateAttacker(player: PlayerState): PlayerState {
   return {
     ...player,
     armdozer: {
       ...player.armdozer,
-      battery: getRecoveredBattery(player.armdozer.battery, player.armdozer.maxBattery, BATTERY_RECOVERY_VALUE)
+      battery: getRecoveredBattery(player.armdozer.battery, player.armdozer.maxBattery, BATTERY_RECOVERY_VALUE),
+      effects: updateRemainingTurn(player.armdozer.effects)
     }
   }
+}
+
+/**
+ * ターンチェンジ 防御側のステータス更新
+ *
+ * @param player 更新前の防御側ステート
+ * @return 更新結果
+ */
+function updateDefender(player: PlayerState): PlayerState {
+  return {
+    ...player,
+    armdozer: {
+      ...player.armdozer,
+      effects: updateRemainingTurn(player.armdozer.effects)
+    }
+  };
 }
