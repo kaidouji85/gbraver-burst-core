@@ -1,12 +1,12 @@
 // @flow
 
-import type {TimeLimitedEffect} from "./time-limited-effect";
+import type {TimeLimitEffect} from "./expiration";
 
 /** アームドーザ効果 */
 export type ArmdozerEffect = CorrectPower;
 
 /** 攻撃力補正 */
-export type CorrectPower = TimeLimitedEffect & {
+export type CorrectPower = TimeLimitEffect & {
   type: 'CorrectPower',
   /** 攻撃力補正値 */
   power: number,

@@ -33,7 +33,7 @@ export const ArmDozers: Armdozer[] = [
     burst: {
       type: 'BuffPower',
       recoverBattery: 3,
-      plusPower: 1000,
+      buffPower: 1000,
       duration: 2
     }
   }

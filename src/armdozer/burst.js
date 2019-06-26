@@ -16,7 +16,7 @@ export type BuffPower = {
   /** バッテリー回復料 */
   recoverBattery: number,
   /** 攻撃力アップ */
-  plusPower: number,
+  buffPower: number,
   /** バフ継続ターン数 */
   duration: number
 };

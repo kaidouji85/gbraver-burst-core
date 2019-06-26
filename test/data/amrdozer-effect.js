@@ -6,5 +6,6 @@ import type {CorrectPower} from "../../src/game-state/armdozer/armdozer-effect";
 export const EMPTY_CORRECT_POWER: CorrectPower = {
   type: 'CorrectPower',
   power: 0,
+  hasTimeLimit: true,
   remainingTurn: 1,
 };
