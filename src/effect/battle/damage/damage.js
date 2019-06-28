@@ -1,10 +1,11 @@
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
-import {power} from "./power";
+import {correctPower} from "./correct-power";
 import {batteryBonus} from "./battery-bonus";
 
 /**
- * 攻撃ヒット時のダメージ計算
+ * ダメージ計算
+ * ダメージ = 攻撃力 + 攻撃力補正 + バッテリーボーナス
  *
  * @param attacker 攻撃側プレイヤー
  * @param attackerCommand 攻撃側バッテリー
@@ -13,5 +14,5 @@ import {batteryBonus} from "./battery-bonus";
  * @return ダメージ
  */
 export function normalHitDamage(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): number {
-  return power(attacker) + batteryBonus(attackerCommand.battery, defenderCommand.battery);
+  return attacker.armdozer.power + correctPower(attacker.armdozer.effects) + batteryBonus(attackerCommand.battery, defenderCommand.battery);
 }
