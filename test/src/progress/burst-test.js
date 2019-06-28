@@ -1,7 +1,6 @@
 // @flow
 
 import test from 'ava';
-import * as R from 'ramda';
 import type {Player} from "../../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 import type {GameState} from "../../../src/game-state/game-state";
@@ -53,10 +52,7 @@ test('攻撃側:バースト、防御側:バッテリー のケースが正し�
 
   const result = progress(lastState, commands);
   t.is(result.length, 2);
-  t.deepEqual(
-    R.pick(['name', 'burstPlayer'], result[0].effect),
-    {name: 'BurstEffect', burstPlayer: 'attacker'}
-  );
+  t.true(result[0].effect.name === 'BurstEffect' && result[0].effect.burstPlayer === 'attacker');
   t.is(result[1].effect.name, 'InputCommand');
 });
 
@@ -76,10 +72,7 @@ test('攻撃側:バッテリー、防御側:バースト のケースが正し�
 
   const result = progress(lastState, commands);
   t.is(result.length, 2);
-  t.deepEqual(
-    R.pick(['name', 'burstPlayer'], result[0].effect),
-    {name: 'BurstEffect', burstPlayer: 'defender'}
-  );
+  t.true(result[0].effect.name === 'BurstEffect' && result[0].effect.burstPlayer === 'defender');
   t.is(result[1].effect.name, 'InputCommand');
 });
 
@@ -99,13 +92,7 @@ test('攻撃側:バースト、防御側:バースト のケースが正しく�
 
   const result = progress(lastState, commands);
   t.is(result.length, 3);
-  t.deepEqual(
-    R.pick(['name', 'burstPlayer'], result[0].effect),
-    {name: 'BurstEffect', burstPlayer: 'attacker'}
-  );
-  t.deepEqual(
-    R.pick(['name', 'burstPlayer'], result[1].effect),
-    {name: 'BurstEffect', burstPlayer: 'defender'}
-  );
+  t.true(result[0].effect.name === 'BurstEffect' && result[0].effect.burstPlayer === 'attacker');
+  t.true(result[1].effect.name === 'BurstEffect' && result[1].effect.burstPlayer === 'defender');
   t.is(result[2].effect.name, 'InputCommand');
 });
