@@ -3,11 +3,10 @@
 import type {GameState} from "../../game-state/game-state";
 import type {PlayerCommand} from "../../command/player-command";
 import type {PlayerState} from "../../game-state/player-state";
-import {battleResult} from "./effect/battle-result";
+import {battleResult} from "./result/battle-result";
 import type {BatteryCommand} from "../../command/battery";
-import {updateAttacker} from "./update/update-attacker";
-import {updateDefender} from "./update/update-defender";
-import {battleEffect} from "./effect/battle-effect";
+import {updateAttacker} from "./players/update-attacker";
+import {updateDefender} from "./players/update-defender";
 
 /**
  * 戦闘を行う
@@ -36,7 +35,6 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   const defenderBattery: BatteryCommand = defenderCommand.command;
 
   const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
-  const effect = battleEffect(result, attacker, attackerBattery, defender, defenderBattery);
   const updatePlayers = [
     updateAttacker(attacker, attackerBattery),
     updateDefender(result, defender, defenderBattery)
@@ -46,6 +44,12 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   return {
     ...lastState,
     players: sortedPlayers,
-    effect: effect
+    effect: {
+      name: 'Battle',
+      attacker: attacker.playerId,
+      attackerBattery: attackerBattery.battery,
+      defenderBattery: defenderBattery.battery,
+      result: result
+    }
   }
 }

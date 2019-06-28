@@ -4,7 +4,7 @@ import test from 'ava';
 import type {PlayerState} from "../../../../../src/game-state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
 import type {BatteryCommand} from "../../../../../src/command/battery";
-import {criticalHit} from "../../../../../src/effect/battle/effect/critical-hit";
+import {criticalHit} from "../../../../../src/effect/battle/result/critical-hit";
 
 const ATTACKER: PlayerState = {
   playerId: 'player1',
