@@ -17,21 +17,13 @@ import type {PlayerId} from "../player/player";
  * @return 更新されたゲーム状態
  */
 export function progress(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  const effects = isBurstFlow(commands)
+  const isBurstFlow =  commands
+    .map(v => v.command.type)
+    .includes('BURST_COMMAND');
+  const effects = isBurstFlow
     ? burstFlow(lastState.activePlayerId, commands)
     : battleFlow(commands);
   return applyEffects(lastState, effects);
-}
-
-/**
- * バーストフェイズを実施するか否かを判定する
- *
- * @param commands コマンド
- * @return 判定結果、trueでバーストフェイズを実施する
- */
-function isBurstFlow(commands: PlayerCommand[]): boolean {
-  const burstCommands = commands.filter(v => v.command.type === 'BURST_COMMAND');
-  return 0 < burstCommands.length;
 }
 
 /**
