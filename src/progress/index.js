@@ -8,6 +8,7 @@ import type {ApplyEffect} from "./apply-effects";
 import {applyEffects} from "./apply-effects";
 import {burst} from "../effect/burst";
 import type {PlayerId} from "../player/player";
+import {isBurstFlow} from "./is-burst-flow";
 
 /**
  * ゲームを進める
@@ -17,10 +18,7 @@ import type {PlayerId} from "../player/player";
  * @return 更新されたゲーム状態
  */
 export function progress(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  const isBurstFlow =  commands
-    .map(v => v.command.type)
-    .includes('BURST_COMMAND');
-  const effects = isBurstFlow
+  const effects = isBurstFlow(commands)
     ? burstFlow(lastState.activePlayerId, commands)
     : battleFlow(commands);
   return applyEffects(lastState, effects);
