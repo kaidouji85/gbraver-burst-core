@@ -1,7 +1,6 @@
 // @flow
 
 import test from 'ava';
-import * as R from 'ramda';
 import type {GameState} from "../../../../src/game-state/game-state";
 import type {PlayerState} from "../../../../src/game-state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
@@ -10,13 +9,9 @@ import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {burst} from "../../../../src/effect/burst";
 
 test('バースト効果適用処理が正しく実行されている', t => {
-  const player1: PlayerState = {
+  const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'player1',
-  };
-  const player2: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'player2',
+    playerId: 'burstPlayer',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       battery: 0,
@@ -28,16 +23,33 @@ test('バースト効果適用処理が正しく実行されている', t => {
       }
     }
   };
-
+  const otherPlayer: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'otherPlayer',
+  };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [player1, player2],
+    players: [otherPlayer, burstPlayer],
   };
 
-  const result = burst(lastState, 'player2');
-  t.deepEqual(
-    R.pick(['name', 'burstPlayer'], result.effect),
-    {name: 'BurstEffect', burstPlayer: 'player2'},
-    "player2がバーストを発動している"
-  );
+  const result = burst(lastState, 'burstPlayer');
+  t.deepEqual(result, {
+    ...lastState,
+    players: [
+      otherPlayer,
+      {
+        ...burstPlayer,
+        armdozer: {
+          ...burstPlayer.armdozer,
+          battery: 5,
+          enableBurst: false
+        }
+      }
+    ],
+    effect: {
+      name: 'BurstEffect',
+      burstPlayer: 'burstPlayer',
+      burst: burstPlayer.armdozer.burst
+    }
+  });
 });

@@ -1,7 +1,5 @@
 // @flow
 import type {BattleResult} from "./result/battle-result";
-import type {PlayerState} from "../../game-state/player-state";
-import type {BatteryCommand} from "../../command/battery";
 import type {PlayerId} from "../../player/player";
 
 /** 戦闘 */
