@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerState} from "../../game-state/armdozer-state";
+import type {ArmdozerState} from "../../game-state/armdozer/armdozer-state";
 import type {Burst} from "../../armdozer/burst";
 import type {PlayerState} from "../../game-state/player-state";
 

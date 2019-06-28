@@ -1,7 +1,12 @@
 // @flow
 
-import type {Feint} from "./battle-result";
 import type {BatteryCommand} from "../../../command/battery";
+
+/** フェイント */
+export type Feint = {
+  name: 'Feint',
+  isDefenderMoved: boolean
+}
 
 /**
  * フェイントの戦闘結果を生成する

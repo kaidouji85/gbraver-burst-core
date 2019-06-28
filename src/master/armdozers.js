@@ -31,9 +31,9 @@ export const ArmDozers: Armdozer[] = [
     speed: 1500,
     appearance: 'neo-landozer',
     burst: {
-      type: 'PlusPower',
+      type: 'BuffPower',
       recoverBattery: 3,
-      plusPower: 1000,
+      buffPower: 1000,
       duration: 2
     }
   }
