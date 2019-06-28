@@ -30,7 +30,7 @@ export function battleResult(attacker: PlayerState, attackerCommand: BatteryComm
   }
 
   if (attackerCommand.battery === defenderCommand.battery) {
-    return guard(attacker);
+    return guard(attacker, attackerCommand, defender, defenderCommand);
   }
 
   if ((defenderCommand.battery < attackerCommand.battery) && defenderCommand.battery === 0) {

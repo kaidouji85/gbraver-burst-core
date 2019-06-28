@@ -8,6 +8,7 @@ import type {ApplyEffect} from "./apply-effects";
 import {applyEffects} from "./apply-effects";
 import {burst} from "../effect/burst";
 import type {PlayerId} from "../player/player";
+import {isBurstFlow} from "./is-burst-flow";
 
 /**
  * ゲームを進める
@@ -21,17 +22,6 @@ export function progress(lastState: GameState, commands: PlayerCommand[]): GameS
     ? burstFlow(lastState.activePlayerId, commands)
     : battleFlow(commands);
   return applyEffects(lastState, effects);
-}
-
-/**
- * バーストフェイズを実施するか否かを判定する
- *
- * @param commands コマンド
- * @return 判定結果、trueでバーストフェイズを実施する
- */
-function isBurstFlow(commands: PlayerCommand[]): boolean {
-  const burstCommands = commands.filter(v => v.command.type === 'BURST_COMMAND');
-  return 0 < burstCommands.length;
 }
 
 /**
