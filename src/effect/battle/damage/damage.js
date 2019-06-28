@@ -1,6 +1,7 @@
 import type {PlayerState} from "../../../game-state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 import {power} from "./power";
+import {batteryBonus} from "./battery-bonus";
 
 /**
  * 攻撃ヒット時のダメージ計算
@@ -12,5 +13,5 @@ import {power} from "./power";
  * @return ダメージ
  */
 export function normalHitDamage(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): number {
-  return power(attacker) + 100 * (attackerCommand.battery - defenderCommand.battery - 1);
+  return power(attacker) + batteryBonus(attackerCommand.battery, defenderCommand.battery);
 }
