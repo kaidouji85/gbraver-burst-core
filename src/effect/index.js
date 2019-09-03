@@ -5,6 +5,7 @@ import type {Battle} from "./battle/battle";
 import type {TurnChange} from "./turn-change/turn-change";
 import type {StartGame} from "./start-game/start-game";
 import type {BurstEffect} from "./burst/burst-effect";
+import type {EndGame} from "./end-game/end-game";
 
 /** ゲーム中に発生する効果をまとめたもの */
-export type Effect = StartGame | InputCommand | Battle | TurnChange | BurstEffect;
+export type Effect = StartGame | EndGame | InputCommand | Battle | TurnChange | BurstEffect;
