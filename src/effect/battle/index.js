@@ -7,7 +7,7 @@ import {battleResult} from "./result/battle-result";
 import type {BatteryCommand} from "../../command/battery";
 import {updateAttacker} from "./players/update-attacker";
 import {updateDefender} from "./players/update-defender";
-import {isDeath} from "./is-death";
+import {isDeath} from "../../player/is-death";
 
 /**
  * 戦闘を行う
