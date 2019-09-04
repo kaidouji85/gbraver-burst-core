@@ -6,7 +6,7 @@ import type {PlayerState} from "../../../src/game-state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../data/player";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 
-test('HPが0の場合、防御側が死亡したと判定する', t => {
+test('HPが0の場合、死亡したと判定する', t => {
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     armdozer: {
@@ -18,7 +18,7 @@ test('HPが0の場合、防御側が死亡したと判定する', t => {
   t.true(result);
 });
 
-test('HPが0より小さい場合、防御側が死亡したと判定する', t => {
+test('HPが0より小さい場合、死亡したと判定する', t => {
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     armdozer: {
@@ -30,7 +30,7 @@ test('HPが0より小さい場合、防御側が死亡したと判定する', t 
   t.true(result);
 });
 
-test('HPが0より大きい場合、防御側は死亡していない', t => {
+test('HPが0より大きい場合、死亡していない', t => {
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     armdozer: {
