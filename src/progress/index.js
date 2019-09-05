@@ -9,6 +9,8 @@ import {applyEffects} from "./apply-effects";
 import {burst} from "../effect/burst";
 import type {PlayerId} from "../player/player";
 import {isBurstFlow} from "./is-burst-flow";
+import {gameEnd} from "../effect/game-end";
+import {gameEndJudging} from "../game-end-judging";
 
 /**
  * ゲームを進める
@@ -61,6 +63,11 @@ function battleFlow(commands: PlayerCommand[]): ApplyEffect[] {
   return [
     state => battle(state, commands),
     state => turnChange(state),
-    state => inputCommand(state)
+    state => {
+      const result = gameEndJudging(state);
+      return result.type === 'GameContinue'
+        ? inputCommand(state)
+        : gameEnd(state, result);
+    }
   ];
 }
