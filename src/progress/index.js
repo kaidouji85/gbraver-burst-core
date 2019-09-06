@@ -40,15 +40,13 @@ function burstFlow(activePlayerId: PlayerId, commands: PlayerCommand[]): ApplyEf
     return [];
   }
 
-  const attackerEffect = attackerCommand.command.type === 'BURST_COMMAND'
-    ? [(state: GameState) => burst(state, attackerCommand.playerId)]
-    : [];
-  const defenderEffect = defenderCommand.command.type === 'BURST_COMMAND'
-    ? [(state: GameState) => burst(state, defenderCommand.playerId)]
-    : [];
   return [
-      ...attackerEffect,
-      ...defenderEffect,
+    state => attackerCommand.command.type === 'BURST_COMMAND'
+      ? burst(state, attackerCommand.playerId)
+      : null,
+    state => defenderCommand.command.type === 'BURST_COMMAND'
+      ? burst(state, defenderCommand.playerId)
+      : null,
     state => inputCommandAfterBurst(state, commands)
   ];
 }
