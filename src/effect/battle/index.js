@@ -7,6 +7,7 @@ import {battleResult} from "./result/battle-result";
 import type {BatteryCommand} from "../../command/battery";
 import {updateAttacker} from "./players/update-attacker";
 import {updateDefender} from "./players/update-defender";
+import {isDeath} from "../../player/is-death";
 
 /**
  * 戦闘を行う
@@ -35,20 +36,27 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   const defenderBattery: BatteryCommand = defenderCommand.command;
 
   const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
-  const updatePlayers = [
-    updateAttacker(attacker, attackerBattery),
-    updateDefender(result, defender, defenderBattery)
-  ];
-  const sortedPlayers = lastState.players
-    .map(player => updatePlayers.find(v => v.playerId === player.playerId) || player);
+  const updatedAttacker = updateAttacker(attacker, attackerBattery);
+  const updatedDefender = updateDefender(result, defender, defenderBattery);
+  const updatedPlayers = lastState.players.map(v => {
+    switch (v.playerId) {
+      case updatedAttacker.playerId:
+        return updatedAttacker;
+      case updatedDefender.playerId:
+        return updatedDefender;
+      default:
+        return v;
+    }
+  });
   return {
     ...lastState,
-    players: sortedPlayers,
+    players: updatedPlayers,
     effect: {
       name: 'Battle',
       attacker: attacker.playerId,
       attackerBattery: attackerBattery.battery,
       defenderBattery: defenderBattery.battery,
+      isDeath: isDeath(updatedDefender),
       result: result
     }
   }

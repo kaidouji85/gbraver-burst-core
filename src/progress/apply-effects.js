@@ -2,8 +2,19 @@
 
 import type {GameState} from "../game-state/game-state";
 
-/** 効果適用関数 */
-export type ApplyEffect = (state: GameState) => GameState;
+/**
+ * 効果適用関数
+ * 戻り値のデータ型により、以下のように動く
+ *
+ * GameState
+ *  戻り値を効果適用結果として扱い、ステートヒストリーに追加する
+ * null
+ *  状態変更なしと見なし、ステートヒストリーには変化がない
+ *
+ * @param state 更新前の状態
+ * @return 更新結果
+ */
+export type ApplyEffect = (state: GameState) => ?GameState;
 
 /**
  * 最新状態に効果を適用する
@@ -15,7 +26,9 @@ export type ApplyEffect = (state: GameState) => GameState;
 export function applyEffects(lastState: GameState, effects: ApplyEffect[]): GameState[] {
   const updateList = effects.reduce((stateList: GameState[], update: ApplyEffect) =>{
     const updateState = update(stateList[stateList.length - 1]);
-    return stateList.concat(updateState);
+    return updateState
+      ? [...stateList, updateState]
+      : stateList;
   }, [lastState]);
 
   // updateListの先頭はlastStateになる

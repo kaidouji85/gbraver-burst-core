@@ -9,6 +9,8 @@ import {applyEffects} from "./apply-effects";
 import {burst} from "../effect/burst";
 import type {PlayerId} from "../player/player";
 import {isBurstFlow} from "./is-burst-flow";
+import {gameEnd} from "../effect/game-end";
+import {gameEndJudging} from "../game-end-judging";
 
 /**
  * ゲームを進める
@@ -38,15 +40,13 @@ function burstFlow(activePlayerId: PlayerId, commands: PlayerCommand[]): ApplyEf
     return [];
   }
 
-  const attackerEffect = attackerCommand.command.type === 'BURST_COMMAND'
-    ? [(state: GameState) => burst(state, attackerCommand.playerId)]
-    : [];
-  const defenderEffect = defenderCommand.command.type === 'BURST_COMMAND'
-    ? [(state: GameState) => burst(state, defenderCommand.playerId)]
-    : [];
   return [
-      ...attackerEffect,
-      ...defenderEffect,
+    state => attackerCommand.command.type === 'BURST_COMMAND'
+      ? burst(state, attackerCommand.playerId)
+      : null,
+    state => defenderCommand.command.type === 'BURST_COMMAND'
+      ? burst(state, defenderCommand.playerId)
+      : null,
     state => inputCommandAfterBurst(state, commands)
   ];
 }
@@ -61,6 +61,11 @@ function battleFlow(commands: PlayerCommand[]): ApplyEffect[] {
   return [
     state => battle(state, commands),
     state => turnChange(state),
-    state => inputCommand(state)
+    state => {
+      const result = gameEndJudging(state);
+      return result.type === 'GameContinue'
+        ? inputCommand(state)
+        : gameEnd(state, result);
+    }
   ];
 }
