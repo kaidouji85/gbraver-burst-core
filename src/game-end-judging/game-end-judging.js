@@ -8,6 +8,7 @@ export type GameEndJudging = GameOver | EvenMatch | GameContinue;
 /** 勝負あり */
 export type GameOver = {
   type: 'GameOver',
+  /** 勝利したプレイヤーのID */
   winner: PlayerId,
 };
 
