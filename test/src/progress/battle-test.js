@@ -53,3 +53,48 @@ test('戦闘フローを正常に進められる', t => {
   t.is(result[1].effect.name, 'TurnChange');
   t.is(result[2].effect.name, 'InputCommand');
 });
+
+test('攻撃で防御側のHPを0以下にした場合、ゲームが終了する', t => {
+  const attacker: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'attacker',
+    armdozer: {
+      ...EMPTY_ARMDOZER_STATE,
+      hp: 3000,
+      maxHp: 3000,
+      power: 2000,
+      battery: 4,
+      maxBattery: 5
+    }
+  };
+  const defender: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'defender',
+    armdozer: {
+      ...EMPTY_ARMDOZER_STATE,
+      hp: 100,
+      maxHp: 3000,
+      power: 2000,
+      battery: 5,
+      maxBattery: 5
+    }
+  };
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: 'attacker',
+    players: [attacker, defender]
+  };
+  const commands: PlayerCommand[] = [{
+    playerId: 'attacker',
+    command: {type: 'BATTERY_COMMAND', battery: 2}
+  }, {
+    playerId: 'defender',
+    command: {type: 'BATTERY_COMMAND', battery: 1}
+  }];
+
+  const result = progress(lastState, commands);
+  t.is(result.length, 3);
+  t.is(result[0].effect.name, 'Battle');
+  t.is(result[1].effect.name, 'TurnChange');
+  t.is(result[2].effect.name, 'GameEnd');
+});
