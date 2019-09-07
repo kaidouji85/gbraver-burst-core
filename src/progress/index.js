@@ -33,38 +33,37 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
   }
 
   return gameFlow(lastState, [
-    (history: GameState[]): GameState[] =>
-      attackerCommand.command.type === 'BURST_COMMAND'
-        ? [...history, burst(getLastState(history), attackerCommand.playerId)]
-        : history,
-    (history: GameState[]): GameState[] =>
-      defenderCommand.command.type === 'BURST_COMMAND'
-        ? [...history, burst(getLastState(history), defenderCommand.playerId)]
-        : history,
-    (history: GameState[]): GameState[] => {
-      return [...history, inputCommandAfterBurst(getLastState(history), commands)];
-    },
+    history => attackerCommand.command.type === 'BURST_COMMAND'
+      ? [...history, burst(getLastState(history), attackerCommand.playerId)]
+      : history,
+    history => defenderCommand.command.type === 'BURST_COMMAND'
+      ? [...history, burst(getLastState(history), defenderCommand.playerId)]
+      : history,
+    history => [...history, inputCommandAfterBurst(getLastState(history), commands)],
   ]);
 }
 
 function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  const doneBattle = battle(lastState, commands);
-  const endJudge = gameEndJudging(doneBattle);
-  if (endJudge.type !== 'GameContinue') {
-    const doneGameEnd = gameEnd(doneBattle, endJudge);
-    return [
-      doneBattle,
-      doneGameEnd
-    ];
-  }
-
-  const doneTurnChange = turnChange(doneBattle);
-  const doneInputCommand = inputCommand(doneTurnChange);
-  return [
-    doneBattle,
-    doneTurnChange,
-    doneInputCommand
-  ];
+  return gameFlow(lastState, [
+    history => [...history, battle(getLastState(history), commands)],
+    history => {
+      const endJudge = gameEndJudging(getLastState(history));
+      if (endJudge.type !== 'GameContinue') {
+        return [
+          ...history,
+          gameEnd(getLastState(history), endJudge)
+        ];
+      } else {
+        return [
+          ...history,
+          ...gameFlow(getLastState(history), [
+            history => [...history, turnChange(getLastState(history))],
+            history => [...history, inputCommand(getLastState(history))]
+          ])
+        ];
+      }
+    }
+  ]);
 }
 
 export type HistoryUpdate = (history: GameState[]) => GameState[];
