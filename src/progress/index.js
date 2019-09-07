@@ -80,4 +80,3 @@ function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[
     }
   ]);
 }
-
