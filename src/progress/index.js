@@ -20,10 +20,11 @@ import {gameEndJudging} from "../game-end-judging";
  * @return 更新されたゲーム状態
  */
 export function progress(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  const effects = isBurstFlow(commands)
-    ? burstFlow(lastState.activePlayerId, commands)
-    : battleFlow(commands);
-  return applyEffects(lastState, effects);
+  if (isBurstFlow(commands)) {
+    return applyEffects(lastState, burstFlow(lastState.activePlayerId, commands));
+  }
+
+  return battleFlow(lastState, commands);
 }
 
 /**
@@ -51,21 +52,22 @@ function burstFlow(activePlayerId: PlayerId, commands: PlayerCommand[]): ApplyEf
   ];
 }
 
-/**
- * 戦闘関連の効果適用関数
- *
- * @param commands プレイヤーコマンド
- * @return 効果適用関数
- */
-function battleFlow(commands: PlayerCommand[]): ApplyEffect[] {
+function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+  const doneBattle = battle(lastState, commands);
+  const endJudge = gameEndJudging(doneBattle);
+  if (endJudge.type !== 'GameContinue') {
+    const doneGameEnd = gameEnd(doneBattle, endJudge);
+    return [
+      doneBattle,
+      doneGameEnd
+    ];
+  }
+
+  const doneTurnChange = turnChange(doneBattle);
+  const doneInputCommand = inputCommand(doneTurnChange);
   return [
-    state => battle(state, commands),
-    state => turnChange(state),
-    state => {
-      const result = gameEndJudging(state);
-      return result.type === 'GameContinue'
-        ? inputCommand(state)
-        : gameEnd(state, result);
-    }
+    doneBattle,
+    doneTurnChange,
+    doneInputCommand
   ];
 }
