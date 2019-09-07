@@ -32,8 +32,7 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
     return [];
   }
 
-  const getLastState = (history: GameState[]) => history[history.length - 1];
-  return R.pipe(
+  return gameFlow(lastState, [
     (history: GameState[]): GameState[] =>
       attackerCommand.command.type === 'BURST_COMMAND'
         ? [...history, burst(getLastState(history), attackerCommand.playerId)]
@@ -45,7 +44,7 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
     (history: GameState[]): GameState[] => {
       return [...history, inputCommandAfterBurst(getLastState(history), commands)];
     },
-  )([lastState]).slice(1);
+  ]);
 }
 
 function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
@@ -66,4 +65,14 @@ function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[
     doneTurnChange,
     doneInputCommand
   ];
+}
+
+export type HistoryUpdate = (history: GameState[]) => GameState[];
+
+export function gameFlow(lastState: GameState, updateList: HistoryUpdate[]): GameState[] {
+  return R.pipe(...updateList)([lastState]).slice(1);
+}
+
+export function getLastState(history: GameState[]): GameState {
+  return history[history.length - 1];
 }
