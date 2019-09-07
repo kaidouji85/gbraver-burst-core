@@ -93,8 +93,7 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
   }];
 
   const result = progress(lastState, commands);
-  t.is(result.length, 3);
+  t.is(result.length, 2);
   t.is(result[0].effect.name, 'Battle');
-  t.is(result[1].effect.name, 'TurnChange');
-  t.is(result[2].effect.name, 'GameEnd');
+  t.is(result[1].effect.name, 'GameEnd');
 });
