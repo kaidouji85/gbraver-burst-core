@@ -1,5 +1,5 @@
 // @flow
-import * as R from 'ramda';
+
 import type {GameState} from "../game-state/game-state";
 import type {PlayerCommand} from "../command/player-command";
 import {battle} from "../effect/battle";
@@ -9,6 +9,7 @@ import {burst} from "../effect/burst";
 import {isBurstFlow} from "./is-burst-flow";
 import {gameEnd} from "../effect/game-end";
 import {gameEndJudging} from "../game-end-judging";
+import {gameFlow, getLastState} from "./game-flow";
 
 /**
  * ゲームを進める
@@ -25,6 +26,13 @@ export function progress(lastState: GameState, commands: PlayerCommand[]): GameS
   return battleFlow(lastState, commands);
 }
 
+/**
+ * バーストのフロー
+ *
+ * @param lastState 最後の状態
+ * @param commands コマンド
+ * @return 更新されたゲームの状態
+ */
 function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   const attackerCommand = commands.find(v => v.playerId === lastState.activePlayerId);
   const defenderCommand = commands.find(v => v.playerId !== lastState.activePlayerId);
@@ -43,6 +51,13 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
   ]);
 }
 
+/**
+ * 戦闘のフロー
+ *
+ * @param lastState 最後の状態
+ * @param commands コマンド
+ * @return 更新されたゲームの状態
+ */
 function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   return gameFlow(lastState, [
     history => [...history, battle(getLastState(history), commands)],
@@ -66,12 +81,3 @@ function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[
   ]);
 }
 
-export type HistoryUpdate = (history: GameState[]) => GameState[];
-
-export function gameFlow(lastState: GameState, updateList: HistoryUpdate[]): GameState[] {
-  return R.pipe(...updateList)([lastState]).slice(1);
-}
-
-export function getLastState(history: GameState[]): GameState {
-  return history[history.length - 1];
-}
