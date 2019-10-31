@@ -9,7 +9,7 @@ import {burst} from "../effect/burst";
 import {isBurstFlow} from "./is-burst-flow";
 import {gameEnd} from "../effect/game-end";
 import {gameEndJudging} from "../game-end-judging";
-import {gameFlow, getLastState} from "./game-flow";
+import {gameFlow} from "./game-flow";
 
 /**
  * ゲームを進める
@@ -41,13 +41,13 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
   }
 
   return gameFlow(lastState, [
-    history => attackerCommand.command.type === 'BURST_COMMAND'
-      ? [...history, burst(getLastState(history), attackerCommand.playerId)]
-      : history,
-    history => defenderCommand.command.type === 'BURST_COMMAND'
-      ? [...history, burst(getLastState(history), defenderCommand.playerId)]
-      : history,
-    history => [...history, inputCommandAfterBurst(getLastState(history), commands)],
+    state => attackerCommand.command.type === 'BURST_COMMAND'
+      ? [burst(state, attackerCommand.playerId)]
+      : [],
+    state => defenderCommand.command.type === 'BURST_COMMAND'
+      ? [burst(state, defenderCommand.playerId)]
+      : [],
+    state => [inputCommandAfterBurst(state, commands)],
   ]);
 }
 
@@ -60,23 +60,17 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
  */
 function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   return gameFlow(lastState, [
-    history => [...history, battle(getLastState(history), commands)],
-    history => {
-      const endJudge = gameEndJudging(getLastState(history));
+    state => [battle(state, commands)],
+    state => {
+      const endJudge = gameEndJudging(state);
       if (endJudge.type !== 'GameContinue') {
-        return [
-          ...history,
-          gameEnd(getLastState(history), endJudge)
-        ];
-      } else {
-        return [
-          ...history,
-          ...gameFlow(getLastState(history), [
-            history => [...history, turnChange(getLastState(history))],
-            history => [...history, inputCommand(getLastState(history))]
-          ])
-        ];
+        return [gameEnd(state, endJudge)];
       }
+
+      return gameFlow(state, [
+        v => [turnChange(v)],
+        v => [inputCommand(v)]
+      ]);
     }
   ]);
 }

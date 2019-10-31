@@ -1,15 +1,14 @@
 // @flow
 
 import type {GameState} from "../game-state/game-state";
-import * as R from "ramda";
 
 /**
  * ステートヒストリー更新関数
  *
- * @param history 更新前のステートヒストリー
- * @return 更新後のステートヒストリー
+ * @param lastState 最新の状態
+ * @return 更新内容
  */
-export type HistoryUpdate = (history: GameState[]) => GameState[];
+export type HistoryUpdate = (state: GameState) => GameState[];
 
 /**
  * ゲームフロー
@@ -19,15 +18,8 @@ export type HistoryUpdate = (history: GameState[]) => GameState[];
  * @return 更新後のステートヒストリー
  */
 export function gameFlow(lastState: GameState, updateList: HistoryUpdate[]): GameState[] {
-  return R.pipe(...updateList)([lastState]).slice(1);
-}
-
-/**
- * ヒストリーの最新状態を取得する
- *
- * @param history ステートヒストリー
- * @return 最新状態
- */
-export function getLastState(history: GameState[]): GameState {
-  return history[history.length - 1];
+  return updateList.reduce((history: GameState[], update: HistoryUpdate) => {
+    const state = history[history.length - 1];
+    return [...history,  ...update(state)];
+  }, [lastState]).slice(1);
 }
