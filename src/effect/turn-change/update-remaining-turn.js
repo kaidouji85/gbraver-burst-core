@@ -11,8 +11,6 @@ import type {ArmdozerEffect} from "../../game-state/armdozer/armdozer-effect";
  */
 export function updateRemainingTurn(effects: ArmdozerEffect[]): ArmdozerEffect[] {
   return effects
-    .map(v => isFinite(v.remainingTurn)
-      ? {...v, remainingTurn: v.remainingTurn - 1}
-      : v
-    ).filter(v => (0 < v.remainingTurn));
+    .map(v => ({...v, remainingTurn: v.remainingTurn - 1}))
+    .filter(v => (0 < v.remainingTurn));
 }
