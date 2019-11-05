@@ -14,6 +14,7 @@ import {inputCommand} from "./effect/input-command/index";
 export function start(player1: Player, player2: Player): GameState[] {
   const initialState = startGame(player1, player2);
   return [
+    initialState,
     inputCommand(initialState)
   ];
 }
