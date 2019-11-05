@@ -24,8 +24,9 @@ const PLAYER2: Player = {
 
 test('初期状態を正しく作ることができる', t => {
   const result: GameState[] = start(PLAYER1, PLAYER2);
-  t.is(0 < result.length, true);
-  t.is(result[0].effect.name, 'InputCommand');
+  t.is(result.length, 2);
+  t.is(result[0].effect.name, 'StartGame');
+  t.is(result[1].effect.name, 'InputCommand');
 });
 
 test('startで作った初期状態からゲームを進めることができる', t => {
