@@ -3,8 +3,8 @@
 import type {CorrectPower, EmptyArmdozerEffect} from "../../src/game-state/armdozer/armdozer-effect";
 
 /** 空のアームドーザエフェクト */
-export const EMPTY_EFFECT: EmptyArmdozerEffect = {
-  type: 'EmptyEffect',
+export const EMPTY_ARMDOZER_EFFECT: EmptyArmdozerEffect = {
+  type: 'Empty',
   remainingTurn: 1,
 };
 
