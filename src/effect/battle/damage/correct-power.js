@@ -10,7 +10,8 @@ import type {ArmdozerEffect} from "../../../game-state/armdozer/armdozer-effect"
  */
 export function correctPower(effects: ArmdozerEffect[],): number {
   return effects
-    .filter(v => v.type === 'CorrectPower')
-    .map(v => v.power)
-    .reduce((a, b) => a + b, 0);
+    .map(v => v.type === 'CorrectPower'
+      ? v.power
+      : 0
+    ).reduce((a, b) => a + b, 0);
 }
