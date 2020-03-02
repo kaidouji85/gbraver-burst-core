@@ -2,8 +2,8 @@
 import test from 'ava';
 import {start} from "../../src/index";
 import type {Player} from "../../src/player/player";
-import type {GameState} from "../../src/game-state/game-state";
-import {progress} from "../../src/progress/index";
+import type {GameState} from "../../src/state/game-state";
+import {progress} from "../../src/game/progress/index";
 import {EMPTY_ARMDOZER} from "../data/armdozer";
 
 const PLAYER1: Player = {

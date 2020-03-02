@@ -3,9 +3,9 @@
 import test from 'ava';
 import type {Player} from "../../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
-import type {GameState} from "../../../src/game-state/game-state";
+import type {GameState} from "../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../data/game-state";
-import {progress} from "../../../src/progress";
+import {progress} from "../../../src/game/progress";
 import type {PlayerCommand} from "../../../src/command/player-command";
 
 const attacker: Player = {

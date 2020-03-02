@@ -1,16 +1,16 @@
 // @flow
 
-import type {GameState} from "../game-state/game-state";
-import type {PlayerCommand} from "../command/player-command";
-import {battle} from "../effect/battle";
-import {turnChange} from "../effect/turn-change";
-import {inputCommand, inputCommandAfterBurst} from "../effect/input-command";
-import {burst} from "../effect/burst";
+import type {GameState} from "../../state/game-state";
+import type {PlayerCommand} from "../../command/player-command";
+import {battle} from "../../effect/battle";
+import {turnChange} from "../../effect/turn-change";
+import {inputCommand, inputCommandAfterBurst} from "../../effect/input-command";
+import {burst} from "../../effect/burst";
 import {isBurstFlow} from "./is-burst-flow";
-import {gameEnd} from "../effect/game-end";
-import {gameEndJudging} from "../game-end-judging";
+import {gameEnd} from "../../effect/game-end";
+import {gameEndJudging} from "../end";
 import {gameFlow} from "./game-flow";
-import {batteryDeclaration} from "../effect/battery-declaration";
+import {batteryDeclaration} from "../../effect/battery-declaration";
 
 /**
  * ゲームを進める

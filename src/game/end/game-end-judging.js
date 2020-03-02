@@ -1,6 +1,6 @@
 // @flow
 
-import type {PlayerId} from "../player/player";
+import type {PlayerId} from "../../player/player";
 
 /** ゲーム終了判定の結果をまとめたもの */
 export type GameEndJudging = GameOver | EvenMatch | GameContinue;

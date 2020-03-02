@@ -1,7 +1,7 @@
 // @flow
 import test from 'ava';
-import {createArmdozerState} from "../../../../src/game-state/armdozer/armdozer-state";
-import type {Armdozer} from "../../../../src/armdozer/armdozer";
+import {createArmdozerState} from "../../../../src/state/armdozer-state";
+import type {Armdozer} from "../../../../src/player/armdozer/armdozer";
 import {EMPTY_ARMDOZER} from "../../../data/armdozer";
 
 test('追加されたパラメータに正しい値がセットされている', t => {

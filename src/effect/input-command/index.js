@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState} from "../../game-state/game-state";
+import type {GameState} from "../../state/game-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import type {PlayerCommand} from "../../command/player-command";

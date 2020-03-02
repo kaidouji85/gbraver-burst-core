@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {isDeath} from "../../../src/player/is-death";
-import type {PlayerState} from "../../../src/game-state/player-state";
+import type {PlayerState} from "../../../src/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../data/player";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 

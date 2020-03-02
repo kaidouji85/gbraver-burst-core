@@ -1,4 +1,4 @@
-import type {Armdozer} from "../../armdozer/armdozer";
+import type {Armdozer} from "../player/armdozer/armdozer";
 import type {ArmdozerEffect} from "./armdozer-effect";
 
 /** アームドーザの状態 */

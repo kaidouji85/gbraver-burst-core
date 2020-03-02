@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerEffect} from "../../../game-state/armdozer/armdozer-effect";
+import type {ArmdozerEffect} from "../../../state/armdozer-effect";
 
 /**
  * 攻撃力補正を計算して返す
