@@ -10,6 +10,7 @@ import {isBurstFlow} from "./is-burst-flow";
 import {gameEnd} from "../effect/game-end";
 import {gameEndJudging} from "../game-end-judging";
 import {gameFlow} from "./game-flow";
+import {batteryDeclaration} from "../effect/battery-declaration";
 
 /**
  * ゲームを進める
@@ -60,6 +61,7 @@ function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[]
  */
 function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   return gameFlow(lastState, [
+    state => [batteryDeclaration(state, commands)],
     state => [battle(state, commands)],
     state => {
       const endJudge = gameEndJudging(state);
