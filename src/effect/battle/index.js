@@ -5,7 +5,6 @@ import type {PlayerCommand} from "../../command/player-command";
 import type {PlayerState} from "../../game-state/player-state";
 import {battleResult} from "./result/battle-result";
 import type {BatteryCommand} from "../../command/battery";
-import {updateAttacker} from "./players/update-attacker";
 import {updateDefender} from "./players/update-defender";
 import {isDeath} from "../../player/is-death";
 
@@ -36,12 +35,9 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   const defenderBattery: BatteryCommand = defenderCommand.command;
 
   const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
-  const updatedAttacker = updateAttacker(attacker, attackerBattery);
-  const updatedDefender = updateDefender(result, defender, defenderBattery);
+  const updatedDefender = updateDefender(result, defender);
   const updatedPlayers = lastState.players.map(v => {
     switch (v.playerId) {
-      case updatedAttacker.playerId:
-        return updatedAttacker;
       case updatedDefender.playerId:
         return updatedDefender;
       default:

@@ -54,18 +54,12 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
   t.deepEqual(result, {
     ...lastState,
     players: [
+      attacker,
       {
-        ...attacker,
-        armdozer: {
-          ...attacker.armdozer,
-          battery: 2,
-        }
-      }, {
         ...defender,
         armdozer: {
           ...defender.armdozer,
           hp: 1000,
-          battery: 3
         },
       }
     ],
