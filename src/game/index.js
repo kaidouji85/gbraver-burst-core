@@ -3,7 +3,7 @@
 import type {Player} from "../player/player";
 import type {GameState} from "../state/game-state";
 import {start} from "./start/start";
-import type {PlayerCommand} from "../command/player-command";
+import type {PlayerCommand} from "../player/command/player-command";
 import {progress} from "./progress";
 
 /**

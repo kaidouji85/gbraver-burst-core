@@ -1,6 +1,6 @@
 // @flow
 
-import type {PlayerCommand} from "../../command/player-command";
+import type {PlayerCommand} from "../../player/command/player-command";
 
 /**
  * バーストフェイズを行うか否かを判定する

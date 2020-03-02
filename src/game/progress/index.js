@@ -1,14 +1,14 @@
 // @flow
 
 import type {GameState} from "../../state/game-state";
-import type {PlayerCommand} from "../../command/player-command";
+import type {PlayerCommand} from "../../player/command/player-command";
 import {battle} from "../../effect/battle";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand, inputCommandAfterBurst} from "../../effect/input-command";
 import {burst} from "../../effect/burst";
 import {isBurstFlow} from "./is-burst-flow";
 import {gameEnd} from "../../effect/game-end";
-import {gameEndJudging} from "../end";
+import {gameEndJudging} from "../end-judging";
 import {gameFlow} from "./game-flow";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 

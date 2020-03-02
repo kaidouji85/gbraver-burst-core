@@ -2,7 +2,7 @@
 
 import type {GameEndJudging} from "./game-end-judging";
 import type {GameState} from "../../state/game-state";
-import {isDeath} from "../../player/is-death";
+import {isDeath} from "../../player/death/is-death";
 
 /**
  * ゲーム終了判定を行う

@@ -3,7 +3,7 @@
 import type {GameState} from "../../state/game-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
-import type {PlayerCommand} from "../../command/player-command";
+import type {PlayerCommand} from "../../player/command/player-command";
 import type {NoChoice, Selectable} from "./input-command";
 import type {Player} from "../../player/player";
 import type {Command} from "../../command/command";
