@@ -54,8 +54,6 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
     effect: {
       name: 'Battle',
       attacker: attacker.playerId,
-      attackerBattery: attackerBattery.battery,
-      defenderBattery: defenderBattery.battery,
       isDeath: isDeath(updatedDefender),
       result: result
     }

@@ -72,8 +72,6 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
     effect: {
       name: 'Battle',
       attacker: 'attacker',
-      attackerBattery: 3,
-      defenderBattery: 2,
       isDeath: false,
       result: {
         name: 'NormalHit',
