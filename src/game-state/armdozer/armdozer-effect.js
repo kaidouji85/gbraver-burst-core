@@ -1,7 +1,7 @@
 // @flow
 
 /** アームドーザ効果 */
-export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower;
+export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower | Barrier;
 
 /**
  * 何もしない効果
@@ -24,6 +24,17 @@ export type CorrectPower = {
 
   /** 攻撃力補正値 */
   power: number,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};
+
+/** バリア */
+export type Barrier = {
+  type: 'Barrier',
+
+  /** バリアに触れた際のダメージ */
+  damage: number,
 
   /** 効果継続ターン */
   remainingTurn: number
