@@ -1,8 +1,8 @@
 // @flow
-import type {Player} from "./player/player";
-import type {GameState} from "./game-state/game-state";
-import {startGame} from "./effect/start-game/index";
-import {inputCommand} from "./effect/input-command/index";
+import type {Player} from "../../player/player";
+import type {GameState} from "../../state/game-state";
+import {startGame} from "../../effect/start-game";
+import {inputCommand} from "../../effect/input-command";
 
 /**
  * ゲームの初期状態を生成する

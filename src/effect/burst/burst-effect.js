@@ -1,7 +1,7 @@
 // @flow
 
 import type {PlayerId} from "../../player/player";
-import type {Burst} from "../../armdozer/burst";
+import type {Burst} from "../../player/armdozer/burst";
 
 /** バースト効果 */
 export type BurstEffect = {

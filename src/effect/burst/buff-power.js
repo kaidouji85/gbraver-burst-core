@@ -1,8 +1,8 @@
 // @flow
 
 import type {BurstPlayer} from "./burst-player";
-import type {BuffPower} from "../../armdozer/burst";
-import type {PlayerState} from "../../game-state/player-state";
+import type {BuffPower} from "../../player/armdozer/burst";
+import type {PlayerState} from "../../state/player-state";
 import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 
 /**

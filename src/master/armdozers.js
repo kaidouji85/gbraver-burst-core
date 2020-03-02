@@ -1,5 +1,5 @@
 // @flow
-import type {Armdozer} from '../armdozer/armdozer';
+import type {Armdozer} from '../player/armdozer/armdozer';
 
 /** アームドーザIDリスト */
 export const ArmDozerIdList = {

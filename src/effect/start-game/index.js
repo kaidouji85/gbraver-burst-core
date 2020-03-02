@@ -1,8 +1,8 @@
 // @flow
 
 import type {Player} from "../../player/player";
-import type {GameState} from "../../game-state/game-state";
-import {createOpenPlayerState} from "../../game-state/player-state";
+import type {GameState} from "../../state/game-state";
+import {createOpenPlayerState} from "../../state/player-state";
 import {getFirstTurnPlayer} from "./first-turn-payer";
 
 /**
