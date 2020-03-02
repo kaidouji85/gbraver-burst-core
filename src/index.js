@@ -5,7 +5,7 @@ export {GbraverBurstCore} from './game/index';
 export type {Player, PlayerId} from './player/player';
 export type {PlayerCommand} from './player/command/player-command';
 export type {ArmDozerId, Armdozer} from './player/armdozer/armdozer';
-export type {Burst} from './player/armdozer/burst';
+export type {Burst, RecoverBattery, BuffPower} from './player/armdozer/burst';
 
 export type {GameState} from './state/game-state';
 export type {PlayerState} from './state/player-state';
