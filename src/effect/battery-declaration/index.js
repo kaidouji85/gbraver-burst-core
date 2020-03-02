@@ -4,6 +4,7 @@ import type {GameState} from "../../game-state/game-state";
 import type {PlayerCommand} from "../../command/player-command";
 import type {PlayerState} from "../../game-state/player-state";
 import type {BatteryCommand} from "../../command/battery";
+import {updatePlayer} from "./update-player";
 
 /**
  * 攻撃、防御のバッテリー宣言
@@ -31,21 +32,8 @@ export function batteryDeclaration(lastState: GameState, commands: PlayerCommand
   const attackerBattery: BatteryCommand = attackerCommand.command;
   const defenderBattery: BatteryCommand = defenderCommand.command;
 
-  const updatedAttacker = {
-    ...attacker,
-    armdozer: {
-      ...attacker.armdozer,
-      battery: attacker.armdozer.battery - attackerBattery.battery,
-    }
-  };
-
-  const updatedDefender = {
-    ...defender,
-    armdozer: {
-      ...defender.armdozer,
-      battery: defender.armdozer.battery - defenderBattery.battery,
-    }
-  };
+  const updatedAttacker = updatePlayer(attacker, attackerBattery);
+  const updatedDefender = updatePlayer(defender, defenderBattery);
 
   return {
     ...lastState,
