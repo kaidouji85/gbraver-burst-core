@@ -1,6 +1,6 @@
 // @flow
-import type {ArmdozerState} from "./armdozer/armdozer-state";
-import {createArmdozerState} from "./armdozer/armdozer-state";
+import type {ArmdozerState} from "./armdozer-state";
+import {createArmdozerState} from "./armdozer-state";
 import type {Player, PlayerId} from "../player/player";
 
 /** 公開可能なプレイヤーの状態 */

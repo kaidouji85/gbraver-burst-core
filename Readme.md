@@ -6,10 +6,11 @@ GブレイバーBURSTの戦闘ロジックを集めたものです。
 ## 使い方
 
 ```javascript
-import {start, progress} from 'gbraver-burst-core';
-import type {GameState} from 'gbraver-burst-core/lib/game-state/game-state';
+import {GbraverBurstCore} from 'gbraver-burst-core';
+import {ArmDozers, ArmDozerIdList} from 'gbraber-burst-core';
 
 function main() {
+  const game = new GbraverBurstCore();
   const shinBraver = ArmDozers.find(v => v.id === ArmDozerIdList.SHIN_BRAVER);
   const neoLandozer = ArmDozers.find(v => v.id === ArmDozerIdList.NEO_LANDOZER);
   
@@ -25,7 +26,7 @@ function main() {
     playerId: 'player2',
     armdozer: neoLandozer,
   };
-  const state = start(player1, player2);
-  console.log(state);  
+  const state = game.start(player1, player2);
+  console.log(state);
 }
 ```

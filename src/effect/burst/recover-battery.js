@@ -1,9 +1,9 @@
 // @flow
 
-import type {PlayerState} from "../../game-state/player-state";
+import type {PlayerState} from "../../state/player-state";
 import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 import type {BurstPlayer} from "./burst-player";
-import type {RecoverBattery} from "../../armdozer/burst";
+import type {RecoverBattery} from "../../player/armdozer/burst";
 
 /**
  * バースト効果 バッテリー回復

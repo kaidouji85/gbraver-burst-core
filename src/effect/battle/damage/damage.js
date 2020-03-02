@@ -1,4 +1,4 @@
-import type {PlayerState} from "../../../game-state/player-state";
+import type {PlayerState} from "../../../state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 import {correctPower} from "./correct-power";
 import {batteryBonus} from "./battery-bonus";

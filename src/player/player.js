@@ -1,6 +1,6 @@
 // @flow
 
-import type {Armdozer} from "../armdozer/armdozer";
+import type {Armdozer} from "./armdozer/armdozer";
 
 /** プレイヤーID */
 export type PlayerId = string;

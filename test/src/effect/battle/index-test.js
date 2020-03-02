@@ -1,10 +1,10 @@
 // @flow
 
 import test from 'ava';
-import type {GameState} from "../../../../src/game-state/game-state";
-import type {PlayerCommand} from "../../../../src/command/player-command";
+import type {GameState} from "../../../../src/state/game-state";
+import type {PlayerCommand} from "../../../../src/player/command/player-command";
 import {battle} from "../../../../src/effect/battle";
-import type {PlayerState} from "../../../../src/game-state/player-state";
+import type {PlayerState} from "../../../../src/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 
@@ -54,26 +54,18 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
   t.deepEqual(result, {
     ...lastState,
     players: [
+      attacker,
       {
-        ...attacker,
-        armdozer: {
-          ...attacker.armdozer,
-          battery: 2,
-        }
-      }, {
         ...defender,
         armdozer: {
           ...defender.armdozer,
           hp: 1000,
-          battery: 3
         },
       }
     ],
     effect: {
       name: 'Battle',
       attacker: 'attacker',
-      attackerBattery: 3,
-      defenderBattery: 2,
       isDeath: false,
       result: {
         name: 'NormalHit',

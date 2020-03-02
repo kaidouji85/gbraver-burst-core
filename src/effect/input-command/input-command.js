@@ -6,6 +6,8 @@ import type {Command} from "../../command/command";
 /** コマンド入力 */
 export type InputCommand = {
   name: 'InputCommand',
+
+  /** 各プレイヤーのコマンド */
   players: Array<Selectable | NoChoice >
 };
 

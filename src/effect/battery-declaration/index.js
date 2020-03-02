@@ -3,19 +3,17 @@
 import type {GameState} from "../../state/game-state";
 import type {PlayerCommand} from "../../player/command/player-command";
 import type {PlayerState} from "../../state/player-state";
-import {battleResult} from "./result/battle-result";
 import type {BatteryCommand} from "../../command/battery";
-import {updateDefender} from "./players/update-defender";
-import {isDeath} from "../../player/death/is-death";
+import {updatePlayer} from "./update-player";
 
 /**
- * 戦闘を行う
+ * 攻撃、防御のバッテリー宣言
  *
- * @param lastState 更新前の状態
- * @param commands プレイヤーのコマンド
- * @return 更新結果
+ * @param lastState 最新状態
+ * @param commands コマンド
+ * @returns 更新結果
  */
-export function battle(lastState: GameState, commands: PlayerCommand[]): GameState {
+export function batteryDeclaration(lastState: GameState, commands: PlayerCommand[]): GameState {
   const attacker: ?PlayerState = lastState.players.find(v => v.playerId === lastState.activePlayerId);
   const defender: ?PlayerState = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
   if (!attacker || !defender) {
@@ -34,24 +32,17 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
   const attackerBattery: BatteryCommand = attackerCommand.command;
   const defenderBattery: BatteryCommand = defenderCommand.command;
 
-  const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
-  const updatedDefender = updateDefender(result, defender);
-  const updatedPlayers = lastState.players.map(v => {
-    switch (v.playerId) {
-      case updatedDefender.playerId:
-        return updatedDefender;
-      default:
-        return v;
-    }
-  });
+  const updatedAttacker = updatePlayer(attacker, attackerBattery);
+  const updatedDefender = updatePlayer(defender, defenderBattery);
+
   return {
     ...lastState,
-    players: updatedPlayers,
+    players: [updatedAttacker, updatedDefender],
     effect: {
-      name: 'Battle',
+      name: 'BatteryDeclaration',
       attacker: attacker.playerId,
-      isDeath: isDeath(updatedDefender),
-      result: result
+      attackerBattery: attackerBattery.battery,
+      defenderBattery: defenderBattery.battery,
     }
   }
 }
