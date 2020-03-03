@@ -1,6 +1,9 @@
 // @flow
 
-/** アームドーザ効果 */
+/**
+ * アームドーザに適用される効果
+ * バフ、デバフなどのターン継続効果を想定している
+ */
 export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower;
 
 /**

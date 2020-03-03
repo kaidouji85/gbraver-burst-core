@@ -1,12 +1,12 @@
 // @flow
 
 import test from 'ava';
-import type {Player} from "../../../src/player/player";
-import {EMPTY_ARMDOZER} from "../../data/armdozer";
-import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_GAME_STATE} from "../../data/game-state";
-import {progress} from "../../../src/game/progress";
-import type {PlayerCommand} from "../../../src/player/command/player-command";
+import type {Player} from "../../../../src/player/player";
+import {EMPTY_ARMDOZER} from "../../../data/armdozer";
+import type {GameState} from "../../../../src/state/game-state";
+import {EMPTY_GAME_STATE} from "../../../data/game-state";
+import {progress} from "../../../../src/game/progress";
+import type {PlayerCommand} from "../../../../src/player/command/player-command";
 
 const attacker: Player = {
   playerId: 'attacker',

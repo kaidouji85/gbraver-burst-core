@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {isBurstFlow} from "../../../src/game/progress/is-burst-flow";
+import {isBurstFlow} from "../../../../src/game/progress/is-burst-flow";
 
 test('1人のプレイヤーがバーストを選択した場合、バーストフェイズが実施される', t => {
   const result = isBurstFlow([
