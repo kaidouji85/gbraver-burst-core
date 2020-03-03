@@ -28,3 +28,17 @@ export type CorrectPower = {
   /** 効果継続ターン */
   remainingTurn: number
 };
+
+/** 当身技の見た目 */
+export type BodyStrikingAppearance = 'Lightning';
+
+/** 当身技 */
+export type BodyStriking = {
+  type: 'BodyStriking',
+
+  /** 当身技が成功した場合の見た目 */
+  appearance: BodyStrikingAppearance,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};

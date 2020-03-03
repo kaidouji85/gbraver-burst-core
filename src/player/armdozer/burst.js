@@ -1,7 +1,7 @@
 // @flow
 
 /** バースト */
-export type Burst = RecoverBattery | BuffPower;
+export type Burst = RecoverBattery | BuffPower | LightningBarrier;
 
 /** バッテリー回復 */
 export type RecoverBattery = {
@@ -19,4 +19,13 @@ export type BuffPower = {
   buffPower: number,
   /** バフ継続ターン数 */
   duration: number
+};
+
+/** 電撃バリア */
+export type LightningBarrier = {
+  type: 'LightningBarrier',
+  /** 電撃ダメージ */
+  damage: number,
+  /** バリア継続ターン数 */
+  duration: number,
 };
