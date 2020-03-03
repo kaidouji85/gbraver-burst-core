@@ -5,7 +5,7 @@ export type ReflectDamageEffect = 'Lightning';
 
 /** ダメージ反射 */
 export type Reflect = {
-  type: 'Reflect',
+  name: 'Reflect',
   /** 反射するダメージ */
   damage: number,
   /** ダメージエフェクト */

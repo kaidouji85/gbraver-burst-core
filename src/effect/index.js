@@ -7,6 +7,7 @@ import type {StartGame} from "./start-game/start-game";
 import type {BurstEffect} from "./burst/burst-effect";
 import type {GameEnd} from "./game-end/game-end";
 import type {BatteryDeclaration} from "./battery-declaration/battery-declaration";
+import type {Reflect} from "./reflect/reflect";
 
 /** ゲーム中に発生する効果をまとめたもの */
-export type Effect = StartGame | GameEnd | InputCommand | BatteryDeclaration | Battle | TurnChange | BurstEffect;
+export type Effect = StartGame | GameEnd | InputCommand | Reflect | BatteryDeclaration | Battle | TurnChange | BurstEffect;
