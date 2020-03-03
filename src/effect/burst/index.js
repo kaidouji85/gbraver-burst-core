@@ -5,6 +5,7 @@ import type {PlayerId} from "../../player/player";
 import type {PlayerState} from "../../state/player-state";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
+import {lightningBarrier} from "./lightning-barrier";
 
 /**
  * バーストを実施する
@@ -47,6 +48,8 @@ export function updateForBurst(burstPlayer: PlayerState, otherPlayer: PlayerStat
       return recoverBattery(burstPlayer, otherPlayer);
     case 'BuffPower':
       return buffPower(burstPlayer, otherPlayer);
+    case 'LightningBarrier':
+      return lightningBarrier(burstPlayer, otherPlayer);
     default:
       return [burstPlayer, otherPlayer];
   }

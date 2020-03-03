@@ -36,7 +36,10 @@ export type BodyStrikingAppearance = 'Lightning';
 export type BodyStriking = {
   type: 'BodyStriking',
 
-  /** 当身技が成功した場合の見た目 */
+  /** 当身が成功した場合のダメージ */
+  damage: number,
+
+  /** 当身が成功した場合の見た目 */
   appearance: BodyStrikingAppearance,
 
   /** 効果継続ターン */
