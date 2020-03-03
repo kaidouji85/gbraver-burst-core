@@ -72,7 +72,7 @@ function reflectFlow(lastState: GameState): GameState[] {
     .filter(v => v.type === 'TryReflect')
     .map(v => {
       const tryReflect: TryReflect = (v: TryReflect);
-      return (state: GameState): GameState => reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect);
+      return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
     });
   return gameFlow(lastState, historyUpdates);
 }
