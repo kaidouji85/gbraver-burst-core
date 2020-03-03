@@ -5,9 +5,11 @@ import {buffPower} from "../../../../src/effect/burst/buff-power";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import type {PlayerState} from "../../../../src/state/player-state";
+import type {BurstPlayer} from "../../../../src/effect/burst/burst-player";
+import type {BuffPower} from "../../../../src";
 
 test('攻撃力バフが正しく適用される', t => {
-  const burstPlayer: PlayerState = {
+  const burstPlayer: BurstPlayer<BuffPower> = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burstPlayer',
     armdozer: {

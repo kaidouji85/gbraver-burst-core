@@ -4,9 +4,11 @@ import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {lightningBarrier} from "../../../../src/effect/burst/lightning-barrier";
+import type {LightningBarrier, PlayerState} from "../../../../src";
+import type {BurstPlayer} from "../../../../src/effect/burst/burst-player";
 
 test('電撃バリアバーストの適用が正しくできる', t => {
-  const burstPlayer = {
+  const burstPlayer: BurstPlayer<LightningBarrier> = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burst',
     armdozer: {
@@ -22,8 +24,8 @@ test('電撃バリアバーストの適用が正しくできる', t => {
       }
     }
   };
-  const otherPlayer = {
-    EMPTY_PLAYER_STATE,
+  const otherPlayer: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'other',
   };
   const result = lightningBarrier(burstPlayer, otherPlayer);
