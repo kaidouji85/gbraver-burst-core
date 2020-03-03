@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState, PlayerCommand} from "../..";
+import type {Battle, GameState, PlayerCommand, PlayerState, TryReflect} from "../..";
 import {gameFlow} from "./game-flow";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
@@ -8,6 +8,8 @@ import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
+import {reflect} from "../../effect/reflect";
+import type {HistoryUpdate} from "./game-flow";
 
 /**
  * 戦闘のフロー
@@ -20,6 +22,9 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
     state => [battle(state, commands)],
+    state => [
+      ...reflectFlow(state)
+    ],
     state => {
       const endJudge = gameEndJudging(state);
       if (endJudge.type !== 'GameContinue') {
@@ -32,4 +37,42 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
       ]);
     }
   ]);
+}
+
+/**
+ * ダメージ反射のフロー
+ * 本フローは戦闘直後に呼ばれる想定である
+ *
+ * @param lastState 最新状態
+ * @return 更新結果
+ */
+function reflectFlow(lastState: GameState): GameState[] {
+  if (lastState.effect.name !== 'Battle') {
+    return [];
+  }
+
+  const battle: Battle = lastState.effect;
+  const isHit =
+    battle.result.name === 'NormalHit'
+    || battle.result.name === 'Guard'
+    || battle.result.name === 'CriticalHit';
+  if (!isHit) {
+    return [];
+  }
+
+  const attacker = lastState.players.find(v => v.playerId === lastState.activePlayerId);
+  const defender = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
+  if (!attacker || !defender) {
+    return [];
+  }
+
+  const attackerState: PlayerState = attacker;
+  const defenderState: PlayerState = defender;
+  const historyUpdates: HistoryUpdate[] = defenderState.armdozer.effects
+    .filter(v => v.type === 'TryReflect')
+    .map(v => {
+      const tryReflect: TryReflect = (v: TryReflect);
+      return (state: GameState): GameState => reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect);
+    });
+  return gameFlow(lastState, historyUpdates);
 }
