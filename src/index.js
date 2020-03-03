@@ -10,7 +10,7 @@ export type {Burst, RecoverBattery, BuffPower, LightningBarrier} from './player/
 export type {GameState} from './state/game-state';
 export type {PlayerState} from './state/player-state';
 export type {ArmdozerState} from './state/armdozer-state';
-export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, BodyStriking, BodyStrikingAppearance} from './state/armdozer-effect';
+export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect} from './state/armdozer-effect';
 
 export type {Command} from './command/command';
 export type {BatteryCommand} from './command/battery';
@@ -28,7 +28,8 @@ export type {Miss} from './effect/battle/result/miss';
 export type {NormalHit} from './effect/battle/result/normal-hit';
 export type {BurstEffect} from './effect/burst/burst-effect';
 export type {GameEnd, GameEndResult} from './effect/game-end/game-end';
-export type {InputCommand, Selectable, NoChoice} from './effect/input-command/input-command'
+export type {InputCommand, Selectable, NoChoice} from './effect/input-command/input-command';
+export type {Reflect, ReflectDamageEffect} from './effect/reflect/reflect';
 export type {StartGame} from './effect/start-game/start-game';
 export type {TurnChange} from './effect/turn-change/turn-change';
 

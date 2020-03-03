@@ -39,9 +39,9 @@ test('電撃バリアバーストの適用が正しくできる', t => {
         effects: [
           ...burstPlayer.armdozer.effects,
           {
-            type: 'BodyStriking',
+            type: 'TryReflect',
             damage: 1000,
-            appearance: 'Lightning',
+            effect: 'Lightning',
             remainingTurn: 2,
           }
         ]

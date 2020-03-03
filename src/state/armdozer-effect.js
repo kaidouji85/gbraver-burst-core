@@ -1,5 +1,7 @@
 // @flow
 
+import type {ReflectDamageEffect} from "../effect/reflect/reflect";
+
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
@@ -32,18 +34,15 @@ export type CorrectPower = {
   remainingTurn: number
 };
 
-/** 当身技の見た目 */
-export type BodyStrikingAppearance = 'Lightning';
+/** ダメージ反射 */
+export type TryReflect = {
+  type: 'TryReflect',
 
-/** 当身技 */
-export type BodyStriking = {
-  type: 'BodyStriking',
-
-  /** 当身が成功した場合のダメージ */
+  /** 反射が成功した場合のダメージ */
   damage: number,
 
-  /** 当身が成功した場合の見た目 */
-  appearance: BodyStrikingAppearance,
+  /** 反射のダメージエフェクト */
+  effect: ReflectDamageEffect,
 
   /** 効果継続ターン */
   remainingTurn: number

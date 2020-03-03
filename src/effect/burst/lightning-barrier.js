@@ -22,9 +22,9 @@ export function lightningBarrier(burstPlayer: BurstPlayer<LightningBarrier>, oth
         effects: [
           ...burstPlayer.armdozer.effects,
           {
-            type: 'BodyStriking',
+            type: 'TryReflect',
             damage: burstPlayer.armdozer.burst.damage,
-            appearance: 'Lightning',
+            effect: 'Lightning',
             remainingTurn: burstPlayer.armdozer.burst.duration
           }
         ]
