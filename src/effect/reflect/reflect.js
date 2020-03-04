@@ -9,5 +9,7 @@ export type Reflect = {
   /** 反射するダメージ */
   damage: number,
   /** ダメージエフェクト */
-  effect: ReflectDamageEffect
+  effect: ReflectDamageEffect,
+  /** 死亡フラグ */
+  isDeath: boolean,
 };

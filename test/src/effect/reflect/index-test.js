@@ -42,6 +42,7 @@ test('ダメージ反射を正しく適用できる', t => {
       name: 'Reflect',
       damage: 2000,
       effect: 'Lightning',
+      isDeath: false,
     }
   };
   t.deepEqual(result, expected);

@@ -1,8 +1,8 @@
 // @flow
 import type {ArmdozerStateX} from "./armdozer-state";
+import {createArmdozerState} from "./armdozer-state";
 import type {Player, PlayerId} from "../player/player";
 import type {Burst} from "../player/armdozer/burst";
-import {createArmdozerState} from "./armdozer-state";
 
 /**
  * プレイヤーの状態
@@ -28,4 +28,14 @@ export function createOpenPlayerState(player: Player): PlayerState {
     playerId: player.playerId,
     armdozer: createArmdozerState(player.armdozer)
   };
+}
+
+/**
+ * プレイヤーの死亡判定を行う
+ *
+ * @param defender 防御側のステータス
+ * @return 判定結果、trueで死亡
+ */
+export function isPlayerDeath(defender: PlayerState): boolean {
+  return defender.armdozer.hp <= 0;
 }

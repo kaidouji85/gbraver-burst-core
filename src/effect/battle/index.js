@@ -6,7 +6,7 @@ import type {PlayerState} from "../../state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 import {battleResult} from "./result/battle-result";
 import {updateDefender} from "./players/update-defender";
-import {isDeath} from "../../player/death/is-death";
+import {isPlayerDeath} from "../../state/player-state";
 
 /**
  * 戦闘を行う
@@ -50,7 +50,7 @@ export function battle(lastState: GameState, commands: PlayerCommand[]): GameSta
     effect: {
       name: 'Battle',
       attacker: attacker.playerId,
-      isDeath: isDeath(updatedDefender),
+      isDeath: isPlayerDeath(updatedDefender),
       result: result
     }
   }

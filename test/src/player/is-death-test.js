@@ -1,10 +1,10 @@
 // @flow
 
 import test from 'ava';
-import {isDeath} from "../../../src/player/death/is-death";
 import type {PlayerState} from "../../../src/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../data/armdozer";
+import {isPlayerDeath} from "../../../src/state/player-state";
 
 test('HPが0の場合、死亡したと判定する', t => {
   const defender: PlayerState = {
@@ -14,7 +14,7 @@ test('HPが0の場合、死亡したと判定する', t => {
       hp: 0
     }
   };
-  const result = isDeath(defender);
+  const result = isPlayerDeath(defender);
   t.true(result);
 });
 
@@ -26,7 +26,7 @@ test('HPが0より小さい場合、死亡したと判定する', t => {
       hp: -1000
     }
   };
-  const result = isDeath(defender);
+  const result = isPlayerDeath(defender);
   t.true(result);
 });
 
@@ -38,6 +38,6 @@ test('HPが0より大きい場合、死亡していない', t => {
       hp: 1000
     }
   };
-  const result = isDeath(defender);
+  const result = isPlayerDeath(defender);
   t.false(result);
 });
