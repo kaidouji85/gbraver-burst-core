@@ -1,10 +1,10 @@
 // @flow
 
 import type {GameState} from "../../state/game-state";
-import {getNextActivePlayer} from "./next-active-player";
-import {getRecoveredBattery} from "./get-recovered-battery";
 import type {PlayerState} from "../../state/player-state";
 import {updateRemainingTurn} from "./update-remaining-turn";
+import {getNextActivePlayer} from "./next-active-player";
+import {getRecoveredBattery} from "./get-recovered-battery";
 
 /** ターンチェンジの際に回復するバッテリー */
 export const BATTERY_RECOVERY_VALUE = 3;

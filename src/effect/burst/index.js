@@ -3,10 +3,10 @@
 import type {GameState} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
 import type {PlayerState, PlayerStateX} from "../../state/player-state";
+import type {BuffPower, LightningBarrier, RecoverBattery} from "../../player/armdozer/burst";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {lightningBarrier} from "./lightning-barrier";
-import type {BuffPower, LightningBarrier, RecoverBattery} from "../../player/armdozer/burst";
 
 /**
  * バーストを実施する

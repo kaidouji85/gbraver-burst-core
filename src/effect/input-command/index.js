@@ -1,13 +1,13 @@
 // @flow
 
 import type {GameState} from "../../state/game-state";
-import {selectableBatteryCommand} from "./selectable-battery-command";
-import {selectableBurstCommand} from "./selectable-burst-command";
 import type {PlayerCommand} from "../../player/command/player-command";
 import type {NoChoice, Selectable} from "./input-command";
 import type {Command} from "../../command/command";
-import {isSelectableCommand} from "./is-selectable-command";
 import type {PlayerState} from "../../state/player-state";
+import {isSelectableCommand} from "./is-selectable-command";
+import {selectableBatteryCommand} from "./selectable-battery-command";
+import {selectableBurstCommand} from "./selectable-burst-command";
 
 /**
  * コマンド入力フェイズのステートを生成する

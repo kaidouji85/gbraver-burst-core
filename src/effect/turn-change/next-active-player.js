@@ -1,3 +1,5 @@
+// @flow
+
 import type {PlayerId} from "../../player/player";
 
 /**

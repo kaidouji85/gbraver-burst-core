@@ -2,8 +2,8 @@
 
 import type {BuffPower, Burst} from "../../player/armdozer/burst";
 import type {PlayerState, PlayerStateX} from "../../state/player-state";
+import type {ArmdozerState, ArmdozerStateX} from "../../state/armdozer-state";
 import {getBurstRecoverBattery} from "./get-burst-recover-battery";
-import type {ArmdozerState, ArmdozerStateX} from "../..";
 
 /**
  * バースト効果 攻撃力バフ

@@ -1,10 +1,10 @@
 // @flow
 
-import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 import type {LightningBarrier} from '../../player/armdozer/burst';
 import type {PlayerStateX, PlayerState} from '../../state/player-state';
 import type {ArmdozerState, ArmdozerStateX} from '../../state/armdozer-state';
 import type {Burst} from '../../player/armdozer/burst';
+import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 
 /**
  * 電撃バリアの効果を適用する
