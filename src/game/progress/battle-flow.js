@@ -54,7 +54,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
  * @param lastState 最新状態
  * @return 更新結果
  */
-function reflectFlow(lastState: GameStateX<Battle>): GameState[] {
+export function reflectFlow(lastState: GameStateX<Battle>): GameState[] {
   const isHit =
     lastState.effect.result.name === 'NormalHit'
     || lastState.effect.result.name === 'Guard'
