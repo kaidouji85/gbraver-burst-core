@@ -30,7 +30,8 @@ const DEFENDER: PlayerState = {
             {
                 type: 'TryReflect',
                 damage: 5000,
-                effect: 'Lightning'
+                effect: 'Lightning',
+                remainingTurn: 2,
             }
         ]
     }
@@ -107,12 +108,14 @@ test('ダメージ反射の重ね掛けも正しく処理される', t => {
                 {
                     type: 'TryReflect',
                     damage: 3000,
-                    effect: 'Lightning'
+                    effect: 'Lightning',
+                    remainingTurn: 2,
                 },
                 {
                     type: 'TryReflect',
                     damage: 2000,
-                    effect: 'Lightning'
+                    effect: 'Lightning',
+                    remainingTurn: 2,
                 },
             ]
         }

@@ -4,7 +4,7 @@ import * as test from 'ava';
 import type {GameState} from "../../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
-import {EMPTY_ARMDOZER} from "../../../data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {gameEndJudging} from "../../../../src/game/end-judging";
 
 test('1人だけHPが0なら、HPが0より大きいプレイヤーの勝ち', t => {
@@ -12,7 +12,7 @@ test('1人だけHPが0なら、HPが0より大きいプレイヤーの勝ち', t
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {
-      ...EMPTY_ARMDOZER,
+      ...EMPTY_ARMDOZER_STATE,
       hp: 0
     }
   };
@@ -20,7 +20,7 @@ test('1人だけHPが0なら、HPが0より大きいプレイヤーの勝ち', t
     ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
     armdozer: {
-      ...EMPTY_ARMDOZER,
+      ...EMPTY_ARMDOZER_STATE,
       hp: 1000
     }
   };
@@ -41,7 +41,7 @@ test('2人ともHPが0なら引き分け', t => {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {
-      ...EMPTY_ARMDOZER,
+      ...EMPTY_ARMDOZER_STATE,
       hp: 0
     }
   };
@@ -49,7 +49,7 @@ test('2人ともHPが0なら引き分け', t => {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
     armdozer: {
-      ...EMPTY_ARMDOZER,
+      ...EMPTY_ARMDOZER_STATE,
       hp: 0
     }
   };
@@ -69,7 +69,7 @@ test('2人ともHPが0よりも大きければゲーム続行j', t => {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {
-      ...EMPTY_ARMDOZER,
+      ...EMPTY_ARMDOZER_STATE,
       hp: 1000
     }
   };
@@ -77,7 +77,7 @@ test('2人ともHPが0よりも大きければゲーム続行j', t => {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
     armdozer: {
-      ...EMPTY_ARMDOZER,
+      ...EMPTY_ARMDOZER_STATE,
       hp: 1000
     }
   };

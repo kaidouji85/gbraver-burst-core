@@ -1,6 +1,12 @@
 // @flow
 
-import type {Battle, BattleResult, Effect, GameState, PlayerCommand, PlayerState, TryReflect} from "../..";
+import type {HistoryUpdate} from "./game-flow";
+import type {Battle} from '../../effect/battle/battle';
+import type {BattleResult} from '../../effect/battle/result/battle-result';
+import type {GameState} from '../../state/game-state';
+import type {PlayerCommand} from '../../player/command/player-command';
+import type {PlayerState} from '../../state/player-state';
+import type {TryReflect} from '../../state/armdozer-effect';
 import {gameFlow} from "./game-flow";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
@@ -9,7 +15,6 @@ import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
-import type {HistoryUpdate} from "./game-flow";
 
 /**
  * 戦闘のフロー
@@ -48,7 +53,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
 /**
  * ダメージ反射フローを実行できるか否かを判定する
  *
- * @param battle 戦闘結果
+ * @param result 戦闘結果
  * @return 判定結果、trueでダメージ反射フローを行う
  */
 export function canReflectFlow(result: BattleResult): boolean {
@@ -76,7 +81,7 @@ export function reflectFlow(lastState: GameState): GameState[] {
   const historyUpdates: HistoryUpdate[] = defenderState.armdozer.effects
     .filter(v => v.type === 'TryReflect')
     .map(v => {
-      const tryReflect: TryReflect = (v: TryReflect);
+      const tryReflect: TryReflect = ((v: any): TryReflect);
       return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
     });
 

@@ -1,13 +1,21 @@
 // @flow
-import type {ArmdozerState} from "./armdozer-state";
-import {createArmdozerState} from "./armdozer-state";
+import type {ArmdozerStateX} from "./armdozer-state";
 import type {Player, PlayerId} from "../player/player";
+import type {Burst} from "../player/armdozer/burst";
+import {createArmdozerState} from "./armdozer-state";
 
-/** 公開可能なプレイヤーの状態 */
-export type PlayerState = {
+/**
+ * プレイヤーの状態
+ *
+ * @typeparam {X} バースト
+ */
+export type PlayerStateX<X> = {
   playerId: PlayerId,
-  armdozer: ArmdozerState,
+  armdozer: ArmdozerStateX<X>,
 };
+
+/** プレイヤーの状態 */
+export type PlayerState = PlayerStateX<Burst>;
 
 /**
  * 公開可能なプレイヤー状態を生成する

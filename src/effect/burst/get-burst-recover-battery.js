@@ -9,5 +9,6 @@ import type {ArmdozerState} from "../../state/armdozer-state";
  * @return バースト実施後のバッテリー値
  */
 export function getBurstRecoverBattery(armdozer: ArmdozerState): number {
-  return Math.min(armdozer.battery + armdozer.burst.recoverBattery, armdozer.maxBattery);
+  const recoverBattery = armdozer.burst.recoverBattery;
+  return Math.min(armdozer.battery + recoverBattery, armdozer.maxBattery);
 }

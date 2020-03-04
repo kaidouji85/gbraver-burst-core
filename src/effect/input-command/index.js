@@ -1,13 +1,13 @@
 // @flow
 
 import type {GameState} from "../../state/game-state";
-import {selectableBatteryCommand} from "./selectable-battery-command";
-import {selectableBurstCommand} from "./selectable-burst-command";
 import type {PlayerCommand} from "../../player/command/player-command";
 import type {NoChoice, Selectable} from "./input-command";
-import type {Player} from "../../player/player";
 import type {Command} from "../../command/command";
+import type {PlayerState} from "../../state/player-state";
 import {isSelectableCommand} from "./is-selectable-command";
+import {selectableBatteryCommand} from "./selectable-battery-command";
+import {selectableBurstCommand} from "./selectable-burst-command";
 
 /**
  * コマンド入力フェイズのステートを生成する
@@ -61,7 +61,7 @@ export function inputCommandAfterBurst(lastState: GameState, commands: PlayerCom
 }
 
 /** コマンド選択可能なケース */
-function selectable(player: Player): Selectable {
+function selectable(player: PlayerState): Selectable {
   return {
     playerId: player.playerId,
     selectable: true,
@@ -72,7 +72,7 @@ function selectable(player: Player): Selectable {
 }
 
 /** コマンド選択が不可能なケース */
-function noChoice(player: Player, command: Command): NoChoice {
+function noChoice(player: PlayerState, command: Command): NoChoice {
   return {
     playerId: player.playerId,
     selectable: false,

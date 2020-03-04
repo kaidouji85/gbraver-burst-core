@@ -6,7 +6,7 @@ import type {ReflectDamageEffect} from "../effect/reflect/reflect";
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
  */
-export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower;
+export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower | TryReflect;
 
 /**
  * 何もしない効果

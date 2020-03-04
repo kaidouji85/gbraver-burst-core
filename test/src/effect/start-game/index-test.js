@@ -34,7 +34,8 @@ test('正しくゲームスタートができる', t => {
           ...PLAYER1.armdozer,
           hp: 3000,
           battery: 5,
-          enableBurst: true
+          enableBurst: true,
+          effects: [],
         }
       }, {
         ...PLAYER2,
@@ -42,7 +43,8 @@ test('正しくゲームスタートができる', t => {
           ...PLAYER2.armdozer,
           hp: 3500,
           battery: 5,
-          enableBurst: true
+          enableBurst: true,
+          effects: [],
         }
       }
     ],

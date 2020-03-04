@@ -1,8 +1,15 @@
-import type {Armdozer} from "../player/armdozer/armdozer";
-import type {ArmdozerEffect} from "./armdozer-effect";
+// @flow
 
-/** アームドーザの状態 */
-export type ArmdozerState = Armdozer & {
+import type {Armdozer, ArmdozerX} from "../player/armdozer/armdozer";
+import type {ArmdozerEffect} from "./armdozer-effect";
+import type {Burst} from "../player/armdozer/burst";
+
+/**
+ * アームドーザ状態
+ *
+ * @typeparam {X} バースト
+ */
+export type ArmdozerStateX<X> = ArmdozerX<X> & {
   /** 現在のHP */
   hp: number,
   /** 現在のバッテリー */
@@ -12,6 +19,9 @@ export type ArmdozerState = Armdozer & {
   /** 現在有効な各種効果 */
   effects: ArmdozerEffect[],
 };
+
+/** アームドーザの状態 */
+export type ArmdozerState = ArmdozerStateX<Burst>;
 
 /**
  * アームドーザ基本ステータスから戦闘状態を生成する
