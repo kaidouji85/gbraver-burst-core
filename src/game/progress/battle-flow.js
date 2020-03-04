@@ -1,6 +1,6 @@
 // @flow
 
-import type {Battle, GameState, PlayerCommand, PlayerState, TryReflect} from "../..";
+import type {Battle, Effect, GameState, PlayerCommand, PlayerState, TryReflect} from "../..";
 import {gameFlow} from "./game-flow";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
@@ -10,6 +10,7 @@ import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
 import type {HistoryUpdate} from "./game-flow";
+import type {GameStateX} from "../../state/game-state";
 
 /**
  * 戦闘のフロー
@@ -22,9 +23,16 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
     state => [battle(state, commands)],
-    state => [
-      ...reflectFlow(state)
-    ],
+    state => {
+      if (state.effect.name === 'Battle') {
+        const battle: Battle = state.effect;
+        const battleState: GameStateX<Battle> = ((state: any): GameStateX<typeof battle>);
+        return [
+            ...reflectFlow(battleState)
+        ];
+      }
+      return [];
+    },
     state => {
       const endJudge = gameEndJudging(state);
       if (endJudge.type !== 'GameContinue') {
@@ -46,16 +54,11 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
  * @param lastState 最新状態
  * @return 更新結果
  */
-function reflectFlow(lastState: GameState): GameState[] {
-  if (lastState.effect.name !== 'Battle') {
-    return [];
-  }
-
-  const battle: Battle = lastState.effect;
+function reflectFlow(lastState: GameStateX<Battle>): GameState[] {
   const isHit =
-    battle.result.name === 'NormalHit'
-    || battle.result.name === 'Guard'
-    || battle.result.name === 'CriticalHit';
+    lastState.effect.result.name === 'NormalHit'
+    || lastState.effect.result.name === 'Guard'
+    || lastState.effect.result.name === 'CriticalHit';
   if (!isHit) {
     return [];
   }
@@ -74,5 +77,7 @@ function reflectFlow(lastState: GameState): GameState[] {
       const tryReflect: TryReflect = (v: TryReflect);
       return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
     });
-  return gameFlow(lastState, historyUpdates);
+
+  const castedLastState: GameState = ((lastState: any): GameStateX<Effect | typeof lastState.effect>);
+  return gameFlow(castedLastState, historyUpdates);
 }
