@@ -1,17 +1,19 @@
 // @flow
 
 import test from 'ava';
-import type {Player} from "../../../src/player/player";
-import {EMPTY_ARMDOZER} from "../../data/armdozer";
-import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_GAME_STATE} from "../../data/game-state";
-import {progress} from "../../../src/game/progress";
-import type {PlayerCommand} from "../../../src/player/command/player-command";
+import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
+import type {GameState} from "../../../../src/state/game-state";
+import {EMPTY_GAME_STATE} from "../../../data/game-state";
+import {progress} from "../../../../src/game/progress";
+import type {PlayerCommand} from "../../../../src/player/command/player-command";
+import {EMPTY_PLAYER_STATE} from "../../../data/player";
+import type {PlayerState} from "../../../../src/state/player-state";
 
-const attacker: Player = {
+const attacker: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
   playerId: 'attacker',
   armdozer: {
-    ...EMPTY_ARMDOZER,
+    ...EMPTY_ARMDOZER_STATE,
     battery: 2,
     maxBattery: 5,
     enableBurst: true,
@@ -22,10 +24,11 @@ const attacker: Player = {
   }
 };
 
-const defender: Player = {
+const defender: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
   playerId: 'defender',
   armdozer: {
-    ...EMPTY_ARMDOZER,
+    ...EMPTY_ARMDOZER_STATE,
     battery: 3,
     maxBattery: 5,
     enableBurst: true,

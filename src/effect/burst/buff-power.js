@@ -1,8 +1,8 @@
 // @flow
 
-import type {BurstPlayer} from "./burst-player";
-import type {BuffPower} from "../../player/armdozer/burst";
-import type {PlayerState} from "../../state/player-state";
+import type {BuffPower, Burst} from "../../player/armdozer/burst";
+import type {PlayerState, PlayerStateX} from "../../state/player-state";
+import type {ArmdozerState, ArmdozerStateX} from "../../state/armdozer-state";
 import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 
 /**
@@ -12,13 +12,14 @@ import {getBurstRecoverBattery} from "./get-burst-recover-battery";
  * @param otherPlayer それ以外のプレイヤーの状態
  * @return バースト実施後の状態
  */
-export function buffPower(burstPlayer: BurstPlayer<BuffPower>, otherPlayer: PlayerState): PlayerState[] {
+export function buffPower(burstPlayer: PlayerStateX<BuffPower>, otherPlayer: PlayerState): PlayerState[] {
+  const castedArmdozer: ArmdozerState = ((burstPlayer.armdozer: any): ArmdozerStateX<Burst | typeof burstPlayer.armdozer.burst>);
   return [
     {
       ...burstPlayer,
       armdozer: {
         ...burstPlayer.armdozer,
-        battery: getBurstRecoverBattery(burstPlayer.armdozer),
+        battery: getBurstRecoverBattery(castedArmdozer),
         enableBurst: false,
         effects: [
           ...burstPlayer.armdozer.effects,

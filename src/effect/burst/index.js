@@ -2,9 +2,11 @@
 
 import type {GameState} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
-import type {PlayerState} from "../../state/player-state";
+import type {PlayerState, PlayerStateX} from "../../state/player-state";
+import type {BuffPower, LightningBarrier, RecoverBattery} from "../../player/armdozer/burst";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
+import {lightningBarrier} from "./lightning-barrier";
 
 /**
  * バーストを実施する
@@ -42,12 +44,23 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState 
  * @return バースト実施後の状態
  */
 export function updateForBurst(burstPlayer: PlayerState, otherPlayer: PlayerState): PlayerState[] {
-  switch (burstPlayer.armdozer.burst.type) {
-    case 'RecoverBattery':
-      return recoverBattery(burstPlayer, otherPlayer);
-    case 'BuffPower':
-      return buffPower(burstPlayer, otherPlayer);
-    default:
-      return [burstPlayer, otherPlayer];
+  if (burstPlayer.armdozer.burst.type === 'RecoverBattery') {
+    const recoverBatteryBurst: RecoverBattery = burstPlayer.armdozer.burst;
+    const recoverBatteryPlayer: PlayerStateX<RecoverBattery> = ((burstPlayer: any): PlayerStateX<typeof recoverBatteryBurst>);
+    return recoverBattery(recoverBatteryPlayer, otherPlayer);
   }
+
+  if (burstPlayer.armdozer.burst.type === 'BuffPower') {
+    const buffPowerBurst: BuffPower = burstPlayer.armdozer.burst;
+    const buffPowerPlayer : PlayerStateX<BuffPower> = ((burstPlayer: any): PlayerStateX<typeof buffPowerBurst>);
+    return buffPower(buffPowerPlayer, otherPlayer);
+  }
+
+  if (burstPlayer.armdozer.burst.type === 'LightningBarrier') {
+    const lightningBarrierBurst: LightningBarrier = burstPlayer.armdozer.burst;
+    const lightningBarrierPlayer: PlayerStateX<LightningBarrier> = ((burstPlayer: any): PlayerStateX<typeof lightningBarrierBurst>);
+    return lightningBarrier(lightningBarrierPlayer, otherPlayer);
+  }
+
+  return  [burstPlayer, otherPlayer];
 }

@@ -2,7 +2,7 @@
 
 import type {GameEndJudging} from "./game-end-judging";
 import type {GameState} from "../../state/game-state";
-import {isDeath} from "../../player/death/is-death";
+import {isPlayerDeath} from "../../state/player-state";
 
 /**
  * ゲーム終了判定を行う
@@ -11,12 +11,12 @@ import {isDeath} from "../../player/death/is-death";
  * @return 判定結果
  */
 export function gameEndJudging(lastState: GameState): GameEndJudging {
-  const deathPlayer = lastState.players.filter(v => isDeath(v));
+  const deathPlayer = lastState.players.filter(v => isPlayerDeath(v));
   if (deathPlayer.length === 2) {
     return {type: 'EvenMatch'};
   }
 
-  const winner = lastState.players.find(v => !isDeath(v));
+  const winner = lastState.players.find(v => !isPlayerDeath(v));
   if (winner && deathPlayer.length === 1) {
     return {type: 'GameOver', winner: winner.playerId};
   }

@@ -1,8 +1,10 @@
 // @flow
 import test from 'ava';
 import {selectableBurstCommand} from "../../../../src/effect/input-command/selectable-burst-command";
+import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 
 const ARMDOZER_STATE = {
+  ...EMPTY_ARMDOZER_STATE,
   id: 'test',
   name: 'name',
   maxHp: 3000,

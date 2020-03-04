@@ -3,14 +3,14 @@
 import type {PlayerState} from "../../../state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 import type {Feint} from "./feint";
-import {feint} from "./feint";
 import type {Guard} from "./guard";
-import {guard} from "./guard";
 import type {CriticalHit} from "./critical-hit";
-import {criticalHit} from "./critical-hit";
 import type {NormalHit} from "./normal-hit";
-import {normalHit} from "./normal-hit";
 import type {Miss} from "./miss";
+import {feint} from "./feint";
+import {guard} from "./guard";
+import {criticalHit} from "./critical-hit";
+import {normalHit} from "./normal-hit";
 
 /** 戦闘結果をまとめたもの */
 export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;
