@@ -3,7 +3,17 @@
 import type {Command} from "../../command/command";
 import type {PlayerId} from "../player";
 
-export type PlayerCommand = {
+/**
+ * プレイヤーコマンド
+ *
+ * @typeparam {X} コマンド
+ */
+export type PlayerCommandX<X> = {
+  /** プレイヤーID */
   playerId: PlayerId,
-  command: Command
+  /** コマンド */
+  command: X
 };
+
+/** プレイヤーコマンド */
+export type PlayerCommand = PlayerCommandX<Command>;
