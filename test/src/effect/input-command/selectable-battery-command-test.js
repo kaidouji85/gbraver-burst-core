@@ -2,17 +2,13 @@
 
 import test from 'ava';
 import {selectableBatteryCommand} from "../../../../src/effect/input-command/selectable-battery-command";
+import type {ArmdozerState} from "../../../../src/state/armdozer-state";
+import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 
-const ARMDOZER_STATE = {
-  id: 'test',
-  name: 'name',
-  maxHp: 3000,
-  hp: 3000,
+const ARMDOZER_STATE: ArmdozerState = {
+  ...EMPTY_ARMDOZER_STATE,
   maxBattery: 5,
   battery: 5,
-  power: 2000,
-  speed: 2000,
-  enableBurst: true
 };
 
 test('バッテリーが満タンなら0〜最大値まで入力可能', t => {

@@ -76,7 +76,7 @@ export function reflectFlow(lastState: GameState): GameState[] {
   const historyUpdates: HistoryUpdate[] = defenderState.armdozer.effects
     .filter(v => v.type === 'TryReflect')
     .map(v => {
-      const tryReflect: TryReflect = (v: TryReflect);
+      const tryReflect: TryReflect = ((v: any): TryReflect);
       return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
     });
 

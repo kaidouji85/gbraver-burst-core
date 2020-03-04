@@ -17,7 +17,8 @@ test('通常ヒットの半分のダメージを受ける', t => {
       effects: [
         {
           type: 'CorrectPower',
-          power: 1000
+          power: 1000,
+          remainingTurn: 1,
         }
       ]
     }

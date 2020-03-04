@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {getBurstRecoverBattery} from "../../../../src/effect/burst/get-burst-recover-battery";
+import {getBurstRecoverBattery} from "../../../../src/effect/burst/get_burst_recover_battery";
 import {EMPTY_ARMDOZER_STATE, EMPTY_BURST} from "../../../data/armdozer";
 import type {ArmdozerState} from "../../../../src/state/armdozer-state";
 

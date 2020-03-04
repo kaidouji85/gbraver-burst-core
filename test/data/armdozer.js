@@ -20,13 +20,13 @@ export const EMPTY_ARMDOZER: Armdozer = {
   speed: 2000,
   appearance: 'appearance',
   burst: EMPTY_BURST,
-  effects: [],
 };
 
 /** 空のアームドーザゲームステート */
 export const EMPTY_ARMDOZER_STATE: ArmdozerState = {
   ...EMPTY_ARMDOZER,
   battery: EMPTY_ARMDOZER.maxBattery,
-  hp: EMPTY_ARMDOZER.maxHp
+  hp: EMPTY_ARMDOZER.maxHp,
+  effects: [],
+  enableBurst: true,
 };
-

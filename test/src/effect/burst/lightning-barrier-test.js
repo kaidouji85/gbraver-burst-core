@@ -4,11 +4,11 @@ import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {lightningBarrier} from "../../../../src/effect/burst/lightning-barrier";
-import type {LightningBarrier, PlayerState} from "../../../../src";
-import type {BurstPlayer} from "../../../../src/effect/burst/burst-player";
+import type {LightningBarrier} from "../../../../src/player/armdozer/burst";
+import type {PlayerStateX, PlayerState} from "../../../../src/state/player-state";
 
 test('電撃バリアバーストの適用が正しくできる', t => {
-  const burstPlayer: BurstPlayer<LightningBarrier> = {
+  const burstPlayer: PlayerStateX<LightningBarrier> = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burst',
     armdozer: {

@@ -5,8 +5,12 @@ import type {Burst} from "./burst";
 /** アームドーザID */
 export type ArmDozerId = string;
 
-/** アームドーザ基本情報 */
-export type Armdozer = {
+/**
+ * アームドーザ基本情報
+ *
+ * @typeparam {X} バースト
+ */
+export type ArmdozerX<X> = {
   /** アームドーザID */
   id: ArmDozerId,
   /** 名前 */
@@ -22,5 +26,8 @@ export type Armdozer = {
   /** アームドーザの外見を指定する */
   appearance: string,
   /** バースト */
-  burst: Burst,
+  burst: X,
 };
+
+/** アームドーザ基本情報 */
+export type Armdozer = ArmdozerX<Burst>
