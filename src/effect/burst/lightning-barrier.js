@@ -1,6 +1,6 @@
 // @flow
 
-import {getBurstRecoverBattery} from "./get_burst_recover_battery";
+import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 import type {LightningBarrier} from '../../player/armdozer/burst';
 import type {PlayerStateX, PlayerState} from '../../state/player-state';
 import type {ArmdozerState, ArmdozerStateX} from '../../state/armdozer-state';

@@ -1,7 +1,7 @@
 // @flow
 
 import type {PlayerState, PlayerStateX} from "../../state/player-state";
-import {getBurstRecoverBattery} from "./get_burst_recover_battery";
+import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 import type {RecoverBattery} from "../../player/armdozer/burst";
 import type {ArmdozerStateX, Burst} from "../..";
 
@@ -13,7 +13,7 @@ import type {ArmdozerStateX, Burst} from "../..";
  * @return バースト実施後の状態
  */
 export function recoverBattery(burstPlayer: PlayerStateX<RecoverBattery>, otherPlayer: PlayerState): PlayerState[] {
-  const castedArmdozer = ((burstPlayer: any): ArmdozerStateX<Burst | typeof burstPlayer.armdozer.burst>);
+  const castedArmdozer = ((burstPlayer.armdozer: any): ArmdozerStateX<Burst | typeof burstPlayer.armdozer.burst>);
   return [
     {
       ...burstPlayer,

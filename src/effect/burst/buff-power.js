@@ -2,7 +2,7 @@
 
 import type {BuffPower, Burst} from "../../player/armdozer/burst";
 import type {PlayerState, PlayerStateX} from "../../state/player-state";
-import {getBurstRecoverBattery} from "./get_burst_recover_battery";
+import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 import type {ArmdozerState, ArmdozerStateX} from "../..";
 
 /**
