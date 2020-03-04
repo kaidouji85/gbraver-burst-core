@@ -1,6 +1,6 @@
 // @flow
 
-import type {Battle, Effect, GameState, PlayerCommand, PlayerState, TryReflect} from "../..";
+import type {Battle, BattleResult, Effect, GameState, PlayerCommand, PlayerState, TryReflect} from "../..";
 import {gameFlow} from "./game-flow";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
@@ -10,7 +10,6 @@ import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
 import type {HistoryUpdate} from "./game-flow";
-import type {GameStateX} from "../../state/game-state";
 
 /**
  * 戦闘のフロー
@@ -26,9 +25,8 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
     state => {
       if (state.effect.name === 'Battle') {
         const battle: Battle = state.effect;
-        const battleState: GameStateX<Battle> = ((state: any): GameStateX<typeof battle>);
         return [
-            ...reflectFlow(battleState)
+            ...(canReflectFlow(battle.result) ? reflectFlow(state) : [])
         ];
       }
       return [];
@@ -48,21 +46,25 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
 }
 
 /**
+ * ダメージ反射フローを実行できるか否かを判定する
+ *
+ * @param battle 戦闘結果
+ * @return 判定結果、trueでダメージ反射フローを行う
+ */
+export function canReflectFlow(result: BattleResult): boolean {
+  return result.name === 'NormalHit'
+      || result.name === 'Guard'
+      || result.name === 'CriticalHit';
+}
+
+/**
  * ダメージ反射のフロー
  * 本フローは戦闘直後に呼ばれる想定である
  *
  * @param lastState 最新状態
  * @return 更新結果
  */
-export function reflectFlow(lastState: GameStateX<Battle>): GameState[] {
-  const isHit =
-    lastState.effect.result.name === 'NormalHit'
-    || lastState.effect.result.name === 'Guard'
-    || lastState.effect.result.name === 'CriticalHit';
-  if (!isHit) {
-    return [];
-  }
-
+export function reflectFlow(lastState: GameState): GameState[] {
   const attacker = lastState.players.find(v => v.playerId === lastState.activePlayerId);
   const defender = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
   if (!attacker || !defender) {
@@ -78,6 +80,5 @@ export function reflectFlow(lastState: GameStateX<Battle>): GameState[] {
       return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
     });
 
-  const castedLastState: GameState = ((lastState: any): GameStateX<Effect | typeof lastState.effect>);
-  return gameFlow(castedLastState, historyUpdates);
+  return gameFlow(lastState, historyUpdates);
 }

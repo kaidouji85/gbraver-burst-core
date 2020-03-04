@@ -1,12 +1,11 @@
 // @flow
 
 import test from 'ava';
-import type {Battle, PlayerState} from "../../../../src";
+import type {GameState, PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {reflectFlow} from "../../../../src/game/progress/battle-flow";
-import type {GameStateX} from "../../../../src/state/game-state";
 
 /** 攻撃側プレイヤー */
 const ATTACKER: PlayerState = {
@@ -38,19 +37,10 @@ const DEFENDER: PlayerState = {
 };
 
 test('ダメージ反射が正しく適用される', t => {
-    const lastState: GameStateX<Battle> = {
+    const lastState: GameState = {
         ...EMPTY_GAME_STATE,
         activePlayerId: 'attacker',
         players: [ATTACKER, DEFENDER],
-        effect: {
-            name: 'Battle',
-            attacker: ATTACKER.playerId,
-            isDeath: false,
-            result: {
-                name: 'NormalHit',
-                damage: 1000
-            }
-        }
     };
 
     const result = reflectFlow(lastState);
@@ -78,19 +68,10 @@ test('ダメージ反射の重ね掛けも正しく処理される', t => {
             ]
         }
     };
-    const lastState: GameStateX<Battle> = {
+    const lastState: GameState = {
         ...EMPTY_GAME_STATE,
         activePlayerId: 'attacker',
         players: [ATTACKER, multiReflect],
-        effect: {
-            name: 'Battle',
-            attacker: ATTACKER.playerId,
-            isDeath: false,
-            result: {
-                name: 'NormalHit',
-                damage: 1000
-            }
-        }
     };
 
     const result = reflectFlow(lastState);
@@ -98,23 +79,4 @@ test('ダメージ反射の重ね掛けも正しく処理される', t => {
     t.is(result[0].effect.name, 'Reflect');
     t.is(result[1].effect.name, 'Reflect');
     t.is(result[2].effect.name, 'Reflect');
-});
-
-test('攻撃がヒットしていない場合は何もしない', t => {
-    const lastState: GameStateX<Battle> = {
-        ...EMPTY_GAME_STATE,
-        activePlayerId: 'attacker',
-        players: [ATTACKER, DEFENDER],
-        effect: {
-            name: 'Battle',
-            attacker: ATTACKER.playerId,
-            isDeath: false,
-            result: {
-                name: 'Miss',
-            }
-        }
-    };
-
-    const result = reflectFlow(lastState);
-    t.is(result.length, 0);
 });
