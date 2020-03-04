@@ -5,6 +5,7 @@ import type {Armdozer} from '../player/armdozer/armdozer';
 export const ArmDozerIdList = {
   SHIN_BRAVER: 'SHIN_BRAVER',
   NEO_LANDOZER: 'NEO_LANDOZER',
+  LIGHTNING_DOZER: 'LIGHTNING_DOZER',
 };
 
 /** アームドーザのマスターデータ */
@@ -25,15 +26,30 @@ export const ArmDozers: Armdozer[] = [
   {
     id: ArmDozerIdList.NEO_LANDOZER,
     name: 'ネオランドーザ',
-    maxHp: 3300,
+    maxHp: 3100,
     maxBattery: 5,
-    power: 2300,
+    power: 2100,
     speed: 1500,
     appearance: 'neo-landozer',
     burst: {
       type: 'BuffPower',
       recoverBattery: 3,
       buffPower: 1000,
+      duration: 2
+    }
+  },
+  {
+    id: ArmDozerIdList.LIGHTNING_DOZER,
+    name: 'ライトニングドーザ',
+    maxHp: 3300,
+    maxBattery: 5,
+    power: 1900,
+    speed: 1900,
+    appearance: 'lightning-dozer',
+    burst: {
+      type: 'LightningBarrier',
+      recoverBattery: 3,
+      damage: 1000,
       duration: 2
     }
   }
