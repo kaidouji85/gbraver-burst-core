@@ -1,6 +1,11 @@
 // @flow
 
-/** アームドーザ効果 */
+import type {ReflectDamageEffect} from "../effect/reflect/reflect";
+
+/**
+ * アームドーザに適用される効果
+ * バフ、デバフなどのターン継続効果を想定している
+ */
 export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower;
 
 /**
@@ -24,6 +29,20 @@ export type CorrectPower = {
 
   /** 攻撃力補正値 */
   power: number,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};
+
+/** ダメージ反射 */
+export type TryReflect = {
+  type: 'TryReflect',
+
+  /** 反射が成功した場合のダメージ */
+  damage: number,
+
+  /** 反射のダメージエフェクト */
+  effect: ReflectDamageEffect,
 
   /** 効果継続ターン */
   remainingTurn: number
