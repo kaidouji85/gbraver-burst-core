@@ -13,7 +13,7 @@ export const ArmDozers: Armdozer[] = [
   {
     id: ArmDozerIdList.SHIN_BRAVER,
     name: 'シンブレイバー',
-    maxHp: 3000,
+    maxHp: 3100,
     maxBattery: 5,
     power: 2000,
     speed: 2000,
@@ -26,10 +26,10 @@ export const ArmDozers: Armdozer[] = [
   {
     id: ArmDozerIdList.NEO_LANDOZER,
     name: 'ネオランドーザ',
-    maxHp: 3100,
+    maxHp: 3200,
     maxBattery: 5,
     power: 2100,
-    speed: 1500,
+    speed: 1800,
     appearance: 'neo-landozer',
     burst: {
       type: 'BuffPower',
