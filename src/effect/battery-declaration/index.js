@@ -34,10 +34,19 @@ export function batteryDeclaration(lastState: GameState, commands: PlayerCommand
 
   const updatedAttacker = updatePlayer(attacker, attackerBattery);
   const updatedDefender = updatePlayer(defender, defenderBattery);
+  const updatedPlayers = lastState.players.map(v => {
+    if (v.playerId === updatedAttacker.playerId) {
+      return updatedAttacker;
+    } else if (v.playerId === updatedDefender.playerId) {
+      return updatedDefender;
+    } else {
+      return v;
+    }
+  });
 
   return {
     ...lastState,
-    players: [updatedAttacker, updatedDefender],
+    players: updatedPlayers,
     effect: {
       name: 'BatteryDeclaration',
       attacker: attacker.playerId,
