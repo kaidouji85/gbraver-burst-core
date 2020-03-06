@@ -27,11 +27,13 @@ export function reflect(lastState: GameState, damagedPlayerId: PlayerId, damage:
       hp: target.armdozer.hp - damage
     }
   };
-  isPlayerDeath(updated);
-  const players = lastState.players.map(v => v.playerId === updated.playerId
-    ? updated
-    : v
-  );
+  const players = lastState.players.map(v => {
+    if (v.playerId === updated.playerId) {
+      return updated;
+    } else {
+      return v;
+    }
+  });
 
   return {
     ...lastState,
