@@ -22,13 +22,14 @@ test('ダメージ反射を正しく適用できる', t => {
   };
   const lastState = {
     ...EMPTY_GAME_STATE,
-    players: [damagedPlayer, otherPlayer]
+    players: [otherPlayer, damagedPlayer]
   };
 
   const result = reflect(lastState, damagedPlayer.playerId, 2000, 'Lightning');
   const expected = {
     ...lastState,
     players: [
+      otherPlayer,
       {
         ...damagedPlayer,
         armdozer: {
@@ -36,10 +37,10 @@ test('ダメージ反射を正しく適用できる', t => {
           hp: 1000
         }
       },
-      otherPlayer,
     ],
     effect: {
       name: 'Reflect',
+      damagedPlayer: 'damagedPlayer',
       damage: 2000,
       effect: 'Lightning',
       isDeath: false,
