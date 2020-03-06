@@ -26,8 +26,16 @@ test('通常ヒットを正しく防御側ステータスに反映できる', t 
     name: 'NormalHit',
     damage: 2000
   };
+
   const result = updateDefender(normalHit, DEFENDER);
-  t.is(result.armdozer.hp, 1000, 'ダメージの分だけHPが減少している');
+  const expected = {
+    ...DEFENDER,
+    armdozer: {
+      ...DEFENDER.armdozer,
+      hp: 1000
+    }
+  };
+  t.deepEqual(result, expected);
 });
 
 test('クリティカルヒットを正しく防御側ステータスに反映できる', t => {
@@ -36,7 +44,14 @@ test('クリティカルヒットを正しく防御側ステータスに反映�
     damage: 3000
   };
   const result = updateDefender(normalHit, DEFENDER);
-  t.is(result.armdozer.hp, 0, 'ダメージの分だけHPが減少している');
+  const expected = {
+    ...DEFENDER,
+    armdozer: {
+      ...DEFENDER.armdozer,
+      hp: 0
+    }
+  };
+  t.deepEqual(result, expected);
 });
 
 test('防御を正しく防御側ステータスに反映できる', t => {
@@ -45,7 +60,14 @@ test('防御を正しく防御側ステータスに反映できる', t => {
     damage: 1000
   };
   const result = updateDefender(normalHit, DEFENDER);
-  t.is(result.armdozer.hp, 2000, 'ダメージの分だけHPが減少している');
+  const expected = {
+    ...DEFENDER,
+    armdozer: {
+      ...DEFENDER.armdozer,
+      hp: 2000
+    }
+  };
+  t.deepEqual(result, expected);
 });
 
 test('ミスを正しく防御側ステータスに反映できる', t => {
@@ -53,7 +75,8 @@ test('ミスを正しく防御側ステータスに反映できる', t => {
     name: 'Miss'
   };
   const result = updateDefender(normalHit, DEFENDER);
-  t.is(result.armdozer.hp, 3000, 'HPは減少していない');
+  const expected = DEFENDER;
+  t.deepEqual(result, expected);
 });
 
 test('フェイントを正しく防御側ステータスに反映できる', t => {
@@ -62,5 +85,6 @@ test('フェイントを正しく防御側ステータスに反映できる', t 
     isDefenderMoved: true
   };
   const result = updateDefender(normalHit, DEFENDER);
-  t.is(result.armdozer.hp, 3000, 'HPは減少していない');
+  const expected = DEFENDER;
+  t.deepEqual(result, expected);
 });
