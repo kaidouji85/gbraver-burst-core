@@ -26,7 +26,6 @@ export function buffPower(burstPlayer: PlayerStateX<BuffPower>, otherPlayer: Pla
           {
             type: 'CorrectPower',
             power: burstPlayer.armdozer.burst.buffPower,
-            hasTimeLimit: true,
             remainingTurn: burstPlayer.armdozer.burst.duration,
           }
         ]

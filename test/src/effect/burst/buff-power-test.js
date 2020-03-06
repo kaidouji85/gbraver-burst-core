@@ -41,7 +41,6 @@ test('攻撃力バフが正しく適用される', t => {
         effects: [
           {
             type: 'CorrectPower',
-            hasTimeLimit: true,
             remainingTurn: 2,
             power: 1000,
           }
