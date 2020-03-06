@@ -12,6 +12,5 @@ export const EMPTY_ARMDOZER_EFFECT: EmptyArmdozerEffect = {
 export const EMPTY_CORRECT_POWER: CorrectPower = {
   type: 'CorrectPower',
   power: 0,
-  hasTimeLimit: true,
   remainingTurn: 1,
 };
