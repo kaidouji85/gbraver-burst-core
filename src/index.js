@@ -1,5 +1,5 @@
 // @flow
-export {ArmDozerIdList, ArmDozers} from './master/armdozers';
+export {ArmDozerIdList, ArmdozerAppearances, ArmDozers} from './master/armdozers';
 export {GbraverBurstCore} from './game/index';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
