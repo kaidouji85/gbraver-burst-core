@@ -30,7 +30,7 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [attacker, defender],
+    players: [defender, attacker],
     activePlayerId: 'attacker',
   };
   const playerCommands: PlayerCommand[] = [
@@ -54,14 +54,14 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
   t.deepEqual(result, {
     ...lastState,
     players: [
-      attacker,
       {
         ...defender,
         armdozer: {
           ...defender.armdozer,
           hp: 1000,
         },
-      }
+      },
+      attacker,
     ],
     effect: {
       name: 'Battle',
