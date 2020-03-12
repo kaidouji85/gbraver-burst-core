@@ -1,11 +1,18 @@
 // @flow
 import type {Armdozer} from '../player/armdozer/armdozer';
 
-/** アームドーザIDリスト */
+/** アームドーザIDマスタ */
 export const ArmDozerIdList = {
   SHIN_BRAVER: 'SHIN_BRAVER',
   NEO_LANDOZER: 'NEO_LANDOZER',
   LIGHTNING_DOZER: 'LIGHTNING_DOZER',
+};
+
+/** アームドーザマスタ */
+export const ArmdozerAppearances = {
+  SHIN_BRAVER: 'shin-braver',
+  NEO_LANDOZER: 'neo-landozer',
+  LIGHTNING_DOZER: 'lightning-dozer',
 };
 
 /** アームドーザのマスターデータ */
@@ -17,7 +24,7 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 2000,
     speed: 2000,
-    appearance: 'shin-braver',
+    appearance: ArmdozerAppearances.SHIN_BRAVER,
     burst: {
       type: 'RecoverBattery',
       recoverBattery: 5,
@@ -30,7 +37,7 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 2100,
     speed: 1800,
-    appearance: 'neo-landozer',
+    appearance: ArmdozerAppearances.NEO_LANDOZER,
     burst: {
       type: 'BuffPower',
       recoverBattery: 3,
@@ -45,7 +52,7 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 1900,
     speed: 1900,
-    appearance: 'lightning-dozer',
+    appearance: ArmdozerAppearances.LIGHTNING_DOZER,
     burst: {
       type: 'LightningBarrier',
       recoverBattery: 3,
