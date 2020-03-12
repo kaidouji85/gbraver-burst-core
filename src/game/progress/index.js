@@ -1,9 +1,9 @@
 // @flow
 
 import type {GameState} from "../../state/game-state";
-import type {PlayerCommand} from "../../player/command/player-command";
 import {burstFlow, isBurstFlow} from "./burst-flow";
 import {battleFlow} from "./battle-flow";
+import type {PlayerCommand} from "../..";
 
 /**
  * ゲームを進める

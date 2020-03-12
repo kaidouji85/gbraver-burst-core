@@ -2,11 +2,11 @@
 
 import test from 'ava';
 import type {GameState} from "../../../../src/state/game-state";
-import type {PlayerCommand} from "../../../../src/player/command/player-command";
 import {battle} from "../../../../src/effect/battle";
 import type {PlayerState} from "../../../../src/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
+import type {PlayerCommand} from "../../../../src";
 
 test('戦闘を実行した後の状態に正しく更新できる', t => {
   const attacker: PlayerState = {

@@ -6,8 +6,8 @@ import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import type {GameState} from "../../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import type {PlayerCommand} from "../../../../src/player/command/player-command";
 import {progress} from "../../../../src/game/progress";
+import type {PlayerCommand} from "../../../../src";
 
 test('戦闘フローを正常に進められる', t => {
   const attacker: PlayerState = {
