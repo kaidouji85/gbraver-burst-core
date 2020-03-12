@@ -4,7 +4,6 @@ import type {GameState} from "../../state/game-state";
 import type {PlayerId} from '../../player/player';
 import type {ReflectDamageEffect} from './reflect';
 import {isPlayerDeath} from "../../state/player-state";
-import {inspect} from 'util';
 
 /**
  * ダメージ反射を実行

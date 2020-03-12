@@ -5,7 +5,7 @@ import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {lightningBarrier} from "../../../../src/effect/burst/lightning-barrier";
 import type {LightningBarrier} from "../../../../src/player/armdozer/burst";
-import type {PlayerStateX, PlayerState} from "../../../../src/state/player-state";
+import type {PlayerState, PlayerStateX} from "../../../../src/state/player-state";
 
 test('電撃バリアバーストの適用が正しくできる', t => {
   const burstPlayer: PlayerStateX<LightningBarrier> = {

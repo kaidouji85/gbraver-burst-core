@@ -1,13 +1,12 @@
 // @flow
 
 import type {HistoryUpdate} from "./game-flow";
+import {gameFlow} from "./game-flow";
 import type {Battle} from '../../effect/battle/battle';
 import type {BattleResult} from '../../effect/battle/result/battle-result';
 import type {GameState} from '../../state/game-state';
-import type {PlayerCommand} from '../../player/command/player-command';
 import type {PlayerState} from '../../state/player-state';
 import type {TryReflect} from '../../state/armdozer-effect';
-import {gameFlow} from "./game-flow";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
@@ -15,6 +14,7 @@ import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
+import type {PlayerCommand} from "../../command/command";
 
 /**
  * 戦闘のフロー

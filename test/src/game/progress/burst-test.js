@@ -5,9 +5,9 @@ import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import type {GameState} from "../../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {progress} from "../../../../src/game/progress";
-import type {PlayerCommand} from "../../../../src/player/command/player-command";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import type {PlayerState} from "../../../../src/state/player-state";
+import type {PlayerCommand} from "../../../../src";
 
 const attacker: PlayerState = {
   ...EMPTY_PLAYER_STATE,

@@ -5,8 +5,8 @@ import {inputCommand, inputCommandAfterBurst} from "../../../../src/effect/input
 import type {GameState} from "../../../../src/state/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
-import type {PlayerCommand} from "../../../../src/player/command/player-command";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
+import type {PlayerCommand} from "../../../../src";
 
 test('コマンド入力フェイズの効果が正しく適用される', t => {
   const lastState: GameState = {

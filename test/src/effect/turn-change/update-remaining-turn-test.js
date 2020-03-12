@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {updateRemainingTurn} from "../../../../src/effect/turn-change/update-remaining-turn";
-import {EMPTY_CORRECT_POWER, EMPTY_ARMDOZER_EFFECT} from "../../../data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT, EMPTY_CORRECT_POWER} from "../../../data/amrdozer-effect";
 
 test('残りターンが-1される', t => {
   const result = updateRemainingTurn([{...EMPTY_ARMDOZER_EFFECT, remainingTurn: 3}]);
