@@ -2,6 +2,7 @@
 
 import type {GameState, PlayerState} from "../..";
 import {isRemainArmdozerEffect, updateArmdozerEffect} from "./armdozer-effect";
+import type {EndArmdozerEffect} from "./update-remaining-turn";
 
 /**
  * 効果継続ターン数を更新する
@@ -20,20 +21,20 @@ export function updateRemainingTurn(lastState: GameState): GameState {
     }
   }));
 
-  const endArmdozerEffects = lastState.players
-    .map((player: PlayerState) => ({
+  const endArmdozerEffect: EndArmdozerEffect[] = lastState.players.map(player => player.armdozer.effects
+    .filter(effect => !isRemainArmdozerEffect(effect))
+    .map(effect => ({
       playerId: player.playerId,
-      effects: player.armdozer.effects
-        .map(v => updateArmdozerEffect(v))
-        .filter(v => !isRemainArmdozerEffect(v))
-    }));
+      effect: effect
+    }))
+  ).reduce((a, b) => a.concat(b));
 
   return {
     ...lastState,
     players: updatePlayers,
     effect: {
       name: 'UpdateRemainingTurn',
-      endArmdozerEffects: endArmdozerEffects
+      endArmdozerEffect: endArmdozerEffect
     }
   };
 }

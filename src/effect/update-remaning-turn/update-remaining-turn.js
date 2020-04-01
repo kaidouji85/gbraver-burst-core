@@ -3,11 +3,11 @@
 import type {ArmdozerEffect, PlayerId} from "../..";
 
 /** 終了したアームドーザ効果 */
-export type EndArmdozerEffects = {
+export type EndArmdozerEffect = {
   /** プレイヤーID */
   playerId: PlayerId,
   /** 終了したエフェクト */
-  effects: ArmdozerEffect[]
+  effect: ArmdozerEffect
 };
 
 /**
@@ -17,5 +17,5 @@ export type UpdateRemainingTurn = {
   name: 'UpdateRemainingTurn',
 
   /** 終了したアームドーザ効果 */
-  endArmdozerEffects: EndArmdozerEffects[],
+  endArmdozerEffect: EndArmdozerEffect[],
 };
