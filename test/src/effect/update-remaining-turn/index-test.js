@@ -62,7 +62,7 @@ test('効果継続ターン更新が正しく処理される', t => {
     ],
     effect: {
       name: 'UpdateRemainingTurn',
-      endArmdozerEffect: [
+      endArmdozerEffects: [
         {
           playerId: player1.playerId,
           effect: {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 0}

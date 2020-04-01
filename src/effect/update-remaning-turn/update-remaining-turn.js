@@ -17,5 +17,5 @@ export type UpdateRemainingTurn = {
   name: 'UpdateRemainingTurn',
 
   /** 終了したアームドーザ効果 */
-  endArmdozerEffect: EndArmdozerEffect[],
+  endArmdozerEffects: EndArmdozerEffect[],
 };

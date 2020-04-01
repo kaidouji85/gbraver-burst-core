@@ -36,7 +36,7 @@ export function updateRemainingTurn(lastState: GameState): GameState {
     players: updatePlayers,
     effect: {
       name: 'UpdateRemainingTurn',
-      endArmdozerEffect: endArmdozerEffect
+      endArmdozerEffects: endArmdozerEffect
     }
   };
 }
