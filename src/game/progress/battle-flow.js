@@ -15,6 +15,7 @@ import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
 import type {PlayerCommand} from "../../command/command";
+import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 
 /**
  * 戦闘のフロー
@@ -43,6 +44,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
       }
 
       return gameFlow(state, [
+        v => [updateRemainingTurn(v)],
         v => [turnChange(v)],
         v => [inputCommand(v)]
       ]);
