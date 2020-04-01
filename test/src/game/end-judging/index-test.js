@@ -64,7 +64,7 @@ test('2人ともHPが0なら引き分け', t => {
   });
 });
 
-test('2人ともHPが0よりも大きければゲーム続行j', t => {
+test('2人ともHPが0よりも大きければゲーム続行', t => {
   const player1 = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
