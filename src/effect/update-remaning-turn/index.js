@@ -21,13 +21,15 @@ export function updateRemainingTurn(lastState: GameState): GameState {
     }
   }));
 
-  const endArmdozerEffect: EndArmdozerEffect[] = lastState.players.map(player => player.armdozer.effects
-    .filter(effect => !isRemainArmdozerEffect(effect))
-    .map(effect => ({
-      playerId: player.playerId,
-      effect: effect
-    }))
-  ).reduce((a, b) => a.concat(b));
+  const endArmdozerEffect: EndArmdozerEffect[] = lastState.players
+    .map(player => player.armdozer.effects
+      .map(effect => updateArmdozerEffect(effect))
+      .filter(effect => !isRemainArmdozerEffect(effect))
+      .map(effect => ({
+        playerId: player.playerId,
+        effect: effect
+      }))
+    ).reduce((a, b) => a.concat(b));
 
   return {
     ...lastState,
