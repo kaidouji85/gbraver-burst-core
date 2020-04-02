@@ -1,11 +1,9 @@
 // @flow
 
-import type {HistoryUpdate} from "./game-flow";
 import {gameFlow} from "./game-flow";
 import type {Battle} from '../../effect/battle/battle';
 import type {BattleResult} from '../../effect/battle/result/battle-result';
 import type {GameState} from '../../state/game-state';
-import type {PlayerState} from '../../state/player-state';
 import type {TryReflect} from '../../state/armdozer-effect';
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
@@ -16,6 +14,7 @@ import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
 import type {PlayerCommand} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
+import {rightItself} from "../../effect/right-itself";
 
 /**
  * 戦闘のフロー
@@ -27,27 +26,34 @@ import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
-    state => [battle(state, commands)],
     state => {
-      if (state.effect.name === 'Battle') {
-        const battle: Battle = state.effect;
-        return [
-            ...(canReflectFlow(battle.result) ? reflectFlow(state) : [])
-        ];
-      }
-      return [];
-    },
-    state => {
-      const endJudge = gameEndJudging(state);
-      if (endJudge.type !== 'GameContinue') {
-        return [gameEnd(state, endJudge)];
+      const doneBattle = battle(state, commands);
+      if (doneBattle.effect.name !== 'Battle') {
+        return [];
       }
 
-      return gameFlow(state, [
-        v => [updateRemainingTurn(v)],
-        v => [turnChange(v)],
-        v => [inputCommand(v)]
-      ]);
+      const battleEffect = (doneBattle.effect: Battle);
+      return [
+        doneBattle,
+        ...gameFlow(doneBattle, [
+          state => canReflectFlow(battleEffect.result)
+            ? reflectFlow(state)
+            : [],
+          state => {
+            const endJudge = gameEndJudging(state);
+            if (endJudge.type === 'GameContinue') {
+              return gameFlow(state, [
+                state => [rightItself(state, battleEffect)],
+                state => [updateRemainingTurn(state)],
+                state => [turnChange(state)],
+                state => [inputCommand(state)]
+              ]);
+            } else {
+              return [gameEnd(state, endJudge)];
+            }
+          }
+        ])
+      ];
     }
   ]);
 }
@@ -60,8 +66,8 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
  */
 export function canReflectFlow(result: BattleResult): boolean {
   return result.name === 'NormalHit'
-      || result.name === 'Guard'
-      || result.name === 'CriticalHit';
+    || result.name === 'Guard'
+    || result.name === 'CriticalHit';
 }
 
 /**
@@ -78,14 +84,10 @@ export function reflectFlow(lastState: GameState): GameState[] {
     return [];
   }
 
-  const attackerState: PlayerState = attacker;
-  const defenderState: PlayerState = defender;
-  const historyUpdates: HistoryUpdate[] = defenderState.armdozer.effects
+  const tryReflects: TryReflect[] = defender.armdozer.effects
     .filter(v => v.type === 'TryReflect')
-    .map(v => {
-      const tryReflect: TryReflect = ((v: any): TryReflect);
-      return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
-    });
-
-  return gameFlow(lastState, historyUpdates);
+    .map(v => ((v: any): TryReflect));
+  return gameFlow(lastState, tryReflects.map(tryReflect =>
+    state => [reflect(state, attacker.playerId, tryReflect.damage, tryReflect.effect)]
+  ));
 }
