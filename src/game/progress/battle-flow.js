@@ -1,11 +1,9 @@
 // @flow
 
-import type {HistoryUpdate} from "./game-flow";
 import {gameFlow} from "./game-flow";
 import type {Battle} from '../../effect/battle/battle';
 import type {BattleResult} from '../../effect/battle/result/battle-result';
 import type {GameState} from '../../state/game-state';
-import type {PlayerState} from '../../state/player-state';
 import type {TryReflect} from '../../state/armdozer-effect';
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
@@ -86,14 +84,10 @@ export function reflectFlow(lastState: GameState): GameState[] {
     return [];
   }
 
-  const attackerState: PlayerState = attacker;
-  const defenderState: PlayerState = defender;
-  const historyUpdates: HistoryUpdate[] = defenderState.armdozer.effects
+  const tryReflects: TryReflect[] = defender.armdozer.effects
     .filter(v => v.type === 'TryReflect')
-    .map(v => {
-      const tryReflect = ((v: any): TryReflect);
-      return (state: GameState): GameState[] => [reflect(state, attackerState.playerId, tryReflect.damage, tryReflect.effect)];
-    });
-
-  return gameFlow(lastState, historyUpdates);
+    .map(v => ((v: any): TryReflect));
+  return gameFlow(lastState, tryReflects.map(tryReflect =>
+    state => [reflect(state, attacker.playerId, tryReflect.damage, tryReflect.effect)]
+  ));
 }
