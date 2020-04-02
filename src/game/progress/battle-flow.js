@@ -28,54 +28,36 @@ import {rightItself} from "../../effect/right-itself";
 export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
-    state => [battle(state, commands)],
-    (state, history) => {
-      const battleEffect = lastBattle(history);
-      if (battleEffect && canReflectFlow(battleEffect.result)) {
-        return reflectFlow(state);
-      } else {
+    state => {
+      const doneBattle = battle(state, commands);
+      if (doneBattle.effect.name !== 'Battle') {
         return [];
       }
-    },
-    (state, history) => {
-      const endJudge = gameEndJudging(state);
-      const battleEffect = lastBattle(history);
-      if (endJudge.type === 'GameContinue') {
-        return gameFlow(state, [
-          v => battleEffect
-            ? [rightItself(v, battleEffect)]
+
+      const battleEffect = (doneBattle.effect: Battle);
+      return [
+        doneBattle,
+        ...gameFlow(doneBattle, [
+          state => canReflectFlow(battleEffect.result)
+            ? reflectFlow(state)
             : [],
-          v => [updateRemainingTurn(v)],
-          v => [turnChange(v)],
-          v => [inputCommand(v)]
-        ]);
-      } else {
-        return [gameEnd(state, endJudge)];
-      }
+          state => {
+            const endJudge = gameEndJudging(state);
+            if (endJudge.type === 'GameContinue') {
+              return gameFlow(state, [
+                state => [rightItself(state, battleEffect)],
+                state => [updateRemainingTurn(state)],
+                state => [turnChange(state)],
+                state => [inputCommand(state)]
+              ]);
+            } else {
+              return [gameEnd(state, endJudge)];
+            }
+          }
+        ])
+      ];
     }
   ]);
-}
-
-/**
- * 最新の戦闘結果を取得する
- * ヒストリーに戦闘結果が1個以外の場合はnullを返す
- *
- * @param history ステートヒストリー
- * @return 最新の戦闘結果
- */
-function lastBattle(history: GameState[]): ?Battle {
-  const battleHistory = history.filter(v => v.effect.name === 'Battle');
-  if (battleHistory.length !== 1) {
-    return null;
-  }
-
-  const state = battleHistory[0];
-  if (state.effect.name !== 'Battle') {
-    return null;
-  }
-
-  const battleEffect = (state.effect: Battle);
-  return battleEffect;
 }
 
 /**
