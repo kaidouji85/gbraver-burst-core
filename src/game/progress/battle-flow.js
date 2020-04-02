@@ -29,13 +29,14 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
     state => [batteryDeclaration(state, commands)],
     state => [battle(state, commands)],
     state => {
-      if (state.effect.name === 'Battle') {
-        const battle: Battle = state.effect;
-        return [
-            ...(canReflectFlow(battle.result) ? reflectFlow(state) : [])
-        ];
+      if (state.effect.name !== 'Battle') {
+        return [];
       }
-      return [];
+
+      const battle: Battle = state.effect;
+      return [
+        ...(canReflectFlow(battle.result) ? reflectFlow(state) : [])
+      ];
     },
     state => {
       const endJudge = gameEndJudging(state);
@@ -60,8 +61,8 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
  */
 export function canReflectFlow(result: BattleResult): boolean {
   return result.name === 'NormalHit'
-      || result.name === 'Guard'
-      || result.name === 'CriticalHit';
+    || result.name === 'Guard'
+    || result.name === 'CriticalHit';
 }
 
 /**
