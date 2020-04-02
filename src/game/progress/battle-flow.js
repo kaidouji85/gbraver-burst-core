@@ -4,7 +4,7 @@ import type {HistoryUpdate} from "./game-flow";
 import {gameFlow} from "./game-flow";
 import type {Battle} from '../../effect/battle/battle';
 import type {BattleResult} from '../../effect/battle/result/battle-result';
-import type {GameState} from '../../state/game-state';
+import type {GameState, GameStateX} from '../../state/game-state';
 import type {PlayerState} from '../../state/player-state';
 import type {TryReflect} from '../../state/armdozer-effect';
 import {batteryDeclaration} from "../../effect/battery-declaration";
@@ -25,6 +25,7 @@ import {updateRemainingTurn} from "../../effect/update-remaning-turn";
  * @return 更新されたゲームの状態
  */
 export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+  let doneBattle: ?GameStateX<Battle> = null;
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
     state => [battle(state, commands)],
@@ -34,9 +35,12 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
       }
 
       const battle: Battle = state.effect;
-      return [
-        ...(canReflectFlow(battle.result) ? reflectFlow(state) : [])
-      ];
+      doneBattle = ((state: any): GameStateX<typeof battle>);
+      if (!canReflectFlow(battle.result)) {
+        return [];
+      }
+
+      return reflectFlow(state);
     },
     state => {
       const endJudge = gameEndJudging(state);
