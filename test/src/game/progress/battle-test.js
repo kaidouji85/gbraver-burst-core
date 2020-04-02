@@ -48,12 +48,13 @@ test('戦闘フローを正常に進められる', t => {
   }];
 
   const result = progress(lastState, commands);
-  t.is(result.length, 5);
+  t.is(result.length, 6);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');
-  t.is(result[2].effect.name, 'UpdateRemainingTurn');
-  t.is(result[3].effect.name, 'TurnChange');
-  t.is(result[4].effect.name, 'InputCommand');
+  t.is(result[2].effect.name, 'RightItself');
+  t.is(result[3].effect.name, 'UpdateRemainingTurn');
+  t.is(result[4].effect.name, 'TurnChange');
+  t.is(result[5].effect.name, 'InputCommand');
 });
 
 test('攻撃で防御側のHPを0以下にした場合、ゲームが終了する', t => {
