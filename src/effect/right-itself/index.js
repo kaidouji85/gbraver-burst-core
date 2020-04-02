@@ -1,6 +1,6 @@
 // @flow
 
-import type {BattleResult, GameState, PlayerId} from "../..";
+import type {Battle, GameState} from "../..";
 
 /**
  * 防御側の体勢を整える
@@ -10,13 +10,18 @@ import type {BattleResult, GameState, PlayerId} from "../..";
  * @param defender 防御側のプレイヤーID
  * @return 更新結果
  */
-export function rightItself(lastState: GameState, result: BattleResult, defender: PlayerId): GameState {
+export function rightItself(lastState: GameState, battle: Battle): GameState {
+  const defender = lastState.players.find(v => v.playerId !== battle.attacker);
+  if (!defender) {
+    return lastState;
+  }
+
   return {
     ...lastState,
     effect: {
       name: 'RightItself',
-      defender: defender,
-      battleResult: result,
+      defender: defender.playerId,
+      battleResult: battle.result,
     }
   };
 }
