@@ -32,6 +32,7 @@ export type {Reflect, ReflectDamageEffect} from './effect/reflect/reflect';
 export type {StartGame} from './effect/start-game/start-game';
 export type {TurnChange} from './effect/turn-change/turn-change';
 export type {UpdateRemainingTurn, EndArmdozerEffect} from './effect/update-remaning-turn/update-remaining-turn';
+export type {RightItself} from './effect/right-itself/right-itself';
 
 // TODO 以下は廃止予定
 export {start} from './game/start/start';
