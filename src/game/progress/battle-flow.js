@@ -39,7 +39,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
           state => canReflectFlow(battleEffect.result)
             ? reflectFlow(state)
             : [],
-          state => !doneBattle.effect.isDeath
+          state => canRightItself(battleEffect)
             ? [rightItself(state, battleEffect)]
             : [],
           state => {
@@ -92,4 +92,14 @@ export function reflectFlow(lastState: GameState): GameState[] {
   return gameFlow(lastState, tryReflects.map(tryReflect =>
     state => [reflect(state, attacker.playerId, tryReflect.damage, tryReflect.effect)]
   ));
+}
+
+/**
+ * 体勢整えを実施するか否かを判定する、trueで実施する
+ *
+ * @param battle 戦闘情報
+ * @return 判定結果
+ */
+export function canRightItself(battle: Battle): boolean {
+  return !battle.isDeath;
 }
