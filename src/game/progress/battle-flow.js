@@ -39,11 +39,11 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
           state => canReflectFlow(battleEffect.result)
             ? reflectFlow(state)
             : [],
+          state => [rightItself(state, battleEffect)],
           state => {
             const endJudge = gameEndJudging(state);
             if (endJudge.type === 'GameContinue') {
               return gameFlow(state, [
-                state => [rightItself(state, battleEffect)],
                 state => [updateRemainingTurn(state)],
                 state => [turnChange(state)],
                 state => [inputCommand(state)]
