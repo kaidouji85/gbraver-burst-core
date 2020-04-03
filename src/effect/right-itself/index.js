@@ -6,8 +6,7 @@ import type {Battle, GameState} from "../..";
  * 防御側の体勢を整える
  *
  * @param lastState 最新の状態
- * @param result 戦闘結果
- * @param defender 防御側のプレイヤーID
+ * @param battle 戦闘
  * @return 更新結果
  */
 export function rightItself(lastState: GameState, battle: Battle): GameState {

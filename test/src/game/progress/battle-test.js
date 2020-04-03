@@ -99,7 +99,6 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
   t.is(result.length, 3);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');
-  t.is(result[2].effect.name, 'GameEnd');
   t.deepEqual(result[2].effect, {
     name: 'GameEnd',
     result: {
