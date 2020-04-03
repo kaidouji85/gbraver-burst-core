@@ -96,11 +96,10 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
   }];
 
   const result = progress(lastState, commands);
-  t.is(result.length, 4);
+  t.is(result.length, 3);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');
-  t.is(result[2].effect.name, 'RightItself');
-  t.deepEqual(result[3].effect, {
+  t.deepEqual(result[2].effect, {
     name: 'GameEnd',
     result: {
       type: 'GameOver',
@@ -156,12 +155,11 @@ test('ダメージ反射でHPが0になった場合は引き分け', t => {
   }];
 
   const result = progress(lastState, commands);
-  t.is(result.length, 5);
+  t.is(result.length, 4);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');
   t.is(result[2].effect.name, 'Reflect');
-  t.is(result[3].effect.name, 'RightItself');
-  t.deepEqual(result[4].effect, {
+  t.deepEqual(result[3].effect, {
     name: 'GameEnd',
     result: {
       type: 'EvenMatch',

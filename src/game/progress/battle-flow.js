@@ -39,7 +39,9 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
           state => canReflectFlow(battleEffect.result)
             ? reflectFlow(state)
             : [],
-          state => [rightItself(state, battleEffect)],
+          state => !doneBattle.effect.isDeath
+            ? [rightItself(state, battleEffect)]
+            : [],
           state => {
             const endJudge = gameEndJudging(state);
             if (endJudge.type === 'GameContinue') {
