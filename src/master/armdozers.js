@@ -41,7 +41,7 @@ export const ArmDozers: Armdozer[] = [
     burst: {
       type: 'BuffPower',
       recoverBattery: 3,
-      buffPower: 1000,
+      buffPower: 900,
       duration: 2
     }
   },
@@ -56,7 +56,7 @@ export const ArmDozers: Armdozer[] = [
     burst: {
       type: 'LightningBarrier',
       recoverBattery: 3,
-      damage: 1000,
+      damage: 1100,
       duration: 2
     }
   }
