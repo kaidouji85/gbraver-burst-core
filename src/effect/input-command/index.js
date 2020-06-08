@@ -4,7 +4,6 @@ import type {GameState} from "../../game/state/game-state";
 import type {NoChoice, Selectable} from "./input-command";
 import type {Command, PlayerCommand} from "../../command/command";
 import type {PlayerState} from "../../game/state/player-state";
-import {isSelectableCommand} from "./is-selectable-command";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 
@@ -42,10 +41,7 @@ export function inputCommand(lastState: GameState, commands: PlayerCommand[]): G
       return selectable(player);
     }
 
-    const canNotSelectCommand = myCommand.command.type === 'BATTERY_COMMAND'
-      && otherCommand.command.type === 'BURST_COMMAND'
-      && other.armdozer.burst.type !== 'SKIP_TURN';
-    return canNotSelectCommand
+    return isNoChoice(myCommand.command, otherCommand.command, other)
       ? noChoice(player, myCommand.command)
       : selectable(player);
   });
@@ -57,6 +53,20 @@ export function inputCommand(lastState: GameState, commands: PlayerCommand[]): G
       players: playerCommands,
     }
   };
+}
+
+/**
+ * コマンド選択不可能か否かを判定する
+ *
+ * @param myCommand 自分のコマンド
+ * @param otherCommand 相手のコマンド
+ * @param other 相手のステータス
+ * @return {boolean}
+ */
+export function isNoChoice(myCommand: Command, otherCommand: Command, other: PlayerState) {
+  return myCommand.type === 'BATTERY_COMMAND'
+    && otherCommand.type === 'BURST_COMMAND'
+    && other.armdozer.burst.type !== 'SKIP_TURN';
 }
 
 /**
@@ -89,58 +99,5 @@ function noChoice(player: PlayerState, command: Command): NoChoice {
     playerId: player.playerId,
     selectable: false,
     nextTurnCommand: command
-  };
-}
-
-// TODO 削除する
-/**
- * コマンド入力フェイズのステートを生成する
- * ゲーム開始時、誰もバーストコマンドを選択したなかった場合、本関数でコマンド入力フェイズの効果を解決すること
- *
- * @param lastState 更新前の状態
- * @return コマンド入力状態
- */
-export function delete_inputCommand(lastState: GameState): GameState {
-  return {
-    ...lastState,
-    effect: {
-      name: 'InputCommand',
-      players: lastState.players.map(v => ({
-        playerId: v.playerId,
-        selectable: true,
-        command: [
-          ...selectableBatteryCommand(v.armdozer),
-          ...selectableBurstCommand(v.armdozer)
-        ]
-      }))
-    }
-  };
-}
-
-// TODO 削除する
-/**
- * バーストフェイズ後のコマンド入力フェイズのステートを生成する
- * 本関数はいずれかのプレイヤーがバーストコマンドを選択した場合に、実行される
- *
- * @param lastState 更新前の状態
- * @param commands バーストフェイズ発生時に各プレイヤーが選択したコマンド
- * @returns コマンド入力状態
- */
-export function inputCommandAfterBurst(lastState: GameState, commands: PlayerCommand[]): GameState {
-  return {
-    ...lastState,
-    effect: {
-      name: 'InputCommand',
-      players: lastState.players.map(player => {
-        const playerCommand = commands.find(v => v.playerId === player.playerId);
-        if (!playerCommand) {
-          return selectable(player);
-        }
-
-        return isSelectableCommand(playerCommand.command)
-          ? selectable(player)
-          : noChoice(player, playerCommand.command);
-      })
-    }
   };
 }
