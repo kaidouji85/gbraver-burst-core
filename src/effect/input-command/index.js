@@ -1,9 +1,9 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState} from "../../game/state/game-state";
 import type {NoChoice, Selectable} from "./input-command";
 import type {Command, PlayerCommand} from "../../command/command";
-import type {PlayerState} from "../../state/player-state";
+import type {PlayerState} from "../../game/state/player-state";
 import {isSelectableCommand} from "./is-selectable-command";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";

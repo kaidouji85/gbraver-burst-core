@@ -5,7 +5,7 @@ import type {GameState, PlayerState} from "../../../../src";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {skipTurn} from "../../../../src/effect/burst/skip-turn";
-import type {SkipTurn} from "../../../../src/player/armdozer/burst";
+import type {SkipTurn} from "../../../../src/player/burst";
 
 test('スキップターンが正しく処理できる', t => {
   const burstPlayer: PlayerState = {

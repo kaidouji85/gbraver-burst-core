@@ -1,8 +1,8 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState} from "../../game/state/game-state";
 import type {PlayerId} from "../../player/player";
-import type {BuffPower, LightningBarrier, RecoverBattery, SkipTurn} from "../../player/armdozer/burst";
+import type {BuffPower, LightningBarrier, RecoverBattery, SkipTurn} from "../../player/burst";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {lightningBarrier} from "./lightning-barrier";

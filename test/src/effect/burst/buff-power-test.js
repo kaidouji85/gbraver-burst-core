@@ -4,7 +4,7 @@ import test from 'ava';
 import {buffPower} from "../../../../src/effect/burst/buff-power";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
-import type {BuffPower} from "../../../../src/player/armdozer/burst";
+import type {BuffPower} from "../../../../src/player/burst";
 import type {GameState, PlayerState} from "../../../../src";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 

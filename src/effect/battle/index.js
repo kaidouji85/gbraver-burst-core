@@ -1,8 +1,8 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
-import {isPlayerDeath} from "../../state/player-state";
+import type {GameState} from "../../game/state/game-state";
+import type {PlayerState} from "../../game/state/player-state";
+import {isPlayerDeath} from "../../game/state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 import {battleResult} from "./result/battle-result";
 import {updateDefender} from "./players/update-defender";

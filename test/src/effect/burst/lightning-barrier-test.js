@@ -4,8 +4,8 @@ import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {lightningBarrier} from "../../../../src/effect/burst/lightning-barrier";
-import type {LightningBarrier} from "../../../../src/player/armdozer/burst";
-import type {PlayerState} from "../../../../src/state/player-state";
+import type {LightningBarrier} from "../../../../src/player/burst";
+import type {PlayerState} from "../../../../src/game/state/player-state";
 import type {GameState} from "../../../../src";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 

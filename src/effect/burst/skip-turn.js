@@ -1,7 +1,7 @@
 // @flow
 
 import type {GameState, PlayerId, PlayerState} from "../..";
-import type {SkipTurn} from "../../player/armdozer/burst";
+import type {SkipTurn} from "../../player/burst";
 import {burstRecoverBattery} from "./burst-recover-battery";
 
 /**

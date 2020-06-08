@@ -3,7 +3,7 @@
 import test from 'ava';
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {recoverBattery} from "../../../../src/effect/burst/recover-battery";
-import type {PlayerState} from "../../../../src/state/player-state";
+import type {PlayerState} from "../../../../src/game/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import type {GameState, RecoverBattery} from "../../../../src";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";

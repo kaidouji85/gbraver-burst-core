@@ -1,6 +1,6 @@
 // @flow
 import type {Player} from "../../player/player";
-import type {GameState} from "../../state/game-state";
+import type {GameState} from "../state/game-state";
 import {startGame} from "../../effect/start-game";
 import {inputCommand} from "../../effect/input-command";
 
