@@ -1,37 +1,52 @@
 // @flow
 
-import type {Burst, LightningBarrier} from '../../player/armdozer/burst';
-import type {PlayerState, PlayerStateX} from '../../state/player-state';
-import type {ArmdozerState, ArmdozerStateX} from '../../state/armdozer-state';
-import {getBurstRecoverBattery} from "./get-burst-recover-battery";
+import type {LightningBarrier} from '../../player/armdozer/burst';
+import type {PlayerState} from '../../state/player-state';
+import {burstRecoverBattery} from "./get-burst-recover-battery";
+import type {GameState, PlayerId} from "../..";
 
 /**
- * 電撃バリアの効果を適用する
+ * バースト 電撃バリア
  *
- * @param burstPlayer バーストするプレイヤー
- * @param otherPlayer それ以外のプレイヤー
+ * @param lastState 最新状態
+ * @param burstPlayerId バーストするプレイヤーID
+ * @param burst バースト情報
  * @return 更新結果
  */
-export function lightningBarrier(burstPlayer: PlayerStateX<LightningBarrier>, otherPlayer: PlayerState): PlayerState[] {
-  const castedArmdozer: ArmdozerState = ((burstPlayer.armdozer: any): ArmdozerStateX<Burst | typeof burstPlayer.armdozer.burst>);
-  return [
-    {
-      ...burstPlayer,
-      armdozer: {
-        ...burstPlayer.armdozer,
-        enableBurst: false,
-        battery: getBurstRecoverBattery(castedArmdozer),
-        effects: [
-          ...burstPlayer.armdozer.effects,
-          {
-            type: 'TryReflect',
-            damage: burstPlayer.armdozer.burst.damage,
-            effect: 'Lightning',
-            remainingTurn: burstPlayer.armdozer.burst.duration
-          }
-        ]
-      }
-    },
-    otherPlayer
-  ];
+export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, burst: LightningBarrier): GameState {
+  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+  if (!burstPlayer) {
+    return lastState;
+  }
+
+  const updatedBurstPlayer: PlayerState = {
+    ...burstPlayer,
+    armdozer: {
+      ...burstPlayer.armdozer,
+      enableBurst: false,
+      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
+      effects: [
+        ...burstPlayer.armdozer.effects,
+        {
+          type: 'TryReflect',
+          damage: burst.damage,
+          effect: 'Lightning',
+          remainingTurn: burst.duration
+        }
+      ]
+    }
+  };
+  const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
+    ? updatedBurstPlayer
+    : player
+  );
+  return {
+    ...lastState,
+    players: updatedPlayers,
+    effect: {
+      name: 'BurstEffect',
+      burstPlayer: burstPlayerId,
+      burst: burst,
+    }
+  };
 }
