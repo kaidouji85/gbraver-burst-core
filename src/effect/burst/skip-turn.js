@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerState, ArmdozerStateX, Burst, GameState, PlayerState} from "../..";
+import type {ArmdozerState, ArmdozerStateX, Burst, GameState, PlayerId, PlayerState} from "../..";
 import type {SkipTurn} from "../../player/armdozer/burst";
 import {getBurstRecoverBattery} from "./get-burst-recover-battery";
 
@@ -8,11 +8,16 @@ import {getBurstRecoverBattery} from "./get-burst-recover-battery";
  * スキップターンの処理
  *
  * @param lastState 最新の状態
- * @param burstPlayer バーストするプレイヤー
+ * @param burstPlayerId バーストするプレイヤー
  * @param skipTurn スキップターンの内容
  * @return 更新結果
  */
-export function skipTurn(lastState: GameState, burstPlayer: PlayerState, skipTurn: SkipTurn): GameState {
+export function skipTurn(lastState: GameState, burstPlayerId: PlayerId, skipTurn: SkipTurn): GameState {
+  const burstPlayer = lastState.players.find(player => player.playerId === burstPlayerId);
+  if (!burstPlayer) {
+    return lastState;
+  }
+
   const castedBurstArmdozer: ArmdozerState = ((burstPlayer.armdozer: any): ArmdozerStateX<Burst | typeof burstPlayer.armdozer.burst>);
   const updatedBurstPlayer: PlayerState = {
     ...burstPlayer,

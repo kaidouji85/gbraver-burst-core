@@ -7,6 +7,7 @@ import type {BuffPower, LightningBarrier, RecoverBattery, SkipTurn} from "../../
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {lightningBarrier} from "./lightning-barrier";
+import {skipTurn} from "./skip-turn";
 
 /**
  * バーストを実施する
@@ -20,6 +21,11 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState 
   const otherPlayer = lastState.players.find(v => v.playerId !== burstPlayerId);
   if (!burstPlayer || !otherPlayer) {
     return lastState;
+  }
+
+  if (burstPlayer.armdozer.burst.type === 'SkipTurn') {
+    const skipTurnBurst: SkipTurn = burstPlayer.armdozer.burst;
+    return skipTurn(lastState, burstPlayerId, skipTurnBurst);
   }
 
   const updatedPlayers = updateForBurst(burstPlayer, otherPlayer);
