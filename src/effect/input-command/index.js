@@ -9,6 +9,24 @@ import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 
 /**
+ * ゲームスタート時だけに利用するInputCommand
+ * InputCommandはそのターンに入力したコマンドを参照する想定だが、
+ * ゲーム開始時にコマンド入力できないので、本関数を用意した
+ *
+ * @param lastState 最新状態
+ * @return 更新結果
+ */
+export function gameStartInputCommand(lastState: GameState): GameState {
+  return {
+    ...lastState,
+    effect: {
+      name: 'InputCommand',
+      players: lastState.players.map(v => selectable(v))
+    }
+  };
+}
+
+/**
  * コマンド入力フェイズのステートを生成する
  *
  * @param lastState 更新前の状態
@@ -16,7 +34,7 @@ import {selectableBurstCommand} from "./selectable-burst-command";
  * @return 更新結果
  */
 export function inputCommand(lastState: GameState, commands: PlayerCommand[]): GameState {
-  lastState.players.map(player => {
+  const playerCommands = lastState.players.map(player => {
     const myCommand = commands.find(command => command.playerId === player.playerId);
     const other = lastState.players.find(other => other.playerId !== player.playerId);
     const otherCommand = commands.find(command => command.playerId !== player.playerId);
@@ -27,10 +45,18 @@ export function inputCommand(lastState: GameState, commands: PlayerCommand[]): G
     const canNotSelectCommand = myCommand.command.type === 'BATTERY_COMMAND'
       && otherCommand.command.type === 'BURST_COMMAND'
       && other.armdozer.burst.type !== 'SKIP_TURN';
-    return canNotSelectCommand ? noSelectable(player, myCommand.command) : selectable(player);
+    return canNotSelectCommand
+      ? noChoice(player, myCommand.command)
+      : selectable(player);
   });
 
-  return lastState;
+  return {
+    ...lastState,
+    effect: {
+      name: 'InputCommand',
+      players: playerCommands,
+    }
+  };
 }
 
 /**
@@ -58,7 +84,7 @@ function selectable(player: PlayerState): Selectable {
  * @param command このターンの入力したコマンド
  * @return プレイヤーが次のターンに入力可能なコマンド
  */
-function noSelectable(player: PlayerState, command: Command): NoChoice {
+function noChoice(player: PlayerState, command: Command): NoChoice {
   return {
     playerId: player.playerId,
     selectable: false,
@@ -113,7 +139,7 @@ export function inputCommandAfterBurst(lastState: GameState, commands: PlayerCom
 
         return isSelectableCommand(playerCommand.command)
           ? selectable(player)
-          : noSelectable(player, playerCommand.command);
+          : noChoice(player, playerCommand.command);
       })
     }
   };

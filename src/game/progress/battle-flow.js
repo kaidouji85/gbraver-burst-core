@@ -10,7 +10,7 @@ import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
-import {delete_inputCommand} from "../../effect/input-command";
+import {inputCommand} from "../../effect/input-command";
 import {reflect} from "../../effect/reflect";
 import type {PlayerCommand} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
@@ -48,7 +48,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
               return gameFlow(state, [
                 state => [updateRemainingTurn(state)],
                 state => [turnChange(state)],
-                state => [delete_inputCommand(state)]
+                state => [inputCommand(state, commands)]
               ]);
             } else {
               return [gameEnd(state, endJudge)];

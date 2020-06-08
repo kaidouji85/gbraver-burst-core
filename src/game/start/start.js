@@ -2,7 +2,7 @@
 import type {Player} from "../../player/player";
 import type {GameState} from "../state/game-state";
 import {startGame} from "../../effect/start-game";
-import {delete_inputCommand} from "../../effect/input-command";
+import {gameStartInputCommand} from "../../effect/input-command";
 
 /**
  * ゲームの初期状態を生成する
@@ -15,6 +15,6 @@ export function start(player1: Player, player2: Player): GameState[] {
   const initialState = startGame(player1, player2);
   return [
     initialState,
-    delete_inputCommand(initialState)
+    gameStartInputCommand(initialState)
   ];
 }
