@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {inputCommand, inputCommandAfterBurst} from "../../../../src/effect/input-command";
+import {delete_inputCommand, inputCommandAfterBurst} from "../../../../src/effect/input-command";
 import type {GameState} from "../../../../src/game/state/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
@@ -35,7 +35,7 @@ test('コマンド入力フェイズの効果が正しく適用される', t => 
     ]
   };
 
-  const result = inputCommand(lastState);
+  const result = delete_inputCommand(lastState);
   t.deepEqual(result, {
     ...lastState,
     effect: {
