@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState, PlayerState} from "../..";
+import type {GameState} from "../..";
 import {isRemainArmdozerEffect, updateArmdozerEffect} from "./armdozer-effect";
 import type {EndArmdozerEffect} from "./update-remaining-turn";
 

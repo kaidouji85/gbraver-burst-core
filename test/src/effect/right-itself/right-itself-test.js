@@ -1,6 +1,6 @@
 import test from 'ava';
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import type {Battle, BattleResult, GameState} from "../../../../src";
+import type {Battle, GameState} from "../../../../src";
 import {rightItself} from "../../../../src/effect/right-itself";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
