@@ -1,8 +1,8 @@
 // @flow
 
-import type {ArmdozerState, ArmdozerStateX, Burst, GameState, PlayerId, PlayerState} from "../..";
+import type {GameState, PlayerId, PlayerState} from "../..";
 import type {SkipTurn} from "../../player/armdozer/burst";
-import {burstRecoverBattery, getBurstRecoverBattery} from "./get-burst-recover-battery";
+import {burstRecoverBattery} from "./burst-recover-battery";
 
 /**
  * スキップターンの処理

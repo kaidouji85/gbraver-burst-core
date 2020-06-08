@@ -2,7 +2,7 @@
 
 import type {PlayerState} from "../../state/player-state";
 import type {RecoverBattery} from "../../player/armdozer/burst";
-import {burstRecoverBattery} from "./get-burst-recover-battery";
+import {burstRecoverBattery} from "./burst-recover-battery";
 import type {GameState, PlayerId} from "../..";
 
 /**
