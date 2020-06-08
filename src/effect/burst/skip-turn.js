@@ -2,7 +2,7 @@
 
 import type {ArmdozerState, ArmdozerStateX, Burst, GameState, PlayerId, PlayerState} from "../..";
 import type {SkipTurn} from "../../player/armdozer/burst";
-import {getBurstRecoverBattery} from "./get-burst-recover-battery";
+import {burstRecoverBattery, getBurstRecoverBattery} from "./get-burst-recover-battery";
 
 /**
  * スキップターンの処理
@@ -18,12 +18,11 @@ export function skipTurn(lastState: GameState, burstPlayerId: PlayerId, skipTurn
     return lastState;
   }
 
-  const castedBurstArmdozer: ArmdozerState = ((burstPlayer.armdozer: any): ArmdozerStateX<Burst | typeof burstPlayer.armdozer.burst>);
   const updatedBurstPlayer: PlayerState = {
     ...burstPlayer,
     armdozer: {
       ...burstPlayer.armdozer,
-      battery: getBurstRecoverBattery(castedBurstArmdozer)
+      battery: burstRecoverBattery(burstPlayer.armdozer, skipTurn)
     }
   };
   const updatedPlayers: PlayerState[] = lastState.players
