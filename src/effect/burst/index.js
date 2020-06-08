@@ -33,6 +33,11 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState 
     return recoverBattery(lastState, burstPlayerId, recoverBatteryBurst);
   }
 
+  if (burstPlayer.armdozer.burst.type === 'BuffPower') {
+    const buffPowerBurst: BuffPower = burstPlayer.armdozer.burst;
+    return buffPower(lastState, burstPlayerId, buffPowerBurst);
+  }
+
   const updatedPlayers = updateForBurst(burstPlayer, otherPlayer);
   const sortedPlayers = lastState.players
     .map(player => updatedPlayers.find(v => v.playerId === player.playerId) || player);
@@ -55,12 +60,6 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState 
  * @return バースト実施後の状態
  */
 function updateForBurst(burstPlayer: PlayerState, otherPlayer: PlayerState): PlayerState[] {
-  if (burstPlayer.armdozer.burst.type === 'BuffPower') {
-    const buffPowerBurst: BuffPower = burstPlayer.armdozer.burst;
-    const buffPowerPlayer : PlayerStateX<BuffPower> = ((burstPlayer: any): PlayerStateX<typeof buffPowerBurst>);
-    return buffPower(buffPowerPlayer, otherPlayer);
-  }
-
   if (burstPlayer.armdozer.burst.type === 'LightningBarrier') {
     const lightningBarrierBurst: LightningBarrier = burstPlayer.armdozer.burst;
     const lightningBarrierPlayer: PlayerStateX<LightningBarrier> = ((burstPlayer: any): PlayerStateX<typeof lightningBarrierBurst>);
