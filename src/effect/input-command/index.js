@@ -66,7 +66,7 @@ export function inputCommand(lastState: GameState, commands: PlayerCommand[]): G
 export function isNoChoice(myCommand: Command, otherCommand: Command, other: PlayerState) {
   return myCommand.type === 'BATTERY_COMMAND'
     && otherCommand.type === 'BURST_COMMAND'
-    && other.armdozer.burst.type !== 'SKIP_TURN';
+    && other.armdozer.burst.type !== 'SkipTurn';
 }
 
 /**
