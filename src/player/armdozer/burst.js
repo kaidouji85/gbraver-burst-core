@@ -33,3 +33,10 @@ export type LightningBarrier = BurstRecoverBattery & {
   /** バリア継続ターン数 */
   duration: number,
 };
+
+/**
+ * スキップターン
+ */
+export type SkipTurn = BurstRecoverBattery & {
+  type: 'SkipTurn',
+};
