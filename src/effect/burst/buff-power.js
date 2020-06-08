@@ -24,7 +24,6 @@ export function buffPower(lastState: GameState, burstPlayerId: PlayerId, burst: 
     armdozer: {
       ...burstPlayer.armdozer,
       battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-      enableBurst: false,
       effects: [
         ...burstPlayer.armdozer.effects,
         {

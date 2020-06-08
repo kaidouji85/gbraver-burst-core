@@ -23,7 +23,6 @@ export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, 
     ...burstPlayer,
     armdozer: {
       ...burstPlayer.armdozer,
-      enableBurst: false,
       battery: burstRecoverBattery(burstPlayer.armdozer, burst),
       effects: [
         ...burstPlayer.armdozer.effects,

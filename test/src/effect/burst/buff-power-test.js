@@ -45,7 +45,6 @@ test('攻撃力バフが正しく適用される', t => {
         armdozer: {
           ...burstPlayer.armdozer,
           battery: 4,
-          enableBurst: false,
           effects: [
             {
               type: 'CorrectPower',

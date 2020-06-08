@@ -16,9 +16,20 @@ import {skipTurn} from "./skip-turn";
  * @return バースト実施後の状態
  */
 export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState {
+  const doneBurstEffect = burstEffect(lastState, burstPlayerId);
+  return disableBurst(doneBurstEffect, burstPlayerId);
+}
+
+/**
+ * バースト効果を適用する
+ *
+ * @param lastState 最新状態
+ * @param burstPlayerId バーストするプレイヤー
+ * @return 更新結果
+ */
+export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): GameState {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
-  const otherPlayer = lastState.players.find(v => v.playerId !== burstPlayerId);
-  if (!burstPlayer || !otherPlayer) {
+  if (!burstPlayer) {
     return lastState;
   }
 
@@ -43,4 +54,34 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState 
   }
 
   return lastState;
+}
+
+/**
+ * 指定したプレイヤーのバーストを利用不能にする
+ *
+ * @param lastState 最新状態
+ * @param burstPlayerId バーストしたプレイヤー
+ * @return 更新結果
+ */
+export function disableBurst(lastState: GameState, burstPlayerId: PlayerId): GameState {
+  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+  if (!burstPlayer) {
+    return lastState;
+  }
+
+  const updatedBurstPlayer = {
+    ...burstPlayer,
+    armdozer: {
+      ...burstPlayer.armdozer,
+      enableBurst: false
+    }
+  };
+  const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
+    ? updatedBurstPlayer
+    : player
+  );
+  return {
+    ...lastState,
+    players: updatedPlayers,
+  };
 }

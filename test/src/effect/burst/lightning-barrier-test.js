@@ -44,7 +44,6 @@ test('電撃バリアバーストの適用が正しくできる', t => {
         ...burstPlayer,
         armdozer: {
           ...burstPlayer.armdozer,
-          enableBurst: false,
           battery: 4,
           effects: [
             ...burstPlayer.armdozer.effects,

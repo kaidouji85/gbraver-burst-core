@@ -46,7 +46,6 @@ test('削除 バースト効果バッテリー回復が正しく適用される'
         armdozer: {
           ...burstPlayer.armdozer,
           battery: 5,
-          enableBurst: false
         }
       }
     ],

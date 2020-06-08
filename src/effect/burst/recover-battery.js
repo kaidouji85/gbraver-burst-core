@@ -24,7 +24,6 @@ export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, bu
     armdozer: {
       ...burstPlayer.armdozer,
       battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-      enableBurst: false,
     }
   };
   const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
