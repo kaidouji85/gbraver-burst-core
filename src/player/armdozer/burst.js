@@ -1,7 +1,7 @@
 // @flow
 
 /** バースト */
-export type Burst = RecoverBattery | BuffPower | LightningBarrier;
+export type Burst = RecoverBattery | BuffPower | LightningBarrier | SkipTurn;
 
 /**
  * 全バースト共通で利用するバッテリー回復プロパティ
