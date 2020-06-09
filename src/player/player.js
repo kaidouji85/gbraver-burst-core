@@ -1,7 +1,7 @@
 // @flow
 
-import type {ArmdozerX} from "./armdozer/armdozer";
-import type {Burst} from "./armdozer/burst";
+import type {ArmdozerX} from "./armdozer";
+import type {Burst} from "./burst";
 
 /** プレイヤーID */
 export type PlayerId = string;

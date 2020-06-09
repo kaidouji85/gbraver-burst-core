@@ -1,9 +1,9 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState} from "../state/game-state";
 import {gameFlow} from "./game-flow";
 import {burst} from "../../effect/burst";
-import {inputCommandAfterBurst} from "../../effect/input-command";
+import {inputCommand} from "../../effect/input-command";
 import type {PlayerCommand} from "../../command/command";
 
 /**
@@ -38,6 +38,6 @@ export function burstFlow(lastState: GameState, commands: PlayerCommand[]): Game
     state => defenderCommand.command.type === 'BURST_COMMAND'
       ? [burst(state, defenderCommand.playerId)]
       : [],
-    state => [inputCommandAfterBurst(state, commands)],
+    state => [inputCommand(state, commands)],
   ]);
 }

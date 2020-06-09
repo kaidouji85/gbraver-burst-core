@@ -1,6 +1,6 @@
 // @flow
 
-import type {Battle, PlayerId} from "../../src";
+import type {Battle} from "../../src";
 
 /** 空の戦闘情報 */
 export const EMPTY_BATTLE: Battle = {

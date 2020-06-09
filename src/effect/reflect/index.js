@@ -1,9 +1,9 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState} from "../../game/state/game-state";
 import type {PlayerId} from '../../player/player';
 import type {ReflectDamageEffect} from './reflect';
-import {isPlayerDeath} from "../../state/player-state";
+import {isPlayerDeath} from "../../game/state/player-state";
 
 /**
  * ダメージ反射を実行

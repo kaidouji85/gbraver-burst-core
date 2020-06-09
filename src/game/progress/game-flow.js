@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState} from "../state/game-state";
 
 /**
  * ステートヒストリー更新関数

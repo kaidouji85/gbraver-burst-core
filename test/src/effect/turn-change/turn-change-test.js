@@ -1,7 +1,7 @@
 // @flow
 
-import type {PlayerState} from "../../../../src/state/player-state";
-import type {GameState} from "../../../../src/state/game-state";
+import type {PlayerState} from "../../../../src/game/state/player-state";
+import type {GameState} from "../../../../src/game/state/game-state";
 import test from 'ava';
 import {turnChange} from "../../../../src/effect/turn-change";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
