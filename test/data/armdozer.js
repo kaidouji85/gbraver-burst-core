@@ -1,8 +1,8 @@
 // @flow
 
-import type {Armdozer} from "../../src/player/armdozer/armdozer";
-import type {ArmdozerState} from "../../src/state/armdozer-state";
-import type {Burst} from "../../src/player/armdozer/burst";
+import type {Armdozer} from "../../src/player/armdozer";
+import type {ArmdozerState} from "../../src/game/state/armdozer-state";
+import type {Burst} from "../../src/player/burst";
 
 /** 空のバースト */
 export const EMPTY_BURST: Burst = {

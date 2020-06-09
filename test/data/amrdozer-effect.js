@@ -1,6 +1,6 @@
 // @flow
 
-import type {CorrectPower, EmptyArmdozerEffect} from "../../src/state/armdozer-effect";
+import type {CorrectPower, EmptyArmdozerEffect} from "../../src/game/state/armdozer-effect";
 
 /** 空のアームドーザエフェクト */
 export const EMPTY_ARMDOZER_EFFECT: EmptyArmdozerEffect = {

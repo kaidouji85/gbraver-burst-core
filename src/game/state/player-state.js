@@ -1,8 +1,8 @@
 // @flow
 import type {ArmdozerStateX} from "./armdozer-state";
 import {createArmdozerState} from "./armdozer-state";
-import type {Player, PlayerId} from "../player/player";
-import type {Burst} from "../player/armdozer/burst";
+import type {Player, PlayerId} from "../../player/player";
+import type {Burst} from "../../player/burst";
 
 /**
  * プレイヤーの状態

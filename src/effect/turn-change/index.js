@@ -1,7 +1,7 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
+import type {GameState} from "../../game/state/game-state";
+import type {PlayerState} from "../../game/state/player-state";
 import {getNextActivePlayer} from "./next-active-player";
 import {getRecoveredBattery} from "./get-recovered-battery";
 

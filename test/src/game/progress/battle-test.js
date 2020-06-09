@@ -1,10 +1,10 @@
 // @flow
 
 import test from 'ava';
-import type {PlayerState} from "../../../../src/state/player-state";
+import type {PlayerState} from "../../../../src/game/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
-import type {GameState} from "../../../../src/state/game-state";
+import type {GameState} from "../../../../src/game/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {progress} from "../../../../src/game/progress";
 import type {PlayerCommand} from "../../../../src";

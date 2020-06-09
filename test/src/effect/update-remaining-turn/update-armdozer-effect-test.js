@@ -1,10 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {
-  isRemainArmdozerEffect,
-  updateArmdozerEffect
-} from "../../../../src/effect/update-remaning-turn/armdozer-effect";
+import {updateArmdozerEffect} from "../../../../src/effect/update-remaning-turn/armdozer-effect";
 import {EMPTY_ARMDOZER_EFFECT} from "../../../data/amrdozer-effect";
 
 test('アームドーザ効果の継続ターン数がマイナス1される', t => {

@@ -3,8 +3,8 @@
 import {gameFlow} from "./game-flow";
 import type {Battle} from '../../effect/battle/battle';
 import type {BattleResult} from '../../effect/battle/result/battle-result';
-import type {GameState} from '../../state/game-state';
-import type {TryReflect} from '../../state/armdozer-effect';
+import type {GameState} from '../state/game-state';
+import type {TryReflect} from '../state/armdozer-effect';
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
@@ -48,7 +48,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
               return gameFlow(state, [
                 state => [updateRemainingTurn(state)],
                 state => [turnChange(state)],
-                state => [inputCommand(state)]
+                state => [inputCommand(state, commands)]
               ]);
             } else {
               return [gameEnd(state, endJudge)];

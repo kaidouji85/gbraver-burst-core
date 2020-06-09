@@ -6,8 +6,8 @@ GブレイバーBURSTの戦闘ロジックを集めたものです。
 ## 使い方
 
 ```javascript
-import {GbraverBurstCore} from 'gbraver-burst-core';
-import {ArmDozers, ArmDozerIdList} from 'gbraber-burst-core';
+import {GbraverBurstCore} from 'gbraver-burst-game';
+import {ArmDozers, ArmDozerIdList} from 'gbraber-burst-game';
 
 function main() {
   const game = new GbraverBurstCore();
