@@ -1,12 +1,9 @@
 // @flow
 
 import type {GameState} from "../../game/state/game-state";
-import type {PlayerState} from "../../game/state/player-state";
-import {getRecoveredBattery} from "./get-recovered-battery";
+import {BATTERY_RECOVERY_VALUE, turnChangeRecoverBattery} from "./recover-battery";
 import type {ArmdozerEffect} from "../..";
-
-/** ターンチェンジの際に回復するバッテリー */
-export const BATTERY_RECOVERY_VALUE = 3;
+import {hasContinuousActivePlayer, removeContinuousActive} from "./continuous-active";
 
 /**
  * ターンチェンジを実行する
@@ -25,7 +22,7 @@ export function turnChange(lastState: GameState): GameState {
   const nextActivePlayer = isContinuousTurn
     ? activePlayer
     : notActivePlayer;
-  const updatedBattery = getRecoveredBattery(
+  const updatedBattery = turnChangeRecoverBattery(
     nextActivePlayer.armdozer.battery,
     nextActivePlayer.armdozer.maxBattery,
     BATTERY_RECOVERY_VALUE
@@ -55,29 +52,3 @@ export function turnChange(lastState: GameState): GameState {
   };
 }
 
-/**
- * 指定したプレイヤーがアクティブプレイヤー継続を持っているか否かを判定する
- *
- * @param player 判定対象
- * @return 判定結果、trueでアクティブプレイヤー継続を持っている
- */
-function hasContinuousActivePlayer(player: PlayerState): boolean {
-  return player.armdozer.effects
-    .filter(v => v.type === 'ContinuousActivePlayer')
-    .length > 0;
-}
-
-/**
- * アクティブプレイヤー継続を取り除く
- *
- * @param origin 処理対象
- * @return 処理結果
- */
-function removeContinuousActive(origin: ArmdozerEffect[]): ArmdozerEffect[] {
-  const removeTarget = origin.find(v => v.type === 'ContinuousActive');
-  if (!removeTarget) {
-    return origin;
-  }
-
-  return origin.filter(v => v!== removeTarget);
-}

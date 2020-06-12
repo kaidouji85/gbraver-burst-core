@@ -1,12 +1,12 @@
 // @flow
 
 import test from 'ava';
-import {getRecoveredBattery} from "../../../../src/effect/turn-change/get-recovered-battery";
+import {turnChangeRecoverBattery} from "../../../../src/effect/turn-change/recover-battery";
 
 test('回復量だけバッテリーに追加される', t => {
-  t.is(getRecoveredBattery(2, 5, 2), 4);
+  t.is(turnChangeRecoverBattery(2, 5, 2), 4);
 });
 
 test('バッテリー最大値以上にはならない', t => {
-  t.is(getRecoveredBattery(2, 5, 6), 5);
+  t.is(turnChangeRecoverBattery(2, 5, 6), 5);
 });
