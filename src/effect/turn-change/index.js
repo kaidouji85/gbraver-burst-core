@@ -1,12 +1,9 @@
 // @flow
 
 import type {GameState} from "../../game/state/game-state";
-import type {PlayerState} from "../../game/state/player-state";
-import {getNextActivePlayer} from "./next-active-player";
-import {getRecoveredBattery} from "./get-recovered-battery";
-
-/** ターンチェンジの際に回復するバッテリー */
-export const BATTERY_RECOVERY_VALUE = 3;
+import {BATTERY_RECOVERY_VALUE, turnChangeRecoverBattery} from "./recover-battery";
+import type {ArmdozerEffect} from "../..";
+import {hasContinuousActivePlayer, removeContinuousActive} from "./continuous-active";
 
 /**
  * ターンチェンジを実行する
@@ -15,35 +12,43 @@ export const BATTERY_RECOVERY_VALUE = 3;
  * @return ターンチェンジ後のゲームステート
  */
 export function turnChange(lastState: GameState): GameState {
-  const playerIdList = lastState.players.map(v => v.playerId);
-  const nextActivePlayerId = getNextActivePlayer(lastState.activePlayerId, playerIdList);
-  const updatedPlayerList = lastState.players.map(player => {
-    const isNextActive = player.playerId === nextActivePlayerId;
-    return isNextActive
-      ? updateAttacker(player)
-      : player;
-  });
+  const activePlayer = lastState.players.find(v => v.playerId === lastState.activePlayerId);
+  const notActivePlayer = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
+  if (!activePlayer || !notActivePlayer) {
+    return lastState;
+  }
+
+  const isContinuousTurn = hasContinuousActivePlayer(activePlayer);
+  const nextActivePlayer = isContinuousTurn
+    ? activePlayer
+    : notActivePlayer;
+  const updatedBattery = turnChangeRecoverBattery(
+    nextActivePlayer.armdozer.battery,
+    nextActivePlayer.armdozer.maxBattery,
+    BATTERY_RECOVERY_VALUE
+  );
+  const updatedEffects: ArmdozerEffect[] = isContinuousTurn
+    ? removeContinuousActive(nextActivePlayer.armdozer.effects)
+    : nextActivePlayer.armdozer.effects;
+  const updatedNextActivePlayer = {
+    ...nextActivePlayer,
+    armdozer: {
+      ...nextActivePlayer.armdozer,
+      battery: updatedBattery,
+      effects: updatedEffects
+    }
+  };
+  const updatedPlayerList = lastState.players.map(player =>
+    (player.playerId === updatedNextActivePlayer.playerId)
+      ? updatedNextActivePlayer
+      : player
+  );
 
   return {
     ...lastState,
-    activePlayerId: nextActivePlayerId,
+    activePlayerId: updatedNextActivePlayer.playerId,
     players: updatedPlayerList,
     effect: {name: 'TurnChange'}
   };
 }
 
-/**
- * ターンチェンジ 攻撃側のステータス更新
- *
- * @param player 更新前の攻撃側ステート
- * @return 更新結果
- */
-function updateAttacker(player: PlayerState): PlayerState {
-  return {
-    ...player,
-    armdozer: {
-      ...player.armdozer,
-      battery: getRecoveredBattery(player.armdozer.battery, player.armdozer.maxBattery, BATTERY_RECOVERY_VALUE),
-    }
-  }
-}

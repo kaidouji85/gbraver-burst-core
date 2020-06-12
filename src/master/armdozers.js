@@ -71,8 +71,8 @@ export const ArmDozers: Armdozer[] = [
     speed: 2200,
     appearance: ArmdozerAppearances.WING_DOZER,
     burst: {
-      type: 'SkipTurn',
-      recoverBattery: 4,
+      type: 'ContinuousAttack',
+      recoverBattery: 3,
     },
   },
 ];

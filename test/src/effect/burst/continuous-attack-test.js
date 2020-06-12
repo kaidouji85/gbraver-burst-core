@@ -2,19 +2,20 @@
 
 import test from 'ava';
 import type {GameState, PlayerState} from "../../../../src";
-import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
-import {skipTurn} from "../../../../src/effect/burst/skip-turn";
-import type {SkipTurn} from "../../../../src/player/burst";
+import {EMPTY_GAME_STATE} from "../../../data/game-state";
+import type {ContinuousAttack} from "../../../../src/player/burst";
+import {continuousAttack} from "../../../../src/effect/burst/continuous-attack";
 
-test('スキップターンが正しく処理できる', t => {
+test('連続攻撃バーストが正しく適用できる', t => {
   const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burstPlayer',
     armdozer: {
       ...EMPTY_PLAYER_STATE.armdozer,
       battery: 1,
-      maxBattery: 5
+      maxBattery: 5,
+      effects: []
     }
   };
   const otherPlayer: PlayerState = {
@@ -23,27 +24,31 @@ test('スキップターンが正しく処理できる', t => {
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    activePlayerId: otherPlayer.playerId,
     players: [otherPlayer, burstPlayer]
   };
-  const burst: SkipTurn = {
-    type: 'SkipTurn',
+  const burst: ContinuousAttack = {
+    type: 'ContinuousAttack',
     recoverBattery: 3,
   };
 
-  const result = skipTurn(lastState, burstPlayer.playerId, burst);
+  const result = continuousAttack(lastState, burstPlayer.playerId, burst);
   const expected = {
     ...lastState,
-    activePlayerId: burstPlayer.playerId,
     players: [
       otherPlayer,
       {
         ...burstPlayer,
         armdozer: {
           ...burstPlayer.armdozer,
-          battery: 4
+          battery: 4,
+          effects: [
+            {
+              type: 'ContinuousActivePlayer',
+              remainingTurn: Infinity
+            }
+          ]
         }
-      }
+      },
     ],
     effect: {
       name: 'BurstEffect',
