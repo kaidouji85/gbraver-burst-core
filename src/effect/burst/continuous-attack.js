@@ -1,7 +1,8 @@
 // @flow
 
-import type {GameState, PlayerId} from "../..";
+import type {GameState, PlayerId, PlayerState} from "../..";
 import type {ContinuousAttack} from "../../player/burst";
+import {burstRecoverBattery} from "./burst-recover-battery";
 
 /**
  * 連続攻撃
@@ -11,5 +12,36 @@ import type {ContinuousAttack} from "../../player/burst";
  * @param burst バースト効果
  */
 export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, burst: ContinuousAttack): GameState {
-  return lastState;
+  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+  if (!burstPlayer) {
+    return lastState;
+  }
+
+  const updatedBurstPlayer: PlayerState = {
+    ...burstPlayer,
+    armdozer: {
+      ...burstPlayer.armdozer,
+      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
+      effects: [
+        ...burstPlayer.armdozer.effects,
+        {
+          type: 'ContinuousTurn',
+          remainingTurn: burst.duration
+        }
+      ]
+    }
+  };
+  const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
+    ? updatedBurstPlayer
+    : player
+  );
+  return {
+    ...lastState,
+    players: updatedPlayers,
+    effect: {
+      name: 'BurstEffect',
+      burstPlayer: burstPlayerId,
+      burst: burst,
+    }
+  };
 }

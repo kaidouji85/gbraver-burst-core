@@ -2,11 +2,12 @@
 
 import type {GameState} from "../../game/state/game-state";
 import type {PlayerId} from "../../player/player";
-import type {BuffPower, LightningBarrier, RecoverBattery, SkipTurn} from "../../player/burst";
+import type {BuffPower, ContinuousAttack, LightningBarrier, RecoverBattery, SkipTurn} from "../../player/burst";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {lightningBarrier} from "./lightning-barrier";
 import {skipTurn} from "./skip-turn";
+import {continuousAttack} from "./continuous-attack";
 
 /**
  * バーストを実施する
@@ -51,6 +52,11 @@ export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): Game
   if (burstPlayer.armdozer.burst.type === 'LightningBarrier') {
     const lightningBarrierBurst: LightningBarrier = burstPlayer.armdozer.burst;
     return lightningBarrier(lastState, burstPlayerId, lightningBarrierBurst);
+  }
+
+  if (burstPlayer.armdozer.burst.type === 'ContinuousAttack') {
+    const continuousAttackBurst: ContinuousAttack = burstPlayer.armdozer.burst;
+    return continuousAttack(lastState, burstPlayerId, continuousAttackBurst);
   }
 
   return lastState;
