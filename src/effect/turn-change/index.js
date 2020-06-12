@@ -3,7 +3,7 @@
 import type {GameState} from "../../game/state/game-state";
 import type {PlayerState} from "../../game/state/player-state";
 import {getRecoveredBattery} from "./get-recovered-battery";
-import {getNextActivePlayer} from "./next-active-player";
+import type {ArmdozerEffect} from "../..";
 
 /** ターンチェンジの際に回復するバッテリー */
 export const BATTERY_RECOVERY_VALUE = 3;
@@ -15,37 +15,69 @@ export const BATTERY_RECOVERY_VALUE = 3;
  * @return ターンチェンジ後のゲームステート
  */
 export function turnChange(lastState: GameState): GameState {
-  const nextActivePlayer = getNextActivePlayer(lastState);
-  if (!nextActivePlayer) {
+  const activePlayer = lastState.players.find(v => v.playerId === lastState.activePlayerId);
+  const notActivePlayer = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
+  if (!activePlayer || !notActivePlayer) {
     return lastState;
   }
 
+  const isContinuousTurn = hasContinuousActivePlayer(activePlayer);
+  const nextActivePlayer = isContinuousTurn
+    ? activePlayer
+    : notActivePlayer;
+  const updatedBattery = getRecoveredBattery(
+    nextActivePlayer.armdozer.battery,
+    nextActivePlayer.armdozer.maxBattery,
+    BATTERY_RECOVERY_VALUE
+  );
+  const updatedEffects: ArmdozerEffect[] = isContinuousTurn
+    ? removeContinuousActive(nextActivePlayer.armdozer.effects)
+    : nextActivePlayer.armdozer.effects;
+  const updatedNextActivePlayer = {
+    ...nextActivePlayer,
+    armdozer: {
+      ...nextActivePlayer.armdozer,
+      battery: updatedBattery,
+      effects: updatedEffects
+    }
+  };
   const updatedPlayerList = lastState.players.map(player =>
-    (player.playerId === nextActivePlayer.playerId)
-      ? updateAttacker(player)
+    (player.playerId === updatedNextActivePlayer.playerId)
+      ? updatedNextActivePlayer
       : player
   );
 
   return {
     ...lastState,
-    activePlayerId: nextActivePlayer.playerId,
+    activePlayerId: updatedNextActivePlayer.playerId,
     players: updatedPlayerList,
     effect: {name: 'TurnChange'}
   };
 }
 
 /**
- * ターンチェンジ 攻撃側のステータス更新
+ * 指定したプレイヤーがアクティブプレイヤー継続を持っているか否かを判定する
  *
- * @param player 更新前の攻撃側ステート
- * @return 更新結果
+ * @param player 判定対象
+ * @return 判定結果、trueでアクティブプレイヤー継続を持っている
  */
-function updateAttacker(player: PlayerState): PlayerState {
-  return {
-    ...player,
-    armdozer: {
-      ...player.armdozer,
-      battery: getRecoveredBattery(player.armdozer.battery, player.armdozer.maxBattery, BATTERY_RECOVERY_VALUE),
-    }
+function hasContinuousActivePlayer(player: PlayerState): boolean {
+  return player.armdozer.effects
+    .filter(v => v.type === 'ContinuousActivePlayer')
+    .length > 0;
+}
+
+/**
+ * アクティブプレイヤー継続を取り除く
+ *
+ * @param origin 処理対象
+ * @return 処理結果
+ */
+function removeContinuousActive(origin: ArmdozerEffect[]): ArmdozerEffect[] {
+  const removeTarget = origin.find(v => v.type === 'ContinuousActive');
+  if (!removeTarget) {
+    return origin;
   }
+
+  return origin.filter(v => v!== removeTarget);
 }
