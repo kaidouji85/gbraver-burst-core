@@ -21,7 +21,7 @@ export function hasContinuousActivePlayer(player: PlayerState): boolean {
  * @return 処理結果
  */
 export function removeContinuousActive(origin: ArmdozerEffect[]): ArmdozerEffect[] {
-  const removeTarget = origin.find(v => v.type === 'ContinuousActive');
+  const removeTarget = origin.find(v => v.type === 'ContinuousActivePlayer');
   if (!removeTarget) {
     return origin;
   }
