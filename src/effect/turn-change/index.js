@@ -2,8 +2,8 @@
 
 import type {GameState} from "../../game/state/game-state";
 import type {PlayerState} from "../../game/state/player-state";
-import {getNotActivePlayer} from "./not-active-player";
 import {getRecoveredBattery} from "./get-recovered-battery";
+import {getNextActivePlayer} from "./next-active-player";
 
 /** ターンチェンジの際に回復するバッテリー */
 export const BATTERY_RECOVERY_VALUE = 3;
@@ -32,26 +32,6 @@ export function turnChange(lastState: GameState): GameState {
     players: updatedPlayerList,
     effect: {name: 'TurnChange'}
   };
-}
-
-export function hasContinuousActivePlayer(player: PlayerState): boolean {
-  return player.armdozer.effects
-    .filter(v => v.type === 'ContinuousActivePlayer')
-    .length > 0;
-}
-
-export function getNextActivePlayer(lastState: GameState): ?PlayerState {
-  const activePlayer = lastState.players.find(v => v.playerId === lastState.activePlayerId);
-  const notActivePlayer = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
-  if (!activePlayer || !notActivePlayer) {
-    return null;
-  }
-
-  if (hasContinuousActivePlayer(activePlayer)) {
-    return activePlayer;
-  }
-
-  return notActivePlayer;
 }
 
 /**
