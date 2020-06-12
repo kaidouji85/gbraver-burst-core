@@ -6,7 +6,7 @@ import type {ReflectDamageEffect} from "../../effect/reflect/reflect";
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
  */
-export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower | TryReflect;
+export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower | TryReflect | ContinuousActivePlayer;
 
 /**
  * 何もしない効果
@@ -46,4 +46,17 @@ export type TryReflect = {
 
   /** 効果継続ターン */
   remainingTurn: number
+};
+
+/**
+ * アクティブプレイヤー継続
+ */
+export type ContinuousActivePlayer = {
+  type: 'ContinuousActivePlayer',
+
+  /**
+   * 効果継続ターン
+   * 本プロパティには必ずInfinityをセットすること
+   */
+  remainingTurn: typeof Infinity,
 };

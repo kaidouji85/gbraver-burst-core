@@ -1,7 +1,7 @@
 // @flow
 
 /** バースト */
-export type Burst = RecoverBattery | BuffPower | LightningBarrier | SkipTurn;
+export type Burst = RecoverBattery | BuffPower | LightningBarrier | ContinuousAttack;
 
 /**
  * 全バースト共通で利用するバッテリー回復プロパティ
@@ -35,8 +35,8 @@ export type LightningBarrier = BurstRecoverBattery & {
 };
 
 /**
- * スキップターン
+ * 連続攻撃
  */
-export type SkipTurn = BurstRecoverBattery & {
-  type: 'SkipTurn',
-};
+export type ContinuousAttack = BurstRecoverBattery & {
+  type: 'ContinuousAttack',
+}
