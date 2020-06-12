@@ -9,7 +9,7 @@ import type {PlayerId} from "../../player/player";
  * @param playerIdList ゲームに参加しているプレイヤーのリスト
  * @return 次ターンのアクティブプレイヤー
  */
-export function getNextActivePlayer(activePlayer: PlayerId, playerIdList: PlayerId[]): PlayerId {
+export function getNotActivePlayer(activePlayer: PlayerId, playerIdList: PlayerId[]): PlayerId {
   const notActivePlayer = playerIdList.filter(v => v !== activePlayer);
   if (notActivePlayer.length !== 1) {
     return '';
