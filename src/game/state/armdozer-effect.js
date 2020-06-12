@@ -54,6 +54,9 @@ export type TryReflect = {
 export type ContinuousActivePlayer = {
   type: 'ContinuousTurn',
 
-  /** 効果継続ターン */
-  remainingTurn: number,
+  /**
+   * 効果継続ターン
+   * 本プロパティには必ずInfinityをセットすること
+   */
+  remainingTurn: typeof Infinity,
 };

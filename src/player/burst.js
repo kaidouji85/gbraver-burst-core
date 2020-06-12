@@ -47,6 +47,4 @@ export type SkipTurn = BurstRecoverBattery & {
  */
 export type ContinuousAttack = BurstRecoverBattery & {
   type: 'ContinuousAttack',
-  /** 連続攻撃回数 */
-  duration: number,
 }
