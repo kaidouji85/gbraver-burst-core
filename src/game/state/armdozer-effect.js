@@ -52,7 +52,7 @@ export type TryReflect = {
  * アクティブプレイヤー継続
  */
 export type ContinuousActivePlayer = {
-  type: 'ContinuousTurn',
+  type: 'ContinuousActivePlayer',
 
   /**
    * 効果継続ターン

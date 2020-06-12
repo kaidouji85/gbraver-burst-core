@@ -25,7 +25,7 @@ export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, 
       effects: [
         ...burstPlayer.armdozer.effects,
         {
-          type: 'ContinuousTurn',
+          type: 'ContinuousActivePlayer',
           remainingTurn: Infinity
         }
       ]
