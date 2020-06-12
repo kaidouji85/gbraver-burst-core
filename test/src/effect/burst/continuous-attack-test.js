@@ -4,7 +4,7 @@ import test from 'ava';
 import type {GameState, PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import type {ContinuousAttack, SkipTurn} from "../../../../src/player/burst";
+import type {ContinuousAttack} from "../../../../src/player/burst";
 import {continuousAttack} from "../../../../src/effect/burst/continuous-attack";
 
 test('連続攻撃バーストが正しく適用できる', t => {
@@ -28,6 +28,7 @@ test('連続攻撃バーストが正しく適用できる', t => {
   };
   const burst: ContinuousAttack = {
     type: 'ContinuousAttack',
+    recoverBattery: 3,
   };
 
   const result = continuousAttack(lastState, burstPlayer.playerId, burst);
@@ -39,6 +40,7 @@ test('連続攻撃バーストが正しく適用できる', t => {
         ...burstPlayer,
         armdozer: {
           ...burstPlayer.armdozer,
+          battery: 4,
           effects: [
             {
               type: 'ContinuousActivePlayer',

@@ -52,25 +52,3 @@ test('違いにバーストコマンドの場合、操作可能である', t => 
   const result = isNoChoice(myCommand, otherCommand, other);
   t.false(result);
 });
-
-test('相手がスキップターンした場合、操作可能である', t => {
-  const myCommand: Command = {
-    type: 'BATTERY_COMMAND',
-    battery: 1
-  };
-  const otherCommand: Command = {
-    type: 'BURST_COMMAND'
-  }
-  const other: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    armdozer: {
-      ...EMPTY_PLAYER_STATE.armdozer,
-      burst: {
-        type: 'SkipTurn',
-        recoverBattery: 3
-      }
-    }
-  };
-  const result = isNoChoice(myCommand, otherCommand, other);
-  t.false(result);
-});
