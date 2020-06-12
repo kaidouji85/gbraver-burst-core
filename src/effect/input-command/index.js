@@ -41,7 +41,7 @@ export function inputCommand(lastState: GameState, commands: PlayerCommand[]): G
       return selectable(player);
     }
 
-    return isNoChoice(myCommand.command, otherCommand.command, other)
+    return isNoChoice(myCommand.command, otherCommand.command)
       ? noChoice(player, myCommand.command)
       : selectable(player);
   });
@@ -60,10 +60,9 @@ export function inputCommand(lastState: GameState, commands: PlayerCommand[]): G
  *
  * @param myCommand 自分のコマンド
  * @param otherCommand 相手のコマンド
- * @param other 相手のステータス
  * @return {boolean}
  */
-export function isNoChoice(myCommand: Command, otherCommand: Command, other: PlayerState) {
+export function isNoChoice(myCommand: Command, otherCommand: Command) {
   return myCommand.type === 'BATTERY_COMMAND'
     && otherCommand.type === 'BURST_COMMAND';
 }
