@@ -4,12 +4,12 @@ export {GbraverBurstCore} from './game/index';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, ArmdozerAppearance, Armdozer, ArmdozerX} from './player/armdozer';
-export type {Burst, RecoverBattery, BuffPower, LightningBarrier} from './player/burst';
+export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
 
 export type {GameState, GameStateX} from './game/state/game-state';
 export type {PlayerState, PlayerStateX} from './game/state/player-state';
 export type {ArmdozerState, ArmdozerStateX} from './game/state/armdozer-state';
-export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect} from './game/state/armdozer-effect';
+export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer} from './game/state/armdozer-effect';
 
 export type {Command, PlayerCommand, PlayerCommandX} from './command/command';
 export type {BatteryCommand} from './command/battery';
