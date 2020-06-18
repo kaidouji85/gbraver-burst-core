@@ -101,7 +101,6 @@ test('攻撃側がアクティブ継続を持つ場合、再び攻撃側のタ�
         ...attacker,
         armdozer: {
           ...attacker.armdozer,
-          battery: 5,
           effects: []
         }
       }
@@ -162,7 +161,6 @@ test('攻撃、防御両方がアクティブ継続を持つ場合、攻撃側�
         ...attacker,
         armdozer: {
           ...attacker.armdozer,
-          battery: 5,
           effects: []
         }
       }

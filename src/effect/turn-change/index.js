@@ -22,11 +22,9 @@ export function turnChange(lastState: GameState): GameState {
   const nextActivePlayer = isContinuousTurn
     ? activePlayer
     : notActivePlayer;
-  const updatedBattery = turnChangeRecoverBattery(
-    nextActivePlayer.armdozer.battery,
-    nextActivePlayer.armdozer.maxBattery,
-    BATTERY_RECOVERY_VALUE
-  );
+  const updatedBattery = isContinuousTurn
+    ? nextActivePlayer.armdozer.battery
+    : turnChangeRecoverBattery(nextActivePlayer.armdozer.battery, nextActivePlayer.armdozer.maxBattery, BATTERY_RECOVERY_VALUE);
   const updatedEffects: ArmdozerEffect[] = isContinuousTurn
     ? removeContinuousActive(nextActivePlayer.armdozer.effects)
     : nextActivePlayer.armdozer.effects;
@@ -51,4 +49,3 @@ export function turnChange(lastState: GameState): GameState {
     effect: {name: 'TurnChange'}
   };
 }
-
