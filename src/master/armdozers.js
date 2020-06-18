@@ -65,10 +65,10 @@ export const ArmDozers: Armdozer[] = [
   {
     id: ArmDozerIdList.WING_DOZER,
     name: 'ウィングドーザ',
-    maxHp: 2700,
+    maxHp: 2900,
     maxBattery: 5,
-    power: 1800,
-    speed: 2500,
+    power: 2000,
+    speed: 2200,
     appearance: ArmdozerAppearances.WING_DOZER,
     burst: {
       type: 'ContinuousAttack',

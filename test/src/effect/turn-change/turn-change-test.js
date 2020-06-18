@@ -76,7 +76,8 @@ test('違いにアクティブ継続がない場合に、防御側のターン�
       attacker
     ],
     effect: {
-      name: 'TurnChange'
+      name: 'TurnChange',
+      recoverBattery: 3
     }
   };
   t.deepEqual(result, expected);
@@ -101,13 +102,13 @@ test('攻撃側がアクティブ継続を持つ場合、再び攻撃側のタ�
         ...attacker,
         armdozer: {
           ...attacker.armdozer,
-          battery: 5,
           effects: []
         }
       }
     ],
     effect: {
-      name: 'TurnChange'
+      name: 'TurnChange',
+      recoverBattery: 0
     }
   };
   t.deepEqual(result, expected);
@@ -137,7 +138,8 @@ test('防御側のみアクティブ継続を持つ場合、防御側ターン�
       attacker
     ],
     effect: {
-      name: 'TurnChange'
+      name: 'TurnChange',
+      recoverBattery: 3
     }
   };
   t.deepEqual(result, expected);
@@ -162,13 +164,13 @@ test('攻撃、防御両方がアクティブ継続を持つ場合、攻撃側�
         ...attacker,
         armdozer: {
           ...attacker.armdozer,
-          battery: 5,
           effects: []
         }
       }
     ],
     effect: {
-      name: 'TurnChange'
+      name: 'TurnChange',
+      recoverBattery: 0
     }
   };
   t.deepEqual(result, expected);
