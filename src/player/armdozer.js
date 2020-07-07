@@ -5,9 +5,6 @@ import type {Burst} from "./burst";
 /** アームドーザID */
 export type ArmDozerId = string;
 
-/** アームドーザの外見 */
-export type ArmdozerAppearance = string;
-
 /**
  * アームドーザ基本情報
  *
@@ -26,8 +23,6 @@ export type ArmdozerX<X> = {
   power: number,
   /** スピード */
   speed: number,
-  /** アームドーザの外見を指定する */
-  appearance: ArmdozerAppearance,
   /** バースト */
   burst: X,
 };
