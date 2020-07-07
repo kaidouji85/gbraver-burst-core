@@ -9,14 +9,6 @@ export const ArmDozerIdList = {
   WING_DOZER: 'WING_DOZER',
 };
 
-/** アームドーザ外見ID マスタ */
-export const ArmdozerAppearances = {
-  SHIN_BRAVER: 'shin-braver',
-  NEO_LANDOZER: 'neo-landozer',
-  LIGHTNING_DOZER: 'lightning-dozer',
-  WING_DOZER: 'wing-dozer',
-};
-
 /** アームドーザのマスターデータ */
 export const ArmDozers: Armdozer[] = [
   {
@@ -26,7 +18,6 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 2000,
     speed: 2000,
-    appearance: ArmdozerAppearances.SHIN_BRAVER,
     burst: {
       type: 'RecoverBattery',
       recoverBattery: 5,
@@ -39,7 +30,6 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 2100,
     speed: 1800,
-    appearance: ArmdozerAppearances.NEO_LANDOZER,
     burst: {
       type: 'BuffPower',
       recoverBattery: 3,
@@ -54,7 +44,6 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 1900,
     speed: 1900,
-    appearance: ArmdozerAppearances.LIGHTNING_DOZER,
     burst: {
       type: 'LightningBarrier',
       recoverBattery: 3,
@@ -69,7 +58,6 @@ export const ArmDozers: Armdozer[] = [
     maxBattery: 5,
     power: 2000,
     speed: 2200,
-    appearance: ArmdozerAppearances.WING_DOZER,
     burst: {
       type: 'ContinuousAttack',
       recoverBattery: 3,

@@ -1,9 +1,9 @@
 // @flow
-export {ArmDozerIdList, ArmdozerAppearances, ArmDozers} from './master/armdozers';
+export {ArmDozerIdList, ArmDozers} from './master/armdozers';
 export {GbraverBurstCore} from './game/index';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
-export type {ArmDozerId, ArmdozerAppearance, Armdozer, ArmdozerX} from './player/armdozer';
+export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
 
 export type {GameState, GameStateX} from './game/state/game-state';
