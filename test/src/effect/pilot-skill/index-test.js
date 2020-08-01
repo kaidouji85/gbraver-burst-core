@@ -5,7 +5,6 @@ import type {GameState, PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import type {RecoverBatterySkill} from "../../../../src/player/pilot";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import {recoverBattery} from "../../../../src/effect/pilot-skill/recover-battery";
 import {EMPTY_PILOT} from "../../../data/pilot";
 import {pilotSkill} from "../../../../src/effect/pilot-skill";
 
@@ -37,7 +36,7 @@ test('パイロットスキルを正しく処理できる', t => {
     players: [other, invoker]
   };
 
-  const result = pilotSkill(state, invoker.playerId, skill);
+  const result = pilotSkill(state, invoker.playerId);
   const expected: GameState = {
     ...state,
     players: [

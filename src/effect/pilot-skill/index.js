@@ -12,8 +12,8 @@ import {recoverBattery} from "./recover-battery";
  * @param skill パイロットスキルの内容
  * @return 更新結果
  */
-export function pilotSkill(lastState: GameState, invokerId: PlayerId, skill: PilotSkill): GameState {
-  const donePilotSkill = pilotSkillEffect(lastState, invokerId, skill);
+export function pilotSkill(lastState: GameState, invokerId: PlayerId): GameState {
+  const donePilotSkill = pilotSkillEffect(lastState, invokerId);
   return disablePilotSkill(donePilotSkill, invokerId);
 }
 
@@ -25,9 +25,15 @@ export function pilotSkill(lastState: GameState, invokerId: PlayerId, skill: Pil
  * @param skill パイロットスキルの内容
  * @return 更新結果
  */
-function pilotSkillEffect(lastState: GameState, invokerId: PlayerId, skill: PilotSkill): GameState {
-  if (skill.type === 'RecoverBatterySkill') {
-    const recoverBatterySkill: RecoverBatterySkill = skill;
+function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameState {
+  const invoker = lastState.players.find(v => v.playerId === invokerId);
+  if (!invoker) {
+    return lastState;
+  }
+
+
+  if (invoker.pilot.skill.type === 'RecoverBatterySkill') {
+    const recoverBatterySkill: RecoverBatterySkill = invoker.pilot.skill;
     return recoverBattery(lastState, invokerId, recoverBatterySkill);
   }
 
