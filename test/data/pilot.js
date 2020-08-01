@@ -10,7 +10,7 @@ export const EMPTY_PILOT: Pilot = {
   id: 'EMPTY_PLAYER',
   name: '名無し',
   skill: {
-    type: 'BatteryRecoverSkill',
+    type: 'RecoverBatterySkill',
     recoverBattery: 2
   }
 };

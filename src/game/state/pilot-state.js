@@ -7,9 +7,7 @@ import type {Pilot, PilotSkill, PilotX} from "../../player/pilot";
  *
  * @type Skill パイロットスキル
  */
-export type PilotStateX<SKILL> = {
-  ...PilotX<SKILL>,
-
+export type PilotStateX<SKILL> = PilotX<SKILL> & {
   /**
    * パイロットスキルが発動可能かいなかのフラグ、trueで発動可能
    */

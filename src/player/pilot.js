@@ -8,13 +8,13 @@ export type PilotId = string;
 /**
  * パイロットスキル
  */
-export type PilotSkill = BatteryRecoverSkill;
+export type PilotSkill = RecoverBatterySkill;
 
 /**
  * パイロットスキル バッテリー回復
  */
-export type BatteryRecoverSkill = {
-  type: 'BatteryRecoverSkill',
+export type RecoverBatterySkill = {
+  type: 'RecoverBatterySkill',
   recoverBattery: number
 };
 
