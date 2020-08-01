@@ -6,20 +6,6 @@
 export type PilotId = string;
 
 /**
- * パイロット
- */
-export type Pilot = {
-  /** ID */
-  id: PilotId,
-
-  /** パイロット名 */
-  name: string,
-
-  /** スキル */
-  skill: PilotSkill,
-};
-
-/**
  * パイロットスキル
  */
 export type PilotSkill = BatteryRecoverSkill;
@@ -30,4 +16,25 @@ export type PilotSkill = BatteryRecoverSkill;
 export type BatteryRecoverSkill = {
   type: 'BatteryRecoverSkill',
   recoverBattery: number
+};
+
+/**
+ * パイロット
+ */
+export type Pilot = PilotX<PilotSkill>;
+
+/**
+ * パイロット
+ *
+ * @type X パイロットスキル
+ */
+export type PilotX<X> = {
+  /** ID */
+  id: PilotId,
+
+  /** パイロット名 */
+  name: string,
+
+  /** スキル */
+  skill: X,
 };
