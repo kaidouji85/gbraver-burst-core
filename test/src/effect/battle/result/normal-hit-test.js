@@ -6,9 +6,11 @@ import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
 import type {BatteryCommand} from "../../../../../src/command/battery";
 import {normalHit} from "../../../../../src/effect/battle/result/normal-hit";
 import {EMPTY_CORRECT_POWER} from "../../../../data/amrdozer-effect";
+import {EMPTY_PLAYER_STATE} from "../../../../data/player";
 
 test('通常ヒットなので、ダメージ計算式通りのダメージが与えられる', t => {
   const attacker: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
@@ -20,6 +22,7 @@ test('通常ヒットなので、ダメージ計算式通りのダメージが�
   };
 
   const defender: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
     armdozer: {...EMPTY_ARMDOZER_STATE}
   };

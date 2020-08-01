@@ -7,9 +7,11 @@ import type {PlayerState} from "../../../../src/game/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import type {PlayerCommand} from "../../../../src";
+import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
 test('戦闘を実行した後の状態に正しく更新できる', t => {
   const attacker: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
@@ -19,6 +21,7 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
     }
   };
   const defender: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'defender',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,

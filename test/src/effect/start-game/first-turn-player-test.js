@@ -4,13 +4,16 @@ import {getFirstTurnPlayer} from "../../../../src/effect/start-game/first-turn-p
 import type {PlayerState} from "../../../../src/game/state/player-state";
 import type {PlayerId} from "../../../../src/player/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
 test('スピードが高いプレイヤーが先行', t => {
   const player1: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {...EMPTY_ARMDOZER_STATE, speed: 3000}
   };
   const player2: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
     armdozer: {...EMPTY_ARMDOZER_STATE, speed: 1000}
   };
@@ -23,10 +26,12 @@ test('スピードが高いプレイヤーが先行', t => {
 
 test('スピードが同じ場合にはランダムで先行を決定', t => {
   const player1: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {...EMPTY_ARMDOZER_STATE, speed: 1000}
   };
   const player2: PlayerState = {
+    ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
     armdozer: {...EMPTY_ARMDOZER_STATE, speed: 1000}
   };

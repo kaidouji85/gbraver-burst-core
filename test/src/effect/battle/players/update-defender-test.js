@@ -9,8 +9,10 @@ import type {NormalHit} from "../../../../../src/effect/battle/result/normal-hit
 import type {Guard} from "../../../../../src/effect/battle/result/guard";
 import type {CriticalHit} from "../../../../../src/effect/battle/result/critical-hit";
 import type {Feint} from "../../../../../src/effect/battle/result/feint";
+import {EMPTY_PLAYER_STATE} from "../../../../data/player";
 
 const DEFENDER: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
   playerId: 'player1',
   armdozer: {
     ...EMPTY_ARMDOZER_STATE,
