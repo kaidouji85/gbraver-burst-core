@@ -2,6 +2,7 @@
 
 import type {ArmdozerX} from "./armdozer";
 import type {Burst} from "./burst";
+import type {Pilot} from "./pilot";
 
 /** プレイヤーID */
 export type PlayerId = string;
@@ -14,8 +15,12 @@ export type PlayerId = string;
 export type PlayerX<X> = {
   /** プレイヤーID */
   playerId: PlayerId;
+
   /** アームドーザデータ */
   armdozer: ArmdozerX<X>;
+
+  /** パイロット */
+  pilot: Pilot;
 };
 
 /** プレイヤー基本情報 */
