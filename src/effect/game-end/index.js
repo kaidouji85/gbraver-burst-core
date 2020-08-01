@@ -8,7 +8,7 @@ import type {GameEndResult} from "./game-end";
  *
  * @param lastState
  * @param result
- * @return {{players: PlayerState[], effect: {result: *, name: string}, activePlayerId: PlayerId}}
+ * @return {{players: PlayerState[], skill: {result: *, name: string}, activePlayerId: PlayerId}}
  */
 export function gameEnd(lastState: GameState, result: GameEndResult): GameState {
   return {

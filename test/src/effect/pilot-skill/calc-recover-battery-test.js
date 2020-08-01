@@ -6,7 +6,7 @@ import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import type {RecoverBatterySkill} from "../../../../src/player/pilot";
 import {calcRecoverBattery} from "../../../../src/effect/pilot-skill/recover-battery";
 
-test('パイロットスキル バッテリー回復が正しく処理される', t => {
+test('パイロットスキル バッテリー回復後のバッテリーが正しく計算できる', t => {
   const armdozer: ArmdozerState = {
     ...EMPTY_ARMDOZER_STATE,
     maxBattery: 5,

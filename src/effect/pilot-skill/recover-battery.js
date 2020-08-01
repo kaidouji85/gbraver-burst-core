@@ -11,7 +11,7 @@ import type {RecoverBatterySkill} from "../../player/pilot";
  * @param skill スキル内容
  * @return 更新結果
  */
-export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill) {
+export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill): GameState {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
     return lastState;
@@ -34,7 +34,7 @@ export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill:
     effect: {
       name: 'PilotSkillEffect',
       invokerId: invokerId,
-      effect: skill,
+      skill: skill,
     }
   };
 }

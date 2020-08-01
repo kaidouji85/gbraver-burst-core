@@ -9,5 +9,5 @@ import type {PilotSkill} from "../../player/pilot";
 export type PilotSkillEffect = {
   name: 'PilotSkillEffect',
   invokerId: PlayerId,
-  effect: PilotSkill,
+  skill: PilotSkill,
 };
