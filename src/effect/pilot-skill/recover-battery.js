@@ -47,5 +47,5 @@ export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill:
  * @return 回復後のバッテリー
  */
 export function calcRecoverBattery(armdozer: ArmdozerState, skill: RecoverBatterySkill): number {
-  return Math.max(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
+  return Math.min(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
 }
