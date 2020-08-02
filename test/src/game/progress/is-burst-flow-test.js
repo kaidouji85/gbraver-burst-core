@@ -1,10 +1,10 @@
 // @flow
 
 import test from 'ava';
-import {isBurstFlow} from "../../../../src/game/progress/burst-flow";
+import {isEffectActivationFlow} from "../../../../src/game/progress/effect-activation-flow";
 
 test('1人のプレイヤーがバーストを選択した場合、バーストフェイズが実施される', t => {
-  const result = isBurstFlow([
+  const result = isEffectActivationFlow([
     {
       playerId: 'player01',
       command: {
@@ -22,7 +22,7 @@ test('1人のプレイヤーがバーストを選択した場合、バースト�
 });
 
 test('2人ともバーストを選択した場合、バーストフェイズが実施される', t => {
-  const result = isBurstFlow([
+  const result = isEffectActivationFlow([
     {
       playerId: 'player01',
       command: {
@@ -39,7 +39,7 @@ test('2人ともバーストを選択した場合、バーストフェイズが�
 });
 
 test('2人ともバッテリーを選択した場合、バーストフェイズが実施されない', t => {
-  const result = isBurstFlow([
+  const result = isEffectActivationFlow([
     {
       playerId: 'player01',
       command: {

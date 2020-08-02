@@ -7,24 +7,25 @@ import {inputCommand} from "../../effect/input-command";
 import type {PlayerCommand} from "../../command/command";
 
 /**
- * バーストフェイズを行うか否かを判定する
+ * 効果発動フローを行うか否かを判定する
  *
  * @param commands プレイヤーが選択したコマンド
  * @return 判定結果、trueでバーストフェイズを行う
  */
-export function isBurstFlow(commands: PlayerCommand[]): boolean {
-  return commands.map(v => v.command.type)
-    .includes('BURST_COMMAND');
+export function isEffectActivationFlow(commands: PlayerCommand[]): boolean {
+  const types = commands.map(v => v.command.type);
+  return types.includes('BURST_COMMAND') || types.includes('PILOT_SKILL_COMMAND');
 }
 
 /**
- * バーストのフロー
+ * 効果発動フロー
+ * 現状ではバースト、パイロットスキルを想定している
  *
  * @param lastState 最後の状態
  * @param commands コマンド
  * @return 更新されたゲームの状態
  */
-export function burstFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+export function effectActivationFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
   const attackerCommand = commands.find(v => v.playerId === lastState.activePlayerId);
   const defenderCommand = commands.find(v => v.playerId !== lastState.activePlayerId);
   if (!attackerCommand || !defenderCommand) {

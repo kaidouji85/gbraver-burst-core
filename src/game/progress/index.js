@@ -1,7 +1,7 @@
 // @flow
 
 import type {GameState} from "../state/game-state";
-import {burstFlow, isBurstFlow} from "./burst-flow";
+import {effectActivationFlow, isEffectActivationFlow} from "./effect-activation-flow";
 import {battleFlow} from "./battle-flow";
 import type {PlayerCommand} from "../..";
 
@@ -13,8 +13,8 @@ import type {PlayerCommand} from "../..";
  * @return 更新されたゲーム状態
  */
 export function progress(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  if (isBurstFlow(commands)) {
-    return burstFlow(lastState, commands);
+  if (isEffectActivationFlow(commands)) {
+    return effectActivationFlow(lastState, commands);
   }
 
   return battleFlow(lastState, commands);
