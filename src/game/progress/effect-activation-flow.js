@@ -5,6 +5,7 @@ import {gameFlow} from "./game-flow";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import type {PlayerCommand} from "../../command/command";
+import {pilotSkill} from "../../effect/pilot-skill";
 
 /**
  * 効果発動フローを行うか否かを判定する
@@ -33,12 +34,26 @@ export function effectActivationFlow(lastState: GameState, commands: PlayerComma
   }
 
   return gameFlow(lastState, [
-    state => attackerCommand.command.type === 'BURST_COMMAND'
-      ? [burst(state, attackerCommand.playerId)]
-      : [],
-    state => defenderCommand.command.type === 'BURST_COMMAND'
-      ? [burst(state, defenderCommand.playerId)]
-      : [],
+    state => activationOrNot(state, attackerCommand),
+    state => activationOrNot(state, defenderCommand),
     state => [inputCommand(state, commands)],
   ]);
+}
+
+/**
+ * コマンドに応じて 効果発動 or 何もしない
+ *
+ * @param state 最新の状態
+ * @param command コマンド
+ * @return 更新結果
+ */
+export function activationOrNot(state: GameState, command: PlayerCommand): GameState[] {
+  switch(command.command.type) {
+    case 'BURST_COMMAND':
+      return [burst(state, command.playerId)];
+    case 'PILOT_SKILL_COMMAND':
+      return [pilotSkill(state, command.playerId)];
+    default:
+      return [];
+  }
 }
