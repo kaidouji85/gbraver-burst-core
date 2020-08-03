@@ -16,20 +16,28 @@ test('ゲームスタート時 コマンド入力フェイズが正しく適用�
         ...EMPTY_PLAYER_STATE,
         playerId: 'player01',
         armdozer: {
-          ...EMPTY_ARMDOZER_STATE,
+          ...EMPTY_PLAYER_STATE.armdozer,
           battery: 5,
           maxBattery: 5,
           enableBurst: true,
+        },
+        pilot: {
+          ...EMPTY_PLAYER_STATE.pilot,
+          enableSkill: true
         }
       },
       {
         ...EMPTY_PLAYER_STATE,
         playerId: 'player02',
         armdozer: {
-          ...EMPTY_ARMDOZER_STATE,
+          ...EMPTY_PLAYER_STATE.armdozer,
           battery: 5,
           maxBattery: 5,
           enableBurst: true,
+        },
+        pilot: {
+          ...EMPTY_PLAYER_STATE.pilot,
+          enableSkill: true
         }
       }
     ]
@@ -51,7 +59,8 @@ test('ゲームスタート時 コマンド入力フェイズが正しく適用�
             {type: 'BATTERY_COMMAND', battery: 3},
             {type: 'BATTERY_COMMAND', battery: 4},
             {type: 'BATTERY_COMMAND', battery: 5},
-            {type: 'BURST_COMMAND'}
+            {type: 'BURST_COMMAND'},
+            {type: 'PILOT_SKILL_COMMAND'}
           ]
         },
         {
@@ -64,7 +73,8 @@ test('ゲームスタート時 コマンド入力フェイズが正しく適用�
             {type: 'BATTERY_COMMAND', battery: 3},
             {type: 'BATTERY_COMMAND', battery: 4},
             {type: 'BATTERY_COMMAND', battery: 5},
-            {type: 'BURST_COMMAND'}
+            {type: 'BURST_COMMAND'},
+            {type: 'PILOT_SKILL_COMMAND'}
           ]
         }
       ]
@@ -126,7 +136,8 @@ test('戦闘後のコマンド入力フェイズが正しく適用される', t 
             {type: 'BATTERY_COMMAND', battery: 3},
             {type: 'BATTERY_COMMAND', battery: 4},
             {type: 'BATTERY_COMMAND', battery: 5},
-            {type: 'BURST_COMMAND'}
+            {type: 'BURST_COMMAND'},
+            {type: 'PILOT_SKILL_COMMAND'}
           ]
         },
         {
@@ -137,6 +148,7 @@ test('戦闘後のコマンド入力フェイズが正しく適用される', t 
             {type: 'BATTERY_COMMAND', battery: 1},
             {type: 'BATTERY_COMMAND', battery: 2},
             {type: 'BATTERY_COMMAND', battery: 3},
+            {type: 'PILOT_SKILL_COMMAND'},
           ]
         }
       ]
@@ -191,7 +203,6 @@ test('バースト後のコマンド入力フェイズ効果が正しく適用�
           playerId: 'player01',
           selectable: false,
           nextTurnCommand: {type: 'BATTERY_COMMAND', battery: 3}
-
         },
         {
           playerId: 'player02',
@@ -201,6 +212,7 @@ test('バースト後のコマンド入力フェイズ効果が正しく適用�
             {type: 'BATTERY_COMMAND', battery: 1},
             {type: 'BATTERY_COMMAND', battery: 2},
             {type: 'BATTERY_COMMAND', battery: 3},
+            {type: 'PILOT_SKILL_COMMAND'},
           ]
         }
       ]

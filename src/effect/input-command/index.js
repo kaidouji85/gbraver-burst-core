@@ -7,6 +7,7 @@ import type {PlayerState} from "../../game/state/player-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import {castQuickCommand} from "../../command/command";
+import {selectablePilotSkillCommand} from "./selectable-pilot-skill-command";
 
 /**
  * ゲームスタート時だけに利用するInputCommand
@@ -36,15 +37,12 @@ export function gameStartInputCommand(lastState: GameState): GameState {
 export function inputCommand(lastState: GameState, commands: PlayerCommand[]): GameState {
   const playerCommands = lastState.players.map(player => {
     const myCommand = commands.find(command => command.playerId === player.playerId);
-    const other = lastState.players.find(other => other.playerId !== player.playerId);
     const otherCommand = commands.find(command => command.playerId !== player.playerId);
-    if (!myCommand || !other || !otherCommand) {
+    if (myCommand && otherCommand && isNoChoice(myCommand.command, otherCommand.command)) {
+      return noChoice(player, myCommand.command);
+    } else {
       return selectable(player);
     }
-
-    return isNoChoice(myCommand.command, otherCommand.command)
-      ? noChoice(player, myCommand.command)
-      : selectable(player);
   });
 
   return {
@@ -81,6 +79,7 @@ function selectable(player: PlayerState): Selectable {
     command: [
       ...selectableBatteryCommand(player.armdozer),
       ...selectableBurstCommand(player.armdozer),
+      ...selectablePilotSkillCommand(player.pilot),
     ]
   };
 }
