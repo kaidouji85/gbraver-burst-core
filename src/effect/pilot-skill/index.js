@@ -1,7 +1,7 @@
 // @flow
 
 import type {GameState, PlayerId} from "../..";
-import type {PilotSkill, RecoverBatterySkill} from "../../player/pilot";
+import type {RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 
 /**
