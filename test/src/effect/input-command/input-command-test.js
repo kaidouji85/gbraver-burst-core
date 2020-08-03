@@ -45,7 +45,6 @@ test('戦闘後のコマンド入力フェイズが正しく適用される', t 
     }
   ];
 
-
   const result = inputCommand(lastState, commands);
   t.deepEqual(result, {
     ...lastState,
@@ -82,7 +81,7 @@ test('戦闘後のコマンド入力フェイズが正しく適用される', t 
   });
 });
 
-test('バースト後のコマンド入力フェイズ効果が正しく適用される', t => {
+test('効果適用フロー後のコマンド入力フェイズ効果が正しく処理される', t => {
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [
