@@ -4,8 +4,8 @@ import {createArmdozerState} from "./armdozer-state";
 import type {Player, PlayerId} from "../../player/player";
 import type {Burst} from "../../player/burst";
 import type {PilotStateX} from "./pilot-state";
-import type {PilotSkill} from "../../player/pilot";
 import {createPilotState} from "./pilot-state";
+import type {PilotSkill} from "../../player/pilot";
 
 /**
  * プレイヤーの状態

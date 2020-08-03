@@ -2,9 +2,9 @@
 
 import test from 'ava';
 import type {BatteryCommand, BurstCommand, GameState, PlayerState} from "../../../../src";
+import {progress} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import {progress} from "../../../../src";
 import type {PilotSkillCommand} from "../../../../src/command/pilot-skill";
 
 const ATTACKER: PlayerState = {
