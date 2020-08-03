@@ -1,8 +1,11 @@
+// @flow
+
 import test from 'ava';
 import type {Player} from "../../../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../../data/armdozer";
 import {startGame} from "../../../../src/effect/start-game";
-import {GameState} from "../../../../src/game/state/game-state";
+import type {GameState} from "../../../../src/game/state/game-state";
+import {EMPTY_PILOT} from "../../../data/pilot";
 
 const PLAYER1: Player = {
   playerId: 'player01',
@@ -11,7 +14,8 @@ const PLAYER1: Player = {
     maxHp: 3000,
     maxBattery: 5,
     speed: 2000
-  }
+  },
+  pilot: EMPTY_PILOT,
 };
 
 const PLAYER2: Player = {
@@ -21,7 +25,8 @@ const PLAYER2: Player = {
     maxHp: 3500,
     maxBattery: 5,
     speed: 1000
-  }
+  },
+  pilot: EMPTY_PILOT,
 };
 
 test('正しくゲームスタートができる', t => {
@@ -36,6 +41,10 @@ test('正しくゲームスタートができる', t => {
           battery: 5,
           enableBurst: true,
           effects: [],
+        },
+        pilot: {
+          ...PLAYER1.pilot,
+          enableSkill: true
         }
       }, {
         ...PLAYER2,
@@ -45,6 +54,10 @@ test('正しくゲームスタートができる', t => {
           battery: 5,
           enableBurst: true,
           effects: [],
+        },
+        pilot: {
+          ...PLAYER2.pilot,
+          enableSkill: true
         }
       }
     ],

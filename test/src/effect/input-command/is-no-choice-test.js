@@ -2,53 +2,42 @@
 
 import test from 'ava';
 import {isNoChoice} from "../../../../src/effect/input-command";
-import type {Command} from "../../../../src";
+import type {BatteryCommand, Command} from "../../../../src";
+import type {QuickCommand} from "../../../../src/command/command";
 
-test('相手だけがバーストを使った場合、コマンド選択不可能となる', t => {
-  const myCommand: Command = {
-    type: 'BATTERY_COMMAND',
-    battery: 1
-  };
-  const otherCommand: Command = {
-    type: 'BURST_COMMAND'
-  }
+const BATTERY_COMMAND: BatteryCommand = {
+  type: 'BATTERY_COMMAND',
+  battery: 1
+};
+
+const QUICK_COMMAND: QuickCommand = {
+  type: 'BURST_COMMAND'
+}
+
+test('相手だけがクイックコマンドを使った場合、コマンド選択不可能となる', t => {
+  const myCommand: Command = BATTERY_COMMAND;
+  const otherCommand: Command = QUICK_COMMAND;
   const result = isNoChoice(myCommand, otherCommand);
   t.true(result);
 });
 
-
-test('自分だけがバーストした場合、コマンド選択可能である', t => {
-  const myCommand: Command = {
-    type: 'BURST_COMMAND',
-  };
-  const otherCommand: Command = {
-    type: 'BATTERY_COMMAND',
-    battery: 3
-  }
+test('自分だけがクイックコマンドを使った場合、コマンド選択可能である', t => {
+  const myCommand = QUICK_COMMAND;
+  const otherCommand: Command = BATTERY_COMMAND;
   const result = isNoChoice(myCommand, otherCommand);
   t.false(result);
 });
 
 test('違いにバッテリーコマンドの場合、操作可能である', t => {
-  const myCommand: Command = {
-    type: 'BATTERY_COMMAND',
-    battery: 1
-  };
-  const otherCommand: Command = {
-    type: 'BATTERY_COMMAND',
-    battery: 2
-  }
+  const myCommand = BATTERY_COMMAND;
+  const otherCommand: Command = BATTERY_COMMAND;
   const result = isNoChoice(myCommand, otherCommand);
   t.false(result);
 });
 
-test('違いにバーストコマンドの場合、操作可能である', t => {
-  const myCommand: Command = {
-    type: 'BURST_COMMAND',
-  };
-  const otherCommand: Command = {
-    type: 'BURST_COMMAND',
-  }
+test('違いにクイックコマンドの場合、操作可能である', t => {
+  const myCommand = QUICK_COMMAND;
+  const otherCommand = QUICK_COMMAND;
   const result = isNoChoice(myCommand, otherCommand);
   t.false(result);
 });

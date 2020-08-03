@@ -20,6 +20,7 @@ export type Selectable = {
   playerId: PlayerId,
   /** コマンドが選択できるか否かのフラグ*/
   selectable: true,
+  /** プレイヤーが選択できるコマンド */
   command: Command[],
 };
 

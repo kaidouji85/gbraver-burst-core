@@ -1,20 +1,24 @@
 // @flow
 export {ArmDozerIdList, ArmDozers} from './master/armdozers';
+export {PilotIds, Pilots} from './master/pilots';
 export {GbraverBurstCore} from './game/index';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
+export type {PilotId, PilotSkill, RecoverBatterySkill, Pilot, PilotX} from './player/pilot';
 
 export type {GameState, GameStateX} from './game/state/game-state';
 export type {PlayerState, PlayerStateX} from './game/state/player-state';
 export type {ArmdozerState, ArmdozerStateX} from './game/state/armdozer-state';
 export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer} from './game/state/armdozer-effect';
+export type {PilotStateX, PilotState} from './game/state/pilot-state';
 
-export type {Command, PlayerCommand, PlayerCommandX} from './command/command';
+export type {Command, QuickCommand, PlayerCommand, PlayerCommandX} from './command/command';
 export type {BatteryCommand} from './command/battery';
 export type {BurstCommand} from './command/burst';
 export type {EmptyCommand} from './command/empty-command';
+export type {PilotSkillCommand} from './command/pilot-skill';
 
 export type {Effect} from './effect/index';
 export type {BatteryDeclaration} from './effect/battery-declaration/battery-declaration';
@@ -34,6 +38,7 @@ export type {StartGame} from './effect/start-game/start-game';
 export type {TurnChange} from './effect/turn-change/turn-change';
 export type {UpdateRemainingTurn, EndArmdozerEffect} from './effect/update-remaning-turn/update-remaining-turn';
 export type {RightItself} from './effect/right-itself/right-itself';
+export type {PilotSkillEffect} from './effect/pilot-skill/pilot-skill-effect';
 
 // TODO 以下は廃止予定
 export {start} from './game/start/start';
