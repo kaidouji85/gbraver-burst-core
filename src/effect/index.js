@@ -10,6 +10,7 @@ import type {BatteryDeclaration} from "./battery-declaration/battery-declaration
 import type {Reflect} from "./reflect/reflect";
 import type {UpdateRemainingTurn} from "./update-remaning-turn/update-remaining-turn";
 import type {RightItself} from "./right-itself/right-itself";
+import type {PilotSkillEffect} from "./pilot-skill/pilot-skill-effect";
 
 /** ゲーム中に発生する効果をまとめたもの */
 export type Effect =
@@ -22,4 +23,5 @@ export type Effect =
   TurnChange |
   BurstEffect |
   UpdateRemainingTurn  |
-  RightItself;
+  RightItself |
+  PilotSkillEffect;

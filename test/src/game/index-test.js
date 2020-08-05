@@ -4,9 +4,11 @@ import {GbraverBurstCore} from "../../../src";
 import type {Player} from "../../../src/player/player";
 import type {GameState} from "../../../src/game/state/game-state";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
+import {EMPTY_PILOT} from "../../data/pilot";
 
 const PLAYER1: Player = {
   playerId: 'player1',
+  pilot: EMPTY_PILOT,
   armdozer: {
     ...EMPTY_ARMDOZER,
     speed: 2000
@@ -15,6 +17,7 @@ const PLAYER1: Player = {
 
 const PLAYER2: Player = {
   playerId: 'player2',
+  pilot: EMPTY_PILOT,
   armdozer: {
     ...EMPTY_ARMDOZER,
     speed: 2000

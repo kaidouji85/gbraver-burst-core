@@ -3,19 +3,24 @@ import type {ArmdozerStateX} from "./armdozer-state";
 import {createArmdozerState} from "./armdozer-state";
 import type {Player, PlayerId} from "../../player/player";
 import type {Burst} from "../../player/burst";
+import type {PilotStateX} from "./pilot-state";
+import {createPilotState} from "./pilot-state";
+import type {PilotSkill} from "../../player/pilot";
 
 /**
  * プレイヤーの状態
  *
- * @typeparam {X} バースト
+ * @type BURST バースト
+ * @type PILOT パイロットスキル
  */
-export type PlayerStateX<X> = {
+export type PlayerStateX<BURST, PILOT> = {
   playerId: PlayerId,
-  armdozer: ArmdozerStateX<X>,
+  armdozer: ArmdozerStateX<BURST>,
+  pilot: PilotStateX<PILOT>,
 };
 
 /** プレイヤーの状態 */
-export type PlayerState = PlayerStateX<Burst>;
+export type PlayerState = PlayerStateX<Burst, PilotSkill>;
 
 /**
  * 公開可能なプレイヤー状態を生成する
@@ -26,7 +31,8 @@ export type PlayerState = PlayerStateX<Burst>;
 export function createOpenPlayerState(player: Player): PlayerState {
   return {
     playerId: player.playerId,
-    armdozer: createArmdozerState(player.armdozer)
+    armdozer: createArmdozerState(player.armdozer),
+    pilot: createPilotState(player.pilot),
   };
 }
 
