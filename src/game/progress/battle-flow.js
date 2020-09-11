@@ -2,21 +2,17 @@
 
 import {gameFlow} from "./game-flow";
 import type {Battle} from '../../effect/battle/battle';
-import type {BattleResult} from '../../effect/battle/result/battle-result';
 import type {GameState} from '../state/game-state';
-import type {TryReflect} from '../state/armdozer-effect';
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
-import {reflect} from "../../effect/reflect";
 import type {PlayerCommand} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {rightItself} from "../../effect/right-itself";
-import {toReflectParam} from "../../effect/reflect/reflect";
-import type {ReflectParam} from "../../effect/reflect/reflect";
+import {canReflectFlow, reflectFlow} from "./reflect-flow";
 
 /**
  * 戦闘のフロー
@@ -39,7 +35,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
         doneBattle,
         ...gameFlow(doneBattle, [
           state => canReflectFlow(battleEffect.result)
-            ? reflectFlow(state)
+            ? reflectFlow(state, battleEffect.attacker)
             : [],
           state => canRightItself(battleEffect)
             ? [rightItself(state, battleEffect)]
@@ -60,39 +56,6 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
       ];
     }
   ]);
-}
-
-/**
- * ダメージ反射フローを実行できるか否かを判定する
- *
- * @param result 戦闘結果
- * @return 判定結果、trueでダメージ反射フローを行う
- */
-export function canReflectFlow(result: BattleResult): boolean {
-  return result.name === 'NormalHit'
-    || result.name === 'Guard'
-    || result.name === 'CriticalHit';
-}
-
-/**
- * ダメージ反射のフロー
- * 本フローは戦闘直後に呼ばれる想定である
- *
- * @param lastState 最新状態
- * @return 更新結果
- */
-export function reflectFlow(lastState: GameState): GameState[] {
-  const attacker = lastState.players.find(v => v.playerId === lastState.activePlayerId);
-  const defender = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
-  if (!attacker || !defender) {
-    return [];
-  }
-
-  const tryReflects: ReflectParam[] = defender.armdozer.effects
-    .filter(v => v.type === 'TryReflect')
-    .map(v => ((v: any): TryReflect))
-    .map(v => toReflectParam(v));
-  return gameFlow(lastState, tryReflects.map(v => state => [reflect(state, attacker.playerId, v)]));
 }
 
 /**
