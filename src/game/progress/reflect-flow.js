@@ -2,7 +2,7 @@
 import type {BattleResult, GameState, PlayerId, TryReflect} from "../..";
 import type {ReflectParam} from "../../effect/reflect/reflect";
 import {toReflectParam} from "../../effect/reflect/reflect";
-import {gameFlow} from "./game-flow";
+import {gameFlow} from "../flow/game-flow";
 import {reflect} from "../../effect/reflect";
 import {upcastGameState} from "../state/game-state";
 

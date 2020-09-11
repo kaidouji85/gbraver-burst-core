@@ -21,30 +21,27 @@ export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect
     return null;
   }
 
-  const updated = {
+  const updatedTarget = {
     ...target,
     armdozer: {
       ...target.armdozer,
       hp: target.armdozer.hp - reflect.damage
     }
   };
-  const players = lastState.players.map(v => {
-    if (v.playerId === updated.playerId) {
-      return updated;
-    } else {
-      return v;
-    }
-  });
+  const updatedPlayers = lastState.players
+    .map(v => (v.playerId === updatedTarget.playerId) ? updatedTarget : v);
+
+  const effect = {
+    name: 'Reflect',
+    damagedPlayer: damagedPlayerId,
+    damage: reflect.damage,
+    effect: reflect.effect,
+    isDeath: isPlayerDeath(updatedTarget),
+  };
 
   return {
     ...lastState,
-    players: players,
-    effect: {
-      name: 'Reflect',
-      damagedPlayer: damagedPlayerId,
-      damage: reflect.damage,
-      effect: reflect.effect,
-      isDeath: isPlayerDeath(updated),
-    }
+    players: updatedPlayers,
+    effect: effect
   };
 }
