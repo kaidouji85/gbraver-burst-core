@@ -4,6 +4,7 @@ import type {ReflectParam} from "../../effect/reflect/reflect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {gameFlow} from "./game-flow";
 import {reflect} from "../../effect/reflect";
+import {upcastGameState} from "../state/game-state";
 
 /**
  * ダメージ反射フローを実行できるか否かを判定する
@@ -35,5 +36,8 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
     .filter(v => v.type === 'TryReflect')
     .map(v => ((v: any): TryReflect))
     .map(v => toReflectParam(v));
-  return gameFlow(lastState, tryReflects.map(v => state => [reflect(state, attackerId, v)]));
+  return gameFlow(lastState, tryReflects.map(v => state => {
+    const updated = reflect(state, attackerId, v);
+    return updated ? [upcastGameState(updated)] : [];
+  }));
 }
