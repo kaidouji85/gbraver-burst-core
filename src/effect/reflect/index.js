@@ -2,19 +2,18 @@
 
 import type {GameState} from "../../game/state/game-state";
 import type {PlayerId} from '../../player/player';
-import type {ReflectDamageEffect} from './reflect';
+import type {ReflectDamageEffect, ReflectParam} from './reflect';
 import {isPlayerDeath} from "../../game/state/player-state";
 
 /**
- * ダメージ反射を実行
+ * ダメージ反射を実行する
  *
  * @param lastState 最新状態
  * @param damagedPlayerId ダメージを受けるプレイヤー
- * @param damage ダメージの値
- * @param effect ダメージエフェクト
+ * @param reflect ダメージ反射パラメータ
  * @return 更新結果
  */
-export function reflect(lastState: GameState, damagedPlayerId: PlayerId, damage: number, effect: ReflectDamageEffect): GameState {
+export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect: ReflectParam): GameState {
   const target = lastState.players.find(v => v.playerId === damagedPlayerId);
   if (!target) {
     return lastState;
@@ -24,7 +23,7 @@ export function reflect(lastState: GameState, damagedPlayerId: PlayerId, damage:
     ...target,
     armdozer: {
       ...target.armdozer,
-      hp: target.armdozer.hp - damage
+      hp: target.armdozer.hp - reflect.damage
     }
   };
   const players = lastState.players.map(v => {
@@ -41,8 +40,8 @@ export function reflect(lastState: GameState, damagedPlayerId: PlayerId, damage:
     effect: {
       name: 'Reflect',
       damagedPlayer: damagedPlayerId,
-      damage: damage,
-      effect: effect,
+      damage: reflect.damage,
+      effect: reflect.effect,
       isDeath: isPlayerDeath(updated),
     }
   };

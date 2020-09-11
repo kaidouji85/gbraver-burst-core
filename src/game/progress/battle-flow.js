@@ -15,6 +15,8 @@ import {reflect} from "../../effect/reflect";
 import type {PlayerCommand} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {rightItself} from "../../effect/right-itself";
+import {toReflectParam} from "../../effect/reflect/reflect";
+import type {ReflectParam} from "../../effect/reflect/reflect";
 
 /**
  * 戦闘のフロー
@@ -86,12 +88,11 @@ export function reflectFlow(lastState: GameState): GameState[] {
     return [];
   }
 
-  const tryReflects: TryReflect[] = defender.armdozer.effects
+  const tryReflects: ReflectParam[] = defender.armdozer.effects
     .filter(v => v.type === 'TryReflect')
-    .map(v => ((v: any): TryReflect));
-  return gameFlow(lastState, tryReflects.map(tryReflect =>
-    state => [reflect(state, attacker.playerId, tryReflect.damage, tryReflect.effect)]
-  ));
+    .map(v => ((v: any): TryReflect))
+    .map(v => toReflectParam(v));
+  return gameFlow(lastState, tryReflects.map(v => state => [reflect(state, attacker.playerId, v)]));
 }
 
 /**
