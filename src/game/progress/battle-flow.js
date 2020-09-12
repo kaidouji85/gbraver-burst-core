@@ -31,7 +31,13 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
     state => {
-      const doneResult = battle(state, batteryCommands.attacker, batteryCommands.defender);
+      const doneResult = battle(
+        state,
+        batteryCommands.attacker.playerId,
+        batteryCommands.attacker.command,
+        batteryCommands.defender.playerId,
+        batteryCommands.defender.command
+      );
       if (!doneResult) {
         return [];
       }

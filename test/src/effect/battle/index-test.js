@@ -6,7 +6,6 @@ import {battle} from "../../../../src/effect/battle";
 import type {PlayerState} from "../../../../src/game/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import type {BatteryCommand, PlayerCommandX} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
 test('戦闘を実行した後の状態に正しく更新できる', t => {
@@ -34,24 +33,18 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
-    activePlayerId: 'attacker',
+    activePlayerId: attacker.playerId,
   };
-  const attackerBattery: PlayerCommandX<BatteryCommand> = {
-    playerId: 'attacker',
-    command: {
-      type: 'BATTERY_COMMAND',
-      battery: 3
-    }
+  const attackerBattery = {
+    type: 'BATTERY_COMMAND',
+    battery: 3
   };
-  const defenderBattery: PlayerCommandX<BatteryCommand> = {
-    playerId: 'defender',
-    command: {
-      type: 'BATTERY_COMMAND',
-      battery: 2
-    }
-  };
+  const defenderBattery = {
+    type: 'BATTERY_COMMAND',
+    battery: 2
+  }
 
-  const result = battle(lastState, attackerBattery, defenderBattery);
+  const result = battle(lastState, attacker.playerId, attackerBattery, defender.playerId, defenderBattery);
   const expected = {
     ...lastState,
     players: [

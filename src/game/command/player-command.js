@@ -13,5 +13,8 @@ export type PlayerCommandX<X> = {
   /** コマンド */
   command: X
 };
-/** プレイヤーコマンド */
+
+/**
+ * プレイヤーコマンド
+ */
 export type PlayerCommand = PlayerCommandX<Command>;
