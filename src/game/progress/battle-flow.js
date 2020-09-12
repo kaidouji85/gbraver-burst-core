@@ -9,10 +9,11 @@ import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
-import type {PlayerCommand} from "../../command/command";
+import type {PlayerCommand, PlayerCommandX} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {rightItself} from "../../effect/right-itself";
 import {canReflectFlow, reflectFlow} from "./reflect-flow";
+import type {BatteryCommand} from "../..";
 
 /**
  * 戦闘のフロー
@@ -22,10 +23,28 @@ import {canReflectFlow, reflectFlow} from "./reflect-flow";
  * @return 更新されたゲームの状態
  */
 export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+  const attackerCommand = commands.find(v => v.playerId === lastState.activePlayerId);
+  const defenderCommand = commands.find(v => v.playerId !== lastState.activePlayerId);
+  if (!attackerCommand ||!defenderCommand) {
+    return [];
+  }
+
+  if (attackerCommand.command.type !== 'BATTERY_COMMAND' || defenderCommand.command.type !== 'BATTERY_COMMAND') {
+    return [];
+  }
+
+  const attackerBattery: PlayerCommandX<BatteryCommand> = {
+    playerId: attackerCommand.playerId,
+    command: attackerCommand.command
+  };
+  const defenderBattery: PlayerCommandX<BatteryCommand> = {
+    playerId: defenderCommand.playerId,
+    command: defenderCommand.command
+  };
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
     state => {
-      const doneBattle = battle(state, commands);
+      const doneBattle = battle(state, attackerBattery, defenderBattery);
       if (doneBattle.effect.name !== 'Battle') {
         return [];
       }
