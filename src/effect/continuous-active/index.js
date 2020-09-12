@@ -1,7 +1,25 @@
 // @flow
 
 import type {GameState, GameStateX, TurnChange} from "../..";
-import {removeContinuousActive} from "./continuous-active";
+import {removeContinuousActive} from "./remove-continuous-active";
+
+/**
+ * アクティブプレイヤー継続を実行できるか否かを判定する
+ *
+ * @param state ゲーム ステート
+ * @return 判定結果、trueで実行できる
+ */
+export function canContinuousActive(state: GameState): boolean {
+  const activePlayer = state.players.find(v => v.playerId === state.activePlayerId);
+  if (!activePlayer) {
+    return false;
+  }
+
+  return activePlayer.armdozer.effects
+    .filter(v => v.type === 'ContinuousActivePlayer')
+    .length > 0;
+}
+
 
 /**
  * アクティブプレイヤー継続を実行する

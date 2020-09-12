@@ -14,6 +14,7 @@ import {canRightItself, rightItself} from "../../effect/right-itself";
 import {canReflectFlow, reflectFlow} from "./reflect-flow";
 import {extractBatteryCommands} from "./extract-battery-commands";
 import type {PlayerCommand} from "../command/player-command";
+import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
 
 /**
  * 戦闘フロー
@@ -57,7 +58,15 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
             if (endJudge.type === 'GameContinue') {
               return gameFlow(state, [
                 state => [updateRemainingTurn(state)],
-                state => [turnChange(state)],
+                state => {
+                  if(canContinuousActive(state)) {
+                    const done = continuousActive(state);
+                    return done ? [upcastGameState(done)] : [];
+                  } else {
+                    const done = turnChange(state);
+                    return done ? [upcastGameState(done)] : [];
+                  }
+                },
                 state => [inputCommand(state, commands)]
               ]);
             } else {
