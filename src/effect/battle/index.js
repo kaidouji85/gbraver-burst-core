@@ -5,7 +5,7 @@ import {isPlayerDeath} from "../../game/state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 import {battleResult} from "./result/battle-result";
 import {updateDefender} from "./players/update-defender";
-import type {Battle, GameStateX, PlayerCommandX, PlayerId} from "../..";
+import type {Battle, GameStateX, PlayerId} from "../..";
 
 /**
  * 戦闘を行う
