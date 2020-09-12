@@ -1,20 +1,19 @@
 // @flow
 
 import {gameFlow} from "../flow/game-flow";
-import type {Battle} from '../../effect/battle/battle';
 import type {GameState} from '../state/game-state';
+import {upcastGameState} from "../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
-import type {PlayerCommand} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
-import {rightItself} from "../../effect/right-itself";
+import {canRightItself, rightItself} from "../../effect/right-itself";
 import {canReflectFlow, reflectFlow} from "./reflect-flow";
-import {upcastGameState} from "../state/game-state";
 import {extractBatteryCommands} from "./extract-battery-commands";
+import type {PlayerCommand} from "../command/player-command";
 
 /**
  * 戦闘フロー
@@ -65,12 +64,3 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
   ]);
 }
 
-/**
- * 体勢整えを実施するか否かを判定する、trueで実施する
- *
- * @param battle 戦闘情報
- * @return 判定結果
- */
-export function canRightItself(battle: Battle): boolean {
-  return !battle.isDeath;
-}
