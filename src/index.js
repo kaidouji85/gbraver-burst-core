@@ -2,6 +2,8 @@
 export {ArmDozerIdList, ArmDozers} from './master/armdozers';
 export {PilotIds, Pilots} from './master/pilots';
 export {GbraverBurstCore} from './game/index';
+export {PlayerCommand} from "./game/command/player-command";
+export {PlayerCommandX} from "./game/command/player-command";
 
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
@@ -14,7 +16,7 @@ export type {ArmdozerState, ArmdozerStateX} from './game/state/armdozer-state';
 export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer} from './game/state/armdozer-effect';
 export type {PilotStateX, PilotState} from './game/state/pilot-state';
 
-export type {Command, QuickCommand, PlayerCommand, PlayerCommandX} from './command/command';
+export type {Command, QuickCommand} from './command/command';
 export type {BatteryCommand} from './command/battery';
 export type {BurstCommand} from './command/burst';
 export type {EmptyCommand} from './command/empty-command';
