@@ -3,6 +3,16 @@
 import type {Battle, GameState} from "../..";
 
 /**
+ * 体勢整えを実施するか否かを判定する
+ *
+ * @param battle 戦闘情報
+ * @return 判定結果、trueで実施する
+ */
+export function canRightItself(battle: Battle): boolean {
+  return !battle.isDeath;
+}
+
+/**
  * 防御側の体勢を整える
  *
  * @param lastState 最新の状態

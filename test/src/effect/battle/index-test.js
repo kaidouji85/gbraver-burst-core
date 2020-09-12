@@ -6,7 +6,6 @@ import {battle} from "../../../../src/effect/battle";
 import type {PlayerState} from "../../../../src/game/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import type {PlayerCommand} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 
 test('戦闘を実行した後の状態に正しく更新できる', t => {
@@ -34,27 +33,19 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
-    activePlayerId: 'attacker',
+    activePlayerId: attacker.playerId,
   };
-  const playerCommands: PlayerCommand[] = [
-    {
-      playerId: 'attacker',
-      command: {
-        type: 'BATTERY_COMMAND',
-        battery: 3
-      }
-    },
-    {
-      playerId: 'defender',
-      command: {
-        type: 'BATTERY_COMMAND',
-        battery: 2
-      }
-    }
-  ];
+  const attackerBattery = {
+    type: 'BATTERY_COMMAND',
+    battery: 3
+  };
+  const defenderBattery = {
+    type: 'BATTERY_COMMAND',
+    battery: 2
+  }
 
-  const result = battle(lastState, playerCommands);
-  t.deepEqual(result, {
+  const result = battle(lastState, attacker.playerId, attackerBattery, defender.playerId, defenderBattery);
+  const expected = {
     ...lastState,
     players: [
       {
@@ -75,5 +66,6 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
         damage: 2000
       }
     }
-  });
+  };
+  t.deepEqual(result, expected);
 });

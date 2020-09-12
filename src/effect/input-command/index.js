@@ -2,12 +2,13 @@
 
 import type {GameState} from "../../game/state/game-state";
 import type {NoChoice, Selectable} from "./input-command";
-import type {Command, PlayerCommand} from "../../command/command";
+import type {Command} from "../../command/command";
 import {castQuickCommand} from "../../command/command";
 import type {PlayerState} from "../../game/state/player-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import {selectablePilotSkillCommand} from "./selectable-pilot-skill-command";
+import type {PlayerCommand} from "../..";
 
 /**
  * ゲームスタート時だけに利用するInputCommand

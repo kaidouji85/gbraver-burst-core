@@ -3,7 +3,7 @@
 import test from 'ava';
 import type {Battle} from "../../../../src";
 import {EMPTY_BATTLE} from "../../../data/battle";
-import {canRightItself} from "../../../../src/game/progress/battle-flow";
+import {canRightItself} from "../../../../src/effect/right-itself";
 
 test('戦闘で死亡していなければ、体勢整えを実施する', t => {
   const data: Battle = {

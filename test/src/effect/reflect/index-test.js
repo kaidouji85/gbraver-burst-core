@@ -25,7 +25,7 @@ test('ダメージ反射を正しく適用できる', t => {
     players: [otherPlayer, damagedPlayer]
   };
 
-  const result = reflect(lastState, damagedPlayer.playerId, 2000, 'Lightning');
+  const result = reflect(lastState, damagedPlayer.playerId, {damage: 2000, effect: 'Lightning'});
   const expected = {
     ...lastState,
     players: [
