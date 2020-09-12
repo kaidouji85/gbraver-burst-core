@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {hasContinuousActivePlayer} from "../../../../src/effect/turn-change/continuous-active";
+import {hasContinuousActivePlayer} from "../../../../src/effect/continuous-active/continuous-active";
 import type {PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 

@@ -3,7 +3,7 @@
 import type {GameState} from "../../game/state/game-state";
 import {BATTERY_RECOVERY_VALUE, turnChangeRecoverBattery} from "./recover-battery";
 import type {ArmdozerEffect} from "../..";
-import {hasContinuousActivePlayer, removeContinuousActive} from "./continuous-active";
+import {hasContinuousActivePlayer, removeContinuousActive} from "../continuous-active/continuous-active";
 
 /**
  * ターンチェンジを実行する

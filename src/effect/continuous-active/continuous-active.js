@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerEffect, PlayerState} from "../..";
+import type {ArmdozerEffect, PlayerState} from "../../index";
 
 /**
  * 指定したプレイヤーがアクティブプレイヤー継続を持っているか否かを判定する
