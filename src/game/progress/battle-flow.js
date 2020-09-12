@@ -14,6 +14,7 @@ import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {rightItself} from "../../effect/right-itself";
 import {canReflectFlow, reflectFlow} from "./reflect-flow";
 import type {BatteryCommand} from "../..";
+import {upcastGameState} from "../state/game-state";
 
 /**
  * 戦闘のフロー
@@ -44,20 +45,20 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
   return gameFlow(lastState, [
     state => [batteryDeclaration(state, commands)],
     state => {
-      const doneBattle = battle(state, attackerBattery, defenderBattery);
-      if (doneBattle.effect.name !== 'Battle') {
+      const doneResult = battle(state, attackerBattery, defenderBattery);
+      if (!doneResult) {
         return [];
       }
 
-      const battleEffect = (doneBattle.effect: Battle);
+      const upcastedBattle: GameState = upcastGameState(doneResult);
       return [
-        doneBattle,
-        ...gameFlow(doneBattle, [
-          state => canReflectFlow(battleEffect.result)
-            ? reflectFlow(state, battleEffect.attacker)
+        upcastedBattle,
+        ...gameFlow(upcastedBattle, [
+          state => canReflectFlow(doneResult.effect.result)
+            ? reflectFlow(state, doneResult.effect.attacker)
             : [],
-          state => canRightItself(battleEffect)
-            ? [rightItself(state, battleEffect)]
+          state => canRightItself(doneResult.effect)
+            ? [rightItself(state, doneResult.effect)]
             : [],
           state => {
             const endJudge = gameEndJudging(state);
