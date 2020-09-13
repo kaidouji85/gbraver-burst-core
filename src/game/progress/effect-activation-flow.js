@@ -1,12 +1,12 @@
 // @flow
 
 import type {GameState} from "../state/game-state";
+import {upcastGameState} from "../state/game-state";
 import {gameFlow} from "../flow/game-flow";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
 import type {PlayerCommand} from "../..";
-import {upcastGameState} from "../state/game-state";
 
 /**
  * 効果発動フローを行うか否かを判定する
@@ -37,7 +37,16 @@ export function effectActivationFlow(lastState: GameState, commands: PlayerComma
   return gameFlow(lastState, [
     state => activationOrNot(state, attackerCommand),
     state => activationOrNot(state, defenderCommand),
-    state => [inputCommand(state, commands)],
+    state => {
+      const done = inputCommand(
+        state,
+        attackerCommand.playerId,
+        attackerCommand.command,
+        defenderCommand.playerId,
+        defenderCommand.command
+      );
+      return done ? [upcastGameState(done)] : [];
+    },
   ]);
 }
 

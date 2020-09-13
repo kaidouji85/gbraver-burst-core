@@ -1,14 +1,14 @@
 // @flow
 
 import type {GameState} from "../../game/state/game-state";
-import type {NoChoice, Selectable} from "./input-command";
+import type {InputCommand, NoChoice, Selectable} from "./input-command";
 import type {Command} from "../../command/command";
 import {castQuickCommand} from "../../command/command";
 import type {PlayerState} from "../../game/state/player-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import {selectablePilotSkillCommand} from "./selectable-pilot-skill-command";
-import type {PlayerCommand} from "../..";
+import type {GameStateX, PlayerId} from "../..";
 
 /**
  * ゲームスタート時だけに利用するInputCommand
@@ -32,26 +32,33 @@ export function gameStartInputCommand(lastState: GameState): GameState {
  * コマンド入力フェイズのステートを生成する
  *
  * @param lastState 更新前の状態
- * @param commands このターン、各プレイヤーが入力した内容
+ * @param attackerId 攻撃側プレイヤーID
+ * @param attackerCommand 攻撃側コマンド
+ * @param defenderId 防御側プレイヤーID
+ * @param defenderCommand 防御側コマンド
  * @return 更新結果
  */
-export function inputCommand(lastState: GameState, commands: PlayerCommand[]): GameState {
-  const playerCommands = lastState.players.map(player => {
-    const myCommand = commands.find(command => command.playerId === player.playerId);
-    const otherCommand = commands.find(command => command.playerId !== player.playerId);
-    if (myCommand && otherCommand && isNoChoice(myCommand.command, otherCommand.command)) {
-      return noChoice(player, myCommand.command);
-    } else {
-      return selectable(player);
-    }
-  });
+export function inputCommand(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): ?GameStateX<InputCommand> {
+  const attacker = lastState.players.find(v => v.playerId === attackerId);
+  const defender = lastState.players.find(v => v.playerId === defenderId);
+  if (!attacker || !defender) {
+    return null;
+  }
 
+  const nextAttackerCommand = isNoChoice(attackerCommand, defenderCommand)
+    ? noChoice(attacker, attackerCommand)
+    : selectable(attacker);
+  const nextDefenderCommand = isNoChoice(defenderCommand, attackerCommand)
+    ? noChoice(defender, defenderCommand)
+    : selectable(defender);
+  const playerCommands = [nextAttackerCommand, nextDefenderCommand];
+  const effect = {
+    name: 'InputCommand',
+    players: playerCommands,
+  };
   return {
     ...lastState,
-    effect: {
-      name: 'InputCommand',
-      players: playerCommands,
-    }
+    effect: effect
   };
 }
 

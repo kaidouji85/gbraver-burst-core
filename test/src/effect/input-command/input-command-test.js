@@ -6,53 +6,43 @@ import type {GameState} from "../../../../src/game/state/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import type {PlayerCommand} from "../../../../src";
 
 test('戦闘後のコマンド入力フェイズが正しく適用される', t => {
+  const player01 =  {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'player01',
+    armdozer: {
+      ...EMPTY_ARMDOZER_STATE,
+      battery: 5,
+      maxBattery: 5,
+      enableBurst: true,
+    }
+  };
+  const player02 = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'player02',
+    armdozer: {
+      ...EMPTY_ARMDOZER_STATE,
+      battery: 3,
+      maxBattery: 5,
+      enableBurst: false,
+    }
+  }
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [
-      {
-        ...EMPTY_PLAYER_STATE,
-        playerId: 'player01',
-        armdozer: {
-          ...EMPTY_ARMDOZER_STATE,
-          battery: 5,
-          maxBattery: 5,
-          enableBurst: true,
-        }
-      },
-      {
-        ...EMPTY_PLAYER_STATE,
-        playerId: 'player02',
-        armdozer: {
-          ...EMPTY_ARMDOZER_STATE,
-          battery: 3,
-          maxBattery: 5,
-          enableBurst: false,
-        }
-      }
-    ]
+    players: [player01, player02]
   };
-  const commands: PlayerCommand[] = [
-    {
-      playerId: 'player01',
-      command: {type: 'BATTERY_COMMAND', battery: 3}
-    },
-    {
-      playerId: 'player02',
-      command: {type: 'BATTERY_COMMAND', battery: 3}
-    }
-  ];
+  const player01Command = {type: 'BATTERY_COMMAND', battery: 3};
+  const player02Command = {type: 'BATTERY_COMMAND', battery: 3};
 
-  const result = inputCommand(lastState, commands);
+  const result = inputCommand(lastState, player01.playerId, player01Command, player02.playerId, player02Command);
   t.deepEqual(result, {
     ...lastState,
     effect: {
       name: 'InputCommand',
       players: [
         {
-          playerId: 'player01',
+          playerId: player01.playerId,
           selectable: true,
           command: [
             {type: 'BATTERY_COMMAND', battery: 0},
@@ -66,7 +56,7 @@ test('戦闘後のコマンド入力フェイズが正しく適用される', t 
           ]
         },
         {
-          playerId: 'player02',
+          playerId: player02.playerId,
           selectable: true,
           command: [
             {type: 'BATTERY_COMMAND', battery: 0},
@@ -82,43 +72,34 @@ test('戦闘後のコマンド入力フェイズが正しく適用される', t 
 });
 
 test('効果適用フロー後のコマンド入力フェイズ効果が正しく処理される', t => {
+  const player01 = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'player01',
+    armdozer: {
+      ...EMPTY_ARMDOZER_STATE,
+      battery: 2,
+      maxBattery: 5,
+      enableBurst: true,
+    }
+  };
+  const player02 = {
+    ...EMPTY_PLAYER_STATE,
+    playerId: 'player02',
+    armdozer: {
+      ...EMPTY_ARMDOZER_STATE,
+      battery: 3,
+      maxBattery: 5,
+      enableBurst: false
+    }
+  };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [
-      {
-        ...EMPTY_PLAYER_STATE,
-        playerId: 'player01',
-        armdozer: {
-          ...EMPTY_ARMDOZER_STATE,
-          battery: 2,
-          maxBattery: 5,
-          enableBurst: true,
-        }
-      },
-      {
-        ...EMPTY_PLAYER_STATE,
-        playerId: 'player02',
-        armdozer: {
-          ...EMPTY_ARMDOZER_STATE,
-          battery: 3,
-          maxBattery: 5,
-          enableBurst: false
-        }
-      }
-    ]
+    players: [player01, player02]
   };
-  const commands: PlayerCommand[] = [
-    {
-      playerId: 'player01',
-      command: {type: 'BATTERY_COMMAND', battery: 3}
-    },
-    {
-      playerId: 'player02',
-      command: {type: 'BURST_COMMAND'}
-    }
-  ];
+  const player01Command = {type: 'BATTERY_COMMAND', battery: 3};
+  const player02Command = {type: 'BURST_COMMAND'};
 
-  const result = inputCommand(lastState, commands);
+  const result = inputCommand(lastState, player01.playerId, player01Command, player02.playerId, player02Command);
   t.deepEqual(result, {
     ...lastState,
     effect: {
