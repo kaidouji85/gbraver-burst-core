@@ -24,34 +24,43 @@ import {canContinuousActive, continuousActive} from "../../effect/continuous-act
  * @return 更新されたゲームステート
  */
 export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  const batteryCommands = extractBatteryCommands(lastState, commands);
-  if (!batteryCommands) {
+  const batteries = extractBatteryCommands(lastState, commands);
+  if (!batteries) {
     return [];
   }
 
   return gameFlow(lastState, [
-    state => [batteryDeclaration(state, commands)],
     state => {
-      const doneResult = battle(
+      const done = batteryDeclaration(
         state,
-        batteryCommands.attacker.playerId,
-        batteryCommands.attacker.command,
-        batteryCommands.defender.playerId,
-        batteryCommands.defender.command
+        batteries.attacker.playerId,
+        batteries.attacker.command,
+        batteries.defender.playerId,
+        batteries.defender.command
       );
-      if (!doneResult) {
+      return done ? [upcastGameState(done)] : [];
+    },
+    state => {
+      const doneBattle = battle(
+        state,
+        batteries.attacker.playerId,
+        batteries.attacker.command,
+        batteries.defender.playerId,
+        batteries.defender.command
+      );
+      if (!doneBattle) {
         return [];
       }
 
-      const upcastedBattle: GameState = upcastGameState(doneResult);
+      const upcastedBattle: GameState = upcastGameState(doneBattle);
       return [
         upcastedBattle,
         ...gameFlow(upcastedBattle, [
-          state => canReflectFlow(doneResult.effect.result)
-            ? reflectFlow(state, doneResult.effect.attacker)
+          state => canReflectFlow(doneBattle.effect.result)
+            ? reflectFlow(state, doneBattle.effect.attacker)
             : [],
-          state => canRightItself(doneResult.effect)
-            ? [rightItself(state, doneResult.effect)]
+          state => canRightItself(doneBattle.effect)
+            ? [rightItself(state, doneBattle.effect)]
             : [],
           state => {
             const endJudge = gameEndJudging(state);

@@ -4,7 +4,7 @@ import type {PlayerState} from "../../game/state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 
 /**
- * プレイヤーの状態更新 バッテリー戦g年
+ * プレイヤーの状態更新 バッテリー使用後
  *
  * @param origin 更新前
  * @param command バッテリーコマンド
