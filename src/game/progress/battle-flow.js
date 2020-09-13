@@ -79,7 +79,8 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
                 state => [inputCommand(state, commands)]
               ]);
             } else {
-              return [gameEnd(state, endJudge)];
+              const done = gameEnd(state, endJudge);
+              return [upcastGameState(done)];
             }
           }
         ])
