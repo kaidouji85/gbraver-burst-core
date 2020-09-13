@@ -1,7 +1,6 @@
 // @flow
 
 import test from 'ava';
-import type {Burst, GameState, PlayerId, PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {disableBurst} from "../../../../src/effect/burst";

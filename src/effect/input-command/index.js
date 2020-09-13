@@ -8,7 +8,7 @@ import type {PlayerState} from "../../game/state/player-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import {selectablePilotSkillCommand} from "./selectable-pilot-skill-command";
-import type {GameStateX, PlayerCommand, PlayerId} from "../..";
+import type {GameStateX, PlayerId} from "../..";
 
 /**
  * ゲームスタート時だけに利用するInputCommand
