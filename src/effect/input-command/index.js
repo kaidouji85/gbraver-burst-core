@@ -1,14 +1,14 @@
 // @flow
 
 import type {GameState} from "../../game/state/game-state";
-import type {NoChoice, Selectable} from "./input-command";
+import type {InputCommand, NoChoice, Selectable} from "./input-command";
 import type {Command} from "../../command/command";
 import {castQuickCommand} from "../../command/command";
 import type {PlayerState} from "../../game/state/player-state";
 import {selectableBatteryCommand} from "./selectable-battery-command";
 import {selectableBurstCommand} from "./selectable-burst-command";
 import {selectablePilotSkillCommand} from "./selectable-pilot-skill-command";
-import type {PlayerCommand} from "../..";
+import type {GameStateX, PlayerCommand} from "../..";
 
 /**
  * ゲームスタート時だけに利用するInputCommand
@@ -35,7 +35,7 @@ export function gameStartInputCommand(lastState: GameState): GameState {
  * @param commands このターン、各プレイヤーが入力した内容
  * @return 更新結果
  */
-export function inputCommand(lastState: GameState, commands: PlayerCommand[]): GameState {
+export function inputCommand(lastState: GameState, commands: PlayerCommand[]): ?GameStateX<InputCommand> {
   const playerCommands = lastState.players.map(player => {
     const myCommand = commands.find(command => command.playerId === player.playerId);
     const otherCommand = commands.find(command => command.playerId !== player.playerId);
