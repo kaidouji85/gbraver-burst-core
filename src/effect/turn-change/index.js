@@ -2,58 +2,42 @@
 
 import type {GameState} from "../../game/state/game-state";
 import {BATTERY_RECOVERY_VALUE, turnChangeRecoverBattery} from "./recover-battery";
-import type {ArmdozerEffect} from "../..";
-import {hasContinuousActivePlayer, removeContinuousActive} from "./continuous-active";
+import type {GameStateX, TurnChange} from "../..";
 
 /**
  * ターンチェンジを実行する
  *
  * @param lastState 更新前のゲームステート
- * @return ターンチェンジ後のゲームステート
+ * @return 実行結果、実行不可能な場合はnullを返す
  */
-export function turnChange(lastState: GameState): GameState {
-  const activePlayer = lastState.players.find(v => v.playerId === lastState.activePlayerId);
-  const notActivePlayer = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
-  if (!activePlayer || !notActivePlayer) {
-    return lastState;
+export function turnChange(lastState: GameState): ?GameStateX<TurnChange> {
+  const nextActivePlayer = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
+  if (!nextActivePlayer) {
+    return null;
   }
 
-  const isContinuousTurn = hasContinuousActivePlayer(activePlayer);
-  const nextActivePlayer = isContinuousTurn
-    ? activePlayer
-    : notActivePlayer;
-  const recoverBattery = isContinuousTurn
-    ? 0
-    : BATTERY_RECOVERY_VALUE;
   const updatedBattery = turnChangeRecoverBattery(
     nextActivePlayer.armdozer.battery,
     nextActivePlayer.armdozer.maxBattery,
-    recoverBattery
+    BATTERY_RECOVERY_VALUE
   );
-  const updatedEffects: ArmdozerEffect[] = isContinuousTurn
-    ? removeContinuousActive(nextActivePlayer.armdozer.effects)
-    : nextActivePlayer.armdozer.effects;
-  const updatedNextActivePlayer = {
+  const updatedPlayer = {
     ...nextActivePlayer,
     armdozer: {
       ...nextActivePlayer.armdozer,
       battery: updatedBattery,
-      effects: updatedEffects
     }
   };
-  const updatedPlayerList = lastState.players.map(player =>
-    (player.playerId === updatedNextActivePlayer.playerId)
-      ? updatedNextActivePlayer
-      : player
-  );
+  const updatedPlayerList = lastState.players
+    .map(v => v.playerId === updatedPlayer.playerId ? updatedPlayer : v);
 
   return {
     ...lastState,
-    activePlayerId: updatedNextActivePlayer.playerId,
+    activePlayerId: updatedPlayer.playerId,
     players: updatedPlayerList,
     effect: {
       name: 'TurnChange',
-      recoverBattery: recoverBattery
+      recoverBattery: BATTERY_RECOVERY_VALUE
     }
   };
 }

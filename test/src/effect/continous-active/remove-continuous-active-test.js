@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {removeContinuousActive} from "../../../../src/effect/turn-change/continuous-active";
+import {removeContinuousActive} from "../../../../src/effect/continuous-active/remove-continuous-active";
 import type {ArmdozerEffect, CorrectPower} from "../../../../src";
 import type {ContinuousActivePlayer} from "../../../../src/game/state/armdozer-effect";
 
