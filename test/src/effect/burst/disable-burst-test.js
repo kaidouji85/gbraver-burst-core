@@ -1,13 +1,14 @@
 // @flow
 
 import test from 'ava';
-import type {GameState, PlayerState} from "../../../../src";
+import type {Burst, GameState, PlayerId, PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import {disableBurst} from "../../../../src/effect/burst";
+import {EMPTY_BURST} from "../../../data/armdozer";
 
 test('バーストしたプレイヤーはバースト利用不可になる', t => {
-  const burstPlayer: PlayerState = {
+  const burstPlayer = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burstPlayer',
     armdozer: {
@@ -15,16 +16,21 @@ test('バーストしたプレイヤーはバースト利用不可になる', t 
       enableBurst: true
     }
   };
-  const otherPlayer: PlayerState = {
+  const otherPlayer = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'otherPlayer',
   };
-  const lastState: GameState = {
+  const lastState = {
     ...EMPTY_GAME_STATE,
-    players: [otherPlayer, burstPlayer]
+    players: [otherPlayer, burstPlayer],
+    effect: {
+      name: 'BurstEffect',
+      burstPlayer: burstPlayer.playerId,
+      burst: EMPTY_BURST,
+    }
   };
 
-  const result = disableBurst(lastState, burstPlayer.playerId);
+  const result = disableBurst(lastState);
   const expected = {
     ...lastState,
     players: [

@@ -6,6 +6,7 @@ import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
 import type {PlayerCommand} from "../..";
+import {upcastGameState} from "../state/game-state";
 
 /**
  * 効果発動フローを行うか否かを判定する
@@ -48,12 +49,15 @@ export function effectActivationFlow(lastState: GameState, commands: PlayerComma
  * @return 更新結果
  */
 export function activationOrNot(state: GameState, command: PlayerCommand): GameState[] {
-  switch(command.command.type) {
-    case 'BURST_COMMAND':
-      return [burst(state, command.playerId)];
-    case 'PILOT_SKILL_COMMAND':
-      return [pilotSkill(state, command.playerId)];
-    default:
-      return [];
+  if (command.command.type === 'BURST_COMMAND') {
+    const done = burst(state, command.playerId);
+    return done ? [upcastGameState(done)] : [];
   }
+
+  if (command.command.type === 'PILOT_SKILL_COMMAND') {
+    const done = pilotSkill(state, command.playerId);
+    return done ? [upcastGameState(done)] : [];
+  }
+
+  return [];
 }

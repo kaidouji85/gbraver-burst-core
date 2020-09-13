@@ -3,7 +3,7 @@
 import type {BuffPower} from "../../player/burst";
 import type {PlayerState} from "../../game/state/player-state";
 import {burstRecoverBattery} from "./burst-recover-battery";
-import type {GameState, PlayerId} from "../..";
+import type {BurstEffect, GameState, GameStateX, PlayerId} from "../..";
 
 /**
  * バースト 攻撃力アップ
@@ -11,12 +11,12 @@ import type {GameState, PlayerId} from "../..";
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト情報
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function buffPower(lastState: GameState, burstPlayerId: PlayerId, burst: BuffPower): GameState {
+export function buffPower(lastState: GameState, burstPlayerId: PlayerId, burst: BuffPower): ?GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return lastState;
+    return null;
   }
 
   const updatedBurstPlayer: PlayerState = {
@@ -34,17 +34,16 @@ export function buffPower(lastState: GameState, burstPlayerId: PlayerId, burst: 
       ]
     }
   };
-  const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
-    ? updatedBurstPlayer
-    : player
-  );
+  const updatedPlayers = lastState.players
+    .map(player => player.playerId === burstPlayerId ? updatedBurstPlayer : player);
+  const effect = {
+    name: 'BurstEffect',
+    burstPlayer: burstPlayerId,
+    burst: burst,
+  };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: {
-      name: 'BurstEffect',
-      burstPlayer: burstPlayerId,
-      burst: burst,
-    }
+    effect: effect
   };
 }
