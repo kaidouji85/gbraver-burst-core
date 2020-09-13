@@ -77,7 +77,13 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
                   }
                 },
                 state => {
-                  const done = inputCommand(state, commands);
+                  const done = inputCommand(
+                    state,
+                    batteries.attacker.playerId,
+                    batteries.attacker.command,
+                    batteries.defender.playerId,
+                    batteries.defender.command
+                  );
                   return done ? [upcastGameState(done)] : [];
                 }
               ]);

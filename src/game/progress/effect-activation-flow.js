@@ -38,7 +38,13 @@ export function effectActivationFlow(lastState: GameState, commands: PlayerComma
     state => activationOrNot(state, attackerCommand),
     state => activationOrNot(state, defenderCommand),
     state => {
-      const done = inputCommand(state, commands);
+      const done = inputCommand(
+        state,
+        attackerCommand.playerId,
+        attackerCommand.command,
+        defenderCommand.playerId,
+        defenderCommand.command
+      );
       return done ? [upcastGameState(done)] : [];
     },
   ]);
