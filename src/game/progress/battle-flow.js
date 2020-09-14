@@ -7,14 +7,11 @@ import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
-import {turnChange} from "../../effect/turn-change";
-import {inputCommand} from "../../effect/input-command";
-import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canRightItself, rightItself} from "../../effect/right-itself";
 import {canReflectFlow, reflectFlow} from "./reflect-flow";
 import {extractBatteryCommands} from "./extract-battery-commands";
 import type {PlayerCommand} from "../command/player-command";
-import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
+import {gameContinueFlow} from "./game-continue-flow";
 
 /**
  * 戦闘フロー
@@ -69,28 +66,13 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
           state => {
             const endJudge = gameEndJudging(state);
             if (endJudge.type === 'GameContinue') {
-              return gameFlow(state, [
-                state => [updateRemainingTurn(state)],
-                state => {
-                  if(canContinuousActive(state)) {
-                    const done = continuousActive(state);
-                    return done ? [upcastGameState(done)] : [];
-                  } else {
-                    const done = turnChange(state);
-                    return done ? [upcastGameState(done)] : [];
-                  }
-                },
-                state => {
-                  const done = inputCommand(
-                    state,
-                    batteries.attacker.playerId,
-                    batteries.attacker.command,
-                    batteries.defender.playerId,
-                    batteries.defender.command
-                  );
-                  return done ? [upcastGameState(done)] : [];
-                }
-              ]);
+              return gameContinueFlow(
+                state,
+                batteries.attacker.playerId,
+                batteries.attacker.command,
+                batteries.defender.playerId,
+                batteries.defender.command
+              );
             } else {
               const done = gameEnd(state, endJudge);
               return [upcastGameState(done)];
@@ -101,4 +83,3 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
     }
   ]);
 }
-
