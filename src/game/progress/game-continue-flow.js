@@ -20,7 +20,10 @@ import {inputCommand} from "../../effect/input-command";
  */
 export function gameContinueFlow(state: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
   return gameFlow(state, [
-    state => [updateRemainingTurn(state)],
+    state => {
+      const done = updateRemainingTurn(state);
+      return done ? [upcastGameState(done)] : [];
+    },
     state => {
       if(canContinuousActive(state)) {
         const done = continuousActive(state);

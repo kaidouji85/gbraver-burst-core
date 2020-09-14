@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState} from "../..";
+import type {GameState, GameStateX, UpdateRemainingTurn} from "../..";
 import {isRemainArmdozerEffect, updateArmdozerEffect} from "./armdozer-effect";
 import type {EndArmdozerEffect} from "./update-remaining-turn";
 
@@ -10,7 +10,7 @@ import type {EndArmdozerEffect} from "./update-remaining-turn";
  * @param lastState 最新状態
  * @return 更新結果
  */
-export function updateRemainingTurn(lastState: GameState): GameState {
+export function updateRemainingTurn(lastState: GameState): GameStateX<UpdateRemainingTurn> {
   const updatePlayers = lastState.players.map(v => ({
     ...v,
     armdozer: {
