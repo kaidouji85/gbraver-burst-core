@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerState, GameState, PlayerId, PlayerState} from "../..";
+import type {ArmdozerState, GameState, GameStateX, PilotSkillEffect, PlayerId, PlayerState} from "../..";
 import type {RecoverBatterySkill} from "../../player/pilot";
 
 /**
@@ -9,12 +9,12 @@ import type {RecoverBatterySkill} from "../../player/pilot";
  * @param lastState 最新のゲーム状態
  * @param invokerId 発動するプレイヤー
  * @param skill スキル内容
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill): GameState {
+export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill): ?GameStateX<PilotSkillEffect> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
-    return lastState;
+    return null;
   }
 
   const updatedInvoker: PlayerState = {
@@ -24,18 +24,17 @@ export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill:
       battery: calcRecoverBattery(invoker.armdozer, skill)
     }
   };
-  const updatedPlayers: PlayerState[] = lastState.players.map(v => v.playerId === invokerId
-    ? updatedInvoker
-    : v
-  );
+  const updatedPlayers: PlayerState[] = lastState.players
+    .map(v => v.playerId === invokerId ? updatedInvoker : v);
+  const effect = {
+    name: 'PilotSkillEffect',
+    invokerId: invokerId,
+    skill: skill,
+  };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: {
-      name: 'PilotSkillEffect',
-      invokerId: invokerId,
-      skill: skill,
-    }
+    effect: effect
   };
 }
 
