@@ -52,16 +52,20 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
         return [];
       }
 
-      const upcastedBattle: GameState = upcastGameState(doneBattle);
       return [
-        upcastedBattle,
-        ...gameFlow(upcastedBattle, [
+        upcastGameState(doneBattle),
+        ...gameFlow(upcastGameState(doneBattle), [
           state => canReflectFlow(doneBattle.effect.result)
             ? reflectFlow(state, doneBattle.effect.attacker)
             : [],
-          state => canRightItself(doneBattle.effect)
-            ? [rightItself(state, doneBattle.effect)]
-            : [],
+          state => {
+            if (canRightItself(doneBattle.effect)) {
+              return [];
+            }
+
+            const done = rightItself(state, doneBattle.effect);
+            return done ? [upcastGameState(done)] : [];
+          },
           state => {
             const endJudge = gameEndJudging(state);
             if (endJudge.type === 'GameContinue') {

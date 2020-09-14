@@ -1,6 +1,6 @@
 // @flow
 
-import type {Battle, GameState} from "../..";
+import type {Battle, GameState, GameStateX, RightItself} from "../..";
 
 /**
  * 体勢整えを実施するか否かを判定する
@@ -17,12 +17,12 @@ export function canRightItself(battle: Battle): boolean {
  *
  * @param lastState 最新の状態
  * @param battle 戦闘
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function rightItself(lastState: GameState, battle: Battle): GameState {
+export function rightItself(lastState: GameState, battle: Battle): ?GameStateX<RightItself> {
   const defender = lastState.players.find(v => v.playerId !== battle.attacker);
   if (!defender) {
-    return lastState;
+    return null;
   }
 
   return {
