@@ -56,7 +56,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
             ? reflectFlow(state, doneBattle.effect.attacker)
             : [],
           state => {
-            if (canRightItself(doneBattle.effect)) {
+            if (!canRightItself(doneBattle.effect)) {
               return [];
             }
 
