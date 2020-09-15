@@ -1,7 +1,7 @@
 // @flow
 
-import type {GameState} from "../state/game-state";
-import {upcastGameState} from "../state/game-state";
+import type {GameState} from "../../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import {gameFlow} from "../flow/game-flow";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";

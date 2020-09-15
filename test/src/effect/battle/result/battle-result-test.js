@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import type {PlayerState} from "../../../../../src/game/state/player-state";
+import type {PlayerState} from "../../../../../src/state/player-state";
 import type {BatteryCommand} from "../../../../../src/command/battery";
 import {battleResult} from "../../../../../src/effect/battle/result/battle-result";
 import {EMPTY_PLAYER_STATE} from "../../../../data/player";

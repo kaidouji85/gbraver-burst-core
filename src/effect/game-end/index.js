@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState} from "../../game/state/game-state";
+import type {GameState} from "../../state/game-state";
 import type {GameEnd, GameEndResult} from "./game-end";
 import type {GameStateX} from "../..";
 

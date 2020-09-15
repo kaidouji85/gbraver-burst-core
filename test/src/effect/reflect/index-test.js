@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
-import type {PlayerState} from "../../../../src/game/state/player-state";
+import type {PlayerState} from "../../../../src/state/player-state";
 import {reflect} from "../../../../src/effect/reflect";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 

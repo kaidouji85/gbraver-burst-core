@@ -4,7 +4,7 @@ import type {BatteryCommand, Command, GameState, PlayerCommand, PlayerCommandX, 
 import {gameFlow} from "../flow/game-flow";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
-import {upcastGameState} from "../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
 

@@ -4,7 +4,7 @@ import test from 'ava';
 import type {Player} from "../../../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../../data/armdozer";
 import {startGame} from "../../../../src/effect/start-game";
-import type {GameState} from "../../../../src/game/state/game-state";
+import type {GameState} from "../../../../src/state/game-state";
 import {EMPTY_PILOT} from "../../../data/pilot";
 
 const PLAYER1: Player = {

@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState} from "../../game/state/game-state";
+import type {GameState} from "../../state/game-state";
 import {BATTERY_RECOVERY_VALUE, turnChangeRecoverBattery} from "./recover-battery";
 import type {GameStateX, TurnChange} from "../..";
 

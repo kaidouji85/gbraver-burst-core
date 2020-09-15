@@ -1,7 +1,7 @@
 // @flow
 
 import type {Pilot} from "../../src/player/pilot";
-import type {PilotState} from "../../src/game/state/pilot-state";
+import type {PilotState} from "../../src/state/pilot-state";
 
 /**
  * 空のパイロット

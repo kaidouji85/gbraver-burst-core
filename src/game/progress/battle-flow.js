@@ -1,8 +1,8 @@
 // @flow
 
 import {gameFlow} from "../flow/game-flow";
-import type {GameState} from '../state/game-state';
-import {upcastGameState} from "../state/game-state";
+import type {GameState} from '../../state/game-state';
+import {upcastGameState} from "../../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";

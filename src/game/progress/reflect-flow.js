@@ -4,7 +4,7 @@ import type {ReflectParam} from "../../effect/reflect/reflect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {gameFlow} from "../flow/game-flow";
 import {reflect} from "../../effect/reflect";
-import {upcastGameState} from "../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 
 /**
  * ダメージ反射フローを実行できるか否かを判定する
