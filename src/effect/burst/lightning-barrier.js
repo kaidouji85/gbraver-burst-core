@@ -1,9 +1,9 @@
 // @flow
 
 import type {LightningBarrier} from '../../player/burst';
-import type {PlayerState} from '../../game/state/player-state';
+import type {PlayerState} from '../../state/player-state';
 import {burstRecoverBattery} from "./burst-recover-battery";
-import type {GameState, PlayerId} from "../..";
+import type {BurstEffect, GameState, GameStateX, PlayerId} from "../..";
 
 /**
  * バースト 電撃バリア
@@ -11,12 +11,12 @@ import type {GameState, PlayerId} from "../..";
  * @param lastState 最新状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト情報
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, burst: LightningBarrier): GameState {
+export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, burst: LightningBarrier): ?GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return lastState;
+    return null;
   }
 
   const updatedBurstPlayer: PlayerState = {
@@ -39,13 +39,14 @@ export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, 
     ? updatedBurstPlayer
     : player
   );
+  const effect = {
+    name: 'BurstEffect',
+    burstPlayer: burstPlayerId,
+    burst: burst,
+  };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: {
-      name: 'BurstEffect',
-      burstPlayer: burstPlayerId,
-      burst: burst,
-    }
+    effect: effect
   };
 }

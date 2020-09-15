@@ -1,8 +1,8 @@
 // @flow
 
 import test from 'ava';
-import type {PlayerState} from "../../../src/game/state/player-state";
-import {isPlayerDeath} from "../../../src/game/state/player-state";
+import type {PlayerState} from "../../../src/state/player-state";
+import {isPlayerDeath} from "../../../src/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../data/armdozer";
 

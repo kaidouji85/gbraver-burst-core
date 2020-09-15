@@ -1,7 +1,7 @@
 // @flow
 import test from 'ava';
 import {getFirstTurnPlayer} from "../../../../src/effect/start-game/first-turn-payer";
-import type {PlayerState} from "../../../../src/game/state/player-state";
+import type {PlayerState} from "../../../../src/state/player-state";
 import type {PlayerId} from "../../../../src/player/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";

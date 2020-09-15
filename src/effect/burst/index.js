@@ -1,46 +1,51 @@
 // @flow
 
-import type {GameState} from "../../game/state/game-state";
+import type {GameState} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
 import type {BuffPower, ContinuousAttack, LightningBarrier, RecoverBattery} from "../../player/burst";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {lightningBarrier} from "./lightning-barrier";
 import {continuousAttack} from "./continuous-attack";
+import type {BurstEffect, GameStateX} from "../..";
 
 /**
- * バーストを実施する
+ * バーストを実行する
  *
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
- * @return バースト実施後の状態
+ * @return バースト結果、実行不可能な場合はnullを返す
  */
-export function burst(lastState: GameState, burstPlayerId: PlayerId): GameState {
+export function burst(lastState: GameState, burstPlayerId: PlayerId): ?GameStateX<BurstEffect> {
   const doneBurstEffect = burstEffect(lastState, burstPlayerId);
-  return disableBurst(doneBurstEffect, burstPlayerId);
+  if (!doneBurstEffect) {
+    return null;
+  }
+
+  return disableBurst(doneBurstEffect);
 }
 
 /**
  * バースト効果を適用する
  *
  * @param lastState 最新状態
- * @param burstPlayerId バーストするプレイヤー
+ * @param burstPlayerId バーストするプレイヤーID
  * @return 更新結果
  */
-export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): GameState {
+export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): ?GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return lastState;
+    return null;
   }
 
   if (burstPlayer.armdozer.burst.type === 'RecoverBattery') {
-    const recoverBatteryBurst: RecoverBattery = burstPlayer.armdozer.burst;
-    return recoverBattery(lastState, burstPlayerId, recoverBatteryBurst);
+    const burst: RecoverBattery = burstPlayer.armdozer.burst;
+    return recoverBattery(lastState, burstPlayerId, burst);
   }
 
   if (burstPlayer.armdozer.burst.type === 'BuffPower') {
-    const buffPowerBurst: BuffPower = burstPlayer.armdozer.burst;
-    return buffPower(lastState, burstPlayerId, buffPowerBurst);
+    const burst: BuffPower = burstPlayer.armdozer.burst;
+    return buffPower(lastState, burstPlayerId, burst);
   }
 
   if (burstPlayer.armdozer.burst.type === 'LightningBarrier') {
@@ -53,20 +58,19 @@ export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): Game
     return continuousAttack(lastState, burstPlayerId, continuousAttackBurst);
   }
 
-  return lastState;
+  return null;
 }
 
 /**
  * 指定したプレイヤーのバーストを利用不能にする
  *
  * @param lastState 最新状態
- * @param burstPlayerId バーストしたプレイヤー
  * @return 更新結果
  */
-export function disableBurst(lastState: GameState, burstPlayerId: PlayerId): GameState {
-  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+export function disableBurst(lastState: GameStateX<BurstEffect>): ?GameStateX<BurstEffect> {
+  const burstPlayer = lastState.players.find(v => v.playerId === lastState.effect.burstPlayer);
   if (!burstPlayer) {
-    return lastState;
+    return null;
   }
 
   const updatedBurstPlayer = {
@@ -76,10 +80,8 @@ export function disableBurst(lastState: GameState, burstPlayerId: PlayerId): Gam
       enableBurst: false
     }
   };
-  const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
-    ? updatedBurstPlayer
-    : player
-  );
+  const updatedPlayers = lastState.players
+    .map(v => (v.playerId === updatedBurstPlayer.playerId) ? updatedBurstPlayer : v);
   return {
     ...lastState,
     players: updatedPlayers,

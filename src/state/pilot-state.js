@@ -1,6 +1,6 @@
 // @flow
 
-import type {Pilot, PilotSkill, PilotX} from "../../player/pilot";
+import type {Pilot, PilotSkill, PilotX} from "../player/pilot";
 
 /**
  * パイロットステート

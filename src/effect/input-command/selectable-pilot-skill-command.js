@@ -1,6 +1,6 @@
 // @flow
 
-import type {PilotState} from "../../game/state/pilot-state";
+import type {PilotState} from "../../state/pilot-state";
 import type {PilotSkillCommand} from "../../command/pilot-skill";
 
 /**

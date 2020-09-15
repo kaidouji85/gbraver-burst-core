@@ -1,6 +1,7 @@
 // @flow
 
-import type {GameState} from "../state/game-state";
+import type {GameState} from "../../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import {gameFlow} from "../flow/game-flow";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
@@ -36,7 +37,16 @@ export function effectActivationFlow(lastState: GameState, commands: PlayerComma
   return gameFlow(lastState, [
     state => activationOrNot(state, attackerCommand),
     state => activationOrNot(state, defenderCommand),
-    state => [inputCommand(state, commands)],
+    state => {
+      const done = inputCommand(
+        state,
+        attackerCommand.playerId,
+        attackerCommand.command,
+        defenderCommand.playerId,
+        defenderCommand.command
+      );
+      return done ? [upcastGameState(done)] : [];
+    },
   ]);
 }
 
@@ -48,12 +58,15 @@ export function effectActivationFlow(lastState: GameState, commands: PlayerComma
  * @return 更新結果
  */
 export function activationOrNot(state: GameState, command: PlayerCommand): GameState[] {
-  switch(command.command.type) {
-    case 'BURST_COMMAND':
-      return [burst(state, command.playerId)];
-    case 'PILOT_SKILL_COMMAND':
-      return [pilotSkill(state, command.playerId)];
-    default:
-      return [];
+  if (command.command.type === 'BURST_COMMAND') {
+    const done = burst(state, command.playerId);
+    return done ? [upcastGameState(done)] : [];
   }
+
+  if (command.command.type === 'PILOT_SKILL_COMMAND') {
+    const done = pilotSkill(state, command.playerId);
+    return done ? [upcastGameState(done)] : [];
+  }
+
+  return [];
 }

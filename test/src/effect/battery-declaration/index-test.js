@@ -27,27 +27,19 @@ test('バッテリー宣言が正しく処理される', t => {
   };
   const lastState = {
     ...EMPTY_GAME_STATE,
-    activePlayerId: 'attacker',
+    activePlayerId: attacker.playerId,
     players: [attacker, defender]
   };
-  const commands = [
-    {
-      playerId: 'attacker',
-      command: {
-        type: 'BATTERY_COMMAND',
-        battery: 3
-      }
-    },
-    {
-      playerId: 'defender',
-      command: {
-        type: 'BATTERY_COMMAND',
-        battery: 2
-      }
-    },
-  ];
+  const attackerBattery = {
+    type: 'BATTERY_COMMAND',
+    battery: 3
+  };
+  const defenderBattery = {
+    type: 'BATTERY_COMMAND',
+    battery: 2
+  };
 
-  const result = batteryDeclaration(lastState, commands);
+  const result = batteryDeclaration(lastState, attacker.playerId, attackerBattery, defender.playerId, defenderBattery);
   const expected = {
     ...lastState,
     players: [

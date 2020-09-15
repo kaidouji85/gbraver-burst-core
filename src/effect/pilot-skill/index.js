@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState, PlayerId} from "../..";
+import type {GameState, GameStateX, PilotSkillEffect, PlayerId} from "../..";
 import type {RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 
@@ -9,12 +9,14 @@ import {recoverBattery} from "./recover-battery";
  *
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
- * @param skill パイロットスキルの内容
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function pilotSkill(lastState: GameState, invokerId: PlayerId): GameState {
+export function pilotSkill(lastState: GameState, invokerId: PlayerId): ?GameStateX<PilotSkillEffect> {
   const donePilotSkill = pilotSkillEffect(lastState, invokerId);
-  return disablePilotSkill(donePilotSkill, invokerId);
+  if (!donePilotSkill) {
+    return null;
+  }
+  return disablePilotSkill(donePilotSkill);
 }
 
 /**
@@ -22,13 +24,12 @@ export function pilotSkill(lastState: GameState, invokerId: PlayerId): GameState
  *
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
- * @param skill パイロットスキルの内容
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameState {
+function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameStateX<PilotSkillEffect> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
-    return lastState;
+    return null;
   }
 
 
@@ -37,20 +38,19 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameState 
     return recoverBattery(lastState, invokerId, recoverBatterySkill);
   }
 
-  return lastState;
+  return null;
 }
 
 /**
  * パイロットスキルを使用済みにする
  *
  * @param lastState 最新状態
- * @param invokerId パイロットスキルを発動するプレイヤー
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-function disablePilotSkill(lastState: GameState, invokerId: PlayerId): GameState {
-  const invoker = lastState.players.find(v => v.playerId === invokerId);
+function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): ?GameStateX<PilotSkillEffect> {
+  const invoker = lastState.players.find(v => v.playerId === lastState.effect.invokerId);
   if (!invoker) {
-    return lastState;
+    return null;
   }
 
   const updatedInvoker = {
@@ -60,10 +60,8 @@ function disablePilotSkill(lastState: GameState, invokerId: PlayerId): GameState
       enableSkill: false
     }
   };
-  const updatedPlayers = lastState.players.map(v => v.playerId === invokerId
-    ? updatedInvoker
-    : v
-  );
+  const updatedPlayers = lastState.players
+    .map(v => v.playerId === updatedInvoker.playerId ? updatedInvoker : v);
   return {
     ...lastState,
     players: updatedPlayers

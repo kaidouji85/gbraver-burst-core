@@ -1,9 +1,9 @@
 // @flow
 
-import type {PlayerState} from "../../game/state/player-state";
+import type {PlayerState} from "../../state/player-state";
 import type {RecoverBattery} from "../../player/burst";
 import {burstRecoverBattery} from "./burst-recover-battery";
-import type {GameState, PlayerId} from "../..";
+import type {BurstEffect, GameState, GameStateX, PlayerId} from "../..";
 
 /**
  * バースト バッテリー回復
@@ -11,12 +11,12 @@ import type {GameState, PlayerId} from "../..";
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, burst: RecoverBattery): GameState {
+export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, burst: RecoverBattery): ?GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return lastState;
+    return null;
   }
 
   const updatedBurstPlayer: PlayerState = {
@@ -26,18 +26,16 @@ export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, bu
       battery: burstRecoverBattery(burstPlayer.armdozer, burst),
     }
   };
-  const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId
-    ? updatedBurstPlayer
-    : player
-  );
-
+  const updatedPlayers = lastState.players
+    .map(player => player.playerId === burstPlayerId ? updatedBurstPlayer : player);
+  const effect = {
+    name: 'BurstEffect',
+    burstPlayer: burstPlayerId,
+    burst: burst,
+  };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: {
-      name: 'BurstEffect',
-      burstPlayer: burstPlayerId,
-      burst: burst,
-    }
+    effect: effect
   };
 }

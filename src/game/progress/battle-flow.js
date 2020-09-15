@@ -1,19 +1,17 @@
 // @flow
 
 import {gameFlow} from "../flow/game-flow";
-import type {GameState} from '../state/game-state';
-import {upcastGameState} from "../state/game-state";
+import type {GameState} from '../../state/game-state';
+import {upcastGameState} from "../../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
-import {turnChange} from "../../effect/turn-change";
-import {inputCommand} from "../../effect/input-command";
-import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canRightItself, rightItself} from "../../effect/right-itself";
 import {canReflectFlow, reflectFlow} from "./reflect-flow";
 import {extractBatteryCommands} from "./extract-battery-commands";
 import type {PlayerCommand} from "../command/player-command";
+import {gameContinueFlow} from "./game-continue-flow";
 
 /**
  * 戦闘フロー
@@ -23,45 +21,61 @@ import type {PlayerCommand} from "../command/player-command";
  * @return 更新されたゲームステート
  */
 export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
-  const batteryCommands = extractBatteryCommands(lastState, commands);
-  if (!batteryCommands) {
+  const batteries = extractBatteryCommands(lastState, commands);
+  if (!batteries) {
     return [];
   }
 
   return gameFlow(lastState, [
-    state => [batteryDeclaration(state, commands)],
     state => {
-      const doneResult = battle(
+      const done = batteryDeclaration(
         state,
-        batteryCommands.attacker.playerId,
-        batteryCommands.attacker.command,
-        batteryCommands.defender.playerId,
-        batteryCommands.defender.command
+        batteries.attacker.playerId,
+        batteries.attacker.command,
+        batteries.defender.playerId,
+        batteries.defender.command
       );
-      if (!doneResult) {
+      return done ? [upcastGameState(done)] : [];
+    },
+    state => {
+      const doneBattle = battle(
+        state,
+        batteries.attacker.playerId,
+        batteries.attacker.command,
+        batteries.defender.playerId,
+        batteries.defender.command
+      );
+      if (!doneBattle) {
         return [];
       }
 
-      const upcastedBattle: GameState = upcastGameState(doneResult);
       return [
-        upcastedBattle,
-        ...gameFlow(upcastedBattle, [
-          state => canReflectFlow(doneResult.effect.result)
-            ? reflectFlow(state, doneResult.effect.attacker)
+        upcastGameState(doneBattle),
+        ...gameFlow(upcastGameState(doneBattle), [
+          state => canReflectFlow(doneBattle.effect.result)
+            ? reflectFlow(state, doneBattle.effect.attacker)
             : [],
-          state => canRightItself(doneResult.effect)
-            ? [rightItself(state, doneResult.effect)]
-            : [],
+          state => {
+            if (!canRightItself(doneBattle.effect)) {
+              return [];
+            }
+
+            const done = rightItself(state, doneBattle.effect);
+            return done ? [upcastGameState(done)] : [];
+          },
           state => {
             const endJudge = gameEndJudging(state);
             if (endJudge.type === 'GameContinue') {
-              return gameFlow(state, [
-                state => [updateRemainingTurn(state)],
-                state => [turnChange(state)],
-                state => [inputCommand(state, commands)]
-              ]);
+              return gameContinueFlow(
+                state,
+                batteries.attacker.playerId,
+                batteries.attacker.command,
+                batteries.defender.playerId,
+                batteries.defender.command
+              );
             } else {
-              return [gameEnd(state, endJudge)];
+              const done = gameEnd(state, endJudge);
+              return [upcastGameState(done)];
             }
           }
         ])
@@ -69,4 +83,3 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
     }
   ]);
 }
-

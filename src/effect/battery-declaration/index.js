@@ -1,36 +1,27 @@
 // @flow
 
-import type {GameState} from "../../game/state/game-state";
-import type {PlayerState} from "../../game/state/player-state";
+import type {GameState} from "../../state/game-state";
+import type {PlayerState} from "../../state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 import {updatePlayer} from "./update-player";
-import type {PlayerCommand} from "../..";
+import type {BatteryDeclaration, GameStateX, PlayerId} from "../..";
 
 /**
- * 攻撃、防御のバッテリー宣言
+ * 攻撃、防御のバッテリー宣言を実行する
  *
  * @param lastState 最新状態
- * @param commands コマンド
- * @returns 更新結果
+ * @param attackerId 攻撃プレイヤーID
+ * @param attackerBattery 攻撃バッテリー
+ * @param defenderId 防御プレイヤーID
+ * @param defenderBattery 防御バッテリー
+ * @returns 更新結果、実行不可能な場合はnullを返す
  */
-export function batteryDeclaration(lastState: GameState, commands: PlayerCommand[]): GameState {
-  const attacker: ?PlayerState = lastState.players.find(v => v.playerId === lastState.activePlayerId);
-  const defender: ?PlayerState = lastState.players.find(v => v.playerId !== lastState.activePlayerId);
+export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, attackerBattery: BatteryCommand, defenderId: PlayerId, defenderBattery: BatteryCommand): ?GameStateX<BatteryDeclaration> {
+  const attacker: ?PlayerState = lastState.players.find(v => v.playerId === attackerId);
+  const defender: ?PlayerState = lastState.players.find(v => v.playerId === defenderId);
   if (!attacker || !defender) {
-    return lastState;
+    return null;
   }
-
-  const attackerCommand: ?PlayerCommand = commands.find(v => v.playerId === attacker.playerId);
-  const defenderCommand: ?PlayerCommand = commands.find(v => v.playerId === defender.playerId);
-  if (!attackerCommand || !defenderCommand) {
-    return lastState;
-  }
-
-  if (attackerCommand.command.type !== 'BATTERY_COMMAND' || defenderCommand.command.type !== 'BATTERY_COMMAND') {
-    return lastState;
-  }
-  const attackerBattery: BatteryCommand = attackerCommand.command;
-  const defenderBattery: BatteryCommand = defenderCommand.command;
 
   const updatedAttacker = updatePlayer(attacker, attackerBattery);
   const updatedDefender = updatePlayer(defender, defenderBattery);
@@ -43,15 +34,15 @@ export function batteryDeclaration(lastState: GameState, commands: PlayerCommand
       return v;
     }
   });
-
+  const effect = {
+    name: 'BatteryDeclaration',
+    attacker: attacker.playerId,
+    attackerBattery: attackerBattery.battery,
+    defenderBattery: defenderBattery.battery,
+  };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: {
-      name: 'BatteryDeclaration',
-      attacker: attacker.playerId,
-      attackerBattery: attackerBattery.battery,
-      defenderBattery: defenderBattery.battery,
-    }
+    effect: effect
   }
 }

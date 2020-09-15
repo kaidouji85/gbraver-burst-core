@@ -10,11 +10,11 @@ export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
 export type {PilotId, PilotSkill, RecoverBatterySkill, Pilot, PilotX} from './player/pilot';
 
-export type {GameState, GameStateX} from './game/state/game-state';
-export type {PlayerState, PlayerStateX} from './game/state/player-state';
-export type {ArmdozerState, ArmdozerStateX} from './game/state/armdozer-state';
-export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer} from './game/state/armdozer-effect';
-export type {PilotStateX, PilotState} from './game/state/pilot-state';
+export type {GameState, GameStateX} from './state/game-state';
+export type {PlayerState, PlayerStateX} from './state/player-state';
+export type {ArmdozerState, ArmdozerStateX} from './state/armdozer-state';
+export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer} from './state/armdozer-effect';
+export type {PilotStateX, PilotState} from './state/pilot-state';
 
 export type {Command, QuickCommand} from './command/command';
 export type {BatteryCommand} from './command/battery';

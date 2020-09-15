@@ -2,7 +2,7 @@
 import test from 'ava';
 import {GbraverBurstCore} from "../../../src";
 import type {Player} from "../../../src/player/player";
-import type {GameState} from "../../../src/game/state/game-state";
+import type {GameState} from "../../../src/state/game-state";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 import {EMPTY_PILOT} from "../../data/pilot";
 
