@@ -1,3 +1,5 @@
+// @flow
+
 import test from 'ava';
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
 import type {Battle, GameState} from "../../../../src";

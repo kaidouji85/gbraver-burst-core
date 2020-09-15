@@ -8,7 +8,7 @@ export type InputCommand = {
   name: 'InputCommand',
 
   /** 各プレイヤーのコマンド */
-  players: Array<Selectable | NoChoice >
+  players: Array<Selectable | NoChoice>
 };
 
 /**

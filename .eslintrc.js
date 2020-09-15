@@ -1,22 +1,8 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "parser": "babel-eslint",
+    "extends": [
+        "plugin:flowtype/recommended"
+    ],
     "plugins": [
         "flowtype"
-    ],
-    "extends": "eslint:recommended",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "rules": {
-    }
+    ]
 };
