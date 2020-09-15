@@ -1,8 +1,8 @@
 // @flow
 
 import test from 'ava';
-import type {PilotState} from "../../../../src/game/state/pilot-state";
-import {createPilotState} from "../../../../src/game/state/pilot-state";
+import type {PilotState} from "../../../../src/state/pilot-state";
+import {createPilotState} from "../../../../src/state/pilot-state";
 import type {Pilot} from "../../../../src/player/pilot";
 import {EMPTY_PILOT} from "../../../data/pilot";
 

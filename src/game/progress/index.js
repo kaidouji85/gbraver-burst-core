@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState} from "../state/game-state";
+import type {GameState} from "../../state/game-state";
 import {effectActivationFlow, isEffectActivationFlow} from "./effect-activation-flow";
 import {battleFlow} from "./battle-flow";
 import type {PlayerCommand} from "../..";

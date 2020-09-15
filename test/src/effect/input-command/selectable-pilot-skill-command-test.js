@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import type {PilotState} from "../../../../src/game/state/pilot-state";
+import type {PilotState} from "../../../../src/state/pilot-state";
 import {EMPTY_PILOT_STATE} from "../../../data/pilot";
 import {selectablePilotSkillCommand} from "../../../../src/effect/input-command/selectable-pilot-skill-command";
 

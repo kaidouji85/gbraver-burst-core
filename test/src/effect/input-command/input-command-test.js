@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {inputCommand} from "../../../../src/effect/input-command";
-import type {GameState} from "../../../../src/game/state/game-state";
+import type {GameState} from "../../../../src/state/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";

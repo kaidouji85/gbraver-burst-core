@@ -1,7 +1,7 @@
 // @flow
 
 import type {BuffPower} from "../../player/burst";
-import type {PlayerState} from "../../game/state/player-state";
+import type {PlayerState} from "../../state/player-state";
 import {burstRecoverBattery} from "./burst-recover-battery";
 import type {BurstEffect, GameState, GameStateX, PlayerId} from "../..";
 

@@ -1,6 +1,6 @@
 // @flow
 
-import type {ReflectDamageEffect} from "../../effect/reflect/reflect";
+import type {ReflectDamageEffect} from "../effect/reflect/reflect";
 
 /**
  * アームドーザに適用される効果

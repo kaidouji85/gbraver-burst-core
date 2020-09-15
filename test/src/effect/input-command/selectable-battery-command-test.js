@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {selectableBatteryCommand} from "../../../../src/effect/input-command/selectable-battery-command";
-import type {ArmdozerState} from "../../../../src/game/state/armdozer-state";
+import type {ArmdozerState} from "../../../../src/state/armdozer-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 
 const ARMDOZER_STATE: ArmdozerState = {
