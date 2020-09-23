@@ -1,6 +1,6 @@
 // @flow
 
-import type {BatteryCommand, Command, GameState, PlayerCommand, PlayerCommandX, PlayerId} from "../..";
+import type {Command, GameState, PlayerId} from "../..";
 import {gameFlow} from "../flow/game-flow";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
