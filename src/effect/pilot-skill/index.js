@@ -1,8 +1,9 @@
 // @flow
 
 import type {GameState, GameStateX, PilotSkillEffect, PlayerId} from "../..";
-import type {RecoverBatterySkill} from "../../player/pilot";
+import type {BuffPowerSkill, RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
+import {buffPower} from "./buff-power";
 
 /**
  * パイロットスキルを発動する
@@ -32,10 +33,14 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
     return null;
   }
 
-
   if (invoker.pilot.skill.type === 'RecoverBatterySkill') {
-    const recoverBatterySkill: RecoverBatterySkill = invoker.pilot.skill;
-    return recoverBattery(lastState, invokerId, recoverBatterySkill);
+    const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
+    return recoverBattery(lastState, invokerId, castedSkill);
+  }
+
+  if (invoker.pilot.skill.type === 'BuffPowerSkill') {
+    const castedSkill: BuffPowerSkill = invoker.pilot.skill;
+    return buffPower(lastState, invokerId, castedSkill);
   }
 
   return null;
