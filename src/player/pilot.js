@@ -8,7 +8,8 @@ export type PilotId = string;
 /**
  * パイロットスキル
  */
-export type PilotSkill = RecoverBatterySkill;
+export type PilotSkill = RecoverBatterySkill
+  | BuffPowerSkill;
 
 /**
  * パイロットスキル バッテリー回復
@@ -16,6 +17,17 @@ export type PilotSkill = RecoverBatterySkill;
 export type RecoverBatterySkill = {
   type: 'RecoverBatterySkill',
   recoverBattery: number
+};
+
+/**
+ * パイロットスキル 攻撃バフ
+ */
+export type BuffPowerSkill = {
+  type: 'BuffPowerSkill',
+  /** 攻撃力アップ */
+  buffPower: number,
+  /** バフ継続ターン数 */
+  duration: number
 };
 
 /**
