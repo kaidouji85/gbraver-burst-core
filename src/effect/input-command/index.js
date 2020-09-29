@@ -69,7 +69,7 @@ export function inputCommand(lastState: GameState, attackerId: PlayerId, attacke
  * @param otherCommand 相手のコマンド
  * @return {boolean}
  */
-export function isNoChoice(myCommand: Command, otherCommand: Command) {
+export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
   return myCommand.type === 'BATTERY_COMMAND'
     && !!castQuickCommand(otherCommand);
 }
