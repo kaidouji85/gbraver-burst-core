@@ -8,7 +8,7 @@ export {PlayerCommandX} from "./game/command/player-command";
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
-export type {PilotId, PilotSkill, RecoverBatterySkill, Pilot, PilotX} from './player/pilot';
+export type {PilotId, PilotSkill, RecoverBatterySkill, BuffPowerSkill, Pilot, PilotX} from './player/pilot';
 
 export type {GameState, GameStateX} from './state/game-state';
 export type {PlayerState, PlayerStateX} from './state/player-state';

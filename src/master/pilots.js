@@ -6,7 +6,8 @@ import type {Pilot} from "../player/pilot";
  * パイロットIDを集めたもの
  */
 export const PilotIds = {
-  SHINYA: 'SHINYA'
+  SHINYA: 'SHINYA',
+  GAI: 'GAI',
 };
 
 /**
@@ -19,6 +20,15 @@ export const Pilots: Pilot[] = [
     skill: {
       type: 'RecoverBatterySkill',
       recoverBattery: 2
+    }
+  },
+  {
+    id: PilotIds.GAI,
+    name: 'ガイ',
+    skill: {
+      type: 'BuffPowerSkill',
+      buffPower: 600,
+      duration: 2,
     }
   }
 ];
