@@ -31,6 +31,17 @@ export type BuffPowerSkill = {
 };
 
 /**
+ * ダメージ減少スキル
+ */
+export type DamageDecreaseSkill = {
+  type: 'DamageDecreaseSkill',
+  /** ダメージ減少値 */
+  decrease: number,
+  /** 継続ターン数 */
+  duration: number
+};
+
+/**
  * パイロット
  */
 export type Pilot = PilotX<PilotSkill>;
