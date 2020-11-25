@@ -41,7 +41,8 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
 
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
     const castedSkill: BuffPowerSkill = invoker.pilot.skill;
-    return buffPower(lastState, invokerId, castedSkill);
+    const updated = buffPower(lastState, invokerId, castedSkill);
+    return updated ? upcastPilotSkillEffect(updated) : null;
   }
 
   return null;
@@ -80,6 +81,6 @@ function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): ?GameStateX
  * @param origin キャスト前
  * @return キャスト結果
  */
-function upcastPilotSkillEffect<X>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
+function upcastPilotSkillEffect<X: PilotSkill>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
   return ((origin: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof origin.effect.skill>>);
 }

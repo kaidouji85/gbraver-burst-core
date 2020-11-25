@@ -1,7 +1,8 @@
 // @flow
 
-import type {GameState, GameStateX, PilotSkillEffect, PlayerId, PlayerState} from "../..";
+import type {GameState, GameStateX, PlayerId, PlayerState} from "../..";
 import type {BuffPowerSkill} from "../../player/pilot";
+import type {PilotSkillEffectX} from "./pilot-skill-effect";
 
 /**
  * パイロットスキル 攻撃バフ
@@ -11,7 +12,7 @@ import type {BuffPowerSkill} from "../../player/pilot";
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function buffPower(lastState: GameState, invokerId: PlayerId, skill: BuffPowerSkill): ?GameStateX<PilotSkillEffect> {
+export function buffPower(lastState: GameState, invokerId: PlayerId, skill: BuffPowerSkill): ?GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
     return null;
