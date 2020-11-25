@@ -36,11 +36,7 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
   if (invoker.pilot.skill.type === 'RecoverBatterySkill') {
     const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
     const updated =  recoverBattery(lastState, invokerId, castedSkill);
-    if (updated) {
-      return upcastPilotSkillEffect(updated);
-    } else {
-      return null;
-    }
+    return updated ? upcastPilotSkillEffect(updated) : null;
   }
 
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
