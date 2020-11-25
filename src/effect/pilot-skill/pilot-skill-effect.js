@@ -6,8 +6,20 @@ import type {PilotSkill} from "../../player/pilot";
 /**
  * パイロットスキル発動
  */
-export type PilotSkillEffect = {
+export type PilotSkillEffect = PilotSkillEffectX<PilotSkill>;
+
+/**
+ * パイロットスキル発動
+ */
+export type PilotSkillEffectX<SKILL: PilotSkill> = {
   name: 'PilotSkillEffect',
+  /**
+   * パイロットスキル発動者
+   */
   invokerId: PlayerId,
-  skill: PilotSkill,
-};
+
+  /**
+   * 発動スキル
+   */
+  skill: SKILL,
+}

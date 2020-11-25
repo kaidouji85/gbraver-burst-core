@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState, GameStateX, PilotSkillEffect, PlayerId} from "../..";
+import type {GameState, GameStateX, PilotSkill, PilotSkillEffect, PilotSkillEffectX, PlayerId} from "../..";
 import type {BuffPowerSkill, RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
@@ -35,12 +35,14 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
 
   if (invoker.pilot.skill.type === 'RecoverBatterySkill') {
     const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
-    return recoverBattery(lastState, invokerId, castedSkill);
+    const updated =  recoverBattery(lastState, invokerId, castedSkill);
+    return updated ? upcastPilotSkillEffect(updated) : null;
   }
 
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
     const castedSkill: BuffPowerSkill = invoker.pilot.skill;
-    return buffPower(lastState, invokerId, castedSkill);
+    const updated = buffPower(lastState, invokerId, castedSkill);
+    return updated ? upcastPilotSkillEffect(updated) : null;
   }
 
   return null;
@@ -71,4 +73,14 @@ function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): ?GameStateX
     ...lastState,
     players: updatedPlayers
   };
+}
+
+/**
+ * パイロットスキル発動ステートにアップキャストする
+ *
+ * @param origin キャスト前
+ * @return キャスト結果
+ */
+function upcastPilotSkillEffect<X: PilotSkill>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
+  return ((origin: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof origin.effect.skill>>);
 }
