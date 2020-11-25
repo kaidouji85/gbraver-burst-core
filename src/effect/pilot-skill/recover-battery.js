@@ -1,7 +1,8 @@
 // @flow
 
-import type {ArmdozerState, GameState, GameStateX, PilotSkillEffect, PlayerId, PlayerState} from "../..";
+import type {ArmdozerState, GameState, GameStateX, PlayerId, PlayerState} from "../..";
 import type {RecoverBatterySkill} from "../../player/pilot";
+import type {PilotSkillEffectX} from "./pilot-skill-effect";
 
 /**
  * パイロットスキル バッテリー回復を発動する
@@ -11,7 +12,7 @@ import type {RecoverBatterySkill} from "../../player/pilot";
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill): ?GameStateX<PilotSkillEffect> {
+export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill): ?GameStateX<PilotSkillEffectX<RecoverBatterySkill>> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
     return null;
