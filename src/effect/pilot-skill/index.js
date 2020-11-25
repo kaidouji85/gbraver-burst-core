@@ -1,6 +1,6 @@
 // @flow
 
-import type {GameState, GameStateX, PilotSkillEffect, PlayerId} from "../..";
+import type {GameState, GameStateX, PilotSkill, PilotSkillEffect, PilotSkillEffectX, PlayerId} from "../..";
 import type {BuffPowerSkill, RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
@@ -35,7 +35,13 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
 
   if (invoker.pilot.skill.type === 'RecoverBatterySkill') {
     const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
-    return recoverBattery(lastState, invokerId, castedSkill);
+    const updated =  recoverBattery(lastState, invokerId, castedSkill);
+    if (updated) {
+      return ((updated: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof updated.effect.skill>>);
+    } else {
+      return null;
+    }
+    //return ((updated: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof updated.effect>>)
   }
 
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
