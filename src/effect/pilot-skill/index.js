@@ -37,11 +37,10 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
     const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
     const updated =  recoverBattery(lastState, invokerId, castedSkill);
     if (updated) {
-      return ((updated: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof updated.effect.skill>>);
+      return upcastPilotSkillEffect(updated);
     } else {
       return null;
     }
-    //return ((updated: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof updated.effect>>)
   }
 
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
@@ -77,4 +76,14 @@ function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): ?GameStateX
     ...lastState,
     players: updatedPlayers
   };
+}
+
+/**
+ * パイロットスキル発動ステートにアップキャストする
+ *
+ * @param origin キャスト前
+ * @return キャスト結果
+ */
+function upcastPilotSkillEffect<X>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
+  return ((origin: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof origin.effect.skill>>);
 }
