@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerState, GameState, GameStateX, PilotSkillEffect, PlayerId, PlayerState} from "../..";
+import type {ArmdozerState, GameState, GameStateX, PlayerId, PlayerState} from "../..";
 import type {RecoverBatterySkill} from "../../player/pilot";
 import type {PilotSkillEffectX} from "./pilot-skill-effect";
 
