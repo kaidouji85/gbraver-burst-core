@@ -6,15 +6,16 @@ import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
 import type {BatteryCommand} from "../../../../../src/command/battery";
 import {criticalHit} from "../../../../../src/effect/battle/result/critical-hit";
 import {EMPTY_PLAYER_STATE} from "../../../../data/player";
+import {EMPTY_CORRECT_POWER, EMPTY_DAMAGE_DECREASE} from "../../../../data/amrdozer-effect";
 
-test('クリティカルヒットが正しく計算できる', t => {
+test('クリティカルヒットのダメージ計算が正しい', t => {
   const attacker: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE, power: 2000,
       effects: [
-        {type: 'CorrectPower', power: 600, remainingTurn: 2}
+        {...EMPTY_CORRECT_POWER, power: 600}
       ]
     }
   };
@@ -24,7 +25,7 @@ test('クリティカルヒットが正しく計算できる', t => {
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       effects: [
-        {type: "DamageDecrease", decrease: 600, remainingTurn: 2}
+        {...EMPTY_DAMAGE_DECREASE, decrease: 600}
       ]
     }
   };
