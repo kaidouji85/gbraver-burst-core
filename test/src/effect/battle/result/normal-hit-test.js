@@ -20,7 +20,6 @@ test('通常ヒットのダメージ計算が正しい', t => {
       ]
     }
   };
-
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player2',
