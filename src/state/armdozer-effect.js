@@ -6,7 +6,11 @@ import type {ReflectDamageEffect} from "../effect/reflect/reflect";
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
  */
-export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower | TryReflect | ContinuousActivePlayer;
+export type ArmdozerEffect = EmptyArmdozerEffect
+  | CorrectPower
+  | TryReflect
+  | ContinuousActivePlayer
+  | DamageDecrease;
 
 /**
  * 何もしない効果
@@ -43,6 +47,17 @@ export type TryReflect = {
 
   /** 反射のダメージエフェクト */
   effect: ReflectDamageEffect,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};
+
+/** ダメージ減少 */
+export type DamageDecrease= {
+  type: 'DamageDecrease',
+
+  /** 減少されるダメージ値 */
+  decrease: number;
 
   /** 効果継続ターン */
   remainingTurn: number

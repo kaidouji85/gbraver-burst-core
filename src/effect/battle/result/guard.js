@@ -3,6 +3,7 @@
 import type {PlayerState} from "../../../state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 import {normalHitDamage} from "../damage/damage";
+import {damageDecrease} from "./damage-decrease";
 
 /** ガード */
 export type Guard = {
@@ -20,8 +21,11 @@ export type Guard = {
  * @return 防御の戦闘結果
  */
 export function guard(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): Guard {
+  const normalHit = normalHitDamage(attacker, attackerCommand, defender, defenderCommand);
+  const decrease = damageDecrease(defender.armdozer.effects);
+  const damage = normalHit / 2 - decrease;
   return {
     name: 'Guard',
-    damage: normalHitDamage(attacker, attackerCommand, defender, defenderCommand) / 2
+    damage: damage
   };
 }
