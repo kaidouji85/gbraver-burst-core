@@ -1,9 +1,10 @@
 // @flow
 
 import type {GameState, GameStateX, PilotSkill, PilotSkillEffect, PilotSkillEffectX, PlayerId} from "../..";
-import type {BuffPowerSkill, RecoverBatterySkill} from "../../player/pilot";
+import type {BuffPowerSkill, DamageDecreaseSkill, RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
+import {damageDecrease} from "./damage-decrease";
 
 /**
  * パイロットスキルを発動する
@@ -42,6 +43,12 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
     const castedSkill: BuffPowerSkill = invoker.pilot.skill;
     const updated = buffPower(lastState, invokerId, castedSkill);
+    return updated ? upcastPilotSkillEffect(updated) : null;
+  }
+
+  if (invoker.pilot.skill.type === 'DamageDecreaseSkill') {
+    const castedSkill: DamageDecreaseSkill = invoker.pilot.skill;
+    const updated = damageDecrease(lastState, invokerId, castedSkill);
     return updated ? upcastPilotSkillEffect(updated) : null;
   }
 
