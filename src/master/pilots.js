@@ -8,6 +8,7 @@ import type {Pilot} from "../player/pilot";
 export const PilotIds = {
   SHINYA: 'SHINYA',
   GAI: 'GAI',
+  RAITO: 'RAITO',
 };
 
 /**
@@ -30,5 +31,14 @@ export const Pilots: Pilot[] = [
       buffPower: 600,
       duration: 2,
     }
-  }
+  },
+  {
+    id: PilotIds.RAITO,
+    name: 'ライト',
+    skill: {
+      type: 'DamageDecreaseSkill',
+      decrease: 600,
+      duration: 2,
+    }
+  },
 ];

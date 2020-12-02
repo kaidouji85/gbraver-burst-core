@@ -1,9 +1,11 @@
+// @flow
+
 import test from 'ava';
-import type {BuffPowerSkill, GameState, PlayerState} from "../../../../src";
+import type {GameState, PlayerState} from "../../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_GAME_STATE} from "../../../data/game-state";
-import {buffPower} from "../../../../src/effect/pilot-skill/buff-power";
 import {damageDecrease} from "../../../../src/effect/pilot-skill/damage-decrease";
+import type {DamageDecreaseSkill} from "../../../../src/player/pilot";
 
 test('ダメージ減少スキルが正しく発動できる', t => {
   const invoker: PlayerState = {
@@ -15,7 +17,7 @@ test('ダメージ減少スキルが正しく発動できる', t => {
       battery: 2,
     }
   };
-  const skill: BuffPowerSkill = {
+  const skill: DamageDecreaseSkill = {
     type: 'DamageDecreaseSkill',
     decrease: 600,
     duration: 2
