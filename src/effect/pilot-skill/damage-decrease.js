@@ -1,18 +1,17 @@
 // @flow
 
-import type {GameState, GameStateX, PlayerId, PlayerState} from "../..";
-import type {BuffPowerSkill} from "../../player/pilot";
-import type {PilotSkillEffectX} from "./pilot-skill-effect";
+import type {GameState, GameStateX, PilotSkillEffectX, PlayerId, PlayerState} from "../..";
+import type {DamageDecreaseSkill} from "../../player/pilot";
 
 /**
- * パイロットスキル 攻撃バフ
+ * パイロットスキル ダメージ減少
  *
  * @param lastState 最新のステート
  * @param invokerId スキル発動者のID
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function buffPower(lastState: GameState, invokerId: PlayerId, skill: BuffPowerSkill): ?GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
+export function damageDecrease(lastState: GameState, invokerId: PlayerId, skill: DamageDecreaseSkill): ?GameStateX<PilotSkillEffectX<DamageDecreaseSkill>> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
     return null;
@@ -25,8 +24,8 @@ export function buffPower(lastState: GameState, invokerId: PlayerId, skill: Buff
       effects: [
         ...invoker.armdozer.effects,
         {
-          type: 'CorrectPower',
-          power: skill.buffPower,
+          type: 'DamageDecrease',
+          decrease: skill.decrease,
           remainingTurn: skill.duration,
         }
       ]

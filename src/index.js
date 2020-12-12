@@ -8,12 +8,12 @@ export {PlayerCommandX} from "./game/command/player-command";
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
-export type {PilotId, PilotSkill, RecoverBatterySkill, BuffPowerSkill, Pilot, PilotX} from './player/pilot';
+export type {PilotId, PilotSkill, RecoverBatterySkill, BuffPowerSkill, DamageDecreaseSkill, Pilot, PilotX} from './player/pilot';
 
 export type {GameState, GameStateX} from './state/game-state';
 export type {PlayerState, PlayerStateX} from './state/player-state';
 export type {ArmdozerState, ArmdozerStateX} from './state/armdozer-state';
-export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer} from './state/armdozer-effect';
+export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer, DamageDecrease} from './state/armdozer-effect';
 export type {PilotStateX, PilotState} from './state/pilot-state';
 
 export type {Command, QuickCommand} from './command/command';
@@ -40,7 +40,7 @@ export type {StartGame} from './effect/start-game/start-game';
 export type {TurnChange} from './effect/turn-change/turn-change';
 export type {UpdateRemainingTurn, EndArmdozerEffect} from './effect/update-remaning-turn/update-remaining-turn';
 export type {RightItself} from './effect/right-itself/right-itself';
-export type {PilotSkillEffect} from './effect/pilot-skill/pilot-skill-effect';
+export type {PilotSkillEffect, PilotSkillEffectX} from './effect/pilot-skill/pilot-skill-effect';
 
 // TODO 以下は廃止予定
 export {start} from './game/start/start';
