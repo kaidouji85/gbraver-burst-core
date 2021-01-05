@@ -38,7 +38,7 @@ export const Pilots: Pilot[] = [
     skill: {
       type: 'DamageDecreaseSkill',
       decrease: 600,
-      duration: 2,
+      duration: 1,
     }
   },
 ];
