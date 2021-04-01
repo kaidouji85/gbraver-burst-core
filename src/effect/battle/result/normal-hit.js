@@ -3,7 +3,7 @@
 import type {PlayerState} from "../../../state/player-state";
 import type {BatteryCommand} from "../../../command/battery";
 import {normalHitDamage} from "../damage/damage";
-import {damageDecrease} from "./damage-decrease";
+import {damageDecrease} from "../../../state/armdozer-effect";
 
 /** 攻撃ヒット */
 export type NormalHit = {
