@@ -5,7 +5,7 @@ import type {PlayerId} from '../../player/player';
 import type {Reflect, ReflectParam} from './reflect';
 import {isPlayerDeath} from "../../state/player-state";
 import type {GameStateX} from "../..";
-import {totalDamageDecrease} from "../../state/armdozer-effect";
+import {reflectDamage} from "./reflect";
 
 /**
  * ダメージ反射を実行する
@@ -22,10 +22,7 @@ export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect
     return null;
   }
 
-  const damage = Math.max(
-    reflect.damage - totalDamageDecrease(target.armdozer.effects),
-    0
-  );
+  const damage = reflectDamage(reflect, target);
   const updatedTarget = {
     ...target,
     armdozer: {
