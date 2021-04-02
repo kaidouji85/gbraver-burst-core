@@ -1,7 +1,5 @@
 // @flow
 
-import type {ReflectDamageEffect} from "../effect/reflect/reflect";
-
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
@@ -37,6 +35,9 @@ export type CorrectPower = {
   /** 効果継続ターン */
   remainingTurn: number
 };
+
+/** ダメージエフェクトの種類 */
+export type ReflectDamageEffect = 'Lightning';
 
 /** ダメージ反射 */
 export type TryReflect = {

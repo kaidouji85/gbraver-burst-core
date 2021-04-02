@@ -1,12 +1,14 @@
 // @flow
 
-import type {Command, GameState, PlayerId} from "../..";
 import {gameFlow} from "../flow/game-flow";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
 import {upcastGameState} from "../../state/game-state";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
+import type {PlayerId} from "../../player/player";
+import type {GameState} from "../../state/game-state";
+import type {Command} from "../../command/command";
 
 /**
  * ゲーム継続フロー

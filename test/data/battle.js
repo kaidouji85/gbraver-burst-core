@@ -1,6 +1,6 @@
 // @flow
 
-import type {Battle} from "../../src";
+import type {Battle} from "../../src/effect/battle/battle";
 
 /** 空の戦闘情報 */
 export const EMPTY_BATTLE: Battle = {

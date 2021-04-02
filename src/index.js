@@ -35,7 +35,7 @@ export type {BurstEffect} from './effect/burst/burst-effect';
 export type {GameEnd, GameEndX, GameEndResult} from './effect/game-end/game-end';
 export type {GameOver, EvenMatch} from './game/end-judging/game-end-judging';
 export type {InputCommand, Selectable, NoChoice} from './effect/input-command/input-command';
-export type {Reflect, ReflectDamageEffect} from './effect/reflect/reflect';
+export type {Reflect} from './effect/reflect/reflect';
 export type {StartGame} from './effect/start-game/start-game';
 export type {TurnChange} from './effect/turn-change/turn-change';
 export type {UpdateRemainingTurn, EndArmdozerEffect} from './effect/update-remaning-turn/update-remaining-turn';

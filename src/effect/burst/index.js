@@ -1,13 +1,13 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
 import type {BuffPower, ContinuousAttack, LightningBarrier, RecoverBattery} from "../../player/burst";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {lightningBarrier} from "./lightning-barrier";
 import {continuousAttack} from "./continuous-attack";
-import type {BurstEffect, GameStateX} from "../..";
+import type {BurstEffect} from "./burst-effect";
 
 /**
  * バーストを実行する

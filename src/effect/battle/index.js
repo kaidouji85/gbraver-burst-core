@@ -1,11 +1,12 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState, GameStateX} from "../../state/game-state";
 import {isPlayerDeath} from "../../state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 import {battleResult} from "./result/battle-result";
 import {updateDefender} from "./players/update-defender";
-import type {Battle, GameStateX, PlayerId} from "../..";
+import type {PlayerId} from "../../player/player";
+import type {Battle} from "./battle";
 
 /**
  * 戦闘を行う

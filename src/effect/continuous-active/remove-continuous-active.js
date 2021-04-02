@@ -1,7 +1,6 @@
 // @flow
 
-import type {ArmdozerEffect} from "../../index";
-
+import type {ArmdozerEffect} from "../../state/armdozer-effect";
 
 /**
  * アクティブプレイヤー継続を取り除く

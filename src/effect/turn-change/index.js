@@ -1,8 +1,8 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState, GameStateX} from "../../state/game-state";
 import {BATTERY_RECOVERY_VALUE, turnChangeRecoverBattery} from "./recover-battery";
-import type {GameStateX, TurnChange} from "../..";
+import type {TurnChange} from "./turn-change";
 
 /**
  * ターンチェンジを実行する

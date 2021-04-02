@@ -1,8 +1,10 @@
 // @flow
 
-import type {GameState, GameStateX, PlayerId, PlayerState} from "../..";
 import type {BuffPowerSkill} from "../../player/pilot";
 import type {PilotSkillEffectX} from "./pilot-skill-effect";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {PlayerId} from "../../player/player";
+import type {PlayerState} from "../../state/player-state";
 
 /**
  * パイロットスキル 攻撃バフ
