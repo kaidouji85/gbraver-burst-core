@@ -1,10 +1,12 @@
 // @flow
 
-import type {GameState, GameStateX, PilotSkill, PilotSkillEffect, PilotSkillEffectX, PlayerId} from "../..";
-import type {BuffPowerSkill, DamageDecreaseSkill, RecoverBatterySkill} from "../../player/pilot";
+import type {BuffPowerSkill, DamageDecreaseSkill, PilotSkill, RecoverBatterySkill} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {damageDecrease} from "./damage-decrease";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {PlayerId} from "../../player/player";
+import type {PilotSkillEffect, PilotSkillEffectX} from "./pilot-skill-effect";
 
 /**
  * パイロットスキルを発動する

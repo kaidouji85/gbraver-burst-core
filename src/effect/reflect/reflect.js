@@ -1,9 +1,9 @@
 // @flow
 
-import type {PlayerId, TryReflect} from "../..";
-
-/** ダメージエフェクトの種類 */
-export type ReflectDamageEffect = 'Lightning';
+import type {PlayerId} from "../../player/player";
+import type {ReflectDamageEffect, TryReflect} from "../../state/armdozer-effect";
+import {totalDamageDecrease} from "../../state/armdozer-effect";
+import type {PlayerState} from "../../state/player-state";
 
 /**
  * ダメージ反射 パラメータ
@@ -13,6 +13,17 @@ export type ReflectParam = {
   damage: number,
   /** ダメージエフェクト */
   effect: ReflectDamageEffect,
+};
+
+/**
+ * ダメージ反射 結果
+ */
+export type Reflect = ReflectParam & {
+  name: 'Reflect',
+  /** 反射ダメージを受けたプレイヤー */
+  damagedPlayer: PlayerId,
+  /** 死亡フラグ */
+  isDeath: boolean,
 };
 
 /**
@@ -29,12 +40,13 @@ export function toReflectParam(burst: TryReflect): ReflectParam {
 }
 
 /**
- * ダメージ反射 結果
+ * ダメージ反射量を計算する
+ *
+ * @param reflect ダメージ反射パラメータ
+ * @param damagedPlayer ダメージ反射されるプレイヤー
+ * @return ダメージ
  */
-export type Reflect = ReflectParam & {
-  name: 'Reflect',
-  /** 反射ダメージを受けたプレイヤー */
-  damagedPlayer: PlayerId,
-  /** 死亡フラグ */
-  isDeath: boolean,
-};
+export function reflectDamage(reflect: ReflectParam, damagedPlayer: PlayerState): number {
+  const damage = reflect.damage - totalDamageDecrease(damagedPlayer.armdozer.effects);
+  return Math.max(damage, 0);
+}

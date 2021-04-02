@@ -1,6 +1,7 @@
 // @flow
 
-import type {Command, PlayerId} from "../..";
+import type {PlayerId} from "../../player/player";
+import type {Command} from "../../command/command";
 
 /**
  * プレイヤーコマンド

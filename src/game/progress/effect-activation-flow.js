@@ -6,7 +6,7 @@ import {gameFlow} from "../flow/game-flow";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
-import type {PlayerCommand} from "../..";
+import type {PlayerCommand} from "../command/player-command";
 
 /**
  * 効果発動フローを行うか否かを判定する

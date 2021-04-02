@@ -1,7 +1,10 @@
 // @flow
 
-import type {GameState, GameStateX, PilotSkillEffectX, PlayerId, PlayerState} from "../..";
 import type {DamageDecreaseSkill} from "../../player/pilot";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {PlayerId} from "../../player/player";
+import type {PilotSkillEffectX} from "./pilot-skill-effect";
+import type {PlayerState} from "../../state/player-state";
 
 /**
  * パイロットスキル ダメージ減少

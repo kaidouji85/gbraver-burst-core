@@ -3,7 +3,9 @@
 import type {PlayerState} from "../../state/player-state";
 import type {RecoverBattery} from "../../player/burst";
 import {burstRecoverBattery} from "./burst-recover-battery";
-import type {BurstEffect, GameState, GameStateX, PlayerId} from "../..";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {PlayerId} from "../../player/player";
+import type {BurstEffect} from "./burst-effect";
 
 /**
  * バースト バッテリー回復

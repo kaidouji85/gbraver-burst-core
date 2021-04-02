@@ -1,6 +1,8 @@
 // @flow
 
-import type {Battle, GameState, GameStateX, RightItself} from "../..";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {Battle} from "../battle/battle";
+import type {RightItself} from "./right-itself";
 
 /**
  * 体勢整えを実施するか否かを判定する

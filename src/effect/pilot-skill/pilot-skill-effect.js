@@ -1,6 +1,6 @@
 // @flow
 
-import type {PlayerId} from "../..";
+import type {PlayerId} from "../../player/player";
 import type {PilotSkill} from "../../player/pilot";
 
 /**

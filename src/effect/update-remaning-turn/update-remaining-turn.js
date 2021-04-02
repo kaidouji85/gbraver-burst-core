@@ -1,6 +1,7 @@
 // @flow
 
-import type {ArmdozerEffect, PlayerId} from "../..";
+import type {PlayerId} from "../../player/player";
+import type {ArmdozerEffect} from "../../state/armdozer-effect";
 
 /** 終了したアームドーザ効果 */
 export type EndArmdozerEffect = {
