@@ -1,8 +1,9 @@
 // @flow
 
-import type {PlayerId, PlayerState, TryReflect} from "../..";
-import type {ReflectDamageEffect} from "../../state/armdozer-effect";
+import type {PlayerId} from "../../player/player";
+import type {ReflectDamageEffect, TryReflect} from "../../state/armdozer-effect";
 import {totalDamageDecrease} from "../../state/armdozer-effect";
+import type {PlayerState} from "../../state/player-state";
 
 /**
  * ダメージ反射 パラメータ
