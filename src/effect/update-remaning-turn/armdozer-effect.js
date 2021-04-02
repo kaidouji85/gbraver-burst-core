@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerEffect} from "../..";
+import type {ArmdozerEffect} from "../../state/armdozer-effect";
 
 /**
  * アームドーザ効果の継続ターン数を更新する

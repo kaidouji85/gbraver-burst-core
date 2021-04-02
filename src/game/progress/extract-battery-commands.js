@@ -1,6 +1,8 @@
 // @flow
 
-import type {BatteryCommand, GameState, PlayerCommand, PlayerCommandX} from "../..";
+import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
+import type {BatteryCommand} from "../../command/battery";
+import type {GameState} from "../../state/game-state";
 
 /**
  * 抽出したバッテリーコマンド

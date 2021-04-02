@@ -1,10 +1,9 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerId} from '../../player/player';
 import type {Reflect, ReflectParam} from './reflect';
 import {isPlayerDeath} from "../../state/player-state";
-import type {GameStateX} from "../..";
 import {reflectDamage} from "./reflect";
 
 /**

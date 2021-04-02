@@ -1,10 +1,11 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
+import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerState} from "../../state/player-state";
 import type {BatteryCommand} from "../../command/battery";
 import {updatePlayer} from "./update-player";
-import type {BatteryDeclaration, GameStateX, PlayerId} from "../..";
+import type {PlayerId} from "../../player/player";
+import type {BatteryDeclaration} from "./battery-declaration";
 
 /**
  * 攻撃、防御のバッテリー宣言を実行する

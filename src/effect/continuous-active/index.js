@@ -1,7 +1,8 @@
 // @flow
 
-import type {GameState, GameStateX, TurnChange} from "../..";
 import {removeContinuousActive} from "./remove-continuous-active";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {TurnChange} from "../turn-change/turn-change";
 
 /**
  * アクティブプレイヤー継続を実行できるか否かを判定する
