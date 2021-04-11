@@ -1,7 +1,5 @@
 // @flow
 
-import type {Effect} from "../effect";
-
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
