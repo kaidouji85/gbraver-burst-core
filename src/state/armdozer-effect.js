@@ -1,5 +1,7 @@
 // @flow
 
+import type {Effect} from "../effect";
+
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
@@ -8,7 +10,8 @@ export type ArmdozerEffect = EmptyArmdozerEffect
   | CorrectPower
   | TryReflect
   | ContinuousActivePlayer
-  | DamageDecrease;
+  | DamageDecrease
+  | BatteryCorrection;
 
 /**
  * 何もしない効果
@@ -78,6 +81,20 @@ export type ContinuousActivePlayer = {
 };
 
 /**
+ * バッテリー補正
+ */
+export type BatteryCorrection = {
+  type: 'BatteryCorrection',
+
+  /** バッテリー補正値 */
+  batteryCorrection: number,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};
+
+// TODO ダメージ減少は攻撃側も参照することがあるので、引数の名前を変更する
+/**
  * 防御側のアームドーザ効果からダメージ減少値を計算する
  *
  * @param defenderEffects 防御側のアームドーザ効果
@@ -86,5 +103,17 @@ export type ContinuousActivePlayer = {
 export function totalDamageDecrease(defenderEffects: ArmdozerEffect[]): number {
   return defenderEffects
     .map(v => (v.type === 'DamageDecrease') ? v.decrease : 0)
+    .reduce((a, b) => a + b, 0);
+}
+
+/**
+ * バッテリー補正の合計値を朱徳する
+ *
+ * @param effects アームドーザエフェクト
+ * @return バッテリー補正値合計
+ */
+export function totalBatteryCorrection(effects: ArmdozerEffect[]): number {
+  return effects
+    .map(v => (v.type === 'BatteryCorrection') ? v.batteryCorrection : 0)
     .reduce((a, b) => a + b, 0);
 }
