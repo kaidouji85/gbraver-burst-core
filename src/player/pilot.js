@@ -10,7 +10,8 @@ export type PilotId = string;
  */
 export type PilotSkill = RecoverBatterySkill
   | BuffPowerSkill
-  | DamageDecreaseSkill;
+  | DamageDecreaseSkill
+  | BatteryEnchantmentSkill;
 
 /**
  * パイロットスキル バッテリー回復
@@ -43,6 +44,17 @@ export type DamageDecreaseSkill = {
 };
 
 /**
+ * バッテリー増強スキル
+ */
+export type BatteryEnchantmentSkill = {
+  type: 'BatteryEnchantmentSkill',
+  /** バッテリー増強値 */
+  batteryEnchantment: number,
+  /** 継続ターン数 */
+  duration: number
+};
+
+/**
  * パイロット
  */
 export type Pilot = PilotX<PilotSkill>;
@@ -50,7 +62,7 @@ export type Pilot = PilotX<PilotSkill>;
 /**
  * パイロット
  *
- * @type X パイロットスキル
+ * @template X パイロットスキル
  */
 export type PilotX<X> = {
   /** ID */

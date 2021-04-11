@@ -9,6 +9,7 @@ export const PilotIds = {
   SHINYA: 'SHINYA',
   GAI: 'GAI',
   RAITO: 'RAITO',
+  TSUBASA: 'TSUBASA',
 };
 
 /**
@@ -41,4 +42,13 @@ export const Pilots: Pilot[] = [
       duration: 1,
     }
   },
+  {
+    id: PilotIds.TSUBASA,
+    name: 'ツバサ',
+    skill: {
+      type: 'BatteryEnchantmentSkill',
+      batteryEnchantment: 1,
+      duration: 1,
+    }
+  }
 ];
