@@ -103,15 +103,3 @@ export function totalDamageDecrease(defenderEffects: ArmdozerEffect[]): number {
     .map(v => (v.type === 'DamageDecrease') ? v.decrease : 0)
     .reduce((a, b) => a + b, 0);
 }
-
-/**
- * バッテリー補正の合計値を朱徳する
- *
- * @param effects アームドーザエフェクト
- * @return バッテリー補正値合計
- */
-export function totalBatteryCorrection(effects: ArmdozerEffect[]): number {
-  return effects
-    .map(v => (v.type === 'BatteryCorrection') ? v.batteryCorrection : 0)
-    .reduce((a, b) => a + b, 0);
-}

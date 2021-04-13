@@ -1,13 +1,13 @@
 // @flow
 
 import test from 'ava';
-import {totalBatteryCorrection} from "../../../src/state/armdozer-effect";
-import {EMPTY_ARMDOZER_EFFECT} from "../../data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT} from "../../../data/amrdozer-effect";
+import {totalBatteryCorrection} from "../../../../src/effect/battery-declaration/battery-correction";
 
 test('バッテリー補正合計値が正しく取得できる', t => {
   const data = [
-    {type: 'BatteryCorrection', batteryCorrection: 3},
-    {type: 'BatteryCorrection', batteryCorrection: -1},
+    {type: 'BatteryCorrection', batteryCorrection: 3, remainingTurn: 1},
+    {type: 'BatteryCorrection', batteryCorrection: -1, remainingTurn: 1},
     EMPTY_ARMDOZER_EFFECT
   ];
   const result = totalBatteryCorrection(data);
