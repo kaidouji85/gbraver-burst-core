@@ -42,7 +42,9 @@ export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, a
     name: 'BatteryDeclaration',
     attacker: attacker.playerId,
     attackerBattery: attackerCorrectedBattery,
+    originalBatteryOfAttacker: attackerBattery.battery,
     defenderBattery: defenderCorrectedBattery,
+    originalBatteryOfDefender: defenderBattery.battery,
   };
   return {
     ...lastState,
