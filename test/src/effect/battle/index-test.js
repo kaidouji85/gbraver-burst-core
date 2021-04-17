@@ -35,16 +35,8 @@ test('戦闘を実行した後の状態に正しく更新できる', t => {
     players: [defender, attacker],
     activePlayerId: attacker.playerId,
   };
-  const attackerBattery = {
-    type: 'BATTERY_COMMAND',
-    battery: 3
-  };
-  const defenderBattery = {
-    type: 'BATTERY_COMMAND',
-    battery: 2
-  }
 
-  const result = battle(lastState, attacker.playerId, attackerBattery, defender.playerId, defenderBattery);
+  const result = battle(lastState, attacker.playerId, 3, defender.playerId, 2);
   const expected = {
     ...lastState,
     players: [

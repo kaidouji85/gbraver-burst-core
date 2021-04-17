@@ -38,12 +38,13 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
       return done ? [upcastGameState(done)] : [];
     },
     state => {
+      // TODO バッテリー宣言からバッテリーを取得する
       const doneBattle = battle(
         state,
         batteries.attacker.playerId,
-        batteries.attacker.command,
+        batteries.attacker.command.battery,
         batteries.defender.playerId,
-        batteries.defender.command
+        batteries.defender.command.battery
       );
       if (!doneBattle) {
         return [];
