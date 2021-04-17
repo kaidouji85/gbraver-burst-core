@@ -38,7 +38,7 @@ export function battleResult(attacker: PlayerState, attackerCommand: BatteryComm
   }
 
   if (defenderCommand.battery < attackerCommand.battery) {
-    return normalHit(attacker, attackerCommand, defender, defenderCommand);
+    return normalHit(attacker, attackerCommand.battery, defender, defenderCommand.battery);
   }
 
   return {name: 'Miss'};
