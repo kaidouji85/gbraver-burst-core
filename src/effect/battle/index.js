@@ -25,7 +25,7 @@ export function battle(lastState: GameState, attackerId: PlayerId, attackerBatte
     return null;
   }
 
-  const result = battleResult(attacker, attackerBattery, defender, defenderBattery);
+  const result = battleResult(attacker, attackerBattery.battery, defender, defenderBattery.battery);
   const updatedDefender = updateDefender(result, defender);
   const updatedPlayers = lastState.players.map(v => v.playerId === updatedDefender.playerId ? updatedDefender : v);
   const effect = {

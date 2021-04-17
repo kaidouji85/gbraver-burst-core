@@ -1,7 +1,6 @@
 // @flow
 
 import type {PlayerState} from "../../../state/player-state";
-import type {BatteryCommand} from "../../../command/battery";
 import type {Feint} from "./feint";
 import {feint} from "./feint";
 import type {Guard} from "./guard";
@@ -19,26 +18,26 @@ export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;
  * 戦闘結果を生成して返す
  *
  * @param attacker 攻撃側プレイヤー
- * @param attackerCommand 攻撃側バッテリー
+ * @param attackerBattery 攻撃側バッテリー
  * @param defender 防御側プレイヤー
- * @param defenderCommand 防御側バッテリー
+ * @param defenderBattery 防御側バッテリー
  * @return 戦闘結果
  */
-export function battleResult(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): BattleResult {
-  if (attackerCommand.battery === 0) {
-    return feint(defenderCommand.battery);
+export function battleResult(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): BattleResult {
+  if (attackerBattery === 0) {
+    return feint(defenderBattery);
   }
 
-  if (attackerCommand.battery === defenderCommand.battery) {
-    return guard(attacker, attackerCommand.battery, defender, defenderCommand.battery);
+  if (attackerBattery === defenderBattery) {
+    return guard(attacker, attackerBattery, defender, defenderBattery);
   }
 
-  if ((defenderCommand.battery < attackerCommand.battery) && defenderCommand.battery === 0) {
-    return criticalHit(attacker, attackerCommand.battery, defender, defenderCommand.battery);
+  if ((defenderBattery < attackerBattery) && defenderBattery === 0) {
+    return criticalHit(attacker, attackerBattery, defender, defenderBattery);
   }
 
-  if (defenderCommand.battery < attackerCommand.battery) {
-    return normalHit(attacker, attackerCommand.battery, defender, defenderCommand.battery);
+  if (defenderBattery < attackerBattery) {
+    return normalHit(attacker, attackerBattery, defender, defenderBattery);
   }
 
   return {name: 'Miss'};
