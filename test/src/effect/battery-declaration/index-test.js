@@ -62,7 +62,9 @@ test('バッテリー宣言が正しく処理される', t => {
       name: 'BatteryDeclaration',
       attacker: 'attacker',
       attackerBattery: 3,
+      originalBatteryOfAttacker: 3,
       defenderBattery: 2,
+      originalBatteryOfDefender: 2,
     }
   };
   t.deepEqual(result, expected);
