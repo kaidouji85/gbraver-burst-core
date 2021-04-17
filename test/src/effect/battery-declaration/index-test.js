@@ -6,6 +6,7 @@ import {EMPTY_PLAYER_STATE} from "../../../data/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../data/armdozer";
 import {batteryDeclaration} from "../../../../src/effect/battery-declaration";
 
+// TODO バッテリー補正を追加する
 test('バッテリー宣言が正しく処理される', t => {
   const attacker = {
     ...EMPTY_PLAYER_STATE,
