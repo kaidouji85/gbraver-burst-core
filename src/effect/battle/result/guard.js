@@ -21,7 +21,7 @@ export type Guard = {
  * @return 防御の戦闘結果
  */
 export function guard(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): Guard {
-  const normalHit = normalHitDamage(attacker, attackerCommand, defender, defenderCommand);
+  const normalHit = normalHitDamage(attacker, attackerCommand.battery, defender, defenderCommand.battery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
   const damage = normalHit / 2 - decrease;
   return {

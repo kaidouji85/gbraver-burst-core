@@ -21,7 +21,7 @@ export type NormalHit = {
  * @return 攻撃ヒットの戦闘結果
  */
 export function normalHit(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): NormalHit {
-  const normalHit = normalHitDamage(attacker, attackerCommand, defender, defenderCommand);
+  const normalHit = normalHitDamage(attacker, attackerCommand.battery, defender, defenderCommand.battery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
   const damage = normalHit - decrease;
   return {
