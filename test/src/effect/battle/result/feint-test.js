@@ -1,12 +1,10 @@
 // @flow
 
 import test from 'ava';
-import type {BatteryCommand} from "../../../../../src/command/battery";
 import {feint} from "../../../../../src/effect/battle/result/feint";
 
 test('防御側がバッテリーを使った場合、防御側が動いたとみなす', t => {
-  const defenderBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 2};
-  const result = feint(defenderBattery);
+  const result = feint(2);
   t.deepEqual(result, {
     name: 'Feint',
     isDefenderMoved: true
@@ -14,8 +12,7 @@ test('防御側がバッテリーを使った場合、防御側が動いたと�
 });
 
 test('防御側がバッテリーを使っていない場合、防御側が動いていないとみなす', t => {
-  const defenderBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 0};
-  const result = feint(defenderBattery);
+  const result = feint(0);
   t.deepEqual(result, {
     name: 'Feint',
     isDefenderMoved: false

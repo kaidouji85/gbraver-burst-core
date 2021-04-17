@@ -28,28 +28,30 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
 
   return gameFlow(lastState, [
     state => {
-      const done = batteryDeclaration(
+      const doneBatteryDeclaration = batteryDeclaration(
         state,
         batteries.attacker.playerId,
         batteries.attacker.command,
         batteries.defender.playerId,
         batteries.defender.command
       );
-      return done ? [upcastGameState(done)] : [];
-    },
-    state => {
+      if (!doneBatteryDeclaration) {
+        return [];
+      }
+
       const doneBattle = battle(
         state,
-        batteries.attacker.playerId,
-        batteries.attacker.command,
+        doneBatteryDeclaration.effect.attacker,
+        doneBatteryDeclaration.effect.attackerBattery,
         batteries.defender.playerId,
-        batteries.defender.command
+        doneBatteryDeclaration.effect.defenderBattery
       );
       if (!doneBattle) {
         return [];
       }
 
       return [
+        upcastGameState(doneBatteryDeclaration),
         upcastGameState(doneBattle),
         ...gameFlow(upcastGameState(doneBattle), [
           state => canReflectFlow(doneBattle.effect.result)

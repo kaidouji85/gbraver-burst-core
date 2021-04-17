@@ -9,6 +9,10 @@ export type BatteryDeclaration = {
   attacker: PlayerId,
   /** 攻撃側バッテリー */
   attackerBattery: number,
+  /** 本来の攻撃側バッテリー */
+  originalBatteryOfAttacker: number,
   /** 防御側バッテリー */
   defenderBattery: number,
+  /** 本来の防御側バッテリー */
+  originalBatteryOfDefender: number,
 };

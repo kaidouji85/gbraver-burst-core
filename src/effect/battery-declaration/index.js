@@ -6,6 +6,7 @@ import type {BatteryCommand} from "../../command/battery";
 import {updatePlayer} from "./update-player";
 import type {PlayerId} from "../../player/player";
 import type {BatteryDeclaration} from "./battery-declaration";
+import {correctedBattery} from "./battery-correction";
 
 /**
  * 攻撃、防御のバッテリー宣言を実行する
@@ -35,11 +36,15 @@ export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, a
       return v;
     }
   });
+  const attackerCorrectedBattery = correctedBattery(attackerBattery, attacker.armdozer.effects);
+  const defenderCorrectedBattery = correctedBattery(defenderBattery, defender.armdozer.effects);
   const effect = {
     name: 'BatteryDeclaration',
     attacker: attacker.playerId,
-    attackerBattery: attackerBattery.battery,
-    defenderBattery: defenderBattery.battery,
+    attackerBattery: attackerCorrectedBattery,
+    originalBatteryOfAttacker: attackerBattery.battery,
+    defenderBattery: defenderCorrectedBattery,
+    originalBatteryOfDefender: defenderBattery.battery,
   };
   return {
     ...lastState,
