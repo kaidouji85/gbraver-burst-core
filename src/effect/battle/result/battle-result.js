@@ -26,7 +26,7 @@ export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;
  */
 export function battleResult(attacker: PlayerState, attackerCommand: BatteryCommand, defender: PlayerState, defenderCommand: BatteryCommand): BattleResult {
   if (attackerCommand.battery === 0) {
-    return feint(defenderCommand);
+    return feint(defenderCommand.battery);
   }
 
   if (attackerCommand.battery === defenderCommand.battery) {
