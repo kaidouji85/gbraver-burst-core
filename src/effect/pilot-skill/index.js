@@ -1,12 +1,19 @@
 // @flow
 
-import type {BuffPowerSkill, DamageDecreaseSkill, PilotSkill, RecoverBatterySkill} from "../../player/pilot";
+import type {
+  BatteryEnchantmentSkill,
+  BuffPowerSkill,
+  DamageDecreaseSkill,
+  PilotSkill,
+  RecoverBatterySkill
+} from "../../player/pilot";
 import {recoverBattery} from "./recover-battery";
 import {buffPower} from "./buff-power";
 import {damageDecrease} from "./damage-decrease";
 import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
 import type {PilotSkillEffect, PilotSkillEffectX} from "./pilot-skill-effect";
+import {batteryEnchantment} from "./battery-enchantment";
 
 /**
  * パイロットスキルを発動する
@@ -51,6 +58,12 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): ?GameState
   if (invoker.pilot.skill.type === 'DamageDecreaseSkill') {
     const castedSkill: DamageDecreaseSkill = invoker.pilot.skill;
     const updated = damageDecrease(lastState, invokerId, castedSkill);
+    return updated ? upcastPilotSkillEffect(updated) : null;
+  }
+
+  if (invoker.pilot.skill.type === 'BatteryEnchantmentSkill') {
+    const castedSkill: BatteryEnchantmentSkill = invoker.pilot.skill;
+    const updated = batteryEnchantment(lastState, invokerId, castedSkill);
     return updated ? upcastPilotSkillEffect(updated) : null;
   }
 

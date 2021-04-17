@@ -3,7 +3,6 @@
 import test from 'ava';
 import type {PlayerState} from "../../../../../src/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../../data/armdozer";
-import type {BatteryCommand} from "../../../../../src/command/battery";
 import {criticalHit} from "../../../../../src/effect/battle/result/critical-hit";
 import {EMPTY_PLAYER_STATE} from "../../../../data/player";
 import {EMPTY_CORRECT_POWER, EMPTY_DAMAGE_DECREASE} from "../../../../data/amrdozer-effect";
@@ -29,9 +28,7 @@ test('クリティカルヒットのダメージ計算が正しい', t => {
       ]
     }
   };
-  const attackerBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 2};
-  const defenderBattery: BatteryCommand = {type: 'BATTERY_COMMAND', battery: 0};
-  const result = criticalHit(attacker, attackerBattery, defender, defenderBattery);
+  const result = criticalHit(attacker, 2, defender, 0);
   t.deepEqual(result, {
     name: 'CriticalHit',
     damage: 4800

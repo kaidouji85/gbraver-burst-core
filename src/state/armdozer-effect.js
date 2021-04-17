@@ -8,7 +8,8 @@ export type ArmdozerEffect = EmptyArmdozerEffect
   | CorrectPower
   | TryReflect
   | ContinuousActivePlayer
-  | DamageDecrease;
+  | DamageDecrease
+  | BatteryCorrection;
 
 /**
  * 何もしない効果
@@ -77,6 +78,20 @@ export type ContinuousActivePlayer = {
   remainingTurn: typeof Infinity,
 };
 
+/**
+ * バッテリー補正
+ */
+export type BatteryCorrection = {
+  type: 'BatteryCorrection',
+
+  /** バッテリー補正値 */
+  batteryCorrection: number,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};
+
+// TODO ダメージ減少は攻撃側も参照することがあるので、引数の名前を変更する
 /**
  * 防御側のアームドーザ効果からダメージ減少値を計算する
  *

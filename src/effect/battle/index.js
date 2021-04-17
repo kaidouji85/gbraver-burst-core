@@ -2,7 +2,6 @@
 
 import type {GameState, GameStateX} from "../../state/game-state";
 import {isPlayerDeath} from "../../state/player-state";
-import type {BatteryCommand} from "../../command/battery";
 import {battleResult} from "./result/battle-result";
 import {updateDefender} from "./players/update-defender";
 import type {PlayerId} from "../../player/player";
@@ -13,12 +12,12 @@ import type {Battle} from "./battle";
  *
  * @param lastState 更新前の状態
  * @param attackerId 攻撃側プレイヤーID
- * @param attackerBattery 攻撃側バッテリーコマンド
+ * @param attackerBattery 攻撃側バッテリー
  * @param defenderId 防御側プレイヤーID
- * @param defenderBattery 防御側バッテリーコマンド
+ * @param defenderBattery 防御側バッテリー
  * @return 戦闘後の更新ステート、戦闘できない場合はnullを返す
  */
-export function battle(lastState: GameState, attackerId: PlayerId, attackerBattery: BatteryCommand, defenderId: PlayerId, defenderBattery: BatteryCommand): ?GameStateX<Battle> {
+export function battle(lastState: GameState, attackerId: PlayerId, attackerBattery: number, defenderId: PlayerId, defenderBattery: number): ?GameStateX<Battle> {
   const attacker = lastState.players.find(v => v.playerId === attackerId);
   const defender = lastState.players.find(v => v.playerId === defenderId);
   if (!attacker || !defender) {

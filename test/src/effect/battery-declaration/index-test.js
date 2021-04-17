@@ -14,6 +14,9 @@ test('バッテリー宣言が正しく処理される', t => {
       ...EMPTY_ARMDOZER_STATE,
       battery: 4,
       maxBattery: 5,
+      effects: [
+        {type: 'BatteryCorrection', batteryCorrection: 1, remainingTurn: 1},
+      ]
     }
   };
   const defender = {
@@ -23,6 +26,9 @@ test('バッテリー宣言が正しく処理される', t => {
       ...EMPTY_ARMDOZER_STATE,
       battery: 5,
       maxBattery: 5,
+      effects: [
+        {type: 'BatteryCorrection', batteryCorrection: -1, remainingTurn: 1},
+      ]
     }
   };
   const lastState = {
@@ -61,8 +67,10 @@ test('バッテリー宣言が正しく処理される', t => {
     effect: {
       name: 'BatteryDeclaration',
       attacker: 'attacker',
-      attackerBattery: 3,
-      defenderBattery: 2,
+      attackerBattery: 4,
+      originalBatteryOfAttacker: 3,
+      defenderBattery: 1,
+      originalBatteryOfDefender: 2,
     }
   };
   t.deepEqual(result, expected);
