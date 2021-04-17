@@ -40,7 +40,7 @@ export function battleFlow(lastState: GameState, commands: PlayerCommand[]): Gam
       }
 
       const doneBattle = battle(
-        state,
+        upcastGameState(doneBatteryDeclaration),
         doneBatteryDeclaration.effect.attacker,
         doneBatteryDeclaration.effect.attackerBattery,
         batteries.defender.playerId,
