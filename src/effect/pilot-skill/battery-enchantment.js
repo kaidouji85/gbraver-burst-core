@@ -28,9 +28,14 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
         ...invoker.armdozer.effects,
         {
           type: 'BatteryCorrection',
-          batteryCorrection: skill.batteryEnchantment,
-          remainingTurn: skill.duration,
-        }
+          batteryCorrection: skill.batteryEnchantment * 2,
+          remainingTurn: 1,
+        },
+        {
+          type: 'BatteryCorrection',
+          batteryCorrection: -skill.batteryEnchantment,
+          remainingTurn: 2,
+        },
       ]
     }
   };
