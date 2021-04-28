@@ -11,10 +11,6 @@ import type {BatteryCommand} from "../../command/battery";
  * @return 補正後のバッテリー
  */
 export function correctedBattery(command: BatteryCommand, effects: ArmdozerEffect[]): number {
-  if (command.battery <= 0) {
-    return 0;
-  }
-
   const totalCorrection = totalBatteryCorrection(effects);
   const corrected = command.battery + totalCorrection;
   return Math.max(corrected, 0);
