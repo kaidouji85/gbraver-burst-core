@@ -5,6 +5,7 @@ import type {PlayerId} from "../../player/player";
 import type {BatteryEnchantmentSkill} from "../../player/pilot";
 import type {PilotSkillEffectX} from "./pilot-skill-effect";
 import type {PlayerState} from "../../state/player-state";
+import type {BatteryCorrection} from "../../state/armdozer-effect";
 
 /**
  * パイロットスキル バッテリー増強
@@ -26,16 +27,7 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
       ...invoker.armdozer,
       effects: [
         ...invoker.armdozer.effects,
-        {
-          type: 'BatteryCorrection',
-          batteryCorrection: skill.batteryEnchantment * 2,
-          remainingTurn: 1,
-        },
-        {
-          type: 'BatteryCorrection',
-          batteryCorrection: -skill.batteryEnchantment,
-          remainingTurn: 2,
-        },
+        ...batteryEnchantmentToCorrects(skill.batteryEnchantment),
       ]
     }
   };
@@ -51,4 +43,25 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
     players: updatedPlayers,
     effect: effect
   };
+}
+
+/**
+ * バッテリー増強を同様の意味を持つバッテリー補正に変換する
+ *
+ * @param batteryEnchantment バッテリー増強値
+ * @return バッテリー補正
+ */
+export function batteryEnchantmentToCorrects(batteryEnchantment: number): BatteryCorrection[] {
+  return [
+    {
+      type: 'BatteryCorrection',
+      batteryCorrection: batteryEnchantment * 2,
+      remainingTurn: 1,
+    },
+    {
+      type: 'BatteryCorrection',
+      batteryCorrection: -batteryEnchantment,
+      remainingTurn: 2,
+    },
+  ];
 }
