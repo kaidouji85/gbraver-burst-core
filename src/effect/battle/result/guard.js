@@ -2,7 +2,7 @@
 
 import type {PlayerState} from "../../../state/player-state";
 import {normalHitDamage} from "../damage/damage";
-import {totalDamageDecrease} from "../../total-damage-decrease";
+import {totalDamageDecrease} from "../../damage-decrease";
 
 /** ガード */
 export type Guard = {

@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {EMPTY_ARMDOZER_EFFECT, EMPTY_DAMAGE_DECREASE} from "../../data/amrdozer-effect";
-import {totalDamageDecrease} from "../../../src/effect/total-damage-decrease";
+import {totalDamageDecrease} from "../../../src/effect/damage-decrease";
 
 test('ダメージ減少効果の合計値を返す', t => {
   const result = totalDamageDecrease([

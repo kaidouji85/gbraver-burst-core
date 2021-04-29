@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {correctedBattery} from "../../../../src/effect/battery-declaration/battery-correction";
+import {correctedBattery} from "../../../src/effect/battery-correction";
 
 test('補正後バッテリーが正しく計算できる', t => {
   const battery = {type: 'BATTERY_COMMAND', battery: 1};

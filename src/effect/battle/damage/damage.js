@@ -1,7 +1,7 @@
 // @flow
 
 import type {PlayerState} from "../../../state/player-state";
-import {correctPower} from "./correct-power";
+import {totalCorrectPower} from "../../correct-power";
 import {batteryBonus} from "./battery-bonus";
 
 /**
@@ -15,5 +15,5 @@ import {batteryBonus} from "./battery-bonus";
  * @return ダメージ
  */
 export function normalHitDamage(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): number {
-  return attacker.armdozer.power + correctPower(attacker.armdozer.effects) + batteryBonus(attackerBattery, defenderBattery);
+  return attacker.armdozer.power + totalCorrectPower(attacker.armdozer.effects) + batteryBonus(attackerBattery, defenderBattery);
 }

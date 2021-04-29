@@ -3,7 +3,7 @@
 import type {PlayerId} from "../../player/player";
 import type {ReflectDamageEffect, TryReflect} from "../../state/armdozer-effect";
 import type {PlayerState} from "../../state/player-state";
-import {totalDamageDecrease} from "../total-damage-decrease";
+import {totalDamageDecrease} from "../damage-decrease";
 
 /**
  * ダメージ反射 パラメータ

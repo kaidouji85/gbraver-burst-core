@@ -6,7 +6,7 @@ import type {BatteryCommand} from "../../command/battery";
 import {updatePlayer} from "./update-player";
 import type {PlayerId} from "../../player/player";
 import type {BatteryDeclaration} from "./battery-declaration";
-import {correctedBattery} from "./battery-correction";
+import {correctedBattery} from "../battery-correction";
 
 /**
  * 攻撃、防御のバッテリー宣言を実行する
