@@ -2,7 +2,7 @@
 
 import type {PlayerState} from "../../../state/player-state";
 import {normalHitDamage} from "../damage/damage";
-import {totalDamageDecrease} from "../../../state/armdozer-effect";
+import {totalDamageDecrease} from "../../total-damage-decrease";
 
 /** 攻撃ヒット */
 export type NormalHit = {
