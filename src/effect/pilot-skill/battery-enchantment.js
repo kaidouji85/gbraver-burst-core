@@ -20,6 +20,7 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
     return null;
   }
 
+  const {plusBatteryCorrection, minusBatteryCorrection} = batteryEnchantmentToCorrects(skill.batteryEnchantment);
   const updatedInvoker = {
     ...invoker,
     armdozer: {
@@ -28,9 +29,14 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
         ...invoker.armdozer.effects,
         {
           type: 'BatteryCorrection',
-          batteryCorrection: skill.batteryEnchantment,
-          remainingTurn: skill.duration,
-        }
+          batteryCorrection: plusBatteryCorrection,
+          remainingTurn: 1,
+        },
+        {
+          type: 'BatteryCorrection',
+          batteryCorrection: minusBatteryCorrection,
+          remainingTurn: 2,
+        },
       ]
     }
   };
@@ -46,4 +52,29 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
     players: updatedPlayers,
     effect: effect
   };
+}
+
+/**
+ * バッテリー増強を同様の意味を持つバッテリー補正に変換する
+ *
+ * バッテリー増強の効果は以下の通り
+ *   (1)バッテリー増強を発動したターンは、出したバッテリーに+Xされる
+ *   (2)次のターンは、出したバッテリーに-Xされる
+ *
+ * これを再現するために、以下の補正を作る
+ *   (A)バッテリープラス効果は1ターン継続
+ *   (B)バッテリーマイナス効果は2ターン継続
+ *
+ * なお、(A)、(B)は以下の関係を満たす
+ *   (A) + (B) = バッテリー増強値
+ *   (B) = -バッテリー増強値
+ *
+ * @param batteryEnchantment バッテリー増強値
+ * @return バッテリー補正
+ */
+export function batteryEnchantmentToCorrects(batteryEnchantment: number): { plusBatteryCorrection: number, minusBatteryCorrection: number } {
+  return {
+    plusBatteryCorrection: batteryEnchantment * 2,
+    minusBatteryCorrection: -batteryEnchantment,
+  }
 }

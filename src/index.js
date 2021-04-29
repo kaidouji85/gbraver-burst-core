@@ -4,6 +4,9 @@ export {PilotIds, Pilots} from './master/pilots';
 export {GbraverBurstCore} from './game/index';
 export {PlayerCommand} from "./game/command/player-command";
 export {PlayerCommandX} from "./game/command/player-command";
+export {totalDamageDecrease} from './effect/damage-decrease';
+export {totalBatteryCorrection, correctedBattery} from './effect/battery-correction';
+export {totalCorrectPower} from './effect/correct-power';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
@@ -41,7 +44,3 @@ export type {TurnChange} from './effect/turn-change/turn-change';
 export type {UpdateRemainingTurn, EndArmdozerEffect} from './effect/update-remaning-turn/update-remaining-turn';
 export type {RightItself} from './effect/right-itself/right-itself';
 export type {PilotSkillEffect, PilotSkillEffectX} from './effect/pilot-skill/pilot-skill-effect';
-
-// TODO 以下は廃止予定
-export {start} from './game/start/start';
-export {progress} from './game/progress/index';

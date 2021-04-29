@@ -1,7 +1,7 @@
 // @flow
 
-import type {ArmdozerEffect} from "../../state/armdozer-effect";
-import type {BatteryCommand} from "../../command/battery";
+import type {ArmdozerEffect} from "../state/armdozer-effect";
+import type {BatteryCommand} from "../command/battery";
 
 /**
  * 補正後のバッテリー宣言を計算する
@@ -11,10 +11,6 @@ import type {BatteryCommand} from "../../command/battery";
  * @return 補正後のバッテリー
  */
 export function correctedBattery(command: BatteryCommand, effects: ArmdozerEffect[]): number {
-  if (command.battery <= 0) {
-    return 0;
-  }
-
   const totalCorrection = totalBatteryCorrection(effects);
   const corrected = command.battery + totalCorrection;
   return Math.max(corrected, 0);

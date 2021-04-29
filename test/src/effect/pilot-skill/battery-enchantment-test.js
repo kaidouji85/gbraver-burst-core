@@ -20,7 +20,6 @@ test('バッテリー増強スキルが正しく発動できる', t => {
   const skill: BatteryEnchantmentSkill = {
     type: 'BatteryEnchantmentSkill',
     batteryEnchantment: 1,
-    duration: 1
   };
   const other: PlayerState = {
     ...EMPTY_PLAYER_STATE,
@@ -44,9 +43,14 @@ test('バッテリー増強スキルが正しく発動できる', t => {
             ...invoker.armdozer.effects,
             {
               type: 'BatteryCorrection',
-              batteryCorrection: 1,
+              batteryCorrection: 2,
               remainingTurn: 1,
-            }
+            },
+            {
+              type: 'BatteryCorrection',
+              batteryCorrection: -1,
+              remainingTurn: 2,
+            },
           ]
         }
       }
