@@ -2,7 +2,6 @@
 import test from 'ava';
 import {GbraverBurstCore} from "../../../src";
 import type {Player} from "../../../src/player/player";
-import type {GameState} from "../../../src/state/game-state";
 import {EMPTY_ARMDOZER} from "../../data/armdozer";
 import {EMPTY_PILOT} from "../../data/pilot";
 
@@ -25,15 +24,22 @@ const PLAYER2: Player = {
 };
 
 test('初期状態を正しく作ることができる', t => {
-  const result: GameState[] = new GbraverBurstCore().start(PLAYER1, PLAYER2);
-  t.is(result.length, 2);
-  t.is(result[0].effect.name, 'StartGame');
-  t.is(result[1].effect.name, 'InputCommand');
+  const core = new GbraverBurstCore([PLAYER1, PLAYER2]);
+  const initialState = core.stateHistory();
+  t.is(initialState.length, 2);
+  t.is(initialState[0].effect.name, 'StartGame');
+  t.is(initialState[1].effect.name, 'InputCommand');
 });
 
-test('startで作った初期状態からゲームを進めることができる', t => {
-  const initialState = new GbraverBurstCore().start(PLAYER1, PLAYER2);
+test('プレイヤー情報が正しくセットされている', t => {
+  const core = new GbraverBurstCore([PLAYER1, PLAYER2]);
+  const result = core.players();
+  const expected = [PLAYER1, PLAYER2];
+  t.deepEqual(result, expected);
+});
 
+test('ゲームを正しく進めることができる', t => {
+  const core = new GbraverBurstCore([PLAYER1, PLAYER2]);
   const command1 = {
     playerId: 'player1',
     command: {
@@ -48,7 +54,7 @@ test('startで作った初期状態からゲームを進めることができる
       battery: 2
     }
   };
-  const update = new GbraverBurstCore().progress(initialState[initialState.length - 1], [command1, command2]);
+  const update = core.progress([command1, command2]);
   t.is(0 < update.length, true, '状態更新は1レコード以上ある');
   t.is(update[update.length - 1].effect.name, 'InputCommand', '最後の状態はコマンド入力である');
 });
