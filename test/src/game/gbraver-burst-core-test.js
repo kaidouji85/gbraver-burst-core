@@ -23,6 +23,21 @@ const PLAYER2: Player = {
   }
 };
 
+const COMMAND1 = {
+  playerId: 'player1',
+  command: {
+    type: 'BATTERY_COMMAND',
+    battery: 3
+  }
+};
+const COMMAND2 = {
+  playerId: 'player2',
+  command: {
+    type: 'BATTERY_COMMAND',
+    battery: 2
+  }
+};
+
 test('初期状態を正しく作ることができる', t => {
   const core = new GbraverBurstCore([PLAYER1, PLAYER2]);
   const initialState = core.stateHistory();
@@ -38,23 +53,18 @@ test('プレイヤー情報が正しくセットされている', t => {
   t.deepEqual(result, expected);
 });
 
-test('ゲームを正しく進めることができる', t => {
+test('正しくゲームを進めることができる', t => {
   const core = new GbraverBurstCore([PLAYER1, PLAYER2]);
-  const command1 = {
-    playerId: 'player1',
-    command: {
-      type: 'BATTERY_COMMAND',
-      battery: 3
-    }
-  };
-  const command2 = {
-    playerId: 'player2',
-    command: {
-      type: 'BATTERY_COMMAND',
-      battery: 2
-    }
-  };
-  const update = core.progress([command1, command2]);
-  t.is(0 < update.length, true, '状態更新は1レコード以上ある');
-  t.is(update[update.length - 1].effect.name, 'InputCommand', '最後の状態はコマンド入力である');
+  const updated = core.progress([COMMAND1, COMMAND2]);
+  t.is(0 < updated.length, true, '状態更新は1レコード以上ある');
+  t.is(updated[updated.length - 1].effect.name, 'InputCommand', '最後の状態はコマンド入力である');
+});
+
+test('ゲームステート履歴が正しく更新される', t => {
+  const core = new GbraverBurstCore([PLAYER1, PLAYER2]);
+  const initialState = core.stateHistory();
+  const update = core.progress([COMMAND1, COMMAND2]);
+  const result = core.stateHistory();
+  const expected = [...initialState, ...update];
+  t.deepEqual(result, expected);
 });
