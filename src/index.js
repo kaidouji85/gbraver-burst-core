@@ -1,7 +1,7 @@
 // @flow
+export {GbraverBurstCore} from './game/gbraver-burst-core';
 export {ArmDozerIdList, ArmDozers} from './master/armdozers';
 export {PilotIds, Pilots} from './master/pilots';
-export {GbraverBurstCore} from './game/index';
 export {PlayerCommand} from "./game/command/player-command";
 export {PlayerCommandX} from "./game/command/player-command";
 export {totalDamageDecrease} from './effect/damage-decrease';
