@@ -57,7 +57,7 @@
       "compileEnhancements": false
     },
     "files": [
-      "test/src/**/*.js"
+      "test/**/*.js"
     ],
     "require": [
       "@babel/register"
