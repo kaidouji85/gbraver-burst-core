@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {updateArmdozerEffect} from "../../../src/effect/update-remaning-turn/armdozer-effect";
-import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty-data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
 
 test('アームドーザ効果の継続ターン数がマイナス1される', t => {
   const data = {

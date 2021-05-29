@@ -3,7 +3,7 @@
 import test from 'ava';
 import type {PlayerState} from "../../../../src/state/player-state";
 import {battleResult} from "../../../../src/effect/battle/result/battle-result";
-import {EMPTY_PLAYER_STATE} from "../../../../src/empty-data/player";
+import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
 
 const ATTACKER: PlayerState = {
   ...EMPTY_PLAYER_STATE,

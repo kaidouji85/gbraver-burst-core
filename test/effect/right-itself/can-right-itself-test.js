@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import type {Battle} from "../../../src";
-import {EMPTY_BATTLE} from "../../../src/empty-data/battle";
+import {EMPTY_BATTLE} from "../../../src/empty/battle";
 import {canRightItself} from "../../../src/effect/right-itself";
 
 test('戦闘で死亡していなければ、体勢整えを実施する', t => {

@@ -10,8 +10,8 @@ export type PlayerId = string;
 /**
  * プレイヤー基本情報
  *
- * @type {BURST} バースト
- * @type {PILOT} パイロットスキル
+ * @template BURST バースト
+ * @template PILOT パイロットスキル
  */
 export type PlayerX<BURST, PILOT> = {
   /** プレイヤーID */

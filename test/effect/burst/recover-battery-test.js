@@ -1,12 +1,12 @@
 // @flow
 
 import test from 'ava';
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {recoverBattery} from "../../../src/effect/burst/recover-battery";
 import type {PlayerState} from "../../../src/state/player-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {GameState, RecoverBattery} from "../../../src";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
 test('削除 バースト効果バッテリー回復が正しく適用される', t => {
   const burstPlayer  = {

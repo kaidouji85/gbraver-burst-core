@@ -2,10 +2,10 @@
 
 import test from 'ava/index';
 import {normalHitDamage} from "../../../../src/effect/battle/damage/damage";
-import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty/armdozer";
 import type {PlayerState} from "../../../../src/state/player-state";
-import {EMPTY_PLAYER_STATE} from "../../../../src/empty-data/player";
-import {EMPTY_CORRECT_POWER} from "../../../../src/empty-data/amrdozer-effect";
+import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
+import {EMPTY_CORRECT_POWER} from "../../../../src/empty/amrdozer-effect";
 
 test('ダメージ = 攻撃力  + 攻撃力補正 +　バッテリーボーナス', t => {
   const attacker: PlayerState = {

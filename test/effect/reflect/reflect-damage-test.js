@@ -2,9 +2,9 @@
 
 import test from 'ava';
 import type {ReflectParam} from "../../../src/effect/reflect/reflect";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {reflectDamage} from "../../../src/effect/reflect/reflect";
 
 test('反射するダメージを正しく計算できる', t => {

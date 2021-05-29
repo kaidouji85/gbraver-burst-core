@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {EMPTY_ARMDOZER_EFFECT} from "../../src/empty-data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT} from "../../src/empty/amrdozer-effect";
 import {totalBatteryCorrection} from "../../src/effect/battery-correction";
 
 test('バッテリー補正合計値が正しく取得できる', t => {

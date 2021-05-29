@@ -2,9 +2,9 @@
 
 import test from "ava";
 import type {ContinuousActivePlayer, GameState, PlayerState} from "../../../src";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {continuousActive} from "../../../src/effect/continuous-active";
 
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {

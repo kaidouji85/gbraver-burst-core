@@ -3,9 +3,9 @@
 import test from 'ava';
 import {inputCommand} from "../../../src/effect/input-command";
 import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
 test('戦闘後のコマンド入力フェイズが正しく適用される', t => {
   const player01 =  {

@@ -2,8 +2,8 @@
 
 import test from 'ava';
 import type {BatteryCommand, BurstCommand, GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import type {PilotSkillCommand} from "../../../src/command/pilot-skill";
 import {progress} from "../../../src/game/progress";
 

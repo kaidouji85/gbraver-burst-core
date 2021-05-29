@@ -10,8 +10,8 @@ import type {PilotSkill} from "../player/pilot";
 /**
  * プレイヤーの状態
  *
- * @type BURST バースト
- * @type PILOT パイロットスキル
+ * @template BURST バースト
+ * @template PILOT パイロットスキル
  */
 export type PlayerStateX<BURST, PILOT> = {
   playerId: PlayerId,

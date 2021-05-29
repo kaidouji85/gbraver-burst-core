@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {burstRecoverBattery} from "../../../src/effect/burst/burst-recover-battery";
-import {EMPTY_ARMDOZER_STATE, EMPTY_BURST} from "../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE, EMPTY_BURST} from "../../../src/empty/armdozer";
 import type {ArmdozerState} from "../../../src/state/armdozer-state";
 import type {Burst} from "../../../src";
 

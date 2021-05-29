@@ -2,9 +2,9 @@
 
 import * as test from 'ava';
 import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {gameEndJudging} from "../../../src/game/end-judging";
 
 test('1人だけHPが0なら、HPが0より大きいプレイヤーの勝ち', t => {

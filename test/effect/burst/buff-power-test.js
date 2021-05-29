@@ -2,11 +2,11 @@
 
 import test from 'ava';
 import {buffPower} from "../../../src/effect/burst/buff-power";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {BuffPower} from "../../../src/player/burst";
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
 test('攻撃力バフが正しく適用される', t => {
   const burstPlayer: PlayerState = {

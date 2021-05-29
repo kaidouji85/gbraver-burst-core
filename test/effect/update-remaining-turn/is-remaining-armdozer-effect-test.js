@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty-data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
 import {isRemainArmdozerEffect} from "../../../src/effect/update-remaning-turn/armdozer-effect";
 
 test('アームドーザ効果継続ターン数が1より大きい場合はtrueを返す', t => {

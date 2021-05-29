@@ -1,7 +1,7 @@
 // @flow
 
 import test from 'ava';
-import {EMPTY_ARMDOZER_EFFECT, EMPTY_DAMAGE_DECREASE} from "../../src/empty-data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT, EMPTY_DAMAGE_DECREASE} from "../../src/empty/amrdozer-effect";
 import {totalDamageDecrease} from "../../src/effect/damage-decrease";
 
 test('ダメージ減少効果の合計値を返す', t => {

@@ -2,8 +2,8 @@
 import test from 'ava';
 import {GbraverBurstCore} from "../../src";
 import type {Player} from "../../src/player/player";
-import {EMPTY_ARMDOZER} from "../../src/empty-data/armdozer";
-import {EMPTY_PILOT} from "../../src/empty-data/pilot";
+import {EMPTY_ARMDOZER} from "../../src/empty/armdozer";
+import {EMPTY_PILOT} from "../../src/empty/pilot";
 
 const PLAYER1: Player = {
   playerId: 'player1',

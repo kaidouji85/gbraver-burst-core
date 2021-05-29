@@ -2,10 +2,10 @@
 
 import test from 'ava';
 import type {Player} from "../../../src/player/player";
-import {EMPTY_ARMDOZER} from "../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER} from "../../../src/empty/armdozer";
 import {startGame} from "../../../src/effect/start-game";
 import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_PILOT} from "../../../src/empty-data/pilot";
+import {EMPTY_PILOT} from "../../../src/empty/pilot";
 
 const PLAYER1: Player = {
   playerId: 'player01',

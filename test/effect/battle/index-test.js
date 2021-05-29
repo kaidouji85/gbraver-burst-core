@@ -4,9 +4,9 @@ import test from 'ava';
 import type {GameState} from "../../../src/state/game-state";
 import {battle} from "../../../src/effect/battle";
 import type {PlayerState} from "../../../src/state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 
 test('戦闘を実行した後の状態に正しく更新できる', t => {
   const attacker: PlayerState = {

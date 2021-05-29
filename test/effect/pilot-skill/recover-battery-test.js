@@ -2,8 +2,8 @@
 
 import test from 'ava';
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {recoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
 import type {RecoverBatterySkill} from "../../../src/player/pilot";
 

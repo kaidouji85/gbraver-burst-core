@@ -2,10 +2,10 @@
 
 import test from 'ava';
 import type {PlayerState} from "../../../../src/state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty/armdozer";
 import {guard} from "../../../../src/effect/battle/result/guard";
-import {EMPTY_PLAYER_STATE} from "../../../../src/empty-data/player";
-import {EMPTY_CORRECT_POWER, EMPTY_DAMAGE_DECREASE} from "../../../../src/empty-data/amrdozer-effect";
+import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
+import {EMPTY_CORRECT_POWER, EMPTY_DAMAGE_DECREASE} from "../../../../src/empty/amrdozer-effect";
 
 test('通常ヒットの半分のダメージを受ける', t => {
   const attacker: PlayerState = {

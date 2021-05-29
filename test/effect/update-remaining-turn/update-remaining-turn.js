@@ -1,10 +1,10 @@
 // @flow
 
 import test from 'ava';
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
-import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty-data/amrdozer-effect";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
 import {updateRemainingTurn} from "../../../src/effect/update-remaning-turn";
 
 test('効果継続ターン更新が正しく処理される', t => {

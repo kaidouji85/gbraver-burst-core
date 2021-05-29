@@ -3,8 +3,8 @@ import test from 'ava';
 import {getFirstTurnPlayer} from "../../../src/effect/start-game/first-turn-payer";
 import type {PlayerState} from "../../../src/state/player-state";
 import type {PlayerId} from "../../../src/player/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 
 test('スピードが高いプレイヤーが先行', t => {
   const player1: PlayerState = {

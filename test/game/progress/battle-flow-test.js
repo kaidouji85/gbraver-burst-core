@@ -2,10 +2,10 @@
 
 import test from 'ava';
 import type {PlayerState} from "../../../src/state/player-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_GAME_STATE} from "../../../src/empty-data/game-state";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import type {PlayerCommand} from "../../../src";
 import {battleFlow} from "../../../src/game/progress/battle-flow";
 

@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {totalCorrectPower} from "../../src/effect/correct-power";
-import {EMPTY_ARMDOZER_EFFECT, EMPTY_CORRECT_POWER} from "../../src/empty-data/amrdozer-effect";
+import {EMPTY_ARMDOZER_EFFECT, EMPTY_CORRECT_POWER} from "../../src/empty/amrdozer-effect";
 
 test('攻撃力補正の合計値を返す', t => {
   const result = totalCorrectPower([

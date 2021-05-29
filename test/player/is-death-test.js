@@ -3,8 +3,8 @@
 import test from 'ava';
 import type {PlayerState} from "../../src/state/player-state";
 import {isPlayerDeath} from "../../src/state/player-state";
-import {EMPTY_PLAYER_STATE} from "../../src/empty-data/player";
-import {EMPTY_ARMDOZER_STATE} from "../../src/empty-data/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../src/empty/player";
+import {EMPTY_ARMDOZER_STATE} from "../../src/empty/armdozer";
 
 test('HPが0の場合、死亡したと判定する', t => {
   const defender: PlayerState = {

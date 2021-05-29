@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import type {ArmdozerState} from "../../../src";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {RecoverBatterySkill} from "../../../src/player/pilot";
 import {calcRecoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
 

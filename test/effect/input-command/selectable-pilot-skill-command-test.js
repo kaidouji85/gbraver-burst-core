@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import type {PilotState} from "../../../src/state/pilot-state";
-import {EMPTY_PILOT_STATE} from "../../../src/empty-data/pilot";
+import {EMPTY_PILOT_STATE} from "../../../src/empty/pilot";
 import {selectablePilotSkillCommand} from "../../../src/effect/input-command/selectable-pilot-skill-command";
 
 test('パイロットスキル利用可能フラグ=true の場合が正しく処理できる', t => {

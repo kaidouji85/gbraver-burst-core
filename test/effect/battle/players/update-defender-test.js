@@ -2,14 +2,14 @@
 
 import test from 'ava'
 import type {PlayerState} from "../../../../src/state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty-data/armdozer";
+import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty/armdozer";
 import {updateDefender} from "../../../../src/effect/battle/players/update-defender";
 import type {Miss} from "../../../../src/effect/battle/result/miss";
 import type {NormalHit} from "../../../../src/effect/battle/result/normal-hit";
 import type {Guard} from "../../../../src/effect/battle/result/guard";
 import type {CriticalHit} from "../../../../src/effect/battle/result/critical-hit";
 import type {Feint} from "../../../../src/effect/battle/result/feint";
-import {EMPTY_PLAYER_STATE} from "../../../../src/empty-data/player";
+import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
 
 const DEFENDER: PlayerState = {
   ...EMPTY_PLAYER_STATE,
