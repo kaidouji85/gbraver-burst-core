@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {EMPTY_PLAYER} from "../../src";
-import {isDuplicatePlayers} from "../../src/game/is-duplicate-players";
+import {isDuplicatePlayers} from "../../src/game/validation/is-duplicate-players";
 
 const player1 = {
   ...EMPTY_PLAYER,
