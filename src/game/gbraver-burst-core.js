@@ -6,9 +6,11 @@ import type {PlayerCommand} from "./command/player-command";
 import {start} from "./start/start";
 import {progress} from "./progress";
 
+export type Players = [Player, Player];
+
 /** ゲームコア部分 */
 export class GbraverBurstCore {
-  _players: Player[];
+  _players: Players;
   _stateHistory: GameState[];
 
   /**
@@ -16,11 +18,7 @@ export class GbraverBurstCore {
    *
    * @param players バトルに参加するプレイヤー
    */
-  constructor(players: Player[]) {
-    if (players.length !== 2) {
-      throw new Error('ゲームに参加できるプレイヤーは2人です');
-    }
-
+  constructor(players: Players) {
     this._players = players;
     this._stateHistory = start(this._players[0], this._players[1]);
   }
@@ -30,7 +28,7 @@ export class GbraverBurstCore {
    *
    * @return 取得結果
    */
-  players(): Player[] {
+  players(): Players {
     return this._players;
   }
 
@@ -49,12 +47,12 @@ export class GbraverBurstCore {
    * @param commands コマンド
    * @return 更新されたゲーム状態
    */
-  progress(commands: PlayerCommand[]): GameState[] {
+  progress(commands: [PlayerCommand, PlayerCommand]): GameState[] {
     const lastState = this._stateHistory[this._stateHistory.length - 1];
     if (!lastState) {
       throw new Error('ゲームステート履歴がありません');
     }
-    const updated = progress(lastState, commands);
+    const updated = progress(lastState, commands.map(v => v));
     this._stateHistory = [...this._stateHistory, ...updated];
     return updated;
   }
