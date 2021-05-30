@@ -14,7 +14,6 @@ export {EMPTY_PILOT, EMPTY_PILOT_STATE} from './empty/pilot';
 export {EMPTY_BATTLE} from './empty/battle';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
-export type {GamePlayers} from './player/game-players';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
 export type {PilotId, PilotSkill, RecoverBatterySkill, BuffPowerSkill, DamageDecreaseSkill, BatteryEnchantmentSkill, Pilot, PilotX} from './player/pilot';

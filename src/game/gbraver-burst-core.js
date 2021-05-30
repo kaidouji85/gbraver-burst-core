@@ -4,12 +4,12 @@ import type {GameState} from "../state/game-state";
 import type {PlayerCommand} from "./command/player-command";
 import {start} from "./start/start";
 import {progress} from "./progress";
-import {isDuplicatePlayers} from "../player/game-players";
-import type {GamePlayers} from "../player/game-players";
+import {isDuplicatePlayers} from "./is-duplicate-players";
+import type {Player} from "../player/player";
 
 /** ゲームコア部分 */
 export class GbraverBurstCore {
-  _players: GamePlayers;
+  _players: [Player, Player];
   _stateHistory: GameState[];
 
   /**
@@ -17,7 +17,7 @@ export class GbraverBurstCore {
    *
    * @param players バトルに参加するプレイヤー
    */
-  constructor(players: GamePlayers) {
+  constructor(players: [Player, Player]) {
     if (isDuplicatePlayers(players)) {
       throw new Error('duplicate players');
     }
@@ -31,7 +31,7 @@ export class GbraverBurstCore {
    *
    * @return 取得結果
    */
-  players(): GamePlayers {
+  players(): [Player, Player] {
     return this._players;
   }
 

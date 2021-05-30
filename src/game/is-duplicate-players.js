@@ -1,9 +1,6 @@
 // @flow
 
-import type {Player} from "./player";
-
-/** ゲームに参加しているプレイヤー */
-export type GamePlayers = [Player, Player];
+import type {Player} from "../player/player";
 
 /**
  * プレイヤーが重複しているか否かを判定する
@@ -11,6 +8,6 @@ export type GamePlayers = [Player, Player];
  * @param players ゲーム参加プレイヤー
  * @return 判定結果、trueでプレイヤーが重複している
  */
-export function isDuplicatePlayers(players: GamePlayers): boolean {
+export function isDuplicatePlayers(players: [Player, Player]): boolean {
   return players[0].playerId === players[1].playerId;
 }
