@@ -4,8 +4,8 @@ import type {GameState} from "../state/game-state";
 import type {PlayerCommand} from "./command/player-command";
 import {start} from "./start/start";
 import {progress} from "./progress";
-import type {Players} from "./players";
-import {isDuplicatePlayers} from "./players";
+import type {Players} from "./players/players";
+import {isDuplicatePlayers} from "./players/players";
 
 /** ゲームコア部分 */
 export class GbraverBurstCore {
@@ -23,7 +23,7 @@ export class GbraverBurstCore {
     }
 
     this._players = players;
-    this._stateHistory = start(this._players[0], this._players[1]);
+    this._stateHistory = start(this._players);
   }
 
   /**

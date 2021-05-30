@@ -1,6 +1,6 @@
 // @flow
 
-import type {Player} from "../player/player";
+import type {Player} from "../../player/player";
 
 /** ゲームに参加しているプレイヤー */
 export type Players = [Player, Player];
