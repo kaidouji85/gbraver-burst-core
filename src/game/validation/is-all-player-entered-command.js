@@ -3,7 +3,6 @@
 import type {Player} from "../../player/player";
 import type {PlayerCommand} from "../command/player-command";
 
-// TODO ユニットテストを追加する
 /**
  * 全プレイヤーがコマンド入力したか否かを判定する
  *
