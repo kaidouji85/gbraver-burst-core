@@ -19,7 +19,7 @@ type Resp = {
  * @param commands コマンド
  * @return コマンド抽出結果、抽出できない場合はnullを返す
  */
-export function extractBatteryCommands(state: GameState, commands: PlayerCommand[]): ?Resp {
+export function extractBatteryCommands(state: GameState, commands: [PlayerCommand, PlayerCommand]): ?Resp {
   const attackerCommand = commands.find(v => v.playerId === state.activePlayerId);
   const defenderCommand = commands.find(v => v.playerId !== state.activePlayerId);
   if (!attackerCommand ||!defenderCommand) {

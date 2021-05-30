@@ -14,7 +14,7 @@ import type {PlayerCommand} from "../command/player-command";
  * @param commands プレイヤーが選択したコマンド
  * @return 判定結果、trueでバーストフェイズを行う
  */
-export function isEffectActivationFlow(commands: PlayerCommand[]): boolean {
+export function isEffectActivationFlow(commands: [PlayerCommand, PlayerCommand]): boolean {
   const types = commands.map(v => v.command.type);
   return types.includes('BURST_COMMAND') || types.includes('PILOT_SKILL_COMMAND');
 }
@@ -27,7 +27,7 @@ export function isEffectActivationFlow(commands: PlayerCommand[]): boolean {
  * @param commands コマンド
  * @return 更新されたゲームの状態
  */
-export function effectActivationFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+export function effectActivationFlow(lastState: GameState, commands: [PlayerCommand, PlayerCommand]): GameState[] {
   const attackerCommand = commands.find(v => v.playerId === lastState.activePlayerId);
   const defenderCommand = commands.find(v => v.playerId !== lastState.activePlayerId);
   if (!attackerCommand || !defenderCommand) {

@@ -55,7 +55,7 @@ export class GbraverBurstCore {
     if (!lastState) {
       throw new Error('ゲームステート履歴がありません');
     }
-    const updated = progress(lastState, commands.map(v => v));
+    const updated = progress(lastState, commands);
     this._stateHistory = [...this._stateHistory, ...updated];
     return updated;
   }

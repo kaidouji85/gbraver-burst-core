@@ -7,7 +7,6 @@ import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {progress} from "../../../src/game/progress";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {PlayerState} from "../../../src/state/player-state";
-import type {PlayerCommand} from "../../../src";
 
 const attacker: PlayerState = {
   ...EMPTY_PLAYER_STATE,
@@ -45,7 +44,7 @@ test('攻撃側:バースト、防御側:バッテリー のケースが正し�
     players: [attacker, defender],
     activePlayerId: 'attacker',
   };
-  const commands: PlayerCommand[] = [{
+  const commands = [{
     playerId: 'attacker',
     command: {type: 'BURST_COMMAND'}
   }, {
@@ -65,7 +64,7 @@ test('攻撃側:バッテリー、防御側:バースト のケースが正し�
     players: [attacker, defender],
     activePlayerId: 'attacker',
   };
-  const commands: PlayerCommand[] = [{
+  const commands = [{
     playerId: 'attacker',
     command: {type: 'BATTERY_COMMAND', battery: 2}
   }, {
@@ -85,7 +84,7 @@ test('攻撃側:バースト、防御側:バースト のケースが正しく�
     players: [attacker, defender],
     activePlayerId: 'attacker',
   };
-  const commands: PlayerCommand[] = [{
+  const commands = [{
     playerId: 'attacker',
     command: {type: 'BURST_COMMAND'}
   }, {
