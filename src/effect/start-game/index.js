@@ -4,7 +4,7 @@ import {createOpenPlayerState} from "../../state/player-state";
 import {getFirstTurnPlayer} from "./first-turn-payer";
 import type {GameStateX} from "../../state/game-state";
 import type {StartGame} from "./start-game";
-import type {Players} from "../../game/players/players";
+import type {GamePlayers} from "../../player/game-players";
 
 /**
  * プレイヤー情報を受け取り、初期ゲームステートを生成する
@@ -12,7 +12,7 @@ import type {Players} from "../../game/players/players";
  * @param players ゲーム参加プレイヤー
  * @return 初期ゲームステート
  */
-export function startGame(players: Players): GameStateX<StartGame> {
+export function startGame(players: GamePlayers): GameStateX<StartGame> {
   const openPlayerStateList = players.map(v => createOpenPlayerState(v));
 
   return {

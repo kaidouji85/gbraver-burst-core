@@ -1,8 +1,8 @@
 // @flow
 
 import test from 'ava';
-import {isDuplicatePlayers} from "../../src/game/players/players";
 import {EMPTY_PLAYER} from "../../src";
+import {isDuplicatePlayers} from "../../src/player/game-players";
 
 const player1 = {
   ...EMPTY_PLAYER,
