@@ -30,7 +30,7 @@ const PLAYER2: Player = {
 };
 
 test('正しくゲームスタートができる', t => {
-  const result = startGame(PLAYER1, PLAYER2);
+  const result = startGame([PLAYER1, PLAYER2]);
   const expected: GameState = {
     players: [
       {
