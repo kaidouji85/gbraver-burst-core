@@ -26,3 +26,4 @@ export type PlayerX<BURST, PILOT> = {
 
 /** プレイヤー基本情報 */
 export type Player = PlayerX<Burst, PilotSkill>;
+

@@ -6,7 +6,6 @@ import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {GameState} from "../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import type {PlayerCommand} from "../../../src";
 import {battleFlow} from "../../../src/game/progress/battle-flow";
 
 test('戦闘フローを正常に進められる', t => {
@@ -39,7 +38,7 @@ test('戦闘フローを正常に進められる', t => {
     activePlayerId: 'attacker',
     players: [attacker, defender]
   };
-  const commands: PlayerCommand[] = [{
+  const commands = [{
     playerId: 'attacker',
     command: {type: 'BATTERY_COMMAND', battery: 2}
   }, {
@@ -87,7 +86,7 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
     activePlayerId: 'attacker',
     players: [attacker, defender]
   };
-  const commands: PlayerCommand[] = [{
+  const commands = [{
     playerId: 'attacker',
     command: {type: 'BATTERY_COMMAND', battery: 2}
   }, {
@@ -146,7 +145,7 @@ test('ダメージ反射でHPが0になった場合は引き分け', t => {
     activePlayerId: 'attacker',
     players: [attacker, defender]
   };
-  const commands: PlayerCommand[] = [{
+  const commands = [{
     playerId: 'attacker',
     command: {type: 'BATTERY_COMMAND', battery: 2}
   }, {

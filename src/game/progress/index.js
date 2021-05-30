@@ -12,7 +12,7 @@ import type {PlayerCommand} from "../command/player-command";
  * @param commands コマンド
  * @return 更新されたゲーム状態
  */
-export function progress(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+export function progress(lastState: GameState, commands: [PlayerCommand, PlayerCommand]): GameState[] {
   if (isEffectActivationFlow(commands)) {
     return effectActivationFlow(lastState, commands);
   }

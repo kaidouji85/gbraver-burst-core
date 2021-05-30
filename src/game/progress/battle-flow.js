@@ -20,7 +20,7 @@ import {gameContinueFlow} from "./game-continue-flow";
  * @param commands コマンド
  * @return 更新されたゲームステート
  */
-export function battleFlow(lastState: GameState, commands: PlayerCommand[]): GameState[] {
+export function battleFlow(lastState: GameState, commands: [PlayerCommand, PlayerCommand]): GameState[] {
   const batteries = extractBatteryCommands(lastState, commands);
   if (!batteries) {
     return [];
