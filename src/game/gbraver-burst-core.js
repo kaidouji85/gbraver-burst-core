@@ -1,12 +1,11 @@
 // @flow
 
-import type {Player} from "../player/player";
 import type {GameState} from "../state/game-state";
 import type {PlayerCommand} from "./command/player-command";
 import {start} from "./start/start";
 import {progress} from "./progress";
-
-export type Players = [Player, Player];
+import type {Players} from "./players";
+import {isDuplicatePlayers} from "./players";
 
 /** ゲームコア部分 */
 export class GbraverBurstCore {
@@ -19,6 +18,10 @@ export class GbraverBurstCore {
    * @param players バトルに参加するプレイヤー
    */
   constructor(players: Players) {
+    if (isDuplicatePlayers(players)) {
+      throw new Error('duplicate players');
+    }
+
     this._players = players;
     this._stateHistory = start(this._players[0], this._players[1]);
   }
