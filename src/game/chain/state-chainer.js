@@ -81,3 +81,14 @@ export class SimpleStateChainer<X> implements StateChainer<X> {
     return new SimpleStateChainer(stateHistory, result.lastState());
   }
 }
+
+/**
+ * ゲームステートからチャイナーを生成する
+ * 
+ * @template X ゲームステートの効果
+ * @param state ゲームステート
+ * @return 生成結果 
+ */
+export function to<X>(state: GameStateX<X>): StateChainer<X> {
+  return new SimpleStateChainer([], state);
+}
