@@ -1,6 +1,6 @@
 // @flow
 
-import {gameFlow} from "../flow/game-flow";
+import {deprecated_gameFlow} from "../deprecated-flow/game-flow";
 import type {GameState} from '../../state/game-state';
 import {upcastGameState} from "../../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
@@ -26,7 +26,7 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommand, Playe
     return [];
   }
 
-  return gameFlow(lastState, [
+  return deprecated_gameFlow(lastState, [
     state => {
       const doneBatteryDeclaration = batteryDeclaration(
         state,
@@ -53,7 +53,7 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommand, Playe
       return [
         upcastGameState(doneBatteryDeclaration),
         upcastGameState(doneBattle),
-        ...gameFlow(upcastGameState(doneBattle), [
+        ...deprecated_gameFlow(upcastGameState(doneBattle), [
           state => canReflectFlow(doneBattle.effect.result)
             ? reflectFlow(state, doneBattle.effect.attacker)
             : [],

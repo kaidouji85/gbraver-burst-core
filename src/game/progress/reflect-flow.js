@@ -1,7 +1,7 @@
 // @flow
 import type {ReflectParam} from "../../effect/reflect/reflect";
 import {toReflectParam} from "../../effect/reflect/reflect";
-import {gameFlow} from "../flow/game-flow";
+import {deprecated_gameFlow} from "../deprecated-flow/game-flow";
 import {reflect} from "../../effect/reflect";
 import {upcastGameState} from "../../state/game-state";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
@@ -39,7 +39,7 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
     .filter(v => v.type === 'TryReflect')
     .map(v => ((v: any): TryReflect))
     .map(v => toReflectParam(v));
-  return gameFlow(lastState, tryReflects.map(v => state => {
+  return deprecated_gameFlow(lastState, tryReflects.map(v => state => {
     const updated = reflect(state, attackerId, v);
     return updated ? [upcastGameState(updated)] : [];
   }));

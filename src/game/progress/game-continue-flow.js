@@ -1,6 +1,6 @@
 // @flow
 
-import {gameFlow} from "../flow/game-flow";
+import {deprecated_gameFlow} from "../deprecated-flow/game-flow";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
 import {upcastGameState} from "../../state/game-state";
@@ -21,7 +21,7 @@ import type {Command} from "../../command/command";
  * @return 更新結果
  */
 export function gameContinueFlow(state: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
-  return gameFlow(state, [
+  return deprecated_gameFlow(state, [
     state => {
       const done = updateRemainingTurn(state);
       return done ? [upcastGameState(done)] : [];

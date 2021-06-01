@@ -2,7 +2,7 @@
 
 import type {GameState} from "../../state/game-state";
 import {upcastGameState} from "../../state/game-state";
-import {gameFlow} from "../flow/game-flow";
+import {deprecated_gameFlow} from "../deprecated-flow/game-flow";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
@@ -34,7 +34,7 @@ export function effectActivationFlow(lastState: GameState, commands: [PlayerComm
     return [];
   }
 
-  return gameFlow(lastState, [
+  return deprecated_gameFlow(lastState, [
     state => activationOrNot(state, attackerCommand),
     state => activationOrNot(state, defenderCommand),
     state => {

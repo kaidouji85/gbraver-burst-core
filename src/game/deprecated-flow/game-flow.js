@@ -11,13 +11,14 @@ import type {GameState} from "../../state/game-state";
 export type HistoryUpdate = (state: GameState) => GameState[];
 
 /**
+ * @deprecated
  * ゲームフロー
  *
  * @param lastState 最後の状態
  * @param updateList ステートヒストリー更新関数リスト
  * @return 更新後のステートヒストリー
  */
-export function gameFlow(lastState: GameState, updateList: HistoryUpdate[]): GameState[] {
+export function deprecated_gameFlow(lastState: GameState, updateList: HistoryUpdate[]): GameState[] {
   return updateList.reduce((history: GameState[], update: HistoryUpdate) => {
     const state = history[history.length - 1];
     return [...history,  ...update(state)];
