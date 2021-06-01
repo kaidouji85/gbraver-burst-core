@@ -5,7 +5,8 @@ import {startGame} from "../../effect/start-game";
 import {gameStartInputCommand} from "../../effect/input-command";
 import {upcastGameState as up} from "../../state/game-state";
 import type {Player} from "../../player/player";
-import {chain, start as startFlow} from '../state-updator/state-updator';
+import {start as startFlow} from '../game-flow/start';
+import {chain} from '../game-flow/chain';
 
 /**
  * ゲームの初期状態を生成する
