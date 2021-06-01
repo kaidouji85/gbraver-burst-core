@@ -22,7 +22,7 @@ export class StateUpdator<X> {
 }
 
 export function start<X>(state: GameStateX<X>): StateUpdator<X> {
-  return new StateUpdator([state], state);
+  return new StateUpdator([(state: any)], state);
 }
 
 export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: StateUpdator<X>) => StateUpdator<Y>) {

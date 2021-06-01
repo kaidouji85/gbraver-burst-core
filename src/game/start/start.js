@@ -14,9 +14,7 @@ import {chain, start as startFlow} from '../state-updator/state-updator';
  * @return ゲーム初期状態
  */
 export function start(players: [Player, Player]): GameState[] {
-  const ret= startFlow(startGame(players))
+  return startFlow(startGame(players))
     .to(chain(v => gameStartInputCommand(up(v))))
     .stateHistory;
-  console.log(ret);  
-  return ret;
 }
