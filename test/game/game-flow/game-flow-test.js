@@ -19,6 +19,6 @@ test('ステート変更関数の更新結果が次に渡される', t => {
 
   const flowA = new GameFlow([], EMPTY_GAME_STATE);
   const flowB = new GameFlow([], EMPTY_GAME_STATE);
-  flowA.to(_ => flowB)
+  flowA.to(() => flowB)
     .to(v => t.is(v, flowB));
 });
