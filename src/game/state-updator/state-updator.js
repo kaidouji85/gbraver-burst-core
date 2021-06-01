@@ -21,17 +21,13 @@ export class StateUpdator<X> {
   }
 }
 
-export function chainX<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: StateUpdator<X>) => StateUpdator<Y>) {
-  return (v: StateUpdator<X>): StateUpdator<Y> =>  {
-    const lastState = fn(v.lastState);
-    const stateHistory = [...v.stateHistory, (lastState: any)];
-    return new StateUpdator(stateHistory, lastState);
-  }
+export function start<X>(state: GameStateX<X>): StateUpdator<X> {
+  return new StateUpdator([state], state);
 }
 
-export function chain<X, Y>(fn: (v: GameState) => GameStateX<Y>): ((v: StateUpdator<X>) => StateUpdator<Y>) {
+export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: StateUpdator<X>) => StateUpdator<Y>) {
   return (v: StateUpdator<X>): StateUpdator<Y> =>  {
-    const lastState = fn((v.lastState: any));
+    const lastState = fn(v.lastState);
     const stateHistory = [...v.stateHistory, (lastState: any)];
     return new StateUpdator(stateHistory, lastState);
   }
