@@ -14,10 +14,10 @@ import type {PlayerState} from "../../state/player-state";
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function buffPower(lastState: GameState, invokerId: PlayerId, skill: BuffPowerSkill): ?GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
+export function buffPower(lastState: GameState, invokerId: PlayerId, skill: BuffPowerSkill): GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
   if (!invoker) {
-    return null;
+    throw new Error('not found pilot skill invoker');
   }
 
   const updatedInvoker = {
