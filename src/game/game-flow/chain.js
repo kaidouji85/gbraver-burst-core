@@ -6,7 +6,7 @@ import {GameFlow} from './game-flow';
 /**
  * ゲームフローに1個だけステートを追加する
  *
- * @param fn 更新関数
+ * @param fn 追加するステートを指定する
  * @return 更新結果
  */
 export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: GameFlow<X>) => GameFlow<Y>) {
