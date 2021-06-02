@@ -1,7 +1,7 @@
 // @flow
 
 import type {GameStateX} from '../../state/game-state';
-import {GameFlowWithHistory} from './game-flow';
+import {GameFlow} from './game-flow';
 
 /**
  * ゲームフローを開始する
@@ -10,6 +10,6 @@ import {GameFlowWithHistory} from './game-flow';
  * @param state ゲームステート
  * @return ゲームフロー
  */
-export function start<X>(state: GameStateX<X>): GameFlowWithHistory<X> {
-  return new GameFlowWithHistory([(state: any)], state);
+export function start<X>(state: GameStateX<X>): GameFlow<X> {
+  return new GameFlow([(state: any)], state);
 }
