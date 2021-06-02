@@ -3,8 +3,8 @@
 import test from 'ava';
 import {EMPTY_GAME_STATE} from "../../../src";
 import {GameFlow} from "../../../src/game/game-flow/game-flow";
-import {addHistoriesByFunctions} from '../../../src/game/game-flow/updates';
 import {upcastGameState as up} from "../../../src/state/game-state";
+import {updates} from "../../../src/game/game-flow/updates";
 
 test('配列でのステート更新ができる', t => {
   const s1 = {...EMPTY_GAME_STATE, activePlayerId: 'state01-'};
@@ -12,8 +12,7 @@ test('配列でのステート更新ができる', t => {
   const fnX = v => up({...v, activePlayerId: v.activePlayerId + 'X'});
   const fnY = v => up({...v, activePlayerId: v.activePlayerId + 'Y'});
   const fnZ = v => up({...v, activePlayerId: v.activePlayerId + 'Z'});
-
-  const result = addHistoriesByFunctions(flowA, [fnX, fnY, fnZ, fnY, fnX]);
+  const result = flowA.to(updates([fnX, fnY, fnZ, fnY, fnX]));
   const expectedLastState = {...EMPTY_GAME_STATE, activePlayerId: 'state01-XYZYX'}
   const expectedStateHistory = [
     s1,

@@ -4,7 +4,6 @@ import {GameFlow} from "./game-flow";
 import type {GameState} from "../../state/game-state";
 import type {Effect} from "../../effect";
 
-// TODO ユニットテストを追加する
 /**
  * 配列でステートヒストリー追加を行う
  *
