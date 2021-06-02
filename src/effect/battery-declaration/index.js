@@ -18,11 +18,11 @@ import {correctedBattery} from "../battery-correction";
  * @param defenderBattery 防御バッテリー
  * @returns 更新結果、実行不可能な場合はnullを返す
  */
-export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, attackerBattery: BatteryCommand, defenderId: PlayerId, defenderBattery: BatteryCommand): ?GameStateX<BatteryDeclaration> {
+export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, attackerBattery: BatteryCommand, defenderId: PlayerId, defenderBattery: BatteryCommand): GameStateX<BatteryDeclaration> {
   const attacker: ?PlayerState = lastState.players.find(v => v.playerId === attackerId);
   const defender: ?PlayerState = lastState.players.find(v => v.playerId === defenderId);
   if (!attacker || !defender) {
-    return null;
+    throw new Error('not found attacker or defender');
   }
 
   const updatedAttacker = updatePlayer(attacker, attackerBattery);
