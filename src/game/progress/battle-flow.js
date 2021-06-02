@@ -8,13 +8,19 @@ import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {canRightItself, rightItself} from "../../effect/right-itself";
-import {canReflectFlow, reflectFlow} from "./reflect-flow";
+import {deprecated_reflectFlow} from "./deprecated_reflect-flow";
 import {extractBatteryCommands} from "./extract-battery-commands";
 import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
 import {gameContinueFlow} from "./game-continue-flow";
 import type {BatteryCommand} from "../../command/battery";
 import {start} from "../game-flow/start";
 import {chain} from "../game-flow/chain";
+import type {BattleResult} from "../../effect/battle/result/battle-result";
+import type {PlayerId} from "../../player/player";
+import type {TryReflect} from "../../state/armdozer-effect";
+import {toReflectParam} from "../../effect/reflect/reflect";
+import {reflect} from "../../effect/reflect";
+import {connectArrays} from "../game-flow/connect-arrays";
 
 /**
  * 戦闘フロー
@@ -34,6 +40,34 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     .to(chain(v => batteryDeclaration(v, attacker.playerId, attacker.command, defender.playerId, defender.command)))
     .to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery, defender.playerId, v.effect.defenderBattery)))
   return [];
+}
+
+/**
+ * ダメージ反射フローを実行できるか否かを判定する
+ *
+ * @param result 戦闘結果
+ * @return 判定結果、trueでダメージ反射フローを行う
+ */
+export function canReflectFlow(result: BattleResult): boolean {
+  return result.name === 'NormalHit'
+    || result.name === 'Guard'
+    || result.name === 'CriticalHit';
+}
+
+export function reflectFlow(lastState: GameState, attackerId: PlayerId):  GameState[] {
+  const defender = lastState.players.find(v => v.playerId !== attackerId);
+  if (!defender) {
+    throw new Error('not found defender');
+  }
+
+  const tryReflects = defender.armdozer.effects
+    .filter(v => v.type === 'TryReflect')
+    .map(v => ((v: any): TryReflect))
+    .map(v => toReflectParam(v))
+    .map(v => state => up(reflect(state, attackerId, v)));
+  return start(lastState)
+    .to(v => connectArrays(v, tryReflects))
+    .stateHistory.slice(1);
 }
 
 /**
@@ -79,7 +113,7 @@ export function deprecated_battleFlow(lastState: GameState, commands: [PlayerCom
         up(doneBattle),
         ...deprecated_gameFlow(up(doneBattle), [
           state => canReflectFlow(doneBattle.effect.result)
-            ? reflectFlow(state, doneBattle.effect.attacker)
+            ? deprecated_reflectFlow(state, doneBattle.effect.attacker)
             : [],
           state => {
             if (!canRightItself(doneBattle.effect)) {

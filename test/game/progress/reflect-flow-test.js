@@ -5,7 +5,7 @@ import type {GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {reflectFlow} from "../../../src/game/progress/reflect-flow";
+import {deprecated_reflectFlow} from "../../../src/game/progress/deprecated_reflect-flow";
 
 /** 攻撃側プレイヤー */
 const ATTACKER: PlayerState = {
@@ -43,7 +43,7 @@ test('ダメージ反射が正しく適用される', t => {
         players: [ATTACKER, DEFENDER],
     };
 
-    const result = reflectFlow(lastState, 'attacker');
+    const result = deprecated_reflectFlow(lastState, 'attacker');
     t.is(result.length, 1);
     t.is(result[0].effect.name, 'Reflect');
 });
@@ -75,7 +75,7 @@ test('ダメージ反射の重ね掛けも正しく処理される', t => {
         players: [ATTACKER, multiReflect],
     };
 
-    const result = reflectFlow(lastState, 'attacker');
+    const result = deprecated_reflectFlow(lastState, 'attacker');
     t.is(result.length, 3);
     t.is(result[0].effect.name, 'Reflect');
     t.is(result[1].effect.name, 'Reflect');

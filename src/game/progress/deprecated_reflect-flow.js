@@ -3,25 +3,13 @@ import type {ReflectParam} from "../../effect/reflect/reflect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {deprecated_gameFlow} from "../deprecated-flow/game-flow";
 import {reflect} from "../../effect/reflect";
-import {upcastGameState} from "../../state/game-state";
-import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {GameState} from "../../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
 
 /**
- * ダメージ反射フローを実行できるか否かを判定する
- *
- * @param result 戦闘結果
- * @return 判定結果、trueでダメージ反射フローを行う
- */
-export function canReflectFlow(result: BattleResult): boolean {
-  return result.name === 'NormalHit'
-    || result.name === 'Guard'
-    || result.name === 'CriticalHit';
-}
-
-/**
+ * @deprecated
  * ダメージ反射のフロー
  * 本フローは戦闘直後に呼ばれる想定である
  *
@@ -29,7 +17,7 @@ export function canReflectFlow(result: BattleResult): boolean {
  * @param attackerId 攻撃側プレイヤーID
  * @return 更新結果
  */
-export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameState[] {
+export function deprecated_reflectFlow(lastState: GameState, attackerId: PlayerId): GameState[] {
   const defender = lastState.players.find(v => v.playerId !== attackerId);
   if (!defender) {
     return [];
