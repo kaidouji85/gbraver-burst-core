@@ -4,7 +4,14 @@ import {GameFlow} from "./game-flow";
 import type {GameState} from "../../state/game-state";
 import type {Effect} from "../../effect";
 
-export function repeat<X>(origin: GameFlow<X>, fns: ((v: GameState) => GameState)[]): GameFlow<Effect> {
+/**
+ * 配列でステートヒストリー追加を行う
+ *
+ * @param origin ステートヒストリー追加前のゲームフロー
+ * @param fns 更新関数の配列
+ * @return 更新結果
+ */
+export function connectArrays<X>(origin: GameFlow<X>, fns: ((v: GameState) => GameState)[]): GameFlow<Effect> {
   const updates = fns.reduce((history: GameState[], fn) => {
     const lastState = history[history.length - 1];
     const update = fn(lastState);

@@ -3,7 +3,7 @@
 import test from 'ava';
 import {EMPTY_GAME_STATE} from "../../../src";
 import {GameFlow} from "../../../src/game/game-flow/game-flow";
-import {repeat} from '../../../src/game/game-flow/repeat';
+import {connectArrays} from '../../../src/game/game-flow/connect-arrays';
 import {upcastGameState as up} from "../../../src/state/game-state";
 
 test('配列でのステート更新ができる', t => {
@@ -13,7 +13,7 @@ test('配列でのステート更新ができる', t => {
   const fnY = v => up({...v, activePlayerId: v.activePlayerId + 'Y'});
   const fnZ = v => up({...v, activePlayerId: v.activePlayerId + 'Z'});
 
-  const result = repeat(flowA, [fnX, fnY, fnZ, fnY, fnX]);
+  const result = connectArrays(flowA, [fnX, fnY, fnZ, fnY, fnX]);
   const expectedLastState = {...EMPTY_GAME_STATE, activePlayerId: 'state01-XYZYX'}
   const expectedStateHistory = [
     s1,
