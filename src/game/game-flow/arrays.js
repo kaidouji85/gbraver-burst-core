@@ -4,6 +4,20 @@ import {GameFlow} from "./game-flow";
 import type {GameState} from "../../state/game-state";
 import type {Effect} from "../../effect";
 
+// TODO ユニットテストを追加する
+/**
+ * 配列でステートヒストリー追加を行う
+ *
+ * @param origin ステートヒストリー追加前のゲームフロー
+ * @param fns 更新関数の配列
+ * @return 更新関数
+ */
+export function arrays<X>(fns: ((v: GameState) => GameState)[]): ((v: GameFlow<X>) => GameFlow<Effect>) {
+  return (v: GameFlow<X>): GameFlow<Effect> => {
+    return connectArrays(v, fns);
+  }
+}
+
 /**
  * 配列でステートヒストリー追加を行う
  *

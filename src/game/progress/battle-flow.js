@@ -20,7 +20,7 @@ import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {reflect} from "../../effect/reflect";
-import {connectArrays} from "../game-flow/connect-arrays";
+import {arrays, connectArrays} from "../game-flow/arrays";
 
 /**
  * 戦闘フロー
@@ -66,7 +66,7 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId):  GameSt
     .map(v => toReflectParam(v))
     .map(v => state => up(reflect(state, attackerId, v)));
   return start(lastState)
-    .to(v => connectArrays(v, tryReflects))
+    .to(arrays(tryReflects))
     .stateHistory.slice(1);
 }
 

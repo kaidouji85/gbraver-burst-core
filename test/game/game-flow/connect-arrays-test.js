@@ -3,7 +3,7 @@
 import test from 'ava';
 import {EMPTY_GAME_STATE} from "../../../src";
 import {GameFlow} from "../../../src/game/game-flow/game-flow";
-import {connectArrays} from '../../../src/game/game-flow/connect-arrays';
+import {connectArrays} from '../../../src/game/game-flow/arrays';
 import {upcastGameState as up} from "../../../src/state/game-state";
 
 test('配列でのステート更新ができる', t => {
