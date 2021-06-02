@@ -8,7 +8,6 @@ import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {canRightItself, rightItself} from "../../effect/right-itself";
-import {deprecated_reflectFlow} from "./deprecated_reflect-flow";
 import {extractBatteryCommands} from "./extract-battery-commands";
 import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
 import {gameContinueFlow} from "./game-continue-flow";
@@ -113,7 +112,7 @@ export function deprecated_battleFlow(lastState: GameState, commands: [PlayerCom
         up(doneBattle),
         ...deprecated_gameFlow(up(doneBattle), [
           state => canReflectFlow(doneBattle.effect.result)
-            ? deprecated_reflectFlow(state, doneBattle.effect.attacker)
+            ? reflectFlow(state, doneBattle.effect.attacker)
             : [],
           state => {
             if (!canRightItself(doneBattle.effect)) {
