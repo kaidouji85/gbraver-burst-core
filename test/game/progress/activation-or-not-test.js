@@ -5,7 +5,7 @@ import type {BatteryCommand, BurstCommand, GameState, PlayerCommand, PlayerState
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {PilotSkillCommand} from "../../../src/command/pilot-skill";
-import {deprecated_activationOrNot} from "../../../src/game/progress/effect-activation-flow";
+import {activationOrNot} from "../../../src/game/progress/effect-activation-flow";
 
 const BURST_COMMAND: BurstCommand = {
   type: 'BURST_COMMAND',
@@ -40,8 +40,8 @@ test('バッテリーコマンドの場合は何もしない', t => {
     command: BATTERY_COMMAND
   };
 
-  const result = deprecated_activationOrNot(state, command);
-  t.deepEqual(result, []);
+  const result = activationOrNot(state, command);
+  t.is(result, null);
 });
 
 test('バーストコマンドの場合は、バーストを発動する', t => {
@@ -54,9 +54,8 @@ test('バーストコマンドの場合は、バーストを発動する', t => 
     command:  BURST_COMMAND
   };
 
-  const result = deprecated_activationOrNot(state, command);
-  t.is(result.length, 1);
-  t.is(result[0].effect.name, 'BurstEffect');
+  const result = activationOrNot(state, command);
+  t.true(result && result.effect.name === 'BurstEffect');
 });
 
 test('パイロットスキルコマンドの場合は、パイロットスキルを発動する', t => {
@@ -69,7 +68,6 @@ test('パイロットスキルコマンドの場合は、パイロットスキ�
     command:  PILOT_SKILL_COMMAND
   };
 
-  const result = deprecated_activationOrNot(state, command);
-  t.is(result.length, 1);
-  t.is(result[0].effect.name, 'PilotSkillEffect');
+  const result = activationOrNot(state, command);
+  t.true(result && result.effect.name === 'PilotSkillEffect')
 });
