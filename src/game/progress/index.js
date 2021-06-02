@@ -2,7 +2,7 @@
 
 import type {GameState} from "../../state/game-state";
 import {effectActivationFlow, isEffectActivationFlow} from "./effect-activation-flow";
-import {battleFlow} from "./battle-flow";
+import {deprecated_battleFlow} from "./battle-flow";
 import type {PlayerCommand} from "../command/player-command";
 
 /**
@@ -17,6 +17,6 @@ export function progress(lastState: GameState, commands: [PlayerCommand, PlayerC
     return effectActivationFlow(lastState, commands);
   }
 
-  return battleFlow(lastState, commands);
+  return deprecated_battleFlow(lastState, commands);
 }
 

@@ -6,7 +6,7 @@ import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {GameState} from "../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {battleFlow} from "../../../src/game/progress/battle-flow";
+import {deprecated_battleFlow} from "../../../src/game/progress/battle-flow";
 
 test('戦闘フローを正常に進められる', t => {
   const attacker: PlayerState = {
@@ -46,7 +46,7 @@ test('戦闘フローを正常に進められる', t => {
     command: {type: 'BATTERY_COMMAND', battery: 1}
   }];
 
-  const result = battleFlow(lastState, commands);
+  const result = deprecated_battleFlow(lastState, commands);
   t.is(result.length, 6);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');
@@ -94,7 +94,7 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
     command: {type: 'BATTERY_COMMAND', battery: 1}
   }];
 
-  const result = battleFlow(lastState, commands);
+  const result = deprecated_battleFlow(lastState, commands);
   t.is(result.length, 3);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');
@@ -153,7 +153,7 @@ test('ダメージ反射でHPが0になった場合は引き分け', t => {
     command: {type: 'BATTERY_COMMAND', battery: 0}
   }];
 
-  const result = battleFlow(lastState, commands);
+  const result = deprecated_battleFlow(lastState, commands);
   t.is(result.length, 4);
   t.is(result[0].effect.name, 'BatteryDeclaration');
   t.is(result[1].effect.name, 'Battle');

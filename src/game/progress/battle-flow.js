@@ -14,13 +14,14 @@ import type {PlayerCommand} from "../command/player-command";
 import {gameContinueFlow} from "./game-continue-flow";
 
 /**
+ * @deprecated
  * 戦闘フロー
  *
  * @param lastState 最後の状態
  * @param commands コマンド
  * @return 更新されたゲームステート
  */
-export function battleFlow(lastState: GameState, commands: [PlayerCommand, PlayerCommand]): GameState[] {
+export function deprecated_battleFlow(lastState: GameState, commands: [PlayerCommand, PlayerCommand]): GameState[] {
   const batteries = extractBatteryCommands(lastState, commands);
   if (!batteries) {
     return [];
