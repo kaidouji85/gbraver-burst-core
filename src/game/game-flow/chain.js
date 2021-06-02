@@ -1,7 +1,7 @@
 // @flow
 
 import type {GameStateX} from '../../state/game-state';
-import {GameFlow} from './game-flow';
+import {GameFlowWithHistory} from './game-flow';
 
 /**
  * ゲームフローに1個だけステートを追加する
@@ -9,10 +9,10 @@ import {GameFlow} from './game-flow';
  * @param fn 追加するステートを指定する
  * @return 更新結果
  */
-export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: GameFlow<X>) => GameFlow<Y>) {
-  return (v: GameFlow<X>): GameFlow<Y> =>  {
+export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: GameFlowWithHistory<X>) => GameFlowWithHistory<Y>) {
+  return (v: GameFlowWithHistory<X>): GameFlowWithHistory<Y> =>  {
     const lastState = fn(v.lastState);
     const stateHistory = [...v.stateHistory, (lastState: any)];
-    return new GameFlow(stateHistory, lastState);
+    return new GameFlowWithHistory(stateHistory, lastState);
   }
 }

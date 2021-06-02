@@ -1,6 +1,6 @@
 // @flow
 
-import {GameFlow} from "./game-flow";
+import {GameFlowWithHistory} from "./game-flow";
 
 /**
  * サブフロー
@@ -8,10 +8,10 @@ import {GameFlow} from "./game-flow";
  * @param fn 追加するサブフローを指定する
  * @return 更新関数
  */
-export function subFlow<X, Y>(fn: (v: GameFlow<X>) => GameFlow<Y>): ((v: GameFlow<X>) => GameFlow<Y>) {
-  return (v: GameFlow<X>): GameFlow<Y> =>  {
+export function subFlow<X, Y>(fn: (v: GameFlowWithHistory<X>) => GameFlowWithHistory<Y>): ((v: GameFlowWithHistory<X>) => GameFlowWithHistory<Y>) {
+  return (v: GameFlowWithHistory<X>): GameFlowWithHistory<Y> =>  {
     const update = fn(v);
     const stateHistory = [...v.stateHistory, ...update.stateHistory];
-    return new GameFlow<Y>(stateHistory, update.lastState);
+    return new GameFlowWithHistory<Y>(stateHistory, update.lastState);
   };
 }
