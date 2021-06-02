@@ -8,13 +8,12 @@ import type {Effect} from "../../effect";
 /**
  * 配列でステートヒストリー追加を行う
  *
- * @param origin ステートヒストリー追加前のゲームフロー
  * @param fns 更新関数の配列
  * @return 更新関数
  */
-export function arrays<X>(fns: ((v: GameState) => GameState)[]): ((v: GameFlow<X>) => GameFlow<Effect>) {
+export function updates<X>(fns: ((v: GameState) => GameState)[]): ((v: GameFlow<X>) => GameFlow<Effect>) {
   return (v: GameFlow<X>): GameFlow<Effect> => {
-    return connectArrays(v, fns);
+    return addHistoriesByFunctions(v, fns);
   }
 }
 
@@ -25,7 +24,7 @@ export function arrays<X>(fns: ((v: GameState) => GameState)[]): ((v: GameFlow<X
  * @param fns 更新関数の配列
  * @return 更新結果
  */
-export function connectArrays<X>(origin: GameFlow<X>, fns: ((v: GameState) => GameState)[]): GameFlow<Effect> {
+export function addHistoriesByFunctions<X>(origin: GameFlow<X>, fns: ((v: GameState) => GameState)[]): GameFlow<Effect> {
   const updates = fns.reduce((history: GameState[], fn) => {
     const lastState = history[history.length - 1];
     const update = fn(lastState);

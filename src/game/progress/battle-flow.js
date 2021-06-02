@@ -20,7 +20,7 @@ import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {reflect} from "../../effect/reflect";
-import {arrays, connectArrays} from "../game-flow/arrays";
+import {updates} from "../game-flow/updates";
 
 /**
  * 戦闘フロー
@@ -54,7 +54,7 @@ export function canReflectFlow(result: BattleResult): boolean {
     || result.name === 'CriticalHit';
 }
 
-export function reflectFlow(lastState: GameState, attackerId: PlayerId):  GameState[] {
+export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameState[] {
   const defender = lastState.players.find(v => v.playerId !== attackerId);
   if (!defender) {
     throw new Error('not found defender');
@@ -66,7 +66,7 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId):  GameSt
     .map(v => toReflectParam(v))
     .map(v => state => up(reflect(state, attackerId, v)));
   return start(lastState)
-    .to(arrays(tryReflects))
+    .to(updates(tryReflects))
     .stateHistory.slice(1);
 }
 
