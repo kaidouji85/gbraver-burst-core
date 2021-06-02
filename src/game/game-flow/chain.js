@@ -11,8 +11,19 @@ import {GameFlow} from './game-flow';
  */
 export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: GameFlow<X>) => GameFlow<Y>) {
   return (v: GameFlow<X>): GameFlow<Y> =>  {
-    const lastState = fn(v.lastState);
-    const stateHistory = [...v.stateHistory, (lastState: any)];
-    return new GameFlow(stateHistory, lastState);
+    const updated = fn(v.lastState);
+    return addHistory(v, updated);
   }
+}
+
+/**
+ * ゲームフローのステートヒストリーに追加する
+ *
+ * @param origin 変更前
+ * @param add 追加するヒストリー
+ * @return 追加結果
+ */
+export function addHistory<X, Y>(origin: GameFlow<X>, add: GameStateX<Y>): GameFlow<Y> {
+  const stateHistory = [...origin.stateHistory, (add: any)];
+  return new GameFlow(stateHistory, add);
 }
