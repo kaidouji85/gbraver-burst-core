@@ -13,13 +13,14 @@ import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
 import {gameContinueFlow} from "./game-continue-flow";
 import type {BatteryCommand} from "../../command/battery";
 import {start} from "../game-flow/start";
-import {chain} from "../game-flow/chain";
+import {addHistory, chain} from "../game-flow/chain";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {reflect} from "../../effect/reflect";
 import {updates} from "../game-flow/updates";
+import {addHistories} from "../game-flow/arrays";
 
 /**
  * 戦闘フロー
@@ -36,8 +37,21 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
   }
 
   start(lastState)
-    .to(chain(v => batteryDeclaration(v, attacker.playerId, attacker.command, defender.playerId, defender.command)))
-    .to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery, defender.playerId, v.effect.defenderBattery)))
+    .to(chain(v => batteryDeclaration(v, attacker.playerId, attacker.command,
+      defender.playerId, defender.command)))
+    .to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery,
+      defender.playerId, v.effect.defenderBattery)))
+    .to(battle =>
+      battle.to(v => canReflectFlow(v.lastState.effect.result)
+        ? addHistories(v, reflectFlow(up(v.lastState), attacker.playerId))
+        : (v: any)
+      ).to(v => canReflectFlow(battle.lastState.effect.result)
+        ? addHistory(v, rightItself(up(v.lastState), battle.lastState.effect))
+        : (v: any)
+      )
+    );
+
+
   return [];
 }
 
