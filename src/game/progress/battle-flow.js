@@ -25,6 +25,7 @@ import type {Command} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
 import {turnChange} from "../../effect/turn-change";
+import {inputCommand} from "../../effect/input-command";
 
 /**
  * 戦闘フロー
@@ -104,13 +105,13 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
  * @return 更新結果
  */
 export function gameContinueFlow(state: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
-  start(state)
+  return start(state)
     .to(chain(v => up(updateRemainingTurn(v))))
     .to(v => canContinuousActive(v.lastState)
       ? add(v, up(continuousActive(v.lastState)))
-      : add(v, up(turnChange(v.lastState)))
-    );
-  return [];
+      : add(v, up(turnChange(v.lastState))))
+    .to(chain(v => inputCommand(v, attackerId, attackerCommand, defenderId, defenderCommand)))
+    .stateHistory.slice(1);
 }
 
 /**
