@@ -41,7 +41,7 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     throw new Error('not found attacker or defender command');
   }
 
-  start(lastState)
+  return start(lastState)
     .to(chain(v => batteryDeclaration(v, attacker.playerId, attacker.command,
       defender.playerId, defender.command)))
     .to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery,
@@ -62,9 +62,7 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
       }
       
       return add(v, up(gameEnd(lastState, endJudge)));
-    });
-
-  return [];
+    }).stateHistory.slice(1);
 }
 
 /**
