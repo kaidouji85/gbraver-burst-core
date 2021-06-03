@@ -2,6 +2,7 @@
 
 import type {GameStateX} from '../../state/game-state';
 import {GameFlow} from './game-flow';
+import {forceUpcastGameState} from "../../state/game-state";
 
 /**
  * ゲームフローに1個だけステートを追加する
@@ -24,6 +25,6 @@ export function chain<X, Y>(fn: (v: GameStateX<X>) => GameStateX<Y>): ((v: GameF
  * @return 追加結果
  */
 export function addHistory<X, Y>(origin: GameFlow<X>, add: GameStateX<Y>): GameFlow<Y> {
-  const stateHistory = [...origin.stateHistory, (add: any)];
+  const stateHistory = [...origin.stateHistory, forceUpcastGameState(add)];
   return new GameFlow(stateHistory, add);
 }

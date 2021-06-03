@@ -2,6 +2,7 @@
 
 import type {GameStateX} from '../../state/game-state';
 import {GameFlow} from './game-flow';
+import {forceUpcastGameState} from "../../state/game-state";
 
 /**
  * ゲームフローを開始する
@@ -11,5 +12,5 @@ import {GameFlow} from './game-flow';
  * @return ゲームフロー
  */
 export function start<X>(state: GameStateX<X>): GameFlow<X> {
-  return new GameFlow([(state: any)], state);
+  return new GameFlow([forceUpcastGameState(state)], state);
 }
