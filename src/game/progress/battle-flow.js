@@ -13,14 +13,14 @@ import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
 import {gameContinueFlow} from "./game-continue-flow";
 import type {BatteryCommand} from "../../command/battery";
 import {start} from "../game-flow/start";
-import {addHistory, chain} from "../game-flow/chain";
+import {addHistory as add, chain} from "../game-flow/chain";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {reflect} from "../../effect/reflect";
 import {updates} from "../game-flow/updates";
-import {addHistories} from "../game-flow/arrays";
+import {addHistories as addM} from "../game-flow/arrays";
 
 /**
  * 戦闘フロー
@@ -38,15 +38,15 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
 
   start(lastState)
     .to(chain(v => batteryDeclaration(v, attacker.playerId, attacker.command,
-      defender.playerId, defender.command)))
-    .to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery,
-      defender.playerId, v.effect.defenderBattery)))
-    .to(battle =>
+      defender.playerId, defender.command))
+    ).to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery,
+      defender.playerId, v.effect.defenderBattery))
+    ).to(battle =>
       battle.to(v => canReflectFlow(v.lastState.effect.result)
-        ? addHistories(v, reflectFlow(up(v.lastState), attacker.playerId))
+        ? addM(v, reflectFlow(up(v.lastState), attacker.playerId))
         : (v: any)
-      ).to(v => canReflectFlow(battle.lastState.effect.result)
-        ? addHistory(v, rightItself(up(v.lastState), battle.lastState.effect))
+      ).to(v => canRightItself(battle.lastState.effect)
+        ? add(v, rightItself(up(v.lastState), battle.lastState.effect))
         : (v: any)
       )
     );
@@ -67,6 +67,13 @@ export function canReflectFlow(result: BattleResult): boolean {
     || result.name === 'CriticalHit';
 }
 
+/**
+ * ダメージ反射フロー
+ * 
+ * @param lastState 最新のゲームステート
+ * @param attackerId 攻撃側のプレイヤーID
+ * @return 更新結果
+ */
 export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameState[] {
   const defender = lastState.players.find(v => v.playerId !== attackerId);
   if (!defender) {
