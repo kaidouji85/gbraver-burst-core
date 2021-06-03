@@ -1,6 +1,7 @@
 // @flow
 
 import type {GameStateX, GameState} from '../../state/game-state';
+import type {Effect} from '../../effect';
 
 /**
  * ゲームフロー
@@ -33,4 +34,14 @@ export class GameFlow<X> {
   to<Y>(fn: (v: GameFlow<X>) => GameFlow<Y>): GameFlow<Y> {
     return fn(this);
   }
+}
+
+/**
+ * 強制的にアップキャストする
+ * 
+ * @param origin キャスト元
+ * @returns キャスト結果
+ */
+export function forceUpcastGameFlow<X>(origin: GameFlow<X>): GameFlow<Effect> {
+  return ((origin: any): GameFlow<Effect>);
 }

@@ -1,6 +1,6 @@
 // @flow
 
-import {GameFlow} from "./game-flow";
+import {forceUpcastGameFlow, GameFlow} from "./game-flow";
 import type {GameState} from "../../state/game-state";
 import type {Effect} from "../../effect";
 
@@ -24,6 +24,10 @@ export function arrays<X>(histories: GameState[]): ((v: GameFlow<X>) => GameFlow
  * @return 更新結果
  */
 export function addHistories<X>(origin: GameFlow<X>, histories: GameState[]): GameFlow<Effect> {
+  if (histories.length <= 0) {
+    return forceUpcastGameFlow(origin);
+  }
+
   const lastState = histories[histories.length - 1];
   const stateHistory = [...origin.stateHistory, ...histories];
   return new GameFlow<Effect>(stateHistory, lastState);
