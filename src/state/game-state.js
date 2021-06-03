@@ -32,3 +32,14 @@ export type GameState = GameStateX<Effect>;
 export function upcastGameState<X>(origin: GameStateX<X>): GameStateX<Effect | X> {
   return ((origin: any): GameStateX<Effect | X>);
 }
+
+/**
+ * GameStateXをGameStateに強制的にアップキャストする
+ *
+ * @typeparam {X} 発生した効果
+ * @param origin キャスト元
+ * @return キャスト結果
+ */
+export function forceUpcastGameState<X>(origin: GameStateX<X>): GameState {
+  return ((origin: any): GameState);
+}

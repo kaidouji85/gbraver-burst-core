@@ -15,10 +15,10 @@ import {reflectDamage} from "./reflect";
  * @param reflect ダメージ反射パラメータ
  * @return 更新結果
  */
-export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect: ReflectParam): ?GameStateX<Reflect> {
+export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect: ReflectParam): GameStateX<Reflect> {
   const target = lastState.players.find(v => v.playerId === damagedPlayerId);
   if (!target) {
-    return null;
+    throw new Error('not found reflect target');
   }
 
   const damage = reflectDamage(reflect, target);

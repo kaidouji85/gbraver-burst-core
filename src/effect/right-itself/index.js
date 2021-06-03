@@ -21,10 +21,10 @@ export function canRightItself(battle: Battle): boolean {
  * @param battle 戦闘
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function rightItself(lastState: GameState, battle: Battle): ?GameStateX<RightItself> {
+export function rightItself(lastState: GameState, battle: Battle): GameStateX<RightItself> {
   const defender = lastState.players.find(v => v.playerId !== battle.attacker);
   if (!defender) {
-    return null;
+    throw new Error('not found defender');
   }
 
   return {

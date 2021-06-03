@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import type {BattleResult} from "../../../src";
-import {canReflectFlow} from "../../../src/game/progress/reflect-flow";
+import {canReflectFlow} from "../../../src/game/progress/battle-flow";
 
 test('通常ヒットの場合はダメージ反射を行う', t => {
   const battleResult: BattleResult = {
