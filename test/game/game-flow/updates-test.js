@@ -25,3 +25,10 @@ test('配列でのステート更新ができる', t => {
   t.deepEqual(result.lastState, expectedLastState);
   t.deepEqual(result.stateHistory, expectedStateHistory);
 });
+
+test('空配列の場合、何も状態は変わらない', t => {
+  const s1 = {...EMPTY_GAME_STATE, activePlayerId: 'state01-'};
+  const flowA = new GameFlow([s1], s1);
+  const result = flowA.to(updates([]));
+  t.deepEqual(result, flowA);
+});
