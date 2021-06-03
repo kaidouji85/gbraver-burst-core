@@ -11,6 +11,7 @@ import type {GameState} from "../../state/game-state";
 import type {Command} from "../../command/command";
 
 /**
+ * @deprecated
  * ゲーム継続フロー
  *
  * @param state 最新の状態
@@ -20,7 +21,7 @@ import type {Command} from "../../command/command";
  * @param defenderCommand 防御側コマンド
  * @return 更新結果
  */
-export function gameContinueFlow(state: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
+export function deprecated_gameContinueFlow(state: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
   return deprecated_gameFlow(state, [
     state => {
       const done = updateRemainingTurn(state);
