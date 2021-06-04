@@ -23,7 +23,7 @@ import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
-import {forceUpcastGameFlow as fupf} from "../game-flow/game-flow";
+import {upcastGameFlow as upf} from "../game-flow/game-flow";
 
 /**
  * 戦闘フロー
@@ -47,10 +47,10 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     .to(battle =>battle
         .to(v => canReflectFlow(v.lastState.effect.result)
           ? addM(v, reflectFlow(up(v.lastState), attacker.playerId))
-          : fupf(v)
+          : upf(v))
         .to(v => canRightItself(battle.lastState.effect)
-          ? add(v, rightItself(up(v.lastState), battle.lastState.effect))
-          : fupf(v))
+          ? upf(add(v, rightItself(v.lastState, battle.lastState.effect)))
+          : v))
     .to(v => {
       const lastState = up(v.lastState);
       const endJudge = gameEndJudging(lastState);

@@ -37,6 +37,16 @@ export class GameFlow<X> {
 }
 
 /**
+ * ゲームフローをアップキャストする
+ *
+ * @param origin キャスト元
+ * @return キャスト結果
+ */
+export function upcastGameFlow<X>(origin: GameFlow<X>): GameFlow<Effect | X> {
+  return ((origin: any): GameFlow<Effect | X>);
+}
+
+/**
  * 強制的にアップキャストする
  * 
  * @param origin キャスト元
