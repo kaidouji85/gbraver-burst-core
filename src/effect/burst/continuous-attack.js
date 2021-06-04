@@ -14,10 +14,10 @@ import type {PlayerState} from "../../state/player-state";
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
  */
-export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, burst: ContinuousAttack): ?GameStateX<BurstEffect> {
+export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, burst: ContinuousAttack): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return null;
+    throw new Error('not found burst player');
   }
 
   const updatedBurstPlayer: PlayerState = {

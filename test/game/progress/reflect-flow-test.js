@@ -5,7 +5,7 @@ import type {GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {reflectFlow} from "../../../src/game/progress/reflect-flow";
+import {reflectFlow} from "../../../src/game/progress/battle-flow";
 
 /** 攻撃側プレイヤー */
 const ATTACKER: PlayerState = {

@@ -17,11 +17,11 @@ import type {Battle} from "./battle";
  * @param defenderBattery 防御側バッテリー
  * @return 戦闘後の更新ステート、戦闘できない場合はnullを返す
  */
-export function battle(lastState: GameState, attackerId: PlayerId, attackerBattery: number, defenderId: PlayerId, defenderBattery: number): ?GameStateX<Battle> {
+export function battle(lastState: GameState, attackerId: PlayerId, attackerBattery: number, defenderId: PlayerId, defenderBattery: number): GameStateX<Battle> {
   const attacker = lastState.players.find(v => v.playerId === attackerId);
   const defender = lastState.players.find(v => v.playerId === defenderId);
   if (!attacker || !defender) {
-    return null;
+    throw new Error('not found attacker or defender');
   }
 
   const result = battleResult(attacker, attackerBattery, defender, defenderBattery);

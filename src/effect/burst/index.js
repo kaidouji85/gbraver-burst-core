@@ -16,12 +16,8 @@ import type {BurstEffect} from "./burst-effect";
  * @param burstPlayerId バーストするプレイヤーID
  * @return バースト結果、実行不可能な場合はnullを返す
  */
-export function burst(lastState: GameState, burstPlayerId: PlayerId): ?GameStateX<BurstEffect> {
+export function burst(lastState: GameState, burstPlayerId: PlayerId): GameStateX<BurstEffect> {
   const doneBurstEffect = burstEffect(lastState, burstPlayerId);
-  if (!doneBurstEffect) {
-    return null;
-  }
-
   return disableBurst(doneBurstEffect);
 }
 
@@ -32,10 +28,10 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): ?GameState
  * @param burstPlayerId バーストするプレイヤーID
  * @return 更新結果
  */
-export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): ?GameStateX<BurstEffect> {
+export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return null;
+   throw new Error('not found burst player')
   }
 
   if (burstPlayer.armdozer.burst.type === 'RecoverBattery') {
@@ -58,7 +54,7 @@ export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): ?Gam
     return continuousAttack(lastState, burstPlayerId, continuousAttackBurst);
   }
 
-  return null;
+  throw new Error('burst not found');
 }
 
 /**
@@ -67,10 +63,10 @@ export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): ?Gam
  * @param lastState 最新状態
  * @return 更新結果
  */
-export function disableBurst(lastState: GameStateX<BurstEffect>): ?GameStateX<BurstEffect> {
+export function disableBurst(lastState: GameStateX<BurstEffect>): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === lastState.effect.burstPlayer);
   if (!burstPlayer) {
-    return null;
+    throw new Error('not found burst player');
   }
 
   const updatedBurstPlayer = {

@@ -1,12 +1,13 @@
 // @flow
 
 import type {GameState} from "../../state/game-state";
-import {upcastGameState} from "../../state/game-state";
-import {gameFlow} from "../flow/game-flow";
+import {upcastGameState as up} from "../../state/game-state";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
 import type {PlayerCommand} from "../command/player-command";
+import {start} from "../game-flow/start";
+import {addHistory, chain} from "../game-flow/chain";
 
 /**
  * 効果発動フローを行うか否かを判定する
@@ -31,42 +32,43 @@ export function effectActivationFlow(lastState: GameState, commands: [PlayerComm
   const attackerCommand = commands.find(v => v.playerId === lastState.activePlayerId);
   const defenderCommand = commands.find(v => v.playerId !== lastState.activePlayerId);
   if (!attackerCommand || !defenderCommand) {
-    return [];
+    throw new Error('not found attacker or defender command');
   }
 
-  return gameFlow(lastState, [
-    state => activationOrNot(state, attackerCommand),
-    state => activationOrNot(state, defenderCommand),
-    state => {
-      const done = inputCommand(
-        state,
-        attackerCommand.playerId,
-        attackerCommand.command,
-        defenderCommand.playerId,
-        defenderCommand.command
-      );
-      return done ? [upcastGameState(done)] : [];
-    },
-  ]);
+  const flow = start(lastState)
+    .to(v => {
+      const done = activationOrNot(v.lastState, attackerCommand);
+      return done ? addHistory(v, done) : v;
+    })
+    .to(v => {
+      const done = activationOrNot(v.lastState, defenderCommand);
+      return done ? addHistory(v, done) : v;
+    })
+    .to(chain(v => inputCommand(v, attackerCommand.playerId, attackerCommand.command,
+      defenderCommand.playerId, defenderCommand.command))
+    );
+
+  // 本関数は更新結果だけを返すので、
+  // ステートヒストリーの先頭は不要
+  return flow.stateHistory.slice(1);
 }
 
 /**
  * コマンドに応じて 効果発動 or 何もしない
+ * 何もしない場合はnullを返す
  *
- * @param state 最新の状態
+ * @param state 最新のゲームステート
  * @param command コマンド
  * @return 更新結果
  */
-export function activationOrNot(state: GameState, command: PlayerCommand): GameState[] {
+export function activationOrNot(state: GameState, command: PlayerCommand): ?GameState {
   if (command.command.type === 'BURST_COMMAND') {
-    const done = burst(state, command.playerId);
-    return done ? [upcastGameState(done)] : [];
+    return up(burst(state, command.playerId));
   }
 
   if (command.command.type === 'PILOT_SKILL_COMMAND') {
-    const done = pilotSkill(state, command.playerId);
-    return done ? [upcastGameState(done)] : [];
+    return up(pilotSkill(state, command.playerId));
   }
 
-  return [];
+  return null;
 }

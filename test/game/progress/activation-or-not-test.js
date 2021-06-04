@@ -41,7 +41,7 @@ test('バッテリーコマンドの場合は何もしない', t => {
   };
 
   const result = activationOrNot(state, command);
-  t.deepEqual(result, []);
+  t.is(result, null);
 });
 
 test('バーストコマンドの場合は、バーストを発動する', t => {
@@ -55,8 +55,7 @@ test('バーストコマンドの場合は、バーストを発動する', t => 
   };
 
   const result = activationOrNot(state, command);
-  t.is(result.length, 1);
-  t.is(result[0].effect.name, 'BurstEffect');
+  t.true(result && result.effect.name === 'BurstEffect');
 });
 
 test('パイロットスキルコマンドの場合は、パイロットスキルを発動する', t => {
@@ -70,6 +69,5 @@ test('パイロットスキルコマンドの場合は、パイロットスキ�
   };
 
   const result = activationOrNot(state, command);
-  t.is(result.length, 1);
-  t.is(result[0].effect.name, 'PilotSkillEffect');
+  t.true(result && result.effect.name === 'PilotSkillEffect')
 });

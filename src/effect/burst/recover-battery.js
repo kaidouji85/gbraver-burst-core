@@ -15,10 +15,10 @@ import type {BurstEffect} from "./burst-effect";
  * @param burst バースト効果
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, burst: RecoverBattery): ?GameStateX<BurstEffect> {
+export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, burst: RecoverBattery): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return null;
+    throw new Error('not found burst player');
   }
 
   const updatedBurstPlayer: PlayerState = {

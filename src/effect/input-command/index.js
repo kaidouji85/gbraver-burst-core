@@ -28,6 +28,7 @@ export function gameStartInputCommand(lastState: GameState): GameState {
   };
 }
 
+// TODO 引数を[PlayerCommand, PlayerCommand]に変更する
 /**
  * コマンド入力フェイズのステートを生成する
  *
@@ -38,11 +39,11 @@ export function gameStartInputCommand(lastState: GameState): GameState {
  * @param defenderCommand 防御側コマンド
  * @return 更新結果
  */
-export function inputCommand(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): ?GameStateX<InputCommand> {
+export function inputCommand(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameStateX<InputCommand> {
   const attacker = lastState.players.find(v => v.playerId === attackerId);
   const defender = lastState.players.find(v => v.playerId === defenderId);
   if (!attacker || !defender) {
-    return null;
+    throw new Error('not found attacker or defender command');
   }
 
   const nextAttackerCommand = isNoChoice(attackerCommand, defenderCommand)

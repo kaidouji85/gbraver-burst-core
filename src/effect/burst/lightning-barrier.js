@@ -15,10 +15,10 @@ import type {BurstEffect} from "./burst-effect";
  * @param burst バースト情報
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, burst: LightningBarrier): ?GameStateX<BurstEffect> {
+export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, burst: LightningBarrier): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
   if (!burstPlayer) {
-    return null;
+    throw new Error('not found burst player');
   }
 
   const updatedBurstPlayer: PlayerState = {
