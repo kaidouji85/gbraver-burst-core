@@ -4,7 +4,7 @@ import type {GameState} from '../../state/game-state';
 import {upcastGameState as up} from "../../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
-import {gameEndJudging} from "../end-judging";
+import {gameEndJudging} from "../../effect/game-end/game-end-judging";
 import {gameEnd} from "../../effect/game-end";
 import {canRightItself, rightItself} from "../../effect/right-itself";
 import type {PlayerCommandX} from "../command/player-command";

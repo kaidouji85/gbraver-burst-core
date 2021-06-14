@@ -1,6 +1,6 @@
 // @flow
 
-import type {EvenMatch, GameOver} from "../../game/end-judging/game-end-judging";
+import type {EvenMatch, GameOver} from "./game-end-judging";
 
 /**
  * ゲーム終了判定
