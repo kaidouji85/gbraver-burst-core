@@ -4,6 +4,7 @@ import type {PlayerId} from "../../player/player";
 import type {ReflectDamageEffect, TryReflect} from "../../state/armdozer-effect";
 import type {PlayerState} from "../../state/player-state";
 import {totalDamageDecrease} from "../damage-decrease";
+import {toMinDamage} from "../to-min-damage";
 
 /**
  * ダメージ反射 パラメータ
@@ -48,6 +49,6 @@ export function toReflectParam(burst: TryReflect): ReflectParam {
  */
 export function reflectDamage(reflect: ReflectParam, damagedPlayer: PlayerState): number {
   const decrease = totalDamageDecrease(damagedPlayer.armdozer.effects);
-  const damage = Math.max(reflect.damage - decrease, 0);
+  const damage = toMinDamage(reflect.damage - decrease);
   return Math.max(damage, 0);
 }
