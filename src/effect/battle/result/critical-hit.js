@@ -22,7 +22,7 @@ export type CriticalHit = {
 export function criticalHit(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): CriticalHit {
   const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
-  const damage = normalHit * 2 - decrease;
+  const damage = Math.max(normalHit * 2 - decrease, 0);
   return {
     name: 'CriticalHit',
     damage: damage,

@@ -22,7 +22,7 @@ export type Guard = {
 export function guard(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): Guard {
   const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
-  const damage = normalHit / 2 - decrease;
+  const damage = Math.max(normalHit / 2 - decrease, 0);
   return {
     name: 'Guard',
     damage: damage

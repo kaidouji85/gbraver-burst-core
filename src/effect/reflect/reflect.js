@@ -47,6 +47,7 @@ export function toReflectParam(burst: TryReflect): ReflectParam {
  * @return ダメージ
  */
 export function reflectDamage(reflect: ReflectParam, damagedPlayer: PlayerState): number {
-  const damage = reflect.damage - totalDamageDecrease(damagedPlayer.armdozer.effects);
+  const decrease = totalDamageDecrease(damagedPlayer.armdozer.effects);
+  const damage = Math.max(reflect.damage - decrease, 0);
   return Math.max(damage, 0);
 }

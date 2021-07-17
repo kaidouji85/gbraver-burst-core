@@ -22,7 +22,7 @@ export type NormalHit = {
 export function normalHit(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): NormalHit {
   const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
-  const damage = normalHit - decrease;
+  const damage = Math.max(normalHit - decrease, 0);
   return {
     name: 'NormalHit',
     damage: damage
