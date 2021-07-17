@@ -3,6 +3,7 @@
 import type {PlayerState} from "../../../state/player-state";
 import {normalHitDamage} from "../damage/damage";
 import {totalDamageDecrease} from "../../damage-decrease";
+import {toMinDamage} from "../../to-min-damage";
 
 /** クリティカルヒット */
 export type CriticalHit = {
@@ -22,7 +23,7 @@ export type CriticalHit = {
 export function criticalHit(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): CriticalHit {
   const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
-  const damage = normalHit * 2 - decrease;
+  const damage = toMinDamage(normalHit * 2 - decrease);
   return {
     name: 'CriticalHit',
     damage: damage,
