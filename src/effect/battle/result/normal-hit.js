@@ -3,6 +3,7 @@
 import type {PlayerState} from "../../../state/player-state";
 import {normalHitDamage} from "../damage/damage";
 import {totalDamageDecrease} from "../../damage-decrease";
+import {toMinDamage} from "../../to-min-damage";
 
 /** 攻撃ヒット */
 export type NormalHit = {
@@ -22,7 +23,7 @@ export type NormalHit = {
 export function normalHit(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): NormalHit {
   const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
   const decrease = totalDamageDecrease(defender.armdozer.effects);
-  const damage = normalHit - decrease;
+  const damage = toMinDamage(normalHit - decrease);
   return {
     name: 'NormalHit',
     damage: damage
