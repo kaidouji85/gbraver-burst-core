@@ -28,22 +28,22 @@ export const ArmDozers: Armdozer[] = [
     name: 'ネオランドーザ',
     maxHp: 3200,
     maxBattery: 5,
-    power: 2100,
-    speed: 1800,
+    power: 2300,
+    speed: 1600,
     burst: {
       type: 'BuffPower',
       recoverBattery: 3,
-      buffPower: 900,
+      buffPower: 1000,
       duration: 2
     }
   },
   {
     id: ArmDozerIdList.LIGHTNING_DOZER,
     name: 'ライトニングドーザ',
-    maxHp: 3300,
+    maxHp: 3400,
     maxBattery: 5,
     power: 1900,
-    speed: 1900,
+    speed: 1800,
     burst: {
       type: 'LightningBarrier',
       recoverBattery: 3,
