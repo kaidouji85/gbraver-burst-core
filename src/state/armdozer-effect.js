@@ -96,7 +96,7 @@ export type BatteryCorrection = {
  * バッテリー補正無効
  */
 export type IgnoreBatteryCorrection = {
-  type: 'IgnoreBatteryCorrect',
+  type: 'IgnoreBatteryCorrection',
   /** 効果継続ターン */
   remainingTurn: number
 };
