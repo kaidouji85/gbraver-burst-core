@@ -9,7 +9,8 @@ export type ArmdozerEffect = EmptyArmdozerEffect
   | TryReflect
   | ContinuousActivePlayer
   | DamageDecrease
-  | BatteryCorrection;
+  | BatteryCorrection
+  | IgnoreBatteryCorrection;
 
 /**
  * 何もしない効果
@@ -91,3 +92,11 @@ export type BatteryCorrection = {
   remainingTurn: number
 };
 
+/**
+ * バッテリー補正無効
+ */
+export type IgnoreBatteryCorrection = {
+  type: 'IgnoreBatteryCorrect',
+  /** 効果継続ターン */
+  remainingTurn: number
+};
