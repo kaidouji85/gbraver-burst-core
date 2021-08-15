@@ -1,6 +1,6 @@
 // @flow
-export type {GbraverBurstCore} from './game/gbraver-burst-core';
-export type {startGbraverBurst, restoreGbraverBurst, RestoreGbraverBurst} from './game/gbraver-burst-core';
+export type {GbraverBurstCore, RestoreGbraverBurst} from './game/gbraver-burst-core';
+export {startGbraverBurst, restoreGbraverBurst} from './game/gbraver-burst-core';
 export {ArmDozerIdList, ArmDozers} from './master/armdozers';
 export {PilotIds, Pilots} from './master/pilots';
 export {totalDamageDecrease} from './effect/damage-decrease';
