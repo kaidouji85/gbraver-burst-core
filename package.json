@@ -3,7 +3,7 @@
   "version": "1.7.11",
   "description": "braver burst core",
   "engines": {
-    "node": "^16.5.0"
+    "node": "^16.6.2"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "@babel/plugin-transform-flow-strip-types": "^7.14.5",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-flow": "^7.14.5",
-    "@babel/register": "^7.14.5",
+    "@babel/register": "^7.15.3",
     "ava": "^3.15.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
