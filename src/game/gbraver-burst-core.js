@@ -9,7 +9,7 @@ import type {Player} from "../player/player";
 import {isAllPlayerEnteredCommand} from "./validation/is-all-player-entered-command";
 
 /** ゲームを再開するためのデータ */
-export type GbraverBurstCoreRestore = {
+export type RestoreGbraverBurst = {
   /** プレイヤー情報 */
   players: [Player, Player];
   /** ステートヒストリー */
@@ -37,7 +37,7 @@ export interface GbraverBurstCore {
    *
    * @return ダンプしたデータ
    */
-  dump(): GbraverBurstCoreRestore;
+  dump(): RestoreGbraverBurst;
 
   /**
    * ゲームを進行させる
@@ -69,7 +69,7 @@ export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
  * @param data 再開するデータ
  * @return Gブレイバーバースト
  */
-export function restoreGbraverBurst(data: GbraverBurstCoreRestore): GbraverBurstCore {
+export function restoreGbraverBurst(data: RestoreGbraverBurst): GbraverBurstCore {
   return new GbraverBurstCoreImpl(data.players, data.stateHistory);
 }
 
@@ -100,7 +100,7 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
   }
 
   /** @override */
-  dump(): GbraverBurstCoreRestore {
+  dump(): RestoreGbraverBurst {
     return {players: this._players, stateHistory: this._stateHistory};
   }
 
