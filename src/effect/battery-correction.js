@@ -11,7 +11,11 @@ import type {BatteryCommand} from "../command/battery";
  * @return 補正後のバッテリー
  */
 export function correctedBattery(command: BatteryCommand, effects: ArmdozerEffect[]): number {
-  if (isIgnoreBatteryCorrection(effects)) {
+  if (command.battery <= 0) {
+    return command.battery;
+  }
+
+  if (hasIgnoreBatteryCorrection(effects)) {
     return command.battery;
   }
 
@@ -21,13 +25,13 @@ export function correctedBattery(command: BatteryCommand, effects: ArmdozerEffec
 }
 
 /**
- * バッテリー補正が無効になるか否かを判定する
- * trueでバッテリー補正無効である
+ * バッテリー補正無効効果を持つか否かを判定する
+ * trueでバッテリー補正無効効果を持つ
  *
  * @param effects アームドーザエフェクト
  * @return 判定結果
  */
-export function isIgnoreBatteryCorrection(effects: ArmdozerEffect[]): boolean {
+export function hasIgnoreBatteryCorrection(effects: ArmdozerEffect[]): boolean {
   return effects
     .filter(v => v.type === 'IgnoreBatteryCorrection')
     .length > 0;
