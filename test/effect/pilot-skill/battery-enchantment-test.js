@@ -43,14 +43,9 @@ test('バッテリー増強スキルが正しく発動できる', t => {
             ...invoker.armdozer.effects,
             {
               type: 'BatteryCorrection',
-              batteryCorrection: 2,
+              batteryCorrection: 1,
               remainingTurn: 1,
-            },
-            {
-              type: 'BatteryCorrection',
-              batteryCorrection: -1,
-              remainingTurn: 2,
-            },
+            }
           ]
         }
       }

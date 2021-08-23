@@ -10,11 +10,11 @@ test('補正後バッテリーが正しく計算できる', t => {
   t.is(result, 3);
 });
 
-test('バッテリーが0の場合でも補正される', t => {
+test('バッテリーが0の場合は補正されない', t => {
   const battery = {type: 'BATTERY_COMMAND', battery: 0};
   const effects = [{type: 'BatteryCorrection', batteryCorrection: 2, remainingTurn: 1}];
   const result = correctedBattery(battery, effects);
-  t.is(result, 2);
+  t.is(result, 0);
 });
 
 test('補正後バッテリーが0より小さい場合、結果を0とみなす', t => {
