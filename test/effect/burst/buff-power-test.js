@@ -51,10 +51,6 @@ test('攻撃力バフが正しく適用される', t => {
               remainingTurn: 2,
               power: 1000,
             },
-            {
-              type: 'IgnoreBatteryCorrection',
-              remainingTurn: 2,
-            }
           ],
         }
       }

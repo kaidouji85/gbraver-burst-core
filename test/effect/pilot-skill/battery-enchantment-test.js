@@ -45,6 +45,10 @@ test('バッテリー増強スキルが正しく発動できる', t => {
               type: 'BatteryCorrection',
               batteryCorrection: 1,
               remainingTurn: 1,
+            },
+            {
+              type: 'HalveCorrectPower',
+              remainingTurn: 1,
             }
           ]
         }
