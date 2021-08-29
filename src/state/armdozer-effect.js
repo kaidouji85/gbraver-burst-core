@@ -6,6 +6,7 @@
  */
 export type ArmdozerEffect = EmptyArmdozerEffect
   | CorrectPower
+  | HalveCorrectPower
   | TryReflect
   | ContinuousActivePlayer
   | DamageDecrease
@@ -33,6 +34,14 @@ export type CorrectPower = {
 
   /** 攻撃力補正値 */
   power: number,
+
+  /** 効果継続ターン */
+  remainingTurn: number
+};
+
+/** 攻撃力補正半減 */
+export type HalveCorrectPower = {
+  type: 'HalveCorrectPower',
 
   /** 効果継続ターン */
   remainingTurn: number
