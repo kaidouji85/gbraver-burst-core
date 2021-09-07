@@ -8,12 +8,17 @@ import type {ContinuousActivePlayer} from "../../../src/state/armdozer-effect";
 const CORRECT_POWER: CorrectPower = {
     type: 'CorrectPower',
     power: 1000,
-    remainingTurn: 1
+    period: {
+      type: 'TurnLimit',
+      remainingTurn: 1
+    },
 }
 
 const CONTINUOUS_ACTIVE_PLAYER: ContinuousActivePlayer = {
   type: 'ContinuousActivePlayer',
-  remainingTurn: Infinity
+  period: {
+    type: 'Permanent'
+  }
 };
 
 test('アクティブ継続のみ取り除かれる', t => {

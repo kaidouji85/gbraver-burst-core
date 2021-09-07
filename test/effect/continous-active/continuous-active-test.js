@@ -9,7 +9,7 @@ import {continuousActive} from "../../../src/effect/continuous-active";
 
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
   type: 'ContinuousActivePlayer',
-  remainingTurn: Infinity,
+  period: {type: 'Permanent'},
 };
 
 test('アクティブ継続が正しく処理できる', t => {

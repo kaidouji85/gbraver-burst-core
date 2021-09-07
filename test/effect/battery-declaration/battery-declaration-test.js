@@ -15,7 +15,14 @@ test('バッテリー宣言が正しく処理される', t => {
       battery: 4,
       maxBattery: 5,
       effects: [
-        {type: 'BatteryCorrection', batteryCorrection: 1, remainingTurn: 1},
+        {
+          type: 'BatteryCorrection',
+          batteryCorrection: 1,
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: 1
+          }
+        },
       ]
     }
   };
@@ -27,7 +34,14 @@ test('バッテリー宣言が正しく処理される', t => {
       battery: 5,
       maxBattery: 5,
       effects: [
-        {type: 'BatteryCorrection', batteryCorrection: -1, remainingTurn: 1},
+        {
+          type: 'BatteryCorrection',
+          batteryCorrection: -1,
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: 1
+          }
+        },
       ]
     }
   };

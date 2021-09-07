@@ -1,5 +1,20 @@
 // @flow
 
+/** エフェクト有効期間 */
+export type EffectPeriod = TurnLimitEffect | PermanentEffect;
+
+/** ターン期限付きのエフェクト */
+export type TurnLimitEffect = {
+  type: 'TurnLimit',
+  /** 効果持続ターン */
+  remainingTurn: number,
+};
+
+/** 半永久エフェクト */
+export type PermanentEffect = {
+  type: 'Permanent'
+};
+
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
@@ -20,12 +35,8 @@ export type ArmdozerEffect = EmptyArmdozerEffect
 export type EmptyArmdozerEffect = {
   /** 効果判別用のプロパティ */
   type: 'Empty',
-
-  /**
-   * 効果継続ターン
-   * 本プロパティにInfinityが指定された場合、永続効果と見なす
-   */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /** 攻撃力補正 */
@@ -35,16 +46,16 @@ export type CorrectPower = {
   /** 攻撃力補正値 */
   power: number,
 
-  /** 効果継続ターン */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /** 攻撃力補正半減 */
 export type HalveCorrectPower = {
   type: 'HalveCorrectPower',
 
-  /** 効果継続ターン */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /** ダメージエフェクトの種類 */
@@ -60,8 +71,8 @@ export type TryReflect = {
   /** 反射のダメージエフェクト */
   effect: ReflectDamageEffect,
 
-  /** 効果継続ターン */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /** ダメージ減少 */
@@ -71,8 +82,8 @@ export type DamageDecrease= {
   /** 減少されるダメージ値 */
   decrease: number;
 
-  /** 効果継続ターン */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /**
@@ -81,11 +92,8 @@ export type DamageDecrease= {
 export type ContinuousActivePlayer = {
   type: 'ContinuousActivePlayer',
 
-  /**
-   * 効果継続ターン
-   * 本プロパティには必ずInfinityをセットすること
-   */
-  remainingTurn: typeof Infinity,
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /**
@@ -97,8 +105,8 @@ export type BatteryCorrection = {
   /** バッテリー補正値 */
   batteryCorrection: number,
 
-  /** 効果継続ターン */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };
 
 /**
@@ -106,6 +114,6 @@ export type BatteryCorrection = {
  */
 export type IgnoreBatteryCorrection = {
   type: 'IgnoreBatteryCorrection',
-  /** 効果継続ターン */
-  remainingTurn: number
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
 };

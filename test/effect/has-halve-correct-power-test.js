@@ -3,8 +3,9 @@
 import test from 'ava';
 import {hasHalveCorrectPower} from "../../src";
 
-const halveCorrectPower = {type: 'HalveCorrectPower', remainingTurn: 1};
-const correctPower = {type: 'CorrectPower', power: 1000, remainingTurn: 1};
+const oneTurn = {type: 'TurnLimit', remainingTurn: 1};
+const halveCorrectPower = {type: 'HalveCorrectPower', period: oneTurn};
+const correctPower = {type: 'CorrectPower', power: 1000, period: oneTurn};
 
 test('攻撃補正半減効果を持つことを正しく判定できる', t => {
   const effects = [halveCorrectPower];
