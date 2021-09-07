@@ -1,5 +1,20 @@
 // @flow
 
+/** エフェクト有効期間 */
+export type EffectPeriod = TurnLimitEffect | PermanentEffect;
+
+/** ターン期限付きのエフェクト */
+export type TurnLimitEffect = {
+  isTimedEffect: true,
+  /** 効果持続ターン */
+  remainingTurn: number,
+};
+
+/** 半永久エフェクト */
+export type PermanentEffect = {
+  isTimedEffect: false,
+};
+
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
