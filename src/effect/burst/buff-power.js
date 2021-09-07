@@ -31,7 +31,11 @@ export function buffPower(lastState: GameState, burstPlayerId: PlayerId, burst: 
         {
           type: 'CorrectPower',
           power: burst.buffPower,
-          remainingTurn: burst.duration,
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: burst.duration,
+          }
+
         }
       ]
     }

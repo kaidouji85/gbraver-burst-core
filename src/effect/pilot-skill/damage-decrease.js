@@ -29,7 +29,10 @@ export function damageDecrease(lastState: GameState, invokerId: PlayerId, skill:
         {
           type: 'DamageDecrease',
           decrease: skill.decrease,
-          remainingTurn: skill.duration,
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: skill.duration,
+          }
         }
       ]
     }

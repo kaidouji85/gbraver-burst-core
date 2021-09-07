@@ -29,7 +29,10 @@ export function buffPower(lastState: GameState, invokerId: PlayerId, skill: Buff
         {
           type: 'CorrectPower',
           power: skill.buffPower,
-          remainingTurn: skill.duration,
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: skill.duration,
+          }
         }
       ]
     }

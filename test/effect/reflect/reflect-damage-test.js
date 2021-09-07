@@ -32,7 +32,10 @@ test('ダメージ減少だけ反射ダメージが減る', t => {
         {
           type: 'DamageDecrease',
           decrease: 600,
-          remainingTurn: 1
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: 1
+          }
         }
       ]
     }

@@ -15,7 +15,7 @@ test('アクティブ継続ありの判定が正しくできる', t => {
       effects: [
         {
           type: 'ContinuousActivePlayer',
-          remainingTurn: Infinity
+          period: {type: 'Permanent'}
         }
       ]
     }
@@ -44,7 +44,10 @@ test('アクティブ継続効果を持たない場合はfalseを返す', t => {
         {
           type: 'CorrectPower',
           power: 1000,
-          remainingTurn: 2
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: 2
+          }
         }
       ]
     }

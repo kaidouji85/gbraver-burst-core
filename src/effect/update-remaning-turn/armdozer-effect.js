@@ -9,10 +9,12 @@ import type {ArmdozerEffect} from "../../state/armdozer-effect";
  * @return 更新結果
  */
 export function updateArmdozerEffect(effect: ArmdozerEffect): ArmdozerEffect {
-  return {
-    ...effect,
-    remainingTurn: effect.remainingTurn - 1
-  };
+  if (effect.period.type === 'TurnLimit') {
+    const updatedPeriod = {...effect.period, remainingTurn: effect.period.remainingTurn - 1};
+    return {...effect, period: updatedPeriod};
+  }
+
+  return effect;
 }
 
 /**
@@ -22,5 +24,9 @@ export function updateArmdozerEffect(effect: ArmdozerEffect): ArmdozerEffect {
  * @return 判定結果
  */
 export function isRemainArmdozerEffect(effect: ArmdozerEffect): boolean {
-  return 0 < effect.remainingTurn;
+  if (effect.period.type === 'TurnLimit') {
+    return 0 < effect.period.remainingTurn;
+  }
+
+  return true;
 }

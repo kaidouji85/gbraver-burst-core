@@ -32,7 +32,10 @@ export function lightningBarrier(lastState: GameState, burstPlayerId: PlayerId, 
           type: 'TryReflect',
           damage: burst.damage,
           effect: 'Lightning',
-          remainingTurn: burst.duration
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: burst.duration
+          }
         }
       ]
     }

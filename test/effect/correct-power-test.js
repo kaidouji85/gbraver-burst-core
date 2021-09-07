@@ -3,9 +3,10 @@
 import test from 'ava';
 import {correctPower} from "../../src";
 
-const halveCorrect = {type: 'HalveCorrectPower', remainingTurn: 1};
-const plusCorrect = {type: 'CorrectPower', power: 1000, remainingTurn: 1};
-const minusCorrect = {type: 'CorrectPower', power: -1000, remainingTurn: 1};
+const oneTurnLimit = {type: 'TurnLimit', remainingTurn: 1};
+const halveCorrect = {type: 'HalveCorrectPower', period: oneTurnLimit};
+const plusCorrect = {type: 'CorrectPower', power: 1000, period: oneTurnLimit};
+const minusCorrect = {type: 'CorrectPower', power: -1000, period: oneTurnLimit};
 
 test('攻撃補正半減効果を持たない場合、攻撃補正効果の合計が最終的な値になる', t => {
   const effects = [plusCorrect, plusCorrect, minusCorrect];
