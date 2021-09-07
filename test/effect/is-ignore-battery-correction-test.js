@@ -3,11 +3,9 @@
 import test from 'ava';
 import {hasIgnoreBatteryCorrection} from "../../src/effect/battery-correction";
 
-const ignoreBatteryCorrection
-  = {type: 'IgnoreBatteryCorrection', remainingTurn: 1};
-
-const notIgnoreBatteryCorrection
-  = {type: 'CorrectPower',  power: 1000, remainingTurn: 1};
+const oneTurn = {type: 'TurnLimit', remainingTurn: 1};
+const ignoreBatteryCorrection = {type: 'IgnoreBatteryCorrection', period: oneTurn};
+const notIgnoreBatteryCorrection = {type: 'CorrectPower', power: 1000, period: oneTurn};
 
 test('バッテリー補正無効を持つことを正しく判定できる', t => {
   const data = [ignoreBatteryCorrection];

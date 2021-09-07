@@ -45,7 +45,10 @@ test('ダメージ減少スキルが正しく発動できる', t => {
             {
               type: 'DamageDecrease',
               decrease: 600,
-              remainingTurn: 2,
+              period: {
+                type: 'TurnLimit',
+                remainingTurn: 2,
+              }
             }
           ]
         }

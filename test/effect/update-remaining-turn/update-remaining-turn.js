@@ -6,6 +6,13 @@ import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
 import {updateRemainingTurn} from "../../../src/effect/update-remaning-turn";
+import type {PermanentEffect, TurnLimitEffect} from "../../../src/state/armdozer-effect";
+
+const permanent: PermanentEffect = {type: 'Permanent'};
+const turnLimit = (turn: number): TurnLimitEffect => ({
+  type: 'TurnLimit',
+  remainingTurn: turn
+});
 
 test('効果継続ターン更新が正しく処理される', t => {
   const player1 = {
@@ -14,9 +21,9 @@ test('効果継続ターン更新が正しく処理される', t => {
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       effects: [
-        {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 1},
-        {...EMPTY_ARMDOZER_EFFECT, remainingTurn: Infinity},
-        {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 4},
+        {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(1)},
+        {...EMPTY_ARMDOZER_EFFECT, period: permanent},
+        {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(4)},
       ]
     }
   };
@@ -26,8 +33,8 @@ test('効果継続ターン更新が正しく処理される', t => {
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       effects: [
-        {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 1},
-        {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 3}
+        {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(1)},
+        {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(3)}
       ]
     }
   };
@@ -45,8 +52,8 @@ test('効果継続ターン更新が正しく処理される', t => {
         armdozer: {
           ...player1.armdozer,
           effects: [
-            {...EMPTY_ARMDOZER_EFFECT, remainingTurn: Infinity},
-            {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 3},
+            {...EMPTY_ARMDOZER_EFFECT, period: permanent},
+            {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(3)},
           ]
         }
       },
@@ -55,7 +62,7 @@ test('効果継続ターン更新が正しく処理される', t => {
         armdozer: {
           ...player2.armdozer,
           effects: [
-            {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 2}
+            {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(2)}
           ]
         }
       }
@@ -65,11 +72,11 @@ test('効果継続ターン更新が正しく処理される', t => {
       endArmdozerEffects: [
         {
           playerId: player1.playerId,
-          effect: {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 0}
+          effect: {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(0)}
         },
         {
           playerId: player2.playerId,
-          effect: {...EMPTY_ARMDOZER_EFFECT, remainingTurn: 0}
+          effect: {...EMPTY_ARMDOZER_EFFECT, period: turnLimit(0)}
         }
       ]
     }

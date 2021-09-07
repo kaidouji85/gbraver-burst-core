@@ -44,7 +44,9 @@ test('連続攻撃バーストが正しく適用できる', t => {
           effects: [
             {
               type: 'ContinuousActivePlayer',
-              remainingTurn: Infinity
+              period: {
+                type: 'Permanent'
+              }
             }
           ]
         }

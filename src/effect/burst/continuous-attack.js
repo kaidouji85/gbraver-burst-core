@@ -29,7 +29,10 @@ export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, 
         ...burstPlayer.armdozer.effects,
         {
           type: 'ContinuousActivePlayer',
-          remainingTurn: Infinity
+          period: {
+            type: 'Permanent',
+          }
+
         }
       ]
     }

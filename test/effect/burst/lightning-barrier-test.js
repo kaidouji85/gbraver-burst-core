@@ -51,7 +51,10 @@ test('電撃バリアバーストの適用が正しくできる', t => {
               type: 'TryReflect',
               damage: 1000,
               effect: 'Lightning',
-              remainingTurn: 2,
+              period: {
+                type: 'TurnLimit',
+                remainingTurn: 2,
+              },
             }
           ]
         }

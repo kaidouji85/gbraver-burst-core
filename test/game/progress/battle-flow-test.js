@@ -135,7 +135,10 @@ test('ダメージ反射でHPが0になった場合は引き分け', t => {
           type: 'TryReflect',
           damage: 5000,
           effect: 'Lightning',
-          remainingTurn: 1,
+          period: {
+            type: 'TurnLimit',
+            remainingTurn: 1,
+          }
         }
       ]
     }
