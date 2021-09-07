@@ -17,8 +17,7 @@ const CORRECT_POWER: CorrectPower = {
 const CONTINUOUS_ACTIVE_PLAYER: ContinuousActivePlayer = {
   type: 'ContinuousActivePlayer',
   period: {
-    type: 'TurnLimit',
-    remainingTurn: 1,
+    type: 'Permanent'
   }
 };
 

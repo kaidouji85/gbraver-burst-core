@@ -21,7 +21,7 @@ test('補正後バッテリーが正しく計算できる', t => {
 
 test('バッテリーが0の場合は補正されない', t => {
   const battery = {type: 'BATTERY_COMMAND', battery: 0};
-  const effects = [{...emptyBatteryCorrection, batteryCorrection: 0}];
+  const effects = [{...emptyBatteryCorrection, batteryCorrection: 2}];
   const result = correctedBattery(battery, effects);
   t.is(result, 0);
 });
