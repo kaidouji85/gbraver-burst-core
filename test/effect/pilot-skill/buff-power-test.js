@@ -45,7 +45,10 @@ test('攻撃バフスキルが正しく処理できる', t => {
             {
               type: 'CorrectPower',
               power: 600,
-              remainingTurn: 2,
+              period: {
+                type: 'TurnLimit',
+                remainingTurn: 2,
+              },
             }
           ]
         }

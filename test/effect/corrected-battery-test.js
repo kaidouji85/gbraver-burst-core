@@ -2,7 +2,6 @@
 
 import test from 'ava';
 import {correctedBattery} from "../../src/effect/battery-correction";
-import {empty} from "ramda";
 
 const emptyBatteryCorrection = {
   type: 'BatteryCorrection',
@@ -22,14 +21,14 @@ test('補正後バッテリーが正しく計算できる', t => {
 
 test('バッテリーが0の場合は補正されない', t => {
   const battery = {type: 'BATTERY_COMMAND', battery: 0};
-  const effects = [{...emptyBatteryCorrection, batteryCorrection: 2}];
+  const effects = [{...emptyBatteryCorrection, batteryCorrection: 0}];
   const result = correctedBattery(battery, effects);
   t.is(result, 0);
 });
 
 test('補正後バッテリーが0より小さい場合、結果を0とみなす', t => {
   const battery = {type: 'BATTERY_COMMAND', battery: 3};
-  const effects = [{...empty, batteryCorrection: -4}];
+  const effects = [{...emptyBatteryCorrection, batteryCorrection: -4}];
   const result = correctedBattery(battery, effects);
   t.is(result, 0);
 });
