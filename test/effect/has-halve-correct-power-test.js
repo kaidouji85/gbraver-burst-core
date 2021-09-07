@@ -3,7 +3,7 @@
 import test from 'ava';
 import {hasHalveCorrectPower} from "../../src";
 
-const oneTurn = {type: 'TurnLimit', remainingTurn: 1}
+const oneTurn = {type: 'TurnLimit', remainingTurn: 1};
 const halveCorrectPower = {type: 'HalveCorrectPower', period: oneTurn};
 const correctPower = {type: 'CorrectPower', power: 1000, period: oneTurn};
 
