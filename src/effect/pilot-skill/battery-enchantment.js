@@ -31,14 +31,14 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
           batteryCorrection: skill.batteryEnchantment,
           period: {
             type: 'TurnLimit',
-            remainingTurn: 1,
+            remainingTurn: skill.duration,
           }
         },
         {
           type: 'HalveCorrectPower',
           period: {
             type: 'TurnLimit',
-            remainingTurn: 1,
+            remainingTurn: skill.duration,
           }
         }
       ]

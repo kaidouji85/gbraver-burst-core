@@ -48,6 +48,7 @@ export const Pilots: Pilot[] = [
     skill: {
       type: 'BatteryEnchantmentSkill',
       batteryEnchantment: 1,
+      duration: 2,
     }
   }
 ];
