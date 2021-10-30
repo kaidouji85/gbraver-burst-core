@@ -20,6 +20,7 @@ test('バッテリー増強スキルが正しく発動できる', t => {
   const skill: BatteryEnchantmentSkill = {
     type: 'BatteryEnchantmentSkill',
     batteryEnchantment: 1,
+    duration: 2,
   };
   const other: PlayerState = {
     ...EMPTY_PLAYER_STATE,
@@ -46,14 +47,14 @@ test('バッテリー増強スキルが正しく発動できる', t => {
               batteryCorrection: 1,
               period: {
                 type: 'TurnLimit',
-                remainingTurn: 1,
+                remainingTurn: 2,
               },
             },
             {
               type: 'HalveCorrectPower',
               period: {
                 type: 'TurnLimit',
-                remainingTurn: 1,
+                remainingTurn: 2,
               },
             }
           ]
