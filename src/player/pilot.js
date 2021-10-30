@@ -50,6 +50,8 @@ export type BatteryEnchantmentSkill = {
   type: 'BatteryEnchantmentSkill',
   /** バッテリー増強値 */
   batteryEnchantment: number,
+  /** 継続ターン数 */
+  duration: number
 };
 
 /**
