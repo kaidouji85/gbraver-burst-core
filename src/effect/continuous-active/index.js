@@ -3,6 +3,7 @@
 import {removeContinuousActive} from "./remove-continuous-active";
 import type {GameState, GameStateX} from "../../state/game-state";
 import type {TurnChange} from "../turn-change/turn-change";
+import {hasContinuousActive} from "./has-continuous-active";
 
 /**
  * アクティブプレイヤー継続を実行できるか否かを判定する
@@ -16,9 +17,7 @@ export function canContinuousActive(state: GameState): boolean {
     return false;
   }
 
-  return activePlayer.armdozer.effects
-    .filter(v => v.type === 'ContinuousActivePlayer')
-    .length > 0;
+  return hasContinuousActive(activePlayer.armdozer.effects);
 }
 
 

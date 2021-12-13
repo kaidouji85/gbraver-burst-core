@@ -3,10 +3,13 @@ export type {GbraverBurstCore, RestoreGbraverBurst} from './game/gbraver-burst-c
 export {startGbraverBurst, restoreGbraverBurst} from './game/gbraver-burst-core';
 export {ArmDozerIdList, ArmDozers} from './master/armdozers';
 export {PilotIds, Pilots} from './master/pilots';
+export {isPlayerDeath} from './state/player-state';
 export {totalDamageDecrease} from './effect/damage-decrease';
 export {totalBatteryCorrection, correctedBattery} from './effect/battery-correction';
 export {correctPower, hasHalveCorrectPower, totalCorrectPower} from './effect/correct-power';
 export {battleResult} from './effect/battle/result/battle-result';
+export {updateDefender} from './effect/battle/players/update-defender';
+export {hasContinuousActive} from './effect/continuous-active/has-continuous-active';
 
 export {EMPTY_GAME_STATE} from './empty/game-state';
 export {EMPTY_PLAYER, EMPTY_PLAYER_STATE} from './empty/player';
