@@ -6,29 +6,24 @@ import type {ArmdozerEffect, CorrectPower} from "../../../src";
 import type {ContinuousActivePlayer} from "../../../src/state/armdozer-effect";
 
 const CORRECT_POWER: CorrectPower = {
-    type: 'CorrectPower',
-    power: 1000,
-    period: {
-      type: 'TurnLimit',
-      remainingTurn: 1
-    },
+  type: 'CorrectPower',
+  power: 1000,
+  period: {type: 'TurnLimit',  remainingTurn: 1},
 }
 
 const CONTINUOUS_ACTIVE_PLAYER: ContinuousActivePlayer = {
   type: 'ContinuousActivePlayer',
-  period: {
-    type: 'Permanent'
-  }
+  period: {type: 'Permanent'}
 };
 
-test('アクティブ継続のみ取り除かれる', t => {
+test('アームドーザ効果からアクティブプレイヤー継続のみが排除される', t => {
   const origin: ArmdozerEffect[] = [CORRECT_POWER, CONTINUOUS_ACTIVE_PLAYER];
   const result = removeContinuousActive(origin);
   const expected = [CORRECT_POWER];
   t.deepEqual(result, expected);
 });
 
-test('アクティブ継続がない場合はそのまま', t => {
+test('アームドーザ効果にアクティブプレイヤー継続が含まれない場合、何もしない', t => {
   const origin: ArmdozerEffect[] = [CORRECT_POWER];
   const result = removeContinuousActive(origin);
   const expected = [CORRECT_POWER];
