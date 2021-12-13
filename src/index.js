@@ -6,6 +6,7 @@ export {PilotIds, Pilots} from './master/pilots';
 export {totalDamageDecrease} from './effect/damage-decrease';
 export {totalBatteryCorrection, correctedBattery} from './effect/battery-correction';
 export {correctPower, hasHalveCorrectPower, totalCorrectPower} from './effect/correct-power';
+export {battleResult} from './effect/battle/result/battle-result';
 
 export {EMPTY_GAME_STATE} from './empty/game-state';
 export {EMPTY_PLAYER, EMPTY_PLAYER_STATE} from './empty/player';
