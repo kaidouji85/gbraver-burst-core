@@ -11,11 +11,7 @@ const continuousActivePlayer: PlayerState = {
   playerId: 'isContinuousActivePlayer',
   armdozer: {
     ...EMPTY_PLAYER_STATE.armdozer,
-    effects: [
-      {
-        type: 'ContinuousActivePlayer',
-        period: {type: 'Permanent'}
-      }
+    effects: [{type: 'ContinuousActivePlayer', period: {type: 'Permanent'}}
     ]
   }
 };
@@ -30,7 +26,7 @@ const otherPlayer = {
   playerId: 'otherPlayer'
 };
 
-test('攻撃側がプレイヤーアクティブ継続を持つ場合、プレイヤーアクティブ継続が発動する', t => {
+test('攻撃側がアクティブプレイヤー継続を持つ場合、同効果は発動可能である', t => {
   const state = {
     ...EMPTY_GAME_STATE,
     players: [continuousActivePlayer, otherPlayer],
@@ -39,7 +35,7 @@ test('攻撃側がプレイヤーアクティブ継続を持つ場合、プレ�
   t.true(canContinuousActive(state));
 });
 
-test('防御側がプレイヤーアクティブ継続を持つ場合、プレイヤーアクティブ継続は発動しない', t => {
+test('防御側がアクティブプレイヤー継続を持つ場合、同効果は発動しない', t => {
   const state = {
     ...EMPTY_GAME_STATE,
     players: [continuousActivePlayer, otherPlayer],
@@ -48,8 +44,7 @@ test('防御側がプレイヤーアクティブ継続を持つ場合、プレ�
   t.false(canContinuousActive(state));
 });
 
-test('攻撃側、防御側がプレイヤーアクティブ継続を持たない場合、プレイヤーアクティブ継続は発動しない', t => {
-
+test('攻撃側、防御側がアクティブプレイヤー継続を持たない場合、同効果は発動しない', t => {
   const state = {
     ...EMPTY_GAME_STATE,
     players: [noContinuousActivePlayer, otherPlayer],

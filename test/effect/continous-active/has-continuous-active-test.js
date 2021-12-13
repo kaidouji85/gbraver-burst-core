@@ -2,12 +2,18 @@
 
 import test from 'ava';
 import {hasContinuousActive} from "../../../src/effect/continuous-active/has-continuous-active";
-import {EMPTY_ARMDOZER_EFFECT} from "../../../src";
+import type {CorrectPower} from "../../../src";
 
 const continuousActivePlayer = {
   type: 'ContinuousActivePlayer',
   period: {type: 'Permanent'},
 };
+
+const correctPower: CorrectPower = {
+  type: 'CorrectPower',
+  power: 1000,
+  period: {type: 'TurnLimit',  remainingTurn: 1},
+}
 
 test('アクティブプレイヤー継続を含むことを正しく判定できる', t => {
   const effects = [continuousActivePlayer];
@@ -15,12 +21,12 @@ test('アクティブプレイヤー継続を含むことを正しく判定で�
 });
 
 test('アクティブプレイヤー継続を含まないことを正しく判定できる', t => {
-  const effects = [EMPTY_ARMDOZER_EFFECT];
+  const effects = [correctPower];
   t.false(hasContinuousActive(effects));
 });
 
 test('複数アームドーザ効果の中にアクティブプレイヤー継続が含まれていても正しく判定できる', t => {
-  const effects = [EMPTY_ARMDOZER_EFFECT, continuousActivePlayer, continuousActivePlayer, EMPTY_ARMDOZER_EFFECT];
+  const effects = [correctPower, continuousActivePlayer, continuousActivePlayer, correctPower];
   t.true(hasContinuousActive(effects));
 });
 

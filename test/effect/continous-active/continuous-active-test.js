@@ -12,7 +12,7 @@ const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
   period: {type: 'Permanent'},
 };
 
-test('アクティブ継続が正しく処理できる', t => {
+test('アクティブプレイヤー継続が正しく処理できる', t => {
   const attacker: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
