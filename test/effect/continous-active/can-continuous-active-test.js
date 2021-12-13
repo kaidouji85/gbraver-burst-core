@@ -6,83 +6,54 @@ import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {canContinuousActive} from "../../../src/effect/continuous-active";
 
-test('アクティブ継続ありの判定が正しくできる', t => {
-  const activePlayer: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'activePlayer',
-    armdozer: {
-      ...EMPTY_PLAYER_STATE.armdozer,
-      effects: [
-        {
-          type: 'ContinuousActivePlayer',
-          period: {type: 'Permanent'}
-        }
-      ]
-    }
-  };
-  const otherPlayer = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'otherPlayer'
-  };
+const continuousActivePlayer: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
+  playerId: 'isContinuousActivePlayer',
+  armdozer: {
+    ...EMPTY_PLAYER_STATE.armdozer,
+    effects: [
+      {
+        type: 'ContinuousActivePlayer',
+        period: {type: 'Permanent'}
+      }
+    ]
+  }
+};
+
+const noContinuousActivePlayer = {
+  ...EMPTY_PLAYER_STATE,
+  playerId: 'noContinuousActivePlayer'
+};
+
+const otherPlayer = {
+  ...EMPTY_PLAYER_STATE,
+  playerId: 'otherPlayer'
+};
+
+test('攻撃側がプレイヤーアクティブ継続を持つ場合、プレイヤーアクティブ継続が発動する', t => {
   const state = {
     ...EMPTY_GAME_STATE,
-    players: [activePlayer, otherPlayer],
-    activePlayerId: activePlayer.playerId
+    players: [continuousActivePlayer, otherPlayer],
+    activePlayerId: continuousActivePlayer.playerId
   };
-
-  const result = canContinuousActive(state);
-  t.true(result);
+  t.true(canContinuousActive(state));
 });
 
-test('アクティブ継続効果を持たない場合はfalseを返す', t => {
-  const activePlayer: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'activePlayer',
-    armdozer: {
-      ...EMPTY_PLAYER_STATE.armdozer,
-      effects: [
-        {
-          type: 'CorrectPower',
-          power: 1000,
-          period: {
-            type: 'TurnLimit',
-            remainingTurn: 2
-          }
-        }
-      ]
-    }
-  };
-  const otherPlayer = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'otherPlayer'
-  };
+test('防御側がプレイヤーアクティブ継続を持つ場合、プレイヤーアクティブ継続は発動しない', t => {
   const state = {
     ...EMPTY_GAME_STATE,
-    players: [activePlayer, otherPlayer],
-    activePlayerId: activePlayer.playerId
+    players: [continuousActivePlayer, otherPlayer],
+    activePlayerId: otherPlayer.playerId
   };
-  const result = canContinuousActive(state);
-  t.false(result);
+  t.false(canContinuousActive(state));
 });
 
-test('アームドーザ効果を持たない場合はfalseを返す', t => {
-  const activePlayer: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'activePlayer',
-    armdozer: {
-      ...EMPTY_PLAYER_STATE.armdozer,
-      effects: []
-    }
-  };
-  const otherPlayer = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'otherPlayer'
-  };
+test('攻撃側、防御側がプレイヤーアクティブ継続を持たない場合、プレイヤーアクティブ継続は発動しない', t => {
+
   const state = {
     ...EMPTY_GAME_STATE,
-    players: [activePlayer, otherPlayer],
-    activePlayerId: activePlayer.playerId
+    players: [noContinuousActivePlayer, otherPlayer],
+    activePlayerId: noContinuousActivePlayer.playerId
   };
-  const result = canContinuousActive(state);
-  t.false(result);
+  t.false(canContinuousActive(state));
 });
