@@ -1,12 +1,11 @@
 // @flow
 
-import test from 'ava';
 import type {PlayerState} from "../../src/state/player-state";
 import {isPlayerDeath} from "../../src/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../src/empty/armdozer";
 
-test('HPが0の場合、死亡したと判定する', t => {
+test('HPが0の場合、死亡したと判定する', () => {
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     armdozer: {
@@ -14,11 +13,10 @@ test('HPが0の場合、死亡したと判定する', t => {
       hp: 0
     }
   };
-  const result = isPlayerDeath(defender);
-  t.true(result);
+  expect(isPlayerDeath(defender)).toBe(true);
 });
 
-test('HPが0より小さい場合、死亡したと判定する', t => {
+test('HPが0より小さい場合、死亡したと判定する', () => {
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     armdozer: {
@@ -26,11 +24,10 @@ test('HPが0より小さい場合、死亡したと判定する', t => {
       hp: -1000
     }
   };
-  const result = isPlayerDeath(defender);
-  t.true(result);
+  expect(isPlayerDeath(defender)).toBe(true);
 });
 
-test('HPが0より大きい場合、死亡していない', t => {
+test('HPが0より大きい場合、死亡していない', () => {
   const defender: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     armdozer: {
@@ -38,6 +35,5 @@ test('HPが0より大きい場合、死亡していない', t => {
       hp: 1000
     }
   };
-  const result = isPlayerDeath(defender);
-  t.false(result);
+  expect(isPlayerDeath(defender)).toBe(false);
 });
