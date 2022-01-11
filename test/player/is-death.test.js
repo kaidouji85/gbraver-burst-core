@@ -1,5 +1,4 @@
 // @flow
-
 import type {PlayerState} from "../../src/state/player-state";
 import {isPlayerDeath} from "../../src/state/player-state";
 import {EMPTY_PLAYER_STATE} from "../../src/empty/player";
