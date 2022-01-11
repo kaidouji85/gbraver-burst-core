@@ -1,10 +1,9 @@
 // @flow
 
-import test from 'ava';
 import {updateArmdozerEffect} from "../../../src/effect/update-remaning-turn/armdozer-effect";
 import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
 
-test('ターン制限付き効果なら、継続ターン数を-1する', t => {
+test('ターン制限付き効果なら、継続ターン数を-1する', () => {
   const data = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
@@ -20,10 +19,10 @@ test('ターン制限付き効果なら、継続ターン数を-1する', t => {
       remainingTurn: 2
     }
   };
-  t.deepEqual(result, expexted);
+  expect(result).toEqual(expexted);
 });
 
-test('ターン制限付き効果以外なら、変化はない', t => {
+test('ターン制限付き効果以外なら、変化はない', () => {
   const data = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
@@ -32,5 +31,5 @@ test('ターン制限付き効果以外なら、変化はない', t => {
   };
   const result = updateArmdozerEffect(data);
   const expected = data;
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

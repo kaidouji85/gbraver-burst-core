@@ -1,12 +1,11 @@
 // @flow
 
-import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {disableBurst} from "../../../src/effect/burst";
 import {EMPTY_BURST} from "../../../src/empty/armdozer";
 
-test('バーストしたプレイヤーはバースト利用不可になる', t => {
+test('バーストしたプレイヤーはバースト利用不可になる', () => {
   const burstPlayer = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burstPlayer',
@@ -43,5 +42,5 @@ test('バーストしたプレイヤーはバースト利用不可になる', t 
       }
     ]
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

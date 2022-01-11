@@ -1,6 +1,5 @@
 // @flow
 
-import test from 'ava';
 import {removeContinuousActive} from "../../../src/effect/continuous-active/remove-continuous-active";
 import type {ArmdozerEffect, CorrectPower} from "../../../src";
 import type {ContinuousActivePlayer} from "../../../src/state/armdozer-effect";
@@ -16,16 +15,16 @@ const CONTINUOUS_ACTIVE_PLAYER: ContinuousActivePlayer = {
   period: {type: 'Permanent'}
 };
 
-test('アームドーザ効果からアクティブプレイヤー継続のみが排除される', t => {
+test('アームドーザ効果からアクティブプレイヤー継続のみが排除される', () => {
   const origin: ArmdozerEffect[] = [CORRECT_POWER, CONTINUOUS_ACTIVE_PLAYER];
   const result = removeContinuousActive(origin);
   const expected = [CORRECT_POWER];
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });
 
-test('アームドーザ効果にアクティブプレイヤー継続が含まれない場合、何もしない', t => {
+test('アームドーザ効果にアクティブプレイヤー継続が含まれない場合、何もしない', () => {
   const origin: ArmdozerEffect[] = [CORRECT_POWER];
   const result = removeContinuousActive(origin);
   const expected = [CORRECT_POWER];
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

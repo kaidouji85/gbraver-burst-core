@@ -1,24 +1,23 @@
 // @flow
 
-import test from 'ava';
 import type {Battle} from "../../../src";
 import {EMPTY_BATTLE} from "../../../src/empty/battle";
 import {canRightItself} from "../../../src/effect/right-itself";
 
-test('戦闘で死亡していなければ、体勢整えを実施する', t => {
+test('戦闘で死亡していなければ、体勢整えを実施する', () => {
   const data: Battle = {
     ...EMPTY_BATTLE,
     isDeath: false
   };
   const result = canRightItself(data);
-  t.true(result);
+  expect(result).toBe(true);
 });
 
-test('戦闘で死亡していれば、体勢整えは行わない', t => {
+test('戦闘で死亡していれば、体勢整えは行わない', () => {
   const data: Battle = {
     ...EMPTY_BATTLE,
     isDeath: true
   };
   const result = canRightItself(data);
-  t.false(result);
+  expect(result).toBe(false);
 });

@@ -1,6 +1,5 @@
 // @flow
 
-import test from "ava";
 import type {ContinuousActivePlayer, GameState, PlayerState} from "../../../src";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
@@ -12,7 +11,7 @@ const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
   period: {type: 'Permanent'},
 };
 
-test('アクティブプレイヤー継続が正しく処理できる', t => {
+test('アクティブプレイヤー継続が正しく処理できる', () => {
   const attacker: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
@@ -58,5 +57,5 @@ test('アクティブプレイヤー継続が正しく処理できる', t => {
       recoverBattery: 0
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

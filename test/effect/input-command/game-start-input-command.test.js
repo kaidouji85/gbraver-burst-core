@@ -1,6 +1,5 @@
 // @flow
 
-import test from 'ava';
 import type {GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
@@ -36,7 +35,7 @@ const DEFENDER: PlayerState = {
   }
 };
 
-test('ゲームスタート時 コマンド入力フェイズが正しく適用される', t => {
+test('ゲームスタート時 コマンド入力フェイズが正しく適用される', () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
     players: [ATTACKER, DEFENDER],
@@ -79,5 +78,5 @@ test('ゲームスタート時 コマンド入力フェイズが正しく適用�
       ]
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

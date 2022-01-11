@@ -1,12 +1,11 @@
 // @flow
 
-import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {PlayerState} from "../../../src/state/player-state";
 import {reflect} from "../../../src/effect/reflect";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
-test('ダメージ反射を正しく適用できる', t => {
+test('ダメージ反射を正しく適用できる', () => {
   const damagedPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'damagedPlayer',
@@ -46,5 +45,5 @@ test('ダメージ反射を正しく適用できる', t => {
       isDeath: false,
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

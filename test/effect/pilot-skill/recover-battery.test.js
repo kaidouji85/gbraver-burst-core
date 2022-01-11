@@ -1,13 +1,12 @@
 // @flow
 
-import test from 'ava';
 import type {GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import type {BuffPowerSkill} from "../../../src/player/pilot";
-import {buffPower} from "../../../src/effect/pilot-skill/buff-power";
+import {recoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
+import type {RecoverBatterySkill} from "../../../src/player/pilot";
 
-test('攻撃バフスキルが正しく処理できる', t => {
+test('パイロットスキル バッテリー回復が正しく処理できる', () => {
   const invoker: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'invoker',
@@ -17,10 +16,9 @@ test('攻撃バフスキルが正しく処理できる', t => {
       battery: 2,
     }
   };
-  const skill: BuffPowerSkill = {
-    type: 'BuffPowerSkill',
-    buffPower: 600,
-    duration: 2
+  const skill: RecoverBatterySkill = {
+    type: 'RecoverBatterySkill',
+    recoverBattery: 2
   };
   const other: PlayerState = {
     ...EMPTY_PLAYER_STATE,
@@ -31,8 +29,8 @@ test('攻撃バフスキルが正しく処理できる', t => {
     players: [other, invoker]
   };
 
-  const result = buffPower(state, invoker.playerId, skill);
-  const expected = {
+  const result = recoverBattery(state, invoker.playerId, skill);
+  const expected: GameState = {
     ...state,
     players: [
       other,
@@ -40,17 +38,7 @@ test('攻撃バフスキルが正しく処理できる', t => {
         ...invoker,
         armdozer: {
           ...invoker.armdozer,
-          effects: [
-            ...invoker.armdozer.effects,
-            {
-              type: 'CorrectPower',
-              power: 600,
-              period: {
-                type: 'TurnLimit',
-                remainingTurn: 2,
-              },
-            }
-          ]
+          battery: 4
         }
       }
     ],
@@ -60,5 +48,5 @@ test('攻撃バフスキルが正しく処理できる', t => {
       skill: skill
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

@@ -1,13 +1,12 @@
 // @flow
 
 import type {GameState} from "../../../src/state/game-state";
-import test from 'ava';
 import {turnChange} from "../../../src/effect/turn-change";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
-test('ターン交代が正しく処理できる', t => {
+test('ターン交代が正しく処理できる', () => {
   const attacker = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
@@ -53,5 +52,5 @@ test('ターン交代が正しく処理できる', t => {
       recoverBattery: 3
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

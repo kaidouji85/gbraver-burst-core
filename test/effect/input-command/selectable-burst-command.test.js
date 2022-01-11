@@ -1,5 +1,4 @@
 // @flow
-import test from 'ava';
 import {selectableBurstCommand} from "../../../src/effect/input-command/selectable-burst-command";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 
@@ -16,12 +15,12 @@ const ARMDOZER_STATE = {
   enableBurst: true
 };
 
-test('バーストフラグがONならバーストが使える', t => {
-  t.deepEqual(selectableBurstCommand(ARMDOZER_STATE), [
+test('バーストフラグがONならバーストが使える', () => {
+  expect(selectableBurstCommand(ARMDOZER_STATE)).toEqual([
     {type: 'BURST_COMMAND'}
   ]);
 });
 
-test('バーストフラグがOFFならバーストが使える', t => {
-  t.deepEqual(selectableBurstCommand({...ARMDOZER_STATE, enableBurst: false}), []);
+test('バーストフラグがOFFならバーストが使える', () => {
+  expect(selectableBurstCommand({...ARMDOZER_STATE, enableBurst: false})).toEqual([]);
 });

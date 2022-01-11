@@ -1,6 +1,5 @@
 // @flow
 
-import test from 'ava';
 import type {Player} from "../../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../../src/empty/armdozer";
 import {startGame} from "../../../src/effect/start-game";
@@ -29,7 +28,7 @@ const PLAYER2: Player = {
   pilot: EMPTY_PILOT,
 };
 
-test('正しくゲームスタートができる', t => {
+test('正しくゲームスタートができる', () => {
   const result = startGame([PLAYER1, PLAYER2]);
   const expected: GameState = {
     players: [
@@ -66,5 +65,5 @@ test('正しくゲームスタートができる', t => {
     },
     activePlayerId: 'player01'
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

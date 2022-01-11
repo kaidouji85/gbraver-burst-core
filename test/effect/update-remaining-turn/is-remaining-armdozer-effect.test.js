@@ -1,10 +1,9 @@
 // @flow
 
-import test from 'ava';
 import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
 import {isRemainArmdozerEffect} from "../../../src/effect/update-remaning-turn/armdozer-effect";
 
-test('アームドーザ効果継続ターン数が1より大きい場合は効果継続する', t => {
+test('アームドーザ効果継続ターン数が1より大きい場合は効果継続する', () => {
   const data = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
@@ -13,10 +12,10 @@ test('アームドーザ効果継続ターン数が1より大きい場合は効�
     }
   };
   const result = isRemainArmdozerEffect(data);
-  t.true(result);
+  expect(result).toBe(true);
 });
 
-test('アームドーザ効果継続ターン数が0以下の場合は効果が終了する', t => {
+test('アームドーザ効果継続ターン数が0以下の場合は効果が終了する', () => {
   const data = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
@@ -26,10 +25,10 @@ test('アームドーザ効果継続ターン数が0以下の場合は効果が�
 
   };
   const result = isRemainArmdozerEffect(data);
-  t.false(result);
+  expect(result).toBe(false);
 });
 
-test('永続効果は効果継続すると見なす', t => {
+test('永続効果は効果継続すると見なす', () => {
   const data = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
@@ -37,5 +36,5 @@ test('永続効果は効果継続すると見なす', t => {
     }
   };
   const result = isRemainArmdozerEffect(data);
-  t.true(result);
+  expect(result).toBe(true);
 });

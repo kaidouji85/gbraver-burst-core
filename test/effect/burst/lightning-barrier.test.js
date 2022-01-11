@@ -1,6 +1,5 @@
 // @flow
 
-import test from 'ava';
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {lightningBarrier} from "../../../src/effect/burst/lightning-barrier";
@@ -9,7 +8,7 @@ import type {PlayerState} from "../../../src/state/player-state";
 import type {GameState} from "../../../src";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
-test('電撃バリアバーストの適用が正しくできる', t => {
+test('電撃バリアバーストの適用が正しくできる', () => {
   const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'burst',
@@ -66,5 +65,5 @@ test('電撃バリアバーストの適用が正しくできる', t => {
       burst: burst,
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

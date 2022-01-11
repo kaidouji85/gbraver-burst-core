@@ -1,13 +1,12 @@
 // @flow
 
-import test from 'ava';
 import type {ReflectParam} from "../../../src/effect/reflect/reflect";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {reflectDamage} from "../../../src/effect/reflect/reflect";
 
-test('反射するダメージを正しく計算できる', t => {
+test('反射するダメージを正しく計算できる', () => {
   const reflect: ReflectParam = {
     damage: 1500,
     effect: 'Lightning'
@@ -16,10 +15,10 @@ test('反射するダメージを正しく計算できる', t => {
     ...EMPTY_PLAYER_STATE,
   };
   const result = reflectDamage(reflect, player);
-  t.is(result, 1500);
+  expect(result).toBe(1500);
 });
 
-test('ダメージ減少だけ反射ダメージが減る', t => {
+test('ダメージ減少だけ反射ダメージが減る', () => {
   const reflect: ReflectParam = {
     damage: 1500,
     effect: 'Lightning'
@@ -41,5 +40,5 @@ test('ダメージ減少だけ反射ダメージが減る', t => {
     }
   };
   const result = reflectDamage(reflect, player);
-  t.is(result, 900);
+  expect(result).toBe(900);
 });

@@ -1,6 +1,5 @@
 // @flow
 
-import test from 'ava';
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
@@ -14,7 +13,7 @@ const turnLimit = (turn: number): TurnLimitEffect => ({
   remainingTurn: turn
 });
 
-test('効果継続ターン更新が正しく処理される', t => {
+test('効果継続ターン更新が正しく処理される', () => {
   const player1 = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'player1',
@@ -81,5 +80,5 @@ test('効果継続ターン更新が正しく処理される', t => {
       ]
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

@@ -1,13 +1,12 @@
 // @flow
 
-import test from 'ava';
 import type {GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {BatteryEnchantmentSkill} from "../../../src/player/pilot";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {batteryEnchantment} from "../../../src/effect/pilot-skill/battery-enchantment";
 
-test('バッテリー増強スキルが正しく発動できる', t => {
+test('バッテリー増強スキルが正しく発動できる', () => {
   const invoker: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'invoker',
@@ -67,5 +66,5 @@ test('バッテリー増強スキルが正しく発動できる', t => {
       skill: skill
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });

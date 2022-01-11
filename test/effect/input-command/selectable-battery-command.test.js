@@ -1,6 +1,5 @@
 // @flow
 
-import test from 'ava';
 import {selectableBatteryCommand} from "../../../src/effect/input-command/selectable-battery-command";
 import type {ArmdozerState} from "../../../src/state/armdozer-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
@@ -11,8 +10,8 @@ const ARMDOZER_STATE: ArmdozerState = {
   battery: 5,
 };
 
-test('バッテリーが満タンなら0〜最大値まで入力可能', t => {
-  t.deepEqual(selectableBatteryCommand(ARMDOZER_STATE), [
+test('バッテリーが満タンなら0〜最大値まで入力可能', () => {
+  expect(selectableBatteryCommand(ARMDOZER_STATE)).toEqual([
     {type: 'BATTERY_COMMAND', battery: 0},
     {type: 'BATTERY_COMMAND', battery: 1},
     {type: 'BATTERY_COMMAND', battery: 2},
@@ -22,14 +21,14 @@ test('バッテリーが満タンなら0〜最大値まで入力可能', t => {
   ]);
 });
 
-test('バッテリーが0なら0以外は入力不可能', t => {
-  t.deepEqual(selectableBatteryCommand({...ARMDOZER_STATE, battery: 0}), [
+test('バッテリーが0なら0以外は入力不可能', () => {
+  expect(selectableBatteryCommand({...ARMDOZER_STATE, battery: 0})).toEqual([
     {type: 'BATTERY_COMMAND', battery: 0}
   ]);
 });
 
-test('バッテリーが3なら0〜3まで入力可能', t => {
-  t.deepEqual(selectableBatteryCommand({...ARMDOZER_STATE, battery: 3}), [
+test('バッテリーが3なら0〜3まで入力可能', () => {
+  expect(selectableBatteryCommand({...ARMDOZER_STATE, battery: 3})).toEqual([
     {type: 'BATTERY_COMMAND', battery: 0},
     {type: 'BATTERY_COMMAND', battery: 1},
     {type: 'BATTERY_COMMAND', battery: 2},

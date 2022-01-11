@@ -1,17 +1,16 @@
 // @flow
 
-import test from 'ava';
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {recoverBattery} from "../../../src/effect/burst/recover-battery";
+import type {GameState} from "../../../src/state/game-state";
 import type {PlayerState} from "../../../src/state/player-state";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import type {GameState, RecoverBattery} from "../../../src";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {burst} from "../../../src/effect/burst";
 
-test('削除 バースト効果バッテリー回復が正しく適用される', t => {
-  const burstPlayer  = {
+test('バースト効果適用処理が正しく実行されている', () => {
+  const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'player01',
+    playerId: 'burstPlayer',
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       battery: 0,
@@ -19,25 +18,21 @@ test('削除 バースト効果バッテリー回復が正しく適用される'
       enableBurst: true,
       burst: {
         type: 'RecoverBattery',
-        recoverBattery: 5,
+        recoverBattery: 5
       }
-    },
+    }
   };
   const otherPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'player02',
+    playerId: 'otherPlayer',
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [otherPlayer, burstPlayer]
-  };
-  const burst: RecoverBattery = {
-    type: 'RecoverBattery',
-    recoverBattery: 5,
+    players: [otherPlayer, burstPlayer],
   };
 
-  const result = recoverBattery(lastState, burstPlayer.playerId, burst);
-  const expected = {
+  const result = burst(lastState, 'burstPlayer');
+  expect(result).toEqual({
     ...lastState,
     players: [
       otherPlayer,
@@ -46,14 +41,14 @@ test('削除 バースト効果バッテリー回復が正しく適用される'
         armdozer: {
           ...burstPlayer.armdozer,
           battery: 5,
+          enableBurst: false
         }
       }
     ],
     effect: {
       name: 'BurstEffect',
-      burstPlayer: burstPlayer.playerId,
-      burst: burst
+      burstPlayer: 'burstPlayer',
+      burst: burstPlayer.armdozer.burst
     }
-  };
-  t.deepEqual(result, expected);
+  });
 });

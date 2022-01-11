@@ -1,13 +1,17 @@
 // @flow
 
-import test from 'ava';
 import type {GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {recoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
 import type {RecoverBatterySkill} from "../../../src/player/pilot";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PILOT} from "../../../src/empty/pilot";
+import {pilotSkill} from "../../../src/effect/pilot-skill";
 
-test('パイロットスキル バッテリー回復が正しく処理できる', t => {
+test('パイロットスキルを正しく処理できる', () => {
+  const skill: RecoverBatterySkill = {
+    type: 'RecoverBatterySkill',
+    recoverBattery: 2
+  };
   const invoker: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: 'invoker',
@@ -15,11 +19,12 @@ test('パイロットスキル バッテリー回復が正しく処理できる'
       ...EMPTY_PLAYER_STATE.armdozer,
       maxBattery: 5,
       battery: 2,
+    },
+    pilot: {
+      ...EMPTY_PILOT,
+      skill: skill,
+      enableSkill: true
     }
-  };
-  const skill: RecoverBatterySkill = {
-    type: 'RecoverBatterySkill',
-    recoverBattery: 2
   };
   const other: PlayerState = {
     ...EMPTY_PLAYER_STATE,
@@ -30,7 +35,7 @@ test('パイロットスキル バッテリー回復が正しく処理できる'
     players: [other, invoker]
   };
 
-  const result = recoverBattery(state, invoker.playerId, skill);
+  const result = pilotSkill(state, invoker.playerId);
   const expected: GameState = {
     ...state,
     players: [
@@ -39,7 +44,11 @@ test('パイロットスキル バッテリー回復が正しく処理できる'
         ...invoker,
         armdozer: {
           ...invoker.armdozer,
-          battery: 4
+          battery: 4,
+        },
+        pilot: {
+          ...invoker.pilot,
+          enableSkill: false
         }
       }
     ],
@@ -49,5 +58,5 @@ test('パイロットスキル バッテリー回復が正しく処理できる'
       skill: skill
     }
   };
-  t.deepEqual(result, expected);
+  expect(result).toEqual(expected);
 });
