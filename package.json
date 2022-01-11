@@ -18,12 +18,9 @@
     "type-check:test": "flow check test",
     "copy-type-definition": "flow-copy-source src lib",
     "clean": "rimraf lib",
-    "clean:coverage": "rimraf .nyc_output coverage",
     "test": "jest",
     "lint": "eslint src",
-    "lint:test": "eslint test",
-    "coverage": "nyc ava",
-    "coverage:html": "nyc --reporter=lcov --reporter=text-summary ava"
+    "lint:test": "eslint test"
   },
   "files": [
     "lib/"
