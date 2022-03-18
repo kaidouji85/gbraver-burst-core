@@ -17,7 +17,7 @@ export function hitRate(stateHistory: GameState[], attacker: PlayerId): number {
     return 0;
   }
 
-  const hitBattleResult = ['NormalHit', 'Guard', 'CriticalHit'];
-  const hits = allAttacks.filter(v => v.effect.name === 'Battle' && hitBattleResult.includes(v.effect.result.name));
+  const hitBattleResults = ['NormalHit', 'Guard', 'CriticalHit'];
+  const hits = allAttacks.filter(v => v.effect.name === 'Battle' && hitBattleResults.includes(v.effect.result.name));
   return hits.length / allAttacks.length;
 }
