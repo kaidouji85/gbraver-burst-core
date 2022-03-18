@@ -56,3 +56,6 @@ export type {TurnChange} from './effect/turn-change/turn-change';
 export type {UpdateRemainingTurn, EndArmdozerEffect} from './effect/update-remaning-turn/update-remaining-turn';
 export type {RightItself} from './effect/right-itself/right-itself';
 export type {PilotSkillEffect, PilotSkillEffectX} from './effect/pilot-skill/pilot-skill-effect';
+
+export {calculateScore} from './score/score';
+export type {Score} from './score/score';
