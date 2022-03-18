@@ -14,6 +14,8 @@ export type Score = {
   evasionRate: number,
   /** 回避率スコア */
   evasionRateScore: number,
+  /** トータルスコア */
+  totalScore: number,
 };
 
 /**
@@ -23,14 +25,15 @@ export type Score = {
  * @param player スコアを算出するプレイヤーのID
  * @return スコア算出結果
  */
-export function score(stateHistory: GameState[], player: PlayerId): Score {
+export function calculateScore(stateHistory: GameState[], player: PlayerId): Score {
   if (stateHistory.length <= 0) {
-    return {hitRate: 0, hitRateScore: 0, evasionRate: 0, evasionRateScore: 0};
+    return {hitRate: 0, hitRateScore: 0, evasionRate: 0, evasionRateScore: 0, totalScore: 0};
   }
 
   const hitRate = getHitRate(stateHistory, player);
   const hitRateScore = hitRate * 10000;
   const evasionRate = getEvasionRate(stateHistory, player);
   const evasionRateScore = evasionRate * 30000;
-  return {hitRate, hitRateScore, evasionRate, evasionRateScore};
+  const totalScore = hitRateScore + evasionRateScore;
+  return {hitRate, hitRateScore, evasionRate, evasionRateScore, totalScore};
 }

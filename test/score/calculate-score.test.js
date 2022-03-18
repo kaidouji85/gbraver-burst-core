@@ -1,7 +1,7 @@
 // @flow
 import {EMPTY_BATTLE, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE} from "../../src";
 import type {BattleResult, CriticalHit, Feint, Guard, Miss, NormalHit, PlayerId} from "../../src";
-import {score} from "../../src/score/score";
+import {calculateScore} from "../../src/score/score";
 
 const player = {...EMPTY_PLAYER_STATE, playerId: 'player'};
 const enemy = {...EMPTY_PLAYER_STATE, playerId: 'enemy'};
@@ -25,12 +25,13 @@ test('スコア計算が正しくできる', () => {
     battle(enemy.playerId, criticalHit),
     battle(player.playerId, criticalHit),
   ];
-  expect(score(stateHistory, player.playerId)).toEqual({
-    hitRate: 3/4,
-    hitRateScore: 3/4 * 10000,
-    evasionRate: 1/2,
-    evasionRateScore: 1/2 * 30000,
-  });
+  const hitRate = 3/4;
+  const hitRateScore = hitRate * 10000;
+  const evasionRate = 1/2;
+  const evasionRateScore = evasionRate * 30000;
+  const totalScore = hitRateScore + evasionRateScore;
+  expect(calculateScore(stateHistory, player.playerId))
+    .toEqual({hitRate, hitRateScore, evasionRate, evasionRateScore, totalScore});
 });
 
 test('スコア計算に関係ないステートヒストリーが含まれていても、正しく計算できる', () => {
@@ -45,20 +46,22 @@ test('スコア計算に関係ないステートヒストリーが含まれて�
     battle(enemy.playerId, criticalHit),
     EMPTY_GAME_STATE,
   ];
-  expect(score(stateHistory, player.playerId)).toEqual({
-    hitRate: 1/2,
-    hitRateScore: 1/2 * 10000,
-    evasionRate: 1/2,
-    evasionRateScore: 1/2 * 30000,
-  });
+  const hitRate = 1/2;
+  const hitRateScore = hitRate * 10000;
+  const evasionRate = 1/2;
+  const evasionRateScore = evasionRate * 30000;
+  const totalScore = hitRateScore + evasionRateScore;
+  expect(calculateScore(stateHistory, player.playerId))
+    .toEqual({hitRate, hitRateScore, evasionRate, evasionRateScore, totalScore});
 });
 
 test('空のステートヒストリーでは全スコアを0点とみなす', () => {
   const stateHistory = [];
-  expect(score(stateHistory, player.playerId)).toEqual({
+  expect(calculateScore(stateHistory, player.playerId)).toEqual({
     hitRate: 0,
     hitRateScore: 0,
     evasionRate: 0,
     evasionRateScore: 0,
+    totalScore: 0
   });
 });

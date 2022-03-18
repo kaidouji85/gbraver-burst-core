@@ -11,8 +11,8 @@ import type {PlayerId} from "../player/player";
  * @return 計算結果
  */
 export function hitRate(stateHistory: GameState[], attacker: PlayerId): number {
-  const allAttacks = stateHistory
-    .filter(v => v.effect.name === 'Battle' && v.effect.attacker === attacker && v.effect.result.name !== 'Feint');
+  const allAttacks = stateHistory.filter(v => v.effect.name === 'Battle' && v.effect.attacker === attacker
+    && v.effect.result.name !== 'Feint');
   if (allAttacks.length <= 0) {
     return 0;
   }
