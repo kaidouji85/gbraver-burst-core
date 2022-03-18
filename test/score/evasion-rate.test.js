@@ -2,7 +2,6 @@
 import {EMPTY_BATTLE, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE} from "../../src";
 import type {BattleResult, CriticalHit, Feint, Guard, Miss, NormalHit, PlayerId} from "../../src";
 import {evasionRate} from "../../src/score/evasion-rate";
-import {hitRate} from "../../src/score/hit-rate";
 
 const attacker = {...EMPTY_PLAYER_STATE, playerId: 'attacker'};
 const defender = {...EMPTY_PLAYER_STATE, playerId: 'defender'};
@@ -56,12 +55,12 @@ test('相手の攻撃以外のステートは無視する', () => {
   expect(evasionRate(stateHistory, defender.playerId)).toBe(1/4);
 });
 
-test('ステートヒストリーが0件の場合は命中率0とみなす', () => {
+test('ステートヒストリーが0件の場合は命中率100%とみなす', () => {
   const stateHistory = [];
-  expect(hitRate(stateHistory, attacker.playerId)).toBe(0);
+  expect(evasionRate(stateHistory, defender.playerId)).toBe(1);
 });
 
-test('相手攻撃のステートヒストリーが0件の場合には命中率0とみなす', () => {
+test('相手攻撃のステートヒストリーが0件の場合には命中率100%とみなす', () => {
   const stateHistory = [
     EMPTY_GAME_STATE,
     EMPTY_GAME_STATE,
@@ -72,5 +71,5 @@ test('相手攻撃のステートヒストリーが0件の場合には命中率0
     EMPTY_GAME_STATE,
     EMPTY_GAME_STATE,
   ];
-  expect(evasionRate(stateHistory, defender.playerId)).toBe(0);
+  expect(evasionRate(stateHistory, defender.playerId)).toBe(1);
 });

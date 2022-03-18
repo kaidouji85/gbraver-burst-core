@@ -14,7 +14,7 @@ export function evasionRate(stateHistory: GameState[], defender: PlayerId): numb
   const allAttacks = stateHistory
     .filter(v => v.effect.name === 'Battle' && v.effect.attacker !== defender && v.effect.result.name !== 'Feint');
   if (allAttacks.length <= 0) {
-    return 0;
+    return 1;
   }
 
   const evasionBattleResults = ['Miss'];
