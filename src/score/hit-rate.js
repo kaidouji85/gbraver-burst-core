@@ -5,6 +5,7 @@ import type {PlayerId} from "../player/player";
 
 /**
  * 攻撃命中率を計算する
+ * 1回も攻撃しなかった場合は命中率0%とみなす
  *
  * @param stateHistory ステートヒストリー
  * @param attacker 命中率を計算するプレイヤー

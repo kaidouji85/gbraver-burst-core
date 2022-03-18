@@ -55,12 +55,12 @@ test('相手の攻撃以外のステートは無視する', () => {
   expect(evasionRate(stateHistory, defender.playerId)).toBe(1/4);
 });
 
-test('ステートヒストリーが0件の場合は命中率100%とみなす', () => {
+test('ステートヒストリーが0件の場合は回避率100%とみなす', () => {
   const stateHistory = [];
   expect(evasionRate(stateHistory, defender.playerId)).toBe(1);
 });
 
-test('相手攻撃のステートヒストリーが0件の場合には命中率100%とみなす', () => {
+test('相手攻撃のステートヒストリーが0件の場合には回避率100%とみなす', () => {
   const stateHistory = [
     EMPTY_GAME_STATE,
     EMPTY_GAME_STATE,

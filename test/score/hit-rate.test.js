@@ -1,13 +1,6 @@
 // @flow
+import type {BattleResult, CriticalHit, Feint, Guard, Miss, NormalHit, PlayerId} from "../../src";
 import {EMPTY_BATTLE, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE} from "../../src";
-import type {
-  BattleResult,
-  CriticalHit, Feint,
-  Guard,
-  Miss,
-  NormalHit,
-  PlayerId,
-} from "../../src";
 import {hitRate} from "../../src/score/hit-rate";
 
 const attacker = {...EMPTY_PLAYER_STATE, playerId: 'attacker'};
@@ -63,12 +56,12 @@ test('計算対象プレイヤーの攻撃以外のステートは無視する',
   expect(hitRate(stateHistory, attacker.playerId)).toBe(3/4);
 });
 
-test('ステートヒストリーが0件の場合は命中率0とみなす', () => {
+test('ステートヒストリーが0件の場合は命中率0%とみなす', () => {
   const stateHistory = [];
   expect(hitRate(stateHistory, attacker.playerId)).toBe(0);
 });
 
-test('自分攻撃のステートヒストリーが0件の場合には命中率0とみなす', () => {
+test('自分攻撃のステートヒストリーが0件の場合には命中率0%とみなす', () => {
   const stateHistory = [
     EMPTY_GAME_STATE,
     EMPTY_GAME_STATE,

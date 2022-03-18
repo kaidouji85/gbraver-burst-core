@@ -5,6 +5,7 @@ import type {PlayerId} from "../player/player";
 
 /**
  * 回避率を計算する
+ * 1回も攻撃されなかった場合は回避率100%とみなす
  *
  * @param stateHistory ステートヒストリー
  * @param defender 回避率を計算するプレイヤー
