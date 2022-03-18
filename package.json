@@ -29,11 +29,11 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.7",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-flow": "^7.16.7",
-    "@babel/register": "^7.17.0",
+    "@babel/register": "^7.17.7",
     "cross-env": "^7.0.3",
     "eslint": "^8.11.0",
     "eslint-plugin-flowtype": "^8.0.3",
