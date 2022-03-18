@@ -24,6 +24,10 @@ export type Score = {
  * @return スコア算出結果
  */
 export function score(stateHistory: GameState[], player: PlayerId): Score {
+  if (stateHistory.length <= 0) {
+    return {hitRate: 0, hitRateScore: 0, evasionRate: 0, evasionRateScore: 0};
+  }
+
   const hitRate = getHitRate(stateHistory, player);
   const hitRateScore = hitRate * 10000;
   const evasionRate = getEvasionRate(stateHistory, player);
