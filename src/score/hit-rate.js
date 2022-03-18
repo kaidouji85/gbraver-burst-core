@@ -1,4 +1,4 @@
-//@flow
+// @flow
 
 import type {GameState} from "../state/game-state";
 import type {PlayerId} from "../player/player";
@@ -11,13 +11,13 @@ import type {PlayerId} from "../player/player";
  * @return 計算結果
  */
 export function hitRate(stateHistory: GameState[], attacker: PlayerId): number {
-  if (stateHistory.length <= 0) {
+  const allAttacks = stateHistory
+    .filter(v => v.effect.name === 'Battle' && v.effect.attacker === attacker && v.effect.result.name !== 'Feint');
+  if (allAttacks.length <= 0) {
     return 0;
   }
 
-  const allAttacks = stateHistory
-    .filter(v => v.effect.name === 'Battle' && v.effect.attacker === attacker && v.effect.result.name !== 'Feint');
   const hitBattleResult = ['NormalHit', 'Guard', 'CriticalHit'];
-  const hits = allAttacks.filter(v => v.effect.name === 'Battle' && hitBattleResult.includes(v.effect.name));
+  const hits = allAttacks.filter(v => v.effect.name === 'Battle' && hitBattleResult.includes(v.effect.result.name));
   return hits.length / allAttacks.length;
 }
