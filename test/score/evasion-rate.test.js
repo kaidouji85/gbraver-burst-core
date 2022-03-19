@@ -25,6 +25,15 @@ test('回避率を正しく計算できる', () => {
   expect(evasionRate(stateHistory, defender.playerId)).toBe(1/4);
 });
 
+test('小数点4桁以降は切り捨てる', () => {
+  const stateHistory = [
+    battle(attacker.playerId, normalHit),
+    battle(attacker.playerId, guard),
+    battle(attacker.playerId, miss),
+  ];
+  expect(evasionRate(stateHistory, defender.playerId)).toBe(0.333);
+});
+
 test('フェイントは無視する', () => {
   const stateHistory = [
     battle(attacker.playerId, normalHit),

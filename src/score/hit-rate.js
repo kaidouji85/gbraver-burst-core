@@ -20,5 +20,5 @@ export function hitRate(stateHistory: GameState[], attacker: PlayerId): number {
 
   const hitBattleResults = ['NormalHit', 'Guard', 'CriticalHit'];
   const hits = allAttacks.filter(v => v.effect.name === 'Battle' && hitBattleResults.includes(v.effect.result.name));
-  return hits.length / allAttacks.length;
+  return Math.floor(1000 * hits.length / allAttacks.length) / 1000;
 }

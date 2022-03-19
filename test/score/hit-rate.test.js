@@ -25,6 +25,15 @@ test('命中率が正しく計算できる', () => {
   expect(hitRate(stateHistory, attacker.playerId)).toBe(3/4);
 });
 
+test('小数点4桁以降は切り捨てる', () => {
+  const stateHistory = [
+    battle(attacker.playerId, normalHit),
+    battle(attacker.playerId, miss),
+    battle(attacker.playerId, miss),
+  ];
+  expect(hitRate(stateHistory, attacker.playerId)).toBe(0.333);
+});
+
 test('フェイントは無視する', () => {
   const stateHistory = [
     battle(attacker.playerId, normalHit),
