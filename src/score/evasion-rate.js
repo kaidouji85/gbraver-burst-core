@@ -20,5 +20,5 @@ export function evasionRate(stateHistory: GameState[], defender: PlayerId): numb
 
   const evasionBattleResults = ['Miss'];
   const evasions = allAttacks.filter(v => v.effect.name === 'Battle' && evasionBattleResults.includes(v.effect.result.name));
-  return evasions.length / allAttacks.length;
+  return Math.floor(1000 * evasions.length / allAttacks.length) / 1000;
 }
