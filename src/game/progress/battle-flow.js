@@ -9,7 +9,7 @@ import {gameEnd} from "../../effect/game-end";
 import {canRightItself, rightItself} from "../../effect/right-itself";
 import type {PlayerCommandX} from "../command/player-command";
 import type {BatteryCommand} from "../../command/battery";
-import {startGameStateFlow, startGameStateChainer} from "../game-state-flow";
+import {startGameStateFlow} from "../game-state-flow";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
@@ -65,12 +65,12 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
  * @return 更新されたゲームステート
  */
 export function attackFlow(lastState: GameState, attacker: PlayerCommandX<BatteryCommand>, defender: PlayerCommandX<BatteryCommand>): GameState[] {
-  return startGameStateChainer(lastState)
-    .chain(state => batteryDeclaration(state, attacker.playerId, attacker.command,
-      defender.playerId, defender.command))
-    .chain(state => battle(upcastGameState(state), state.effect.attacker, state.effect.attackerBattery,
-      defender.playerId, state.effect.defenderBattery))
-    .toGameStateHistory().slice(1);
+  return startGameStateFlow([lastState])
+    .update(state => [upcastGameState(batteryDeclaration(state, attacker.playerId, attacker.command, defender.playerId, defender.command))])
+    .update(state => state.effect.name=== 'BatteryDeclaration'
+      ? [upcastGameState(battle(state, state.effect.attacker, state.effect.attackerBattery, defender.playerId, state.effect.defenderBattery))]
+      : []
+    ).toGameStateHistory().slice(1);
 }
 
 /**
