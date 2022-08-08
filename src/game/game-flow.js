@@ -112,7 +112,8 @@ class SimpleGameStateBranch implements GameStateBranch {
   /** @override */
   branch(selector: GameStateBranchSelector): GameStateBranch {
     const lastState = this.stateHistory[this.stateHistory.length - 1];
-    const update = selector(lastState);
+    const selectedRoute = selector(lastState);
+    const update = [...this.stateHistory, ...selectedRoute];
     return new SimpleGameStateBranch(update);
   }
 
