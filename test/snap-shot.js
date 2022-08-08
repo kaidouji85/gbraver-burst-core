@@ -19,7 +19,7 @@ export function shouldUpdateSnapShot(): boolean {
  * @param path エクスポート先のパス
  * @param json エクスポートするオブジェクト
  */
-export function exportJSON(path: string, json: Object): void {
+export function exportSnapShotJSON(path: string, json: Object): void {
   fs.writeFileSync(path, JSON.stringify(json, null, 2), encode);
 }
 
@@ -29,7 +29,7 @@ export function exportJSON(path: string, json: Object): void {
  * @param path 読み込み先のパス
  * @return 読み込み結果
  */
-export function importJSON(path: string): any {
+export function importSnapShotJSON(path: string): any {
   const origin = fs.readFileSync(path, encode);
   return JSON.parse(origin);
 }

@@ -6,7 +6,7 @@ import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {battleFlow} from "../../../src/game/progress/battle-flow";
 import type {GameState} from "../../../src/state/game-state";
 import type {PlayerState} from "../../../src/state/player-state";
-import {exportJSON, importJSON, shouldUpdateSnapShot} from "../../snap-shot";
+import {exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot} from "../../snap-shot";
 
 test('戦闘フローを正常に進められる', () => {
   const attacker: PlayerState = {
@@ -48,8 +48,8 @@ test('戦闘フローを正常に進められる', () => {
 
   const result = battleFlow(lastState, commands);
   const snapShotPath = path.join(__dirname, 'battle-flow.json');
-  shouldUpdateSnapShot() && exportJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot() ? result : importJSON(snapShotPath);
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
 
@@ -93,8 +93,8 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
 
   const result = battleFlow(lastState, commands);
   const snapShotPath = path.join(__dirname, 'battle-flow-death.json');
-  shouldUpdateSnapShot() && exportJSON(snapShotPath, result);
-  const snapShot = importJSON(snapShotPath);
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
 
@@ -149,7 +149,7 @@ test('ダメージ反射でHPが0になった場合は引き分け', () => {
 
   const result = battleFlow(lastState, commands);
   const snapShotPath = path.join(__dirname, 'battle-flow-draw.json');
-  shouldUpdateSnapShot() && exportJSON(snapShotPath, result);
-  const snapShot = importJSON(snapShotPath);
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
