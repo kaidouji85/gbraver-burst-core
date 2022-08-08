@@ -14,6 +14,6 @@ import {startGameStateFlow} from "../game-state-flow";
  */
 export function start(players: [Player, Player]): GameState[] {
   return startGameStateFlow([upcastGameState(startGame(players))])
-    .update(state => [upcastGameState(gameStartInputCommand(state))])
+    .add(state => [upcastGameState(gameStartInputCommand(state))])
     .toGameStateHistory();
 }

@@ -2,21 +2,21 @@
 import type {GameState} from "../state/game-state";
 
 /**
- * ゲームステートルートセレクタ
- * @param lastState 最終ステート
- * @return 選択したゲームステートスート
+ * ゲームステート履歴追加関数
+ * @param lastState 最新ゲームステート
+ * @return 追加するゲームステート履歴
  */
-type GameStateFlowUpdater = (lastState: GameState) => GameState[];
+type GameStateHistoryAdd = (lastState: GameState) => GameState[];
 
 /** ゲームステートフロー */
 interface GameStateFlow {
   /**
-   * ゲームステートを分岐する
+   * 新しいゲームステートを追加する
    *
-   * @param selector ルートセレクタ
-   * @return 選択したルートを追加したステート分岐
+   * @param fn ゲームステート追加関数
+   * @return 新しいステートを追加したゲームステートフロー
    */
-  update(selector: GameStateFlowUpdater): GameStateFlow;
+  add(fn: GameStateHistoryAdd): GameStateFlow;
 
   /**
    * ゲームステート履歴に変換する
@@ -26,8 +26,8 @@ interface GameStateFlow {
   toGameStateHistory(): GameState[];
 }
 
-/** ゲームステートルートセレクタのシンプルな実装 */
-class SimpleGameStateBranch implements GameStateFlow {
+/** ゲームステートフローのシンプルな実装 */
+class SimpleGameStateFlow implements GameStateFlow {
   +stateHistory: GameState[];
 
   /**
@@ -40,11 +40,11 @@ class SimpleGameStateBranch implements GameStateFlow {
   }
 
   /** @override */
-  update(selector: GameStateFlowUpdater): GameStateFlow {
+  add(fn: GameStateHistoryAdd): GameStateFlow {
     const lastState = this.stateHistory[this.stateHistory.length - 1];
-    const selectedRoute = selector(lastState);
-    const update = [...this.stateHistory, ...selectedRoute];
-    return new SimpleGameStateBranch(update);
+    const addedStateHistory = fn(lastState);
+    const updatedStateHistory = [...this.stateHistory, ...addedStateHistory];
+    return new SimpleGameStateFlow(updatedStateHistory);
   }
 
   /** @override */
@@ -60,5 +60,8 @@ class SimpleGameStateBranch implements GameStateFlow {
  * @return 生成したゲームステート分岐
  */
 export function startGameStateFlow(stateHistory: GameState[]): GameStateFlow {
-  return new SimpleGameStateBranch(stateHistory);
+  if (stateHistory.length <= 0) {
+    throw new Error('requires at least 1 game state history.');
+  }
+  return new SimpleGameStateFlow(stateHistory);
 }

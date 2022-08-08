@@ -37,16 +37,16 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
   }
 
   return startGameStateFlow(attackFlow(lastState, attacker, defender))
-    .update(state => {
+    .add(state => {
       const battleEffect = (state.effect.name === 'Battle') ? (state.effect: Battle) : null;
       return battleEffect
         ? startGameStateFlow([state])
-          .update(state => canReflectFlow(battleEffect.result) ? reflectFlow(state, attacker.playerId) : [])
-          .update(state => canRightItself(battleEffect) ? [upcastGameState(rightItself(state, battleEffect))] : [])
+          .add(state => canReflectFlow(battleEffect.result) ? reflectFlow(state, attacker.playerId) : [])
+          .add(state => canRightItself(battleEffect) ? [upcastGameState(rightItself(state, battleEffect))] : [])
           .toGameStateHistory().slice(1)
         : [];
     })
-    .update(state => {
+    .add(state => {
       const endJudge = gameEndJudging(state);
       return endJudge.type === 'GameContinue'
         ? gameContinueFlow(state, attacker.playerId, attacker.command, defender.playerId, defender.command)
@@ -55,7 +55,6 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     .toGameStateHistory();
 }
 
-// TODO テストを作成する
 /**
  * プレイヤー攻撃フロー
  *
@@ -66,8 +65,8 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
  */
 export function attackFlow(lastState: GameState, attacker: PlayerCommandX<BatteryCommand>, defender: PlayerCommandX<BatteryCommand>): GameState[] {
   return startGameStateFlow([lastState])
-    .update(state => [upcastGameState(batteryDeclaration(state, attacker.playerId, attacker.command, defender.playerId, defender.command))])
-    .update(state => state.effect.name=== 'BatteryDeclaration'
+    .add(state => [upcastGameState(batteryDeclaration(state, attacker.playerId, attacker.command, defender.playerId, defender.command))])
+    .add(state => state.effect.name=== 'BatteryDeclaration'
       ? [upcastGameState(battle(state, state.effect.attacker, state.effect.attackerBattery, defender.playerId, state.effect.defenderBattery))]
       : []
     ).toGameStateHistory().slice(1);
@@ -120,10 +119,10 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
  */
 export function gameContinueFlow(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
   return startGameStateFlow([upcastGameState(updateRemainingTurn(lastState))])
-    .update(state => canContinuousActive(state)
+    .add(state => canContinuousActive(state)
       ? [upcastGameState(continuousActive(state))]
       : [upcastGameState(turnChange(state))]
     )
-    .update(state => [upcastGameState(inputCommand(state, attackerId, attackerCommand, defenderId, defenderCommand))])
+    .add(state => [upcastGameState(inputCommand(state, attackerId, attackerCommand, defenderId, defenderCommand))])
     .toGameStateHistory();
 }

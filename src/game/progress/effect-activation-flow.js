@@ -34,15 +34,15 @@ export function effectActivationFlow(lastState: GameState, commands: [PlayerComm
   }
 
   return startGameStateFlow([lastState])
-    .update(state => {
+    .add(state => {
       const done = activationOrNot(state, attackerCommand);
       return done ? [done] : [];
     })
-    .update(state => {
+    .add(state => {
       const done = activationOrNot(state, defenderCommand);
       return done ? [done] : [];
     })
-    .update(state => {
+    .add(state => {
       const done = inputCommand(state, attackerCommand.playerId, attackerCommand.command, defenderCommand.playerId, defenderCommand.command);
       return [upcastGameState(done)];
     })
