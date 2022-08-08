@@ -18,20 +18,12 @@ npm run build
 # テスト
 npm test
 
+# テスト用スナップショット更新
+npm run update-snapshot
+
 # 型チェック
 npm run type-check
 
 # lint
 npm run lint
-```
-
-### スナップショット更新
-```shell
-export SHOULD_UPDATE_SNAPSHOT=true
-npm run test
-
-# スナップショット更新後はSHOULD_UPDATE_SNAPSHOTにfalseをセットする
-export SHOULD_UPDATE_SNAPSHOT=false
-# or
-unset SHOULD_UPDATE_SNAPSHOT
 ```
