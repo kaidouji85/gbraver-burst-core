@@ -92,16 +92,10 @@ test('攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
   }];
 
   const result = battleFlow(lastState, commands);
-  expect(result.length).toBe(3);
-  expect(result[0].effect.name).toBe('BatteryDeclaration');
-  expect(result[1].effect.name).toBe('Battle');
-  expect(result[2].effect).toEqual({
-    name: 'GameEnd',
-    result: {
-      type: 'GameOver',
-      winner: 'attacker'
-    }
-  });
+  const snapShotPath = path.join(__dirname, 'battle-flow-death.json');
+  shouldUpdateSnapShot() && exportJSON(snapShotPath, result);
+  const snapShot = importJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test('ダメージ反射でHPが0になった場合は引き分け', () => {
@@ -154,14 +148,8 @@ test('ダメージ反射でHPが0になった場合は引き分け', () => {
   }];
 
   const result = battleFlow(lastState, commands);
-  expect(result.length).toBe(4);
-  expect(result[0].effect.name).toBe('BatteryDeclaration');
-  expect(result[1].effect.name).toBe('Battle');
-  expect(result[2].effect.name).toBe('Reflect');
-  expect(result[3].effect).toEqual({
-    name: 'GameEnd',
-    result: {
-      type: 'EvenMatch',
-    }
-  });
+  const snapShotPath = path.join(__dirname, 'battle-flow-draw.json');
+  shouldUpdateSnapShot() && exportJSON(snapShotPath, result);
+  const snapShot = importJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
