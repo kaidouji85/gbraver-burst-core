@@ -9,8 +9,8 @@ const encode = 'utf-8';
  *
  * @return 判定結果、trueでスナップショットを更新する
  */
-export function isUpdateSnapShot(): boolean {
-  return process.env.IS_UPDATE_SNAPSHOT === 'true';
+export function shouldUpdateSnapShot(): boolean {
+  return process.env.SHOULD_UPDATE_SNAPSHOT === 'true';
 }
 
 /**

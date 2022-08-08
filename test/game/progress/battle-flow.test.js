@@ -6,7 +6,7 @@ import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {battleFlow} from "../../../src/game/progress/battle-flow";
 import type {GameState} from "../../../src/state/game-state";
 import type {PlayerState} from "../../../src/state/player-state";
-import {exportJSON, importJSON, isUpdateSnapShot} from "../../snap-shot";
+import {exportJSON, importJSON, shouldUpdateSnapShot} from "../../snap-shot";
 
 test('戦闘フローを正常に進められる', () => {
   const attacker: PlayerState = {
@@ -48,8 +48,8 @@ test('戦闘フローを正常に進められる', () => {
 
   const result = battleFlow(lastState, commands);
   const snapShotPath = path.join(__dirname, 'battle-flow.json');
-  isUpdateSnapShot() && exportJSON(snapShotPath, result);
-  const snapShot = isUpdateSnapShot() ? result : importJSON(snapShotPath);
+  shouldUpdateSnapShot() && exportJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
 
