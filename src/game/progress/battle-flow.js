@@ -16,8 +16,8 @@ import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
 import {toReflectParam} from "../../effect/reflect/reflect";
+import type {ReflectParam} from "../../effect/reflect/reflect";
 import {reflect} from "../../effect/reflect";
-import {updates} from "../game-flow/updates";
 import type {Command} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
@@ -100,14 +100,14 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
     throw new Error('not found defender');
   }
 
-  const tryReflects = defender.armdozer.effects
+  const reflectParams = defender.armdozer.effects
     .filter(v => v.type === 'TryReflect')
     .map(v => ((v: any): TryReflect))
     .map(v => toReflectParam(v))
-    .map(v => state => up(reflect(state, attackerId, v)));
-  return start(lastState)
-    .to(updates(tryReflects))
-    .stateHistory.slice(1);
+  return reflectParams.reduce((stateHistory: GameState[], reflectParam: ReflectParam) => {
+    const state = stateHistory[stateHistory.length - 1] ?? lastState;
+    return [...stateHistory, upcastGameState(reflect(state, attackerId, reflectParam))];
+  }, []);
 }
 
 /**
