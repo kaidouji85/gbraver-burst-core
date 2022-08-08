@@ -42,7 +42,7 @@ test('一人だけ効果適用する場合でも正しく処理される', () =>
   ];
 
   const result = effectActivationFlow(state, commands);
-  const snapShotPath = path.join(__dirname, 'effect-activation-flow.json');
+  const snapShotPath = path.join(__dirname, 'effect-activation-flow__one-player-effective.json');
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
@@ -60,8 +60,8 @@ test('二人とも効果適用する場合でも正しく処理される', () =>
   ];
 
   const result = effectActivationFlow(state, commands);
-  expect(result.length).toBe(3);
-  expect(result[0].effect.name).toBe('BurstEffect');
-  expect(result[1].effect.name).toBe('PilotSkillEffect');
-  expect(result[2].effect.name).toBe('InputCommand');
+  const snapShotPath = path.join(__dirname, 'effect-activation-flow__two-player-effective.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
