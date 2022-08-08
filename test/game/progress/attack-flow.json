@@ -1,0 +1,141 @@
+[
+  {
+    "players": [
+      {
+        "playerId": "attacker",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 2000,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "battery": 2,
+          "hp": 3000,
+          "effects": [],
+          "enableBurst": true
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      },
+      {
+        "playerId": "player2",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 2000,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "battery": 3,
+          "hp": 3000,
+          "effects": [],
+          "enableBurst": true
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      }
+    ],
+    "activePlayerId": "attacker",
+    "effect": {
+      "name": "BatteryDeclaration",
+      "attacker": "attacker",
+      "attackerBattery": 3,
+      "originalBatteryOfAttacker": 3,
+      "defenderBattery": 2,
+      "originalBatteryOfDefender": 2
+    }
+  },
+  {
+    "players": [
+      {
+        "playerId": "attacker",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 2000,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "battery": 2,
+          "hp": 3000,
+          "effects": [],
+          "enableBurst": true
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      },
+      {
+        "playerId": "player2",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 2000,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "battery": 3,
+          "hp": 1000,
+          "effects": [],
+          "enableBurst": true
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      }
+    ],
+    "activePlayerId": "attacker",
+    "effect": {
+      "name": "Battle",
+      "attacker": "attacker",
+      "isDeath": false,
+      "result": {
+        "name": "NormalHit",
+        "damage": 2000
+      }
+    }
+  }
+]
