@@ -8,5 +8,8 @@ module.exports = {
   plugins: [
     "flowtype",
     "jest"
-  ]
+  ],
+  env: {
+    node: true
+  }
 };

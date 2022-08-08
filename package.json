@@ -19,6 +19,7 @@
     "copy-type-definition": "flow-copy-source src lib",
     "clean": "rimraf lib",
     "test": "jest",
+    "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest",
     "lint": "eslint src",
     "lint:test": "eslint test"
   },
