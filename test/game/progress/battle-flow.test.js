@@ -1,11 +1,12 @@
 // @flow
-
-import type {PlayerState} from "../../../src/state/player-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import * as path from "path";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import type {GameState} from "../../../src/state/game-state";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {battleFlow} from "../../../src/game/progress/battle-flow";
+import type {GameState} from "../../../src/state/game-state";
+import type {PlayerState} from "../../../src/state/player-state";
+import {exportJSON, importJSON, isUpdateSnapShot} from "../../snap-shot";
 
 test('戦闘フローを正常に進められる', () => {
   const attacker: PlayerState = {
@@ -46,13 +47,10 @@ test('戦闘フローを正常に進められる', () => {
   }];
 
   const result = battleFlow(lastState, commands);
-  expect(result.length).toBe(6);
-  expect(result[0].effect.name).toBe('BatteryDeclaration');
-  expect(result[1].effect.name).toBe('Battle');
-  expect(result[2].effect.name).toBe('RightItself');
-  expect(result[3].effect.name).toBe('UpdateRemainingTurn');
-  expect(result[4].effect.name).toBe('TurnChange');
-  expect(result[5].effect.name).toBe('InputCommand');
+  const snapShotPath = path.join(__dirname, 'battle-flow.json');
+  isUpdateSnapShot() && exportJSON(snapShotPath, result);
+  const snapShot = isUpdateSnapShot() ? result : importJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test('攻撃で防御側のHPを0以下にした場合、ゲームが終了する', () => {
