@@ -6,7 +6,7 @@ import type {Effect} from "../effect";
 /**
  * ゲーム状態
  *
- * @typeparam {X} 発生した効果
+ * @template {X} 発生した効果
  */
 export type GameStateX<X> = {
   /** プレイヤー毎の状態 */

@@ -5,7 +5,7 @@ import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
 import type {PlayerCommand} from "../command/player-command";
-import {startGameStateBranch} from "../game-flow";
+import {startGameStateFlow} from "../game-state-flow";
 
 /**
  * 効果発動フローを行うか否かを判定する
@@ -33,16 +33,16 @@ export function effectActivationFlow(lastState: GameState, commands: [PlayerComm
     throw new Error('not found attacker or defender command');
   }
 
-  return startGameStateBranch([lastState])
-    .branch(state => {
+  return startGameStateFlow([lastState])
+    .update(state => {
       const done = activationOrNot(state, attackerCommand);
       return done ? [done] : [];
     })
-    .branch(state => {
+    .update(state => {
       const done = activationOrNot(state, defenderCommand);
       return done ? [done] : [];
     })
-    .branch(state => {
+    .update(state => {
       const done = inputCommand(state, attackerCommand.playerId, attackerCommand.command, defenderCommand.playerId, defenderCommand.command);
       return [upcastGameState(done)];
     })

@@ -9,7 +9,7 @@ import {gameEnd} from "../../effect/game-end";
 import {canRightItself, rightItself} from "../../effect/right-itself";
 import type {PlayerCommandX} from "../command/player-command";
 import type {BatteryCommand} from "../../command/battery";
-import {startGameStateBranch, startGameStateChainer} from "../game-flow";
+import {startGameStateFlow, startGameStateChainer} from "../game-state-flow";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
@@ -36,17 +36,17 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     throw new Error('not found attacker or defender command');
   }
 
-  return startGameStateBranch(attackFlow(lastState, attacker, defender))
-    .branch(state => {
+  return startGameStateFlow(attackFlow(lastState, attacker, defender))
+    .update(state => {
       const battleEffect = (state.effect.name === 'Battle') ? (state.effect: Battle) : null;
       return battleEffect
-        ? startGameStateBranch([state])
-          .branch(state => canReflectFlow(battleEffect.result) ? reflectFlow(state, attacker.playerId) : [])
-          .branch(state => canRightItself(battleEffect) ? [upcastGameState(rightItself(state, battleEffect))] : [])
+        ? startGameStateFlow([state])
+          .update(state => canReflectFlow(battleEffect.result) ? reflectFlow(state, attacker.playerId) : [])
+          .update(state => canRightItself(battleEffect) ? [upcastGameState(rightItself(state, battleEffect))] : [])
           .toGameStateHistory().slice(1)
         : [];
     })
-    .branch(state => {
+    .update(state => {
       const endJudge = gameEndJudging(state);
       return endJudge.type === 'GameContinue'
         ? gameContinueFlow(state, attacker.playerId, attacker.command, defender.playerId, defender.command)
@@ -119,11 +119,11 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
  * @return 更新結果
  */
 export function gameContinueFlow(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
-  return startGameStateBranch([upcastGameState(updateRemainingTurn(lastState))])
-    .branch(state => canContinuousActive(state)
+  return startGameStateFlow([upcastGameState(updateRemainingTurn(lastState))])
+    .update(state => canContinuousActive(state)
       ? [upcastGameState(continuousActive(state))]
       : [upcastGameState(turnChange(state))]
     )
-    .branch(state => [upcastGameState(inputCommand(state, attackerId, attackerCommand, defenderId, defenderCommand))])
+    .update(state => [upcastGameState(inputCommand(state, attackerId, attackerCommand, defenderId, defenderCommand))])
     .toGameStateHistory();
 }

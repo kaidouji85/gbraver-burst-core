@@ -29,6 +29,7 @@ interface GameStateChainer<X> {
   toGameStateHistory(): GameState[];
 }
 
+// TODO テストを書く
 /**
  * ゲームステートチェイナーのシンプルな実装
  * @template X 最終ステートのゲーム効果
@@ -76,17 +77,17 @@ export function startGameStateChainer<X>(lastState: GameStateX<X>): GameStateCha
  * @param lastState 最終ステート
  * @return 選択したゲームステートスート
  */
-type GameStateBranchSelector = (lastState: GameState) => GameState[];
+type GameStateFlowUpdater = (lastState: GameState) => GameState[];
 
-/** ゲームステート分岐 */
-interface GameStateBranch {
+/** ゲームステートフロー */
+interface GameStateFlow {
   /**
    * ゲームステートを分岐する
    *
    * @param selector ルートセレクタ
    * @return 選択したルートを追加したステート分岐
    */
-  branch(selector: GameStateBranchSelector): GameStateBranch;
+  update(selector: GameStateFlowUpdater): GameStateFlow;
 
   /**
    * ゲームステート履歴に変換する
@@ -97,7 +98,7 @@ interface GameStateBranch {
 }
 
 /** ゲームステートルートセレクタのシンプルな実装 */
-class SimpleGameStateBranch implements GameStateBranch {
+class SimpleGameStateBranch implements GameStateFlow {
   +stateHistory: GameState[];
 
   /**
@@ -110,7 +111,7 @@ class SimpleGameStateBranch implements GameStateBranch {
   }
 
   /** @override */
-  branch(selector: GameStateBranchSelector): GameStateBranch {
+  update(selector: GameStateFlowUpdater): GameStateFlow {
     const lastState = this.stateHistory[this.stateHistory.length - 1];
     const selectedRoute = selector(lastState);
     const update = [...this.stateHistory, ...selectedRoute];
@@ -124,11 +125,11 @@ class SimpleGameStateBranch implements GameStateBranch {
 }
 
 /**
- * ゲームステート分岐を開始する
+ * ゲームステートフローを開始する
  *
  * @param stateHistory ゲームステート履歴
  * @return 生成したゲームステート分岐
  */
-export function startGameStateBranch(stateHistory: GameState[]): GameStateBranch {
+export function startGameStateFlow(stateHistory: GameState[]): GameStateFlow {
   return new SimpleGameStateBranch(stateHistory);
 }
