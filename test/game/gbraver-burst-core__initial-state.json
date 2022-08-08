@@ -1,0 +1,204 @@
+[
+  {
+    "players": [
+      {
+        "playerId": "player1",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 1600,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "hp": 3000,
+          "battery": 5,
+          "enableBurst": true,
+          "effects": []
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      },
+      {
+        "playerId": "player2",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 2000,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "hp": 3000,
+          "battery": 5,
+          "enableBurst": true,
+          "effects": []
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      }
+    ],
+    "activePlayerId": "player2",
+    "effect": {
+      "name": "StartGame"
+    }
+  },
+  {
+    "players": [
+      {
+        "playerId": "player1",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 1600,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "hp": 3000,
+          "battery": 5,
+          "enableBurst": true,
+          "effects": []
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      },
+      {
+        "playerId": "player2",
+        "armdozer": {
+          "id": "id",
+          "name": "name",
+          "maxHp": 3000,
+          "maxBattery": 5,
+          "power": 2000,
+          "speed": 2000,
+          "burst": {
+            "type": "RecoverBattery",
+            "recoverBattery": 0
+          },
+          "hp": 3000,
+          "battery": 5,
+          "enableBurst": true,
+          "effects": []
+        },
+        "pilot": {
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "type": "RecoverBatterySkill",
+            "recoverBattery": 2
+          },
+          "enableSkill": true
+        }
+      }
+    ],
+    "activePlayerId": "player2",
+    "effect": {
+      "name": "InputCommand",
+      "players": [
+        {
+          "playerId": "player1",
+          "selectable": true,
+          "command": [
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 0
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 1
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 2
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 3
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 4
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 5
+            },
+            {
+              "type": "BURST_COMMAND"
+            },
+            {
+              "type": "PILOT_SKILL_COMMAND"
+            }
+          ]
+        },
+        {
+          "playerId": "player2",
+          "selectable": true,
+          "command": [
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 0
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 1
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 2
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 3
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 4
+            },
+            {
+              "type": "BATTERY_COMMAND",
+              "battery": 5
+            },
+            {
+              "type": "BURST_COMMAND"
+            },
+            {
+              "type": "PILOT_SKILL_COMMAND"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

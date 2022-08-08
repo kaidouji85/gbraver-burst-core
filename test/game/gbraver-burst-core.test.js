@@ -1,15 +1,17 @@
 // @flow
+import path from "path";
 import type {Player} from "../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../src/empty/armdozer";
 import {EMPTY_PILOT} from "../../src/empty/pilot";
 import {restoreGbraverBurst, startGbraverBurst} from "../../src/game/gbraver-burst-core";
+import {exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot} from "../snap-shot";
 
 const PLAYER1: Player = {
   playerId: 'player1',
   pilot: EMPTY_PILOT,
   armdozer: {
     ...EMPTY_ARMDOZER,
-    speed: 2000
+    speed: 1600
   }
 };
 
@@ -39,10 +41,11 @@ const COMMAND2 = {
 
 test('初期状態を正しく作ることができる', () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
-  const initialState = core.stateHistory();
-  expect(initialState.length).toBe(2);
-  expect(initialState[0].effect.name).toBe('StartGame');
-  expect(initialState[1].effect.name).toBe('InputCommand');
+  const result = core.stateHistory();
+  const snapShotPath = path.join(__dirname, 'gbraver-burst-core__initial-state.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test('プレイヤー情報が正しくセットされている', () => {
@@ -54,9 +57,11 @@ test('プレイヤー情報が正しくセットされている', () => {
 
 test('正しくゲームを進めることができる', () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
-  const updated = core.progress([COMMAND1, COMMAND2]);
-  expect(0 < updated.length).toBe(true);
-  expect(updated[updated.length - 1].effect.name).toBe('InputCommand');
+  const result = core.progress([COMMAND1, COMMAND2]);
+  const snapShotPath = path.join(__dirname, 'gbraver-burst-core__progress.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test('ゲームステート履歴が正しく更新される', () => {
