@@ -71,8 +71,12 @@ export function startGameStateChainer<X>(lastState: GameStateX<X>): GameStateCha
   return new SimpleGameStateChainer([], lastState);
 }
 
-/** ゲームステートルートセレクタ */
-type GameStateBranchSelector = (lastState: ?GameState) => GameState[];
+/**
+ * ゲームステートルートセレクタ
+ * @param lastState 最終ステート
+ * @return 選択したゲームステートスート
+ */
+type GameStateBranchSelector = (lastState: GameState) => GameState[];
 
 /** ゲームステート分岐 */
 interface GameStateBranch {
