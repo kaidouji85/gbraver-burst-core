@@ -1,10 +1,11 @@
 // @flow
-
+import path from "path";
 import type {BatteryCommand, BurstCommand, GameState, PlayerState} from "../../../src";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import type {PilotSkillCommand} from "../../../src/command/pilot-skill";
 import {progress} from "../../../src/game/progress";
+import {exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot} from "../../snap-shot";
 
 const ATTACKER: PlayerState = {
   ...EMPTY_PLAYER_STATE,
@@ -41,12 +42,10 @@ test('戦闘フローを正しく進めることができる', () => {
   ];
 
   const result = progress(state, commands);
-  expect(result[0].effect.name).toBe('BatteryDeclaration');
-  expect(result[1].effect.name).toBe('Battle');
-  expect(result[2].effect.name).toBe('RightItself');
-  expect(result[3].effect.name).toBe('UpdateRemainingTurn');
-  expect(result[4].effect.name).toBe('TurnChange');
-  expect(result[5].effect.name).toBe('InputCommand');
+  const snapShotPath = path.join(__dirname, 'progress__battle-flow.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test('効果適用フローを正しく進めることができる', () => {
@@ -61,8 +60,8 @@ test('効果適用フローを正しく進めることができる', () => {
   ];
 
   const result = progress(state, commands);
-  expect(result.length).toBe(3);
-  expect(result[0].effect.name).toBe('BurstEffect');
-  expect(result[1].effect.name).toBe('PilotSkillEffect');
-  expect(result[2].effect.name).toBe('InputCommand');
+  const snapShotPath = path.join(__dirname, 'progress__effect-activation-flow.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
