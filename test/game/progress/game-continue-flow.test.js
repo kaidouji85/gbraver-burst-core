@@ -17,7 +17,7 @@ test('ターン交代まで正しく実行できる', () => {
   expect(result).toEqual(snapShot);
 });
 
-test('連続攻撃を正しく処理できる', () => {
+test('アクティブプレイヤー継続を正しく処理できる', () => {
   const player1 = {...EMPTY_PLAYER_STATE, playerId: 'player1',
     armdozer: {...EMPTY_ARMDOZER_STATE, maxBattery: 5, battery: 3, effects: [{type: 'ContinuousActivePlayer', period: {type: 'Permanent'}}]}};
   const player1Command = {type: 'BATTERY_COMMAND', battery: 1};
