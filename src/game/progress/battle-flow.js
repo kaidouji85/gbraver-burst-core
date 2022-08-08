@@ -1,7 +1,7 @@
 // @flow
-
+import type {Battle} from "../../effect/battle/battle";
 import type {GameState} from '../../state/game-state';
-import {upcastGameState as up} from "../../state/game-state";
+import {upcastGameState, upcastGameState as up} from "../../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
@@ -9,6 +9,7 @@ import {gameEnd} from "../../effect/game-end";
 import {canRightItself, rightItself} from "../../effect/right-itself";
 import type {PlayerCommandX} from "../command/player-command";
 import type {BatteryCommand} from "../../command/battery";
+import {startGameStateBranch, startGameStateChainer} from "../game-flow";
 import {start} from "../game-flow/start";
 import {addHistory as add, chain} from "../game-flow/chain";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
@@ -17,13 +18,11 @@ import type {TryReflect} from "../../state/armdozer-effect";
 import {toReflectParam} from "../../effect/reflect/reflect";
 import {reflect} from "../../effect/reflect";
 import {updates} from "../game-flow/updates";
-import {addHistories as addM} from "../game-flow/arrays";
 import type {Command} from "../../command/command";
 import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
 import {turnChange} from "../../effect/turn-change";
 import {inputCommand} from "../../effect/input-command";
-import {upcastGameFlow as upf} from "../game-flow/game-flow";
 
 /**
  * 戦闘フロー
@@ -39,28 +38,41 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     throw new Error('not found attacker or defender command');
   }
 
-  return start(lastState)
-    .to(chain(v => batteryDeclaration(v, attacker.playerId, attacker.command,
-      defender.playerId, defender.command)))
-    .to(chain(v => battle(up(v), v.effect.attacker, v.effect.attackerBattery,
-      defender.playerId, v.effect.defenderBattery)))
-    .to(battle =>battle
-        .to(v => canReflectFlow(v.lastState.effect.result)
-          ? addM(v, reflectFlow(up(v.lastState), attacker.playerId))
-          : upf(v))
-        .to(v => canRightItself(battle.lastState.effect)
-          ? upf(add(v, rightItself(v.lastState, battle.lastState.effect)))
-          : v))
-    .to(v => {
-      const lastState = up(v.lastState);
-      const endJudge = gameEndJudging(lastState);
-      if (endJudge.type === 'GameContinue') {
-        return addM(v, gameContinueFlow(lastState, attacker.playerId, attacker.command,
-          defender.playerId, defender.command));
-      } else {
-        return add(v, up(gameEnd(lastState, endJudge)));
-      }
-    }).stateHistory.slice(1);
+  return startGameStateBranch(doBattle(lastState, attacker, defender))
+    .branch(state => {
+      const battleEffect = (state.effect.name === 'Battle') ? (state.effect: Battle) : null;
+      return battleEffect
+        ? startGameStateBranch([state])
+          .branch(state => canReflectFlow(battleEffect.result) ? reflectFlow(state, attacker.playerId) : [])
+          .branch(state => canRightItself(battleEffect) ? [upcastGameState(rightItself(state, battleEffect))] : [])
+          .toGameStateHistory().slice(1)
+        : [];
+    })
+    .branch(state => {
+      const endJudge = gameEndJudging(state);
+      return endJudge.type === 'GameContinue'
+        ? gameContinueFlow(state, attacker.playerId, attacker.command, defender.playerId, defender.command)
+        : [upcastGameState(gameEnd(state, endJudge))]
+    })
+    .toGameStateHistory();
+}
+
+// TODO テストを作成する
+/**
+ * 戦闘を実行する
+ *
+ * @param lastState 最終ステート
+ * @param attacker 攻撃側バッテリーコマンド
+ * @param defender 防御側バッテリーコマンド
+ * @return 更新されたゲームステート
+ */
+export function doBattle(lastState: GameState, attacker: PlayerCommandX<BatteryCommand>, defender: PlayerCommandX<BatteryCommand>): GameState[] {
+  return startGameStateChainer(lastState)
+    .chain(state => batteryDeclaration(state, attacker.playerId, attacker.command,
+      defender.playerId, defender.command))
+    .chain(state => battle(upcastGameState(state), state.effect.attacker, state.effect.attackerBattery,
+      defender.playerId, state.effect.defenderBattery))
+    .toGameStateHistory().slice(1);
 }
 
 /**
@@ -77,7 +89,7 @@ export function canReflectFlow(result: BattleResult): boolean {
 
 /**
  * ダメージ反射フロー
- * 
+ *
  * @param lastState 最新のゲームステート
  * @param attackerId 攻撃側のプレイヤーID
  * @return 更新結果
