@@ -1,7 +1,7 @@
 // @flow
 import type {Battle} from "../../effect/battle/battle";
 import type {GameState} from '../../state/game-state';
-import {upcastGameState, upcastGameState as up} from "../../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
 import {gameEndJudging} from "../end-judging";
@@ -10,8 +10,6 @@ import {canRightItself, rightItself} from "../../effect/right-itself";
 import type {PlayerCommandX} from "../command/player-command";
 import type {BatteryCommand} from "../../command/battery";
 import {startGameStateBranch, startGameStateChainer} from "../game-flow";
-import {start} from "../game-flow/start";
-import {addHistory as add, chain} from "../game-flow/chain";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
@@ -38,7 +36,7 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
     throw new Error('not found attacker or defender command');
   }
 
-  return startGameStateBranch(doBattle(lastState, attacker, defender))
+  return startGameStateBranch(attackFlow(lastState, attacker, defender))
     .branch(state => {
       const battleEffect = (state.effect.name === 'Battle') ? (state.effect: Battle) : null;
       return battleEffect
@@ -59,14 +57,14 @@ export function battleFlow(lastState: GameState, commands: [PlayerCommandX<Batte
 
 // TODO テストを作成する
 /**
- * 戦闘を実行する
+ * プレイヤー攻撃フロー
  *
  * @param lastState 最終ステート
  * @param attacker 攻撃側バッテリーコマンド
  * @param defender 防御側バッテリーコマンド
  * @return 更新されたゲームステート
  */
-export function doBattle(lastState: GameState, attacker: PlayerCommandX<BatteryCommand>, defender: PlayerCommandX<BatteryCommand>): GameState[] {
+export function attackFlow(lastState: GameState, attacker: PlayerCommandX<BatteryCommand>, defender: PlayerCommandX<BatteryCommand>): GameState[] {
   return startGameStateChainer(lastState)
     .chain(state => batteryDeclaration(state, attacker.playerId, attacker.command,
       defender.playerId, defender.command))
@@ -113,19 +111,19 @@ export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameSta
 /**
  * ゲーム継続フロー
  *
- * @param state 最新の状態
+ * @param lastState 最新の状態
  * @param attackerId 攻撃側プレイヤーID
  * @param attackerCommand 攻撃側コマンド
  * @param defenderId 防御側プレイヤーID
  * @param defenderCommand 防御側コマンド
  * @return 更新結果
  */
-export function gameContinueFlow(state: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
-  return start(state)
-    .to(chain(v => up(updateRemainingTurn(v))))
-    .to(v => canContinuousActive(v.lastState)
-      ? add(v, up(continuousActive(v.lastState)))
-      : add(v, up(turnChange(v.lastState))))
-    .to(chain(v => inputCommand(v, attackerId, attackerCommand, defenderId, defenderCommand)))
-    .stateHistory.slice(1);
+export function gameContinueFlow(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
+  return startGameStateBranch([upcastGameState(updateRemainingTurn(lastState))])
+    .branch(state => canContinuousActive(state)
+      ? [upcastGameState(continuousActive(state))]
+      : [upcastGameState(turnChange(state))]
+    )
+    .branch(state => [upcastGameState(inputCommand(state, attackerId, attackerCommand, defenderId, defenderCommand))])
+    .toGameStateHistory();
 }
