@@ -1,5 +1,4 @@
 // @flow
-import {upcastGameState} from "../state/game-state";
 import type {GameState, GameStateX} from "../state/game-state";
 
 /**
@@ -15,7 +14,7 @@ type GameStateUpdater<X, Y> = (origin: GameStateX<X>) => GameStateX<Y>;
  * ゲームステートチェイナー
  * @template X 最終ステートのゲーム効果
  */
-export interface GameStateChainer<X> {
+interface GameStateChainer<X> {
   /**
    * ステートを更新する
    * @param updater 更新関数
@@ -44,7 +43,7 @@ class SimpleGameStateChainer<X> implements GameStateChainer<X> {
    * @param stateHistory ステート履歴
    * @param lastState 最終ステート
    */
-  constructor(stateHistory: GameState, lastState: GameStateX<X>) {
+  constructor(stateHistory: GameState[], lastState: GameStateX<X>) {
     this.stateHistory = stateHistory;
     this.lastState = lastState;
   }
@@ -57,7 +56,7 @@ class SimpleGameStateChainer<X> implements GameStateChainer<X> {
 
   /** @override */
   toGameStateHistory(): GameState[] {
-    return [...this.stateHistory, upcastGameState(this.lastState)];
+    return [...this.stateHistory, ((this.lastState: any): GameState)];
   }
 }
 
@@ -70,4 +69,61 @@ class SimpleGameStateChainer<X> implements GameStateChainer<X> {
  */
 export function startGameStateChainer<X>(lastState: GameStateX<X>): GameStateChainer<X> {
   return new SimpleGameStateChainer([], lastState);
+}
+
+/** ゲームステートルートセレクタ */
+type GameStateBranchSelector = (lastState: ?GameState) => GameState[];
+
+/** ゲームステート分岐 */
+interface GameStateBranch {
+  /**
+   * ゲームステートを分岐する
+   *
+   * @param selector ルートセレクタ
+   * @return 選択したルートを追加したステート分岐
+   */
+  branch(selector: GameStateBranchSelector): GameStateBranch;
+
+  /**
+   * ゲームステート履歴に変換する
+   *
+   * @return 変換結果
+   */
+  toGameStateHistory(): GameState[];
+}
+
+/** ゲームステートルートセレクタのシンプルな実装 */
+class SimpleGameStateBranch implements GameStateBranch {
+  +stateHistory: GameState[];
+
+  /**
+   * コンストラクタ
+   *
+   * @param stateHistory ゲームステート履歴
+   */
+  constructor(stateHistory: GameState[]) {
+    this.stateHistory = stateHistory;
+  }
+
+  /** @override */
+  branch(selector: GameStateBranchSelector): GameStateBranch {
+    const lastState = this.stateHistory[this.stateHistory.length - 1];
+    const update = selector(lastState);
+    return new SimpleGameStateBranch(update);
+  }
+
+  /** @override */
+  toGameStateHistory(): GameState[] {
+    return this.stateHistory;
+  }
+}
+
+/**
+ * ゲームステート分岐を開始する
+ *
+ * @param stateHistory ゲームステート履歴
+ * @return 生成したゲームステート分岐
+ */
+export function startGameStateBranch(stateHistory: GameState[]): GameStateBranch {
+  return new SimpleGameStateBranch(stateHistory);
 }
