@@ -1,11 +1,11 @@
 // @flow
 
-import {buffPower} from "../../../src/effect/burst/buff-power";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import type {BuffPower} from "../../../src/player/burst";
 import type {GameState, PlayerState} from "../../../src";
+import {buffPower} from "../../../src/effect/burst/buff-power";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {BuffPower} from "../../../src/player/burst";
 
 test('攻撃力バフが正しく適用される', () => {
   const burstPlayer: PlayerState = {

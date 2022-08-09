@@ -7,13 +7,13 @@ import type {
   PilotSkill,
   RecoverBatterySkill
 } from "../../player/pilot";
-import {recoverBattery} from "./recover-battery";
+import type {PlayerId} from "../../player/player";
+import type {GameState, GameStateX} from "../../state/game-state";
+import {batteryEnchantment} from "./battery-enchantment";
 import {buffPower} from "./buff-power";
 import {damageDecrease} from "./damage-decrease";
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerId} from "../../player/player";
 import type {PilotSkillEffect, PilotSkillEffectX} from "./pilot-skill-effect";
-import {batteryEnchantment} from "./battery-enchantment";
+import {recoverBattery} from "./recover-battery";
 
 /**
  * パイロットスキルを発動する

@@ -1,9 +1,9 @@
 // @flow
 
 import type {PlayerState} from "../../../state/player-state";
-import {normalHitDamage} from "../damage/damage";
 import {totalDamageDecrease} from "../../damage-decrease";
 import {toMinDamage} from "../../to-min-damage";
+import {normalHitDamage} from "../damage/damage";
 
 /** クリティカルヒット */
 export type CriticalHit = {

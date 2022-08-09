@@ -1,10 +1,10 @@
 // @flow
 
-import type {Player} from "../../../src/player/player";
-import {EMPTY_ARMDOZER} from "../../../src/empty/armdozer";
 import {startGame} from "../../../src/effect/start-game";
-import type {GameState} from "../../../src/state/game-state";
+import {EMPTY_ARMDOZER} from "../../../src/empty/armdozer";
 import {EMPTY_PILOT} from "../../../src/empty/pilot";
+import type {Player} from "../../../src/player/player";
+import type {GameState} from "../../../src/state/game-state";
 
 const PLAYER1: Player = {
   playerId: 'player01',

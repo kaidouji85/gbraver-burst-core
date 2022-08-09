@@ -1,13 +1,11 @@
 // @flow
-
-import type {GameState} from "../../state/game-state";
-import {upcastGameState as up} from "../../state/game-state";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
+import type {GameState} from "../../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import type {PlayerCommand} from "../command/player-command";
-import {start} from "../game-flow/start";
-import {addHistory, chain} from "../game-flow/chain";
+import {startGameStateFlow} from "../game-state-flow";
 
 /**
  * 効果発動フローを行うか否かを判定する
@@ -35,22 +33,21 @@ export function effectActivationFlow(lastState: GameState, commands: [PlayerComm
     throw new Error('not found attacker or defender command');
   }
 
-  const flow = start(lastState)
-    .to(v => {
-      const done = activationOrNot(v.lastState, attackerCommand);
-      return done ? addHistory(v, done) : v;
+  return startGameStateFlow([lastState])
+    .add(state => {
+      const done = activationOrNot(state, attackerCommand);
+      return done ? [done] : [];
     })
-    .to(v => {
-      const done = activationOrNot(v.lastState, defenderCommand);
-      return done ? addHistory(v, done) : v;
+    .add(state => {
+      const done = activationOrNot(state, defenderCommand);
+      return done ? [done] : [];
     })
-    .to(chain(v => inputCommand(v, attackerCommand.playerId, attackerCommand.command,
-      defenderCommand.playerId, defenderCommand.command))
-    );
-
-  // 本関数は更新結果だけを返すので、
-  // ステートヒストリーの先頭は不要
-  return flow.stateHistory.slice(1);
+    .add(state => {
+      const done = inputCommand(state, attackerCommand.playerId, attackerCommand.command, defenderCommand.playerId, defenderCommand.command);
+      return [upcastGameState(done)];
+    })
+    .toGameStateHistory()
+    .slice(1);  // 本関数は更新結果だけを返すので、ステートヒストリーの先頭は不要
 }
 
 /**
@@ -63,11 +60,11 @@ export function effectActivationFlow(lastState: GameState, commands: [PlayerComm
  */
 export function activationOrNot(state: GameState, command: PlayerCommand): ?GameState {
   if (command.command.type === 'BURST_COMMAND') {
-    return up(burst(state, command.playerId));
+    return upcastGameState(burst(state, command.playerId));
   }
 
   if (command.command.type === 'PILOT_SKILL_COMMAND') {
-    return up(pilotSkill(state, command.playerId));
+    return upcastGameState(pilotSkill(state, command.playerId));
   }
 
   return null;

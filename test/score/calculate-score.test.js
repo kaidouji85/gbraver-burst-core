@@ -1,6 +1,6 @@
 // @flow
-import {EMPTY_BATTLE, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE} from "../../src";
 import type {BattleResult, CriticalHit, Feint, Guard, Miss, NormalHit, PlayerId} from "../../src";
+import {EMPTY_BATTLE, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE} from "../../src";
 import {calculateScore} from "../../src/score/score";
 
 const player = {...EMPTY_PLAYER_STATE, playerId: 'player'};

@@ -1,9 +1,9 @@
 // @flow
 
+import type {Player} from "../player/player";
 import type {PlayerState} from "../state/player-state";
 import {EMPTY_ARMDOZER, EMPTY_ARMDOZER_STATE} from "./armdozer";
 import {EMPTY_PILOT, EMPTY_PILOT_STATE} from "./pilot";
-import type {Player} from "../player/player";
 
 /** 空のプレイヤー */
 export const EMPTY_PLAYER: Player = {

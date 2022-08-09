@@ -1,10 +1,10 @@
 // @flow
 
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import type {BuffPowerSkill} from "../../../src/player/pilot";
 import {buffPower} from "../../../src/effect/pilot-skill/buff-power";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {BuffPowerSkill} from "../../../src/player/pilot";
 
 test('攻撃バフスキルが正しく処理できる', () => {
   const invoker: PlayerState = {

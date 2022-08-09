@@ -1,9 +1,9 @@
 // @flow
 
+import type {Burst} from "../../../src";
 import {burstRecoverBattery} from "../../../src/effect/burst/burst-recover-battery";
 import {EMPTY_ARMDOZER_STATE, EMPTY_BURST} from "../../../src/empty/armdozer";
 import type {ArmdozerState} from "../../../src/state/armdozer-state";
-import type {Burst} from "../../../src";
 
 test('現在バッテリー値にバッテリー回復料をプラスした値を返す', () => {
   const armdozer: ArmdozerState = {

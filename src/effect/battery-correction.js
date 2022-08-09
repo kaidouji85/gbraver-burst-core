@@ -1,7 +1,7 @@
 // @flow
 
-import type {ArmdozerEffect} from "../state/armdozer-effect";
 import type {BatteryCommand} from "../command/battery";
+import type {ArmdozerEffect} from "../state/armdozer-effect";
 
 /**
  * 補正後のバッテリー宣言を計算する

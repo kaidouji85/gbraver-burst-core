@@ -1,7 +1,7 @@
 // @flow
 
-import type {GameState} from "../state/game-state";
 import type {PlayerId} from "../player/player";
+import type {GameState} from "../state/game-state";
 
 /**
  * 回避率を計算する

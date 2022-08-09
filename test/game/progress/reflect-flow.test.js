@@ -1,10 +1,11 @@
 // @flow
-
+import path from "path";
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {reflectFlow} from "../../../src/game/progress/battle-flow";
+import {exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot} from "../../snap-shot";
 
 /** 攻撃側プレイヤー */
 const ATTACKER: PlayerState = {
@@ -46,8 +47,10 @@ test('ダメージ反射が正しく適用される', () => {
   };
 
   const result = reflectFlow(lastState, 'attacker');
-  expect(result.length).toBe(1);
-  expect(result[0].effect.name).toBe('Reflect');
+  const snapShotPath = path.join(__dirname, 'reflect-flow__single-reflect.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test('ダメージ反射の重ね掛けも正しく処理される', () => {
@@ -84,8 +87,8 @@ test('ダメージ反射の重ね掛けも正しく処理される', () => {
   };
 
   const result = reflectFlow(lastState, 'attacker');
-  expect(result.length).toBe(3);
-  expect(result[0].effect.name).toBe('Reflect');
-  expect(result[1].effect.name).toBe('Reflect');
-  expect(result[2].effect.name).toBe('Reflect');
+  const snapShotPath = path.join(__dirname, 'reflect-flow__multi-reflect.json');
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });

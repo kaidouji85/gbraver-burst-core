@@ -1,15 +1,15 @@
 // @flow
 
 import type {PlayerState} from "../../../state/player-state";
+import type {CriticalHit} from "./critical-hit";
+import {criticalHit} from "./critical-hit";
 import type {Feint} from "./feint";
 import {feint} from "./feint";
 import type {Guard} from "./guard";
 import {guard} from "./guard";
-import type {CriticalHit} from "./critical-hit";
-import {criticalHit} from "./critical-hit";
+import type {Miss} from "./miss";
 import type {NormalHit} from "./normal-hit";
 import {normalHit} from "./normal-hit";
-import type {Miss} from "./miss";
 
 /** 戦闘結果をまとめたもの */
 export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;

@@ -1,11 +1,11 @@
 // @flow
 
+import {burst} from "../../../src/effect/burst";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {GameState} from "../../../src/state/game-state";
 import type {PlayerState} from "../../../src/state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {burst} from "../../../src/effect/burst";
 
 test('バースト効果適用処理が正しく実行されている', () => {
   const burstPlayer: PlayerState = {
