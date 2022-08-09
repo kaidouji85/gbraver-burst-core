@@ -1,26 +1,26 @@
 // @flow
-import type {Battle} from "../../effect/battle/battle";
-import type {GameState} from '../../state/game-state';
-import {upcastGameState} from "../../state/game-state";
+import type {BatteryCommand} from "../../command/battery";
+import type {Command} from "../../command/command";
 import {batteryDeclaration} from "../../effect/battery-declaration";
 import {battle} from "../../effect/battle";
-import {gameEndJudging} from "../end-judging";
-import {gameEnd} from "../../effect/game-end";
-import {canRightItself, rightItself} from "../../effect/right-itself";
-import type {PlayerCommandX} from "../command/player-command";
-import type {BatteryCommand} from "../../command/battery";
-import {startGameStateFlow} from "../game-state-flow";
+import type {Battle} from "../../effect/battle/battle";
 import type {BattleResult} from "../../effect/battle/result/battle-result";
+import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
+import {gameEnd} from "../../effect/game-end";
+import {inputCommand} from "../../effect/input-command";
+import {reflect} from "../../effect/reflect";
+import type {ReflectParam} from "../../effect/reflect/reflect";
+import {toReflectParam} from "../../effect/reflect/reflect";
+import {canRightItself, rightItself} from "../../effect/right-itself";
+import {turnChange} from "../../effect/turn-change";
+import {updateRemainingTurn} from "../../effect/update-remaning-turn";
 import type {PlayerId} from "../../player/player";
 import type {TryReflect} from "../../state/armdozer-effect";
-import {toReflectParam} from "../../effect/reflect/reflect";
-import type {ReflectParam} from "../../effect/reflect/reflect";
-import {reflect} from "../../effect/reflect";
-import type {Command} from "../../command/command";
-import {updateRemainingTurn} from "../../effect/update-remaning-turn";
-import {canContinuousActive, continuousActive} from "../../effect/continuous-active";
-import {turnChange} from "../../effect/turn-change";
-import {inputCommand} from "../../effect/input-command";
+import type {GameState} from '../../state/game-state';
+import {upcastGameState} from "../../state/game-state";
+import type {PlayerCommandX} from "../command/player-command";
+import {gameEndJudging} from "../end-judging";
+import {startGameStateFlow} from "../game-state-flow";
 
 /**
  * 戦闘フロー

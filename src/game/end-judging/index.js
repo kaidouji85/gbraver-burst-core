@@ -1,8 +1,8 @@
 // @flow
 
-import type {GameEndJudging} from "./game-end-judging";
 import type {GameState} from "../../state/game-state";
 import {isPlayerDeath} from "../../state/player-state";
+import type {GameEndJudging} from "./game-end-judging";
 
 /**
  * ゲーム終了判定を行う

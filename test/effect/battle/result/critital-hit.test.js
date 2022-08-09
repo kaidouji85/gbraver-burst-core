@@ -1,10 +1,10 @@
 // @flow
 
-import type {PlayerState} from "../../../../src/state/player-state";
-import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty/armdozer";
 import {criticalHit} from "../../../../src/effect/battle/result/critical-hit";
-import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
 import {EMPTY_CORRECT_POWER, EMPTY_DAMAGE_DECREASE} from "../../../../src/empty/amrdozer-effect";
+import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
+import type {PlayerState} from "../../../../src/state/player-state";
 
 test('クリティカルヒットのダメージ計算が正しい', () => {
   const attacker: PlayerState = {

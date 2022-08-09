@@ -1,9 +1,9 @@
 // @flow
 import path from "path";
 import type {BatteryCommand, BurstCommand, GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import type {PilotSkillCommand} from "../../../src/command/pilot-skill";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {progress} from "../../../src/game/progress";
 import {exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot} from "../../snap-shot";
 

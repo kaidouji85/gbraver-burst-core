@@ -1,10 +1,10 @@
 // @flow
 
+import type {Player} from "../../player/player";
+import type {GameStateX} from "../../state/game-state";
 import {createOpenPlayerState} from "../../state/player-state";
 import {getFirstTurnPlayer} from "./first-turn-payer";
-import type {GameStateX} from "../../state/game-state";
 import type {StartGame} from "./start-game";
-import type {Player} from "../../player/player";
 
 /**
  * プレイヤー情報を受け取り、初期ゲームステートを生成する

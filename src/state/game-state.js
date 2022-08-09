@@ -1,7 +1,7 @@
 // @flow
-import type {PlayerState} from "./player-state";
-import type {PlayerId} from "../player/player";
 import type {Effect} from "../effect";
+import type {PlayerId} from "../player/player";
+import type {PlayerState} from "./player-state";
 
 /**
  * ゲーム状態

@@ -1,10 +1,10 @@
 // @flow
 
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerId} from "../../player/player";
 import type {BatteryEnchantmentSkill} from "../../player/pilot";
-import type {PilotSkillEffectX} from "./pilot-skill-effect";
+import type {PlayerId} from "../../player/player";
+import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerState} from "../../state/player-state";
+import type {PilotSkillEffectX} from "./pilot-skill-effect";
 
 /**
  * パイロットスキル バッテリー増強

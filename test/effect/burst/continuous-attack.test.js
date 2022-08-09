@@ -1,10 +1,10 @@
 // @flow
 
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import type {ContinuousAttack} from "../../../src/player/burst";
 import {continuousAttack} from "../../../src/effect/burst/continuous-attack";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {ContinuousAttack} from "../../../src/player/burst";
 
 test('連続攻撃バーストが正しく適用できる', () => {
   const burstPlayer: PlayerState = {

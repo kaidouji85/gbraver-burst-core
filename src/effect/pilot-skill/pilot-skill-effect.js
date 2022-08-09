@@ -1,7 +1,7 @@
 // @flow
 
-import type {PlayerId} from "../../player/player";
 import type {PilotSkill} from "../../player/pilot";
+import type {PlayerId} from "../../player/player";
 
 /**
  * パイロットスキル発動

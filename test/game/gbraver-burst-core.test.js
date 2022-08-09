@@ -1,9 +1,9 @@
 // @flow
 import path from "path";
-import type {Player} from "../../src/player/player";
 import {EMPTY_ARMDOZER} from "../../src/empty/armdozer";
 import {EMPTY_PILOT} from "../../src/empty/pilot";
 import {restoreGbraverBurst, startGbraverBurst} from "../../src/game/gbraver-burst-core";
+import type {Player} from "../../src/player/player";
 import {exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot} from "../snap-shot";
 
 const PLAYER1: Player = {

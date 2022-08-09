@@ -1,9 +1,9 @@
 // @flow
 
 import type {PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {canContinuousActive} from "../../../src/effect/continuous-active";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 
 const continuousActivePlayer: PlayerState = {
   ...EMPTY_PLAYER_STATE,

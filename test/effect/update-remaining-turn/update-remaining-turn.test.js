@@ -1,10 +1,10 @@
 // @flow
 
+import {updateRemainingTurn} from "../../../src/effect/update-remaning-turn";
+import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {EMPTY_ARMDOZER_EFFECT} from "../../../src/empty/amrdozer-effect";
-import {updateRemainingTurn} from "../../../src/effect/update-remaning-turn";
 import type {PermanentEffect, TurnLimitEffect} from "../../../src/state/armdozer-effect";
 
 const permanent: PermanentEffect = {type: 'Permanent'};

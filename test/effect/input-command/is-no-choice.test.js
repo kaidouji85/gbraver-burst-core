@@ -1,8 +1,8 @@
 // @flow
 
-import {isNoChoice} from "../../../src/effect/input-command";
 import type {BatteryCommand, Command} from "../../../src";
 import type {QuickCommand} from "../../../src/command/command";
+import {isNoChoice} from "../../../src/effect/input-command";
 
 const BATTERY_COMMAND: BatteryCommand = {
   type: 'BATTERY_COMMAND',

@@ -1,11 +1,11 @@
 // @flow
 
 import type {RecoverBatterySkill} from "../../player/pilot";
-import type {PilotSkillEffectX} from "./pilot-skill-effect";
-import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
-import type {PlayerState} from "../../state/player-state";
 import type {ArmdozerState} from "../../state/armdozer-state";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {PlayerState} from "../../state/player-state";
+import type {PilotSkillEffectX} from "./pilot-skill-effect";
 
 /**
  * パイロットスキル バッテリー回復を発動する

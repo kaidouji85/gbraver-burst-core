@@ -1,7 +1,7 @@
 // @flow
 
-import {hasContinuousActive} from "../../../src/effect/continuous-active/has-continuous-active";
 import type {CorrectPower} from "../../../src";
+import {hasContinuousActive} from "../../../src/effect/continuous-active/has-continuous-active";
 
 const continuousActivePlayer = {
   type: 'ContinuousActivePlayer',

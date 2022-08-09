@@ -1,9 +1,9 @@
 // @flow
 
+import {batteryDeclaration} from "../../../src/effect/battery-declaration";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {batteryDeclaration} from "../../../src/effect/battery-declaration";
 
 test('バッテリー宣言が正しく処理される', () => {
   const attacker = {

@@ -1,6 +1,6 @@
 // @flow
-import type {ArmdozerState} from "../../state/armdozer-state";
 import type {BurstCommand} from "../../command/burst";
+import type {ArmdozerState} from "../../state/armdozer-state";
 
 /**
  * 使用可能なバーストコマンドを返す

@@ -1,9 +1,9 @@
 // @flow
 
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {damageDecrease} from "../../../src/effect/pilot-skill/damage-decrease";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {DamageDecreaseSkill} from "../../../src/player/pilot";
 
 test('ダメージ減少スキルが正しく発動できる', () => {
