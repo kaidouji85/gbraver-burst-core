@@ -1,6 +1,6 @@
 // @flow
-import type {BattleResult} from "./result/battle-result";
 import type {PlayerId} from "../../player/player";
+import type {BattleResult} from "./result/battle-result";
 
 /**
  * 戦闘

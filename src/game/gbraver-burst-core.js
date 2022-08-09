@@ -1,12 +1,12 @@
 // @flow
 
+import type {Player} from "../player/player";
 import type {GameState} from "../state/game-state";
 import type {PlayerCommand} from "./command/player-command";
-import {start} from "./start/start";
 import {progress} from "./progress";
-import {isDuplicatePlayers} from "./validation/is-duplicate-players";
-import type {Player} from "../player/player";
+import {start} from "./start/start";
 import {isAllPlayerEnteredCommand} from "./validation/is-all-player-entered-command";
+import {isDuplicatePlayers} from "./validation/is-duplicate-players";
 
 /** ゲームを再開するためのデータ */
 export type RestoreGbraverBurst = {

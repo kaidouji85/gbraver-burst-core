@@ -1,9 +1,9 @@
 // @flow
 
 import type {ArmdozerState} from "../../../src";
+import {calcRecoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {RecoverBatterySkill} from "../../../src/player/pilot";
-import {calcRecoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
 
 test('パイロットスキル バッテリー回復後のバッテリーが正しく計算できる', () => {
   const armdozer: ArmdozerState = {

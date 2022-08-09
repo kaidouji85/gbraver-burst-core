@@ -1,7 +1,7 @@
 // @flow
 
-import type {ArmdozerState} from "../../state/armdozer-state";
 import type {Burst} from "../../player/burst";
+import type {ArmdozerState} from "../../state/armdozer-state";
 
 /**
  * バーストで回復した後のバッテリー値を計算する

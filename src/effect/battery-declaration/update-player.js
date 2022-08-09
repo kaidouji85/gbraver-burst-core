@@ -1,7 +1,7 @@
 // @flow
 
-import type {PlayerState} from "../../state/player-state";
 import type {BatteryCommand} from "../../command/battery";
+import type {PlayerState} from "../../state/player-state";
 
 /**
  * プレイヤーの状態更新 バッテリー使用後

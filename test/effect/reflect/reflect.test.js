@@ -1,9 +1,9 @@
 // @flow
 
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import type {PlayerState} from "../../../src/state/player-state";
 import {reflect} from "../../../src/effect/reflect";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {PlayerState} from "../../../src/state/player-state";
 
 test('ダメージ反射を正しく適用できる', () => {
   const damagedPlayer: PlayerState = {

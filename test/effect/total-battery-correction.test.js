@@ -1,7 +1,7 @@
 // @flow
 
-import {EMPTY_ARMDOZER_EFFECT} from "../../src/empty/amrdozer-effect";
 import {totalBatteryCorrection} from "../../src/effect/battery-correction";
+import {EMPTY_ARMDOZER_EFFECT} from "../../src/empty/amrdozer-effect";
 
 test('バッテリー補正合計値が正しく取得できる', () => {
   const oneTurn = {type: 'TurnLimit', remainingTurn: 1};

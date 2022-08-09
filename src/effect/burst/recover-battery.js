@@ -1,11 +1,11 @@
 // @flow
 
-import type {PlayerState} from "../../state/player-state";
 import type {RecoverBattery} from "../../player/burst";
-import {burstRecoverBattery} from "./burst-recover-battery";
-import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
+import type {GameState, GameStateX} from "../../state/game-state";
+import type {PlayerState} from "../../state/player-state";
 import type {BurstEffect} from "./burst-effect";
+import {burstRecoverBattery} from "./burst-recover-battery";
 
 /**
  * バースト バッテリー回復

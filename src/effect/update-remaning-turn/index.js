@@ -1,8 +1,8 @@
 // @flow
 
+import type {GameState, GameStateX} from "../../state/game-state";
 import {isRemainArmdozerEffect, updateArmdozerEffect} from "./armdozer-effect";
 import type {EndArmdozerEffect, UpdateRemainingTurn} from "./update-remaining-turn";
-import type {GameState, GameStateX} from "../../state/game-state";
 
 /**
  * 効果継続ターン数を更新する

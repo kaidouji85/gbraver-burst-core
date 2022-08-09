@@ -1,10 +1,10 @@
 // @flow
 
-import type {GameState} from "../../../src/state/game-state";
 import {turnChange} from "../../../src/effect/turn-change";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {GameState} from "../../../src/state/game-state";
 
 test('ターン交代が正しく処理できる', () => {
   const attacker = {

@@ -1,9 +1,9 @@
 // @flow
-import type {GameState} from "../../state/game-state";
-import {upcastGameState} from "../../state/game-state";
 import {burst} from "../../effect/burst";
 import {inputCommand} from "../../effect/input-command";
 import {pilotSkill} from "../../effect/pilot-skill";
+import type {GameState} from "../../state/game-state";
+import {upcastGameState} from "../../state/game-state";
 import type {PlayerCommand} from "../command/player-command";
 import {startGameStateFlow} from "../game-state-flow";
 

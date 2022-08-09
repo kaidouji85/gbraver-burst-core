@@ -1,11 +1,11 @@
 // @flow
 
-import type {GameState} from "../../../src/state/game-state";
 import {battle} from "../../../src/effect/battle";
-import type {PlayerState} from "../../../src/state/player-state";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {GameState} from "../../../src/state/game-state";
+import type {PlayerState} from "../../../src/state/player-state";
 
 test('戦闘を実行した後の状態に正しく更新できる', () => {
   const attacker: PlayerState = {

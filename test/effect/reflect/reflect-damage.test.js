@@ -1,10 +1,10 @@
 // @flow
 
-import type {ReflectParam} from "../../../src/effect/reflect/reflect";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import type {PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {ReflectParam} from "../../../src/effect/reflect/reflect";
 import {reflectDamage} from "../../../src/effect/reflect/reflect";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 
 test('反射するダメージを正しく計算できる', () => {
   const reflect: ReflectParam = {

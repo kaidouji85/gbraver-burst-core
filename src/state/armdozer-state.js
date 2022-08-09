@@ -1,8 +1,8 @@
 // @flow
 
 import type {Armdozer, ArmdozerX} from "../player/armdozer";
-import type {ArmdozerEffect} from "./armdozer-effect";
 import type {Burst} from "../player/burst";
+import type {ArmdozerEffect} from "./armdozer-effect";
 
 /**
  * アームドーザ状態

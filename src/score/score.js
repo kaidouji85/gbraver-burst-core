@@ -1,8 +1,8 @@
 // @flow
-import type {GameState} from "../state/game-state";
 import type {PlayerId} from "../player/player";
-import {hitRate as getHitRate} from "./hit-rate";
+import type {GameState} from "../state/game-state";
 import {evasionRate as getEvasionRate} from "./evasion-rate";
+import {hitRate as getHitRate} from "./hit-rate";
 
 /** スコア */
 export type Score = {

@@ -1,10 +1,10 @@
 // @flow
 
-import type {GameState} from "../../state/game-state";
-import {effectActivationFlow, isEffectActivationFlow} from "./effect-activation-flow";
-import {battleFlow} from "./battle-flow";
-import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
 import type {BatteryCommand} from '../../command/battery';
+import type {GameState} from "../../state/game-state";
+import type {PlayerCommand, PlayerCommandX} from "../command/player-command";
+import {battleFlow} from "./battle-flow";
+import {effectActivationFlow, isEffectActivationFlow} from "./effect-activation-flow";
 
 /**
  * ゲームを進める

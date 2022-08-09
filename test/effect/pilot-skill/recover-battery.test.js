@@ -1,9 +1,9 @@
 // @flow
 
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {recoverBattery} from "../../../src/effect/pilot-skill/recover-battery";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {RecoverBatterySkill} from "../../../src/player/pilot";
 
 test('パイロットスキル バッテリー回復が正しく処理できる', () => {

@@ -1,12 +1,12 @@
 // @flow
 
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import type {GameState} from "../../../src";
 import {lightningBarrier} from "../../../src/effect/burst/lightning-barrier";
+import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
+import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import type {LightningBarrier} from "../../../src/player/burst";
 import type {PlayerState} from "../../../src/state/player-state";
-import type {GameState} from "../../../src";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 
 test('電撃バリアバーストの適用が正しくできる', () => {
   const burstPlayer: PlayerState = {

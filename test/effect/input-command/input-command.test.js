@@ -1,10 +1,10 @@
 // @flow
 
 import {inputCommand} from "../../../src/effect/input-command";
-import type {GameState} from "../../../src/state/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
 import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {GameState} from "../../../src/state/game-state";
 
 test('戦闘後のコマンド入力フェイズが正しく適用される', () => {
   const player01 =  {

@@ -1,11 +1,11 @@
 // @flow
 
 import type {GameState, PlayerState} from "../../../src";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import type {RecoverBatterySkill} from "../../../src/player/pilot";
+import {pilotSkill} from "../../../src/effect/pilot-skill";
 import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
 import {EMPTY_PILOT} from "../../../src/empty/pilot";
-import {pilotSkill} from "../../../src/effect/pilot-skill";
+import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type {RecoverBatterySkill} from "../../../src/player/pilot";
 
 test('パイロットスキルを正しく処理できる', () => {
   const skill: RecoverBatterySkill = {

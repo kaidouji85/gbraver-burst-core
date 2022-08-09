@@ -1,11 +1,11 @@
 // @flow
 
 import type {ContinuousAttack} from "../../player/burst";
-import {burstRecoverBattery} from "./burst-recover-battery";
-import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerId} from "../../player/player";
-import type {BurstEffect} from "./burst-effect";
+import type {GameState, GameStateX} from "../../state/game-state";
 import type {PlayerState} from "../../state/player-state";
+import type {BurstEffect} from "./burst-effect";
+import {burstRecoverBattery} from "./burst-recover-battery";
 
 /**
  * 連続攻撃
