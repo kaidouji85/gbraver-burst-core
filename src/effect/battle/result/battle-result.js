@@ -33,7 +33,7 @@ export function battleResult(attacker: PlayerState, attackerBattery: number, def
   }
 
   if ((defenderBattery < attackerBattery) && defenderBattery === 0) {
-    return criticalHit(attacker, attackerBattery, defender, defenderBattery);
+    return criticalHit();
   }
 
   if (defenderBattery < attackerBattery) {
