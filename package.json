@@ -1,6 +1,6 @@
 {
   "name": "gbraver-burst-core",
-  "version": "1.12.2",
+  "version": "1.13.0",
   "description": "braver burst core",
   "engines": {
     "node": "^16.17.0"
