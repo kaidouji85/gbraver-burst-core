@@ -9,9 +9,6 @@ export const ArmDozerIds = {
   WING_DOZER: 'WING_DOZER',
 };
 
-/** @deprecated アームドーザIDマスタの旧名称 */
-export const ArmDozerIdList = ArmDozerIds;
-
 /** アームドーザのマスターデータ */
 export const ArmDozers: Armdozer[] = [
   {

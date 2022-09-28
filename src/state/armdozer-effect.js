@@ -24,7 +24,6 @@ export type ArmdozerEffect = EmptyArmdozerEffect
   | HalveCorrectPower
   | TryReflect
   | ContinuousActivePlayer
-  | DamageDecrease
   | BatteryCorrection
   | DamageHalved;
 
@@ -70,17 +69,6 @@ export type TryReflect = {
 
   /** 反射のダメージエフェクト */
   effect: ReflectDamageEffect,
-
-  /** エフェクト有効期間 */
-  period: EffectPeriod,
-};
-
-/** @deprecated ダメージ減少 */
-export type DamageDecrease= {
-  type: 'DamageDecrease',
-
-  /** 減少されるダメージ値 */
-  decrease: number;
 
   /** エフェクト有効期間 */
   period: EffectPeriod,
