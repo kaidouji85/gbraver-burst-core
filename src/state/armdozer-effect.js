@@ -26,7 +26,6 @@ export type ArmdozerEffect = EmptyArmdozerEffect
   | ContinuousActivePlayer
   | DamageDecrease
   | BatteryCorrection
-  | IgnoreBatteryCorrection
   | DamageHalved;
 
 /**
@@ -76,7 +75,7 @@ export type TryReflect = {
   period: EffectPeriod,
 };
 
-/** ダメージ減少 */
+/** @deprecated ダメージ減少 */
 export type DamageDecrease= {
   type: 'DamageDecrease',
 
@@ -106,15 +105,6 @@ export type BatteryCorrection = {
   /** バッテリー補正値 */
   batteryCorrection: number,
 
-  /** エフェクト有効期間 */
-  period: EffectPeriod,
-};
-
-/**
- * バッテリー補正無効
- */
-export type IgnoreBatteryCorrection = {
-  type: 'IgnoreBatteryCorrection',
   /** エフェクト有効期間 */
   period: EffectPeriod,
 };
