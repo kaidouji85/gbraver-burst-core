@@ -9,7 +9,7 @@ import type {RecoverBatterySkill} from "../../../src/player/pilot";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
-  shouldUpdateSnapShot,
+  shouldUpdateSnapShot
 } from "../../snap-shot";
 
 test('パイロットスキルを正しく適用できる', () => {
