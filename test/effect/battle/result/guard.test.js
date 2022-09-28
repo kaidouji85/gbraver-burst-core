@@ -10,56 +10,35 @@ import {EMPTY_PLAYER_STATE} from "../../../../src/empty/player";
 import type {PlayerState} from "../../../../src/state/player-state";
 
 test('ガードは通常ヒット半分のダメージを受ける', () => {
-  const attacker: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-      power: 2000,
-    }
-  };
-  const defender: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'defender',
-    armdozer: {...EMPTY_ARMDOZER_STATE}
-  };
+    armdozer: {...EMPTY_ARMDOZER_STATE, power: 2000}};
+  const defender: PlayerState = {...EMPTY_PLAYER_STATE, playerId: 'defender'};
   expect(guard(attacker, 3, defender, 3))
     .toEqual({name: 'Guard', damage: 1000});
 });
 
 test('攻撃補正が正しく適用される', () => {
-  const attacker: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
+    armdozer: {...EMPTY_ARMDOZER_STATE,
       power: 2000,
       effects: [{...EMPTY_CORRECT_POWER, power: 1000}]
     }
   };
-  const defender: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: 'defender',
-    armdozer: {...EMPTY_ARMDOZER_STATE}
-  };
+  const defender: PlayerState = {...EMPTY_PLAYER_STATE, playerId: 'defender'};
   expect(guard(attacker, 3, defender, 3))
     .toEqual({name: 'Guard', damage: 1500});
 });
 
 test('ダメージ減少が正しく適用される', () => {
-  const attacker: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-      power: 2000,
-    }
+    armdozer: {...EMPTY_ARMDOZER_STATE, power: 2000}
   };
-  const defender: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const defender: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'defender',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
+    armdozer: {...EMPTY_ARMDOZER_STATE,
       effects: [{...EMPTY_DAMAGE_DECREASE, decrease: 600}]
     }
   };
@@ -68,47 +47,30 @@ test('ダメージ減少が正しく適用される', () => {
 });
 
 test('ダメージ半減が正しく適用される', () => {
-  const attacker: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-      power: 2000,
-    }
+    armdozer: {...EMPTY_ARMDOZER_STATE, power: 2000}
   };
-  const defender: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const defender: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'defender',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-      effects: [EMPTY_DAMAGE_HALVED]
-    }
+    armdozer: {...EMPTY_ARMDOZER_STATE, effects: [EMPTY_DAMAGE_HALVED]}
   };
   expect(guard(attacker, 3, defender, 3))
     .toEqual({name: 'Guard', damage: 500});
 });
 
 test('攻撃補正 -> ダメージ減少 -> ダメージ半減 -> ガードによるダメージ半減、の順番で計算される', () => {
-  const attacker: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
+    armdozer: {...EMPTY_ARMDOZER_STATE,
       power: 2000,
-      effects: [
-        {...EMPTY_CORRECT_POWER, power: 1000}
-      ]
+      effects: [{...EMPTY_CORRECT_POWER, power: 1000}]
     }
   };
-  const defender: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
+  const defender: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'defender',
-    armdozer: {
-      ...EMPTY_ARMDOZER_STATE,
-      effects: [
-        {...EMPTY_DAMAGE_DECREASE, decrease: 600},
-        EMPTY_DAMAGE_HALVED,
-      ]
+    armdozer: {...EMPTY_ARMDOZER_STATE,
+      effects: [{...EMPTY_DAMAGE_DECREASE, decrease: 600}, EMPTY_DAMAGE_HALVED]
     }
   };
   expect(guard(attacker, 3, defender, 3))
