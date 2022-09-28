@@ -59,5 +59,5 @@ test('攻撃補正 -> ダメージ半減の順番で計算する', () => {
     }
   };
   expect(normalHit(attacker, 5, defender, 2))
-    .toEqual({name: 'NormalHit', damage: 1300});
+    .toEqual({name: 'NormalHit', damage: 1600});
 });

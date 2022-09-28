@@ -58,5 +58,5 @@ test('攻撃補正 -> ダメージ半減 -> ガードによるダメージ半減
     }
   };
   expect(guard(attacker, 3, defender, 3))
-    .toEqual({name: 'Guard', damage: 600});
+    .toEqual({name: 'Guard', damage: 750});
 });
