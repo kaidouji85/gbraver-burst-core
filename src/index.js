@@ -4,7 +4,6 @@ export {startGbraverBurst, restoreGbraverBurst} from './game/gbraver-burst-core'
 export {ArmDozerIdList, ArmDozerIds, ArmDozers} from './master/armdozers';
 export {PilotIds, Pilots} from './master/pilots';
 export {isPlayerDeath} from './state/player-state';
-export {totalDamageDecrease} from './effect/damage-decrease';
 export {totalBatteryCorrection, correctedBattery} from './effect/battery-correction';
 export {correctPower, hasHalveCorrectPower, totalCorrectPower} from './effect/correct-power';
 export {battleResult} from './effect/battle/result/battle-result';
@@ -14,20 +13,20 @@ export {hasContinuousActive} from './effect/continuous-active/has-continuous-act
 export {EMPTY_GAME_STATE} from './empty/game-state';
 export {EMPTY_PLAYER, EMPTY_PLAYER_STATE} from './empty/player';
 export {EMPTY_BURST, EMPTY_ARMDOZER, EMPTY_ARMDOZER_STATE} from './empty/armdozer';
-export {EMPTY_ARMDOZER_EFFECT, EMPTY_CORRECT_POWER, EMPTY_DAMAGE_DECREASE} from './empty/amrdozer-effect';
+export {EMPTY_ARMDOZER_EFFECT, EMPTY_CORRECT_POWER} from './empty/amrdozer-effect';
 export {EMPTY_PILOT, EMPTY_PILOT_STATE} from './empty/pilot';
 export {EMPTY_BATTLE} from './empty/battle';
 
 export type {Player, PlayerX, PlayerId} from './player/player';
 export type {ArmDozerId, Armdozer, ArmdozerX} from './player/armdozer';
 export type {Burst, RecoverBattery, BuffPower, LightningBarrier, ContinuousAttack} from './player/burst';
-export type {PilotId, PilotSkill, RecoverBatterySkill, BuffPowerSkill, DamageDecreaseSkill, BatteryEnchantmentSkill,
+export type {PilotId, PilotSkill, RecoverBatterySkill, BuffPowerSkill, BatteryEnchantmentSkill,
   DamageHalvedSkill, Pilot, PilotX} from './player/pilot';
 
 export type {GameState, GameStateX} from './state/game-state';
 export type {PlayerState, PlayerStateX} from './state/player-state';
 export type {ArmdozerState, ArmdozerStateX} from './state/armdozer-state';
-export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer, DamageDecrease,
+export type {ArmdozerEffect, EmptyArmdozerEffect, CorrectPower, TryReflect, ContinuousActivePlayer,
   BatteryCorrection, DamageHalved} from './state/armdozer-effect';
 export type {PilotStateX, PilotState} from './state/pilot-state';
 
