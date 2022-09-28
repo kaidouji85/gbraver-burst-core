@@ -1,11 +1,6 @@
 // @flow
 
-import type {
-  CorrectPower,
-  DamageDecrease,
-  DamageHalved,
-  EmptyArmdozerEffect,
-} from "../state/armdozer-effect";
+import type {CorrectPower, DamageDecrease, DamageHalved, EmptyArmdozerEffect,} from "../state/armdozer-effect";
 
 /** 空のアームドーザエフェクト */
 export const EMPTY_ARMDOZER_EFFECT: EmptyArmdozerEffect = {
