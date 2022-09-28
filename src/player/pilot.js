@@ -11,7 +11,8 @@ export type PilotId = string;
 export type PilotSkill = RecoverBatterySkill
   | BuffPowerSkill
   | DamageDecreaseSkill
-  | BatteryEnchantmentSkill;
+  | BatteryEnchantmentSkill
+  | DamageHalvedSkill;
 
 /**
  * パイロットスキル バッテリー回復
@@ -50,6 +51,15 @@ export type BatteryEnchantmentSkill = {
   type: 'BatteryEnchantmentSkill',
   /** バッテリー増強値 */
   batteryEnchantment: number,
+  /** 継続ターン数 */
+  duration: number
+};
+
+/**
+ * ダメージ半減スキル
+ */
+export type DamageHalvedSkill = {
+  type: 'DamageHalvedSkill',
   /** 継続ターン数 */
   duration: number
 };

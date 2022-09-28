@@ -26,7 +26,8 @@ export type ArmdozerEffect = EmptyArmdozerEffect
   | ContinuousActivePlayer
   | DamageDecrease
   | BatteryCorrection
-  | IgnoreBatteryCorrection;
+  | IgnoreBatteryCorrection
+  | DamageHalved;
 
 /**
  * 何もしない効果
@@ -114,6 +115,15 @@ export type BatteryCorrection = {
  */
 export type IgnoreBatteryCorrection = {
   type: 'IgnoreBatteryCorrection',
+  /** エフェクト有効期間 */
+  period: EffectPeriod,
+};
+
+/**
+ * ダメージ半減
+ */
+export type DamageHalved = {
+  type: 'DamageHalved',
   /** エフェクト有効期間 */
   period: EffectPeriod,
 };
