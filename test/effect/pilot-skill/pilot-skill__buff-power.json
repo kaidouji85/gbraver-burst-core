@@ -41,17 +41,27 @@
           "type": "RecoverBattery",
           "recoverBattery": 0
         },
-        "battery": 4,
+        "battery": 5,
         "hp": 3000,
-        "effects": [],
+        "effects": [
+          {
+            "type": "CorrectPower",
+            "power": 600,
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 2
+            }
+          }
+        ],
         "enableBurst": true
       },
       "pilot": {
         "id": "EMPTY_PLAYER",
         "name": "名無し",
         "skill": {
-          "type": "RecoverBatterySkill",
-          "recoverBattery": 2
+          "type": "BuffPowerSkill",
+          "buffPower": 600,
+          "duration": 2
         },
         "enableSkill": false
       }
@@ -62,8 +72,9 @@
     "name": "PilotSkillEffect",
     "invokerId": "invoker",
     "skill": {
-      "type": "RecoverBatterySkill",
-      "recoverBattery": 2
+      "type": "BuffPowerSkill",
+      "buffPower": 600,
+      "duration": 2
     }
   }
 }
