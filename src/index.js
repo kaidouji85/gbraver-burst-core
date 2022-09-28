@@ -1,7 +1,7 @@
 // @flow
 export type {GbraverBurstCore, RestoreGbraverBurst} from './game/gbraver-burst-core';
 export {startGbraverBurst, restoreGbraverBurst} from './game/gbraver-burst-core';
-export {ArmDozerIdList, ArmDozerIds, ArmDozers} from './master/armdozers';
+export {ArmDozerIds, ArmDozers} from './master/armdozers';
 export {PilotIds, Pilots} from './master/pilots';
 export {isPlayerDeath} from './state/player-state';
 export {totalBatteryCorrection, correctedBattery} from './effect/battery-correction';
