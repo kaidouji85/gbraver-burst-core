@@ -12,7 +12,7 @@ import {
   shouldUpdateSnapShot,
 } from "../../snap-shot";
 
-test('バッテリー回復スキルを正しく処理できる', () => {
+test('パイロットスキルを正しく適用できる', () => {
   const skill: RecoverBatterySkill = {type: 'RecoverBatterySkill', recoverBattery: 2};
   const invoker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'invoker',
