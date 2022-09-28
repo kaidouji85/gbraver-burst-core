@@ -12,7 +12,7 @@ import type {PilotSkillEffectX} from "./pilot-skill-effect";
  * @param lastState 最新のステート
  * @param invokerId スキル発動者のID
  * @param skill スキル内容
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @return 更新結果
  */
 export function damageDecrease(lastState: GameState, invokerId: PlayerId, skill: DamageDecreaseSkill): GameStateX<PilotSkillEffectX<DamageDecreaseSkill>> {
   const invoker = lastState.players.find(v => v.playerId === invokerId);
