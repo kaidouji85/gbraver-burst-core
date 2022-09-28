@@ -1,9 +1,9 @@
 // @flow
-
 import type {
   BatteryEnchantmentSkill,
   BuffPowerSkill,
   DamageDecreaseSkill,
+  DamageHalvedSkill, 
   PilotSkill,
   RecoverBatterySkill
 } from "../../player/pilot";
@@ -12,19 +12,18 @@ import type {GameState, GameStateX} from "../../state/game-state";
 import {batteryEnchantment} from "./battery-enchantment";
 import {buffPower} from "./buff-power";
 import {damageDecrease} from "./damage-decrease";
+import {damageHalvedSkill} from "./damage-halved-skill";
 import type {PilotSkillEffect, PilotSkillEffectX} from "./pilot-skill-effect";
 import {recoverBattery} from "./recover-battery";
 
 /**
- * パイロットスキルを発動する
+ * パイロットスキル発動ステートにアップキャストする
  *
- * @param lastState 最新の状態
- * @param invokerId パイロットスキルを発動するプレイヤー
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @param origin キャスト前
+ * @return キャスト結果
  */
-export function pilotSkill(lastState: GameState, invokerId: PlayerId): GameStateX<PilotSkillEffect> {
-  const donePilotSkill = pilotSkillEffect(lastState, invokerId);
-  return disablePilotSkill(donePilotSkill);
+ function upcast<X: PilotSkill>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
+  return ((origin: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof origin.effect.skill>>);
 }
 
 /**
@@ -42,22 +41,27 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameStateX
 
   if (invoker.pilot.skill.type === 'RecoverBatterySkill') {
     const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
-    return up(recoverBattery(lastState, invokerId, castedSkill));
+    return upcast(recoverBattery(lastState, invokerId, castedSkill));
   }
 
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
     const castedSkill: BuffPowerSkill = invoker.pilot.skill;
-    return up(buffPower(lastState, invokerId, castedSkill));
+    return upcast(buffPower(lastState, invokerId, castedSkill));
   }
 
   if (invoker.pilot.skill.type === 'DamageDecreaseSkill') {
     const castedSkill: DamageDecreaseSkill = invoker.pilot.skill;
-    return up(damageDecrease(lastState, invokerId, castedSkill));
+    return upcast(damageDecrease(lastState, invokerId, castedSkill));
   }
 
   if (invoker.pilot.skill.type === 'BatteryEnchantmentSkill') {
     const castedSkill: BatteryEnchantmentSkill = invoker.pilot.skill;
-    return up(batteryEnchantment(lastState, invokerId, castedSkill));
+    return upcast(batteryEnchantment(lastState, invokerId, castedSkill));
+  }
+
+  if (invoker.pilot.skill.type === 'DamageHalvedSkill') {
+    const castedSkill: DamageHalvedSkill = invoker.pilot.skill;
+    return upcast(damageHalvedSkill(lastState, invokerId, castedSkill));
   }
 
   throw new Error('not found pilot skill');
@@ -91,11 +95,13 @@ function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): GameStateX<
 }
 
 /**
- * パイロットスキル発動ステートにアップキャストする
+ * パイロットスキルを発動する
  *
- * @param origin キャスト前
- * @return キャスト結果
+ * @param lastState 最新の状態
+ * @param invokerId パイロットスキルを発動するプレイヤー
+ * @return 更新結果、実行不可能な場合はnullを返す
  */
-function up<X: PilotSkill>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
-  return ((origin: any): GameStateX<PilotSkillEffectX<PilotSkill | typeof origin.effect.skill>>);
+ export function pilotSkill(lastState: GameState, invokerId: PlayerId): GameStateX<PilotSkillEffect> {
+  const donePilotSkill = pilotSkillEffect(lastState, invokerId);
+  return disablePilotSkill(donePilotSkill);
 }
