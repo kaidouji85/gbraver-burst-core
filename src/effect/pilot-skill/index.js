@@ -3,7 +3,7 @@ import type {
   BatteryEnchantmentSkill,
   BuffPowerSkill,
   DamageDecreaseSkill,
-  DamageHalvedSkill, 
+  DamageHalvedSkill,
   PilotSkill,
   RecoverBatterySkill
 } from "../../player/pilot";

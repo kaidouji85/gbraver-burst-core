@@ -1,7 +1,7 @@
 // @flow
 import type {PlayerState} from "../../../state/player-state";
 import {totalDamageDecrease} from "../../damage-decrease";
-import { hasDamageHalved } from "../../damage-halved";
+import {hasDamageHalved} from "../../damage-halved";
 import {toMinDamage} from "../../to-min-damage";
 import {normalHitDamage} from "../damage/damage";
 
