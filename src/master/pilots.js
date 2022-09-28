@@ -1,5 +1,4 @@
 // @flow
-
 import type {Pilot} from "../player/pilot";
 
 /**
@@ -37,8 +36,7 @@ export const Pilots: Pilot[] = [
     id: PilotIds.RAITO,
     name: 'ライト',
     skill: {
-      type: 'DamageDecreaseSkill',
-      decrease: 1000,
+      type: 'DamageHalvedSkill',
       duration: 1,
     }
   },

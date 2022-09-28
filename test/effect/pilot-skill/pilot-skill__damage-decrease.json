@@ -1,0 +1,80 @@
+{
+  "players": [
+    {
+      "playerId": "other",
+      "armdozer": {
+        "id": "id",
+        "name": "name",
+        "maxHp": 3000,
+        "maxBattery": 5,
+        "power": 2000,
+        "speed": 2000,
+        "burst": {
+          "type": "RecoverBattery",
+          "recoverBattery": 0
+        },
+        "battery": 5,
+        "hp": 3000,
+        "effects": [],
+        "enableBurst": true
+      },
+      "pilot": {
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "type": "RecoverBatterySkill",
+          "recoverBattery": 2
+        },
+        "enableSkill": true
+      }
+    },
+    {
+      "playerId": "invoker",
+      "armdozer": {
+        "id": "id",
+        "name": "name",
+        "maxHp": 3000,
+        "maxBattery": 5,
+        "power": 2000,
+        "speed": 2000,
+        "burst": {
+          "type": "RecoverBattery",
+          "recoverBattery": 0
+        },
+        "battery": 5,
+        "hp": 3000,
+        "effects": [
+          {
+            "type": "DamageDecrease",
+            "decrease": 600,
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 2
+            }
+          }
+        ],
+        "enableBurst": true
+      },
+      "pilot": {
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "type": "DamageDecreaseSkill",
+          "decrease": 600,
+          "duration": 2
+        },
+        "enableSkill": false
+      }
+    }
+  ],
+  "activePlayerId": "invoker",
+  "effect": {
+    "name": "PilotSkillEffect",
+    "invokerId": "invoker",
+    "skill": {
+      "type": "DamageDecreaseSkill",
+      "decrease": 600,
+      "duration": 2
+    }
+  }
+}

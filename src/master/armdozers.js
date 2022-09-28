@@ -2,17 +2,20 @@
 import type {Armdozer} from '../player/armdozer';
 
 /** アームドーザIDマスタ */
-export const ArmDozerIdList = {
+export const ArmDozerIds = {
   SHIN_BRAVER: 'SHIN_BRAVER',
   NEO_LANDOZER: 'NEO_LANDOZER',
   LIGHTNING_DOZER: 'LIGHTNING_DOZER',
   WING_DOZER: 'WING_DOZER',
 };
 
+/** @deprecated アームドーザIDマスタの旧名称 */
+export const ArmDozerIdList = ArmDozerIds;
+
 /** アームドーザのマスターデータ */
 export const ArmDozers: Armdozer[] = [
   {
-    id: ArmDozerIdList.SHIN_BRAVER,
+    id: ArmDozerIds.SHIN_BRAVER,
     name: 'シンブレイバー',
     maxHp: 3100,
     maxBattery: 5,
@@ -24,7 +27,7 @@ export const ArmDozers: Armdozer[] = [
     },
   },
   {
-    id: ArmDozerIdList.NEO_LANDOZER,
+    id: ArmDozerIds.NEO_LANDOZER,
     name: 'ネオランドーザ',
     maxHp: 3300,
     maxBattery: 5,
@@ -38,7 +41,7 @@ export const ArmDozers: Armdozer[] = [
     }
   },
   {
-    id: ArmDozerIdList.LIGHTNING_DOZER,
+    id: ArmDozerIds.LIGHTNING_DOZER,
     name: 'ライトニングドーザ',
     maxHp: 3400,
     maxBattery: 5,
@@ -52,7 +55,7 @@ export const ArmDozers: Armdozer[] = [
     }
   },
   {
-    id: ArmDozerIdList.WING_DOZER,
+    id: ArmDozerIds.WING_DOZER,
     name: 'ウィングドーザ',
     maxHp: 2700,
     maxBattery: 5,
