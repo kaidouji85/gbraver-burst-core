@@ -1,6 +1,6 @@
 // @flow
 
-import type {CorrectPower, DamageDecrease, DamageHalved, EmptyArmdozerEffect,} from "../state/armdozer-effect";
+import type {CorrectPower, DamageHalved, EmptyArmdozerEffect,} from "../state/armdozer-effect";
 
 /** 空のアームドーザエフェクト */
 export const EMPTY_ARMDOZER_EFFECT: EmptyArmdozerEffect = {
@@ -18,16 +18,6 @@ export const EMPTY_CORRECT_POWER: CorrectPower = {
   period: {
     type: 'TurnLimit',
     remainingTurn: 1,
-  }
-};
-
-/** 空のダメージ減少 */
-export const EMPTY_DAMAGE_DECREASE: DamageDecrease = {
-  type: 'DamageDecrease',
-  decrease: 0,
-  period: {
-    type: 'TurnLimit',
-    remainingTurn: 1
   }
 };
 

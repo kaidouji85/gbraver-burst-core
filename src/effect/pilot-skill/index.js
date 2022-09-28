@@ -2,7 +2,6 @@
 import type {
   BatteryEnchantmentSkill,
   BuffPowerSkill,
-  DamageDecreaseSkill,
   DamageHalvedSkill,
   PilotSkill,
   RecoverBatterySkill
@@ -11,7 +10,6 @@ import type {PlayerId} from "../../player/player";
 import type {GameState, GameStateX} from "../../state/game-state";
 import {batteryEnchantment} from "./battery-enchantment";
 import {buffPower} from "./buff-power";
-import {damageDecrease} from "./damage-decrease";
 import {damageHalvedSkill} from "./damage-halved-skill";
 import type {PilotSkillEffect, PilotSkillEffectX} from "./pilot-skill-effect";
 import {recoverBattery} from "./recover-battery";
@@ -47,11 +45,6 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameStateX
   if (invoker.pilot.skill.type === 'BuffPowerSkill') {
     const castedSkill: BuffPowerSkill = invoker.pilot.skill;
     return upcast(buffPower(lastState, invokerId, castedSkill));
-  }
-
-  if (invoker.pilot.skill.type === 'DamageDecreaseSkill') {
-    const castedSkill: DamageDecreaseSkill = invoker.pilot.skill;
-    return upcast(damageDecrease(lastState, invokerId, castedSkill));
   }
 
   if (invoker.pilot.skill.type === 'BatteryEnchantmentSkill') {

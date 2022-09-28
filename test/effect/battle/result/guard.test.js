@@ -2,7 +2,6 @@
 import {guard} from "../../../../src/effect/battle/result/guard";
 import {
   EMPTY_CORRECT_POWER,
-  EMPTY_DAMAGE_DECREASE,
   EMPTY_DAMAGE_HALVED,
 } from "../../../../src/empty/amrdozer-effect";
 import {EMPTY_ARMDOZER_STATE} from "../../../../src/empty/armdozer";
@@ -31,21 +30,6 @@ test('攻撃補正が正しく適用される', () => {
     .toEqual({name: 'Guard', damage: 1500});
 });
 
-test('ダメージ減少が正しく適用される', () => {
-  const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
-    playerId: 'attacker',
-    armdozer: {...EMPTY_ARMDOZER_STATE, power: 2000}
-  };
-  const defender: PlayerState = {...EMPTY_PLAYER_STATE,
-    playerId: 'defender',
-    armdozer: {...EMPTY_ARMDOZER_STATE,
-      effects: [{...EMPTY_DAMAGE_DECREASE, decrease: 600}]
-    }
-  };
-  expect(guard(attacker, 3, defender, 3))
-    .toEqual({name: 'Guard', damage: 700});
-});
-
 test('ダメージ半減が正しく適用される', () => {
   const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
@@ -59,7 +43,7 @@ test('ダメージ半減が正しく適用される', () => {
     .toEqual({name: 'Guard', damage: 500});
 });
 
-test('攻撃補正 -> ダメージ減少 -> ダメージ半減 -> ガードによるダメージ半減、の順番で計算される', () => {
+test('攻撃補正 -> ダメージ半減 -> ガードによるダメージ半減、の順番で計算される', () => {
   const attacker: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'attacker',
     armdozer: {...EMPTY_ARMDOZER_STATE,
@@ -70,9 +54,9 @@ test('攻撃補正 -> ダメージ減少 -> ダメージ半減 -> ガードに�
   const defender: PlayerState = {...EMPTY_PLAYER_STATE,
     playerId: 'defender',
     armdozer: {...EMPTY_ARMDOZER_STATE,
-      effects: [{...EMPTY_DAMAGE_DECREASE, decrease: 600}, EMPTY_DAMAGE_HALVED]
+      effects: [EMPTY_DAMAGE_HALVED]
     }
   };
   expect(guard(attacker, 3, defender, 3))
-    .toEqual({name: 'Guard', damage: 600});
+    .toEqual({name: 'Guard', damage: 750});
 });
