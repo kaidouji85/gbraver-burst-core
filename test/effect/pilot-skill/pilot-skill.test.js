@@ -10,7 +10,7 @@ import type {
   BuffPowerSkill,
   DamageDecreaseSkill,
   DamageHalvedSkill,
-  RecoverBatterySkill,
+  RecoverBatterySkill
 } from "../../../src/player/pilot";
 import {
   exportSnapShotJSON,
