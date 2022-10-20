@@ -1,7 +1,7 @@
 // @flow
-import type {Effect} from "../effect";
-import type {PlayerId} from "../player/player";
-import type {PlayerState} from "./player-state";
+import type { Effect } from "../effect";
+import type { PlayerId } from "../player/player";
+import type { PlayerState } from "./player-state";
 
 /**
  * ゲーム状態
@@ -29,6 +29,8 @@ export type GameState = GameStateX<Effect>;
  * @param origin キャスト元
  * @return キャスト結果
  */
-export function upcastGameState<X>(origin: GameStateX<X>): GameStateX<Effect | X> {
+export function upcastGameState<X>(
+  origin: GameStateX<X>
+): GameStateX<Effect | X> {
   return ((origin: any): GameStateX<Effect | X>);
 }

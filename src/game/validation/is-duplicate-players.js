@@ -1,6 +1,6 @@
 // @flow
 
-import type {Player} from "../../player/player";
+import type { Player } from "../../player/player";
 
 /**
  * プレイヤーが重複しているか否かを判定する

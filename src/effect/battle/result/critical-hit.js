@@ -2,8 +2,8 @@
 
 /** クリティカルヒット */
 export type CriticalHit = {
-  name: 'CriticalHit',
-  damage: number
+  name: "CriticalHit",
+  damage: number,
 };
 
 /**
@@ -12,5 +12,5 @@ export type CriticalHit = {
  * @return クリティカルヒットの戦闘結果
  */
 export function criticalHit(): CriticalHit {
-  return {name: 'CriticalHit', damage: 9999};
+  return { name: "CriticalHit", damage: 9999 };
 }

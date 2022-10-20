@@ -1,6 +1,5 @@
 // @flow
 
-
 /** ターンチェンジの際に回復するバッテリー */
 export const BATTERY_RECOVERY_VALUE = 3;
 
@@ -12,6 +11,10 @@ export const BATTERY_RECOVERY_VALUE = 3;
  * @param recoveryValue 回復量
  * @return 回復後のバッテリー
  */
-export function turnChangeRecoverBattery(battery: number, maxBattery: number, recoveryValue: number): number {
+export function turnChangeRecoverBattery(
+  battery: number,
+  maxBattery: number,
+  recoveryValue: number
+): number {
   return Math.min(battery + recoveryValue, maxBattery);
 }

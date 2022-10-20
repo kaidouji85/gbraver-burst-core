@@ -2,9 +2,9 @@
 
 /** フェイント */
 export type Feint = {
-  name: 'Feint',
-  isDefenderMoved: boolean
-}
+  name: "Feint",
+  isDefenderMoved: boolean,
+};
 
 /**
  * フェイントの戦闘結果を生成する
@@ -14,7 +14,7 @@ export type Feint = {
  */
 export function feint(defenderBattery: number): Feint {
   return {
-    name: 'Feint',
-    isDefenderMoved: 0 < defenderBattery
+    name: "Feint",
+    isDefenderMoved: 0 < defenderBattery,
   };
 }

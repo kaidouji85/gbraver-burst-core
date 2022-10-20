@@ -1,11 +1,11 @@
 // @flow
 
-import type {RecoverBattery} from "../../player/burst";
-import type {PlayerId} from "../../player/player";
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
-import type {BurstEffect} from "./burst-effect";
-import {burstRecoverBattery} from "./burst-recover-battery";
+import type { RecoverBattery } from "../../player/burst";
+import type { PlayerId } from "../../player/player";
+import type { GameState, GameStateX } from "../../state/game-state";
+import type { PlayerState } from "../../state/player-state";
+import type { BurstEffect } from "./burst-effect";
+import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
  * バースト バッテリー回復
@@ -15,10 +15,16 @@ import {burstRecoverBattery} from "./burst-recover-battery";
  * @param burst バースト効果
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, burst: RecoverBattery): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+export function recoverBattery(
+  lastState: GameState,
+  burstPlayerId: PlayerId,
+  burst: RecoverBattery
+): GameStateX<BurstEffect> {
+  const burstPlayer = lastState.players.find(
+    (v) => v.playerId === burstPlayerId
+  );
   if (!burstPlayer) {
-    throw new Error('not found burst player');
+    throw new Error("not found burst player");
   }
 
   const updatedBurstPlayer: PlayerState = {
@@ -26,18 +32,19 @@ export function recoverBattery(lastState: GameState, burstPlayerId: PlayerId, bu
     armdozer: {
       ...burstPlayer.armdozer,
       battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-    }
+    },
   };
-  const updatedPlayers = lastState.players
-    .map(player => player.playerId === burstPlayerId ? updatedBurstPlayer : player);
+  const updatedPlayers = lastState.players.map((player) =>
+    player.playerId === burstPlayerId ? updatedBurstPlayer : player
+  );
   const effect = {
-    name: 'BurstEffect',
+    name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst: burst,
   };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: effect
+    effect: effect,
   };
 }

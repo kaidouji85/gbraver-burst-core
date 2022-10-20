@@ -2,7 +2,7 @@
 import * as fs from "fs";
 
 /** JSONスナップショットのエンコード */
-const encode = 'utf-8';
+const encode = "utf-8";
 
 /**
  * スナップショットを更新するか否かを判定する
@@ -10,7 +10,7 @@ const encode = 'utf-8';
  * @return 判定結果、trueでスナップショットを更新する
  */
 export function shouldUpdateSnapShot(): boolean {
-  return process.env.SHOULD_UPDATE_SNAPSHOT === 'true';
+  return process.env.SHOULD_UPDATE_SNAPSHOT === "true";
 }
 
 /**

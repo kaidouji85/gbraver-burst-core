@@ -1,10 +1,13 @@
 // @flow
 
-import type {PlayerId} from "../../player/player";
-import type {ReflectDamageEffect, TryReflect} from "../../state/armdozer-effect";
-import type {PlayerState} from "../../state/player-state";
-import {hasDamageHalved} from "../damage-halved";
-import {toMinDamage} from "../to-min-damage";
+import type { PlayerId } from "../../player/player";
+import type {
+  ReflectDamageEffect,
+  TryReflect,
+} from "../../state/armdozer-effect";
+import type { PlayerState } from "../../state/player-state";
+import { hasDamageHalved } from "../damage-halved";
+import { toMinDamage } from "../to-min-damage";
 
 /**
  * ダメージ反射 パラメータ
@@ -20,7 +23,7 @@ export type ReflectParam = {
  * ダメージ反射 結果
  */
 export type Reflect = ReflectParam & {
-  name: 'Reflect',
+  name: "Reflect",
   /** 反射ダメージを受けたプレイヤー */
   damagedPlayer: PlayerId,
   /** 死亡フラグ */
@@ -36,7 +39,7 @@ export type Reflect = ReflectParam & {
 export function toReflectParam(burst: TryReflect): ReflectParam {
   return {
     damage: burst.damage,
-    effect: 'Lightning'
+    effect: "Lightning",
   };
 }
 
@@ -47,7 +50,10 @@ export function toReflectParam(burst: TryReflect): ReflectParam {
  * @param damagedPlayer ダメージ反射されるプレイヤー
  * @return ダメージ
  */
-export function reflectDamage(reflect: ReflectParam, damagedPlayer: PlayerState): number {
+export function reflectDamage(
+  reflect: ReflectParam,
+  damagedPlayer: PlayerState
+): number {
   const reduction = hasDamageHalved(damagedPlayer.armdozer.effects) ? 0.5 : 1;
   const damage = toMinDamage(reflect.damage * reduction);
   return Math.max(damage, 0);

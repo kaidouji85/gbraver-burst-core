@@ -1,11 +1,11 @@
 // @flow
 
-import type {ContinuousAttack} from "../../player/burst";
-import type {PlayerId} from "../../player/player";
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
-import type {BurstEffect} from "./burst-effect";
-import {burstRecoverBattery} from "./burst-recover-battery";
+import type { ContinuousAttack } from "../../player/burst";
+import type { PlayerId } from "../../player/player";
+import type { GameState, GameStateX } from "../../state/game-state";
+import type { PlayerState } from "../../state/player-state";
+import type { BurstEffect } from "./burst-effect";
+import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
  * 連続攻撃
@@ -14,10 +14,16 @@ import {burstRecoverBattery} from "./burst-recover-battery";
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
  */
-export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, burst: ContinuousAttack): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+export function continuousAttack(
+  lastState: GameState,
+  burstPlayerId: PlayerId,
+  burst: ContinuousAttack
+): GameStateX<BurstEffect> {
+  const burstPlayer = lastState.players.find(
+    (v) => v.playerId === burstPlayerId
+  );
   if (!burstPlayer) {
-    throw new Error('not found burst player');
+    throw new Error("not found burst player");
   }
 
   const updatedBurstPlayer: PlayerState = {
@@ -28,25 +34,25 @@ export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, 
       effects: [
         ...burstPlayer.armdozer.effects,
         {
-          type: 'ContinuousActivePlayer',
+          type: "ContinuousActivePlayer",
           period: {
-            type: 'Permanent',
-          }
-
-        }
-      ]
-    }
+            type: "Permanent",
+          },
+        },
+      ],
+    },
   };
-  const updatedPlayers = lastState.players
-    .map(player => player.playerId === burstPlayerId ? updatedBurstPlayer : player);
+  const updatedPlayers = lastState.players.map((player) =>
+    player.playerId === burstPlayerId ? updatedBurstPlayer : player
+  );
   const effect = {
-    name: 'BurstEffect',
+    name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst: burst,
   };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: effect
+    effect: effect,
   };
 }
