@@ -63,7 +63,7 @@ export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
 export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
 export type { PlayerCommand } from "./game/command/player-command";
 export type { PlayerCommandX } from "./game/command/player-command";
-export type { EvenMatch,GameOver } from "./game/end-judging/game-end-judging";
+export type { EvenMatch, GameOver } from "./game/end-judging/game-end-judging";
 export type {
   GbraverBurstCore,
   RestoreGbraverBurst,
@@ -92,7 +92,7 @@ export type {
   PilotX,
   RecoverBatterySkill,
 } from "./player/pilot";
-export type { Player, PlayerId,PlayerX } from "./player/player";
+export type { Player, PlayerId, PlayerX } from "./player/player";
 export type { Score } from "./score/score";
 export { calculateScore } from "./score/score";
 export type {
@@ -106,6 +106,6 @@ export type {
 } from "./state/armdozer-effect";
 export type { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
 export type { GameState, GameStateX } from "./state/game-state";
-export type { PilotState,PilotStateX } from "./state/pilot-state";
+export type { PilotState, PilotStateX } from "./state/pilot-state";
 export type { PlayerState, PlayerStateX } from "./state/player-state";
 export { isPlayerDeath } from "./state/player-state";
