@@ -1,14 +1,14 @@
 // @flow
 
-import type {Command} from "../../command/command";
-import {castQuickCommand} from "../../command/command";
-import type {PlayerId} from "../../player/player";
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
-import type {InputCommand, NoChoice, Selectable} from "./input-command";
-import {selectableBatteryCommand} from "./selectable-battery-command";
-import {selectableBurstCommand} from "./selectable-burst-command";
-import {selectablePilotSkillCommand} from "./selectable-pilot-skill-command";
+import type { Command } from "../../command/command";
+import { castQuickCommand } from "../../command/command";
+import type { PlayerId } from "../../player/player";
+import type { GameState, GameStateX } from "../../state/game-state";
+import type { PlayerState } from "../../state/player-state";
+import type { InputCommand, NoChoice, Selectable } from "./input-command";
+import { selectableBatteryCommand } from "./selectable-battery-command";
+import { selectableBurstCommand } from "./selectable-burst-command";
+import { selectablePilotSkillCommand } from "./selectable-pilot-skill-command";
 
 /**
  * ゲームスタート時だけに利用するInputCommand
@@ -22,9 +22,9 @@ export function gameStartInputCommand(lastState: GameState): GameState {
   return {
     ...lastState,
     effect: {
-      name: 'InputCommand',
-      players: lastState.players.map(v => selectable(v))
-    }
+      name: "InputCommand",
+      players: lastState.players.map((v) => selectable(v)),
+    },
   };
 }
 
@@ -39,11 +39,17 @@ export function gameStartInputCommand(lastState: GameState): GameState {
  * @param defenderCommand 防御側コマンド
  * @return 更新結果
  */
-export function inputCommand(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameStateX<InputCommand> {
-  const attacker = lastState.players.find(v => v.playerId === attackerId);
-  const defender = lastState.players.find(v => v.playerId === defenderId);
+export function inputCommand(
+  lastState: GameState,
+  attackerId: PlayerId,
+  attackerCommand: Command,
+  defenderId: PlayerId,
+  defenderCommand: Command
+): GameStateX<InputCommand> {
+  const attacker = lastState.players.find((v) => v.playerId === attackerId);
+  const defender = lastState.players.find((v) => v.playerId === defenderId);
   if (!attacker || !defender) {
-    throw new Error('not found attacker or defender command');
+    throw new Error("not found attacker or defender command");
   }
 
   const nextAttackerCommand = isNoChoice(attackerCommand, defenderCommand)
@@ -54,12 +60,12 @@ export function inputCommand(lastState: GameState, attackerId: PlayerId, attacke
     : selectable(defender);
   const playerCommands = [nextAttackerCommand, nextDefenderCommand];
   const effect = {
-    name: 'InputCommand',
+    name: "InputCommand",
     players: playerCommands,
   };
   return {
     ...lastState,
-    effect: effect
+    effect: effect,
   };
 }
 
@@ -71,8 +77,9 @@ export function inputCommand(lastState: GameState, attackerId: PlayerId, attacke
  * @return {boolean}
  */
 export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
-  return myCommand.type === 'BATTERY_COMMAND'
-    && !!castQuickCommand(otherCommand);
+  return (
+    myCommand.type === "BATTERY_COMMAND" && !!castQuickCommand(otherCommand)
+  );
 }
 
 /**
@@ -89,7 +96,7 @@ function selectable(player: PlayerState): Selectable {
       ...selectableBatteryCommand(player.armdozer),
       ...selectableBurstCommand(player.armdozer),
       ...selectablePilotSkillCommand(player.pilot),
-    ]
+    ],
   };
 }
 
@@ -105,6 +112,6 @@ function noChoice(player: PlayerState, command: Command): NoChoice {
   return {
     playerId: player.playerId,
     selectable: false,
-    nextTurnCommand: command
+    nextTurnCommand: command,
   };
 }

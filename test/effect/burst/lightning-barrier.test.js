@@ -1,30 +1,30 @@
 // @flow
 
-import type {GameState} from "../../../src";
-import {lightningBarrier} from "../../../src/effect/burst/lightning-barrier";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import type {LightningBarrier} from "../../../src/player/burst";
-import type {PlayerState} from "../../../src/state/player-state";
+import type { GameState } from "../../../src";
+import { lightningBarrier } from "../../../src/effect/burst/lightning-barrier";
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import type { LightningBarrier } from "../../../src/player/burst";
+import type { PlayerState } from "../../../src/state/player-state";
 
-test('電撃バリアバーストの適用が正しくできる', () => {
+test("電撃バリアバーストの適用が正しくできる", () => {
   const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'burst',
+    playerId: "burst",
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       enableBurst: true,
       battery: 1,
       maxBattery: 5,
-    }
+    },
   };
   const otherPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'other',
+    playerId: "other",
   };
   const burst: LightningBarrier = {
-    type: 'LightningBarrier',
+    type: "LightningBarrier",
     damage: 1000,
     duration: 2,
     recoverBattery: 3,
@@ -47,23 +47,23 @@ test('電撃バリアバーストの適用が正しくできる', () => {
           effects: [
             ...burstPlayer.armdozer.effects,
             {
-              type: 'TryReflect',
+              type: "TryReflect",
               damage: 1000,
-              effect: 'Lightning',
+              effect: "Lightning",
               period: {
-                type: 'TurnLimit',
+                type: "TurnLimit",
                 remainingTurn: 2,
               },
-            }
-          ]
-        }
-      }
+            },
+          ],
+        },
+      },
     ],
     effect: {
-      name: 'BurstEffect',
+      name: "BurstEffect",
       burstPlayer: burstPlayer.playerId,
       burst: burst,
-    }
+    },
   };
   expect(result).toEqual(expected);
 });

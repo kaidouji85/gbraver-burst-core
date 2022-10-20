@@ -1,8 +1,8 @@
 // @flow
 
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {Battle} from "../battle/battle";
-import type {RightItself} from "./right-itself";
+import type { GameState, GameStateX } from "../../state/game-state";
+import type { Battle } from "../battle/battle";
+import type { RightItself } from "./right-itself";
 
 /**
  * 体勢整えを実施するか否かを判定する
@@ -21,18 +21,23 @@ export function canRightItself(battle: Battle): boolean {
  * @param battle 戦闘
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function rightItself(lastState: GameState, battle: Battle): GameStateX<RightItself> {
-  const defender = lastState.players.find(v => v.playerId !== battle.attacker);
+export function rightItself(
+  lastState: GameState,
+  battle: Battle
+): GameStateX<RightItself> {
+  const defender = lastState.players.find(
+    (v) => v.playerId !== battle.attacker
+  );
   if (!defender) {
-    throw new Error('not found defender');
+    throw new Error("not found defender");
   }
 
   return {
     ...lastState,
     effect: {
-      name: 'RightItself',
+      name: "RightItself",
       defender: defender.playerId,
       battleResult: battle.result,
-    }
+    },
   };
 }

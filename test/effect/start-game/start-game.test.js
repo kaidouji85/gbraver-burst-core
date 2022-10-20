@@ -1,34 +1,34 @@
 // @flow
 
-import {startGame} from "../../../src/effect/start-game";
-import {EMPTY_ARMDOZER} from "../../../src/empty/armdozer";
-import {EMPTY_PILOT} from "../../../src/empty/pilot";
-import type {Player} from "../../../src/player/player";
-import type {GameState} from "../../../src/state/game-state";
+import { startGame } from "../../../src/effect/start-game";
+import { EMPTY_ARMDOZER } from "../../../src/empty/armdozer";
+import { EMPTY_PILOT } from "../../../src/empty/pilot";
+import type { Player } from "../../../src/player/player";
+import type { GameState } from "../../../src/state/game-state";
 
 const PLAYER1: Player = {
-  playerId: 'player01',
+  playerId: "player01",
   armdozer: {
     ...EMPTY_ARMDOZER,
     maxHp: 3000,
     maxBattery: 5,
-    speed: 2000
+    speed: 2000,
   },
   pilot: EMPTY_PILOT,
 };
 
 const PLAYER2: Player = {
-  playerId: 'playert02',
+  playerId: "playert02",
   armdozer: {
     ...EMPTY_ARMDOZER,
     maxHp: 3500,
     maxBattery: 5,
-    speed: 1000
+    speed: 1000,
   },
   pilot: EMPTY_PILOT,
 };
 
-test('正しくゲームスタートができる', () => {
+test("正しくゲームスタートができる", () => {
   const result = startGame([PLAYER1, PLAYER2]);
   const expected: GameState = {
     players: [
@@ -43,9 +43,10 @@ test('正しくゲームスタートができる', () => {
         },
         pilot: {
           ...PLAYER1.pilot,
-          enableSkill: true
-        }
-      }, {
+          enableSkill: true,
+        },
+      },
+      {
         ...PLAYER2,
         armdozer: {
           ...PLAYER2.armdozer,
@@ -56,14 +57,14 @@ test('正しくゲームスタートができる', () => {
         },
         pilot: {
           ...PLAYER2.pilot,
-          enableSkill: true
-        }
-      }
+          enableSkill: true,
+        },
+      },
     ],
     effect: {
-      name: 'StartGame'
+      name: "StartGame",
     },
-    activePlayerId: 'player01'
+    activePlayerId: "player01",
   };
   expect(result).toEqual(expected);
 });

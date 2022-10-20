@@ -1,13 +1,13 @@
 // @flow
 
-import type {PlayerId} from "../../player/player";
-import type {BattleResult} from "../battle/result/battle-result";
+import type { PlayerId } from "../../player/player";
+import type { BattleResult } from "../battle/result/battle-result";
 
 /**
  * 防御側の体勢を立て直す
  */
 export type RightItself = {
-  name: 'RightItself',
+  name: "RightItself",
 
   /** 防御側プレイヤー */
   defender: PlayerId,

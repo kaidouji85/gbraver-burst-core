@@ -1,5 +1,5 @@
 // @flow
-import type {GameState} from "../state/game-state";
+import type { GameState } from "../state/game-state";
 
 /**
  * ゲームステート履歴追加関数
@@ -61,7 +61,7 @@ class SimpleGameStateFlow implements GameStateFlow {
  */
 export function startGameStateFlow(stateHistory: GameState[]): GameStateFlow {
   if (stateHistory.length <= 0) {
-    throw new Error('requires at least 1 game state history.');
+    throw new Error("requires at least 1 game state history.");
   }
   return new SimpleGameStateFlow(stateHistory);
 }

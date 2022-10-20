@@ -1,10 +1,10 @@
 // @flow
 
-import type {BatteryEnchantmentSkill} from "../../player/pilot";
-import type {PlayerId} from "../../player/player";
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
-import type {PilotSkillEffectX} from "./pilot-skill-effect";
+import type { BatteryEnchantmentSkill } from "../../player/pilot";
+import type { PlayerId } from "../../player/player";
+import type { GameState, GameStateX } from "../../state/game-state";
+import type { PlayerState } from "../../state/player-state";
+import type { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**
  * パイロットスキル バッテリー増強
@@ -14,10 +14,14 @@ import type {PilotSkillEffectX} from "./pilot-skill-effect";
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, skill: BatteryEnchantmentSkill): GameStateX<PilotSkillEffectX<BatteryEnchantmentSkill>> {
-  const invoker = lastState.players.find(v => v.playerId === invokerId);
+export function batteryEnchantment(
+  lastState: GameState,
+  invokerId: PlayerId,
+  skill: BatteryEnchantmentSkill
+): GameStateX<PilotSkillEffectX<BatteryEnchantmentSkill>> {
+  const invoker = lastState.players.find((v) => v.playerId === invokerId);
   if (!invoker) {
-    throw new Error('not found pilot skill invoker');
+    throw new Error("not found pilot skill invoker");
   }
 
   const updatedInvoker = {
@@ -27,33 +31,34 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
       effects: [
         ...invoker.armdozer.effects,
         {
-          type: 'BatteryCorrection',
+          type: "BatteryCorrection",
           batteryCorrection: skill.batteryEnchantment,
           period: {
-            type: 'TurnLimit',
+            type: "TurnLimit",
             remainingTurn: skill.duration,
-          }
+          },
         },
         {
-          type: 'HalveCorrectPower',
+          type: "HalveCorrectPower",
           period: {
-            type: 'TurnLimit',
+            type: "TurnLimit",
             remainingTurn: skill.duration,
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    },
   };
-  const updatedPlayers: PlayerState[] = lastState.players
-    .map(v => v.playerId === invokerId ? updatedInvoker : v);
+  const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
+    v.playerId === invokerId ? updatedInvoker : v
+  );
   const effect = {
-    name: 'PilotSkillEffect',
+    name: "PilotSkillEffect",
     invokerId: invokerId,
     skill: skill,
   };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: effect
+    effect: effect,
   };
 }

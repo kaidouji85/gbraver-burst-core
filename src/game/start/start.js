@@ -1,10 +1,10 @@
 // @flow
-import {gameStartInputCommand} from "../../effect/input-command";
-import {startGame} from "../../effect/start-game";
-import type {Player} from "../../player/player";
-import type {GameState} from "../../state/game-state";
-import {upcastGameState} from "../../state/game-state";
-import {startGameStateFlow} from "../game-state-flow";
+import { gameStartInputCommand } from "../../effect/input-command";
+import { startGame } from "../../effect/start-game";
+import type { Player } from "../../player/player";
+import type { GameState } from "../../state/game-state";
+import { upcastGameState } from "../../state/game-state";
+import { startGameStateFlow } from "../game-state-flow";
 
 /**
  * ゲームの初期状態を生成する
@@ -14,6 +14,6 @@ import {startGameStateFlow} from "../game-state-flow";
  */
 export function start(players: [Player, Player]): GameState[] {
   return startGameStateFlow([upcastGameState(startGame(players))])
-    .add(state => [upcastGameState(gameStartInputCommand(state))])
+    .add((state) => [upcastGameState(gameStartInputCommand(state))])
     .toGameStateHistory();
 }

@@ -1,7 +1,7 @@
 // @flow
 
-import type {PlayerState} from "../../../state/player-state";
-import type {BattleResult} from "../result/battle-result";
+import type { PlayerState } from "../../../state/player-state";
+import type { BattleResult } from "../result/battle-result";
 
 /**
  * 戦闘結果に応じて防御側ステータスを更新する
@@ -10,13 +10,16 @@ import type {BattleResult} from "../result/battle-result";
  * @param defender 更新前の防御側ステータス
  * @return 更新された防御側ステータス
  */
-export function updateDefender(result: BattleResult, defender: PlayerState): PlayerState {
+export function updateDefender(
+  result: BattleResult,
+  defender: PlayerState
+): PlayerState {
   return {
     ...defender,
     armdozer: {
       ...defender.armdozer,
       hp: updateDefenderHP(result, defender.armdozer.hp),
-    }
+    },
   };
 }
 
@@ -29,9 +32,9 @@ export function updateDefender(result: BattleResult, defender: PlayerState): Pla
  */
 export function updateDefenderHP(result: BattleResult, hp: number): number {
   switch (result.name) {
-    case 'NormalHit':
-    case 'Guard':
-    case 'CriticalHit':
+    case "NormalHit":
+    case "Guard":
+    case "CriticalHit":
       return hp - result.damage;
     default:
       return hp;

@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerEffect} from "../state/armdozer-effect";
+import type { ArmdozerEffect } from "../state/armdozer-effect";
 
 /**
  * 攻撃補正を計算する
@@ -21,8 +21,7 @@ export function correctPower(effects: ArmdozerEffect[]): number {
  * @return 判定結果、trueで攻撃補正半減を持つ
  */
 export function hasHalveCorrectPower(effects: ArmdozerEffect[]): boolean {
-  return effects.filter(v => v.type === 'HalveCorrectPower')
-    .length > 0;
+  return effects.filter((v) => v.type === "HalveCorrectPower").length > 0;
 }
 
 /**
@@ -33,6 +32,6 @@ export function hasHalveCorrectPower(effects: ArmdozerEffect[]): boolean {
  */
 export function totalCorrectPower(effects: ArmdozerEffect[]): number {
   return effects
-    .map(v => (v.type === 'CorrectPower') ? v.power : 0)
+    .map((v) => (v.type === "CorrectPower" ? v.power : 0))
     .reduce((a, b) => a + b, 0);
 }

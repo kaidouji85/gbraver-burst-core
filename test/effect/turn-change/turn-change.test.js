@@ -1,36 +1,36 @@
 // @flow
 
-import {turnChange} from "../../../src/effect/turn-change";
-import {EMPTY_ARMDOZER_STATE} from "../../../src/empty/armdozer";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import type {GameState} from "../../../src/state/game-state";
+import { turnChange } from "../../../src/effect/turn-change";
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import type { GameState } from "../../../src/state/game-state";
 
-test('ターン交代が正しく処理できる', () => {
+test("ターン交代が正しく処理できる", () => {
   const attacker = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'attacker',
+    playerId: "attacker",
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       battery: 2,
       maxBattery: 5,
-      effects: []
-    }
+      effects: [],
+    },
   };
   const defender = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'defender',
+    playerId: "defender",
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       battery: 2,
       maxBattery: 5,
-      effects: []
-    }
+      effects: [],
+    },
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
-    activePlayerId: attacker.playerId
+    activePlayerId: attacker.playerId,
   };
 
   const result = turnChange(lastState);
@@ -42,15 +42,15 @@ test('ターン交代が正しく処理できる', () => {
         ...defender,
         armdozer: {
           ...defender.armdozer,
-          battery: 5
-        }
+          battery: 5,
+        },
       },
-      attacker
+      attacker,
     ],
     effect: {
-      name: 'TurnChange',
-      recoverBattery: 3
-    }
+      name: "TurnChange",
+      recoverBattery: 3,
+    },
   };
   expect(result).toEqual(expected);
 });

@@ -1,6 +1,6 @@
 // @flow
 
-import type {Burst} from "./burst";
+import type { Burst } from "./burst";
 
 /** アームドーザID */
 export type ArmDozerId = string;
@@ -28,4 +28,4 @@ export type ArmdozerX<X> = {
 };
 
 /** アームドーザ基本情報 */
-export type Armdozer = ArmdozerX<Burst>
+export type Armdozer = ArmdozerX<Burst>;

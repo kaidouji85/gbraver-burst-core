@@ -5,21 +5,22 @@ export type EffectPeriod = TurnLimitEffect | PermanentEffect;
 
 /** ターン期限付きのエフェクト */
 export type TurnLimitEffect = {
-  type: 'TurnLimit',
+  type: "TurnLimit",
   /** 効果持続ターン */
   remainingTurn: number,
 };
 
 /** 半永久エフェクト */
 export type PermanentEffect = {
-  type: 'Permanent'
+  type: "Permanent",
 };
 
 /**
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
  */
-export type ArmdozerEffect = EmptyArmdozerEffect
+export type ArmdozerEffect =
+  | EmptyArmdozerEffect
   | CorrectPower
   | HalveCorrectPower
   | TryReflect
@@ -33,14 +34,14 @@ export type ArmdozerEffect = EmptyArmdozerEffect
  */
 export type EmptyArmdozerEffect = {
   /** 効果判別用のプロパティ */
-  type: 'Empty',
+  type: "Empty",
   /** エフェクト有効期間 */
   period: EffectPeriod,
 };
 
 /** 攻撃力補正 */
 export type CorrectPower = {
-  type: 'CorrectPower',
+  type: "CorrectPower",
 
   /** 攻撃力補正値 */
   power: number,
@@ -51,18 +52,18 @@ export type CorrectPower = {
 
 /** 攻撃力補正半減 */
 export type HalveCorrectPower = {
-  type: 'HalveCorrectPower',
+  type: "HalveCorrectPower",
 
   /** エフェクト有効期間 */
   period: EffectPeriod,
 };
 
 /** ダメージエフェクトの種類 */
-export type ReflectDamageEffect = 'Lightning';
+export type ReflectDamageEffect = "Lightning";
 
 /** ダメージ反射 */
 export type TryReflect = {
-  type: 'TryReflect',
+  type: "TryReflect",
 
   /** 反射が成功した場合のダメージ */
   damage: number,
@@ -78,7 +79,7 @@ export type TryReflect = {
  * アクティブプレイヤー継続
  */
 export type ContinuousActivePlayer = {
-  type: 'ContinuousActivePlayer',
+  type: "ContinuousActivePlayer",
 
   /** エフェクト有効期間 */
   period: EffectPeriod,
@@ -88,7 +89,7 @@ export type ContinuousActivePlayer = {
  * バッテリー補正
  */
 export type BatteryCorrection = {
-  type: 'BatteryCorrection',
+  type: "BatteryCorrection",
 
   /** バッテリー補正値 */
   batteryCorrection: number,
@@ -101,7 +102,7 @@ export type BatteryCorrection = {
  * ダメージ半減
  */
 export type DamageHalved = {
-  type: 'DamageHalved',
+  type: "DamageHalved",
   /** エフェクト有効期間 */
   period: EffectPeriod,
 };

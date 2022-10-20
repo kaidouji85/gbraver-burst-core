@@ -1,11 +1,15 @@
 // @flow
-import type {BatteryCommand} from "./battery";
-import type {BurstCommand} from "./burst";
-import type {EmptyCommand} from "./empty-command";
-import type {PilotSkillCommand} from "./pilot-skill";
+import type { BatteryCommand } from "./battery";
+import type { BurstCommand } from "./burst";
+import type { EmptyCommand } from "./empty-command";
+import type { PilotSkillCommand } from "./pilot-skill";
 
 /** コマンド */
-export type Command = EmptyCommand | BatteryCommand | BurstCommand | PilotSkillCommand;
+export type Command =
+  | EmptyCommand
+  | BatteryCommand
+  | BurstCommand
+  | PilotSkillCommand;
 
 /**
  * クイックコマンド
@@ -21,8 +25,8 @@ export type QuickCommand = BurstCommand | PilotSkillCommand;
  */
 export function castQuickCommand(command: Command): ?QuickCommand {
   switch (command.type) {
-    case 'BURST_COMMAND':
-    case 'PILOT_SKILL_COMMAND':
+    case "BURST_COMMAND":
+    case "PILOT_SKILL_COMMAND":
       return command;
     default:
       return null;

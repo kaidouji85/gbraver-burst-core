@@ -1,41 +1,41 @@
 // @flow
 
-import type {Battle, GameState} from "../../../src";
-import {rightItself} from "../../../src/effect/right-itself";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
+import type { Battle, GameState } from "../../../src";
+import { rightItself } from "../../../src/effect/right-itself";
+import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 
-test('防御側体勢整え効果が正しく適用できる', () => {
+test("防御側体勢整え効果が正しく適用できる", () => {
   const attacker = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'attacker'
+    playerId: "attacker",
   };
   const defender = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'defender'
+    playerId: "defender",
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     activePlayerId: attacker.playerId,
-    players: [attacker, defender]
+    players: [attacker, defender],
   };
   const battle: Battle = {
-    name: 'Battle',
+    name: "Battle",
     attacker: attacker.playerId,
     isDeath: false,
     result: {
-      name: 'Miss'
-    }
+      name: "Miss",
+    },
   };
 
   const result = rightItself(lastState, battle);
   const expected = {
     ...lastState,
     effect: {
-      name: 'RightItself',
+      name: "RightItself",
       defender: defender.playerId,
-      battleResult: battle.result
-    }
+      battleResult: battle.result,
+    },
   };
   expect(result).toEqual(expected);
 });

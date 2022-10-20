@@ -1,14 +1,14 @@
 // @flow
 
-import type {Command} from "../../command/command";
-import type {PlayerId} from "../../player/player";
+import type { Command } from "../../command/command";
+import type { PlayerId } from "../../player/player";
 
 /** コマンド入力 */
 export type InputCommand = {
-  name: 'InputCommand',
+  name: "InputCommand",
 
   /** 各プレイヤーのコマンド */
-  players: Array<Selectable | NoChoice>
+  players: Array<Selectable | NoChoice>,
 };
 
 /**
@@ -35,4 +35,4 @@ export type NoChoice = {
   selectable: false,
   /** プレイヤーが次のターンに実行するコマンド */
   nextTurnCommand: Command,
-}
+};

@@ -1,8 +1,8 @@
 // @flow
 
-import type {ArmdozerX} from "./armdozer";
-import type {Burst} from "./burst";
-import type {PilotSkill, PilotX} from "./pilot";
+import type { ArmdozerX } from "./armdozer";
+import type { Burst } from "./burst";
+import type { PilotSkill, PilotX } from "./pilot";
 
 /** プレイヤーID */
 export type PlayerId = string;
@@ -15,15 +15,14 @@ export type PlayerId = string;
  */
 export type PlayerX<BURST, PILOT> = {
   /** プレイヤーID */
-  playerId: PlayerId;
+  playerId: PlayerId,
 
   /** アームドーザデータ */
-  armdozer: ArmdozerX<BURST>;
+  armdozer: ArmdozerX<BURST>,
 
   /** パイロット */
-  pilot: PilotX<PILOT>;
+  pilot: PilotX<PILOT>,
 };
 
 /** プレイヤー基本情報 */
 export type Player = PlayerX<Burst, PilotSkill>;
-

@@ -1,32 +1,32 @@
 // @flow
 
-import type {GameState, PlayerState} from "../../../src";
-import {continuousAttack} from "../../../src/effect/burst/continuous-attack";
-import {EMPTY_GAME_STATE} from "../../../src/empty/game-state";
-import {EMPTY_PLAYER_STATE} from "../../../src/empty/player";
-import type {ContinuousAttack} from "../../../src/player/burst";
+import type { GameState, PlayerState } from "../../../src";
+import { continuousAttack } from "../../../src/effect/burst/continuous-attack";
+import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import type { ContinuousAttack } from "../../../src/player/burst";
 
-test('連続攻撃バーストが正しく適用できる', () => {
+test("連続攻撃バーストが正しく適用できる", () => {
   const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'burstPlayer',
+    playerId: "burstPlayer",
     armdozer: {
       ...EMPTY_PLAYER_STATE.armdozer,
       battery: 1,
       maxBattery: 5,
-      effects: []
-    }
+      effects: [],
+    },
   };
   const otherPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
-    playerId: 'otherPlayer'
+    playerId: "otherPlayer",
   };
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [otherPlayer, burstPlayer]
+    players: [otherPlayer, burstPlayer],
   };
   const burst: ContinuousAttack = {
-    type: 'ContinuousAttack',
+    type: "ContinuousAttack",
     recoverBattery: 3,
   };
 
@@ -42,20 +42,20 @@ test('連続攻撃バーストが正しく適用できる', () => {
           battery: 4,
           effects: [
             {
-              type: 'ContinuousActivePlayer',
+              type: "ContinuousActivePlayer",
               period: {
-                type: 'Permanent'
-              }
-            }
-          ]
-        }
+                type: "Permanent",
+              },
+            },
+          ],
+        },
       },
     ],
     effect: {
-      name: 'BurstEffect',
+      name: "BurstEffect",
       burstPlayer: burstPlayer.playerId,
-      burst: burst
-    }
+      burst: burst,
+    },
   };
   expect(result).toEqual(expected);
 });

@@ -1,18 +1,18 @@
 // @flow
 
-import type {Pilot} from "../player/pilot";
-import type {PilotState} from "../state/pilot-state";
+import type { Pilot } from "../player/pilot";
+import type { PilotState } from "../state/pilot-state";
 
 /**
  * 空のパイロット
  */
 export const EMPTY_PILOT: Pilot = {
-  id: 'EMPTY_PLAYER',
-  name: '名無し',
+  id: "EMPTY_PLAYER",
+  name: "名無し",
   skill: {
-    type: 'RecoverBatterySkill',
-    recoverBattery: 2
-  }
+    type: "RecoverBatterySkill",
+    recoverBattery: 2,
+  },
 };
 
 /**
@@ -20,5 +20,5 @@ export const EMPTY_PILOT: Pilot = {
  */
 export const EMPTY_PILOT_STATE: PilotState = {
   ...EMPTY_PILOT,
-  enableSkill: true
+  enableSkill: true,
 };
