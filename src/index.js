@@ -1,117 +1,111 @@
 // @flow
-export type {
-  GbraverBurstCore,
-  RestoreGbraverBurst,
-} from "./game/gbraver-burst-core";
-export {
-  startGbraverBurst,
-  restoreGbraverBurst,
-} from "./game/gbraver-burst-core";
-export { ArmDozerIds, ArmDozers } from "./master/armdozers";
-export { PilotIds, Pilots } from "./master/pilots";
-export { isPlayerDeath } from "./state/player-state";
-export {
-  totalBatteryCorrection,
-  correctedBattery,
-} from "./effect/battery-correction";
-export {
-  correctPower,
-  hasHalveCorrectPower,
-  totalCorrectPower,
-} from "./effect/correct-power";
-export { battleResult } from "./effect/battle/result/battle-result";
-export { updateDefender } from "./effect/battle/players/update-defender";
-export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
-
-export { EMPTY_GAME_STATE } from "./empty/game-state";
-export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
-export {
-  EMPTY_BURST,
-  EMPTY_ARMDOZER,
-  EMPTY_ARMDOZER_STATE,
-} from "./empty/armdozer";
-export {
-  EMPTY_ARMDOZER_EFFECT,
-  EMPTY_CORRECT_POWER,
-} from "./empty/amrdozer-effect";
-export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
-export { EMPTY_BATTLE } from "./empty/battle";
-
-export type { Player, PlayerX, PlayerId } from "./player/player";
-export type { ArmDozerId, Armdozer, ArmdozerX } from "./player/armdozer";
-export type {
-  Burst,
-  RecoverBattery,
-  BuffPower,
-  LightningBarrier,
-  ContinuousAttack,
-} from "./player/burst";
-export type {
-  PilotId,
-  PilotSkill,
-  RecoverBatterySkill,
-  BuffPowerSkill,
-  BatteryEnchantmentSkill,
-  DamageHalvedSkill,
-  Pilot,
-  PilotX,
-} from "./player/pilot";
-
-export type { GameState, GameStateX } from "./state/game-state";
-export type { PlayerState, PlayerStateX } from "./state/player-state";
-export type { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
-export type {
-  ArmdozerEffect,
-  EmptyArmdozerEffect,
-  CorrectPower,
-  TryReflect,
-  ContinuousActivePlayer,
-  BatteryCorrection,
-  DamageHalved,
-} from "./state/armdozer-effect";
-export type { PilotStateX, PilotState } from "./state/pilot-state";
-
-export type { PlayerCommand } from "./game/command/player-command";
-export type { PlayerCommandX } from "./game/command/player-command";
-export type { Command, QuickCommand } from "./command/command";
 export type { BatteryCommand } from "./command/battery";
 export type { BurstCommand } from "./command/burst";
+export type { Command, QuickCommand } from "./command/command";
 export type { EmptyCommand } from "./command/empty-command";
 export type { PilotSkillCommand } from "./command/pilot-skill";
-
-export type { Effect } from "./effect/index";
+export {
+  correctedBattery,
+  totalBatteryCorrection,
+} from "./effect/battery-correction";
 export type { BatteryDeclaration } from "./effect/battery-declaration/battery-declaration";
 export type { Battle, BattleX } from "./effect/battle/battle";
+export { updateDefender } from "./effect/battle/players/update-defender";
 export type { BattleResult } from "./effect/battle/result/battle-result";
+export { battleResult } from "./effect/battle/result/battle-result";
 export type { CriticalHit } from "./effect/battle/result/critical-hit";
 export type { Feint } from "./effect/battle/result/feint";
 export type { Guard } from "./effect/battle/result/guard";
 export type { Miss } from "./effect/battle/result/miss";
 export type { NormalHit } from "./effect/battle/result/normal-hit";
 export type { BurstEffect } from "./effect/burst/burst-effect";
+export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
+export {
+  correctPower,
+  hasHalveCorrectPower,
+  totalCorrectPower,
+} from "./effect/correct-power";
 export type {
   GameEnd,
-  GameEndX,
   GameEndResult,
+  GameEndX,
 } from "./effect/game-end/game-end";
-export type { GameOver, EvenMatch } from "./game/end-judging/game-end-judging";
+export type { Effect } from "./effect/index";
 export type {
   InputCommand,
-  Selectable,
   NoChoice,
+  Selectable,
 } from "./effect/input-command/input-command";
-export type { Reflect } from "./effect/reflect/reflect";
-export type { StartGame } from "./effect/start-game/start-game";
-export type { TurnChange } from "./effect/turn-change/turn-change";
-export type {
-  UpdateRemainingTurn,
-  EndArmdozerEffect,
-} from "./effect/update-remaning-turn/update-remaining-turn";
-export type { RightItself } from "./effect/right-itself/right-itself";
 export type {
   PilotSkillEffect,
   PilotSkillEffectX,
 } from "./effect/pilot-skill/pilot-skill-effect";
-
-export { calculateScore } from "./score/score";
+export type { Reflect } from "./effect/reflect/reflect";
+export type { RightItself } from "./effect/right-itself/right-itself";
+export type { StartGame } from "./effect/start-game/start-game";
+export type { TurnChange } from "./effect/turn-change/turn-change";
+export type {
+  EndArmdozerEffect,
+  UpdateRemainingTurn,
+} from "./effect/update-remaning-turn/update-remaining-turn";
+export {
+  EMPTY_ARMDOZER_EFFECT,
+  EMPTY_CORRECT_POWER,
+} from "./empty/amrdozer-effect";
+export {
+  EMPTY_ARMDOZER,
+  EMPTY_ARMDOZER_STATE,
+  EMPTY_BURST,
+} from "./empty/armdozer";
+export { EMPTY_BATTLE } from "./empty/battle";
+export { EMPTY_GAME_STATE } from "./empty/game-state";
+export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
+export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
+export type { PlayerCommand } from "./game/command/player-command";
+export type { PlayerCommandX } from "./game/command/player-command";
+export type { EvenMatch,GameOver } from "./game/end-judging/game-end-judging";
+export type {
+  GbraverBurstCore,
+  RestoreGbraverBurst,
+} from "./game/gbraver-burst-core";
+export {
+  restoreGbraverBurst,
+  startGbraverBurst,
+} from "./game/gbraver-burst-core";
+export { ArmDozerIds, ArmDozers } from "./master/armdozers";
+export { PilotIds, Pilots } from "./master/pilots";
+export type { Armdozer, ArmDozerId, ArmdozerX } from "./player/armdozer";
+export type {
+  BuffPower,
+  Burst,
+  ContinuousAttack,
+  LightningBarrier,
+  RecoverBattery,
+} from "./player/burst";
+export type {
+  BatteryEnchantmentSkill,
+  BuffPowerSkill,
+  DamageHalvedSkill,
+  Pilot,
+  PilotId,
+  PilotSkill,
+  PilotX,
+  RecoverBatterySkill,
+} from "./player/pilot";
+export type { Player, PlayerId,PlayerX } from "./player/player";
 export type { Score } from "./score/score";
+export { calculateScore } from "./score/score";
+export type {
+  ArmdozerEffect,
+  BatteryCorrection,
+  ContinuousActivePlayer,
+  CorrectPower,
+  DamageHalved,
+  EmptyArmdozerEffect,
+  TryReflect,
+} from "./state/armdozer-effect";
+export type { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
+export type { GameState, GameStateX } from "./state/game-state";
+export type { PilotState,PilotStateX } from "./state/pilot-state";
+export type { PlayerState, PlayerStateX } from "./state/player-state";
+export { isPlayerDeath } from "./state/player-state";

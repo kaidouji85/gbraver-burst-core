@@ -1,5 +1,6 @@
 // @flow
 import path from "path";
+
 import type {
   BatteryCommand,
   BurstCommand,

@@ -1,5 +1,6 @@
 // @flow
 import path from "path";
+
 import { EMPTY_GAME_STATE, EMPTY_PLAYER_STATE } from "../../../src";
 import { attackFlow } from "../../../src/game/progress/battle-flow";
 import {

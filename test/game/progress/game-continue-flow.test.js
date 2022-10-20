@@ -1,5 +1,6 @@
 // @flow
 import path from "path";
+
 import {
   EMPTY_ARMDOZER_STATE,
   EMPTY_GAME_STATE,

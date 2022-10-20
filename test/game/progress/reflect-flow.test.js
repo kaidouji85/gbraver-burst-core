@@ -1,5 +1,6 @@
 // @flow
 import path from "path";
+
 import type { GameState, PlayerState } from "../../../src";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";

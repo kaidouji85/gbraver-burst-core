@@ -1,5 +1,6 @@
 // @flow
 import * as R from "ramda";
+
 import type { BatteryCommand } from "../../command/battery";
 import type { ArmdozerState } from "../../state/armdozer-state";
 

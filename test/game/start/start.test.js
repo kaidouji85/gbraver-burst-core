@@ -1,5 +1,6 @@
 // @flow
 import path from "path";
+
 import type { Player } from "../../../src";
 import { EMPTY_ARMDOZER, EMPTY_PILOT } from "../../../src";
 import { start } from "../../../src/game/start/start";
