@@ -26,4 +26,7 @@ npm run type-check
 
 # lint
 npm run lint
+
+# 静的コード解析
+npm run code-analysis
 ```

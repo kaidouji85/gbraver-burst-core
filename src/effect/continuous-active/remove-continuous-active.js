@@ -1,6 +1,6 @@
 // @flow
 
-import type {ArmdozerEffect} from "../../state/armdozer-effect";
+import type { ArmdozerEffect } from "../../state/armdozer-effect";
 
 /**
  * アクティブプレイヤー継続を取り除く
@@ -8,11 +8,13 @@ import type {ArmdozerEffect} from "../../state/armdozer-effect";
  * @param origin 処理対象
  * @return 処理結果
  */
-export function removeContinuousActive(origin: ArmdozerEffect[]): ArmdozerEffect[] {
-  const removeTarget = origin.find(v => v.type === 'ContinuousActivePlayer');
+export function removeContinuousActive(
+  origin: ArmdozerEffect[]
+): ArmdozerEffect[] {
+  const removeTarget = origin.find((v) => v.type === "ContinuousActivePlayer");
   if (!removeTarget) {
     return origin;
   }
 
-  return origin.filter(v => v !== removeTarget);
+  return origin.filter((v) => v !== removeTarget);
 }

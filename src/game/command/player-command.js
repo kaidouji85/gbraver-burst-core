@@ -1,7 +1,7 @@
 // @flow
 
-import type {Command} from "../../command/command";
-import type {PlayerId} from "../../player/player";
+import type { Command } from "../../command/command";
+import type { PlayerId } from "../../player/player";
 
 /**
  * プレイヤーコマンド
@@ -12,7 +12,7 @@ export type PlayerCommandX<X> = {
   /** プレイヤーID */
   playerId: PlayerId,
   /** コマンド */
-  command: X
+  command: X,
 };
 
 /**

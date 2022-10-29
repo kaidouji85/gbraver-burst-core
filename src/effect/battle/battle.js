@@ -1,6 +1,6 @@
 // @flow
-import type {PlayerId} from "../../player/player";
-import type {BattleResult} from "./result/battle-result";
+import type { PlayerId } from "../../player/player";
+import type { BattleResult } from "./result/battle-result";
 
 /**
  * 戦闘
@@ -8,14 +8,14 @@ import type {BattleResult} from "./result/battle-result";
  * @typeparam {X} 戦闘結果
  */
 export type BattleX<X> = {
-  name: 'Battle',
+  name: "Battle",
   /** 攻撃側プレイヤー */
   attacker: PlayerId,
   /** 死亡フラグ、trueで防御側が死亡 */
   isDeath: boolean,
   /** 戦闘結果 */
-  result: X
+  result: X,
 };
 
 /** 戦闘 */
-export type Battle = BattleX<BattleResult>
+export type Battle = BattleX<BattleResult>;

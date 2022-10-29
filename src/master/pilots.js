@@ -1,14 +1,14 @@
 // @flow
-import type {Pilot} from "../player/pilot";
+import type { Pilot } from "../player/pilot";
 
 /**
  * パイロットIDを集めたもの
  */
 export const PilotIds = {
-  SHINYA: 'SHINYA',
-  GAI: 'GAI',
-  RAITO: 'RAITO',
-  TSUBASA: 'TSUBASA',
+  SHINYA: "SHINYA",
+  GAI: "GAI",
+  RAITO: "RAITO",
+  TSUBASA: "TSUBASA",
 };
 
 /**
@@ -17,36 +17,36 @@ export const PilotIds = {
 export const Pilots: Pilot[] = [
   {
     id: PilotIds.SHINYA,
-    name: 'シンヤ',
+    name: "シンヤ",
     skill: {
-      type: 'RecoverBatterySkill',
-      recoverBattery: 2
-    }
+      type: "RecoverBatterySkill",
+      recoverBattery: 2,
+    },
   },
   {
     id: PilotIds.GAI,
-    name: 'ガイ',
+    name: "ガイ",
     skill: {
-      type: 'BuffPowerSkill',
+      type: "BuffPowerSkill",
       buffPower: 600,
       duration: 2,
-    }
+    },
   },
   {
     id: PilotIds.RAITO,
-    name: 'ライト',
+    name: "ライト",
     skill: {
-      type: 'DamageHalvedSkill',
+      type: "DamageHalvedSkill",
       duration: 1,
-    }
+    },
   },
   {
     id: PilotIds.TSUBASA,
-    name: 'ツバサ',
+    name: "ツバサ",
     skill: {
-      type: 'BatteryEnchantmentSkill',
+      type: "BatteryEnchantmentSkill",
       batteryEnchantment: 1,
       duration: 2,
-    }
-  }
+    },
+  },
 ];

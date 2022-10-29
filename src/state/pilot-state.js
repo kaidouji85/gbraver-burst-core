@@ -1,6 +1,6 @@
 // @flow
 
-import type {Pilot, PilotSkill, PilotX} from "../player/pilot";
+import type { Pilot, PilotSkill, PilotX } from "../player/pilot";
 
 /**
  * パイロットステート
@@ -11,7 +11,7 @@ export type PilotStateX<SKILL> = PilotX<SKILL> & {
   /**
    * パイロットスキルが発動可能かいなかのフラグ、trueで発動可能
    */
-  enableSkill: boolean
+  enableSkill: boolean,
 };
 
 /**
@@ -28,6 +28,6 @@ export type PilotState = PilotStateX<PilotSkill>;
 export function createPilotState(origin: Pilot): PilotState {
   return {
     ...origin,
-    enableSkill: true
+    enableSkill: true,
   };
 }

@@ -1,19 +1,19 @@
 // @flow
 
-import type {Player} from "../player/player";
-import type {GameState} from "../state/game-state";
-import type {PlayerCommand} from "./command/player-command";
-import {progress} from "./progress";
-import {start} from "./start/start";
-import {isAllPlayerEnteredCommand} from "./validation/is-all-player-entered-command";
-import {isDuplicatePlayers} from "./validation/is-duplicate-players";
+import type { Player } from "../player/player";
+import type { GameState } from "../state/game-state";
+import type { PlayerCommand } from "./command/player-command";
+import { progress } from "./progress";
+import { start } from "./start/start";
+import { isAllPlayerEnteredCommand } from "./validation/is-all-player-entered-command";
+import { isDuplicatePlayers } from "./validation/is-duplicate-players";
 
 /** ゲームを再開するためのデータ */
 export type RestoreGbraverBurst = {
   /** プレイヤー情報 */
-  players: [Player, Player];
+  players: [Player, Player],
   /** ステートヒストリー */
-  stateHistory: GameState[];
+  stateHistory: GameState[],
 };
 
 /** Gブレイバーバーストコア */
@@ -56,7 +56,7 @@ export interface GbraverBurstCore {
  */
 export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
   if (isDuplicatePlayers(players)) {
-    throw new Error('duplicate players');
+    throw new Error("duplicate players");
   }
 
   const stateHistory = start(players);
@@ -69,7 +69,9 @@ export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
  * @param data 再開するデータ
  * @return Gブレイバーバースト
  */
-export function restoreGbraverBurst(data: RestoreGbraverBurst): GbraverBurstCore {
+export function restoreGbraverBurst(
+  data: RestoreGbraverBurst
+): GbraverBurstCore {
   return new GbraverBurstCoreImpl(data.players, data.stateHistory);
 }
 
@@ -101,18 +103,18 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
 
   /** @override */
   dump(): RestoreGbraverBurst {
-    return {players: this._players, stateHistory: this._stateHistory};
+    return { players: this._players, stateHistory: this._stateHistory };
   }
 
   /** @override */
   progress(commands: [PlayerCommand, PlayerCommand]): GameState[] {
     if (!isAllPlayerEnteredCommand(this._players, commands)) {
-      throw new Error('all player not enter command');
+      throw new Error("all player not enter command");
     }
 
     const lastState = this._stateHistory[this._stateHistory.length - 1];
     if (!lastState) {
-      throw new Error('no game state history');
+      throw new Error("no game state history");
     }
 
     const updated = progress(lastState, commands);

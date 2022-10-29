@@ -1,10 +1,10 @@
 // @flow
 
-import type {BuffPowerSkill} from "../../player/pilot";
-import type {PlayerId} from "../../player/player";
-import type {GameState, GameStateX} from "../../state/game-state";
-import type {PlayerState} from "../../state/player-state";
-import type {PilotSkillEffectX} from "./pilot-skill-effect";
+import type { BuffPowerSkill } from "../../player/pilot";
+import type { PlayerId } from "../../player/player";
+import type { GameState, GameStateX } from "../../state/game-state";
+import type { PlayerState } from "../../state/player-state";
+import type { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**
  * パイロットスキル 攻撃バフ
@@ -14,10 +14,14 @@ import type {PilotSkillEffectX} from "./pilot-skill-effect";
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function buffPower(lastState: GameState, invokerId: PlayerId, skill: BuffPowerSkill): GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
-  const invoker = lastState.players.find(v => v.playerId === invokerId);
+export function buffPower(
+  lastState: GameState,
+  invokerId: PlayerId,
+  skill: BuffPowerSkill
+): GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
+  const invoker = lastState.players.find((v) => v.playerId === invokerId);
   if (!invoker) {
-    throw new Error('not found pilot skill invoker');
+    throw new Error("not found pilot skill invoker");
   }
 
   const updatedInvoker = {
@@ -27,26 +31,27 @@ export function buffPower(lastState: GameState, invokerId: PlayerId, skill: Buff
       effects: [
         ...invoker.armdozer.effects,
         {
-          type: 'CorrectPower',
+          type: "CorrectPower",
           power: skill.buffPower,
           period: {
-            type: 'TurnLimit',
+            type: "TurnLimit",
             remainingTurn: skill.duration,
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    },
   };
-  const updatedPlayers: PlayerState[] = lastState.players
-    .map(v => v.playerId === invokerId ? updatedInvoker : v);
+  const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
+    v.playerId === invokerId ? updatedInvoker : v
+  );
   const effect = {
-    name: 'PilotSkillEffect',
+    name: "PilotSkillEffect",
     invokerId: invokerId,
     skill: skill,
   };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: effect
+    effect: effect,
   };
 }
