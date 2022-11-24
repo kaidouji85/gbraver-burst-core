@@ -7,6 +7,7 @@ export const ArmDozerIds = {
   NEO_LANDOZER: "NEO_LANDOZER",
   LIGHTNING_DOZER: "LIGHTNING_DOZER",
   WING_DOZER: "WING_DOZER",
+  GENESIS_BRAVER: "GENESIS_BRAVER",
 };
 
 /** アームドーザのマスターデータ */
@@ -61,6 +62,19 @@ export const ArmDozers: Armdozer[] = [
     burst: {
       type: "ContinuousAttack",
       recoverBattery: 3,
+    },
+  },
+  // TODO バーストを作り込む
+  {
+    id: ArmDozerIds.GENESIS_BRAVER,
+    name: "ジェネシスブレイバー",
+    maxHp: 3100,
+    maxBattery: 5,
+    power: 2100,
+    speed: 1900,
+    burst: {
+      type: "RecoverBattery",
+      recoverBattery: 5,
     },
   },
 ];
