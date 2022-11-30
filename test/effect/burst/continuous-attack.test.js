@@ -1,10 +1,15 @@
 // @flow
+import path from "path";
 
 import type { GameState, PlayerState } from "../../../src";
-import { continuousAttack } from "../../../src/effect/burst/continuous-attack";
+import { burst } from "../../../src/effect/burst";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { ContinuousAttack } from "../../../src/player/burst";
+import {
+  exportSnapShotJSON,
+  importSnapShotJSON,
+  shouldUpdateSnapShot,
+} from "../../snap-shot";
 
 test("連続攻撃バーストが正しく適用できる", () => {
   const burstPlayer: PlayerState = {
@@ -15,6 +20,11 @@ test("連続攻撃バーストが正しく適用できる", () => {
       battery: 1,
       maxBattery: 5,
       effects: [],
+      enableBurst: true,
+      burst: {
+        type: "ContinuousAttack",
+        recoverBattery: 3,
+      },
     },
   };
   const otherPlayer: PlayerState = {
@@ -25,37 +35,11 @@ test("連続攻撃バーストが正しく適用できる", () => {
     ...EMPTY_GAME_STATE,
     players: [otherPlayer, burstPlayer],
   };
-  const burst: ContinuousAttack = {
-    type: "ContinuousAttack",
-    recoverBattery: 3,
-  };
-
-  const result = continuousAttack(lastState, burstPlayer.playerId, burst);
-  const expected = {
-    ...lastState,
-    players: [
-      otherPlayer,
-      {
-        ...burstPlayer,
-        armdozer: {
-          ...burstPlayer.armdozer,
-          battery: 4,
-          effects: [
-            {
-              type: "ContinuousActivePlayer",
-              period: {
-                type: "Permanent",
-              },
-            },
-          ],
-        },
-      },
-    ],
-    effect: {
-      name: "BurstEffect",
-      burstPlayer: burstPlayer.playerId,
-      burst: burst,
-    },
-  };
-  expect(result).toEqual(expected);
+  const result = burst(lastState, burstPlayer.playerId);
+  const snapShotPath = path.join(__dirname, "continuous-attack.json");
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
