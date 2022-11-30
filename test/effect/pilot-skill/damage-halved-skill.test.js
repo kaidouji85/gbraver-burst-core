@@ -19,7 +19,7 @@ test("ダメージ半減スキルが正しく発動できる", () => {
     ...EMPTY_PLAYER_STATE,
     playerId: "invoker",
     armdozer: { ...EMPTY_PLAYER_STATE.armdozer, effects: [] },
-    pilot: { ...EMPTY_PILOT, skill: skill, enableSkill: true },
+    pilot: { ...EMPTY_PILOT, skill, enableSkill: true },
   };
   const other: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "other" };
   const state: GameState = {

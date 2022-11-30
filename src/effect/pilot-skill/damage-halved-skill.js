@@ -1,4 +1,5 @@
 // @flow
+
 import type { DamageHalvedSkill } from "../../player/pilot";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
@@ -7,11 +8,10 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**
  * パイロットスキル ダメージ半減
- *
  * @param lastState 最新のステート
  * @param invokerId スキル発動者のID
  * @param skill スキル内容
- * @return 更新結果
+ * @return 更新結果、実行不可能な場合は例外を投げる
  */
 export function damageHalvedSkill(
   lastState: GameState,
@@ -42,7 +42,7 @@ export function damageHalvedSkill(
   const effect = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
-    skill: skill,
+    skill,
   };
   return { ...lastState, players: updatedPlayers, effect };
 }
