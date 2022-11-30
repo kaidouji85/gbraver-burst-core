@@ -5,7 +5,8 @@ export type Burst =
   | RecoverBattery
   | BuffPower
   | LightningBarrier
-  | ContinuousAttack;
+  | ContinuousAttack
+  | BatteryLimitBreak;
 
 /**
  * 全バースト共通で利用するバッテリー回復プロパティ
@@ -38,9 +39,14 @@ export type LightningBarrier = BurstRecoverBattery & {
   duration: number,
 };
 
-/**
- * 連続攻撃
- */
+/** 連続攻撃 */
 export type ContinuousAttack = BurstRecoverBattery & {
   type: "ContinuousAttack",
+};
+
+/** バッテリーリミットブレイク */
+export type BatteryLimitBreak = BurstRecoverBattery & {
+  type: "BatteryLimitBreak",
+  /** バースト後の最大バッテリー */
+  maxBattery: number,
 };
