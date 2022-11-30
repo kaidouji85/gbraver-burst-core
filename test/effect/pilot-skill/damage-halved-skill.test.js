@@ -28,7 +28,7 @@ test("ダメージ半減スキルが正しく発動できる", () => {
     players: [other, invoker],
   };
   const result = pilotSkill(state, invoker.playerId);
-  const snapShotPath = path.join(__dirname, "pilot-skill__damage-halved.json");
+  const snapShotPath = path.join(__dirname, "damage-halved-skill.json");
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()
     ? result
