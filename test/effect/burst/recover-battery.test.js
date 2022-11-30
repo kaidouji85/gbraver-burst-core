@@ -1,11 +1,18 @@
 // @flow
 
-import type { GameState, RecoverBattery } from "../../../src";
-import { recoverBattery } from "../../../src/effect/burst/recover-battery";
+import path from "path";
+
+import type { GameState } from "../../../src";
+import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { PlayerState } from "../../../src/state/player-state";
+import {
+  exportSnapShotJSON,
+  importSnapShotJSON,
+  shouldUpdateSnapShot,
+} from "../../snap-shot";
 
 test("削除 バースト効果バッテリー回復が正しく適用される", () => {
   const burstPlayer = {
@@ -30,29 +37,11 @@ test("削除 バースト効果バッテリー回復が正しく適用される"
     ...EMPTY_GAME_STATE,
     players: [otherPlayer, burstPlayer],
   };
-  const burst: RecoverBattery = {
-    type: "RecoverBattery",
-    recoverBattery: 5,
-  };
-
-  const result = recoverBattery(lastState, burstPlayer.playerId, burst);
-  const expected = {
-    ...lastState,
-    players: [
-      otherPlayer,
-      {
-        ...burstPlayer,
-        armdozer: {
-          ...burstPlayer.armdozer,
-          battery: 5,
-        },
-      },
-    ],
-    effect: {
-      name: "BurstEffect",
-      burstPlayer: burstPlayer.playerId,
-      burst: burst,
-    },
-  };
-  expect(result).toEqual(expected);
+  const result = burst(lastState, burstPlayer.playerId);
+  const snapShotPath = path.join(__dirname, "recover-battery.json");
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
