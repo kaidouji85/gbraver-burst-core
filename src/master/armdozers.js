@@ -64,7 +64,6 @@ export const ArmDozers: Armdozer[] = [
       recoverBattery: 3,
     },
   },
-  // TODO バーストを作り込む
   {
     id: ArmDozerIds.GENESIS_BRAVER,
     name: "ジェネシスブレイバー",
@@ -73,8 +72,9 @@ export const ArmDozers: Armdozer[] = [
     power: 2200,
     speed: 1900,
     burst: {
-      type: "RecoverBattery",
-      recoverBattery: 5,
+      type: "BatteryLimitBreak",
+      recoverBattery: 8,
+      maxBattery: 8,
     },
   },
 ];
