@@ -9,11 +9,10 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**
  * パイロットスキル バッテリー回復を発動する
- *
  * @param lastState 最新のゲーム状態
  * @param invokerId 発動するプレイヤー
  * @param skill スキル内容
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @return 更新結果、実行不可能な場合は例外を投げる
  */
 export function recoverBattery(
   lastState: GameState,
@@ -38,7 +37,7 @@ export function recoverBattery(
   const effect = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
-    skill: skill,
+    skill,
   };
   return {
     ...lastState,
