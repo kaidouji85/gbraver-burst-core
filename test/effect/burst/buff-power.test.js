@@ -2,6 +2,7 @@
 import path from "path";
 
 import type { GameState, PlayerState } from "../../../src";
+import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
@@ -10,7 +11,6 @@ import {
   importSnapShotJSON,
   shouldUpdateSnapShot,
 } from "../../snap-shot";
-import { burst } from "../../../src/effect/burst";
 
 test("攻撃力バフが正しく適用される", () => {
   const burstPlayer: PlayerState = {
@@ -27,7 +27,7 @@ test("攻撃力バフが正しく適用される", () => {
         recoverBattery: 3,
         buffPower: 1000,
         duration: 2,
-      }
+      },
     },
   };
   const otherPlayer: PlayerState = {
