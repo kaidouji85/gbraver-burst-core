@@ -1,11 +1,16 @@
 // @flow
+import path from "path";
 
 import type { GameState, PlayerState } from "../../../src";
-import { buffPower } from "../../../src/effect/burst/buff-power";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { BuffPower } from "../../../src/player/burst";
+import {
+  exportSnapShotJSON,
+  importSnapShotJSON,
+  shouldUpdateSnapShot,
+} from "../../snap-shot";
+import { burst } from "../../../src/effect/burst";
 
 test("攻撃力バフが正しく適用される", () => {
   const burstPlayer: PlayerState = {
@@ -17,6 +22,12 @@ test("攻撃力バフが正しく適用される", () => {
       maxBattery: 5,
       effects: [],
       enableBurst: true,
+      burst: {
+        type: "BuffPower",
+        recoverBattery: 3,
+        buffPower: 1000,
+        duration: 2,
+      }
     },
   };
   const otherPlayer: PlayerState = {
@@ -27,41 +38,11 @@ test("攻撃力バフが正しく適用される", () => {
     ...EMPTY_GAME_STATE,
     players: [otherPlayer, burstPlayer],
   };
-  const burst: BuffPower = {
-    type: "BuffPower",
-    recoverBattery: 3,
-    buffPower: 1000,
-    duration: 2,
-  };
-
-  const result = buffPower(lastState, burstPlayer.playerId, burst);
-  const expected: GameState = {
-    ...lastState,
-    players: [
-      otherPlayer,
-      {
-        ...burstPlayer,
-        armdozer: {
-          ...burstPlayer.armdozer,
-          battery: 4,
-          effects: [
-            {
-              type: "CorrectPower",
-              power: 1000,
-              period: {
-                type: "TurnLimit",
-                remainingTurn: 2,
-              },
-            },
-          ],
-        },
-      },
-    ],
-    effect: {
-      name: "BurstEffect",
-      burstPlayer: burstPlayer.playerId,
-      burst: burst,
-    },
-  };
-  expect(result).toEqual(expected);
+  const result = burst(lastState, burstPlayer.playerId);
+  const snapShotPath = path.join(__dirname, "buff-power.json");
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
