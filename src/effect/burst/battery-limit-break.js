@@ -39,7 +39,9 @@ export function batteryLimitBreak(
     },
   };
   const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === updatedBurstPlayer ? updatedBurstPlayer : player
+    player.playerId === updatedBurstPlayer.playerId
+      ? updatedBurstPlayer
+      : player
   );
   const effect = {
     name: "BurstEffect",
