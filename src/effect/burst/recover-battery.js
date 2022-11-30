@@ -9,11 +9,10 @@ import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
  * バースト バッテリー回復
- *
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @return 更新結果、実行不可能な場合は例外を投げる
  */
 export function recoverBattery(
   lastState: GameState,
@@ -40,11 +39,11 @@ export function recoverBattery(
   const effect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
-    burst: burst,
+    burst,
   };
   return {
     ...lastState,
     players: updatedPlayers,
-    effect: effect,
+    effect,
   };
 }
