@@ -1,23 +1,24 @@
 // @flow
 
-import type { ContinuousAttack } from "../../player/burst";
+import type { BatteryLimitBreak } from "../../player/burst";
 import type { PlayerId } from "../../player/player";
+import type { ArmdozerState } from "../../state/armdozer-state";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
- * 連続攻撃
+ * バッテリーリミットブレイク
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
  * @return 更新結果、実行不可能な場合は例外を投げる
  */
-export function continuousAttack(
+export function batteryLimitBreak(
   lastState: GameState,
   burstPlayerId: PlayerId,
-  burst: ContinuousAttack
+  burst: BatteryLimitBreak
 ): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(
     (v) => v.playerId === burstPlayerId
@@ -26,33 +27,24 @@ export function continuousAttack(
     throw new Error("not found burst player");
   }
 
+  const updatedArmdozer: ArmdozerState = {
+    ...burstPlayer.armdozer,
+    maxBattery: burst.maxBattery,
+  };
   const updatedBurstPlayer: PlayerState = {
     ...burstPlayer,
     armdozer: {
-      ...burstPlayer.armdozer,
-      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-      effects: [
-        ...burstPlayer.armdozer.effects,
-        {
-          type: "ContinuousActivePlayer",
-          period: {
-            type: "Permanent",
-          },
-        },
-      ],
+      ...updatedArmdozer,
+      battery: burstRecoverBattery(updatedArmdozer, burst),
     },
   };
   const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player
+    player.playerId === updatedBurstPlayer ? updatedBurstPlayer : player
   );
   const effect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst,
   };
-  return {
-    ...lastState,
-    players: updatedPlayers,
-    effect,
-  };
+  return { ...lastState, players: updatedPlayers, effect };
 }
