@@ -1,0 +1,108 @@
+{
+  "players": [
+    {
+      "playerId": "player1",
+      "armdozer": {
+        "id": "id",
+        "name": "name",
+        "maxHp": 3000,
+        "maxBattery": 5,
+        "power": 2000,
+        "speed": 2000,
+        "burst": {
+          "type": "RecoverBattery",
+          "recoverBattery": 0
+        },
+        "battery": 5,
+        "hp": 3000,
+        "effects": [
+          {
+            "type": "Empty",
+            "period": {
+              "type": "Permanent"
+            }
+          },
+          {
+            "type": "Empty",
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 3
+            }
+          }
+        ],
+        "enableBurst": true
+      },
+      "pilot": {
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "type": "RecoverBatterySkill",
+          "recoverBattery": 2
+        },
+        "enableSkill": true
+      }
+    },
+    {
+      "playerId": "player2",
+      "armdozer": {
+        "id": "id",
+        "name": "name",
+        "maxHp": 3000,
+        "maxBattery": 5,
+        "power": 2000,
+        "speed": 2000,
+        "burst": {
+          "type": "RecoverBattery",
+          "recoverBattery": 0
+        },
+        "battery": 5,
+        "hp": 3000,
+        "effects": [
+          {
+            "type": "Empty",
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 2
+            }
+          }
+        ],
+        "enableBurst": true
+      },
+      "pilot": {
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "type": "RecoverBatterySkill",
+          "recoverBattery": 2
+        },
+        "enableSkill": true
+      }
+    }
+  ],
+  "activePlayerId": "",
+  "effect": {
+    "name": "UpdateRemainingTurn",
+    "endArmdozerEffects": [
+      {
+        "playerId": "player1",
+        "effect": {
+          "type": "Empty",
+          "period": {
+            "type": "TurnLimit",
+            "remainingTurn": 0
+          }
+        }
+      },
+      {
+        "playerId": "player2",
+        "effect": {
+          "type": "Empty",
+          "period": {
+            "type": "TurnLimit",
+            "remainingTurn": 0
+          }
+        }
+      }
+    ]
+  }
+}
