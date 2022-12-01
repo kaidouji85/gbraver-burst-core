@@ -8,6 +8,7 @@ import type { PlayerCommandX } from "../../../src/game/command/player-command";
 import type { GameState } from "../../../src/state/game-state";
 import type { PlayerState } from "../../../src/state/player-state";
 
+/** 攻撃側プレイヤー */
 export const attacker: PlayerState = {
   ...EMPTY_PLAYER_STATE,
   playerId: "attacker",
@@ -21,6 +22,7 @@ export const attacker: PlayerState = {
   },
 };
 
+/** 防御側プレイヤー */
 export const defender: PlayerState = {
   ...EMPTY_PLAYER_STATE,
   playerId: "defender",
@@ -34,12 +36,14 @@ export const defender: PlayerState = {
   },
 };
 
+/** 最新のゲームステート */
 export const lastState: GameState = {
   ...EMPTY_GAME_STATE,
   activePlayerId: "attacker",
   players: [attacker, defender],
 };
 
+/** プレイヤーのコマンド */
 export const commands: [
   PlayerCommandX<BatteryCommand>,
   PlayerCommandX<BatteryCommand>
