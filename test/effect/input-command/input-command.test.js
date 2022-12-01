@@ -1,10 +1,16 @@
 // @flow
 
+import path from "path";
+
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { GameState } from "../../../src/state/game-state";
+import {
+  exportSnapShotJSON,
+  importSnapShotJSON,
+  shouldUpdateSnapShot,
+} from "../../snap-shot";
 
 test("戦闘後のコマンド入力フェイズが正しく適用される", () => {
   const player01 = {
@@ -27,53 +33,22 @@ test("戦闘後のコマンド入力フェイズが正しく適用される", ()
       enableBurst: false,
     },
   };
-  const lastState: GameState = {
-    ...EMPTY_GAME_STATE,
-    players: [player01, player02],
-  };
-  const player01Command = { type: "BATTERY_COMMAND", battery: 3 };
-  const player02Command = { type: "BATTERY_COMMAND", battery: 3 };
-
   const result = inputCommand(
-    lastState,
-    player01.playerId,
-    player01Command,
-    player02.playerId,
-    player02Command
-  );
-  expect(result).toEqual({
-    ...lastState,
-    effect: {
-      name: "InputCommand",
-      players: [
-        {
-          playerId: player01.playerId,
-          selectable: true,
-          command: [
-            { type: "BATTERY_COMMAND", battery: 0 },
-            { type: "BATTERY_COMMAND", battery: 1 },
-            { type: "BATTERY_COMMAND", battery: 2 },
-            { type: "BATTERY_COMMAND", battery: 3 },
-            { type: "BATTERY_COMMAND", battery: 4 },
-            { type: "BATTERY_COMMAND", battery: 5 },
-            { type: "BURST_COMMAND" },
-            { type: "PILOT_SKILL_COMMAND" },
-          ],
-        },
-        {
-          playerId: player02.playerId,
-          selectable: true,
-          command: [
-            { type: "BATTERY_COMMAND", battery: 0 },
-            { type: "BATTERY_COMMAND", battery: 1 },
-            { type: "BATTERY_COMMAND", battery: 2 },
-            { type: "BATTERY_COMMAND", battery: 3 },
-            { type: "PILOT_SKILL_COMMAND" },
-          ],
-        },
-      ],
+    {
+      ...EMPTY_GAME_STATE,
+      players: [player01, player02],
     },
-  });
+    player01.playerId,
+    { type: "BATTERY_COMMAND", battery: 3 },
+    player02.playerId,
+    { type: "BATTERY_COMMAND", battery: 3 }
+  );
+  const snapShotPath = path.join(__dirname, "input-command__after-battle.json");
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });
 
 test("効果適用フロー後のコマンド入力フェイズ効果が正しく処理される", () => {
@@ -97,42 +72,23 @@ test("効果適用フロー後のコマンド入力フェイズ効果が正し�
       enableBurst: false,
     },
   };
-  const lastState: GameState = {
-    ...EMPTY_GAME_STATE,
-    players: [player01, player02],
-  };
-  const player01Command = { type: "BATTERY_COMMAND", battery: 3 };
-  const player02Command = { type: "BURST_COMMAND" };
-
   const result = inputCommand(
-    lastState,
-    player01.playerId,
-    player01Command,
-    player02.playerId,
-    player02Command
-  );
-  expect(result).toEqual({
-    ...lastState,
-    effect: {
-      name: "InputCommand",
-      players: [
-        {
-          playerId: "player01",
-          selectable: false,
-          nextTurnCommand: { type: "BATTERY_COMMAND", battery: 3 },
-        },
-        {
-          playerId: "player02",
-          selectable: true,
-          command: [
-            { type: "BATTERY_COMMAND", battery: 0 },
-            { type: "BATTERY_COMMAND", battery: 1 },
-            { type: "BATTERY_COMMAND", battery: 2 },
-            { type: "BATTERY_COMMAND", battery: 3 },
-            { type: "PILOT_SKILL_COMMAND" },
-          ],
-        },
-      ],
+    {
+      ...EMPTY_GAME_STATE,
+      players: [player01, player02],
     },
-  });
+    player01.playerId,
+    { type: "BATTERY_COMMAND", battery: 3 },
+    player02.playerId,
+    { type: "BURST_COMMAND" }
+  );
+  const snapShotPath = path.join(
+    __dirname,
+    "input-command__after-effect-activation.json"
+  );
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
 });

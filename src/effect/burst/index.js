@@ -1,6 +1,7 @@
 // @flow
 
 import type {
+  BatteryLimitBreak,
   BuffPower,
   ContinuousAttack,
   LightningBarrier,
@@ -8,6 +9,7 @@ import type {
 } from "../../player/burst";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
+import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
 import type { BurstEffect } from "./burst-effect";
 import { continuousAttack } from "./continuous-attack";
@@ -16,7 +18,6 @@ import { recoverBattery } from "./recover-battery";
 
 /**
  * バーストを実行する
- *
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @return バースト結果、実行不可能な場合はnullを返す
@@ -31,10 +32,9 @@ export function burst(
 
 /**
  * バースト効果を適用する
- *
  * @param lastState 最新状態
  * @param burstPlayerId バーストするプレイヤーID
- * @return 更新結果
+ * @return 更新結果、更新できない場合は例外を投げる
  */
 export function burstEffect(
   lastState: GameState,
@@ -67,12 +67,17 @@ export function burstEffect(
     return continuousAttack(lastState, burstPlayerId, continuousAttackBurst);
   }
 
+  if (burstPlayer.armdozer.burst.type === "BatteryLimitBreak") {
+    const batteryLimitBreakBurst: BatteryLimitBreak =
+      burstPlayer.armdozer.burst;
+    return batteryLimitBreak(lastState, burstPlayerId, batteryLimitBreakBurst);
+  }
+
   throw new Error("burst not found");
 }
 
 /**
  * 指定したプレイヤーのバーストを利用不能にする
- *
  * @param lastState 最新状態
  * @return 更新結果
  */

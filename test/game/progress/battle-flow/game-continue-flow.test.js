@@ -5,13 +5,13 @@ import {
   EMPTY_ARMDOZER_STATE,
   EMPTY_GAME_STATE,
   EMPTY_PLAYER_STATE,
-} from "../../../src";
-import { gameContinueFlow } from "../../../src/game/progress/battle-flow";
+} from "../../../../src";
+import { gameContinueFlow } from "../../../../src/game/progress/battle-flow/game-continue-flow";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
   shouldUpdateSnapShot,
-} from "../../snap-shot";
+} from "../../../snap-shot";
 
 test("ターン交代まで正しく実行できる", () => {
   const player1 = {

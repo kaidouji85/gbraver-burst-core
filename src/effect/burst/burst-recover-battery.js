@@ -5,7 +5,6 @@ import type { ArmdozerState } from "../../state/armdozer-state";
 
 /**
  * バーストで回復した後のバッテリー値を計算する
- *
  * @param armdozer アームドーザ状態
  * @param burst バースト
  * @return バースト実施後のバッテリー値
