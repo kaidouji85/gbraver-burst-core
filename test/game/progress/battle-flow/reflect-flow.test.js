@@ -1,16 +1,16 @@
 // @flow
 import path from "path";
 
-import type { GameState, PlayerState } from "../../../src";
-import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
-import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
-import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import { reflectFlow } from "../../../src/game/progress/battle-flow/reflect-flow";
+import type { GameState, PlayerState } from "../../../../src";
+import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import { reflectFlow } from "../../../../src/game/progress/battle-flow/reflect-flow";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
   shouldUpdateSnapShot,
-} from "../../snap-shot";
+} from "../../../snap-shot";
 
 /** 攻撃側プレイヤー */
 const ATTACKER: PlayerState = {

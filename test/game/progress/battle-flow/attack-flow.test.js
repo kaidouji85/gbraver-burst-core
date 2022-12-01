@@ -1,13 +1,13 @@
 // @flow
 import path from "path";
 
-import { EMPTY_GAME_STATE, EMPTY_PLAYER_STATE } from "../../../src";
-import { attackFlow } from "../../../src/game/progress/battle-flow/attack-flow";
+import { EMPTY_GAME_STATE, EMPTY_PLAYER_STATE } from "../../../../src";
+import { attackFlow } from "../../../../src/game/progress/battle-flow/attack-flow";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
   shouldUpdateSnapShot,
-} from "../../snap-shot";
+} from "../../../snap-shot";
 
 test("バッテリー宣言から攻撃までを正しく進めることができる", () => {
   const attacker = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };
