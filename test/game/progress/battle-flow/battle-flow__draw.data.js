@@ -1,12 +1,12 @@
 // @flow
 
-import type { BatteryCommand } from "../../../src/command/battery";
-import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
-import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
-import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { PlayerCommandX } from "../../../src/game/command/player-command";
-import type { GameState } from "../../../src/state/game-state";
-import type { PlayerState } from "../../../src/state/player-state";
+import type { BatteryCommand } from "../../../../src/command/battery";
+import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import type { PlayerCommandX } from "../../../../src/game/command/player-command";
+import type { GameState } from "../../../../src/state/game-state";
+import type { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃側プレイヤー */
 export const attacker: PlayerState = {
@@ -28,11 +28,22 @@ export const defender: PlayerState = {
   playerId: "defender",
   armdozer: {
     ...EMPTY_ARMDOZER_STATE,
-    hp: 100,
+    hp: 3000,
     maxHp: 3000,
     power: 2000,
     battery: 5,
     maxBattery: 5,
+    effects: [
+      {
+        type: "TryReflect",
+        damage: 5000,
+        effect: "Lightning",
+        period: {
+          type: "TurnLimit",
+          remainingTurn: 1,
+        },
+      },
+    ],
   },
 };
 
@@ -54,6 +65,6 @@ export const commands: [
   },
   {
     playerId: "defender",
-    command: { type: "BATTERY_COMMAND", battery: 1 },
+    command: { type: "BATTERY_COMMAND", battery: 0 },
   },
 ];

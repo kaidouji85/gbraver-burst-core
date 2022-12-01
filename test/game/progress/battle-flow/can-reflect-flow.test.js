@@ -1,7 +1,7 @@
 // @flow
 
-import type { BattleResult } from "../../../src";
-import { canReflectFlow } from "../../../src/game/progress/battle-flow/reflect-flow";
+import type { BattleResult } from "../../../../src";
+import { canReflectFlow } from "../../../../src/game/progress/battle-flow/reflect-flow";
 
 test("通常ヒットの場合はダメージ反射を行う", () => {
   const battleResult: BattleResult = {
