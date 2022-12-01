@@ -35,23 +35,23 @@ export function battleFlow(
 
   return startGameStateFlow(attackFlow(lastState, attacker, defender))
     .add((state) => {
-      const battleEffect =
-        state.effect.name === "Battle" ? (state.effect: Battle) : null;
-      return battleEffect
-        ? startGameStateFlow([state])
-            .add((state) =>
-              canReflectFlow(battleEffect.result)
-                ? reflectFlow(state, attacker.playerId)
-                : []
-            )
-            .add((state) =>
-              canRightItself(battleEffect)
-                ? [upcastGameState(rightItself(state, battleEffect))]
-                : []
-            )
-            .toGameStateHistory()
-            .slice(1)
-        : [];
+      if (state.effect.name === "Battle") {
+        const battleEffect = (state.effect: Battle);
+        return startGameStateFlow([state])
+          .add((state) =>
+            canReflectFlow(battleEffect.result)
+              ? reflectFlow(state, attacker.playerId)
+              : []
+          )
+          .add((state) =>
+            canRightItself(battleEffect)
+              ? [upcastGameState(rightItself(state, battleEffect))]
+              : []
+          )
+          .toGameStateHistory()
+          .slice(1);
+      }
+      return [];
     })
     .add((state) => {
       const endJudge = gameEndJudging(state);
