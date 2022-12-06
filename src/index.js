@@ -94,8 +94,6 @@ export type {
   RecoverBatterySkill,
 } from "./player/pilot";
 export type { Player, PlayerId, PlayerX } from "./player/player";
-export type { Score } from "./score/score";
-export { calculateScore } from "./score/score";
 export type {
   ArmdozerEffect,
   BatteryCorrection,
