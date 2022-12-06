@@ -12,7 +12,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "npm-run-all clean type-check lint lint:test type-check:test test transpile copy-type-definition",
+    "build": "run-s clean type-check lint lint:test type-check:test test transpile copy-type-definition",
     "transpile": "cross-env BABEL_ENV=production babel src/ -d lib/",
     "type-check": "flow check src",
     "type-check:test": "flow check test",
@@ -22,10 +22,13 @@
     "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest",
     "lint": "eslint src",
     "lint:test": "eslint test",
+    "lint:all": "run-s lint lint:test",
     "lint-fix": "eslint --fix src",
     "lint-fix:test": "eslint --fix test",
+    "lint-fix:all": "run-s lint-fix lint-fix:test",
     "code-format": "prettier --write src",
     "code-format:test": "prettier --write test",
+    "code-format:all": "run-s code-format code-format:test",
     "code-analysis": "codehawk src"
   },
   "files": [
@@ -42,7 +45,7 @@
     "@babel/register": "^7.18.9",
     "codehawk-cli": "^10.0.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-jest": "^27.1.6",
     "eslint-plugin-simple-import-sort": "^8.0.0",
