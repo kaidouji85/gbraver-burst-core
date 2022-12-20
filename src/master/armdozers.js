@@ -68,7 +68,7 @@ export const ArmDozers: Armdozer[] = [
     id: ArmDozerIds.GENESIS_BRAVER,
     name: "ジェネシスブレイバー",
     maxHp: 3000,
-    maxBattery: 5,
+    maxBattery: 4,
     power: 2200,
     speed: 1900,
     burst: {
