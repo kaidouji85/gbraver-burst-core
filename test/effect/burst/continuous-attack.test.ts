@@ -1,4 +1,5 @@
 import path from "path";
+
 import type { GameState, PlayerState } from "../../../src";
 import { burst } from "../../../src/effect/burst";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";

@@ -1,4 +1,5 @@
 import path from "path";
+
 import { BatteryCommand, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE, PlayerCommandX } from "../../../../src";
 import { attackFlow } from "../../../../src/game/progress/battle-flow/attack-flow";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../../snap-shot";

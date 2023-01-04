@@ -1,4 +1,5 @@
 import path from "path";
+
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";

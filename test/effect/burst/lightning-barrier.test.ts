@@ -1,4 +1,5 @@
 import path from "path";
+
 import type { GameState } from "../../../src";
 import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";

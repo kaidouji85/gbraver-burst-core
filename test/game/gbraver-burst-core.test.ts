@@ -1,4 +1,5 @@
 import path from "path";
+
 import { PlayerCommand } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";

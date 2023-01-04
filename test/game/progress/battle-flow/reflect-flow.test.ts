@@ -1,4 +1,5 @@
 import path from "path";
+
 import { reflectFlow } from "../../../../src/game/progress/battle-flow/reflect-flow";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../../snap-shot";
 import * as MultiReflectData from "./reflect-flow__multi-reflect.data";

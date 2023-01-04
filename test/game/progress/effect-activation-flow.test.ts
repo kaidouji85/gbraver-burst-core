@@ -1,4 +1,5 @@
 import path from "path";
+
 import type { BatteryCommand, BurstCommand, GameState, PlayerCommand, PlayerState } from "../../../src";
 import type { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
