@@ -12,10 +12,9 @@
   "main": "lib/src/index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "run-s clean type-check lint lint:test test transpile copy-type-definition",
+    "build": "run-s clean type-check lint lint:test test transpile",
     "transpile": "tsc -d --outDir lib",
     "type-check": "tsc --noEmit",
-    "copy-type-definition": "flow-copy-source src lib",
     "clean": "rimraf lib",
     "test": "jest",
     "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest",
