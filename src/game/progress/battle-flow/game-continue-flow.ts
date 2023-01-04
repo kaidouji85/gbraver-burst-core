@@ -1,5 +1,8 @@
 import type { Command } from "../../../command/command";
-import { canContinuousActive, continuousActive } from "../../../effect/continuous-active";
+import {
+  canContinuousActive,
+  continuousActive,
+} from "../../../effect/continuous-active";
 import { inputCommand } from "../../../effect/input-command";
 import { turnChange } from "../../../effect/turn-change";
 import { updateRemainingTurn } from "../../../effect/update-remaning-turn";
@@ -17,6 +20,29 @@ import { startGameStateFlow } from "../../game-state-flow";
  * @param defenderCommand 防御側コマンド
  * @return 更新結果
  */
-export function gameContinueFlow(lastState: GameState, attackerId: PlayerId, attackerCommand: Command, defenderId: PlayerId, defenderCommand: Command): GameState[] {
-  return startGameStateFlow([upcastGameState(updateRemainingTurn(lastState))]).add(state => canContinuousActive(state) ? [upcastGameState(continuousActive(state))] : [upcastGameState(turnChange(state))]).add(state => [upcastGameState(inputCommand(state, attackerId, attackerCommand, defenderId, defenderCommand))]).toGameStateHistory();
+export function gameContinueFlow(
+  lastState: GameState,
+  attackerId: PlayerId,
+  attackerCommand: Command,
+  defenderId: PlayerId,
+  defenderCommand: Command
+): GameState[] {
+  return startGameStateFlow([upcastGameState(updateRemainingTurn(lastState))])
+    .add((state) =>
+      canContinuousActive(state)
+        ? [upcastGameState(continuousActive(state))]
+        : [upcastGameState(turnChange(state))]
+    )
+    .add((state) => [
+      upcastGameState(
+        inputCommand(
+          state,
+          attackerId,
+          attackerCommand,
+          defenderId,
+          defenderCommand
+        )
+      ),
+    ])
+    .toGameStateHistory();
 }

@@ -31,7 +31,7 @@ export function createOpenPlayerState(player: Player): PlayerState {
   return {
     playerId: player.playerId,
     armdozer: createArmdozerState(player.armdozer),
-    pilot: createPilotState(player.pilot)
+    pilot: createPilotState(player.pilot),
   };
 }
 

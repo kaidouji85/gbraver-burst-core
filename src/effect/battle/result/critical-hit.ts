@@ -12,6 +12,6 @@ export type CriticalHit = {
 export function criticalHit(): CriticalHit {
   return {
     name: "CriticalHit",
-    damage: 9999
+    damage: 9999,
   };
 }

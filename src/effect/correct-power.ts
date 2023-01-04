@@ -19,7 +19,7 @@ export function correctPower(effects: ArmdozerEffect[]): number {
  * @return 判定結果、trueで攻撃補正半減を持つ
  */
 export function hasHalveCorrectPower(effects: ArmdozerEffect[]): boolean {
-  return effects.filter(v => v.type === "HalveCorrectPower").length > 0;
+  return effects.filter((v) => v.type === "HalveCorrectPower").length > 0;
 }
 
 /**
@@ -29,5 +29,7 @@ export function hasHalveCorrectPower(effects: ArmdozerEffect[]): boolean {
  * @return 計算結果
  */
 export function totalCorrectPower(effects: ArmdozerEffect[]): number {
-  return effects.map(v => v.type === "CorrectPower" ? v.power : 0).reduce((a, b) => a + b, 0);
+  return effects
+    .map((v) => (v.type === "CorrectPower" ? v.power : 0))
+    .reduce((a, b) => a + b, 0);
 }

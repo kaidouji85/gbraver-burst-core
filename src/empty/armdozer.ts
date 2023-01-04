@@ -5,7 +5,7 @@ import type { ArmdozerState } from "../state/armdozer-state";
 /** 空のバースト */
 export const EMPTY_BURST: Burst = {
   type: "RecoverBattery",
-  recoverBattery: 0
+  recoverBattery: 0,
 };
 
 /** 空のアームドーザデータ */
@@ -16,13 +16,14 @@ export const EMPTY_ARMDOZER: Armdozer = {
   maxBattery: 5,
   power: 2000,
   speed: 2000,
-  burst: EMPTY_BURST
+  burst: EMPTY_BURST,
 };
 
 /** 空のアームドーザゲームステート */
-export const EMPTY_ARMDOZER_STATE: ArmdozerState = { ...EMPTY_ARMDOZER,
+export const EMPTY_ARMDOZER_STATE: ArmdozerState = {
+  ...EMPTY_ARMDOZER,
   battery: EMPTY_ARMDOZER.maxBattery,
   hp: EMPTY_ARMDOZER.maxHp,
   effects: [],
-  enableBurst: true
+  enableBurst: true,
 };

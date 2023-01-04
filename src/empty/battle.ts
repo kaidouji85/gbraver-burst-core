@@ -6,6 +6,6 @@ export const EMPTY_BATTLE: Battle = {
   attacker: "",
   isDeath: false,
   result: {
-    name: "Miss"
-  }
+    name: "Miss",
+  },
 };

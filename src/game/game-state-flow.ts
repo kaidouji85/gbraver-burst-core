@@ -24,6 +24,7 @@ interface GameStateFlow {
    */
   toGameStateHistory(): GameState[];
 }
+
 /** ゲームステートフローのシンプルな実装 */
 
 class SimpleGameStateFlow implements GameStateFlow {
@@ -50,16 +51,14 @@ class SimpleGameStateFlow implements GameStateFlow {
   toGameStateHistory(): GameState[] {
     return this.stateHistory;
   }
-
 }
+
 /**
  * ゲームステートフローを開始する
  *
  * @param stateHistory ゲームステート履歴
  * @return 生成したゲームステート分岐
  */
-
-
 export function startGameStateFlow(stateHistory: GameState[]): GameStateFlow {
   if (stateHistory.length <= 0) {
     throw new Error("requires at least 1 game state history.");

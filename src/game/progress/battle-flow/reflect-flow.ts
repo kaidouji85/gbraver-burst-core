@@ -13,7 +13,11 @@ import { upcastGameState } from "../../../state/game-state";
  * @return 判定結果、trueでダメージ反射フローを行う
  */
 export function canReflectFlow(result: BattleResult): boolean {
-  return result.name === "NormalHit" || result.name === "Guard" || result.name === "CriticalHit";
+  return (
+    result.name === "NormalHit" ||
+    result.name === "Guard" ||
+    result.name === "CriticalHit"
+  );
 }
 
 /**
@@ -23,16 +27,28 @@ export function canReflectFlow(result: BattleResult): boolean {
  * @param attackerId 攻撃側のプレイヤーID
  * @return 更新結果
  */
-export function reflectFlow(lastState: GameState, attackerId: PlayerId): GameState[] {
-  const defender = lastState.players.find(v => v.playerId !== attackerId);
+export function reflectFlow(
+  lastState: GameState,
+  attackerId: PlayerId
+): GameState[] {
+  const defender = lastState.players.find((v) => v.playerId !== attackerId);
 
   if (!defender) {
     throw new Error("not found defender");
   }
 
-  const reflectParams = defender.armdozer.effects.filter(v => v.type === "TryReflect").map(v => ((v as any) as TryReflect)).map(v => toReflectParam(v));
-  return reflectParams.reduce((stateHistory: GameState[], reflectParam: ReflectParam) => {
-    const state = stateHistory[stateHistory.length - 1] ?? lastState;
-    return [...stateHistory, upcastGameState(reflect(state, attackerId, reflectParam))];
-  }, []);
+  const reflectParams = defender.armdozer.effects
+    .filter((v) => v.type === "TryReflect")
+    .map((v) => v as any as TryReflect) // eslint-disable-line @typescript-eslint/no-explicit-any
+    .map((v) => toReflectParam(v));
+  return reflectParams.reduce(
+    (stateHistory: GameState[], reflectParam: ReflectParam) => {
+      const state = stateHistory[stateHistory.length - 1] ?? lastState;
+      return [
+        ...stateHistory,
+        upcastGameState(reflect(state, attackerId, reflectParam)),
+      ];
+    },
+    []
+  );
 }

@@ -7,5 +7,5 @@ import type { ArmdozerEffect } from "../../state/armdozer-effect";
  * @return 判定結果、trueでアクティブプレイヤー継続を持つ
  */
 export function hasContinuousActive(effects: ArmdozerEffect[]): boolean {
-  return effects.filter(v => v.type === "ContinuousActivePlayer").length > 0;
+  return effects.filter((v) => v.type === "ContinuousActivePlayer").length > 0;
 }

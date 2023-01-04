@@ -6,7 +6,11 @@ export type PilotId = string;
 /**
  * パイロットスキル
  */
-export type PilotSkill = RecoverBatterySkill | BuffPowerSkill | BatteryEnchantmentSkill | DamageHalvedSkill;
+export type PilotSkill =
+  | RecoverBatterySkill
+  | BuffPowerSkill
+  | BatteryEnchantmentSkill
+  | DamageHalvedSkill;
 
 /**
  * パイロットスキル バッテリー回復

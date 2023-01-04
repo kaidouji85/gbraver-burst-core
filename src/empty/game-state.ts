@@ -5,6 +5,6 @@ export const EMPTY_GAME_STATE: GameState = {
   players: [],
   activePlayerId: "",
   effect: {
-    name: "StartGame"
-  }
+    name: "StartGame",
+  },
 };

@@ -13,6 +13,6 @@ export type Feint = {
 export function feint(defenderBattery: number): Feint {
   return {
     name: "Feint",
-    isDefenderMoved: 0 < defenderBattery
+    isDefenderMoved: 0 < defenderBattery,
   };
 }

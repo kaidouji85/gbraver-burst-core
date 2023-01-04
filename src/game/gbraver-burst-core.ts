@@ -68,11 +68,13 @@ export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
  * @param data 再開するデータ
  * @return Gブレイバーバースト
  */
-export function restoreGbraverBurst(data: RestoreGbraverBurst): GbraverBurstCore {
+export function restoreGbraverBurst(
+  data: RestoreGbraverBurst
+): GbraverBurstCore {
   return new GbraverBurstCoreImpl(data.players, data.stateHistory);
 }
-/** Gブレイバーバーストコア実装 */
 
+/** Gブレイバーバーストコア実装 */
 class GbraverBurstCoreImpl implements GbraverBurstCore {
   _players: [Player, Player];
   _stateHistory: GameState[];
@@ -102,7 +104,7 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
   dump(): RestoreGbraverBurst {
     return {
       players: this._players,
-      stateHistory: this._stateHistory
+      stateHistory: this._stateHistory,
     };
   }
 
@@ -122,5 +124,4 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
     this._stateHistory = [...this._stateHistory, ...updated];
     return updated;
   }
-
 }

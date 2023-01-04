@@ -18,12 +18,22 @@ export type Guard = {
  * @param defenderBattery 防御側バッテリー
  * @return 防御の戦闘結果
  */
-export function guard(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): Guard {
-  const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
+export function guard(
+  attacker: PlayerState,
+  attackerBattery: number,
+  defender: PlayerState,
+  defenderBattery: number
+): Guard {
+  const normalHit = normalHitDamage(
+    attacker,
+    attackerBattery,
+    defender,
+    defenderBattery
+  );
   const reduction = hasDamageHalved(defender.armdozer.effects) ? 0.5 : 1;
   const damage = toMinDamage(normalHit * 0.5 * reduction);
   return {
     name: "Guard",
-    damage: damage
+    damage: damage,
   };
 }

@@ -8,10 +8,15 @@ import type { PlayerState } from "../../state/player-state";
  * @param command バッテリーコマンド
  * @returns 更新結果
  */
-export function updatePlayer(origin: PlayerState, command: BatteryCommand): PlayerState {
-  return { ...origin,
-    armdozer: { ...origin.armdozer,
-      battery: origin.armdozer.battery - command.battery
-    }
+export function updatePlayer(
+  origin: PlayerState,
+  command: BatteryCommand
+): PlayerState {
+  return {
+    ...origin,
+    armdozer: {
+      ...origin.armdozer,
+      battery: origin.armdozer.battery - command.battery,
+    },
   };
 }

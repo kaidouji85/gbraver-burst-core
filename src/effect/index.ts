@@ -11,4 +11,15 @@ import type { TurnChange } from "./turn-change/turn-change";
 import type { UpdateRemainingTurn } from "./update-remaning-turn/update-remaining-turn";
 
 /** ゲーム中に発生する効果をまとめたもの */
-export type Effect = StartGame | GameEnd | InputCommand | Reflect | BatteryDeclaration | Battle | TurnChange | BurstEffect | UpdateRemainingTurn | RightItself | PilotSkillEffect;
+export type Effect =
+  | StartGame
+  | GameEnd
+  | InputCommand
+  | Reflect
+  | BatteryDeclaration
+  | Battle
+  | TurnChange
+  | BurstEffect
+  | UpdateRemainingTurn
+  | RightItself
+  | PilotSkillEffect;

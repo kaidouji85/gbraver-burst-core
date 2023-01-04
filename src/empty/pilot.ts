@@ -9,13 +9,14 @@ export const EMPTY_PILOT: Pilot = {
   name: "名無し",
   skill: {
     type: "RecoverBatterySkill",
-    recoverBattery: 2
-  }
+    recoverBattery: 2,
+  },
 };
 
 /**
  * 空のパイロットステート
  */
-export const EMPTY_PILOT_STATE: PilotState = { ...EMPTY_PILOT,
-  enableSkill: true
+export const EMPTY_PILOT_STATE: PilotState = {
+  ...EMPTY_PILOT,
+  enableSkill: true,
 };

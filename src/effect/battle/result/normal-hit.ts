@@ -18,12 +18,22 @@ export type NormalHit = {
  * @param defenderBattery 防御側バッテリー
  * @return 攻撃ヒットの戦闘結果
  */
-export function normalHit(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): NormalHit {
-  const normalHit = normalHitDamage(attacker, attackerBattery, defender, defenderBattery);
+export function normalHit(
+  attacker: PlayerState,
+  attackerBattery: number,
+  defender: PlayerState,
+  defenderBattery: number
+): NormalHit {
+  const normalHit = normalHitDamage(
+    attacker,
+    attackerBattery,
+    defender,
+    defenderBattery
+  );
   const reduction = hasDamageHalved(defender.armdozer.effects) ? 0.5 : 1;
   const damage = toMinDamage(normalHit * reduction);
   return {
     name: "NormalHit",
-    damage: damage
+    damage: damage,
   };
 }

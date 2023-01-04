@@ -13,29 +13,31 @@ import { reflectDamage } from "./reflect";
  * @param reflect ダメージ反射パラメータ
  * @return 更新結果
  */
-export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect: ReflectParam): GameStateX<Reflect> {
-  const target = lastState.players.find(v => v.playerId === damagedPlayerId);
+export function reflect(
+  lastState: GameState,
+  damagedPlayerId: PlayerId,
+  reflect: ReflectParam
+): GameStateX<Reflect> {
+  const target = lastState.players.find((v) => v.playerId === damagedPlayerId);
 
   if (!target) {
     throw new Error("not found reflect target");
   }
 
   const damage = reflectDamage(reflect, target);
-  const updatedTarget = { ...target,
-    armdozer: { ...target.armdozer,
-      hp: target.armdozer.hp - damage
-    }
+  const updatedTarget = {
+    ...target,
+    armdozer: { ...target.armdozer, hp: target.armdozer.hp - damage },
   };
-  const updatedPlayers = lastState.players.map(v => v.playerId === updatedTarget.playerId ? updatedTarget : v);
+  const updatedPlayers = lastState.players.map((v) =>
+    v.playerId === updatedTarget.playerId ? updatedTarget : v
+  );
   const effect: Reflect = {
     name: "Reflect",
     damagedPlayer: damagedPlayerId,
     damage: damage,
     effect: reflect.effect,
-    isDeath: isPlayerDeath(updatedTarget)
+    isDeath: isPlayerDeath(updatedTarget),
   };
-  return { ...lastState,
-    players: updatedPlayers,
-    effect: effect
-  };
+  return { ...lastState, players: updatedPlayers, effect: effect };
 }

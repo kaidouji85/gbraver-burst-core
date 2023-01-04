@@ -8,12 +8,11 @@ import type { ArmdozerEffect } from "../../state/armdozer-effect";
  */
 export function updateArmdozerEffect(effect: ArmdozerEffect): ArmdozerEffect {
   if (effect.period.type === "TurnLimit") {
-    const updatedPeriod = { ...effect.period,
-      remainingTurn: effect.period.remainingTurn - 1
+    const updatedPeriod = {
+      ...effect.period,
+      remainingTurn: effect.period.remainingTurn - 1,
     };
-    return { ...effect,
-      period: updatedPeriod
-    };
+    return { ...effect, period: updatedPeriod };
   }
 
   return effect;

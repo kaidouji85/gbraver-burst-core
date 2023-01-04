@@ -12,28 +12,33 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
  * @param skill スキル内容
  * @return 更新結果、実行不可能な場合は例外を投げる
  */
-export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill: RecoverBatterySkill): GameStateX<PilotSkillEffectX<RecoverBatterySkill>> {
-  const invoker = lastState.players.find(v => v.playerId === invokerId);
+export function recoverBattery(
+  lastState: GameState,
+  invokerId: PlayerId,
+  skill: RecoverBatterySkill
+): GameStateX<PilotSkillEffectX<RecoverBatterySkill>> {
+  const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
   if (!invoker) {
     throw new Error("not found pilot skill invoker");
   }
 
-  const updatedInvoker: PlayerState = { ...invoker,
-    armdozer: { ...invoker.armdozer,
-      battery: calcRecoverBattery(invoker.armdozer, skill)
-    }
+  const updatedInvoker: PlayerState = {
+    ...invoker,
+    armdozer: {
+      ...invoker.armdozer,
+      battery: calcRecoverBattery(invoker.armdozer, skill),
+    },
   };
-  const updatedPlayers: PlayerState[] = lastState.players.map(v => v.playerId === invokerId ? updatedInvoker : v);
+  const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
+    v.playerId === invokerId ? updatedInvoker : v
+  );
   const effect: PilotSkillEffectX<RecoverBatterySkill> = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
-    skill
+    skill,
   };
-  return { ...lastState,
-    players: updatedPlayers,
-    effect: effect
-  };
+  return { ...lastState, players: updatedPlayers, effect: effect };
 }
 
 /**
@@ -43,6 +48,9 @@ export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill:
  * @param skill スキル内容
  * @return 回復後のバッテリー
  */
-export function calcRecoverBattery(armdozer: ArmdozerState, skill: RecoverBatterySkill): number {
+export function calcRecoverBattery(
+  armdozer: ArmdozerState,
+  skill: RecoverBatterySkill
+): number {
   return Math.min(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
 }

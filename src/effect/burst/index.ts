@@ -1,4 +1,10 @@
-import type { BatteryLimitBreak, BuffPower, ContinuousAttack, LightningBarrier, RecoverBattery } from "../../player/burst";
+import type {
+  BatteryLimitBreak,
+  BuffPower,
+  ContinuousAttack,
+  LightningBarrier,
+  RecoverBattery,
+} from "../../player/burst";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import { batteryLimitBreak } from "./battery-limit-break";
@@ -14,7 +20,10 @@ import { recoverBattery } from "./recover-battery";
  * @param burstPlayerId バーストするプレイヤーID
  * @return バースト結果、実行不可能な場合はnullを返す
  */
-export function burst(lastState: GameState, burstPlayerId: PlayerId): GameStateX<BurstEffect> {
+export function burst(
+  lastState: GameState,
+  burstPlayerId: PlayerId
+): GameStateX<BurstEffect> {
   const doneBurstEffect = burstEffect(lastState, burstPlayerId);
   return disableBurst(doneBurstEffect);
 }
@@ -25,8 +34,13 @@ export function burst(lastState: GameState, burstPlayerId: PlayerId): GameStateX
  * @param burstPlayerId バーストするプレイヤーID
  * @return 更新結果、更新できない場合は例外を投げる
  */
-export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+export function burstEffect(
+  lastState: GameState,
+  burstPlayerId: PlayerId
+): GameStateX<BurstEffect> {
+  const burstPlayer = lastState.players.find(
+    (v) => v.playerId === burstPlayerId
+  );
 
   if (!burstPlayer) {
     throw new Error("not found burst player");
@@ -53,7 +67,8 @@ export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): Game
   }
 
   if (burstPlayer.armdozer.burst.type === "BatteryLimitBreak") {
-    const batteryLimitBreakBurst: BatteryLimitBreak = burstPlayer.armdozer.burst;
+    const batteryLimitBreakBurst: BatteryLimitBreak =
+      burstPlayer.armdozer.burst;
     return batteryLimitBreak(lastState, burstPlayerId, batteryLimitBreakBurst);
   }
 
@@ -65,20 +80,23 @@ export function burstEffect(lastState: GameState, burstPlayerId: PlayerId): Game
  * @param lastState 最新状態
  * @return 更新結果
  */
-export function disableBurst(lastState: GameStateX<BurstEffect>): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(v => v.playerId === lastState.effect.burstPlayer);
+export function disableBurst(
+  lastState: GameStateX<BurstEffect>
+): GameStateX<BurstEffect> {
+  const burstPlayer = lastState.players.find(
+    (v) => v.playerId === lastState.effect.burstPlayer
+  );
 
   if (!burstPlayer) {
     throw new Error("not found burst player");
   }
 
-  const updatedBurstPlayer = { ...burstPlayer,
-    armdozer: { ...burstPlayer.armdozer,
-      enableBurst: false
-    }
+  const updatedBurstPlayer = {
+    ...burstPlayer,
+    armdozer: { ...burstPlayer.armdozer, enableBurst: false },
   };
-  const updatedPlayers = lastState.players.map(v => v.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : v);
-  return { ...lastState,
-    players: updatedPlayers
-  };
+  const updatedPlayers = lastState.players.map((v) =>
+    v.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : v
+  );
+  return { ...lastState, players: updatedPlayers };
 }

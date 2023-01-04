@@ -7,8 +7,14 @@ import type { PilotState } from "../../state/pilot-state";
  * @param pilot パイロットステート
  * @return 利用可能なパイロットスキルコマンド
  */
-export function selectablePilotSkillCommand(pilot: PilotState): PilotSkillCommand[] {
-  return pilot.enableSkill ? [{
-    type: "PILOT_SKILL_COMMAND"
-  }] : [];
+export function selectablePilotSkillCommand(
+  pilot: PilotState
+): PilotSkillCommand[] {
+  return pilot.enableSkill
+    ? [
+        {
+          type: "PILOT_SKILL_COMMAND",
+        },
+      ]
+    : [];
 }

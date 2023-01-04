@@ -1,5 +1,10 @@
 /** バースト */
-export type Burst = RecoverBattery | BuffPower | LightningBarrier | ContinuousAttack | BatteryLimitBreak;
+export type Burst =
+  | RecoverBattery
+  | BuffPower
+  | LightningBarrier
+  | ContinuousAttack
+  | BatteryLimitBreak;
 
 /**
  * 全バースト共通で利用するバッテリー回復プロパティ

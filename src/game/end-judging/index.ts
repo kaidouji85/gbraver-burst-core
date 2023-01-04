@@ -9,24 +9,24 @@ import type { GameEndJudging } from "./game-end-judging";
  * @return 判定結果
  */
 export function gameEndJudging(lastState: GameState): GameEndJudging {
-  const deathPlayer = lastState.players.filter(v => isPlayerDeath(v));
+  const deathPlayer = lastState.players.filter((v) => isPlayerDeath(v));
 
   if (deathPlayer.length === 2) {
     return {
-      type: "EvenMatch"
+      type: "EvenMatch",
     };
   }
 
-  const winner = lastState.players.find(v => !isPlayerDeath(v));
+  const winner = lastState.players.find((v) => !isPlayerDeath(v));
 
   if (winner && deathPlayer.length === 1) {
     return {
       type: "GameOver",
-      winner: winner.playerId
+      winner: winner.playerId,
     };
   }
 
   return {
-    type: "GameContinue"
+    type: "GameContinue",
   };
 }

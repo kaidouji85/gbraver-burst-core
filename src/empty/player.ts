@@ -7,12 +7,12 @@ import { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./pilot";
 export const EMPTY_PLAYER: Player = {
   playerId: "",
   armdozer: EMPTY_ARMDOZER,
-  pilot: EMPTY_PILOT
+  pilot: EMPTY_PILOT,
 };
 
 /** 空のプレイヤーステート */
 export const EMPTY_PLAYER_STATE: PlayerState = {
   playerId: "",
   armdozer: EMPTY_ARMDOZER_STATE,
-  pilot: EMPTY_PILOT_STATE
+  pilot: EMPTY_PILOT_STATE,
 };

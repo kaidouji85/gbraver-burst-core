@@ -12,5 +12,7 @@ import { startGameStateFlow } from "../game-state-flow";
  * @return ゲーム初期状態
  */
 export function start(players: [Player, Player]): GameState[] {
-  return startGameStateFlow([upcastGameState(startGame(players))]).add(state => [upcastGameState(gameStartInputCommand(state))]).toGameStateHistory();
+  return startGameStateFlow([upcastGameState(startGame(players))])
+    .add((state) => [upcastGameState(gameStartInputCommand(state))])
+    .toGameStateHistory();
 }

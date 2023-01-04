@@ -21,7 +21,12 @@ export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;
  * @param defenderBattery 防御側バッテリー
  * @return 戦闘結果
  */
-export function battleResult(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): BattleResult {
+export function battleResult(
+  attacker: PlayerState,
+  attackerBattery: number,
+  defender: PlayerState,
+  defenderBattery: number
+): BattleResult {
   if (attackerBattery === 0) {
     return feint(defenderBattery);
   }
@@ -39,6 +44,6 @@ export function battleResult(attacker: PlayerState, attackerBattery: number, def
   }
 
   return {
-    name: "Miss"
+    name: "Miss",
   };
 }

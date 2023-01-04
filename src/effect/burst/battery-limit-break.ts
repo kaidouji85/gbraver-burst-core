@@ -13,29 +13,39 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  * @param burst バースト効果
  * @return 更新結果、実行不可能な場合は例外を投げる
  */
-export function batteryLimitBreak(lastState: GameState, burstPlayerId: PlayerId, burst: BatteryLimitBreak): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(v => v.playerId === burstPlayerId);
+export function batteryLimitBreak(
+  lastState: GameState,
+  burstPlayerId: PlayerId,
+  burst: BatteryLimitBreak
+): GameStateX<BurstEffect> {
+  const burstPlayer = lastState.players.find(
+    (v) => v.playerId === burstPlayerId
+  );
 
   if (!burstPlayer) {
     throw new Error("not found burst player");
   }
 
-  const updatedArmdozer: ArmdozerState = { ...burstPlayer.armdozer,
-    maxBattery: burst.maxBattery
+  const updatedArmdozer: ArmdozerState = {
+    ...burstPlayer.armdozer,
+    maxBattery: burst.maxBattery,
   };
-  const updatedBurstPlayer: PlayerState = { ...burstPlayer,
-    armdozer: { ...updatedArmdozer,
-      battery: burstRecoverBattery(updatedArmdozer, burst)
-    }
+  const updatedBurstPlayer: PlayerState = {
+    ...burstPlayer,
+    armdozer: {
+      ...updatedArmdozer,
+      battery: burstRecoverBattery(updatedArmdozer, burst),
+    },
   };
-  const updatedPlayers = lastState.players.map(player => player.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : player);
+  const updatedPlayers = lastState.players.map((player) =>
+    player.playerId === updatedBurstPlayer.playerId
+      ? updatedBurstPlayer
+      : player
+  );
   const effect: BurstEffect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
-    burst
+    burst,
   };
-  return { ...lastState,
-    players: updatedPlayers,
-    effect
-  };
+  return { ...lastState, players: updatedPlayers, effect };
 }

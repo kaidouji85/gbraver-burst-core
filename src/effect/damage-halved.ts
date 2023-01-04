@@ -7,5 +7,5 @@ import type { ArmdozerEffect } from "../state/armdozer-effect";
  * @return 判定結果、trueでダメージ半減効果を持つ
  */
 export function hasDamageHalved(effect: ArmdozerEffect[]): boolean {
-  return effect.filter(v => v.type === "DamageHalved").length > 0;
+  return effect.filter((v) => v.type === "DamageHalved").length > 0;
 }

@@ -13,6 +13,38 @@ import { startGameStateFlow } from "../../game-state-flow";
  * @param defender 防御側バッテリーコマンド
  * @return 更新されたゲームステート
  */
-export function attackFlow(lastState: GameState, attacker: PlayerCommandX<BatteryCommand>, defender: PlayerCommandX<BatteryCommand>): GameState[] {
-  return startGameStateFlow([lastState]).add(state => [upcastGameState(batteryDeclaration(state, attacker.playerId, attacker.command, defender.playerId, defender.command))]).add(state => state.effect.name === "BatteryDeclaration" ? [upcastGameState(battle(state, state.effect.attacker, state.effect.attackerBattery, defender.playerId, state.effect.defenderBattery))] : []).toGameStateHistory().slice(1);
+export function attackFlow(
+  lastState: GameState,
+  attacker: PlayerCommandX<BatteryCommand>,
+  defender: PlayerCommandX<BatteryCommand>
+): GameState[] {
+  return startGameStateFlow([lastState])
+    .add((state) => [
+      upcastGameState(
+        batteryDeclaration(
+          state,
+          attacker.playerId,
+          attacker.command,
+          defender.playerId,
+          defender.command
+        )
+      ),
+    ])
+    .add((state) =>
+      state.effect.name === "BatteryDeclaration"
+        ? [
+            upcastGameState(
+              battle(
+                state,
+                state.effect.attacker,
+                state.effect.attackerBattery,
+                defender.playerId,
+                state.effect.defenderBattery
+              )
+            ),
+          ]
+        : []
+    )
+    .toGameStateHistory()
+    .slice(1);
 }

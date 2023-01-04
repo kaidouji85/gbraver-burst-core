@@ -4,7 +4,11 @@ import type { EmptyCommand } from "./empty-command";
 import type { PilotSkillCommand } from "./pilot-skill";
 
 /** コマンド */
-export type Command = EmptyCommand | BatteryCommand | BurstCommand | PilotSkillCommand;
+export type Command =
+  | EmptyCommand
+  | BatteryCommand
+  | BurstCommand
+  | PilotSkillCommand;
 
 /**
  * クイックコマンド
@@ -18,7 +22,9 @@ export type QuickCommand = BurstCommand | PilotSkillCommand;
  * @param command キャストするコマンド
  * @return キャスト結果
  */
-export function castQuickCommand(command: Command): QuickCommand | null | undefined {
+export function castQuickCommand(
+  command: Command
+): QuickCommand | null | undefined {
   switch (command.type) {
     case "BURST_COMMAND":
     case "PILOT_SKILL_COMMAND":

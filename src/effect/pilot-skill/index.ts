@@ -1,4 +1,10 @@
-import type { BatteryEnchantmentSkill, BuffPowerSkill, DamageHalvedSkill, PilotSkill, RecoverBatterySkill } from "../../player/pilot";
+import type {
+  BatteryEnchantmentSkill,
+  BuffPowerSkill,
+  DamageHalvedSkill,
+  PilotSkill,
+  RecoverBatterySkill,
+} from "../../player/pilot";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import { batteryEnchantment } from "./battery-enchantment";
@@ -13,9 +19,11 @@ import { recoverBattery } from "./recover-battery";
  * @param origin キャスト前
  * @return キャスト結果
  */
-function upcast<X extends PilotSkill>(origin: GameStateX<PilotSkillEffectX<X>>): GameStateX<PilotSkillEffect> {
+function upcast<X extends PilotSkill>(
+  origin: GameStateX<PilotSkillEffectX<X>>
+): GameStateX<PilotSkillEffect> {
   type CastedEffect = PilotSkill | typeof origin.effect.skill;
-  return ((origin as any) as GameStateX<PilotSkillEffectX<CastedEffect>>);
+  return origin as any as GameStateX<PilotSkillEffectX<CastedEffect>>; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**
@@ -25,8 +33,11 @@ function upcast<X extends PilotSkill>(origin: GameStateX<PilotSkillEffectX<X>>):
  * @param invokerId パイロットスキルを発動するプレイヤー
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameStateX<PilotSkillEffect> {
-  const invoker = lastState.players.find(v => v.playerId === invokerId);
+function pilotSkillEffect(
+  lastState: GameState,
+  invokerId: PlayerId
+): GameStateX<PilotSkillEffect> {
+  const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
   if (!invoker) {
     throw new Error("not found pilot skill invoker");
@@ -61,22 +72,25 @@ function pilotSkillEffect(lastState: GameState, invokerId: PlayerId): GameStateX
  * @param lastState 最新状態
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): GameStateX<PilotSkillEffect> {
-  const invoker = lastState.players.find(v => v.playerId === lastState.effect.invokerId);
+function disablePilotSkill(
+  lastState: GameStateX<PilotSkillEffect>
+): GameStateX<PilotSkillEffect> {
+  const invoker = lastState.players.find(
+    (v) => v.playerId === lastState.effect.invokerId
+  );
 
   if (!invoker) {
     throw new Error("not found pilot skill invoker");
   }
 
-  const updatedInvoker = { ...invoker,
-    pilot: { ...invoker.pilot,
-      enableSkill: false
-    }
+  const updatedInvoker = {
+    ...invoker,
+    pilot: { ...invoker.pilot, enableSkill: false },
   };
-  const updatedPlayers = lastState.players.map(v => v.playerId === updatedInvoker.playerId ? updatedInvoker : v);
-  return { ...lastState,
-    players: updatedPlayers
-  };
+  const updatedPlayers = lastState.players.map((v) =>
+    v.playerId === updatedInvoker.playerId ? updatedInvoker : v
+  );
+  return { ...lastState, players: updatedPlayers };
 }
 
 /**
@@ -86,7 +100,10 @@ function disablePilotSkill(lastState: GameStateX<PilotSkillEffect>): GameStateX<
  * @param invokerId パイロットスキルを発動するプレイヤー
  * @return 更新結果、実行不可能な場合はnullを返す
  */
-export function pilotSkill(lastState: GameState, invokerId: PlayerId): GameStateX<PilotSkillEffect> {
+export function pilotSkill(
+  lastState: GameState,
+  invokerId: PlayerId
+): GameStateX<PilotSkillEffect> {
   const donePilotSkill = pilotSkillEffect(lastState, invokerId);
   return disablePilotSkill(donePilotSkill);
 }

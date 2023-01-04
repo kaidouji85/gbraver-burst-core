@@ -24,7 +24,5 @@ export type PilotState = PilotStateX<PilotSkill>;
  * @return 生成結果
  */
 export function createPilotState(origin: Pilot): PilotState {
-  return { ...origin,
-    enableSkill: true
-  };
+  return { ...origin, enableSkill: true };
 }

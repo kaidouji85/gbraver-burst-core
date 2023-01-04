@@ -31,10 +31,11 @@ export type ArmdozerState = ArmdozerStateX<Burst>;
  * @return 戦闘状態
  */
 export function createArmdozerState(basic: Armdozer): ArmdozerState {
-  return { ...basic,
+  return {
+    ...basic,
     hp: basic.maxHp,
     battery: basic.maxBattery,
     enableBurst: true,
-    effects: []
+    effects: [],
   };
 }

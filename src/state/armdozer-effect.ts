@@ -18,7 +18,14 @@ export type PermanentEffect = {
  * アームドーザに適用される効果
  * バフ、デバフなどのターン継続効果を想定している
  */
-export type ArmdozerEffect = EmptyArmdozerEffect | CorrectPower | HalveCorrectPower | TryReflect | ContinuousActivePlayer | BatteryCorrection | DamageHalved;
+export type ArmdozerEffect =
+  | EmptyArmdozerEffect
+  | CorrectPower
+  | HalveCorrectPower
+  | TryReflect
+  | ContinuousActivePlayer
+  | BatteryCorrection
+  | DamageHalved;
 
 /**
  * 何もしない効果

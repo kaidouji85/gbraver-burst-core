@@ -12,6 +12,15 @@ import { batteryBonus } from "./battery-bonus";
  * @param defenderBattery 防御側バッテリー
  * @return ダメージ
  */
-export function normalHitDamage(attacker: PlayerState, attackerBattery: number, defender: PlayerState, defenderBattery: number): number {
-  return attacker.armdozer.power + correctPower(attacker.armdozer.effects) + batteryBonus(attackerBattery, defenderBattery);
+export function normalHitDamage(
+  attacker: PlayerState,
+  attackerBattery: number,
+  defender: PlayerState,
+  defenderBattery: number
+): number {
+  return (
+    attacker.armdozer.power +
+    correctPower(attacker.armdozer.effects) +
+    batteryBonus(attackerBattery, defenderBattery)
+  );
 }

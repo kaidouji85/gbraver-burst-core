@@ -8,11 +8,16 @@ import type { BattleResult } from "../result/battle-result";
  * @param defender 更新前の防御側ステータス
  * @return 更新された防御側ステータス
  */
-export function updateDefender(result: BattleResult, defender: PlayerState): PlayerState {
-  return { ...defender,
-    armdozer: { ...defender.armdozer,
-      hp: updateDefenderHP(result, defender.armdozer.hp)
-    }
+export function updateDefender(
+  result: BattleResult,
+  defender: PlayerState
+): PlayerState {
+  return {
+    ...defender,
+    armdozer: {
+      ...defender.armdozer,
+      hp: updateDefenderHP(result, defender.armdozer.hp),
+    },
   };
 }
 
