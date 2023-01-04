@@ -47,7 +47,7 @@ export function inputCommand(lastState: GameState, attackerId: PlayerId, attacke
   const nextAttackerCommand = isNoChoice(attackerCommand, defenderCommand) ? noChoice(attacker, attackerCommand) : selectable(attacker);
   const nextDefenderCommand = isNoChoice(defenderCommand, attackerCommand) ? noChoice(defender, defenderCommand) : selectable(defender);
   const playerCommands = [nextAttackerCommand, nextDefenderCommand];
-  const effect = {
+  const effect: InputCommand = {
     name: "InputCommand",
     players: playerCommands
   };

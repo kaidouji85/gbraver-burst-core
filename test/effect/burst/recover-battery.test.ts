@@ -6,8 +6,9 @@ import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { PlayerState } from "../../../src/state/player-state";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("削除 バースト効果バッテリー回復が正しく適用される", () => {
-  const burstPlayer = { ...EMPTY_PLAYER_STATE,
+  const burstPlayer: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "player01",
     armdozer: { ...EMPTY_ARMDOZER_STATE,
       battery: 0,

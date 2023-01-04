@@ -1,10 +1,11 @@
 import path from "path";
-import type { BatteryCommand, BurstCommand, GameState, PlayerState } from "../../../src";
+import type { BatteryCommand, BurstCommand, GameState, PlayerCommand, PlayerState } from "../../../src";
 import type { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { progress } from "../../../src/game/progress";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE,
   playerId: "attacker"
 };
@@ -21,12 +22,13 @@ const BURST_COMMAND: BurstCommand = {
 const PILOT_SKILL_COMMAND: PilotSkillCommand = {
   type: "PILOT_SKILL_COMMAND"
 };
+
 test("戦闘フローを正しく進めることができる", () => {
   const state: GameState = { ...EMPTY_GAME_STATE,
     players: [DEFENDER, ATTACKER],
     activePlayerId: ATTACKER.playerId
   };
-  const commands = [{
+  const commands: [PlayerCommand, PlayerCommand] = [{
     playerId: ATTACKER.playerId,
     command: BATTERY_COMMAND
   }, {
@@ -39,12 +41,13 @@ test("戦闘フローを正しく進めることができる", () => {
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("効果適用フローを正しく進めることができる", () => {
   const state: GameState = { ...EMPTY_GAME_STATE,
     players: [DEFENDER, ATTACKER],
     activePlayerId: ATTACKER.playerId
   };
-  const commands = [{
+  const commands: [PlayerCommand, PlayerCommand] = [{
     playerId: ATTACKER.playerId,
     command: BURST_COMMAND
   }, {

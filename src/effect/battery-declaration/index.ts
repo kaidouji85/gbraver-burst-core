@@ -37,7 +37,7 @@ export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, a
   });
   const attackerCorrectedBattery = correctedBattery(attackerBattery, attacker.armdozer.effects);
   const defenderCorrectedBattery = correctedBattery(defenderBattery, defender.armdozer.effects);
-  const effect = {
+  const effect: BatteryDeclaration = {
     name: "BatteryDeclaration",
     attacker: attacker.playerId,
     attackerBattery: attackerCorrectedBattery,
@@ -45,7 +45,8 @@ export function batteryDeclaration(lastState: GameState, attackerId: PlayerId, a
     defenderBattery: defenderCorrectedBattery,
     originalBatteryOfDefender: defenderBattery.battery
   };
-  return { ...lastState,
+  return { 
+    ...lastState,
     players: updatedPlayers,
     effect: effect
   };

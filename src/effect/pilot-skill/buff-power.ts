@@ -18,7 +18,7 @@ export function buffPower(lastState: GameState, invokerId: PlayerId, skill: Buff
     throw new Error("not found pilot skill invoker");
   }
 
-  const updatedInvoker = { ...invoker,
+  const updatedInvoker: PlayerState = { ...invoker,
     armdozer: { ...invoker.armdozer,
       effects: [...invoker.armdozer.effects, {
         type: "CorrectPower",
@@ -31,7 +31,7 @@ export function buffPower(lastState: GameState, invokerId: PlayerId, skill: Buff
     }
   };
   const updatedPlayers: PlayerState[] = lastState.players.map(v => v.playerId === invokerId ? updatedInvoker : v);
-  const effect = {
+  const effect: PilotSkillEffectX<BuffPowerSkill> = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
     skill

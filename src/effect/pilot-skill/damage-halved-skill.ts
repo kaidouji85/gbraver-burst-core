@@ -18,7 +18,7 @@ export function damageHalvedSkill(lastState: GameState, invokerId: PlayerId, ski
     throw new Error("not found pilot skill invoker");
   }
 
-  const updatedInvoker = { ...invoker,
+  const updatedInvoker: PlayerState = { ...invoker,
     armdozer: { ...invoker.armdozer,
       effects: [...invoker.armdozer.effects, {
         type: "DamageHalved",
@@ -30,7 +30,7 @@ export function damageHalvedSkill(lastState: GameState, invokerId: PlayerId, ski
     }
   };
   const updatedPlayers: PlayerState[] = lastState.players.map(v => v.playerId === invokerId ? updatedInvoker : v);
-  const effect = {
+  const effect: PilotSkillEffectX<DamageHalvedSkill> = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
     skill

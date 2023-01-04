@@ -18,7 +18,7 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
     throw new Error("not found pilot skill invoker");
   }
 
-  const updatedInvoker = { ...invoker,
+  const updatedInvoker: PlayerState = { ...invoker,
     armdozer: { ...invoker.armdozer,
       effects: [...invoker.armdozer.effects, {
         type: "BatteryCorrection",
@@ -37,7 +37,7 @@ export function batteryEnchantment(lastState: GameState, invokerId: PlayerId, sk
     }
   };
   const updatedPlayers: PlayerState[] = lastState.players.map(v => v.playerId === invokerId ? updatedInvoker : v);
-  const effect = {
+  const effect: PilotSkillEffectX<BatteryEnchantmentSkill> = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
     skill

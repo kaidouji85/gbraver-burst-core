@@ -1,9 +1,11 @@
 import path from "path";
+import { PlayerCommand } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
 import { restoreGbraverBurst, startGbraverBurst } from "../../src/game/gbraver-burst-core";
 import type { Player } from "../../src/player/player";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../snap-shot";
+
 const PLAYER1: Player = {
   playerId: "player1",
   pilot: EMPTY_PILOT,
@@ -18,20 +20,21 @@ const PLAYER2: Player = {
     speed: 2000
   }
 };
-const COMMAND1 = {
+const COMMAND1: PlayerCommand = {
   playerId: "player1",
   command: {
     type: "BATTERY_COMMAND",
     battery: 3
   }
 };
-const COMMAND2 = {
+const COMMAND2: PlayerCommand = {
   playerId: "player2",
   command: {
     type: "BATTERY_COMMAND",
     battery: 2
   }
 };
+
 test("初期状態を正しく作ることができる", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   const result = core.stateHistory();
@@ -40,12 +43,14 @@ test("初期状態を正しく作ることができる", () => {
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("プレイヤー情報が正しくセットされている", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   const result = core.players();
   const expected = [PLAYER1, PLAYER2];
   expect(result).toEqual(expected);
 });
+
 test("正しくゲームを進めることができる", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   const result = core.progress([COMMAND1, COMMAND2]);
@@ -54,6 +59,7 @@ test("正しくゲームを進めることができる", () => {
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("ゲームステート履歴が正しく更新される", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   const initialState = core.stateHistory();
@@ -62,6 +68,7 @@ test("ゲームステート履歴が正しく更新される", () => {
   const expected = [...initialState, ...update];
   expect(result).toEqual(expected);
 });
+
 test("ダンプ、リストアを正しく行うことができる", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   core.progress([COMMAND1, COMMAND2]);

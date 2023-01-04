@@ -25,7 +25,7 @@ export function recoverBattery(lastState: GameState, invokerId: PlayerId, skill:
     }
   };
   const updatedPlayers: PlayerState[] = lastState.players.map(v => v.playerId === invokerId ? updatedInvoker : v);
-  const effect = {
+  const effect: PilotSkillEffectX<RecoverBatterySkill> = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
     skill

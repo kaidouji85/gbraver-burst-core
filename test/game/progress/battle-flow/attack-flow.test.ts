@@ -1,12 +1,13 @@
 import path from "path";
-import { EMPTY_GAME_STATE, EMPTY_PLAYER_STATE } from "../../../../src";
+import { BatteryCommand, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE, PlayerCommandX } from "../../../../src";
 import { attackFlow } from "../../../../src/game/progress/battle-flow/attack-flow";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../../snap-shot";
+
 test("バッテリー宣言から攻撃までを正しく進めることができる", () => {
   const attacker = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker"
   };
-  const attackerBattery = {
+  const attackerBattery: PlayerCommandX<BatteryCommand> = {
     playerId: attacker.playerId,
     command: {
       type: "BATTERY_COMMAND",
@@ -16,7 +17,7 @@ test("バッテリー宣言から攻撃までを正しく進めることがで�
   const defender = { ...EMPTY_PLAYER_STATE,
     playerId: "player2"
   };
-  const defenderBattery = {
+  const defenderBattery: PlayerCommandX<BatteryCommand> = {
     playerId: defender.playerId,
     command: {
       type: "BATTERY_COMMAND",

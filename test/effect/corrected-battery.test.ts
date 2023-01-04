@@ -1,5 +1,7 @@
+import { ArmdozerEffect, BatteryCommand, BatteryCorrection } from "../../src";
 import { correctedBattery } from "../../src/effect/battery-correction";
-const emptyBatteryCorrection = {
+
+const emptyBatteryCorrection: BatteryCorrection = {
   type: "BatteryCorrection",
   batteryCorrection: 0,
   period: {
@@ -7,8 +9,9 @@ const emptyBatteryCorrection = {
     remainingTurn: 1
   }
 };
+
 test("補正後バッテリーが正しく計算できる", () => {
-  const battery = {
+  const battery: BatteryCommand = {
     type: "BATTERY_COMMAND",
     battery: 1
   };
@@ -18,19 +21,20 @@ test("補正後バッテリーが正しく計算できる", () => {
   const result = correctedBattery(battery, effects);
   expect(result).toBe(3);
 });
+
 test("バッテリーが0の場合は補正されない", () => {
-  const battery = {
+  const battery: BatteryCommand = {
     type: "BATTERY_COMMAND",
     battery: 0
   };
   const effects = [{ ...emptyBatteryCorrection,
-    batteryCorrection: 2
-  }];
+    batteryCorrection: 2}];
   const result = correctedBattery(battery, effects);
   expect(result).toBe(0);
 });
+
 test("補正後バッテリーが0より小さい場合、結果を0とみなす", () => {
-  const battery = {
+  const battery: BatteryCommand = {
     type: "BATTERY_COMMAND",
     battery: 3
   };
@@ -41,11 +45,11 @@ test("補正後バッテリーが0より小さい場合、結果を0とみなす
   expect(result).toBe(0);
 });
 test("アームドーザ効果が空の場合、元の値をそのまま返す", () => {
-  const battery = {
+  const battery: BatteryCommand = {
     type: "BATTERY_COMMAND",
     battery: 4
   };
-  const effects = [];
+  const effects: ArmdozerEffect[] = [];
   const result = correctedBattery(battery, effects);
   expect(result).toBe(4);
 });

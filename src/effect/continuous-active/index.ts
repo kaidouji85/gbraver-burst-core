@@ -38,7 +38,7 @@ export function continuousActive(state: GameState): GameStateX<TurnChange> {
     }
   };
   const updatedPlayers = state.players.map(v => v.playerId === activePlayer.playerId ? updatedActivePlayer : v);
-  const effect = {
+  const effect: TurnChange = {
     name: "TurnChange",
     recoverBattery: 0
   };

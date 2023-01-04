@@ -1,11 +1,12 @@
 import path from "path";
-import { EMPTY_GAME_STATE } from "../../../src";
+import { EMPTY_GAME_STATE, GameState, PlayerState } from "../../../src";
 import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("バッテリーリミットブレイクが正しく適用できる", () => {
-  const burstPlayer = { ...EMPTY_PLAYER_STATE,
+  const burstPlayer: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "burstPlayer",
     armdozer: { ...EMPTY_ARMDOZER_STATE,
       battery: 2,
@@ -17,10 +18,10 @@ test("バッテリーリミットブレイクが正しく適用できる", () =>
       }
     }
   };
-  const otherPlayer = { ...EMPTY_PLAYER_STATE,
+  const otherPlayer: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "otherPlayer"
   };
-  const lastState = { ...EMPTY_GAME_STATE,
+  const lastState: GameState = { ...EMPTY_GAME_STATE,
     players: [otherPlayer, burstPlayer]
   };
   const result = burst(lastState, burstPlayer.playerId);

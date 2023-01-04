@@ -33,7 +33,7 @@ export function buffPower(lastState: GameState, burstPlayerId: PlayerId, burst: 
     }
   };
   const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId ? updatedBurstPlayer : player);
-  const effect = {
+  const effect: BurstEffect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst

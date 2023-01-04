@@ -27,7 +27,7 @@ export function reflect(lastState: GameState, damagedPlayerId: PlayerId, reflect
     }
   };
   const updatedPlayers = lastState.players.map(v => v.playerId === updatedTarget.playerId ? updatedTarget : v);
-  const effect = {
+  const effect: Reflect = {
     name: "Reflect",
     damagedPlayer: damagedPlayerId,
     damage: damage,

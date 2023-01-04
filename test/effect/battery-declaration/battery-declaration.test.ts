@@ -1,9 +1,11 @@
+import { BatteryCommand, GameState, PlayerState } from "../../../src";
 import { batteryDeclaration } from "../../../src/effect/battery-declaration";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+
 test("バッテリー宣言が正しく処理される", () => {
-  const attacker = { ...EMPTY_PLAYER_STATE,
+  const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",
     armdozer: { ...EMPTY_ARMDOZER_STATE,
       battery: 4,
@@ -18,7 +20,7 @@ test("バッテリー宣言が正しく処理される", () => {
       }]
     }
   };
-  const defender = { ...EMPTY_PLAYER_STATE,
+  const defender: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "defender",
     armdozer: { ...EMPTY_ARMDOZER_STATE,
       battery: 5,
@@ -33,15 +35,15 @@ test("バッテリー宣言が正しく処理される", () => {
       }]
     }
   };
-  const lastState = { ...EMPTY_GAME_STATE,
+  const lastState: GameState = { ...EMPTY_GAME_STATE,
     activePlayerId: attacker.playerId,
     players: [attacker, defender]
   };
-  const attackerBattery = {
+  const attackerBattery: BatteryCommand = {
     type: "BATTERY_COMMAND",
     battery: 3
   };
-  const defenderBattery = {
+  const defenderBattery: BatteryCommand = {
     type: "BATTERY_COMMAND",
     battery: 2
   };

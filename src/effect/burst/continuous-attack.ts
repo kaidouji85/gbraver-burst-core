@@ -31,7 +31,7 @@ export function continuousAttack(lastState: GameState, burstPlayerId: PlayerId, 
     }
   };
   const updatedPlayers = lastState.players.map(player => player.playerId === burstPlayerId ? updatedBurstPlayer : player);
-  const effect = {
+  const effect: BurstEffect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst
