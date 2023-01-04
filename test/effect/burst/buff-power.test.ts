@@ -6,6 +6,7 @@ import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("攻撃力バフが正しく適用される", () => {
   const burstPlayer: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "burstPlayer",

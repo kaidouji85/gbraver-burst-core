@@ -7,6 +7,7 @@ import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { DamageHalvedSkill } from "../../../src/player/pilot";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("ダメージ半減スキルが正しく発動できる", () => {
   const skill: DamageHalvedSkill = {
     type: "DamageHalvedSkill",

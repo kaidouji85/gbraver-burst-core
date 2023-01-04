@@ -5,6 +5,7 @@ import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("戦闘後のコマンド入力フェイズが正しく適用される", () => {
   const player01 = { ...EMPTY_PLAYER_STATE,
     playerId: "player01",
@@ -36,6 +37,7 @@ test("戦闘後のコマンド入力フェイズが正しく適用される", ()
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("効果適用フロー後のコマンド入力フェイズ効果が正しく処理される", () => {
   const player01 = { ...EMPTY_PLAYER_STATE,
     playerId: "player01",

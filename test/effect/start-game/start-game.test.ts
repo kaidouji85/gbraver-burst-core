@@ -3,6 +3,7 @@ import { EMPTY_ARMDOZER } from "../../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import type { Player } from "../../../src/player/player";
 import type { GameState } from "../../../src/state/game-state";
+
 const PLAYER1: Player = {
   playerId: "player01",
   armdozer: { ...EMPTY_ARMDOZER,
@@ -21,6 +22,7 @@ const PLAYER2: Player = {
   },
   pilot: EMPTY_PILOT
 };
+
 test("正しくゲームスタートができる", () => {
   const result = startGame([PLAYER1, PLAYER2]);
   const expected: GameState = {

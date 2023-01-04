@@ -26,7 +26,6 @@ interface GameStateFlow {
 }
 
 /** ゲームステートフローのシンプルな実装 */
-
 class SimpleGameStateFlow implements GameStateFlow {
   readonly stateHistory: GameState[];
 

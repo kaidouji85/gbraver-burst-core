@@ -7,6 +7,7 @@ import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { BuffPowerSkill } from "../../../src/player/pilot";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("攻撃バフスキルが正しく発動できる", () => {
   const skill: BuffPowerSkill = {
     type: "BuffPowerSkill",

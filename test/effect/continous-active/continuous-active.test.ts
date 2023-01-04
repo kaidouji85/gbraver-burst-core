@@ -3,12 +3,14 @@ import { continuousActive } from "../../../src/effect/continuous-active";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
   type: "ContinuousActivePlayer",
   period: {
     type: "Permanent"
   }
 };
+
 test("アクティブプレイヤー継続が正しく処理できる", () => {
   const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",

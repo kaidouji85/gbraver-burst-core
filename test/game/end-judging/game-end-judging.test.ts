@@ -33,6 +33,7 @@ test("1人だけHPが0なら、HPが0より大きいプレイヤーの勝ち", (
     winner: "player2"
   });
 });
+
 test("2人ともHPが0なら引き分け", () => {
   const player1 = createPlayer("player1", 0);
   const player2 = createPlayer("player2", 0);
@@ -44,6 +45,7 @@ test("2人ともHPが0なら引き分け", () => {
     type: "EvenMatch"
   });
 });
+
 test("2人ともHPが0よりも大きければゲーム続行", () => {
   const player1 = createPlayer("player1", 1000);
   const player2 = createPlayer("player2", 1000);

@@ -4,6 +4,7 @@ import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { GameState } from "../../../src/state/game-state";
 import type { PlayerState } from "../../../src/state/player-state";
+
 test("戦闘を実行した後の状態に正しく更新できる", () => {
   const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",

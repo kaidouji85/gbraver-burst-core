@@ -5,6 +5,7 @@ import { burst } from "../../../src/effect/burst";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("連続攻撃バーストが正しく適用できる", () => {
   const burstPlayer: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "burstPlayer",

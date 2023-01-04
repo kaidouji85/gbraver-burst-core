@@ -3,6 +3,7 @@ import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { GameState } from "../../../src/state/game-state";
+
 test("ターン交代が正しく処理できる", () => {
   const attacker = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",

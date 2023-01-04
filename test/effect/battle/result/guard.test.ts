@@ -3,6 +3,7 @@ import { EMPTY_CORRECT_POWER, EMPTY_DAMAGE_HALVED } from "../../../../src/empty/
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import type { PlayerState } from "../../../../src/state/player-state";
+
 test("ガードは通常ヒット半分のダメージを受ける", () => {
   const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",
@@ -18,6 +19,7 @@ test("ガードは通常ヒット半分のダメージを受ける", () => {
     damage: 1000
   });
 });
+
 test("攻撃補正が正しく適用される", () => {
   const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",
@@ -36,6 +38,7 @@ test("攻撃補正が正しく適用される", () => {
     damage: 1500
   });
 });
+
 test("ダメージ半減が正しく適用される", () => {
   const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",
@@ -54,6 +57,7 @@ test("ダメージ半減が正しく適用される", () => {
     damage: 500
   });
 });
+
 test("攻撃補正 -> ダメージ半減 -> ガードによるダメージ半減、の順番で計算される", () => {
   const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "attacker",

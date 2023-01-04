@@ -3,6 +3,7 @@ import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { PlayerId } from "../../../src/player/player";
 import type { PlayerState } from "../../../src/state/player-state";
+
 test("スピードが高いプレイヤーが先行", () => {
   const player1: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "player1",
@@ -21,6 +22,7 @@ test("スピードが高いプレイヤーが先行", () => {
   expect(ret1).toBe(player1.playerId);
   expect(ret2).toBe(player1.playerId);
 });
+
 test("スピードが同じ場合にはランダムで先行を決定", () => {
   const player1: PlayerState = { ...EMPTY_PLAYER_STATE,
     playerId: "player1",

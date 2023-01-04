@@ -7,6 +7,7 @@ import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { RecoverBatterySkill } from "../../../src/player/pilot";
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+
 test("バッテリー回復スキルを正しく適用できる", () => {
   const skill: RecoverBatterySkill = {
     type: "RecoverBatterySkill",

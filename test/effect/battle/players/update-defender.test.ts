@@ -7,6 +7,7 @@ import type { NormalHit } from "../../../../src/effect/battle/result/normal-hit"
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import type { PlayerState } from "../../../../src/state/player-state";
+
 const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE,
   playerId: "player1",
   armdozer: { ...EMPTY_ARMDOZER_STATE,
@@ -16,6 +17,7 @@ const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE,
     battery: 5
   }
 };
+
 test("通常ヒットを正しく防御側ステータスに反映できる", () => {
   const normalHit: NormalHit = {
     name: "NormalHit",
@@ -29,6 +31,7 @@ test("通常ヒットを正しく防御側ステータスに反映できる", ()
   };
   expect(result).toEqual(expected);
 });
+
 test("クリティカルヒットを正しく防御側ステータスに反映できる", () => {
   const normalHit: CriticalHit = {
     name: "CriticalHit",
@@ -42,6 +45,7 @@ test("クリティカルヒットを正しく防御側ステータスに反映�
   };
   expect(result).toEqual(expected);
 });
+
 test("防御を正しく防御側ステータスに反映できる", () => {
   const normalHit: Guard = {
     name: "Guard",
@@ -55,6 +59,7 @@ test("防御を正しく防御側ステータスに反映できる", () => {
   };
   expect(result).toEqual(expected);
 });
+
 test("ミスを正しく防御側ステータスに反映できる", () => {
   const normalHit: Miss = {
     name: "Miss"
@@ -63,6 +68,7 @@ test("ミスを正しく防御側ステータスに反映できる", () => {
   const expected = DEFENDER;
   expect(result).toEqual(expected);
 });
+
 test("フェイントを正しく防御側ステータスに反映できる", () => {
   const normalHit: Feint = {
     name: "Feint",
