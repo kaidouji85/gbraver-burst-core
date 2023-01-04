@@ -1,9 +1,0 @@
-[ignore]
-.*/lib/.*
-.*/node_modules/resolve/.*
-
-[include]
-
-[libs]
-
-[options]
