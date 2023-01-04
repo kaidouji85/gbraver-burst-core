@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/kaidouji85/gbraver-burst-core"
   },
-  "main": "lib/index.js",
+  "main": "lib/src/index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "run-s clean type-check lint lint:test test transpile copy-type-definition",
