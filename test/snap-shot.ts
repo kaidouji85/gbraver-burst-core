@@ -18,11 +18,12 @@ export function shouldUpdateSnapShot(): boolean {
  * @param path エクスポート先のパス
  * @param json エクスポートするオブジェクト
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function exportSnapShotJSON(
   path: string,
   json: Record<string, any>
 ): void {
-  // eslint-disable-line @typescript-eslint/no-explicit-any
+  /* eslint-enable */
   fs.writeFileSync(path, JSON.stringify(json, null, 2), encode);
 }
 
@@ -32,8 +33,9 @@ export function exportSnapShotJSON(
  * @param path 読み込み先のパス
  * @return 読み込み結果
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function importSnapShotJSON(path: string): any {
-  // eslint-disable-line @typescript-eslint/no-explicit-any
+  /* eslint-enable */
   const origin = fs.readFileSync(path, encode);
   return JSON.parse(origin);
 }
