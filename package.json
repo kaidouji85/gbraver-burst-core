@@ -16,7 +16,7 @@
     "transpile": "tsc -d --outDir lib",
     "type-check": "tsc --noEmit",
     "clean": "rimraf lib",
-    "test": "jest --verbose ./test",
+    "test": "jest",
     "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest",
     "lint": "eslint src",
     "lint:test": "eslint test",

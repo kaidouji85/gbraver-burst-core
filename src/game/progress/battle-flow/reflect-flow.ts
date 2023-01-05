@@ -38,8 +38,7 @@ export function reflectFlow(
   }
 
   const reflectParams = defender.armdozer.effects
-    .filter((v) => v.type === "TryReflect")
-    .map((v) => v as any as TryReflect) // eslint-disable-line @typescript-eslint/no-explicit-any
+    .flatMap(v => v.type === "TryReflect" ? v : [])
     .map((v) => toReflectParam(v));
   return reflectParams.reduce(
     (stateHistory: GameState[], reflectParam: ReflectParam) => {
