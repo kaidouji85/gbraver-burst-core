@@ -3,7 +3,6 @@ import type { Battle } from "../../../effect/battle/battle";
 import { gameEnd } from "../../../effect/game-end";
 import { canRightItself, rightItself } from "../../../effect/right-itself";
 import type { GameState } from "../../../state/game-state";
-import { upcastGameState } from "../../../state/game-state";
 import type { PlayerCommandX } from "../../command/player-command";
 import { gameEndJudging } from "../../end-judging";
 import { startGameStateFlow } from "../../game-state-flow";
@@ -45,7 +44,7 @@ export function battleFlow(
           )
           .add((state) =>
             canRightItself(battleEffect)
-              ? [upcastGameState(rightItself(state, battleEffect))]
+              ? [rightItself(state, battleEffect)]
               : []
           )
           .toGameStateHistory()
@@ -64,7 +63,7 @@ export function battleFlow(
             defender.playerId,
             defender.command
           )
-        : [upcastGameState(gameEnd(state, endJudge))];
+        : [gameEnd(state, endJudge)];
     })
     .toGameStateHistory();
 }

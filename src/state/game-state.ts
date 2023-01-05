@@ -22,16 +22,3 @@ export type GameStateX<X> = {
  * ゲーム状態
  */
 export type GameState = GameStateX<Effect>;
-
-/**
- * GameStateXをGameStateにアップキャストする
- *
- * @typeparam {X} 発生した効果
- * @param origin キャスト元
- * @return キャスト結果
- */
-export function upcastGameState<X>(
-  origin: GameStateX<X>
-): GameStateX<Effect | X> {
-  return origin as any as GameStateX<Effect | X>; // eslint-disable-line @typescript-eslint/no-explicit-any
-}

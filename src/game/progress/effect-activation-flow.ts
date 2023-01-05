@@ -2,7 +2,6 @@ import { burst } from "../../effect/burst";
 import { inputCommand } from "../../effect/input-command";
 import { pilotSkill } from "../../effect/pilot-skill";
 import type { GameState } from "../../state/game-state";
-import { upcastGameState } from "../../state/game-state";
 import type { PlayerCommand } from "../command/player-command";
 import { startGameStateFlow } from "../game-state-flow";
 
@@ -61,7 +60,7 @@ export function effectActivationFlow(
         defenderCommand.playerId,
         defenderCommand.command
       );
-      return [upcastGameState(done)];
+      return [done];
     })
     .toGameStateHistory()
     .slice(1); // 本関数は更新結果だけを返すので、ステートヒストリーの先頭は不要
@@ -80,11 +79,11 @@ export function activationOrNot(
   command: PlayerCommand
 ): GameState | null {
   if (command.command.type === "BURST_COMMAND") {
-    return upcastGameState(burst(state, command.playerId));
+    return burst(state, command.playerId);
   }
 
   if (command.command.type === "PILOT_SKILL_COMMAND") {
-    return upcastGameState(pilotSkill(state, command.playerId));
+    return pilotSkill(state, command.playerId);
   }
 
   return null;

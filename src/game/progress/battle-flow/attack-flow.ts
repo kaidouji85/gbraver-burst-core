@@ -2,7 +2,6 @@ import type { BatteryCommand } from "../../../command/battery";
 import { batteryDeclaration } from "../../../effect/battery-declaration";
 import { battle } from "../../../effect/battle";
 import type { GameState } from "../../../state/game-state";
-import { upcastGameState } from "../../../state/game-state";
 import type { PlayerCommandX } from "../../command/player-command";
 import { startGameStateFlow } from "../../game-state-flow";
 
@@ -20,7 +19,6 @@ export function attackFlow(
 ): GameState[] {
   return startGameStateFlow([lastState])
     .add((state) => [
-      upcastGameState(
         batteryDeclaration(
           state,
           attacker.playerId,
@@ -28,12 +26,10 @@ export function attackFlow(
           defender.playerId,
           defender.command
         )
-      ),
     ])
     .add((state) =>
       state.effect.name === "BatteryDeclaration"
         ? [
-            upcastGameState(
               battle(
                 state,
                 state.effect.attacker,
@@ -41,7 +37,6 @@ export function attackFlow(
                 defender.playerId,
                 state.effect.defenderBattery
               )
-            ),
           ]
         : []
     )

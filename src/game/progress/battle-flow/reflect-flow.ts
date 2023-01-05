@@ -3,9 +3,7 @@ import { reflect } from "../../../effect/reflect";
 import type { ReflectParam } from "../../../effect/reflect/reflect";
 import { toReflectParam } from "../../../effect/reflect/reflect";
 import type { PlayerId } from "../../../player/player";
-import type { TryReflect } from "../../../state/armdozer-effect";
 import type { GameState } from "../../../state/game-state";
-import { upcastGameState } from "../../../state/game-state";
 
 /**
  * ダメージ反射フローを実行できるか否かを判定する
@@ -45,7 +43,7 @@ export function reflectFlow(
       const state = stateHistory[stateHistory.length - 1] ?? lastState;
       return [
         ...stateHistory,
-        upcastGameState(reflect(state, attackerId, reflectParam)),
+        reflect(state, attackerId, reflectParam),
       ];
     },
     []
