@@ -5,6 +5,7 @@ import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "..
 import * as ContinuesGameData from "./battle-flow__continue-game.data";
 import * as DeathData from "./battle-flow__death.data";
 import * as DrawData from "./battle-flow__draw.data";
+
 test("戦闘したが、相手を倒しきれなかったのでゲーム続行", () => {
   const {
     lastState,
@@ -16,6 +17,7 @@ test("戦闘したが、相手を倒しきれなかったのでゲーム続行",
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("攻撃で防御側のHPを0以下にした場合、ゲームが終了する", () => {
   const {
     lastState,
@@ -27,6 +29,7 @@ test("攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
   const snapShot = importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("ダメージ反射でHPが0になった場合は引き分け", () => {
   const {
     lastState,

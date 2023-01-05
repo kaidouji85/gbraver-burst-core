@@ -4,6 +4,7 @@ import { reflectFlow } from "../../../../src/game/progress/battle-flow/reflect-f
 import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../../snap-shot";
 import * as MultiReflectData from "./reflect-flow__multi-reflect.data";
 import * as SingleReflectData from "./reflect-flow__single-reflect.data";
+
 test("ダメージ反射が正しく適用される", () => {
   const {
     lastState
@@ -14,6 +15,7 @@ test("ダメージ反射が正しく適用される", () => {
   const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
 test("ダメージ反射の重ね掛けも正しく処理される", () => {
   const {
     lastState

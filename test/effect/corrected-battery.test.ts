@@ -44,6 +44,7 @@ test("補正後バッテリーが0より小さい場合、結果を0とみなす
   const result = correctedBattery(battery, effects);
   expect(result).toBe(0);
 });
+
 test("アームドーザ効果が空の場合、元の値をそのまま返す", () => {
   const battery: BatteryCommand = {
     type: "BATTERY_COMMAND",

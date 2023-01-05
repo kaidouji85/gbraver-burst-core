@@ -19,6 +19,7 @@ const TEST_PLAYER: PlayerState = { ...EMPTY_PLAYER_STATE,
 const OTHER_PLAYER: PlayerState = { ...EMPTY_PLAYER_STATE,
   playerId: "other"
 };
+
 test("バッテリーコマンドの場合は何もしない", () => {
   const state: GameState = { ...EMPTY_GAME_STATE,
     players: [OTHER_PLAYER, TEST_PLAYER]
@@ -30,6 +31,7 @@ test("バッテリーコマンドの場合は何もしない", () => {
   const result = activationOrNot(state, command);
   expect(result).toBeNull();
 });
+
 test("バーストコマンドの場合は、バーストを発動する", () => {
   const state: GameState = { ...EMPTY_GAME_STATE,
     players: [OTHER_PLAYER, TEST_PLAYER]
@@ -41,6 +43,7 @@ test("バーストコマンドの場合は、バーストを発動する", () =>
   const result = activationOrNot(state, command);
   expect(result && result.effect.name === "BurstEffect").toBe(true);
 });
+
 test("パイロットスキルコマンドの場合は、パイロットスキルを発動する", () => {
   const state: GameState = { ...EMPTY_GAME_STATE,
     players: [OTHER_PLAYER, TEST_PLAYER]
