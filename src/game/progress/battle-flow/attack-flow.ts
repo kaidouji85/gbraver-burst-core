@@ -19,24 +19,24 @@ export function attackFlow(
 ): GameState[] {
   return startGameStateFlow([lastState])
     .add((state) => [
-        batteryDeclaration(
-          state,
-          attacker.playerId,
-          attacker.command,
-          defender.playerId,
-          defender.command
-        )
+      batteryDeclaration(
+        state,
+        attacker.playerId,
+        attacker.command,
+        defender.playerId,
+        defender.command
+      ),
     ])
     .add((state) =>
       state.effect.name === "BatteryDeclaration"
         ? [
-              battle(
-                state,
-                state.effect.attacker,
-                state.effect.attackerBattery,
-                defender.playerId,
-                state.effect.defenderBattery
-              )
+            battle(
+              state,
+              state.effect.attacker,
+              state.effect.attackerBattery,
+              defender.playerId,
+              state.effect.defenderBattery
+            ),
           ]
         : []
     )

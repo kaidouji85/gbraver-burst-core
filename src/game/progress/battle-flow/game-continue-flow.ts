@@ -33,13 +33,13 @@ export function gameContinueFlow(
         : [turnChange(state)]
     )
     .add((state) => [
-        inputCommand(
-          state,
-          attackerId,
-          attackerCommand,
-          defenderId,
-          defenderCommand
-        ),
+      inputCommand(
+        state,
+        attackerId,
+        attackerCommand,
+        defenderId,
+        defenderCommand
+      ),
     ])
     .toGameStateHistory();
 }

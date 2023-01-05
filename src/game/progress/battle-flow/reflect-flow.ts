@@ -36,15 +36,12 @@ export function reflectFlow(
   }
 
   const reflectParams = defender.armdozer.effects
-    .flatMap(v => v.type === "TryReflect" ? v : [])
+    .flatMap((v) => (v.type === "TryReflect" ? v : []))
     .map((v) => toReflectParam(v));
   return reflectParams.reduce(
     (stateHistory: GameState[], reflectParam: ReflectParam) => {
       const state = stateHistory[stateHistory.length - 1] ?? lastState;
-      return [
-        ...stateHistory,
-        reflect(state, attackerId, reflectParam),
-      ];
+      return [...stateHistory, reflect(state, attackerId, reflectParam)];
     },
     []
   );
