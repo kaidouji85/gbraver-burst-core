@@ -1,6 +1,6 @@
 import type { BatteryCommand } from "../../command/battery";
 import type { GameState } from "../../state/game-state";
-import type { PlayerCommand, PlayerCommandX } from "../command/player-command";
+import type { PlayerCommand } from "../command/player-command";
 import { battleFlow } from "./battle-flow";
 import {
   effectActivationFlow,
@@ -27,11 +27,9 @@ export function progress(
     commands[1].command.type === "BATTERY_COMMAND"
   ) {
     const command1: BatteryCommand = commands[0].command;
-    type CastedCommand1 = PlayerCommandX<typeof command1>;
-    const playerCommand1 = commands[0] as any as CastedCommand1; // eslint-disable-line @typescript-eslint/no-explicit-any
+    const playerCommand1 = { ...commands[0], command: command1 };
     const command2: BatteryCommand = commands[1].command;
-    type CastedCommand2 = PlayerCommandX<typeof command2>;
-    const playerCommand2 = commands[1] as any as CastedCommand2; // eslint-disable-line @typescript-eslint/no-explicit-any
+    const playerCommand2 = { ...commands[1], command: command2 };
     return battleFlow(lastState, [playerCommand1, playerCommand2]);
   }
 
