@@ -1,5 +1,4 @@
 {
   "extensions": [".ts"],
-  "skipDirectories": ["/node_modules", "coverage", "/lib"],
-  "enableFlow": true
-}
+  "skipDirectories": ["/node_modules", "coverage", "/lib"]
+  }
