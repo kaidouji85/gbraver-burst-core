@@ -4,7 +4,7 @@ test("防御側がバッテリーを使った場合、防御側が動いたと�
   const result = feint(2);
   expect(result).toEqual({
     name: "Feint",
-    isDefenderMoved: true
+    isDefenderMoved: true,
   });
 });
 
@@ -12,6 +12,6 @@ test("防御側がバッテリーを使っていない場合、防御側が動�
   const result = feint(0);
   expect(result).toEqual({
     name: "Feint",
-    isDefenderMoved: false
+    isDefenderMoved: false,
   });
 });

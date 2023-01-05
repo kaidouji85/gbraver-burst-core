@@ -1,18 +1,23 @@
 import { hasDamageHalved } from "../../src/effect/damage-halved";
-import { ArmdozerEffect, CorrectPower, DamageHalved, TurnLimitEffect } from "../../src/state/armdozer-effect";
+import {
+  ArmdozerEffect,
+  CorrectPower,
+  DamageHalved,
+  TurnLimitEffect,
+} from "../../src/state/armdozer-effect";
 
 const oneTurn: TurnLimitEffect = {
   type: "TurnLimit",
-  remainingTurn: 1
+  remainingTurn: 1,
 };
 const damageHalved: DamageHalved = {
   type: "DamageHalved",
-  period: oneTurn
+  period: oneTurn,
 };
 const correctPower: CorrectPower = {
   type: "CorrectPower",
   power: 1000,
-  period: oneTurn
+  period: oneTurn,
 };
 
 test("ダメージ半減効果を持つことを正しく判定できる", () => {

@@ -3,45 +3,53 @@ import path from "path";
 import { PlayerCommand } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
-import { restoreGbraverBurst, startGbraverBurst } from "../../src/game/gbraver-burst-core";
+import {
+  restoreGbraverBurst,
+  startGbraverBurst,
+} from "../../src/game/gbraver-burst-core";
 import type { Player } from "../../src/player/player";
-import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../snap-shot";
+import {
+  exportSnapShotJSON,
+  importSnapShotJSON,
+  shouldUpdateSnapShot,
+} from "../snap-shot";
 
 const PLAYER1: Player = {
   playerId: "player1",
   pilot: EMPTY_PILOT,
-  armdozer: { ...EMPTY_ARMDOZER,
-    speed: 1600
-  }
+  armdozer: { ...EMPTY_ARMDOZER, speed: 1600 },
 };
 const PLAYER2: Player = {
   playerId: "player2",
   pilot: EMPTY_PILOT,
-  armdozer: { ...EMPTY_ARMDOZER,
-    speed: 2000
-  }
+  armdozer: { ...EMPTY_ARMDOZER, speed: 2000 },
 };
 const COMMAND1: PlayerCommand = {
   playerId: "player1",
   command: {
     type: "BATTERY_COMMAND",
-    battery: 3
-  }
+    battery: 3,
+  },
 };
 const COMMAND2: PlayerCommand = {
   playerId: "player2",
   command: {
     type: "BATTERY_COMMAND",
-    battery: 2
-  }
+    battery: 2,
+  },
 };
 
 test("初期状態を正しく作ることができる", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   const result = core.stateHistory();
-  const snapShotPath = path.join(__dirname, "gbraver-burst-core__initial-state.json");
+  const snapShotPath = path.join(
+    __dirname,
+    "gbraver-burst-core__initial-state.json"
+  );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
 
@@ -55,9 +63,14 @@ test("プレイヤー情報が正しくセットされている", () => {
 test("正しくゲームを進めることができる", () => {
   const core = startGbraverBurst([PLAYER1, PLAYER2]);
   const result = core.progress([COMMAND1, COMMAND2]);
-  const snapShotPath = path.join(__dirname, "gbraver-burst-core__progress.json");
+  const snapShotPath = path.join(
+    __dirname,
+    "gbraver-burst-core__progress.json"
+  );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot() ? result : importSnapShotJSON(snapShotPath);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
 

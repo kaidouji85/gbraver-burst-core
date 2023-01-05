@@ -2,12 +2,8 @@ import { battleResult } from "../../../../src/effect/battle/result/battle-result
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import type { PlayerState } from "../../../../src/state/player-state";
 
-const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE,
-  playerId: "player1"
-};
-const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE,
-  playerId: "player2"
-};
+const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "player1" };
+const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "player2" };
 
 test("防御バッテリー < 攻撃バッテリー なら攻撃ヒット", () => {
   const result = battleResult(ATTACKER, 3, DEFENDER, 2);

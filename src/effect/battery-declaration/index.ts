@@ -23,10 +23,10 @@ export function batteryDeclaration(
   defenderId: PlayerId,
   defenderBattery: BatteryCommand
 ): GameStateX<BatteryDeclaration> {
-  const attacker: PlayerState | null | undefined = lastState.players.find(
+  const attacker: PlayerState | undefined = lastState.players.find(
     (v) => v.playerId === attackerId
   );
-  const defender: PlayerState | null | undefined = lastState.players.find(
+  const defender: PlayerState | undefined = lastState.players.find(
     (v) => v.playerId === defenderId
   );
 

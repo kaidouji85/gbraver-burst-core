@@ -7,15 +7,15 @@ const CORRECT_POWER: CorrectPower = {
   power: 1000,
   period: {
     type: "TurnLimit",
-    remainingTurn: 1
-  }
+    remainingTurn: 1,
+  },
 };
 
 const CONTINUOUS_ACTIVE_PLAYER: ContinuousActivePlayer = {
   type: "ContinuousActivePlayer",
   period: {
-    type: "Permanent"
-  }
+    type: "Permanent",
+  },
 };
 
 test("アームドーザ効果からアクティブプレイヤー継続のみが排除される", () => {

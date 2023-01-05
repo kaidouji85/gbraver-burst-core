@@ -22,9 +22,7 @@ export type QuickCommand = BurstCommand | PilotSkillCommand;
  * @param command キャストするコマンド
  * @return キャスト結果
  */
-export function castQuickCommand(
-  command: Command
-): QuickCommand | null | undefined {
+export function castQuickCommand(command: Command): QuickCommand | null {
   switch (command.type) {
     case "BURST_COMMAND":
     case "PILOT_SKILL_COMMAND":

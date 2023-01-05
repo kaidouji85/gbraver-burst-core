@@ -7,55 +7,68 @@ import type { GameState } from "../../../../src/state/game-state";
 import type { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃側プレイヤー */
-export const attacker: PlayerState = { ...EMPTY_PLAYER_STATE,
+export const attacker: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
   playerId: "attacker",
-  armdozer: { ...EMPTY_ARMDOZER_STATE,
+  armdozer: {
+    ...EMPTY_ARMDOZER_STATE,
     hp: 3000,
     maxHp: 3000,
     power: 2000,
     battery: 4,
-    maxBattery: 5
-  }
+    maxBattery: 5,
+  },
 };
 
 /** 防御側プレイヤー */
-export const defender: PlayerState = { ...EMPTY_PLAYER_STATE,
+export const defender: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
   playerId: "defender",
-  armdozer: { ...EMPTY_ARMDOZER_STATE,
+  armdozer: {
+    ...EMPTY_ARMDOZER_STATE,
     hp: 3000,
     maxHp: 3000,
     power: 2000,
     battery: 5,
     maxBattery: 5,
-    effects: [{
-      type: "TryReflect",
-      damage: 5000,
-      effect: "Lightning",
-      period: {
-        type: "TurnLimit",
-        remainingTurn: 1
-      }
-    }]
-  }
+    effects: [
+      {
+        type: "TryReflect",
+        damage: 5000,
+        effect: "Lightning",
+        period: {
+          type: "TurnLimit",
+          remainingTurn: 1,
+        },
+      },
+    ],
+  },
 };
 
 /** 最新のゲームステート */
-export const lastState: GameState = { ...EMPTY_GAME_STATE,
+export const lastState: GameState = {
+  ...EMPTY_GAME_STATE,
   activePlayerId: "attacker",
-  players: [attacker, defender]
+  players: [attacker, defender],
 };
 
 /** プレイヤーのコマンド */
-export const commands: [PlayerCommandX<BatteryCommand>, PlayerCommandX<BatteryCommand>] = [{
-  playerId: "attacker",
-  command: {
-    type: "BATTERY_COMMAND",
-    battery: 2
-  }
-}, {
-  playerId: "defender",
-  command: {
-    type: "BATTERY_COMMAND",
-    battery: 0
-  }
-}];
+export const commands: [
+  PlayerCommandX<BatteryCommand>,
+  PlayerCommandX<BatteryCommand>
+] = [
+  {
+    playerId: "attacker",
+    command: {
+      type: "BATTERY_COMMAND",
+      battery: 2,
+    },
+  },
+  {
+    playerId: "defender",
+    command: {
+      type: "BATTERY_COMMAND",
+      battery: 0,
+    },
+  },
+];

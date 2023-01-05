@@ -4,10 +4,10 @@ import { isNoChoice } from "../../../src/effect/input-command";
 
 const BATTERY_COMMAND: BatteryCommand = {
   type: "BATTERY_COMMAND",
-  battery: 1
+  battery: 1,
 };
 const QUICK_COMMAND: QuickCommand = {
-  type: "BURST_COMMAND"
+  type: "BURST_COMMAND",
 };
 
 test("相手だけがクイックコマンドを使った場合、コマンド選択不可能となる", () => {

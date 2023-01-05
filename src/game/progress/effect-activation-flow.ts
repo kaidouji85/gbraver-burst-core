@@ -78,7 +78,7 @@ export function effectActivationFlow(
 export function activationOrNot(
   state: GameState,
   command: PlayerCommand
-): GameState | null | undefined {
+): GameState | null {
   if (command.command.type === "BURST_COMMAND") {
     return upcastGameState(burst(state, command.playerId));
   }

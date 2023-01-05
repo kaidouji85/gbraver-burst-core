@@ -1,18 +1,23 @@
 import { hasHalveCorrectPower } from "../../src";
-import { ArmdozerEffect, CorrectPower, HalveCorrectPower, TurnLimitEffect } from "../../src/state/armdozer-effect";
+import {
+  ArmdozerEffect,
+  CorrectPower,
+  HalveCorrectPower,
+  TurnLimitEffect,
+} from "../../src/state/armdozer-effect";
 
 const oneTurn: TurnLimitEffect = {
   type: "TurnLimit",
-  remainingTurn: 1
+  remainingTurn: 1,
 };
 const halveCorrectPower: HalveCorrectPower = {
   type: "HalveCorrectPower",
-  period: oneTurn
+  period: oneTurn,
 };
 const correctPower: CorrectPower = {
   type: "CorrectPower",
   power: 1000,
-  period: oneTurn
+  period: oneTurn,
 };
 
 test("攻撃補正半減効果を持つことを正しく判定できる", () => {
