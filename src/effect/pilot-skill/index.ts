@@ -2,7 +2,6 @@ import type {
   BatteryEnchantmentSkill,
   BuffPowerSkill,
   DamageHalvedSkill,
-  PilotSkill,
   RecoverBatterySkill,
 } from "../../player/pilot";
 import type { PlayerId } from "../../player/player";
@@ -10,21 +9,8 @@ import type { GameState, GameStateX } from "../../state/game-state";
 import { batteryEnchantment } from "./battery-enchantment";
 import { buffPower } from "./buff-power";
 import { damageHalvedSkill } from "./damage-halved-skill";
-import type { PilotSkillEffect, PilotSkillEffectX } from "./pilot-skill-effect";
+import type { PilotSkillEffect } from "./pilot-skill-effect";
 import { recoverBattery } from "./recover-battery";
-
-/**
- * パイロットスキル発動ステートにアップキャストする
- *
- * @param origin キャスト前
- * @return キャスト結果
- */
-function upcast<X extends PilotSkill>(
-  origin: GameStateX<PilotSkillEffectX<X>>
-): GameStateX<PilotSkillEffect> {
-  type CastedEffect = PilotSkill | typeof origin.effect.skill;
-  return origin as any as GameStateX<PilotSkillEffectX<CastedEffect>>; // eslint-disable-line @typescript-eslint/no-explicit-any
-}
 
 /**
  * パイロットスキルを適用する
@@ -45,22 +31,22 @@ function pilotSkillEffect(
 
   if (invoker.pilot.skill.type === "RecoverBatterySkill") {
     const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
-    return upcast(recoverBattery(lastState, invokerId, castedSkill));
+    return recoverBattery(lastState, invokerId, castedSkill);
   }
 
   if (invoker.pilot.skill.type === "BuffPowerSkill") {
     const castedSkill: BuffPowerSkill = invoker.pilot.skill;
-    return upcast(buffPower(lastState, invokerId, castedSkill));
+    return buffPower(lastState, invokerId, castedSkill);
   }
 
   if (invoker.pilot.skill.type === "BatteryEnchantmentSkill") {
     const castedSkill: BatteryEnchantmentSkill = invoker.pilot.skill;
-    return upcast(batteryEnchantment(lastState, invokerId, castedSkill));
+    return batteryEnchantment(lastState, invokerId, castedSkill);
   }
 
   if (invoker.pilot.skill.type === "DamageHalvedSkill") {
     const castedSkill: DamageHalvedSkill = invoker.pilot.skill;
-    return upcast(damageHalvedSkill(lastState, invokerId, castedSkill));
+    return damageHalvedSkill(lastState, invokerId, castedSkill);
   }
 
   throw new Error("not found pilot skill");
