@@ -1,39 +1,15 @@
 {
   "name": "gbraver-burst-core",
-  "version": "1.16.3",
   "description": "braver burst core",
-  "engines": {
-    "node": "^16.17.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kaidouji85/gbraver-burst-core"
-  },
-  "main": "lib/src/index.js",
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "run-s clean type-check lint lint:test test transpile",
-    "transpile": "tsc -d --outDir lib",
-    "type-check": "tsc --noEmit",
-    "clean": "rimraf lib",
-    "test": "jest",
-    "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest",
-    "lint": "eslint src",
-    "lint:test": "eslint test",
-    "lint:all": "run-s lint lint:test",
-    "lint-fix": "eslint --fix src",
-    "lint-fix:test": "eslint --fix test",
-    "lint-fix:all": "run-s lint-fix lint-fix:test",
-    "code-format": "prettier --write src",
-    "code-format:test": "prettier --write test",
-    "code-format:all": "run-s code-format code-format:test",
-    "code-analysis": "codehawk src"
-  },
-  "files": [
-    "lib/"
-  ],
+  "version": "1.16.3",
   "author": "y.takeuchi",
-  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaidouji85/gbraver-burst-core/issues",
+    "email": "kaidouji85@gmail.com"
+  },
+  "dependencies": {
+    "ramda": "^0.28.0"
+  },
   "devDependencies": {
     "@types/jest": "^29.2.5",
     "@types/ramda": "^0.28.20",
@@ -51,7 +27,39 @@
     "ts-jest": "^29.0.3",
     "typescript": "^4.9.4"
   },
-  "dependencies": {
-    "ramda": "^0.28.0"
+  "engines": {
+    "node": "^16.17.0"
+  },
+  "files": [
+    "lib/"
+  ],
+  "homepage": "https://github.com/kaidouji85/gbraver-burst-core#readme",
+  "keywords": [
+    "gbraver-burst"
+  ],
+  "license": "ISC",
+  "main": "lib/src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaidouji85/gbraver-burst-core"
+  },
+  "scripts": {
+    "build": "run-s clean type-check lint lint:test test transpile",
+    "clean": "rimraf lib",
+    "code-analysis": "codehawk src",
+    "code-format": "prettier --write src",
+    "code-format:all": "run-s code-format code-format:test",
+    "code-format:test": "prettier --write test",
+    "lint": "eslint src",
+    "lint-fix": "eslint --fix src",
+    "lint-fix:all": "run-s lint-fix lint-fix:test",
+    "lint-fix:test": "eslint --fix test",
+    "lint:all": "run-s lint lint:test",
+    "lint:test": "eslint test",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "transpile": "tsc -d --outDir lib",
+    "type-check": "tsc --noEmit",
+    "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest"
   }
 }
