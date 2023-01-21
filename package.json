@@ -44,7 +44,7 @@
     "url": "https://github.com/kaidouji85/gbraver-burst-core"
   },
   "scripts": {
-    "build": "tsc -d --outDir lib",
+    "build": "run-s clean transpile",
     "clean": "rimraf lib",
     "code-analysis": "codehawk src",
     "code-format": "run-s code-format:src code-format:test",
@@ -58,6 +58,7 @@
     "lint:test": "eslint test",
     "prepublishOnly": "run-s clean lint test build",
     "test": "jest",
+    "transpile": "tsc -d --outDir lib",
     "type-check": "tsc --noEmit",
     "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest"
   }
