@@ -8,13 +8,13 @@
     "email": "kaidouji85@gmail.com"
   },
   "dependencies": {
-    "ramda": "^0.28.0"
+    "ramda": "^0.29.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "@types/ramda": "^0.28.23",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "codehawk-cli": "^10.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.37.0",
@@ -24,8 +24,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "2.8.7",
     "rimraf": "^4.4.1",
-    "ts-jest": "^29.0.5",
-    "typescript": "^5.0.2"
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.3"
   },
   "engines": {
     "node": "^18.15.0"
