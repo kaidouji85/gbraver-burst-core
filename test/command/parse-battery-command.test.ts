@@ -5,6 +5,12 @@ test("バッテリーコマンドを正しくパースできる", () => {
   expect(parseBatteryCommand(data)).toEqual(data);
 });
 
+test("余計なプロパティを削除してパースする", () => {
+  const origin: BatteryCommand = {type: "BATTERY_COMMAND", battery: 4};
+  const data= {...origin, test: 12}
+  expect(parseBatteryCommand(data)).toEqual(origin);
+});
+
 test("batteryが整数でないとパースできない", () => {
   const data = {type: "BATTERY_COMMAND", battery: 3.2};
   expect(parseBatteryCommand(data)).toEqual(null);

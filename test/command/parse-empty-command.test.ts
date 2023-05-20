@@ -5,6 +5,12 @@ test("コマンド未入力状態をパースできる", () => {
   expect(parseEmptyCommand(data)).toEqual(data);
 });
 
+test("余計なプロパティを削除してパースする", () => {
+  const origin: EmptyCommand = {type: "EMPTY_COMMAND"};
+  const data = {...origin, test: 12};
+  expect(parseEmptyCommand(data)).toEqual(origin);
+});
+
 test("typeの値が間違っているとパースできない", () => {
   const data = {type: "emptyCommand"};
   expect(parseEmptyCommand(data)).toEqual(null);

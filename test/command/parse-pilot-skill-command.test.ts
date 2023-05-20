@@ -5,6 +5,12 @@ test("パイロットスキルコマンドをパースできる", () => {
   expect(parsePilotSkillCommand(data)).toEqual(data);
 });
 
+test("余計なプロパティを削除してパースする", () => {
+  const origin: PilotSkillCommand = {type: "PILOT_SKILL_COMMAND"};
+  const data = {...origin, test: 12};
+  expect(parsePilotSkillCommand(data)).toEqual(origin);
+});
+
 test("typeの値が間違っているとパースできない", () => {
   const data = {type: "pilotSkillCommand"};
   expect(parsePilotSkillCommand(data)).toEqual(null);
