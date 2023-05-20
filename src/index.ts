@@ -107,4 +107,10 @@ export type { GameState, GameStateX } from "./state/game-state";
 export type { PilotState, PilotStateX } from "./state/pilot-state";
 export type { PlayerState, PlayerStateX } from "./state/player-state";
 export { isPlayerDeath } from "./state/player-state";
-export {QuickCommand} from "./command/quick-command";
+export { QuickCommand } from "./command/quick-command";
+export { parseCommand } from "./command/command";
+export { parseBatteryCommand } from "./command/battery";
+export { parseBurstCommand } from "./command/burst";
+export { parsePilotSkillCommand } from "./command/pilot-skill";
+export { parseEmptyCommand } from "./command/empty-command";
+

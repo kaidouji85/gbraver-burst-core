@@ -28,7 +28,7 @@ export const CommandSchema = z.union([
  * @param origin パース元
  * @return パース結果、失敗した場合はnull
  */
-export function parseCommandSchema(origin: unknown): Command | null {
+export function parseCommand(origin: unknown): Command | null {
   const result = CommandSchema.safeParse(origin);
   return result.success ? result.data : null;
 }
