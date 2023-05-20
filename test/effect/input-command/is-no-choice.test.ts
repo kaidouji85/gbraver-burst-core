@@ -1,5 +1,4 @@
-import type { BatteryCommand, Command } from "../../../src";
-import type { QuickCommand } from "../../../src/command/command";
+import type {BatteryCommand, Command, QuickCommand} from "../../../src";
 import { isNoChoice } from "../../../src/effect/input-command";
 
 const BATTERY_COMMAND: BatteryCommand = {

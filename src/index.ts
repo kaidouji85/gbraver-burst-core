@@ -1,6 +1,6 @@
 export type { BatteryCommand } from "./command/battery";
 export type { BurstCommand } from "./command/burst";
-export type { Command, QuickCommand } from "./command/command";
+export type { Command } from "./command/command";
 export type { EmptyCommand } from "./command/empty-command";
 export type { PilotSkillCommand } from "./command/pilot-skill";
 export {
@@ -107,3 +107,4 @@ export type { GameState, GameStateX } from "./state/game-state";
 export type { PilotState, PilotStateX } from "./state/pilot-state";
 export type { PlayerState, PlayerStateX } from "./state/player-state";
 export { isPlayerDeath } from "./state/player-state";
+export {QuickCommand} from "./command/quick-command";
