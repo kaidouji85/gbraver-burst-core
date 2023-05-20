@@ -1,4 +1,5 @@
 import type { Command } from "../../command/command";
+import { castQuickCommand } from "../../command/quick-command";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
@@ -6,7 +7,6 @@ import type { InputCommand, NoChoice, Selectable } from "./input-command";
 import { selectableBatteryCommand } from "./selectable-battery-command";
 import { selectableBurstCommand } from "./selectable-burst-command";
 import { selectablePilotSkillCommand } from "./selectable-pilot-skill-command";
-import {castQuickCommand} from "../../command/quick-command";
 
 /**
  * ゲームスタート時だけに利用するInputCommand

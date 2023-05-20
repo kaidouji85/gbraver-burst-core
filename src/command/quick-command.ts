@@ -1,8 +1,8 @@
-import {BurstCommand} from "./burst";
-import {PilotSkillCommand} from "./pilot-skill";
-import {Command} from "./command";
+import { BurstCommand } from "./burst";
+import { Command } from "./command";
+import { PilotSkillCommand } from "./pilot-skill";
 
-/**　クイックコマンド　*/
+/** クイックコマンド */
 export type QuickCommand = BurstCommand | PilotSkillCommand;
 
 /**

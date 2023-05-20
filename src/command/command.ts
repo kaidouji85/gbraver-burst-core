@@ -1,12 +1,13 @@
 import { z } from "zod";
-import type {BatteryCommand} from "./battery";
-import type {BurstCommand} from "./burst";
-import type {EmptyCommand} from "./empty-command";
-import type {PilotSkillCommand} from "./pilot-skill";
-import {EmptyCommandSchema} from "./empty-command";
-import {BatteryCommandSchema} from "./battery";
-import {BurstCommandSchema} from "./burst";
-import {PilotSkillCommandSchema} from "./pilot-skill";
+
+import type { BatteryCommand } from "./battery";
+import { BatteryCommandSchema } from "./battery";
+import type { BurstCommand } from "./burst";
+import { BurstCommandSchema } from "./burst";
+import type { EmptyCommand } from "./empty-command";
+import { EmptyCommandSchema } from "./empty-command";
+import type { PilotSkillCommand } from "./pilot-skill";
+import { PilotSkillCommandSchema } from "./pilot-skill";
 
 /** コマンド */
 export type Command =

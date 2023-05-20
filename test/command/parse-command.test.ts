@@ -1,17 +1,22 @@
-import {BatteryCommand, BurstCommand, parseCommand, PilotSkillCommand} from "../../src";
+import {
+  BatteryCommand,
+  BurstCommand,
+  parseCommand,
+  PilotSkillCommand,
+} from "../../src";
 
 test("バッテリーコマンドをパースできる", () => {
-  const data: BatteryCommand = {type: "BATTERY_COMMAND", battery: 4};
+  const data: BatteryCommand = { type: "BATTERY_COMMAND", battery: 4 };
   expect(parseCommand(data)).toEqual(data);
 });
 
 test("バーストコマンドをパースできる", () => {
-  const data: BurstCommand = {type: "BURST_COMMAND"};
+  const data: BurstCommand = { type: "BURST_COMMAND" };
   expect(parseCommand(data)).toEqual(data);
 });
 
 test("パイロットスキルコマンドをパースできる", () => {
-  const data: PilotSkillCommand = {type: "PILOT_SKILL_COMMAND"};
+  const data: PilotSkillCommand = { type: "PILOT_SKILL_COMMAND" };
   expect(parseCommand(data)).toEqual(data);
 });
 

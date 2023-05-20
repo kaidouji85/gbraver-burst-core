@@ -1,18 +1,18 @@
-import {BurstCommand, parseBurstCommand} from "../../src";
+import { BurstCommand, parseBurstCommand } from "../../src";
 
 test("バーストコマンドをパースできる", () => {
-  const data: BurstCommand = {type: "BURST_COMMAND"};
+  const data: BurstCommand = { type: "BURST_COMMAND" };
   expect(parseBurstCommand(data)).toEqual(data);
 });
 
 test("余計なプロパティを削除してパースする", () => {
-  const origin: BurstCommand = {type: "BURST_COMMAND"};
-  const data = {...origin, test: 12};
+  const origin: BurstCommand = { type: "BURST_COMMAND" };
+  const data = { ...origin, test: 12 };
   expect(parseBurstCommand(data)).toEqual(origin);
 });
 
 test("typeの値が間違っているとパースできない", () => {
-  const data = {type: "burstCommand"};
+  const data = { type: "burstCommand" };
   expect(parseBurstCommand(data)).toEqual(null);
 });
 
