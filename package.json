@@ -8,7 +8,8 @@
     "email": "kaidouji85@gmail.com"
   },
   "dependencies": {
-    "ramda": "^0.29.0"
+    "ramda": "^0.29.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",

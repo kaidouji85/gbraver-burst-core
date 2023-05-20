@@ -27,7 +27,6 @@ export function castQuickCommand(command: Command): QuickCommand | null {
     case "BURST_COMMAND":
     case "PILOT_SKILL_COMMAND":
       return command;
-
     default:
       return null;
   }
