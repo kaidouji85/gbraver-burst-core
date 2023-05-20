@@ -5,6 +5,11 @@ test("パイロットスキルコマンドをパースできる", () => {
   expect(parsePilotSkillCommand(data)).toEqual(data);
 });
 
+test("typeの値が間違っているとパースできない", () => {
+  const data = {type: "pilotSkillCommand"};
+  expect(parsePilotSkillCommand(data)).toEqual(null);
+});
+
 test("空オブジェクトはパースできない", () => {
   expect(parsePilotSkillCommand({})).toEqual(null);
 });

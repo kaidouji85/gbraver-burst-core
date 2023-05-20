@@ -1,5 +1,4 @@
-import {BatteryCommand} from "../../src";
-import {parseBatteryCommand} from "../../src/command/battery";
+import {BatteryCommand, parseBatteryCommand} from "../../src";
 
 test("バッテリーコマンドを正しくパースできる", () => {
   const data: BatteryCommand = {type: "BATTERY_COMMAND", battery: 4};
@@ -8,6 +7,11 @@ test("バッテリーコマンドを正しくパースできる", () => {
 
 test("batteryが整数でないとパースできない", () => {
   const data = {type: "BATTERY_COMMAND", battery: 3.2};
+  expect(parseBatteryCommand(data)).toEqual(null);
+});
+
+test("typeの値が間違っているとパースできない", () => {
+  const data = {type: "batteryCommand", battery: 3};
   expect(parseBatteryCommand(data)).toEqual(null);
 });
 

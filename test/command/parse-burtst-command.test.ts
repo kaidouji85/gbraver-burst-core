@@ -5,6 +5,11 @@ test("バーストコマンドをパースできる", () => {
   expect(parseBurstCommand(data)).toEqual(data);
 });
 
+test("typeの値が間違っているとパースできない", () => {
+  const data = {type: "burstCommand"};
+  expect(parseBurstCommand(data)).toEqual(null);
+});
+
 test("空オブジェクトはパースできない", () => {
   expect(parseBurstCommand({})).toEqual(null);
 });

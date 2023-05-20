@@ -5,6 +5,11 @@ test("コマンド未入力状態をパースできる", () => {
   expect(parseEmptyCommand(data)).toEqual(data);
 });
 
+test("typeの値が間違っているとパースできない", () => {
+  const data = {type: "emptyCommand"};
+  expect(parseEmptyCommand(data)).toEqual(null);
+});
+
 test("空オブジェクトはパースできない", () => {
   expect(parseEmptyCommand({})).toEqual(null);
 });
