@@ -1,34 +1,36 @@
 {
   "name": "gbraver-burst-core",
   "description": "braver burst core",
-  "version": "1.16.4",
+  "version": "1.17.0",
   "author": "y.takeuchi",
   "bugs": {
     "url": "https://github.com/kaidouji85/gbraver-burst-core/issues",
     "email": "kaidouji85@gmail.com"
   },
   "dependencies": {
-    "ramda": "^0.28.0"
+    "ramda": "^0.29.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/jest": "^29.2.5",
-    "@types/ramda": "^0.28.20",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
+    "@types/jest": "^29.5.1",
+    "@types/ramda": "^0.29.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
     "codehawk-cli": "^10.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.31.0",
+    "eslint": "^8.40.0",
     "eslint-plugin-jest": "^27.2.1",
-    "eslint-plugin-simple-import-sort": "^8.0.0",
-    "jest": "^29.3.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "jest": "^29.5.0",
+    "madge": "^6.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "2.8.2",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^29.0.3",
-    "typescript": "^4.9.4"
+    "prettier": "2.8.8",
+    "rimraf": "^5.0.1",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
   },
   "engines": {
-    "node": "^16.17.0"
+    "node": "^18.15.0"
   },
   "files": [
     "lib/"
@@ -44,19 +46,22 @@
     "url": "https://github.com/kaidouji85/gbraver-burst-core"
   },
   "scripts": {
-    "build": "run-s clean type-check lint lint:test test transpile",
+    "build": "run-s clean transpile",
     "clean": "rimraf lib",
     "code-analysis": "codehawk src",
-    "code-format": "prettier --write src",
-    "code-format:all": "run-s code-format code-format:test",
+    "code-format": "run-s code-format:src code-format:test",
+    "code-format:src": "prettier --write src",
     "code-format:test": "prettier --write test",
-    "lint": "eslint src",
-    "lint-fix": "eslint --fix src",
-    "lint-fix:all": "run-s lint-fix lint-fix:test",
+    "detect-circular": "run-s detect-circular:src detect-circular:test",
+    "detect-circular:src": "madge --extensions ts -c src",
+    "detect-circular:test": "madge --extensions ts -c test",
+    "lint": "run-s lint:src lint:test",
+    "lint-fix": "run-s lint-fix:src lint-fix:test",
+    "lint-fix:src": "eslint --fix src",
     "lint-fix:test": "eslint --fix test",
-    "lint:all": "run-s lint lint:test",
+    "lint:src": "eslint src",
     "lint:test": "eslint test",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "run-s clean lint test build",
     "test": "jest",
     "transpile": "tsc -d --outDir lib",
     "type-check": "tsc --noEmit",

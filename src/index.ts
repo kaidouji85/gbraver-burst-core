@@ -1,8 +1,17 @@
 export type { BatteryCommand } from "./command/battery";
+export { BatteryCommandSchema, parseBatteryCommand } from "./command/battery";
 export type { BurstCommand } from "./command/burst";
-export type { Command, QuickCommand } from "./command/command";
+export { BurstCommandSchema, parseBurstCommand } from "./command/burst";
+export type { Command } from "./command/command";
+export { CommandSchema, parseCommand } from "./command/command";
 export type { EmptyCommand } from "./command/empty-command";
+export { EmptyCommandSchema, parseEmptyCommand } from "./command/empty-command";
 export type { PilotSkillCommand } from "./command/pilot-skill";
+export {
+  parsePilotSkillCommand,
+  PilotSkillCommandSchema,
+} from "./command/pilot-skill";
+export { QuickCommand } from "./command/quick-command";
 export {
   correctedBattery,
   totalBatteryCorrection,
