@@ -1,5 +1,5 @@
 import type { Command } from "../../command/command";
-import { castQuickCommand } from "../../command/command";
+import { castQuickCommand } from "../../command/quick-command";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
