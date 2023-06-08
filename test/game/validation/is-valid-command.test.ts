@@ -86,3 +86,11 @@ test("NoChoiceのコマンドでないので無効である", () => {
   };
   expect(isValidCommand(playerCommand, testInputCommand)).toBe(false);
 });
+
+test("存在しないプレイヤーIDなので無効である", () => {
+  const playerCommand: PlayerCommand = {
+    playerId: "no-exist-player",
+    command: batteryCommand(3),
+  };
+  expect(isValidCommand(playerCommand, testInputCommand)).toBe(false);
+});
