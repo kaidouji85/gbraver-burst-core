@@ -33,3 +33,29 @@ export function parseCommand(origin: unknown): Command | null {
   const result = CommandSchema.safeParse(origin);
   return result.success ? result.data : null;
 }
+
+/**
+ * コマンドが等しいかどうかを判定する
+ * @param command1 コマンド1
+ * @param command2 コマンド2
+ * @return trueで等しいコマンド
+ */
+export function isCommandEqual(
+  command1: Readonly<Command>,
+  command2: Readonly<Command>
+): boolean {
+  return (
+    command1.type === "BATTERY_COMMAND" &&
+    command2.type === "BATTERY_COMMAND" &&
+    command1.battery === command2.battery
+  ) || (
+    command1.type === "EMPTY_COMMAND" &&
+    command2.type === "EMPTY_COMMAND"
+  ) || (
+    command1.type === "BURST_COMMAND" &&
+    command2.type === "BURST_COMMAND"
+  ) || (
+    command1.type === "PILOT_SKILL_COMMAND" &&
+    command2.type === "PILOT_SKILL_COMMAND"
+  );
+}
