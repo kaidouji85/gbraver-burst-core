@@ -5,6 +5,7 @@ import { progress } from "./progress";
 import { start } from "./start/start";
 import { isAllPlayerEnteredCommand } from "./validation/is-all-player-entered-command";
 import { isDuplicatePlayers } from "./validation/is-duplicate-players";
+import { isValidCommand } from "./validation/is-valid-command";
 
 /** ゲームを再開するためのデータ */
 export type RestoreGbraverBurst = {
@@ -110,6 +111,14 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
     const lastState = this._stateHistory[this._stateHistory.length - 1];
     if (!lastState) {
       throw new Error("no game state history");
+    }
+
+    const isValidCommands =
+      lastState.effect.name === "InputCommand" &&
+      isValidCommand(commands[0], lastState.effect) &&
+      isValidCommand(commands[1], lastState.effect);
+    if (!isValidCommands) {
+      throw new Error("invalid commands");
     }
 
     const updated = progress(lastState, commands);
