@@ -10,7 +10,6 @@ import { isDuplicatePlayers } from "./validation/is-duplicate-players";
 export type RestoreGbraverBurst = {
   /** プレイヤー情報 */
   players: [Player, Player];
-
   /** ステートヒストリー */
   stateHistory: GameState[];
 };
@@ -19,28 +18,24 @@ export type RestoreGbraverBurst = {
 export interface GbraverBurstCore {
   /**
    * バトルに参加している全プレイヤーを取得する
-   *
    * @return 取得結果
    */
   players(): [Player, Player];
 
   /**
    * ゲームステート履歴を取得する
-   *
    * @return 取得結果
    */
   stateHistory(): GameState[];
 
   /**
    * 現在の状態をダンプする
-   *
    * @return ダンプしたデータ
    */
   dump(): RestoreGbraverBurst;
 
   /**
    * ゲームを進行させる
-   *
    * @param commands コマンド
    * @return 更新されたゲーム状態
    */
@@ -49,7 +44,6 @@ export interface GbraverBurstCore {
 
 /**
  * Gブレイバーバーストを開始する
- *
  * @param players プレイヤー情報
  * @return Gブレイバーバースト
  */
@@ -64,7 +58,6 @@ export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
 
 /**
  * Gブレイバーバーストを再開する
- *
  * @param data 再開するデータ
  * @return Gブレイバーバースト
  */
@@ -115,7 +108,6 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
     }
 
     const lastState = this._stateHistory[this._stateHistory.length - 1];
-
     if (!lastState) {
       throw new Error("no game state history");
     }
