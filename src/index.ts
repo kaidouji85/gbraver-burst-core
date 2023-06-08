@@ -69,6 +69,7 @@ export { EMPTY_BATTLE } from "./empty/battle";
 export { EMPTY_GAME_STATE } from "./empty/game-state";
 export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
 export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
+export { isCommandEqual } from "./game/command/command";
 export type { PlayerCommand } from "./game/command/player-command";
 export type { PlayerCommandX } from "./game/command/player-command";
 export type { EvenMatch, GameOver } from "./game/end-judging/game-end-judging";
