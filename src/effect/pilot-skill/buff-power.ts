@@ -14,7 +14,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 export function buffPower(
   lastState: GameState,
   invokerId: PlayerId,
-  skill: BuffPowerSkill
+  skill: BuffPowerSkill,
 ): GameStateX<PilotSkillEffectX<BuffPowerSkill>> {
   const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
@@ -40,7 +40,7 @@ export function buffPower(
     },
   };
   const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
-    v.playerId === invokerId ? updatedInvoker : v
+    v.playerId === invokerId ? updatedInvoker : v,
   );
   const effect: PilotSkillEffectX<BuffPowerSkill> = {
     name: "PilotSkillEffect",

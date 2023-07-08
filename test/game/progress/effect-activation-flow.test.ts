@@ -49,7 +49,7 @@ test("一人だけ効果適用する場合でも正しく処理される", () =>
   const result = effectActivationFlow(state, commands);
   const snapShotPath = path.join(
     __dirname,
-    "effect-activation-flow__one-player-effective.json"
+    "effect-activation-flow__one-player-effective.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()
@@ -77,7 +77,7 @@ test("二人とも効果適用する場合でも正しく処理される", () =>
   const result = effectActivationFlow(state, commands);
   const snapShotPath = path.join(
     __dirname,
-    "effect-activation-flow__two-player-effective.json"
+    "effect-activation-flow__two-player-effective.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

@@ -10,12 +10,12 @@ import type { PlayerCommand } from "../command/player-command";
  */
 export function isAllPlayerEnteredCommand(
   players: [Player, Player],
-  commands: [PlayerCommand, PlayerCommand]
+  commands: [PlayerCommand, PlayerCommand],
 ): boolean {
   return (
     players
       .map((player) =>
-        commands.find((command) => command.playerId === player.playerId)
+        commands.find((command) => command.playerId === player.playerId),
       )
       .filter((v) => v).length === 2
   );

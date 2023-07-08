@@ -11,7 +11,7 @@ import type { PlayerState } from "../../state/player-state";
  */
 export function getFirstTurnPlayer(
   player1: PlayerState,
-  player2: PlayerState
+  player2: PlayerState,
 ): PlayerId {
   if (player1.armdozer.speed === player2.armdozer.speed) {
     return randomPlayerId(player1.playerId, player2.playerId);

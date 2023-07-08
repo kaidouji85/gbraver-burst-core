@@ -15,7 +15,7 @@ import { startGameStateFlow } from "../../game-state-flow";
 export function attackFlow(
   lastState: GameState,
   attacker: PlayerCommandX<BatteryCommand>,
-  defender: PlayerCommandX<BatteryCommand>
+  defender: PlayerCommandX<BatteryCommand>,
 ): GameState[] {
   return startGameStateFlow([lastState])
     .add((state) => [
@@ -24,7 +24,7 @@ export function attackFlow(
         attacker.playerId,
         attacker.command,
         defender.playerId,
-        defender.command
+        defender.command,
       ),
     ])
     .add((state) =>
@@ -35,10 +35,10 @@ export function attackFlow(
               state.effect.attacker,
               state.effect.attackerBattery,
               defender.playerId,
-              state.effect.defenderBattery
+              state.effect.defenderBattery,
             ),
           ]
-        : []
+        : [],
     )
     .toGameStateHistory()
     .slice(1);

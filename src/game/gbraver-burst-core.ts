@@ -63,7 +63,7 @@ export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
  * @return Gブレイバーバースト
  */
 export function restoreGbraverBurst(
-  data: RestoreGbraverBurst
+  data: RestoreGbraverBurst,
 ): GbraverBurstCore {
   return new GbraverBurstCoreImpl(data.players, data.stateHistory);
 }

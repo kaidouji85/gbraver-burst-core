@@ -10,10 +10,10 @@ import { PlayerCommand } from "../command/player-command";
  */
 export function isValidCommand(
   playerCommand: PlayerCommand,
-  inputCommand: InputCommand
+  inputCommand: InputCommand,
 ): boolean {
   const player = inputCommand.players.find(
-    (player) => player.playerId === playerCommand.playerId
+    (player) => player.playerId === playerCommand.playerId,
   );
   if (!player) {
     return false;

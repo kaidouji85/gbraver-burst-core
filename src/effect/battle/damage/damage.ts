@@ -16,7 +16,7 @@ export function normalHitDamage(
   attacker: PlayerState,
   attackerBattery: number,
   defender: PlayerState,
-  defenderBattery: number
+  defenderBattery: number,
 ): number {
   return (
     attacker.armdozer.power +

@@ -16,7 +16,7 @@ import { reflectDamage } from "./reflect";
 export function reflect(
   lastState: GameState,
   damagedPlayerId: PlayerId,
-  reflect: ReflectParam
+  reflect: ReflectParam,
 ): GameStateX<Reflect> {
   const target = lastState.players.find((v) => v.playerId === damagedPlayerId);
 
@@ -30,7 +30,7 @@ export function reflect(
     armdozer: { ...target.armdozer, hp: target.armdozer.hp - damage },
   };
   const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === updatedTarget.playerId ? updatedTarget : v
+    v.playerId === updatedTarget.playerId ? updatedTarget : v,
   );
   const effect: Reflect = {
     name: "Reflect",

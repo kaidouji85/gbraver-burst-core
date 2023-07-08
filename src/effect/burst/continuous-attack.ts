@@ -15,10 +15,10 @@ import { burstRecoverBattery } from "./burst-recover-battery";
 export function continuousAttack(
   lastState: GameState,
   burstPlayerId: PlayerId,
-  burst: ContinuousAttack
+  burst: ContinuousAttack,
 ): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId
+    (v) => v.playerId === burstPlayerId,
   );
 
   if (!burstPlayer) {
@@ -42,7 +42,7 @@ export function continuousAttack(
     },
   };
   const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player
+    player.playerId === burstPlayerId ? updatedBurstPlayer : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",

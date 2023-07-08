@@ -10,7 +10,7 @@ import type { PlayerState } from "../../state/player-state";
  */
 export function updatePlayer(
   origin: PlayerState,
-  command: BatteryCommand
+  command: BatteryCommand,
 ): PlayerState {
   return {
     ...origin,

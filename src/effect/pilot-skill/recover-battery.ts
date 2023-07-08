@@ -15,7 +15,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 export function recoverBattery(
   lastState: GameState,
   invokerId: PlayerId,
-  skill: RecoverBatterySkill
+  skill: RecoverBatterySkill,
 ): GameStateX<PilotSkillEffectX<RecoverBatterySkill>> {
   const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
@@ -31,7 +31,7 @@ export function recoverBattery(
     },
   };
   const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
-    v.playerId === invokerId ? updatedInvoker : v
+    v.playerId === invokerId ? updatedInvoker : v,
   );
   const effect: PilotSkillEffectX<RecoverBatterySkill> = {
     name: "PilotSkillEffect",
@@ -50,7 +50,7 @@ export function recoverBattery(
  */
 export function calcRecoverBattery(
   armdozer: ArmdozerState,
-  skill: RecoverBatterySkill
+  skill: RecoverBatterySkill,
 ): number {
   return Math.min(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
 }

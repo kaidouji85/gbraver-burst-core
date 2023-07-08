@@ -42,7 +42,7 @@ test("戦闘後のコマンド入力フェイズが正しく適用される", ()
     {
       type: "BATTERY_COMMAND",
       battery: 3,
-    }
+    },
   );
   const snapShotPath = path.join(__dirname, "input-command__after-battle.json");
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
@@ -83,11 +83,11 @@ test("効果適用フロー後のコマンド入力フェイズ効果が正し�
     player02.playerId,
     {
       type: "BURST_COMMAND",
-    }
+    },
   );
   const snapShotPath = path.join(
     __dirname,
-    "input-command__after-effect-activation.json"
+    "input-command__after-effect-activation.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

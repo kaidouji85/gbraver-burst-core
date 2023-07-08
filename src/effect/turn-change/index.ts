@@ -13,7 +13,7 @@ import type { TurnChange } from "./turn-change";
  */
 export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   const nextActivePlayer = lastState.players.find(
-    (v) => v.playerId !== lastState.activePlayerId
+    (v) => v.playerId !== lastState.activePlayerId,
   );
 
   if (!nextActivePlayer) {
@@ -23,14 +23,14 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   const updatedBattery = turnChangeRecoverBattery(
     nextActivePlayer.armdozer.battery,
     nextActivePlayer.armdozer.maxBattery,
-    BATTERY_RECOVERY_VALUE
+    BATTERY_RECOVERY_VALUE,
   );
   const updatedPlayer = {
     ...nextActivePlayer,
     armdozer: { ...nextActivePlayer.armdozer, battery: updatedBattery },
   };
   const updatedPlayerList = lastState.players.map((v) =>
-    v.playerId === updatedPlayer.playerId ? updatedPlayer : v
+    v.playerId === updatedPlayer.playerId ? updatedPlayer : v,
   );
   return {
     ...lastState,

@@ -25,7 +25,7 @@ export function battleResult(
   attacker: PlayerState,
   attackerBattery: number,
   defender: PlayerState,
-  defenderBattery: number
+  defenderBattery: number,
 ): BattleResult {
   if (attackerBattery === 0) {
     return feint(defenderBattery);
