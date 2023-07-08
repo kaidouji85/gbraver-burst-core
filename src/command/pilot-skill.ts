@@ -16,7 +16,7 @@ export const PilotSkillCommandSchema = z.object({
  * @return パース結果、パースできない場合はnull
  */
 export function parsePilotSkillCommand(
-  origin: unknown
+  origin: unknown,
 ): PilotSkillCommand | null {
   const result = PilotSkillCommandSchema.safeParse(origin);
   return result.success ? result.data : null;

@@ -11,7 +11,7 @@ import { removeContinuousActive } from "./remove-continuous-active";
  */
 export function canContinuousActive(state: GameState): boolean {
   const activePlayer = state.players.find(
-    (v) => v.playerId === state.activePlayerId
+    (v) => v.playerId === state.activePlayerId,
   );
 
   if (!activePlayer) {
@@ -29,7 +29,7 @@ export function canContinuousActive(state: GameState): boolean {
  */
 export function continuousActive(state: GameState): GameStateX<TurnChange> {
   const activePlayer = state.players.find(
-    (v) => v.playerId === state.activePlayerId
+    (v) => v.playerId === state.activePlayerId,
   );
 
   if (!activePlayer) {
@@ -44,7 +44,7 @@ export function continuousActive(state: GameState): GameStateX<TurnChange> {
     },
   };
   const updatedPlayers = state.players.map((v) =>
-    v.playerId === activePlayer.playerId ? updatedActivePlayer : v
+    v.playerId === activePlayer.playerId ? updatedActivePlayer : v,
   );
   const effect: TurnChange = {
     name: "TurnChange",

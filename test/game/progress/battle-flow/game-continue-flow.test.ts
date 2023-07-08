@@ -40,11 +40,11 @@ test("ターン交代まで正しく実行できる", () => {
     player1.playerId,
     player1Command,
     player2.playerId,
-    player2Command
+    player2Command,
   );
   const snapShotPath = path.join(
     __dirname,
-    "game-continue-flow__turn-change.json"
+    "game-continue-flow__turn-change.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()
@@ -90,11 +90,11 @@ test("アクティブプレイヤー継続を正しく処理できる", () => {
     player1.playerId,
     player1Command,
     player2.playerId,
-    player2Command
+    player2Command,
   );
   const snapShotPath = path.join(
     __dirname,
-    "game-continue-flow__continuous-active.json"
+    "game-continue-flow__continuous-active.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

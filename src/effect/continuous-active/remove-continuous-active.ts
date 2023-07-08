@@ -7,7 +7,7 @@ import type { ArmdozerEffect } from "../../state/armdozer-effect";
  * @return 処理結果
  */
 export function removeContinuousActive(
-  origin: ArmdozerEffect[]
+  origin: ArmdozerEffect[],
 ): ArmdozerEffect[] {
   const removeTarget = origin.find((v) => v.type === "ContinuousActivePlayer");
 

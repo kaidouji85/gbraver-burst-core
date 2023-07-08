@@ -14,7 +14,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 export function batteryEnchantment(
   lastState: GameState,
   invokerId: PlayerId,
-  skill: BatteryEnchantmentSkill
+  skill: BatteryEnchantmentSkill,
 ): GameStateX<PilotSkillEffectX<BatteryEnchantmentSkill>> {
   const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
@@ -47,7 +47,7 @@ export function batteryEnchantment(
     },
   };
   const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
-    v.playerId === invokerId ? updatedInvoker : v
+    v.playerId === invokerId ? updatedInvoker : v,
   );
   const effect: PilotSkillEffectX<BatteryEnchantmentSkill> = {
     name: "PilotSkillEffect",

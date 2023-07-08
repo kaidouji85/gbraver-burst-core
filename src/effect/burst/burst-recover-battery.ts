@@ -9,7 +9,7 @@ import type { ArmdozerState } from "../../state/armdozer-state";
  */
 export function burstRecoverBattery(
   armdozer: ArmdozerState,
-  burst: Burst
+  burst: Burst,
 ): number {
   const recoverBattery = burst.recoverBattery;
   return Math.min(armdozer.battery + recoverBattery, armdozer.maxBattery);

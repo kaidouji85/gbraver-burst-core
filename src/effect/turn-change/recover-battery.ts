@@ -12,7 +12,7 @@ export const BATTERY_RECOVERY_VALUE = 3;
 export function turnChangeRecoverBattery(
   battery: number,
   maxBattery: number,
-  recoveryValue: number
+  recoveryValue: number,
 ): number {
   return Math.min(battery + recoveryValue, maxBattery);
 }

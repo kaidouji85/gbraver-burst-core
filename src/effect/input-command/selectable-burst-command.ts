@@ -8,7 +8,7 @@ import type { ArmdozerState } from "../../state/armdozer-state";
  * @returns 計算結果
  */
 export function selectableBurstCommand(
-  armdozer: ArmdozerState
+  armdozer: ArmdozerState,
 ): BurstCommand[] {
   return armdozer.enableBurst
     ? [

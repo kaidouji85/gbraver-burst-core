@@ -14,7 +14,7 @@ test("ダメージ反射が正しく適用される", () => {
   const result = reflectFlow(lastState, "attacker");
   const snapShotPath = path.join(
     __dirname,
-    "reflect-flow__single-reflect.json"
+    "reflect-flow__single-reflect.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

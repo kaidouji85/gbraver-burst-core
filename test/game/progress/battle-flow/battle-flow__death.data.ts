@@ -44,7 +44,7 @@ export const lastState: GameState = {
 /** プレイヤーのコマンド */
 export const commands: [
   PlayerCommandX<BatteryCommand>,
-  PlayerCommandX<BatteryCommand>
+  PlayerCommandX<BatteryCommand>,
 ] = [
   {
     playerId: "attacker",

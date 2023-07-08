@@ -21,7 +21,7 @@ import { recoverBattery } from "./recover-battery";
  */
 function pilotSkillEffect(
   lastState: GameState,
-  invokerId: PlayerId
+  invokerId: PlayerId,
 ): GameStateX<PilotSkillEffect> {
   const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
@@ -59,10 +59,10 @@ function pilotSkillEffect(
  * @return 更新結果、実行不可能な場合はnullを返す
  */
 function disablePilotSkill(
-  lastState: GameStateX<PilotSkillEffect>
+  lastState: GameStateX<PilotSkillEffect>,
 ): GameStateX<PilotSkillEffect> {
   const invoker = lastState.players.find(
-    (v) => v.playerId === lastState.effect.invokerId
+    (v) => v.playerId === lastState.effect.invokerId,
   );
 
   if (!invoker) {
@@ -74,7 +74,7 @@ function disablePilotSkill(
     pilot: { ...invoker.pilot, enableSkill: false },
   };
   const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === updatedInvoker.playerId ? updatedInvoker : v
+    v.playerId === updatedInvoker.playerId ? updatedInvoker : v,
   );
   return { ...lastState, players: updatedPlayers };
 }
@@ -88,7 +88,7 @@ function disablePilotSkill(
  */
 export function pilotSkill(
   lastState: GameState,
-  invokerId: PlayerId
+  invokerId: PlayerId,
 ): GameStateX<PilotSkillEffect> {
   const donePilotSkill = pilotSkillEffect(lastState, invokerId);
   return disablePilotSkill(donePilotSkill);

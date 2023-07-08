@@ -22,13 +22,13 @@ export function guard(
   attacker: PlayerState,
   attackerBattery: number,
   defender: PlayerState,
-  defenderBattery: number
+  defenderBattery: number,
 ): Guard {
   const normalHit = normalHitDamage(
     attacker,
     attackerBattery,
     defender,
-    defenderBattery
+    defenderBattery,
   );
   const reduction = hasDamageHalved(defender.armdozer.effects) ? 0.5 : 1;
   const damage = toMinDamage(normalHit * 0.5 * reduction);

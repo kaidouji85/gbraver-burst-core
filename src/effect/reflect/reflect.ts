@@ -53,7 +53,7 @@ export function toReflectParam(burst: TryReflect): ReflectParam {
  */
 export function reflectDamage(
   reflect: ReflectParam,
-  damagedPlayer: PlayerState
+  damagedPlayer: PlayerState,
 ): number {
   const reduction = hasDamageHalved(damagedPlayer.armdozer.effects) ? 0.5 : 1;
   const damage = toMinDamage(reflect.damage * reduction);

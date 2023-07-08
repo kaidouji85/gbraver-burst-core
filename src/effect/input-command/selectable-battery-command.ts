@@ -10,7 +10,7 @@ import type { ArmdozerState } from "../../state/armdozer-state";
  * @return 計算結果
  */
 export function selectableBatteryCommand(
-  armdozer: ArmdozerState
+  armdozer: ArmdozerState,
 ): BatteryCommand[] {
   return R.range(0, armdozer.maxBattery + 1)
     .filter((v) => v <= armdozer.battery)

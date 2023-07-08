@@ -22,7 +22,7 @@ import { recoverBattery } from "./recover-battery";
  */
 export function burst(
   lastState: GameState,
-  burstPlayerId: PlayerId
+  burstPlayerId: PlayerId,
 ): GameStateX<BurstEffect> {
   const doneBurstEffect = burstEffect(lastState, burstPlayerId);
   return disableBurst(doneBurstEffect);
@@ -36,10 +36,10 @@ export function burst(
  */
 export function burstEffect(
   lastState: GameState,
-  burstPlayerId: PlayerId
+  burstPlayerId: PlayerId,
 ): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId
+    (v) => v.playerId === burstPlayerId,
   );
 
   if (!burstPlayer) {
@@ -81,10 +81,10 @@ export function burstEffect(
  * @return 更新結果
  */
 export function disableBurst(
-  lastState: GameStateX<BurstEffect>
+  lastState: GameStateX<BurstEffect>,
 ): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(
-    (v) => v.playerId === lastState.effect.burstPlayer
+    (v) => v.playerId === lastState.effect.burstPlayer,
   );
 
   if (!burstPlayer) {
@@ -96,7 +96,7 @@ export function disableBurst(
     armdozer: { ...burstPlayer.armdozer, enableBurst: false },
   };
   const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : v
+    v.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : v,
   );
   return { ...lastState, players: updatedPlayers };
 }

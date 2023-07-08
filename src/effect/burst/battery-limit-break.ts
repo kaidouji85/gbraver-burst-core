@@ -16,10 +16,10 @@ import { burstRecoverBattery } from "./burst-recover-battery";
 export function batteryLimitBreak(
   lastState: GameState,
   burstPlayerId: PlayerId,
-  burst: BatteryLimitBreak
+  burst: BatteryLimitBreak,
 ): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId
+    (v) => v.playerId === burstPlayerId,
   );
 
   if (!burstPlayer) {
@@ -40,7 +40,7 @@ export function batteryLimitBreak(
   const updatedPlayers = lastState.players.map((player) =>
     player.playerId === updatedBurstPlayer.playerId
       ? updatedBurstPlayer
-      : player
+      : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",

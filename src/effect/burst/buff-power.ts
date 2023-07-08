@@ -15,10 +15,10 @@ import { burstRecoverBattery } from "./burst-recover-battery";
 export function buffPower(
   lastState: GameState,
   burstPlayerId: PlayerId,
-  burst: BuffPower
+  burst: BuffPower,
 ): GameStateX<BurstEffect> {
   const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId
+    (v) => v.playerId === burstPlayerId,
   );
 
   if (!burstPlayer) {
@@ -44,7 +44,7 @@ export function buffPower(
     },
   };
   const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player
+    player.playerId === burstPlayerId ? updatedBurstPlayer : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",

@@ -10,7 +10,7 @@ import type { BattleResult } from "../result/battle-result";
  */
 export function updateDefender(
   result: BattleResult,
-  defender: PlayerState
+  defender: PlayerState,
 ): PlayerState {
   return {
     ...defender,

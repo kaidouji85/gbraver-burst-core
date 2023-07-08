@@ -10,7 +10,7 @@ import type { GameEnd, GameEndResult } from "./game-end";
  */
 export function gameEnd(
   lastState: GameState,
-  result: GameEndResult
+  result: GameEndResult,
 ): GameStateX<GameEnd> {
   return {
     ...lastState,

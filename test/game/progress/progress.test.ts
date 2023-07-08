@@ -74,7 +74,7 @@ test("効果適用フローを正しく進めることができる", () => {
   const result = progress(state, commands);
   const snapShotPath = path.join(
     __dirname,
-    "progress__effect-activation-flow.json"
+    "progress__effect-activation-flow.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

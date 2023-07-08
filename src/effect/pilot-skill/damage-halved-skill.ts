@@ -14,7 +14,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 export function damageHalvedSkill(
   lastState: GameState,
   invokerId: PlayerId,
-  skill: DamageHalvedSkill
+  skill: DamageHalvedSkill,
 ): GameStateX<PilotSkillEffectX<DamageHalvedSkill>> {
   const invoker = lastState.players.find((v) => v.playerId === invokerId);
 
@@ -39,7 +39,7 @@ export function damageHalvedSkill(
     },
   };
   const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
-    v.playerId === invokerId ? updatedInvoker : v
+    v.playerId === invokerId ? updatedInvoker : v,
   );
   const effect: PilotSkillEffectX<DamageHalvedSkill> = {
     name: "PilotSkillEffect",

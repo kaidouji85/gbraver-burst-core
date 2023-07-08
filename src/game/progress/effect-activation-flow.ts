@@ -12,7 +12,7 @@ import { startGameStateFlow } from "../game-state-flow";
  * @return 判定結果、trueでバーストフェイズを行う
  */
 export function isEffectActivationFlow(
-  commands: [PlayerCommand, PlayerCommand]
+  commands: [PlayerCommand, PlayerCommand],
 ): boolean {
   const types = commands.map((v) => v.command.type);
   return (
@@ -30,13 +30,13 @@ export function isEffectActivationFlow(
  */
 export function effectActivationFlow(
   lastState: GameState,
-  commands: [PlayerCommand, PlayerCommand]
+  commands: [PlayerCommand, PlayerCommand],
 ): GameState[] {
   const attackerCommand = commands.find(
-    (v) => v.playerId === lastState.activePlayerId
+    (v) => v.playerId === lastState.activePlayerId,
   );
   const defenderCommand = commands.find(
-    (v) => v.playerId !== lastState.activePlayerId
+    (v) => v.playerId !== lastState.activePlayerId,
   );
 
   if (!attackerCommand || !defenderCommand) {
@@ -58,7 +58,7 @@ export function effectActivationFlow(
         attackerCommand.playerId,
         attackerCommand.command,
         defenderCommand.playerId,
-        defenderCommand.command
+        defenderCommand.command,
       );
       return [done];
     })
@@ -76,7 +76,7 @@ export function effectActivationFlow(
  */
 export function activationOrNot(
   state: GameState,
-  command: PlayerCommand
+  command: PlayerCommand,
 ): GameState | null {
   if (command.command.type === "BURST_COMMAND") {
     return burst(state, command.playerId);

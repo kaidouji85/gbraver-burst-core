@@ -8,8 +8,8 @@ test("等しい空コマンドと判定できる", () => {
       },
       {
         type: "EMPTY_COMMAND",
-      }
-    )
+      },
+    ),
   ).toBe(true);
 });
 
@@ -23,8 +23,8 @@ test("等しいバッテリーコマンドと判定できる", () => {
       {
         type: "BATTERY_COMMAND",
         battery: 3,
-      }
-    )
+      },
+    ),
   ).toBe(true);
 });
 
@@ -38,8 +38,8 @@ test("異なるバッテリーコマンドと判定できる", () => {
       {
         type: "BATTERY_COMMAND",
         battery: 4,
-      }
-    )
+      },
+    ),
   ).toBe(false);
 });
 
@@ -51,8 +51,8 @@ test("等しいバーストコマンドと判定できる", () => {
       },
       {
         type: "BURST_COMMAND",
-      }
-    )
+      },
+    ),
   ).toBe(true);
 });
 
@@ -64,8 +64,8 @@ test("等しいパイロットスキルコマンドと判定できる", () => {
       },
       {
         type: "PILOT_SKILL_COMMAND",
-      }
-    )
+      },
+    ),
   ).toBe(true);
 });
 
@@ -81,8 +81,8 @@ test("コマンド種別がことなると別コマンドだと判定できる",
         {
           type: "PILOT_SKILL_COMMAND",
         },
-        command
-      )
+        command,
+      ),
     ).toBe(false);
   });
 });

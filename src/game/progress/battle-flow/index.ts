@@ -19,13 +19,13 @@ import { canReflectFlow, reflectFlow } from "./reflect-flow";
  */
 export function battleFlow(
   lastState: GameState,
-  commands: [PlayerCommandX<BatteryCommand>, PlayerCommandX<BatteryCommand>]
+  commands: [PlayerCommandX<BatteryCommand>, PlayerCommandX<BatteryCommand>],
 ): GameState[] {
   const attacker = commands.find(
-    (v) => v.playerId === lastState.activePlayerId
+    (v) => v.playerId === lastState.activePlayerId,
   );
   const defender = commands.find(
-    (v) => v.playerId !== lastState.activePlayerId
+    (v) => v.playerId !== lastState.activePlayerId,
   );
 
   if (!attacker || !defender) {
@@ -40,12 +40,12 @@ export function battleFlow(
           .add((state) =>
             canReflectFlow(battleEffect.result)
               ? reflectFlow(state, attacker.playerId)
-              : []
+              : [],
           )
           .add((state) =>
             canRightItself(battleEffect)
               ? [rightItself(state, battleEffect)]
-              : []
+              : [],
           )
           .toGameStateHistory()
           .slice(1);
@@ -61,7 +61,7 @@ export function battleFlow(
             attacker.playerId,
             attacker.command,
             defender.playerId,
-            defender.command
+            defender.command,
           )
         : [gameEnd(state, endJudge)];
     })
