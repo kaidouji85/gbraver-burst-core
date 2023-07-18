@@ -58,19 +58,13 @@ export function batteryBoost(
   invokerId: Readonly<PlayerId>,
   skill: Readonly<BatteryBoostSkill>,
 ): GameStateX<PilotSkillEffectX<BatteryBoostSkill>> {
-  const invoker = lastState.players.find((v) => v.playerId === invokerId);
-  if (!invoker) {
-    throw new Error("not found pilot skill invoker");
-  }
-
-  const updatedInvoker = invokeBatteryBoost(invoker, skill);
-  const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === invokerId ? updatedInvoker : v,
+  const players = lastState.players.map((v) =>
+    v.playerId === invokerId ? invokeBatteryBoost(v, skill) : v,
   );
   const effect: PilotSkillEffectX<BatteryBoostSkill> = {
     name: "PilotSkillEffect",
     invokerId: invokerId,
     skill,
   };
-  return { ...lastState, players: updatedPlayers, effect: effect };
+  return { ...lastState, players, effect };
 }
