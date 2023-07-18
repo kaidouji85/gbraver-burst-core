@@ -63,3 +63,19 @@ test("ターン交代が正しく処理できる", () => {
     : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
+test("BatteryRecoverSkipがある場合は、バッテリー回復しない", () => {
+  const defender = createDefender(2, true);
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
+  };
+  const result = turnChange(lastState);
+  const snapShotPath = path.join(__dirname, "turn-change__battery-recover-skip.json");
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
+});
