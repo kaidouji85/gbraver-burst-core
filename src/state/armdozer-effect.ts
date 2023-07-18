@@ -67,18 +67,14 @@ export type TryReflect = {
   period: EffectPeriod;
 };
 
-/**
- * アクティブプレイヤー継続
- */
+/** アクティブプレイヤー継続 */
 export type ContinuousActivePlayer = {
   type: "ContinuousActivePlayer";
   /** エフェクト有効期間 */
   period: EffectPeriod;
 };
 
-/**
- * バッテリー補正
- */
+/** バッテリー補正 */
 export type BatteryCorrection = {
   type: "BatteryCorrection";
   /** バッテリー補正値 */
@@ -87,11 +83,16 @@ export type BatteryCorrection = {
   period: EffectPeriod;
 };
 
-/**
- * ダメージ半減
- */
+/** ダメージ半減 */
 export type DamageHalved = {
   type: "DamageHalved";
+  /** エフェクト有効期間 */
+  period: EffectPeriod;
+};
+
+/** ターン開始時のバッテリー回復をスキップ */
+export type BatteryRecoverSkip = {
+  type: "BatteryRecoverSkip";
   /** エフェクト有効期間 */
   period: EffectPeriod;
 };
