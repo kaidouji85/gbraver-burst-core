@@ -24,7 +24,7 @@ export function calcBoostedBattery(
  * @param skill スキル内容
  * @return 適用後のステート
  */
-export function invokeBatteryBoost(
+function invokeBatteryBoost(
   invoker: Readonly<PlayerState>,
   skill: Readonly<BatteryBoostSkill>,
 ): PlayerState {
