@@ -6,6 +6,7 @@ import type {
 } from "../../player/pilot";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
+import { batteryBoost } from "./battery-boost";
 import { batteryEnchantment } from "./battery-enchantment";
 import { buffPower } from "./buff-power";
 import { damageHalvedSkill } from "./damage-halved-skill";
@@ -14,7 +15,6 @@ import { recoverBattery } from "./recover-battery";
 
 /**
  * パイロットスキルを適用する
- *
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
  * @return 更新結果、実行不可能な場合はnullを返す
@@ -30,23 +30,23 @@ function pilotSkillEffect(
   }
 
   if (invoker.pilot.skill.type === "RecoverBatterySkill") {
-    const castedSkill: RecoverBatterySkill = invoker.pilot.skill;
-    return recoverBattery(lastState, invokerId, castedSkill);
+    return recoverBattery(lastState, invokerId, invoker.pilot.skill);
   }
 
   if (invoker.pilot.skill.type === "BuffPowerSkill") {
-    const castedSkill: BuffPowerSkill = invoker.pilot.skill;
-    return buffPower(lastState, invokerId, castedSkill);
+    return buffPower(lastState, invokerId, invoker.pilot.skill);
   }
 
   if (invoker.pilot.skill.type === "BatteryEnchantmentSkill") {
-    const castedSkill: BatteryEnchantmentSkill = invoker.pilot.skill;
-    return batteryEnchantment(lastState, invokerId, castedSkill);
+    return batteryEnchantment(lastState, invokerId, invoker.pilot.skill);
   }
 
   if (invoker.pilot.skill.type === "DamageHalvedSkill") {
-    const castedSkill: DamageHalvedSkill = invoker.pilot.skill;
-    return damageHalvedSkill(lastState, invokerId, castedSkill);
+    return damageHalvedSkill(lastState, invokerId, invoker.pilot.skill);
+  }
+
+  if (invoker.pilot.skill.type === "BatteryBoostSkill") {
+    return batteryBoost(lastState, invokerId, invoker.pilot.skill);
   }
 
   throw new Error("not found pilot skill");
@@ -54,7 +54,6 @@ function pilotSkillEffect(
 
 /**
  * パイロットスキルを使用済みにする
- *
  * @param lastState 最新状態
  * @return 更新結果、実行不可能な場合はnullを返す
  */
@@ -81,7 +80,6 @@ function disablePilotSkill(
 
 /**
  * パイロットスキルを発動する
- *
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
  * @return 更新結果、実行不可能な場合はnullを返す
