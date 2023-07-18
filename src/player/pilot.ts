@@ -39,6 +39,16 @@ export type DamageHalvedSkill = {
   duration: number;
 };
 
+/** 
+ * バッテリーブーストスキル
+ * バッテリーを大幅回復できるが、次の自分ターン開始時のバッテリー回復がスキップされる
+ */
+export type BatteryBoostSkill = {
+  type: "BatteryBoostSkill";
+  /** バッテリー回復量 */
+  recoverBattery: number;
+};
+
 /** パイロット */
 export type Pilot = PilotX<PilotSkill>;
 
