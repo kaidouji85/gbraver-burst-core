@@ -1,9 +1,6 @@
 import type { GameState, GameStateX } from "../../state/game-state";
 import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
-import {
-  BATTERY_RECOVERY_VALUE,
-  turnChangeRecoverBattery,
-} from "./recover-battery";
+import { calcTurnChangeRecoverBattery } from "./recover-battery";
 import type { TurnChange } from "./turn-change";
 
 /**
@@ -20,16 +17,12 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
     throw new Error("not found next active player");
   }
 
-  const updatedBattery = turnChangeRecoverBattery(
-    nextActivePlayer.armdozer.battery,
-    nextActivePlayer.armdozer.maxBattery,
-    BATTERY_RECOVERY_VALUE,
-  );
+  const { recoverBattery, battery } = calcTurnChangeRecoverBattery(nextActivePlayer);
   const updatedPlayer = {
     ...nextActivePlayer,
     armdozer: {
       ...nextActivePlayer.armdozer,
-      battery: updatedBattery,
+      battery,
       effects: removeBatteryRecoverSkip(nextActivePlayer.armdozer.effects),
     },
   };
@@ -42,7 +35,7 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
     players: updatedPlayerList,
     effect: {
       name: "TurnChange",
-      recoverBattery: BATTERY_RECOVERY_VALUE,
+      recoverBattery,
     },
   };
 }
