@@ -1,4 +1,5 @@
 import {
+  ArmdozerEffect,
   BatteryRecoverSkip,
   EMPTY_ARMDOZER_STATE,
   EMPTY_PLAYER_STATE,
@@ -17,12 +18,12 @@ const batteryRecoverSkip: BatteryRecoverSkip = {
 /**
  * テスト用プレイヤーを生成する
  * @param battery 現在のバッテリー
- * @param isBatteryRecoverSkip バッテリー回復スキップの効果を持つか、trueで持つ
+ * @param effects 現在の効果
  * @return 生成結果
  */
 const createPlayer = (
   battery: number,
-  isBatteryRecoverSkip: boolean,
+  effects: ArmdozerEffect[],
 ): PlayerState => ({
   ...EMPTY_PLAYER_STATE,
   playerId: "player1",
@@ -30,12 +31,12 @@ const createPlayer = (
     ...EMPTY_ARMDOZER_STATE,
     battery,
     maxBattery: 5,
-    effects: isBatteryRecoverSkip ? [batteryRecoverSkip] : [],
+    effects,
   },
 });
 
 test("ターン開始時のバッテリーが3回復する", () => {
-  const player = createPlayer(1, false);
+  const player = createPlayer(1, []);
   expect(calcTurnChangeRecoverBattery(player)).toEqual({
     battery: 4,
     recoverBattery: 3,
@@ -43,7 +44,7 @@ test("ターン開始時のバッテリーが3回復する", () => {
 });
 
 test("バッテリー最大値以上にはならない", () => {
-  const player = createPlayer(4, false);
+  const player = createPlayer(4, []);
   expect(calcTurnChangeRecoverBattery(player)).toEqual({
     battery: 5,
     recoverBattery: 3,
@@ -51,7 +52,7 @@ test("バッテリー最大値以上にはならない", () => {
 });
 
 test("BatteryRecoverSkipが適用されている場合、ターン開始時のバッテリー回復はなし", () => {
-  const player = createPlayer(1, true);
+  const player = createPlayer(1, [batteryRecoverSkip]);
   expect(calcTurnChangeRecoverBattery(player)).toEqual({
     battery: 1,
     recoverBattery: 0,
