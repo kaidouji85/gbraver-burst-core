@@ -45,6 +45,20 @@
         "hp": 3000,
         "effects": [
           {
+            "type": "Empty",
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 1
+            }
+          },
+          {
+            "type": "Empty",
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 1
+            }
+          },
+          {
             "type": "CorrectPower",
             "power": 600,
             "period": {
