@@ -1,4 +1,5 @@
 import type { GameState, GameStateX } from "../../state/game-state";
+import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
 import {
   BATTERY_RECOVERY_VALUE,
   turnChangeRecoverBattery,
@@ -7,7 +8,6 @@ import type { TurnChange } from "./turn-change";
 
 /**
  * ターンチェンジを実行する
- *
  * @param lastState 更新前のゲームステート
  * @return 実行結果、実行不可能な場合はnullを返す
  */
@@ -27,7 +27,11 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   );
   const updatedPlayer = {
     ...nextActivePlayer,
-    armdozer: { ...nextActivePlayer.armdozer, battery: updatedBattery },
+    armdozer: { 
+      ...nextActivePlayer.armdozer, 
+      battery: updatedBattery,
+      effects: removeBatteryRecoverSkip(nextActivePlayer.armdozer.effects)
+    },
   };
   const updatedPlayerList = lastState.players.map((v) =>
     v.playerId === updatedPlayer.playerId ? updatedPlayer : v,

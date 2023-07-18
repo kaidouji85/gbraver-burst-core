@@ -1,18 +1,12 @@
-import { PlayerState } from "../state/player-state";
+import { ArmdozerEffect } from "../state/armdozer-effect";
 
 /**
  * バッテリー回復スキップ効果を削除する
- * @param player 効果削除対象のプレイヤー
+ * @param player 効果削除対象のアームドーザ効果コレクション
  * @return 更新結果
  */
 export function removeBatteryRecoverSkip(
-  player: PlayerState
-): PlayerState {
-  return {
-    ...player,
-    armdozer: {
-      ...player.armdozer,
-      effects: player.armdozer.effects.filter(v => v.type !== 'BatteryRecoverSkip')
-    }
-  };
+  effects: ArmdozerEffect[]
+): ArmdozerEffect[] {
+  return effects.filter(v => v.type !== 'BatteryRecoverSkip');
 }
