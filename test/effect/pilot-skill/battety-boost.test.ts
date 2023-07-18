@@ -1,6 +1,7 @@
 import path from "path";
 
 import {
+  ArmdozerEffect,
   EMPTY_ARMDOZER_STATE,
   EMPTY_GAME_STATE,
   EMPTY_PILOT_STATE,
@@ -15,6 +16,16 @@ import {
   shouldUpdateSnapShot,
 } from "../../snap-shot";
 
+/** BatteryRecoverSkip以外の効果 */
+const effectOtherThanBatteryRecoverSkip: ArmdozerEffect = {
+  type: "CorrectPower",
+  power: 1000,
+  period: {
+    type: "TurnLimit",
+    remainingTurn: 1,
+  }
+};
+
 /** 効果発動プレイヤー */
 const invoker: PlayerState = {
   ...EMPTY_PLAYER_STATE,
@@ -23,6 +34,10 @@ const invoker: PlayerState = {
     ...EMPTY_ARMDOZER_STATE,
     battery: 0,
     maxBattery: 8,
+    effects: [
+      effectOtherThanBatteryRecoverSkip,
+      effectOtherThanBatteryRecoverSkip,
+    ]
   },
   pilot: {
     ...EMPTY_PILOT_STATE,

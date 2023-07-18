@@ -17,6 +17,22 @@
         "hp": 3000,
         "effects": [
           {
+            "type": "CorrectPower",
+            "power": 1000,
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 1
+            }
+          },
+          {
+            "type": "CorrectPower",
+            "power": 1000,
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 1
+            }
+          },
+          {
             "type": "BatteryRecoverSkip",
             "period": {
               "type": "Permanent"
