@@ -23,7 +23,7 @@ const effectOtherThanBatteryRecoverSkip: ArmdozerEffect = {
   period: {
     type: "TurnLimit",
     remainingTurn: 1,
-  }
+  },
 };
 
 /** 効果発動プレイヤー */
@@ -37,7 +37,7 @@ const invoker: PlayerState = {
     effects: [
       effectOtherThanBatteryRecoverSkip,
       effectOtherThanBatteryRecoverSkip,
-    ]
+    ],
   },
   pilot: {
     ...EMPTY_PILOT_STATE,
