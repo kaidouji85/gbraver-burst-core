@@ -1,6 +1,7 @@
 import path from "path";
 
 import type {
+  ArmdozerEffect,
   BatteryRecoverSkip,
   ContinuousActivePlayer,
   GameState,
@@ -31,19 +32,17 @@ const BATTERY_RECOVER_SKIP: BatteryRecoverSkip = {
 /**
  * 攻撃側プレイヤーを生成する
  * @param battery 現在のバッテリー値
- * @param hasBatteryRecoverSkip バッテリー回復スキップ状態か否か、trueでスキップ状態
+ * @param effects 現在の効果
  * @return 生成結果
  */
-const createAttacker = (battery: number, hasBatteryRecoverSkip: boolean): PlayerState => ({
+const createAttacker = (battery: number, effects: ArmdozerEffect[]): PlayerState => ({
   ...EMPTY_PLAYER_STATE,
     playerId: "attacker",
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
       battery,
       maxBattery: 5,
-      effects: hasBatteryRecoverSkip
-        ? [CONTINUOUS_ACTIVE, BATTERY_RECOVER_SKIP]
-        : [CONTINUOUS_ACTIVE],
+      effects,
     },
 });
 
@@ -60,7 +59,7 @@ const defender: PlayerState = {
 };
 
 test("アクティブプレイヤー継続が正しく処理できる", () => {
-  const attacker = createAttacker(2, false);
+  const attacker = createAttacker(2, [CONTINUOUS_ACTIVE]);
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
@@ -76,7 +75,7 @@ test("アクティブプレイヤー継続が正しく処理できる", () => {
 });
 
 test("BatteryRecoverSkipは取り除かれる", () => {
-  const attacker = createAttacker(2, true);
+  const attacker = createAttacker(2, [CONTINUOUS_ACTIVE, BATTERY_RECOVER_SKIP]);
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
