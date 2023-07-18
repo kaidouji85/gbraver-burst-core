@@ -5,7 +5,9 @@ export const BATTERY_RECOVERY_VALUE = 3;
 
 /** 計算結果 */
 type Ret = {
+  /** バッテリー回復量 */
   recoverBattery: number;
+  /** 回復後のバッテリー量 */
   battery: number;
 };
 
