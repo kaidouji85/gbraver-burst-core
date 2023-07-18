@@ -1,6 +1,10 @@
 import path from "path";
 
-import { EMPTY_ARMDOZER_EFFECT, type GameState, type PlayerState } from "../../../src";
+import {
+  EMPTY_ARMDOZER_EFFECT,
+  type GameState,
+  type PlayerState,
+} from "../../../src";
 import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
@@ -22,7 +26,12 @@ const skill: RecoverBatterySkill = {
 const invoker: PlayerState = {
   ...EMPTY_PLAYER_STATE,
   playerId: "invoker",
-  armdozer: { ...EMPTY_PLAYER_STATE.armdozer, maxBattery: 5, battery: 2, effects: [EMPTY_ARMDOZER_EFFECT, EMPTY_ARMDOZER_EFFECT] },
+  armdozer: {
+    ...EMPTY_PLAYER_STATE.armdozer,
+    maxBattery: 5,
+    battery: 2,
+    effects: [EMPTY_ARMDOZER_EFFECT, EMPTY_ARMDOZER_EFFECT],
+  },
   pilot: { ...EMPTY_PILOT, skill, enableSkill: true },
 };
 

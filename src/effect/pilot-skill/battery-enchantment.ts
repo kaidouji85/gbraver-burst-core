@@ -12,7 +12,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
  */
 function invokeBatteryEnchantment(
   invoker: PlayerState,
-  skill: BatteryEnchantmentSkill
+  skill: BatteryEnchantmentSkill,
 ): PlayerState {
   return {
     ...invoker,
@@ -37,7 +37,7 @@ function invokeBatteryEnchantment(
         },
       ],
     },
-  }
+  };
 }
 
 /**

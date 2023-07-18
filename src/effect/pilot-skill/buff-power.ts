@@ -12,7 +12,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
  */
 function invokeBuffPower(
   invoker: PlayerState,
-  skill: BuffPowerSkill
+  skill: BuffPowerSkill,
 ): PlayerState {
   return {
     ...invoker,

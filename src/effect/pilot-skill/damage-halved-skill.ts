@@ -12,7 +12,7 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
  */
 function invokeDamageHalvedSkill(
   invoker: PlayerState,
-  skill: DamageHalvedSkill
+  skill: DamageHalvedSkill,
 ): PlayerState {
   return {
     ...invoker,
@@ -29,7 +29,7 @@ function invokeDamageHalvedSkill(
         },
       ],
     },
-  }
+  };
 }
 
 /**

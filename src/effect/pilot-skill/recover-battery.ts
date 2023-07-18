@@ -27,7 +27,7 @@ export function calcRecoverBattery(
  */
 function invokeRecoverBattery(
   invoker: PlayerState,
-  skill: RecoverBatterySkill
+  skill: RecoverBatterySkill,
 ): PlayerState {
   return {
     ...invoker,
@@ -35,7 +35,7 @@ function invokeRecoverBattery(
       ...invoker.armdozer,
       battery: calcRecoverBattery(invoker.armdozer, skill),
     },
-  }
+  };
 }
 
 /**
