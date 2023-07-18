@@ -40,7 +40,7 @@ export type DamageHalvedSkill = {
   duration: number;
 };
 
-/** 
+/**
  * バッテリーブーストスキル
  * バッテリーを大幅回復できるが、次の自分ターン開始時のバッテリー回復がスキップされる
  */

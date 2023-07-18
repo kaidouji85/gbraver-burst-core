@@ -27,10 +27,10 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   );
   const updatedPlayer = {
     ...nextActivePlayer,
-    armdozer: { 
-      ...nextActivePlayer.armdozer, 
+    armdozer: {
+      ...nextActivePlayer.armdozer,
       battery: updatedBattery,
-      effects: removeBatteryRecoverSkip(nextActivePlayer.armdozer.effects)
+      effects: removeBatteryRecoverSkip(nextActivePlayer.armdozer.effects),
     },
   };
   const updatedPlayerList = lastState.players.map((v) =>

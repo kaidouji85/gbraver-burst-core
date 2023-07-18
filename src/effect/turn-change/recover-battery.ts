@@ -21,8 +21,8 @@ export function turnChangeRecoverBattery(
 
 /** 計算結果 */
 type Ret = {
-  recoverBattery: number,
-  battery: number,
+  recoverBattery: number;
+  battery: number;
 };
 
 /**
@@ -31,8 +31,9 @@ type Ret = {
  * @return 計算結果
  */
 export function calcTurnChangeRecoverBattery(player: PlayerState): Ret {
-  const hasBatteryRecoverSkip = player.armdozer.effects
-    .some(v => v.type === 'BatteryRecoverSkip');
+  const hasBatteryRecoverSkip = player.armdozer.effects.some(
+    (v) => v.type === "BatteryRecoverSkip",
+  );
   if (hasBatteryRecoverSkip) {
     return {
       recoverBattery: 0,
@@ -42,6 +43,9 @@ export function calcTurnChangeRecoverBattery(player: PlayerState): Ret {
 
   return {
     recoverBattery: BATTERY_RECOVERY_VALUE,
-    battery: Math.min(player.armdozer.battery + BATTERY_RECOVERY_VALUE, player.armdozer.maxBattery)
+    battery: Math.min(
+      player.armdozer.battery + BATTERY_RECOVERY_VALUE,
+      player.armdozer.maxBattery,
+    ),
   };
 }

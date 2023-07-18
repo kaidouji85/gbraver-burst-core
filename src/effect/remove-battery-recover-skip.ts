@@ -6,7 +6,7 @@ import { ArmdozerEffect } from "../state/armdozer-effect";
  * @return 更新結果
  */
 export function removeBatteryRecoverSkip(
-  effects: ArmdozerEffect[]
+  effects: ArmdozerEffect[],
 ): ArmdozerEffect[] {
-  return effects.filter(v => v.type !== 'BatteryRecoverSkip');
+  return effects.filter((v) => v.type !== "BatteryRecoverSkip");
 }

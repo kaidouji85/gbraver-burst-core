@@ -38,9 +38,9 @@ export function invokeBatteryBoost(
         {
           type: "BatteryRecoverSkip",
           period: {
-            type: "Permanent"
-          }
-        }
+            type: "Permanent",
+          },
+        },
       ],
     },
   };
