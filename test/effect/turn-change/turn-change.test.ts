@@ -16,7 +16,6 @@ const batteryRecoverSkip: BatteryRecoverSkip = {
   }
 };
 
-
 /** 攻撃側プレイヤー */
 const attacker = {
   ...EMPTY_PLAYER_STATE,
