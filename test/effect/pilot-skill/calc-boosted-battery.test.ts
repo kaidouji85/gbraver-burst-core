@@ -1,4 +1,8 @@
-import { ArmdozerState, BatteryBoostSkill, EMPTY_ARMDOZER_STATE } from "../../../src";
+import {
+  ArmdozerState,
+  BatteryBoostSkill,
+  EMPTY_ARMDOZER_STATE,
+} from "../../../src";
 import { calcBoostedBattery } from "../../../src/effect/pilot-skill/battery-boost";
 
 /**
@@ -19,17 +23,17 @@ const createArmdozer = (battery: number): ArmdozerState => ({
  */
 const createSkill = (recoverBattery: number): BatteryBoostSkill => ({
   type: "BatteryBoostSkill",
-  recoverBattery
-})
+  recoverBattery,
+});
 
 test("バッテリー回復処理が正しく適用される", () => {
   const armdozer = createArmdozer(1);
-  const skill = createSkill(3)
+  const skill = createSkill(3);
   expect(calcBoostedBattery(armdozer, skill)).toBe(4);
 });
 
 test("バッテリー最大値以上は回復しない", () => {
   const armdozer = createArmdozer(3);
-  const skill = createSkill(5)
+  const skill = createSkill(5);
   expect(calcBoostedBattery(armdozer, skill)).toBe(5);
 });
