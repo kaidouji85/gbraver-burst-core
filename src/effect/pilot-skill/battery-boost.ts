@@ -6,7 +6,7 @@ import { PlayerState } from "../../state/player-state";
 import { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**
- * 回復後のバッテリーを計算する
+ * ブースト後のバッテリーを計算する
  * @param armdozer アームドーザステート
  * @param skill スキル内容
  * @return 回復後のバッテリー
@@ -16,6 +16,34 @@ export function calcBoostedBattery(
   skill: Readonly<BatteryBoostSkill>,
 ): number {
   return Math.min(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
+}
+
+/**
+ * バッテリーブーストをプレイヤーに適用する
+ * @param invoker 適用対象のプレイヤー
+ * @param skill スキル内容
+ * @return 適用後のステート
+ */
+export function invokeBatteryBoost(
+  invoker: Readonly<PlayerState>,
+  skill: Readonly<BatteryBoostSkill>,
+): PlayerState {
+  return {
+    ...invoker,
+    armdozer: {
+      ...invoker.armdozer,
+      battery: calcBoostedBattery(invoker.armdozer, skill),
+      effects: [
+        ...invoker.armdozer.effects,
+        {
+          type: "BatteryRecoverSkip",
+          period: {
+            type: "Permanent"
+          }
+        }
+      ],
+    },
+  };
 }
 
 /**
@@ -35,23 +63,8 @@ export function batteryBoost(
     throw new Error("not found pilot skill invoker");
   }
 
-  const updatedInvoker: PlayerState = {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      battery: calcBoostedBattery(invoker.armdozer, skill),
-      effects: [
-        ...invoker.armdozer.effects,
-        {
-          type: "BatteryRecoverSkip",
-          period: {
-            type: "Permanent"
-          }
-        }
-      ],
-    },
-  };
-  const updatedPlayers: PlayerState[] = lastState.players.map((v) =>
+  const updatedInvoker = invokeBatteryBoost(invoker, skill);
+  const updatedPlayers = lastState.players.map((v) =>
     v.playerId === invokerId ? updatedInvoker : v,
   );
   const effect: PilotSkillEffectX<BatteryBoostSkill> = {
