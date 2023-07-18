@@ -1,6 +1,6 @@
 import path from "path";
 
-import { BatteryRecoverSkip } from "../../../src";
+import { ArmdozerEffect, BatteryRecoverSkip } from "../../../src";
 import { turnChange } from "../../../src/effect/turn-change";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
@@ -31,24 +31,22 @@ const attacker = {
 /**
  * 防御側プレイヤーを生成する
  * @param battery 現在のバッテリー値
- * @param hasBatteryRecoverSkip バッテリー回復スキップ状態か否か、trueでスキップ状態
+ * @param effects 現在の効果
  * @return 生成結果
  */
-const createDefender = (battery: number, hasBatteryRecoverSkip: boolean) => ({
+const createDefender = (battery: number, effects: ArmdozerEffect[]) => ({
   ...EMPTY_PLAYER_STATE,
   playerId: "defender",
   armdozer: {
     ...EMPTY_ARMDOZER_STATE,
     battery,
     maxBattery: 5,
-    effects: hasBatteryRecoverSkip
-      ? [ batteryRecoverSkip ]
-      : [],
+    effects,
   },
 });
 
 test("ターン交代が正しく処理できる", () => {
-  const defender = createDefender(2, false);
+  const defender = createDefender(2, []);
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
@@ -64,7 +62,7 @@ test("ターン交代が正しく処理できる", () => {
 });
 
 test("BatteryRecoverSkipがある場合は、バッテリー回復しない", () => {
-  const defender = createDefender(2, true);
+  const defender = createDefender(2, [batteryRecoverSkip]);
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
