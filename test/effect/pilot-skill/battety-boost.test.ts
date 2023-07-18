@@ -45,6 +45,7 @@ const invoker: PlayerState = {
       type: "BatteryBoostSkill",
       recoverBattery: 5,
     },
+    enableSkill: true,
   },
 };
 
