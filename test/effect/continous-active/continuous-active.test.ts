@@ -74,3 +74,19 @@ test("アクティブプレイヤー継続が正しく処理できる", () => {
     : importSnapShotJSON(snapShotPath);
   expect(result).toEqual(snapShot);
 });
+
+test("BatteryRecoverSkipは取り除かれる", () => {
+  const attacker = createAttacker(2, true);
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
+  };
+  const result = continuousActive(lastState);
+  const snapShotPath = path.join(__dirname, "continuous-active__battery-recover-skip.json");
+  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
+  const snapShot = shouldUpdateSnapShot()
+    ? result
+    : importSnapShotJSON(snapShotPath);
+  expect(result).toEqual(snapShot);
+});
