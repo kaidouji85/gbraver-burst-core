@@ -11,14 +11,13 @@ import { recoverBattery } from "./recover-battery";
  * パイロットスキルを適用する
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @return 更新結果、実行不可能な場合は例外を返す
  */
 function pilotSkillEffect(
   lastState: GameState,
   invokerId: PlayerId,
 ): GameStateX<PilotSkillEffect> {
   const invoker = lastState.players.find((v) => v.playerId === invokerId);
-
   if (!invoker) {
     throw new Error("not found pilot skill invoker");
   }
@@ -49,7 +48,7 @@ function pilotSkillEffect(
 /**
  * パイロットスキルを使用済みにする
  * @param lastState 最新状態
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @return 更新結果、実行不可能な場合は例外を返す
  */
 function disablePilotSkill(
   lastState: GameStateX<PilotSkillEffect>,
@@ -57,7 +56,6 @@ function disablePilotSkill(
   const invoker = lastState.players.find(
     (v) => v.playerId === lastState.effect.invokerId,
   );
-
   if (!invoker) {
     throw new Error("not found pilot skill invoker");
   }
@@ -76,7 +74,7 @@ function disablePilotSkill(
  * パイロットスキルを発動する
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @return 更新結果、実行不可能な場合は例外を返す
  */
 export function pilotSkill(
   lastState: GameState,

@@ -7,7 +7,6 @@ import type { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**
  * 回復後のバッテリーを計算する
- *
  * @param armdozer アームドーザステート
  * @param skill スキル内容
  * @return 回復後のバッテリー
@@ -43,7 +42,7 @@ function invokeRecoverBattery(
  * @param lastState 最新のゲーム状態
  * @param invokerId 発動するプレイヤー
  * @param skill スキル内容
- * @return 更新結果、実行不可能な場合は例外を投げる
+ * @return 更新結果
  */
 export function recoverBattery(
   lastState: GameState,
