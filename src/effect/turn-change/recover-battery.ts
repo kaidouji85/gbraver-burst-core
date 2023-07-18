@@ -19,19 +19,29 @@ export function turnChangeRecoverBattery(
   return Math.min(battery + recoveryValue, maxBattery);
 }
 
+/** 計算結果 */
+type Ret = {
+  recoverBattery: number,
+  battery: number,
+};
+
 /**
- * 回復後のバッテリー値を取得する
+ * ターン開始時のバッテリー回復処理計算
  * @param player プレイヤーステート
- * @return 回復後のバッテリー
+ * @return 計算結果
  */
-export function tekitou(
-  player: PlayerState
-): number {
+export function calcTurnChangeRecoverBattery(player: PlayerState): Ret {
   const hasBatteryRecoverSkip = player.armdozer.effects
     .some(v => v.type === 'BatteryRecoverSkip');
   if (hasBatteryRecoverSkip) {
-    return 0;
+    return {
+      recoverBattery: 0,
+      battery: player.armdozer.battery,
+    };
   }
 
-  return Math.min(player.armdozer.battery + BATTERY_RECOVERY_VALUE, player.armdozer.maxBattery);
+  return {
+    recoverBattery: BATTERY_RECOVERY_VALUE,
+    battery: Math.min(player.armdozer.battery + BATTERY_RECOVERY_VALUE, player.armdozer.maxBattery)
+  };
 }
