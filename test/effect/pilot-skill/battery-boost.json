@@ -29,10 +29,10 @@
         "id": "EMPTY_PLAYER",
         "name": "名無し",
         "skill": {
-          "type": "RecoverBatterySkill",
-          "recoverBattery": 2
+          "type": "BatteryBoostSkill",
+          "recoverBattery": 5
         },
-        "enableSkill": true
+        "enableSkill": false
       }
     },
     {

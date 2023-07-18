@@ -1,9 +1,3 @@
-import type {
-  BatteryEnchantmentSkill,
-  BuffPowerSkill,
-  DamageHalvedSkill,
-  RecoverBatterySkill,
-} from "../../player/pilot";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import { batteryBoost } from "./battery-boost";

@@ -1,18 +1,36 @@
 import path from "path";
 
-import { BatteryBoostSkill, EMPTY_ARMDOZER_STATE, EMPTY_GAME_STATE, EMPTY_PLAYER_STATE } from "../../../src";
-import { batteryBoost } from "../../../src/effect/pilot-skill/battery-boost";
-import { exportSnapShotJSON, importSnapShotJSON, shouldUpdateSnapShot } from "../../snap-shot";
+import {
+  EMPTY_ARMDOZER_STATE,
+  EMPTY_GAME_STATE,
+  EMPTY_PILOT_STATE,
+  EMPTY_PLAYER_STATE,
+  GameState,
+  PlayerState,
+} from "../../../src";
+import { pilotSkill } from "../../../src/effect/pilot-skill";
+import {
+  exportSnapShotJSON,
+  importSnapShotJSON,
+  shouldUpdateSnapShot,
+} from "../../snap-shot";
 
 /** 効果発動プレイヤー */
-const invoker = {
+const invoker: PlayerState = {
   ...EMPTY_PLAYER_STATE,
   playerId: "invoker",
   armdozer: {
     ...EMPTY_ARMDOZER_STATE,
     battery: 0,
     maxBattery: 8,
-  }
+  },
+  pilot: {
+    ...EMPTY_PILOT_STATE,
+    skill: {
+      type: "BatteryBoostSkill",
+      recoverBattery: 5,
+    },
+  },
 };
 
 /** それ以外のプレイヤー */
@@ -22,20 +40,14 @@ const other = {
 };
 
 /** ゲームステート */
-const lastState = {
+const lastState: GameState = {
   ...EMPTY_GAME_STATE,
   activePlayerId: other.playerId,
-  players: [invoker, other]
-};
-
-/** コマンド */
-const skill: BatteryBoostSkill = {
-  type: "BatteryBoostSkill",
-  recoverBattery: 5,
+  players: [invoker, other],
 };
 
 test("バッテリーブーストスキルを正しく適用できる", () => {
-  const result = batteryBoost(lastState, invoker.playerId, skill);
+  const result = pilotSkill(lastState, invoker.playerId);
   const snapShotPath = path.join(__dirname, "battery-boost.json");
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

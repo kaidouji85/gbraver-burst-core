@@ -1,12 +1,17 @@
-import { BatteryRecoverSkip, EMPTY_ARMDOZER_STATE, EMPTY_PLAYER_STATE, PlayerState } from "../../../src";
+import {
+  BatteryRecoverSkip,
+  EMPTY_ARMDOZER_STATE,
+  EMPTY_PLAYER_STATE,
+  PlayerState,
+} from "../../../src";
 import { calcTurnChangeRecoverBattery } from "../../../src/effect/turn-change/recover-battery";
 
 /** 効果 ターン開始時のバッテリー回復をスキップ */
 const batteryRecoverSkip: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
   period: {
-    type: "Permanent"
-  }
+    type: "Permanent",
+  },
 };
 
 /**
@@ -17,7 +22,7 @@ const batteryRecoverSkip: BatteryRecoverSkip = {
  */
 const createPlayer = (
   battery: number,
-  isBatteryRecoverSkip: boolean
+  isBatteryRecoverSkip: boolean,
 ): PlayerState => ({
   ...EMPTY_PLAYER_STATE,
   playerId: "player1",
@@ -25,9 +30,7 @@ const createPlayer = (
     ...EMPTY_ARMDOZER_STATE,
     battery,
     maxBattery: 5,
-    effects: isBatteryRecoverSkip
-      ? [ batteryRecoverSkip ]
-      : []
+    effects: isBatteryRecoverSkip ? [batteryRecoverSkip] : [],
   },
 });
 

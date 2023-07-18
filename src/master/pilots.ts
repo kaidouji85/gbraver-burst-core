@@ -55,6 +55,6 @@ export const Pilots: Pilot[] = [
     skill: {
       type: "BatteryBoostSkill",
       recoverBattery: 5,
-    }
-  }
+    },
+  },
 ];

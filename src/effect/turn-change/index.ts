@@ -17,7 +17,8 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
     throw new Error("not found next active player");
   }
 
-  const { recoverBattery, battery } = calcTurnChangeRecoverBattery(nextActivePlayer);
+  const { recoverBattery, battery } =
+    calcTurnChangeRecoverBattery(nextActivePlayer);
   const updatedPlayer = {
     ...nextActivePlayer,
     armdozer: {
