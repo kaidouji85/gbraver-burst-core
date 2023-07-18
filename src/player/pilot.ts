@@ -6,7 +6,8 @@ export type PilotSkill =
   | RecoverBatterySkill
   | BuffPowerSkill
   | BatteryEnchantmentSkill
-  | DamageHalvedSkill;
+  | DamageHalvedSkill
+  | BatteryBoostSkill;
 
 /** パイロットスキル バッテリー回復 */
 export type RecoverBatterySkill = {

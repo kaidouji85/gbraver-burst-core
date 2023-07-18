@@ -24,7 +24,8 @@ export type ArmdozerEffect =
   | TryReflect
   | ContinuousActivePlayer
   | BatteryCorrection
-  | DamageHalved;
+  | DamageHalved
+  | BatteryRecoverSkip;
 
 /**
  * 何もしない効果
