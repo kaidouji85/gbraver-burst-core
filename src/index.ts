@@ -92,6 +92,7 @@ export type {
   RecoverBattery,
 } from "./player/burst";
 export type {
+  BatteryBoostSkill,
   BatteryEnchantmentSkill,
   BuffPowerSkill,
   DamageHalvedSkill,
@@ -105,6 +106,7 @@ export type { Player, PlayerId, PlayerX } from "./player/player";
 export type {
   ArmdozerEffect,
   BatteryCorrection,
+  BatteryRecoverSkip,
   ContinuousActivePlayer,
   CorrectPower,
   DamageHalved,
