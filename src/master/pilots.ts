@@ -8,6 +8,7 @@ export const PilotIds = {
   GAI: "GAI",
   RAITO: "RAITO",
   TSUBASA: "TSUBASA",
+  YUUYA: "YUUYA",
 };
 
 /**
@@ -48,4 +49,12 @@ export const Pilots: Pilot[] = [
       duration: 2,
     },
   },
+  {
+    id: PilotIds.YUUYA,
+    name: "ユウヤ",
+    skill: {
+      type: "BatteryBoostSkill",
+      recoverBattery: 5,
+    }
+  }
 ];
