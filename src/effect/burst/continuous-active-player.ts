@@ -6,13 +6,13 @@ import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
- * 連続攻撃
+ * アクティブプレイヤー継続
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
  * @return 更新結果、実行不可能な場合は例外を投げる
  */
-export function continuousAttack(
+export function continuousActivePlayer(
   lastState: GameState,
   burstPlayerId: PlayerId,
   burst: ContinuousAttack,

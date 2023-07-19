@@ -3,7 +3,7 @@ import type { GameState, GameStateX } from "../../state/game-state";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
 import type { BurstEffect } from "./burst-effect";
-import { continuousAttack } from "./continuous-attack";
+import { continuousActivePlayer } from "./continuous-active-player";
 import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
 
@@ -55,7 +55,7 @@ export function burstEffect(
   }
 
   if (burstPlayer.armdozer.burst.type === "ContinuousAttack") {
-    return continuousAttack(
+    return continuousActivePlayer(
       lastState,
       burstPlayerId,
       burstPlayer.armdozer.burst,
