@@ -6,34 +6,38 @@ import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
+ * バッテリー回復を適用する
+ * @param invoker バースト発動者
+ * @param burst バースト内容
+ * @return 発動後のステート
+ */
+function invokeRecoverBattery(
+  invoker: PlayerState,
+  burst: RecoverBattery
+): PlayerState {
+  return {
+    ...invoker,
+    armdozer: {
+      ...invoker.armdozer,
+      battery: burstRecoverBattery(invoker.armdozer, burst),
+    },
+  };
+}
+
+/**
  * バースト バッテリー回復
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
- * @return 更新結果、実行不可能な場合は例外を投げる
+ * @return 更新結果
  */
 export function recoverBattery(
   lastState: GameState,
   burstPlayerId: PlayerId,
   burst: RecoverBattery,
 ): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId,
-  );
-
-  if (!burstPlayer) {
-    throw new Error("not found burst player");
-  }
-
-  const updatedBurstPlayer: PlayerState = {
-    ...burstPlayer,
-    armdozer: {
-      ...burstPlayer.armdozer,
-      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-    },
-  };
   const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player,
+    player.playerId === burstPlayerId ? invokeRecoverBattery(player, burst) : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",
