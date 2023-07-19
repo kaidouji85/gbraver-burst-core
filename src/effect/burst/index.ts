@@ -8,20 +8,6 @@ import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
 
 /**
- * バーストを実行する
- * @param lastState 最新の状態
- * @param burstPlayerId バーストするプレイヤーID
- * @return バースト結果、実行不可能な場合はnullを返す
- */
-export function burst(
-  lastState: GameState,
-  burstPlayerId: PlayerId,
-): GameStateX<BurstEffect> {
-  const doneBurstEffect = burstEffect(lastState, burstPlayerId);
-  return disableBurst(doneBurstEffect);
-}
-
-/**
  * バースト効果を適用する
  * @param lastState 最新状態
  * @param burstPlayerId バーストするプレイヤーID
@@ -97,4 +83,18 @@ export function disableBurst(
     v.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : v,
   );
   return { ...lastState, players: updatedPlayers };
+}
+
+/**
+ * バーストを実行する
+ * @param lastState 最新の状態
+ * @param burstPlayerId バーストするプレイヤーID
+ * @return バースト結果、実行不可能な場合はnullを返す
+ */
+export function burst(
+  lastState: GameState,
+  burstPlayerId: PlayerId,
+): GameStateX<BurstEffect> {
+  const doneBurstEffect = burstEffect(lastState, burstPlayerId);
+  return disableBurst(doneBurstEffect);
 }
