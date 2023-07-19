@@ -1,11 +1,12 @@
 import path from "path";
 
-import type {
-  ArmdozerEffect,
-  BatteryRecoverSkip,
-  ContinuousActivePlayer,
-  GameState,
-  PlayerState,
+import {
+  type ArmdozerEffect,
+  type BatteryRecoverSkip,
+  type ContinuousActivePlayer,
+  EMPTY_ARMDOZER_EFFECT,
+  type GameState,
+  type PlayerState,
 } from "../../../src";
 import { continuousActive } from "../../../src/effect/continuous-active";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
@@ -49,7 +50,7 @@ const createAttacker = (
     ...EMPTY_ARMDOZER_STATE,
     battery,
     maxBattery: 5,
-    effects,
+    effects: [EMPTY_ARMDOZER_EFFECT, EMPTY_ARMDOZER_EFFECT, ...effects],
   },
 });
 

@@ -1,4 +1,4 @@
-import type { RecoverBattery } from "../../player/burst";
+import type { ContinuousAttack } from "../../player/burst";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
@@ -6,39 +6,48 @@ import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
- * バッテリー回復を適用する
+ * アクティブプレイヤー継続を適用する
  * @param invoker バースト発動者
  * @param burst バースト内容
  * @return 発動後のステート
  */
-function invokeRecoverBattery(
+function invokeContinuousActivePlayer(
   invoker: PlayerState,
-  burst: RecoverBattery,
+  burst: ContinuousAttack,
 ): PlayerState {
   return {
     ...invoker,
     armdozer: {
       ...invoker.armdozer,
       battery: burstRecoverBattery(invoker.armdozer, burst),
+      effects: [
+        ...invoker.armdozer.effects,
+        {
+          type: "ContinuousActivePlayer",
+          period: {
+            type: "SpecialPeriod",
+          },
+        },
+      ],
     },
   };
 }
 
 /**
- * バースト バッテリー回復
+ * アクティブプレイヤー継続
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
  * @return 更新結果
  */
-export function recoverBattery(
+export function continuousActivePlayer(
   lastState: GameState,
   burstPlayerId: PlayerId,
-  burst: RecoverBattery,
+  burst: ContinuousAttack,
 ): GameStateX<BurstEffect> {
   const players = lastState.players.map((player) =>
     player.playerId === burstPlayerId
-      ? invokeRecoverBattery(player, burst)
+      ? invokeContinuousActivePlayer(player, burst)
       : player,
   );
   const effect: BurstEffect = {
