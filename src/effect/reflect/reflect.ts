@@ -7,33 +7,25 @@ import type { PlayerState } from "../../state/player-state";
 import { hasDamageHalved } from "../damage-halved";
 import { toMinDamage } from "../to-min-damage";
 
-/**
- * ダメージ反射 パラメータ
- */
-export type ReflectParam = {
+/** ダメージ反射 パラメータ */
+export type ReflectParam = Readonly<{
   /** 反射するダメージ */
   damage: number;
-
   /** ダメージエフェクト */
   effect: ReflectDamageEffect;
-};
+}>;
 
-/**
- * ダメージ反射 結果
- */
-export type Reflect = ReflectParam & {
+/** ダメージ反射 結果 */
+export type Reflect = ReflectParam & Readonly<{
   name: "Reflect";
-
   /** 反射ダメージを受けたプレイヤー */
   damagedPlayer: PlayerId;
-
   /** 死亡フラグ */
   isDeath: boolean;
-};
+}>;
 
 /**
  * ダメージ反射ステートをダメージ反射パラメータに変換する
- *
  * @param burst 変換元
  * @return 変換結果
  */
@@ -46,7 +38,6 @@ export function toReflectParam(burst: TryReflect): ReflectParam {
 
 /**
  * ダメージ反射量を計算する
- *
  * @param reflect ダメージ反射パラメータ
  * @param damagedPlayer ダメージ反射されるプレイヤー
  * @return ダメージ
