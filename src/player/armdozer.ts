@@ -4,9 +4,8 @@ import type { Burst } from "./burst";
 export type ArmDozerId = string;
 
 /**
- * アームドーザ基本情報
- *
- * @typeparam {X} バースト
+ * アームドーザ基本情報（型指定あり）
+ * @template X バースト
  */
 export type ArmdozerX<X> = Readonly<{
   /** アームドーザID */
