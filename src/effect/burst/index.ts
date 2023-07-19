@@ -1,5 +1,6 @@
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
+import { PlayerState } from "../../state/player-state";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
 import type { BurstEffect } from "./burst-effect";
@@ -67,22 +68,14 @@ export function burstEffect(
 export function disableBurst(
   lastState: GameStateX<BurstEffect>,
 ): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(
-    (v) => v.playerId === lastState.effect.burstPlayer,
-  );
-
-  if (!burstPlayer) {
-    throw new Error("not found burst player");
-  }
-
-  const updatedBurstPlayer = {
+  const updateBurstPlayer = (burstPlayer: PlayerState) => ({
     ...burstPlayer,
     armdozer: { ...burstPlayer.armdozer, enableBurst: false },
-  };
-  const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === updatedBurstPlayer.playerId ? updatedBurstPlayer : v,
+  });
+  const players = lastState.players.map((v) =>
+    v.playerId === lastState.effect.burstPlayer ? updateBurstPlayer(v) : v,
   );
-  return { ...lastState, players: updatedPlayers };
+  return { ...lastState, players };
 }
 
 /**
