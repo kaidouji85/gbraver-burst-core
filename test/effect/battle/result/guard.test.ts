@@ -38,7 +38,7 @@ type DefenderParams = {
  * @return 生成結果
  */
 const createDefender = (params: DefenderParams): PlayerState => ({
-  ...EMPTY_PLAYER_STATE, 
+  ...EMPTY_PLAYER_STATE,
   playerId: "defender",
   armdozer: { ...EMPTY_ARMDOZER_STATE, ...params },
 });
@@ -50,7 +50,7 @@ const correctPower = { ...EMPTY_CORRECT_POWER, power: 1000 };
 const damageHalved = EMPTY_DAMAGE_HALVED;
 
 test("ガードは通常ヒット半分のダメージを受ける", () => {
-  const attacker = createAttacker({power: 2000});
+  const attacker = createAttacker({ power: 2000 });
   const defender = createDefender({});
   expect(guard(attacker, 3, defender, 3)).toEqual({
     name: "Guard",
@@ -59,7 +59,7 @@ test("ガードは通常ヒット半分のダメージを受ける", () => {
 });
 
 test("攻撃補正が正しく適用される", () => {
-  const attacker = createAttacker({power: 2000, effects: [correctPower]});
+  const attacker = createAttacker({ power: 2000, effects: [correctPower] });
   const defender = createDefender({});
   expect(guard(attacker, 3, defender, 3)).toEqual({
     name: "Guard",
@@ -68,8 +68,8 @@ test("攻撃補正が正しく適用される", () => {
 });
 
 test("ダメージ半減が正しく適用される", () => {
-  const attacker = createAttacker({power: 2000});
-  const defender = createDefender({effects: [damageHalved]});
+  const attacker = createAttacker({ power: 2000 });
+  const defender = createDefender({ effects: [damageHalved] });
   expect(guard(attacker, 3, defender, 3)).toEqual({
     name: "Guard",
     damage: 500,
@@ -77,8 +77,8 @@ test("ダメージ半減が正しく適用される", () => {
 });
 
 test("攻撃補正 -> ダメージ半減 -> ガードによるダメージ半減、の順番で計算される", () => {
-  const attacker = createAttacker({power: 2000, effects: [correctPower]});
-  const defender = createDefender({effects: [damageHalved]});
+  const attacker = createAttacker({ power: 2000, effects: [correctPower] });
+  const defender = createDefender({ effects: [damageHalved] });
   expect(guard(attacker, 3, defender, 3)).toEqual({
     name: "Guard",
     damage: 750,
