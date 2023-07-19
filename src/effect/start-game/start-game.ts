@@ -1,4 +1,4 @@
 /** ゲーム開始 */
-export type StartGame = {
+export type StartGame = Readonly<{
   name: "StartGame";
-};
+}>;
