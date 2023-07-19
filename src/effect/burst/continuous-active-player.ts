@@ -6,6 +6,34 @@ import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
+ * アクティブプレイヤー継続を適用する
+ * @param invoker バースト発動者 
+ * @param burst バースト内容
+ * @return 発動後のステート
+ */
+function invokeContinuousActivePlayer(
+  invoker: PlayerState,
+  burst: ContinuousAttack,
+): PlayerState {
+  return {
+    ...invoker,
+    armdozer: {
+      ...invoker.armdozer,
+      battery: burstRecoverBattery(invoker.armdozer, burst),
+      effects: [
+        ...invoker.armdozer.effects,
+        {
+          type: "ContinuousActivePlayer",
+          period: {
+            type: "SpecialPeriod",
+          },
+        },
+      ],
+    },
+  };
+}
+
+/**
  * アクティブプレイヤー継続
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
@@ -17,37 +45,13 @@ export function continuousActivePlayer(
   burstPlayerId: PlayerId,
   burst: ContinuousAttack,
 ): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId,
-  );
-
-  if (!burstPlayer) {
-    throw new Error("not found burst player");
-  }
-
-  const updatedBurstPlayer: PlayerState = {
-    ...burstPlayer,
-    armdozer: {
-      ...burstPlayer.armdozer,
-      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-      effects: [
-        ...burstPlayer.armdozer.effects,
-        {
-          type: "ContinuousActivePlayer",
-          period: {
-            type: "SpecialPeriod",
-          },
-        },
-      ],
-    },
-  };
-  const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player,
+  const players = lastState.players.map((player) =>
+    player.playerId === burstPlayerId ? invokeContinuousActivePlayer(player, burst) : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst,
   };
-  return { ...lastState, players: updatedPlayers, effect };
+  return { ...lastState, players, effect };
 }
