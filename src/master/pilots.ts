@@ -1,8 +1,6 @@
 import type { Pilot } from "../player/pilot";
 
-/**
- * パイロットIDを集めたもの
- */
+/** パイロットIDを集めたもの */
 export const PilotIds = {
   SHINYA: "SHINYA",
   GAI: "GAI",
@@ -11,9 +9,7 @@ export const PilotIds = {
   YUUYA: "YUUYA",
 };
 
-/**
- * パイロットマスタ
- */
+/** パイロットマスタ */
 export const Pilots: Pilot[] = [
   {
     id: PilotIds.SHINYA,
