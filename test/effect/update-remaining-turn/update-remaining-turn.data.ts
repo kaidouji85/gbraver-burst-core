@@ -8,9 +8,9 @@ import type {
 } from "../../../src/state/armdozer-effect";
 import type { GameState } from "../../../src/state/game-state";
 
-/** 永続効果 */
-const permanent: SpecialPeriodEffect = {
-  type: "Permanent",
+/** 特殊期限 */
+const specialPeriod: SpecialPeriodEffect = {
+  type: "SpecialPeriod",
 };
 
 /**
@@ -31,7 +31,7 @@ const player1 = {
     ...EMPTY_ARMDOZER_STATE,
     effects: [
       { ...EMPTY_ARMDOZER_EFFECT, period: turnLimit(1) },
-      { ...EMPTY_ARMDOZER_EFFECT, period: permanent },
+      { ...EMPTY_ARMDOZER_EFFECT, period: specialPeriod },
       { ...EMPTY_ARMDOZER_EFFECT, period: turnLimit(4) },
     ],
   },

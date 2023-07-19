@@ -35,7 +35,7 @@ export function continuousAttack(
         {
           type: "ContinuousActivePlayer",
           period: {
-            type: "Permanent",
+            type: "SpecialPeriod",
           },
         },
       ],

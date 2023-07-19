@@ -16,7 +16,7 @@ import {
 const batteryRecoverSkip: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
   period: {
-    type: "Permanent",
+    type: "SpecialPeriod",
   },
 };
 

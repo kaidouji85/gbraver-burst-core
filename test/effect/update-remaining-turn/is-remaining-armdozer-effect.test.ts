@@ -30,7 +30,7 @@ test("永続効果は効果継続すると見なす", () => {
   const data: ArmdozerEffect = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
-      type: "Permanent",
+      type: "SpecialPeriod",
     },
   };
   const result = isRemainArmdozerEffect(data);

@@ -25,7 +25,7 @@ test("ターン制限付き効果以外なら、変化はない", () => {
   const data: ArmdozerEffect = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
-      type: "Permanent",
+      type: "SpecialPeriod",
     },
   };
   const result = updateArmdozerEffect(data);

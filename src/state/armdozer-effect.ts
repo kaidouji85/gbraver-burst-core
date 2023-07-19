@@ -10,7 +10,7 @@ export type TurnLimitEffect = {
 
 /** 特殊な有効期限 */
 export type SpecialPeriodEffect = {
-  type: "Permanent";
+  type: "SpecialPeriod";
 };
 
 /**

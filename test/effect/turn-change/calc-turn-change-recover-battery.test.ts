@@ -11,7 +11,7 @@ import { calcTurnChangeRecoverBattery } from "../../../src/effect/turn-change/re
 const batteryRecoverSkip: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
   period: {
-    type: "Permanent",
+    type: "SpecialPeriod",
   },
 };
 

@@ -65,7 +65,7 @@ test("アクティブプレイヤー継続を正しく処理できる", () => {
         {
           type: "ContinuousActivePlayer",
           period: {
-            type: "Permanent",
+            type: "SpecialPeriod",
           },
         },
       ],

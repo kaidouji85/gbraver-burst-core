@@ -5,7 +5,7 @@ import { removeBatteryRecoverSkip } from "../../src/effect/remove-battery-recove
 const batteryRecoverSkip: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
   period: {
-    type: "Permanent",
+    type: "SpecialPeriod",
   },
 };
 
