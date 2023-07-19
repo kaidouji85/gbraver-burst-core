@@ -4,14 +4,14 @@ import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";
 
 /** ガード */
-export type Guard = {
+export type Guard = Readonly<{
   name: "Guard";
+  /** ダメージ */
   damage: number;
-};
+}>;
 
 /**
  * 防御の戦闘結果を生成する
- *
  * @param attacker 攻撃側プレイヤー
  * @param attackerBattery 攻撃側バッテリー
  * @param defender 防御側プレイヤー
