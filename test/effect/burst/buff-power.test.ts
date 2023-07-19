@@ -1,6 +1,10 @@
 import path from "path";
 
-import { EMPTY_ARMDOZER_EFFECT, type GameState, type PlayerState } from "../../../src";
+import {
+  EMPTY_ARMDOZER_EFFECT,
+  type GameState,
+  type PlayerState,
+} from "../../../src";
 import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
@@ -19,10 +23,7 @@ const burstPlayer: PlayerState = {
     ...EMPTY_ARMDOZER_STATE,
     battery: 1,
     maxBattery: 5,
-    effects: [
-      EMPTY_ARMDOZER_EFFECT,
-      EMPTY_ARMDOZER_EFFECT,
-    ],
+    effects: [EMPTY_ARMDOZER_EFFECT, EMPTY_ARMDOZER_EFFECT],
     enableBurst: true,
     burst: {
       type: "BuffPower",

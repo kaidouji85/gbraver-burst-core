@@ -21,10 +21,7 @@ const burstPlayer: PlayerState = {
     enableBurst: true,
     battery: 1,
     maxBattery: 5,
-    effects: [
-      EMPTY_ARMDOZER_EFFECT,
-      EMPTY_ARMDOZER_EFFECT,
-    ],
+    effects: [EMPTY_ARMDOZER_EFFECT, EMPTY_ARMDOZER_EFFECT],
     burst: {
       type: "LightningBarrier",
       damage: 1000,

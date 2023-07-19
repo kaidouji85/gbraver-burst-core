@@ -50,11 +50,7 @@ const createAttacker = (
     ...EMPTY_ARMDOZER_STATE,
     battery,
     maxBattery: 5,
-    effects: [
-      EMPTY_ARMDOZER_EFFECT,
-      EMPTY_ARMDOZER_EFFECT,
-      ...effects,
-    ],
+    effects: [EMPTY_ARMDOZER_EFFECT, EMPTY_ARMDOZER_EFFECT, ...effects],
   },
 });
 

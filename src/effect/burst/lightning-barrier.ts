@@ -33,7 +33,7 @@ function invokeLightningBarrier(
         },
       ],
     },
-  }
+  };
 }
 
 /**
@@ -49,7 +49,9 @@ export function lightningBarrier(
   burst: LightningBarrier,
 ): GameStateX<BurstEffect> {
   const players = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? invokeLightningBarrier(player, burst) : player,
+    player.playerId === burstPlayerId
+      ? invokeLightningBarrier(player, burst)
+      : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",

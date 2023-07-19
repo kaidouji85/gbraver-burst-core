@@ -11,10 +11,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  * @param burst バースト内容
  * @return 発動後のステート
  */
-function invokeBuffPower(
-  invoker: PlayerState,
-  burst: BuffPower
-): PlayerState {
+function invokeBuffPower(invoker: PlayerState, burst: BuffPower): PlayerState {
   return {
     ...invoker,
     armdozer: {
@@ -32,7 +29,7 @@ function invokeBuffPower(
         },
       ],
     },
-  }
+  };
 }
 
 /**

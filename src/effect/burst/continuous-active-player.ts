@@ -7,7 +7,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
  * アクティブプレイヤー継続を適用する
- * @param invoker バースト発動者 
+ * @param invoker バースト発動者
  * @param burst バースト内容
  * @return 発動後のステート
  */
@@ -46,7 +46,9 @@ export function continuousActivePlayer(
   burst: ContinuousAttack,
 ): GameStateX<BurstEffect> {
   const players = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? invokeContinuousActivePlayer(player, burst) : player,
+    player.playerId === burstPlayerId
+      ? invokeContinuousActivePlayer(player, burst)
+      : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",

@@ -14,7 +14,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  */
 function invokeBatteryLimitBreak(
   invoker: PlayerState,
-  burst: BatteryLimitBreak
+  burst: BatteryLimitBreak,
 ) {
   const updatedArmdozer: ArmdozerState = {
     ...invoker.armdozer,
