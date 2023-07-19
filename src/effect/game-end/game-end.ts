@@ -11,15 +11,13 @@ export type GameEndResult = GameOver | EvenMatch;
 
 /**
  * ゲーム終了
- *
- * @typeparam {X} ゲーム終了判定
+ * @template {X} ゲーム終了判定
  */
-export type GameEndX<X> = {
+export type GameEndX<X> = Readonly<{
   name: "GameEnd";
-
   /** 終了判定の結果 */
   result: X;
-};
+}>;
 
 /** ゲーム終了 */
 export type GameEnd = GameEndX<GameEndResult>;

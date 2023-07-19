@@ -1,4 +1,4 @@
 /** ミス */
-export type Miss = {
+export type Miss = Readonly<{
   name: "Miss";
-};
+}>;

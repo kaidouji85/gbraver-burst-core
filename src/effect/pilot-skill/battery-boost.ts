@@ -12,8 +12,8 @@ import { PilotSkillEffectX } from "./pilot-skill-effect";
  * @return 回復後のバッテリー
  */
 export function calcBoostedBattery(
-  armdozer: Readonly<ArmdozerState>,
-  skill: Readonly<BatteryBoostSkill>,
+  armdozer: ArmdozerState,
+  skill: BatteryBoostSkill,
 ): number {
   return Math.min(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
 }
@@ -25,8 +25,8 @@ export function calcBoostedBattery(
  * @return 適用後のステート
  */
 function invokeBatteryBoost(
-  invoker: Readonly<PlayerState>,
-  skill: Readonly<BatteryBoostSkill>,
+  invoker: PlayerState,
+  skill: BatteryBoostSkill,
 ): PlayerState {
   return {
     ...invoker,

@@ -3,22 +3,17 @@ import type { PlayerId } from "../player/player";
 import type { PlayerState } from "./player-state";
 
 /**
- * ゲーム状態
- *
- * @template {X} 発生した効果
+ * ゲームステート（型指定あり）
+ * @template X 発生した効果
  */
-export type GameStateX<X> = {
+export type GameStateX<X> = Readonly<{
   /** プレイヤー毎の状態 */
   players: PlayerState[];
-
   /** 攻撃側のプレイヤーのID */
   activePlayerId: PlayerId;
-
   /** このステップで発生した効果 */
   effect: X;
-};
+}>;
 
-/**
- * ゲーム状態
- */
+/** ゲームステート */
 export type GameState = GameStateX<Effect>;

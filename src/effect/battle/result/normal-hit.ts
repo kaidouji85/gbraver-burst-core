@@ -4,14 +4,14 @@ import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";
 
 /** 攻撃ヒット */
-export type NormalHit = {
+export type NormalHit = Readonly<{
   name: "NormalHit";
+  /** ダメージ */
   damage: number;
-};
+}>;
 
 /**
  * 攻撃ヒットの戦闘結果を生成する
- *
  * @param attacker 攻撃側プレイヤー
  * @param attackerBattery 攻撃側バッテリー
  * @param defender 防御側プレイヤー
