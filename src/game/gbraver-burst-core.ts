@@ -8,12 +8,12 @@ import { isDuplicatePlayers } from "./validation/is-duplicate-players";
 import { isValidCommand } from "./validation/is-valid-command";
 
 /** ゲームを再開するためのデータ */
-export type RestoreGbraverBurst = {
+export type RestoreGbraverBurst = Readonly<{
   /** プレイヤー情報 */
   players: [Player, Player];
   /** ステートヒストリー */
   stateHistory: GameState[];
-};
+}>;
 
 /** Gブレイバーバーストコア */
 export interface GbraverBurstCore {
@@ -70,8 +70,8 @@ export function restoreGbraverBurst(
 
 /** Gブレイバーバーストコア実装 */
 class GbraverBurstCoreImpl implements GbraverBurstCore {
-  _players: [Player, Player];
-  _stateHistory: GameState[];
+  #players: [Player, Player];
+  #stateHistory: GameState[];
 
   /**
    * コンストラクタ
@@ -80,35 +80,35 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
    * @param stateHistory ステートヒストリー
    */
   constructor(players: [Player, Player], stateHistory: GameState[]) {
-    this._players = players;
-    this._stateHistory = stateHistory;
+    this.#players = players;
+    this.#stateHistory = stateHistory;
   }
 
   /** @override */
   players(): [Player, Player] {
-    return this._players;
+    return this.#players;
   }
 
   /** @override */
   stateHistory(): GameState[] {
-    return this._stateHistory;
+    return this.#stateHistory;
   }
 
   /** @override */
   dump(): RestoreGbraverBurst {
     return {
-      players: this._players,
-      stateHistory: this._stateHistory,
+      players: this.#players,
+      stateHistory: this.#stateHistory,
     };
   }
 
   /** @override */
   progress(commands: [PlayerCommand, PlayerCommand]): GameState[] {
-    if (!isAllPlayerEnteredCommand(this._players, commands)) {
+    if (!isAllPlayerEnteredCommand(this.#players, commands)) {
       throw new Error("all player not enter command");
     }
 
-    const lastState = this._stateHistory[this._stateHistory.length - 1];
+    const lastState = this.#stateHistory[this.#stateHistory.length - 1];
     if (!lastState) {
       throw new Error("no game state history");
     }
@@ -122,7 +122,7 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
     }
 
     const updated = progress(lastState, commands);
-    this._stateHistory = [...this._stateHistory, ...updated];
+    this.#stateHistory = [...this.#stateHistory, ...updated];
     return updated;
   }
 }
