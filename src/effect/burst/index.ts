@@ -1,10 +1,3 @@
-import type {
-  BatteryLimitBreak,
-  BuffPower,
-  ContinuousAttack,
-  LightningBarrier,
-  RecoverBattery,
-} from "../../player/burst";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import { batteryLimitBreak } from "./battery-limit-break";
@@ -41,35 +34,28 @@ export function burstEffect(
   const burstPlayer = lastState.players.find(
     (v) => v.playerId === burstPlayerId,
   );
-
   if (!burstPlayer) {
     throw new Error("not found burst player");
   }
 
   if (burstPlayer.armdozer.burst.type === "RecoverBattery") {
-    const burst: RecoverBattery = burstPlayer.armdozer.burst;
-    return recoverBattery(lastState, burstPlayerId, burst);
+    return recoverBattery(lastState, burstPlayerId, burstPlayer.armdozer.burst);
   }
 
   if (burstPlayer.armdozer.burst.type === "BuffPower") {
-    const burst: BuffPower = burstPlayer.armdozer.burst;
-    return buffPower(lastState, burstPlayerId, burst);
+    return buffPower(lastState, burstPlayerId, burstPlayer.armdozer.burst);
   }
 
   if (burstPlayer.armdozer.burst.type === "LightningBarrier") {
-    const lightningBarrierBurst: LightningBarrier = burstPlayer.armdozer.burst;
-    return lightningBarrier(lastState, burstPlayerId, lightningBarrierBurst);
+    return lightningBarrier(lastState, burstPlayerId, burstPlayer.armdozer.burst);
   }
 
   if (burstPlayer.armdozer.burst.type === "ContinuousAttack") {
-    const continuousAttackBurst: ContinuousAttack = burstPlayer.armdozer.burst;
-    return continuousAttack(lastState, burstPlayerId, continuousAttackBurst);
+    return continuousAttack(lastState, burstPlayerId, burstPlayer.armdozer.burst);
   }
 
   if (burstPlayer.armdozer.burst.type === "BatteryLimitBreak") {
-    const batteryLimitBreakBurst: BatteryLimitBreak =
-      burstPlayer.armdozer.burst;
-    return batteryLimitBreak(lastState, burstPlayerId, batteryLimitBreakBurst);
+    return batteryLimitBreak(lastState, burstPlayerId, burstPlayer.armdozer.burst);
   }
 
   throw new Error("burst not found");
