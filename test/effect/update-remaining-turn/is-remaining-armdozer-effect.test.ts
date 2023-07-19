@@ -26,7 +26,7 @@ test("アームドーザ効果継続ターン数が0以下の場合は効果が�
   expect(result).toBe(false);
 });
 
-test("永続効果は効果継続すると見なす", () => {
+test("特殊期限はそのまま", () => {
   const data: ArmdozerEffect = {
     ...EMPTY_ARMDOZER_EFFECT,
     period: {
