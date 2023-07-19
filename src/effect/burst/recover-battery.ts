@@ -36,7 +36,7 @@ export function recoverBattery(
   burstPlayerId: PlayerId,
   burst: RecoverBattery,
 ): GameStateX<BurstEffect> {
-  const updatedPlayers = lastState.players.map((player) =>
+  const players = lastState.players.map((player) =>
     player.playerId === burstPlayerId
       ? invokeRecoverBattery(player, burst)
       : player,
@@ -46,5 +46,5 @@ export function recoverBattery(
     burstPlayer: burstPlayerId,
     burst,
   };
-  return { ...lastState, players: updatedPlayers, effect };
+  return { ...lastState, players, effect };
 }

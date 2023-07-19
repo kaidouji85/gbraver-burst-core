@@ -6,6 +6,36 @@ import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
+ * 攻撃アップを適用する
+ * @param invoker バースト発動者
+ * @param burst バースト内容
+ * @return 発動後のステート
+ */
+function invokeBuffPower(
+  invoker: PlayerState,
+  burst: BuffPower
+): PlayerState {
+  return {
+    ...invoker,
+    armdozer: {
+      ...invoker.armdozer,
+      battery: burstRecoverBattery(invoker.armdozer, burst),
+      effects: [
+        ...invoker.armdozer.effects,
+        {
+          type: "CorrectPower",
+          power: burst.buffPower,
+          period: {
+            type: "TurnLimit",
+            remainingTurn: burst.duration,
+          },
+        },
+      ],
+    },
+  }
+}
+
+/**
  * バースト 攻撃力アップ
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
@@ -17,39 +47,13 @@ export function buffPower(
   burstPlayerId: PlayerId,
   burst: BuffPower,
 ): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId,
-  );
-
-  if (!burstPlayer) {
-    throw new Error("not found burst player");
-  }
-
-  const updatedBurstPlayer: PlayerState = {
-    ...burstPlayer,
-    armdozer: {
-      ...burstPlayer.armdozer,
-      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
-      effects: [
-        ...burstPlayer.armdozer.effects,
-        {
-          type: "CorrectPower",
-          power: burst.buffPower,
-          period: {
-            type: "TurnLimit",
-            remainingTurn: burst.duration,
-          },
-        },
-      ],
-    },
-  };
-  const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player,
+  const players = lastState.players.map((player) =>
+    player.playerId === burstPlayerId ? invokeBuffPower(player, burst) : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst,
   };
-  return { ...lastState, players: updatedPlayers, effect };
+  return { ...lastState, players, effect };
 }
