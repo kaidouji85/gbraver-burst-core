@@ -41,8 +41,8 @@ export function parseCommand(origin: unknown): Command | null {
  * @return trueで等しいコマンド
  */
 export function isCommandEqual(
-  command1: Readonly<Command>,
-  command2: Readonly<Command>,
+  command1: Command,
+  command2: Command,
 ): boolean {
   return (
     (command1.type === "BATTERY_COMMAND" &&
