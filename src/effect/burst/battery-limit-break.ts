@@ -34,7 +34,7 @@ function invokeBatteryLimitBreak(
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
  * @param burst バースト効果
- * @return 更新結果、実行不可能な場合は例外を投げる
+ * @return 更新結果
  */
 export function batteryLimitBreak(
   lastState: GameState,
