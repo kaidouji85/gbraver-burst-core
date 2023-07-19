@@ -1,7 +1,7 @@
 import type { PilotSkill } from "../../player/pilot";
 import type { PlayerId } from "../../player/player";
 
-/** 
+/**
  * パイロットスキル発動（型指定あり）
  * @template SKILL パイロットスキル
  */

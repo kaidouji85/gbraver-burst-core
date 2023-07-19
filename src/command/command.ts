@@ -40,10 +40,7 @@ export function parseCommand(origin: unknown): Command | null {
  * @param command2 コマンド2
  * @return trueで等しいコマンド
  */
-export function isCommandEqual(
-  command1: Command,
-  command2: Command,
-): boolean {
+export function isCommandEqual(command1: Command, command2: Command): boolean {
   return (
     (command1.type === "BATTERY_COMMAND" &&
       command2.type === "BATTERY_COMMAND" &&

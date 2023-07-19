@@ -16,13 +16,14 @@ export type ReflectParam = Readonly<{
 }>;
 
 /** ダメージ反射 結果 */
-export type Reflect = ReflectParam & Readonly<{
-  name: "Reflect";
-  /** 反射ダメージを受けたプレイヤー */
-  damagedPlayer: PlayerId;
-  /** 死亡フラグ */
-  isDeath: boolean;
-}>;
+export type Reflect = ReflectParam &
+  Readonly<{
+    name: "Reflect";
+    /** 反射ダメージを受けたプレイヤー */
+    damagedPlayer: PlayerId;
+    /** 死亡フラグ */
+    isDeath: boolean;
+  }>;
 
 /**
  * ダメージ反射ステートをダメージ反射パラメータに変換する
