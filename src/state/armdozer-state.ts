@@ -3,7 +3,7 @@ import type { Burst } from "../player/burst";
 import type { ArmdozerEffect } from "./armdozer-effect";
 
 /**
- * アームドーザステート
+ * アームドーザステート（型指定あり）
  * @template X バースト
  */
 export type ArmdozerStateX<X> = ArmdozerX<X> & Readonly<{
@@ -17,7 +17,7 @@ export type ArmdozerStateX<X> = ArmdozerX<X> & Readonly<{
   effects: ArmdozerEffect[];
 }>;
 
-/** アームドーザの状態 */
+/** アームドーザステート */
 export type ArmdozerState = ArmdozerStateX<Burst>;
 
 /**
