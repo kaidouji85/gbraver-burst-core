@@ -1,5 +1,5 @@
 /** エフェクト有効期間 */
-export type EffectPeriod = TurnLimitEffect | PermanentEffect;
+export type EffectPeriod = TurnLimitEffect | SpecialPeriodEffect;
 
 /** ターン期限付きのエフェクト */
 export type TurnLimitEffect = {
@@ -8,9 +8,9 @@ export type TurnLimitEffect = {
   remainingTurn: number;
 };
 
-/** 半永久エフェクト */
-export type PermanentEffect = {
-  type: "Permanent";
+/** 特殊な有効期限 */
+export type SpecialPeriodEffect = {
+  type: "SpecialPeriod";
 };
 
 /**

@@ -12,7 +12,7 @@ const continuousActivePlayer: PlayerState = {
       {
         type: "ContinuousActivePlayer",
         period: {
-          type: "Permanent",
+          type: "SpecialPeriod",
         },
       },
     ],

@@ -21,7 +21,7 @@ import {
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
   type: "ContinuousActivePlayer",
   period: {
-    type: "Permanent",
+    type: "SpecialPeriod",
   },
 };
 
@@ -29,7 +29,7 @@ const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
 const BATTERY_RECOVER_SKIP: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
   period: {
-    type: "Permanent",
+    type: "SpecialPeriod",
   },
 };
 
