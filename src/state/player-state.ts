@@ -25,7 +25,7 @@ export type PlayerState = PlayerStateX<Burst, PilotSkill>;
  * @param player プレイヤー情報
  * @return 生成結果
  */
-export function createOpenPlayerState(player: Player): PlayerState {
+export function createPlayerState(player: Player): PlayerState {
   return {
     playerId: player.playerId,
     armdozer: createArmdozerState(player.armdozer),
