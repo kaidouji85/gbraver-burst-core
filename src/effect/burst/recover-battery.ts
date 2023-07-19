@@ -13,7 +13,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  */
 function invokeRecoverBattery(
   invoker: PlayerState,
-  burst: RecoverBattery
+  burst: RecoverBattery,
 ): PlayerState {
   return {
     ...invoker,
@@ -37,7 +37,9 @@ export function recoverBattery(
   burst: RecoverBattery,
 ): GameStateX<BurstEffect> {
   const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? invokeRecoverBattery(player, burst) : player,
+    player.playerId === burstPlayerId
+      ? invokeRecoverBattery(player, burst)
+      : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",

@@ -47,15 +47,27 @@ export function burstEffect(
   }
 
   if (burstPlayer.armdozer.burst.type === "LightningBarrier") {
-    return lightningBarrier(lastState, burstPlayerId, burstPlayer.armdozer.burst);
+    return lightningBarrier(
+      lastState,
+      burstPlayerId,
+      burstPlayer.armdozer.burst,
+    );
   }
 
   if (burstPlayer.armdozer.burst.type === "ContinuousAttack") {
-    return continuousAttack(lastState, burstPlayerId, burstPlayer.armdozer.burst);
+    return continuousAttack(
+      lastState,
+      burstPlayerId,
+      burstPlayer.armdozer.burst,
+    );
   }
 
   if (burstPlayer.armdozer.burst.type === "BatteryLimitBreak") {
-    return batteryLimitBreak(lastState, burstPlayerId, burstPlayer.armdozer.burst);
+    return batteryLimitBreak(
+      lastState,
+      burstPlayerId,
+      burstPlayer.armdozer.burst,
+    );
   }
 
   throw new Error("burst not found");
