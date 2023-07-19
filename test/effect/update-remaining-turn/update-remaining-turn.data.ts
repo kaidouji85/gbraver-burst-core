@@ -3,13 +3,13 @@ import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type {
-  PermanentEffect,
+  SpecialPeriodEffect,
   TurnLimitEffect,
 } from "../../../src/state/armdozer-effect";
 import type { GameState } from "../../../src/state/game-state";
 
 /** 永続効果 */
-const permanent: PermanentEffect = {
+const permanent: SpecialPeriodEffect = {
   type: "Permanent",
 };
 
