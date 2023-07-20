@@ -21,7 +21,7 @@ export function shouldUpdateSnapShot(): boolean {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function exportSnapShotJSON(
   path: string,
-  json: Record<string, any>
+  json: Record<string, any>,
 ): void {
   /* eslint-enable */
   fs.writeFileSync(path, JSON.stringify(json, null, 2), encode);

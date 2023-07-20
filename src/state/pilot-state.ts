@@ -1,20 +1,16 @@
 import type { Pilot, PilotSkill, PilotX } from "../player/pilot";
 
 /**
- * パイロットステート
- *
- * @type Skill パイロットスキル
+ * パイロットステート（型指定あり）
+ * @template Skill パイロットスキル
  */
-export type PilotStateX<SKILL> = PilotX<SKILL> & {
-  /**
-   * パイロットスキルが発動可能かいなかのフラグ、trueで発動可能
-   */
-  enableSkill: boolean;
-};
+export type PilotStateX<SKILL> = PilotX<SKILL> &
+  Readonly<{
+    /** パイロットスキルが発動可能かいなかのフラグ、trueで発動可能 */
+    enableSkill: boolean;
+  }>;
 
-/**
- * パイロットステート
- */
+/** パイロットステート */
 export type PilotState = PilotStateX<PilotSkill>;
 
 /**

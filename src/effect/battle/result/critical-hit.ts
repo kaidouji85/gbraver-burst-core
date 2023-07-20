@@ -1,8 +1,8 @@
 /** クリティカルヒット */
-export type CriticalHit = {
+export type CriticalHit = Readonly<{
   name: "CriticalHit";
   damage: number;
-};
+}>;
 
 /**
  * クリティカルヒットの戦闘結果を生成する

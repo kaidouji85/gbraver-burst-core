@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 /** パイロットスキルコマンド */
-export type PilotSkillCommand = {
+export type PilotSkillCommand = Readonly<{
   type: "PILOT_SKILL_COMMAND";
-};
+}>;
 
 /** パイロットスキルコマンド zodスキーマ */
 export const PilotSkillCommandSchema = z.object({
@@ -16,7 +16,7 @@ export const PilotSkillCommandSchema = z.object({
  * @return パース結果、パースできない場合はnull
  */
 export function parsePilotSkillCommand(
-  origin: unknown
+  origin: unknown,
 ): PilotSkillCommand | null {
   const result = PilotSkillCommandSchema.safeParse(origin);
   return result.success ? result.data : null;

@@ -43,7 +43,22 @@
         },
         "battery": 4,
         "hp": 3000,
-        "effects": [],
+        "effects": [
+          {
+            "type": "Empty",
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 1
+            }
+          },
+          {
+            "type": "Empty",
+            "period": {
+              "type": "TurnLimit",
+              "remainingTurn": 1
+            }
+          }
+        ],
         "enableBurst": true
       },
       "pilot": {

@@ -15,7 +15,7 @@ import type {
  * @return 更新結果
  */
 export function updateRemainingTurn(
-  lastState: GameState
+  lastState: GameState,
 ): GameStateX<UpdateRemainingTurn> {
   const updatePlayers = lastState.players.map((v) => ({
     ...v,
@@ -34,7 +34,7 @@ export function updateRemainingTurn(
         .map((effect) => ({
           playerId: player.playerId,
           effect: effect,
-        }))
+        })),
     )
     .reduce((a, b) => a.concat(b));
   return {

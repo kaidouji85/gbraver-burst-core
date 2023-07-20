@@ -8,7 +8,7 @@ import { hasContinuousActive } from "../../../src/effect/continuous-active/has-c
 const continuousActivePlayer: ContinuousActivePlayer = {
   type: "ContinuousActivePlayer",
   period: {
-    type: "Permanent",
+    type: "SpecialPeriod",
   },
 };
 

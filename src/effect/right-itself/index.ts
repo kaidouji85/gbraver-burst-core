@@ -21,10 +21,10 @@ export function canRightItself(battle: Battle): boolean {
  */
 export function rightItself(
   lastState: GameState,
-  battle: Battle
+  battle: Battle,
 ): GameStateX<RightItself> {
   const defender = lastState.players.find(
-    (v) => v.playerId !== battle.attacker
+    (v) => v.playerId !== battle.attacker,
   );
 
   if (!defender) {

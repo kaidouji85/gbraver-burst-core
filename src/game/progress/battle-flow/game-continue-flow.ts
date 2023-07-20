@@ -24,13 +24,13 @@ export function gameContinueFlow(
   attackerId: PlayerId,
   attackerCommand: Command,
   defenderId: PlayerId,
-  defenderCommand: Command
+  defenderCommand: Command,
 ): GameState[] {
   return startGameStateFlow([updateRemainingTurn(lastState)])
     .add((state) =>
       canContinuousActive(state)
         ? [continuousActive(state)]
-        : [turnChange(state)]
+        : [turnChange(state)],
     )
     .add((state) => [
       inputCommand(
@@ -38,7 +38,7 @@ export function gameContinueFlow(
         attackerId,
         attackerCommand,
         defenderId,
-        defenderCommand
+        defenderCommand,
       ),
     ])
     .toGameStateHistory();

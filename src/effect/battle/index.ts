@@ -20,7 +20,7 @@ export function battle(
   attackerId: PlayerId,
   attackerBattery: number,
   defenderId: PlayerId,
-  defenderBattery: number
+  defenderBattery: number,
 ): GameStateX<Battle> {
   const attacker = lastState.players.find((v) => v.playerId === attackerId);
   const defender = lastState.players.find((v) => v.playerId === defenderId);
@@ -33,11 +33,11 @@ export function battle(
     attacker,
     attackerBattery,
     defender,
-    defenderBattery
+    defenderBattery,
   );
   const updatedDefender = updateDefender(result, defender);
   const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === updatedDefender.playerId ? updatedDefender : v
+    v.playerId === updatedDefender.playerId ? updatedDefender : v,
   );
   const effect: Battle = {
     name: "Battle",

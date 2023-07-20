@@ -27,7 +27,7 @@ export function canReflectFlow(result: BattleResult): boolean {
  */
 export function reflectFlow(
   lastState: GameState,
-  attackerId: PlayerId
+  attackerId: PlayerId,
 ): GameState[] {
   const defender = lastState.players.find((v) => v.playerId !== attackerId);
 
@@ -43,6 +43,6 @@ export function reflectFlow(
       const state = stateHistory[stateHistory.length - 1] ?? lastState;
       return [...stateHistory, reflect(state, attackerId, reflectParam)];
     },
-    []
+    [],
   );
 }

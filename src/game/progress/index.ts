@@ -16,7 +16,7 @@ import {
  */
 export function progress(
   lastState: GameState,
-  commands: [PlayerCommand, PlayerCommand]
+  commands: [PlayerCommand, PlayerCommand],
 ): GameState[] {
   if (isEffectActivationFlow(commands)) {
     return effectActivationFlow(lastState, commands);

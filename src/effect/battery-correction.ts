@@ -22,7 +22,7 @@ export function totalBatteryCorrection(effects: ArmdozerEffect[]): number {
  */
 export function correctedBattery(
   command: BatteryCommand,
-  effects: ArmdozerEffect[]
+  effects: ArmdozerEffect[],
 ): number {
   if (command.battery <= 0) {
     return command.battery;

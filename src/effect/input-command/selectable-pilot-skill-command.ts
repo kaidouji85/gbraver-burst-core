@@ -8,7 +8,7 @@ import type { PilotState } from "../../state/pilot-state";
  * @return 利用可能なパイロットスキルコマンド
  */
 export function selectablePilotSkillCommand(
-  pilot: PilotState
+  pilot: PilotState,
 ): PilotSkillCommand[] {
   return pilot.enableSkill
     ? [

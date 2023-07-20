@@ -24,6 +24,6 @@ test("バーストフラグがONならバーストが使える", () => {
 
 test("バーストフラグがOFFならバーストが使える", () => {
   expect(
-    selectableBurstCommand({ ...ARMDOZER_STATE, enableBurst: false })
+    selectableBurstCommand({ ...ARMDOZER_STATE, enableBurst: false }),
   ).toEqual([]);
 });

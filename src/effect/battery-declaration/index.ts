@@ -21,13 +21,13 @@ export function batteryDeclaration(
   attackerId: PlayerId,
   attackerBattery: BatteryCommand,
   defenderId: PlayerId,
-  defenderBattery: BatteryCommand
+  defenderBattery: BatteryCommand,
 ): GameStateX<BatteryDeclaration> {
   const attacker: PlayerState | undefined = lastState.players.find(
-    (v) => v.playerId === attackerId
+    (v) => v.playerId === attackerId,
   );
   const defender: PlayerState | undefined = lastState.players.find(
-    (v) => v.playerId === defenderId
+    (v) => v.playerId === defenderId,
   );
 
   if (!attacker || !defender) {
@@ -47,11 +47,11 @@ export function batteryDeclaration(
   });
   const attackerCorrectedBattery = correctedBattery(
     attackerBattery,
-    attacker.armdozer.effects
+    attacker.armdozer.effects,
   );
   const defenderCorrectedBattery = correctedBattery(
     defenderBattery,
-    defender.armdozer.effects
+    defender.armdozer.effects,
   );
   const effect: BatteryDeclaration = {
     name: "BatteryDeclaration",

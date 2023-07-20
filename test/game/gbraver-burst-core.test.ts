@@ -44,7 +44,7 @@ test("初期状態を正しく作ることができる", () => {
   const result = core.stateHistory();
   const snapShotPath = path.join(
     __dirname,
-    "gbraver-burst-core__initial-state.json"
+    "gbraver-burst-core__initial-state.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()
@@ -65,7 +65,7 @@ test("正しくゲームを進めることができる", () => {
   const result = core.progress([COMMAND1, COMMAND2]);
   const snapShotPath = path.join(
     __dirname,
-    "gbraver-burst-core__progress.json"
+    "gbraver-burst-core__progress.json",
   );
   shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
   const snapShot = shouldUpdateSnapShot()

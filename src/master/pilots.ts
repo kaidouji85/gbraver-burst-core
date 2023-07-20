@@ -1,18 +1,15 @@
 import type { Pilot } from "../player/pilot";
 
-/**
- * パイロットIDを集めたもの
- */
+/** パイロットIDを集めたもの */
 export const PilotIds = {
   SHINYA: "SHINYA",
   GAI: "GAI",
   RAITO: "RAITO",
   TSUBASA: "TSUBASA",
+  YUUYA: "YUUYA",
 };
 
-/**
- * パイロットマスタ
- */
+/** パイロットマスタ */
 export const Pilots: Pilot[] = [
   {
     id: PilotIds.SHINYA,
@@ -46,6 +43,14 @@ export const Pilots: Pilot[] = [
       type: "BatteryEnchantmentSkill",
       batteryEnchantment: 1,
       duration: 2,
+    },
+  },
+  {
+    id: PilotIds.YUUYA,
+    name: "ユウヤ",
+    skill: {
+      type: "BatteryBoostSkill",
+      recoverBattery: 5,
     },
   },
 ];

@@ -61,7 +61,7 @@ test("バッテリー宣言が正しく処理される", () => {
     attacker.playerId,
     attackerBattery,
     defender.playerId,
-    defenderBattery
+    defenderBattery,
   );
   const expected = {
     ...lastState,

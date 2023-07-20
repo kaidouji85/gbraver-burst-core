@@ -42,7 +42,7 @@ export function inputCommand(
   attackerId: PlayerId,
   attackerCommand: Command,
   defenderId: PlayerId,
-  defenderCommand: Command
+  defenderCommand: Command,
 ): GameStateX<InputCommand> {
   const attacker = lastState.players.find((v) => v.playerId === attackerId);
   const defender = lastState.players.find((v) => v.playerId === defenderId);

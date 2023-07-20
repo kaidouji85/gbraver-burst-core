@@ -6,32 +6,22 @@ import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
- * バースト 電撃バリア
- * @param lastState 最新状態
- * @param burstPlayerId バーストするプレイヤーID
- * @param burst バースト情報
- * @return 更新結果、実行不可能な場合は例外を投げる
+ * 電撃バリアを適用する
+ * @param invoker バースト発動者
+ * @param burst バースト内容
+ * @return 発動後のステート
  */
-export function lightningBarrier(
-  lastState: GameState,
-  burstPlayerId: PlayerId,
-  burst: LightningBarrier
-): GameStateX<BurstEffect> {
-  const burstPlayer = lastState.players.find(
-    (v) => v.playerId === burstPlayerId
-  );
-
-  if (!burstPlayer) {
-    throw new Error("not found burst player");
-  }
-
-  const updatedBurstPlayer: PlayerState = {
-    ...burstPlayer,
+function invokeLightningBarrier(
+  invoker: PlayerState,
+  burst: LightningBarrier,
+): PlayerState {
+  return {
+    ...invoker,
     armdozer: {
-      ...burstPlayer.armdozer,
-      battery: burstRecoverBattery(burstPlayer.armdozer, burst),
+      ...invoker.armdozer,
+      battery: burstRecoverBattery(invoker.armdozer, burst),
       effects: [
-        ...burstPlayer.armdozer.effects,
+        ...invoker.armdozer.effects,
         {
           type: "TryReflect",
           damage: burst.damage,
@@ -44,13 +34,29 @@ export function lightningBarrier(
       ],
     },
   };
-  const updatedPlayers = lastState.players.map((player) =>
-    player.playerId === burstPlayerId ? updatedBurstPlayer : player
+}
+
+/**
+ * バースト 電撃バリア
+ * @param lastState 最新状態
+ * @param burstPlayerId バーストするプレイヤーID
+ * @param burst バースト情報
+ * @return 更新結果
+ */
+export function lightningBarrier(
+  lastState: GameState,
+  burstPlayerId: PlayerId,
+  burst: LightningBarrier,
+): GameStateX<BurstEffect> {
+  const players = lastState.players.map((player) =>
+    player.playerId === burstPlayerId
+      ? invokeLightningBarrier(player, burst)
+      : player,
   );
   const effect: BurstEffect = {
     name: "BurstEffect",
     burstPlayer: burstPlayerId,
     burst,
   };
-  return { ...lastState, players: updatedPlayers, effect };
+  return { ...lastState, players, effect };
 }
