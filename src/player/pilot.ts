@@ -16,14 +16,6 @@ export const parsePilotId = (origin: unknown): PilotId | null => {
   return result.success ? result.data : null;
 };
 
-/** パイロットスキル */
-export type PilotSkill =
-  | RecoverBatterySkill
-  | BuffPowerSkill
-  | BatteryEnchantmentSkill
-  | DamageHalvedSkill
-  | BatteryBoostSkill;
-
 /** パイロットスキル バッテリー回復 */
 export type RecoverBatterySkill = Readonly<{
   type: "RecoverBatterySkill";
@@ -65,6 +57,14 @@ export type BatteryBoostSkill = Readonly<{
   /** バッテリー回復量 */
   recoverBattery: number;
 }>;
+
+/** パイロットスキル */
+export type PilotSkill =
+  | RecoverBatterySkill
+  | BuffPowerSkill
+  | BatteryEnchantmentSkill
+  | DamageHalvedSkill
+  | BatteryBoostSkill;
 
 /** パイロット */
 export type Pilot = PilotX<PilotSkill>;
