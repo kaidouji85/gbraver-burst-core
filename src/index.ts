@@ -117,12 +117,14 @@ export {
   BuffPowerSkill,
   DamageHalvedSkill,
   parsePilotId,
+  parseRecoverBatterySkill,
   Pilot,
   PilotId,
   PilotIdSchema,
   PilotSkill,
   PilotX,
   RecoverBatterySkill,
+  RecoverBatterySkillSchema,
 } from "./player/pilot";
 export type { Player, PlayerId, PlayerX } from "./player/player";
 export { PlayerIdSchema } from "./player/player";
