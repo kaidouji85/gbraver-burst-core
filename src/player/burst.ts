@@ -1,24 +1,48 @@
-/** バースト */
-export type Burst =
-  | RecoverBattery
-  | BuffPower
-  | LightningBarrier
-  | ContinuousAttack
-  | BatteryLimitBreak;
+import { z } from "zod";
 
-/**
- * 全バースト共通で利用するバッテリー回復プロパティ
- */
+/** 全バースト共通で利用するバッテリー回復プロパティ */
 export type BurstRecoverBattery = Readonly<{
   /** バッテリー回復量 */
   recoverBattery: number;
 }>;
+
+/** BurstRecoverBattery zodスキーマ */
+export const BurstRecoverBatterySchema = z.object({
+  recoverBattery: z.number(),
+});
+
+/**
+ * 任意オブジェクトをBurstRecoverBatteryにパースする
+ * @param origin パース元
+ * @return パース結果、パースに失敗した場合はnull
+ */
+export const parseBurstRecoverBattery = (
+  origin: unknown,
+): BurstRecoverBattery | null => {
+  const result = BurstRecoverBatterySchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
 
 /** バッテリー回復 */
 export type RecoverBattery = BurstRecoverBattery &
   Readonly<{
     type: "RecoverBattery";
   }>;
+
+/** RecoverBattery zodスキーマ */
+export const RecoverBatterySchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("RecoverBattery"),
+});
+
+/**
+ * 任意オブジェクトをRecoverBatteryにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseRecoverBattery = (origin: unknown): RecoverBattery | null => {
+  const result = RecoverBatterySchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
 
 /** 攻撃力バフ */
 export type BuffPower = BurstRecoverBattery &
@@ -30,6 +54,23 @@ export type BuffPower = BurstRecoverBattery &
     duration: number;
   }>;
 
+/** BuffPower zodスキーマ */
+export const BuffPowerSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("BuffPower"),
+  buffPower: z.number(),
+  duration: z.number(),
+});
+
+/**
+ * 任意オブジェクトをBuffPowerにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBuffPower = (origin: unknown): BuffPower | null => {
+  const result = BuffPowerSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** 電撃バリア */
 export type LightningBarrier = BurstRecoverBattery &
   Readonly<{
@@ -40,11 +81,47 @@ export type LightningBarrier = BurstRecoverBattery &
     duration: number;
   }>;
 
+/** LightningBarrier zodスキーマ */
+export const LightningBarrierSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("LightningBarrier"),
+  damage: z.number(),
+  duration: z.number(),
+});
+
+/**
+ * 任意オブジェクトをLightningBarrierにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseLightningBarrier = (
+  origin: unknown,
+): LightningBarrier | null => {
+  const result = LightningBarrierSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** 連続攻撃 */
 export type ContinuousAttack = BurstRecoverBattery &
   Readonly<{
     type: "ContinuousAttack";
   }>;
+
+/** ContinuousAttack zodスキーマ */
+export const ContinuousAttackSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("ContinuousAttack"),
+});
+
+/**
+ * 任意オブジェクトをContinuousAttackにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseContinuousAttack = (
+  origin: unknown,
+): ContinuousAttack | null => {
+  const result = ContinuousAttackSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
 
 /** バッテリーリミットブレイク */
 export type BatteryLimitBreak = BurstRecoverBattery &
@@ -53,3 +130,48 @@ export type BatteryLimitBreak = BurstRecoverBattery &
     /** バースト後の最大バッテリー */
     maxBattery: number;
   }>;
+
+/** BatteryLimitBreak zodスキーマ */
+export const BatteryLimitBreakSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("BatteryLimitBreak"),
+  maxBattery: z.number(),
+});
+
+/**
+ * 任意オブジェクトをBatteryLimitBreakにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBatteryLimitBreak = (
+  origin: unknown,
+): BatteryLimitBreak | null => {
+  const result = BatteryLimitBreakSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
+/** バースト */
+export type Burst =
+  | RecoverBattery
+  | BuffPower
+  | LightningBarrier
+  | ContinuousAttack
+  | BatteryLimitBreak;
+
+/** Burst zodスキーマ */
+export const BurstSchema = z.union([
+  RecoverBatterySchema,
+  BuffPowerSchema,
+  LightningBarrierSchema,
+  ContinuousAttackSchema,
+  BatteryLimitBreakSchema,
+]);
+
+/**
+ * 任意オブジェクトをBurstにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBurst = (origin: unknown): Burst | null => {
+  const result = BurstSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};

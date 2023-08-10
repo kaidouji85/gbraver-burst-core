@@ -82,27 +82,71 @@ export {
 } from "./game/gbraver-burst-core";
 export { ArmDozerIds, ArmDozers } from "./master/armdozers";
 export { PilotIds, Pilots } from "./master/pilots";
-export type { Armdozer, ArmDozerId, ArmdozerX } from "./player/armdozer";
-export type {
+export {
+  Armdozer,
+  ArmDozerId,
+  ArmDozerIdSchema,
+  ArmdozerSchema,
+  ArmdozerX,
+  parseArmdozer,
+  parseArmDozerId,
+} from "./player/armdozer";
+export {
   BatteryLimitBreak,
+  BatteryLimitBreakSchema,
   BuffPower,
+  BuffPowerSchema,
   Burst,
+  BurstSchema,
   ContinuousAttack,
+  ContinuousAttackSchema,
   LightningBarrier,
+  LightningBarrierSchema,
+  parseBatteryLimitBreak,
+  parseBuffPower,
+  parseBurst,
+  parseContinuousAttack,
+  parseLightningBarrier,
+  parseRecoverBattery,
   RecoverBattery,
+  RecoverBatterySchema,
 } from "./player/burst";
-export type {
+export {
   BatteryBoostSkill,
+  BatteryBoostSkillSchema,
   BatteryEnchantmentSkill,
+  BatteryEnchantmentSkillSchema,
   BuffPowerSkill,
+  BuffPowerSkillSchema,
   DamageHalvedSkill,
+  DamageHalvedSkillSchema,
+  parseBatteryBoostSkill,
+  parseBatteryEnchantmentSkill,
+  parseBuffPowerSkill,
+  parseDamageHalvedSkill,
+  parsePilot,
+  parsePilotId,
+  parsePilotSkill,
+  parseRecoverBatterySkill,
   Pilot,
   PilotId,
+  PilotIdSchema,
+  PilotSchema,
   PilotSkill,
+  PilotSkillSchema,
   PilotX,
   RecoverBatterySkill,
+  RecoverBatterySkillSchema,
 } from "./player/pilot";
-export type { Player, PlayerId, PlayerX } from "./player/player";
+export {
+  parsePlayer,
+  parsePlayerId,
+  Player,
+  PlayerId,
+  PlayerIdSchema,
+  PlayerSchema,
+  PlayerX,
+} from "./player/player";
 export type {
   ArmdozerEffect,
   BatteryCorrection,
