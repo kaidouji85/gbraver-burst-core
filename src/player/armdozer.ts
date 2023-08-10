@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import type { Burst } from "./burst";
+import { Burst,BurstSchema } from "./burst";
 
 /** アームドーザID */
 export type ArmDozerId = string;
@@ -41,3 +41,24 @@ export type ArmdozerX<X> = Readonly<{
 
 /** アームドーザ基本情報 */
 export type Armdozer = ArmdozerX<Burst>;
+
+/** Armdozer zodスキーマ */
+export const ArmdozerSchema = z.object({
+  id: ArmDozerIdSchema,
+  name: z.string(),
+  maxHp: z.number(),
+  maxBattery: z.number(),
+  power: z.number(),
+  speed: z.number(),
+  burst: BurstSchema,
+});
+
+/**
+ * 任意オブジェクトをArmdozerにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseArmdozer = (origin: unknown): Armdozer | null => {
+  const result = ArmdozerSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
