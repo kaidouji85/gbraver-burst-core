@@ -149,3 +149,22 @@ export type Burst =
 | LightningBarrier
 | ContinuousAttack
 | BatteryLimitBreak;
+
+/** Burst zodスキーマ */
+export const BurstSchema = z.union([
+  RecoverBatterySchema,
+  BuffPowerSchema,
+  LightningBarrierSchema,
+  ContinuousAttackSchema,
+  BatteryLimitBreakSchema,
+]);
+
+/**
+ * 任意オブジェクトをBurstにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBurst = (origin: unknown): Burst | null => {
+  const result = BurstSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}

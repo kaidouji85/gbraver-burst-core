@@ -94,9 +94,11 @@ export type {
 export {
   BatteryLimitBreakSchema,
   BuffPowerSchema,
+  BurstSchema,
   ContinuousAttackSchema,
   LightningBarrierSchema,
   parseBuffPower,
+  parseBurst,
   parseContinuousAttack,
   parseLightningBarrierSchema,
   parseRecoverBattery,
