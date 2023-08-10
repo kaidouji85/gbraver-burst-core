@@ -103,6 +103,7 @@ export type {
   RecoverBatterySkill,
 } from "./player/pilot";
 export type { Player, PlayerId, PlayerX } from "./player/player";
+export { PlayerIdSchema } from "./player/player";
 export type {
   ArmdozerEffect,
   BatteryCorrection,

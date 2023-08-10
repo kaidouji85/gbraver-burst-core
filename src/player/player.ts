@@ -1,9 +1,14 @@
+import { z } from "zod";
+
 import type { ArmdozerX } from "./armdozer";
 import type { Burst } from "./burst";
 import type { PilotSkill, PilotX } from "./pilot";
 
 /** プレイヤーID */
 export type PlayerId = string;
+
+/** プレイヤーID zodスキーマ */
+export const PlayerIdSchema = z.string();
 
 /**
  * プレイヤー基本情報
