@@ -167,9 +167,6 @@ export const parsePilotSkill = (origin: unknown): PilotSkill | null => {
   return result.success ? result.data : null;
 };
 
-/** パイロット */
-export type Pilot = PilotX<PilotSkill>;
-
 /**
  * パイロット
  * @template X パイロットスキル
@@ -182,3 +179,6 @@ export type PilotX<X> = Readonly<{
   /** スキル */
   skill: X;
 }>;
+
+/** パイロット */
+export type Pilot = PilotX<PilotSkill>;
