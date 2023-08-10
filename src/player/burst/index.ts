@@ -8,10 +8,20 @@ export type RecoverBattery = BurstRecoverBattery &
     type: "RecoverBattery";
   }>;
 
-/** バッテリー回復 zodスキーマ */
+/** RecoverBattery zodスキーマ */
 export const RecoverBatterySchema = BurstRecoverBatterySchema.extend({
   type: z.literal("RecoverBattery"),
 });
+
+/**
+ * 任意オブジェクトをRecoverBatteryにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseRecoverBatterySchema = (origin: unknown): RecoverBattery | null => {
+  const result = RecoverBatterySchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
 
 /** 攻撃力バフ */
 export type BuffPower = BurstRecoverBattery &
