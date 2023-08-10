@@ -1,14 +1,4 @@
-/** バースト */
-export type Burst =
-  | RecoverBattery
-  | BuffPower
-  | LightningBarrier
-  | ContinuousAttack
-  | BatteryLimitBreak;
-
-/**
- * 全バースト共通で利用するバッテリー回復プロパティ
- */
+/** 全バースト共通で利用するバッテリー回復プロパティ */
 export type BurstRecoverBattery = Readonly<{
   /** バッテリー回復量 */
   recoverBattery: number;
@@ -53,3 +43,11 @@ export type BatteryLimitBreak = BurstRecoverBattery &
     /** バースト後の最大バッテリー */
     maxBattery: number;
   }>;
+
+/** バースト */
+export type Burst =
+| RecoverBattery
+| BuffPower
+| LightningBarrier
+| ContinuousAttack
+| BatteryLimitBreak;
