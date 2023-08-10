@@ -92,6 +92,8 @@ export type {
   RecoverBattery,
 } from "./player/burst";
 export {
+  BuffPowerSchema,
+  parseBuffPower,
   parseRecoverBattery,
   RecoverBatterySchema,
 } from "./player/burst";
