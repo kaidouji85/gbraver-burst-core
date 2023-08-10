@@ -89,26 +89,24 @@ export {
   parseArmdozer,
   parseArmDozerId,
 } from "./player/armdozer";
-export type {
-  BatteryLimitBreak,
-  BuffPower,
-  Burst,
-  ContinuousAttack,
-  LightningBarrier,
-  RecoverBattery,
-} from "./player/burst";
 export {
+  BatteryLimitBreak,
   BatteryLimitBreakSchema,
+  BuffPower,
   BuffPowerSchema,
+  Burst,
   BurstSchema,
+  ContinuousAttack,
   ContinuousAttackSchema,
+  LightningBarrier,
   LightningBarrierSchema,
   parseBuffPower,
   parseBurst,
   parseContinuousAttack,
-  parseLightningBarrier as parseLightningBarrierSchema,
+  parseLightningBarrier,
   parseRecoverBattery,
   parsesBatteryLimitBreak,
+  RecoverBattery,
   RecoverBatterySchema,
 } from "./player/burst";
 export {
