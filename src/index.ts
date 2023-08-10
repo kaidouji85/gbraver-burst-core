@@ -1,14 +1,27 @@
-export type { BatteryCommand } from "./command/battery";
-export { BatteryCommandSchema, parseBatteryCommand } from "./command/battery";
-export type { BurstCommand } from "./command/burst";
-export { BurstCommandSchema, parseBurstCommand } from "./command/burst";
-export type { Command } from "./command/command";
-export { CommandSchema, isCommandEqual, parseCommand } from "./command/command";
-export type { EmptyCommand } from "./command/empty-command";
-export { EmptyCommandSchema, parseEmptyCommand } from "./command/empty-command";
-export type { PilotSkillCommand } from "./command/pilot-skill";
+export {
+  BatteryCommand,
+  BatteryCommandSchema,
+  parseBatteryCommand,
+} from "./command/battery";
+export {
+  BurstCommand,
+  BurstCommandSchema,
+  parseBurstCommand,
+} from "./command/burst";
+export {
+  Command,
+  CommandSchema,
+  isCommandEqual,
+  parseCommand,
+} from "./command/command";
+export {
+  EmptyCommand,
+  EmptyCommandSchema,
+  parseEmptyCommand,
+} from "./command/empty-command";
 export {
   parsePilotSkillCommand,
+  PilotSkillCommand,
   PilotSkillCommandSchema,
 } from "./command/pilot-skill";
 export { QuickCommand } from "./command/quick-command";
@@ -16,43 +29,41 @@ export {
   correctedBattery,
   totalBatteryCorrection,
 } from "./effect/battery-correction";
-export type { BatteryDeclaration } from "./effect/battery-declaration/battery-declaration";
-export type { Battle, BattleX } from "./effect/battle/battle";
+export { BatteryDeclaration } from "./effect/battery-declaration/battery-declaration";
+export { Battle, BattleX } from "./effect/battle/battle";
 export { updateDefender } from "./effect/battle/players/update-defender";
-export type { BattleResult } from "./effect/battle/result/battle-result";
-export { battleResult } from "./effect/battle/result/battle-result";
-export type { CriticalHit } from "./effect/battle/result/critical-hit";
-export type { Feint } from "./effect/battle/result/feint";
-export type { Guard } from "./effect/battle/result/guard";
-export type { Miss } from "./effect/battle/result/miss";
-export type { NormalHit } from "./effect/battle/result/normal-hit";
-export type { BurstEffect } from "./effect/burst/burst-effect";
+export {
+  BattleResult,
+  battleResult,
+} from "./effect/battle/result/battle-result";
+export { CriticalHit } from "./effect/battle/result/critical-hit";
+export { Feint } from "./effect/battle/result/feint";
+export { Guard } from "./effect/battle/result/guard";
+export { Miss } from "./effect/battle/result/miss";
+export { NormalHit } from "./effect/battle/result/normal-hit";
+export { BurstEffect } from "./effect/burst/burst-effect";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {
   correctPower,
   hasHalveCorrectPower,
   totalCorrectPower,
 } from "./effect/correct-power";
-export type {
-  GameEnd,
-  GameEndResult,
-  GameEndX,
-} from "./effect/game-end/game-end";
-export type { Effect } from "./effect/index";
-export type {
+export { GameEnd, GameEndResult, GameEndX } from "./effect/game-end/game-end";
+export { Effect } from "./effect/index";
+export {
   InputCommand,
   NoChoice,
   Selectable,
 } from "./effect/input-command/input-command";
-export type {
+export {
   PilotSkillEffect,
   PilotSkillEffectX,
 } from "./effect/pilot-skill/pilot-skill-effect";
-export type { Reflect } from "./effect/reflect/reflect";
-export type { RightItself } from "./effect/right-itself/right-itself";
-export type { StartGame } from "./effect/start-game/start-game";
-export type { TurnChange } from "./effect/turn-change/turn-change";
-export type {
+export { Reflect } from "./effect/reflect/reflect";
+export { RightItself } from "./effect/right-itself/right-itself";
+export { StartGame } from "./effect/start-game/start-game";
+export { TurnChange } from "./effect/turn-change/turn-change";
+export {
   EndArmdozerEffect,
   UpdateRemainingTurn,
 } from "./effect/update-remaning-turn/update-remaining-turn";
@@ -69,10 +80,9 @@ export { EMPTY_BATTLE } from "./empty/battle";
 export { EMPTY_GAME_STATE } from "./empty/game-state";
 export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
 export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
-export type { PlayerCommand } from "./game/command/player-command";
-export type { PlayerCommandX } from "./game/command/player-command";
-export type { EvenMatch, GameOver } from "./game/end-judging/game-end-judging";
-export type {
+export { PlayerCommand, PlayerCommandX } from "./game/command/player-command";
+export { EvenMatch, GameOver } from "./game/end-judging/game-end-judging";
+export {
   GbraverBurstCore,
   RestoreGbraverBurst,
 } from "./game/gbraver-burst-core";
@@ -147,7 +157,7 @@ export {
   PlayerSchema,
   PlayerX,
 } from "./player/player";
-export type {
+export {
   ArmdozerEffect,
   BatteryCorrection,
   BatteryRecoverSkip,
@@ -157,8 +167,7 @@ export type {
   EmptyArmdozerEffect,
   TryReflect,
 } from "./state/armdozer-effect";
-export type { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
-export type { GameState, GameStateX } from "./state/game-state";
-export type { PilotState, PilotStateX } from "./state/pilot-state";
-export type { PlayerState, PlayerStateX } from "./state/player-state";
-export { isPlayerDeath } from "./state/player-state";
+export { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
+export { GameState, GameStateX } from "./state/game-state";
+export { PilotState, PilotStateX } from "./state/pilot-state";
+export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";
