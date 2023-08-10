@@ -106,7 +106,7 @@ export {
   parseBuffPower,
   parseBurst,
   parseContinuousAttack,
-  parseLightningBarrierSchema,
+  parseLightningBarrier as parseLightningBarrierSchema,
   parseRecoverBattery,
   parsesBatteryLimitBreak,
   RecoverBatterySchema,
