@@ -114,9 +114,11 @@ export {
 export {
   BatteryBoostSkill,
   BatteryEnchantmentSkill,
+  BatteryEnchantmentSkillSchema,
   BuffPowerSkill,
   BuffPowerSkillSchema,
   DamageHalvedSkill,
+  parseBatteryEnchantmentSkill,
   parseBuffPowerSkill,
   parsePilotId,
   parseRecoverBatterySkill,

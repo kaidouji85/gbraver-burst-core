@@ -74,6 +74,23 @@ export type BatteryEnchantmentSkill = Readonly<{
   duration: number;
 }>;
 
+/** BatteryEnchantmentSkill zodスキーマ */
+export const BatteryEnchantmentSkillSchema = z.object({
+  type: z.literal("BatteryEnchantmentSkill"),
+  batteryEnchantment: z.number(),
+  duration: z.number(),
+});
+
+/**
+ * 任意オブジェクトをBatteryEnchantmentSkillにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBatteryEnchantmentSkill = (origin: unknown): BatteryEnchantmentSkill | null => {
+  const result = BatteryEnchantmentSkillSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** ダメージ半減スキル */
 export type DamageHalvedSkill = Readonly<{
   type: "DamageHalvedSkill";
