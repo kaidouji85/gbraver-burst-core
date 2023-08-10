@@ -111,17 +111,18 @@ export {
   parsesBatteryLimitBreak,
   RecoverBatterySchema,
 } from "./player/burst";
-export type {
+export {
   BatteryBoostSkill,
   BatteryEnchantmentSkill,
   BuffPowerSkill,
   DamageHalvedSkill,
+  parsePilotId,
   Pilot,
   PilotId,
+  PilotIdSchema,
   PilotSkill,
   PilotX,
-  RecoverBatterySkill,
-} from "./player/pilot";
+  RecoverBatterySkill} from "./player/pilot";
 export type { Player, PlayerId, PlayerX } from "./player/player";
 export { PlayerIdSchema } from "./player/player";
 export type {
