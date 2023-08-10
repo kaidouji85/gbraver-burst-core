@@ -18,5 +18,5 @@ test("BatteryEnchantmentSkill以外はnullを返す", () => {
     enchantment: 1,
     effectDuration: 2,
   };
-  expect(parseBatteryEnchantmentSkill(data)).toEqual(data);
+  expect(parseBatteryEnchantmentSkill(data)).toBe(null);
 });
