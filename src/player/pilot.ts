@@ -34,7 +34,9 @@ export const RecoverBatterySkillSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseRecoverBatterySkill = (origin: unknown): RecoverBatterySkill | null => {
+export const parseRecoverBatterySkill = (
+  origin: unknown,
+): RecoverBatterySkill | null => {
   const result = RecoverBatterySkillSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
@@ -86,7 +88,9 @@ export const BatteryEnchantmentSkillSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseBatteryEnchantmentSkill = (origin: unknown): BatteryEnchantmentSkill | null => {
+export const parseBatteryEnchantmentSkill = (
+  origin: unknown,
+): BatteryEnchantmentSkill | null => {
   const result = BatteryEnchantmentSkillSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
@@ -109,7 +113,9 @@ export const DamageHalvedSkillSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseDamageHalvedSkill = (origin: unknown): DamageHalvedSkill | null => {
+export const parseDamageHalvedSkill = (
+  origin: unknown,
+): DamageHalvedSkill | null => {
   const result = DamageHalvedSkillSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
@@ -135,7 +141,9 @@ export const BatteryBoostSkillSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseBatteryBoostSkill = (origin: unknown): BatteryBoostSkill | null => {
+export const parseBatteryBoostSkill = (
+  origin: unknown,
+): BatteryBoostSkill | null => {
   const result = BatteryBoostSkillSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
@@ -182,3 +190,20 @@ export type PilotX<X> = Readonly<{
 
 /** パイロット */
 export type Pilot = PilotX<PilotSkill>;
+
+/** Pilot zodスキーマ */
+export const PilotSchema = z.object({
+  id: PilotIdSchema,
+  name: z.string(),
+  skill: PilotSkillSchema,
+});
+
+/**
+ * 任意オブジェクトをPilotにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parsePilot = (origin: unknown): Pilot | null => {
+  const result = PilotSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
