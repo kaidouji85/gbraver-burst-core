@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Burst,BurstSchema } from "./burst";
+import { Burst, BurstSchema } from "./burst";
 
 /** アームドーザID */
 export type ArmDozerId = string;
@@ -61,4 +61,4 @@ export const ArmdozerSchema = z.object({
 export const parseArmdozer = (origin: unknown): Armdozer | null => {
   const result = ArmdozerSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};

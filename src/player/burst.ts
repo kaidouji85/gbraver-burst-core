@@ -16,10 +16,12 @@ export const BurstRecoverBatterySchema = z.object({
  * @param origin パース元
  * @return パース結果、パースに失敗した場合はnull
  */
-export const parseBurstRecoverBattery = (origin: unknown): BurstRecoverBattery | null => {
+export const parseBurstRecoverBattery = (
+  origin: unknown,
+): BurstRecoverBattery | null => {
   const result = BurstRecoverBatterySchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** バッテリー回復 */
 export type RecoverBattery = BurstRecoverBattery &
@@ -40,7 +42,7 @@ export const RecoverBatterySchema = BurstRecoverBatterySchema.extend({
 export const parseRecoverBattery = (origin: unknown): RecoverBattery | null => {
   const result = RecoverBatterySchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** 攻撃力バフ */
 export type BuffPower = BurstRecoverBattery &
@@ -91,7 +93,9 @@ export const LightningBarrierSchema = BurstRecoverBatterySchema.extend({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseLightningBarrier = (origin: unknown): LightningBarrier | null => {
+export const parseLightningBarrier = (
+  origin: unknown,
+): LightningBarrier | null => {
   const result = LightningBarrierSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
@@ -112,7 +116,9 @@ export const ContinuousAttackSchema = BurstRecoverBatterySchema.extend({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseContinuousAttack = (origin: unknown): ContinuousAttack | null => {
+export const parseContinuousAttack = (
+  origin: unknown,
+): ContinuousAttack | null => {
   const result = ContinuousAttackSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
@@ -125,7 +131,6 @@ export type BatteryLimitBreak = BurstRecoverBattery &
     maxBattery: number;
   }>;
 
-
 /** BatteryLimitBreak zodスキーマ */
 export const BatteryLimitBreakSchema = BurstRecoverBatterySchema.extend({
   type: z.literal("BatteryLimitBreak"),
@@ -137,18 +142,20 @@ export const BatteryLimitBreakSchema = BurstRecoverBatterySchema.extend({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parsesBatteryLimitBreak = (origin: unknown): BatteryLimitBreak | null => {
+export const parsesBatteryLimitBreak = (
+  origin: unknown,
+): BatteryLimitBreak | null => {
   const result = BatteryLimitBreakSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
 
 /** バースト */
 export type Burst =
-| RecoverBattery
-| BuffPower
-| LightningBarrier
-| ContinuousAttack
-| BatteryLimitBreak;
+  | RecoverBattery
+  | BuffPower
+  | LightningBarrier
+  | ContinuousAttack
+  | BatteryLimitBreak;
 
 /** Burst zodスキーマ */
 export const BurstSchema = z.union([
@@ -167,4 +174,4 @@ export const BurstSchema = z.union([
 export const parseBurst = (origin: unknown): Burst | null => {
   const result = BurstSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};

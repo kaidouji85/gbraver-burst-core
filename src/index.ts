@@ -83,8 +83,8 @@ export {
 export { ArmDozerIds, ArmDozers } from "./master/armdozers";
 export { PilotIds, Pilots } from "./master/pilots";
 export {
-  Armdozer, 
-  ArmDozerId, 
+  Armdozer,
+  ArmDozerId,
   ArmDozerIdSchema,
   ArmdozerSchema,
   ArmdozerX,
@@ -122,7 +122,8 @@ export {
   PilotIdSchema,
   PilotSkill,
   PilotX,
-  RecoverBatterySkill} from "./player/pilot";
+  RecoverBatterySkill,
+} from "./player/pilot";
 export type { Player, PlayerId, PlayerX } from "./player/player";
 export { PlayerIdSchema } from "./player/player";
 export type {
