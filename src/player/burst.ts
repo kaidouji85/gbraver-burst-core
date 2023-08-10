@@ -79,6 +79,23 @@ export type LightningBarrier = BurstRecoverBattery &
     duration: number;
   }>;
 
+/** LightningBarrier zodスキーマ */
+export const LightningBarrierSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("LightningBarrier"),
+  damage: z.number(),
+  duration: z.number(),
+});
+
+/**
+ * 任意オブジェクトをLightningBarrierにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseLightningBarrierSchema = (origin: unknown): LightningBarrier | null => {
+  const result = LightningBarrierSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** 連続攻撃 */
 export type ContinuousAttack = BurstRecoverBattery &
   Readonly<{

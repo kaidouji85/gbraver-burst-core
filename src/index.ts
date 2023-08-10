@@ -93,7 +93,9 @@ export type {
 } from "./player/burst";
 export {
   BuffPowerSchema,
+  LightningBarrierSchema,
   parseBuffPower,
+  parseLightningBarrierSchema,
   parseRecoverBattery,
   RecoverBatterySchema,
 } from "./player/burst";
