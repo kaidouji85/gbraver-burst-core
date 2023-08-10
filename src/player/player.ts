@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import { ArmdozerSchema, type ArmdozerX } from "./armdozer";
-import type { Burst } from "./burst";
-import { PilotSchema, type PilotSkill, type PilotX } from "./pilot";
+import { ArmdozerSchema, ArmdozerX } from "./armdozer";
+import { Burst } from "./burst";
+import { PilotSchema, PilotSkill, PilotX } from "./pilot";
 
 /** プレイヤーID */
 export type PlayerId = string;
