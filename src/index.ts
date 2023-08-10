@@ -83,6 +83,10 @@ export {
 export { ArmDozerIds, ArmDozers } from "./master/armdozers";
 export { PilotIds, Pilots } from "./master/pilots";
 export type { Armdozer, ArmDozerId, ArmdozerX } from "./player/armdozer";
+export {
+  ArmDozerIdSchema,
+  parseArmDozerId,
+} from "./player/armdozer";
 export type {
   BatteryLimitBreak,
   BuffPower,
