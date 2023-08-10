@@ -102,6 +102,21 @@ export type ContinuousAttack = BurstRecoverBattery &
     type: "ContinuousAttack";
   }>;
 
+/** ContinuousAttack zodスキーマ */
+export const ContinuousAttackSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("ContinuousAttack"),
+});
+
+/**
+ * 任意オブジェクトをContinuousAttackにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseContinuousAttack = (origin: unknown): ContinuousAttack | null => {
+  const result = ContinuousAttackSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** バッテリーリミットブレイク */
 export type BatteryLimitBreak = BurstRecoverBattery &
   Readonly<{
