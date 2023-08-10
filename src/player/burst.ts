@@ -142,7 +142,7 @@ export const BatteryLimitBreakSchema = BurstRecoverBatterySchema.extend({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parsesBatteryLimitBreak = (
+export const parseBatteryLimitBreak = (
   origin: unknown,
 ): BatteryLimitBreak | null => {
   const result = BatteryLimitBreakSchema.safeParse(origin);

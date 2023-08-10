@@ -102,12 +102,12 @@ export {
   ContinuousAttackSchema,
   LightningBarrier,
   LightningBarrierSchema,
+  parseBatteryLimitBreak,
   parseBuffPower,
   parseBurst,
   parseContinuousAttack,
   parseLightningBarrier,
   parseRecoverBattery,
-  parsesBatteryLimitBreak,
   RecoverBattery,
   RecoverBatterySchema,
 } from "./player/burst";
