@@ -92,6 +92,7 @@ export type {
   RecoverBattery,
 } from "./player/burst";
 export {
+  BatteryLimitBreakSchema,
   BuffPowerSchema,
   ContinuousAttackSchema,
   LightningBarrierSchema,
@@ -99,6 +100,7 @@ export {
   parseContinuousAttack,
   parseLightningBarrierSchema,
   parseRecoverBattery,
+  parsesBatteryLimitBreak,
   RecoverBatterySchema,
 } from "./player/burst";
 export type {

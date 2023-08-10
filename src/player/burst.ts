@@ -125,6 +125,23 @@ export type BatteryLimitBreak = BurstRecoverBattery &
     maxBattery: number;
   }>;
 
+
+/** BatteryLimitBreak zodスキーマ */
+export const BatteryLimitBreakSchema = BurstRecoverBatterySchema.extend({
+  type: z.literal("BatteryLimitBreak"),
+  maxBattery: z.number(),
+});
+
+/**
+ * 任意オブジェクトをBatteryLimitBreakにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parsesBatteryLimitBreak = (origin: unknown): BatteryLimitBreak | null => {
+  const result = BatteryLimitBreakSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** バースト */
 export type Burst =
 | RecoverBattery
