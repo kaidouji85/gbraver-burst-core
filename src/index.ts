@@ -139,10 +139,12 @@ export {
   RecoverBatterySkillSchema,
 } from "./player/pilot";
 export { 
+  parsePlayer,
   parsePlayerId,
   Player, 
   PlayerId, 
   PlayerIdSchema,
+  PlayerSchema,
   PlayerX,
 } from "./player/player";
 export type {

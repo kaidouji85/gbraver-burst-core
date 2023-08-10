@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import type { ArmdozerX } from "./armdozer";
+import { ArmdozerSchema, type ArmdozerX } from "./armdozer";
 import type { Burst } from "./burst";
-import type { PilotSkill, PilotX } from "./pilot";
+import { PilotSchema, type PilotSkill, type PilotX } from "./pilot";
 
 /** プレイヤーID */
 export type PlayerId = string;
@@ -36,3 +36,20 @@ export type PlayerX<BURST, PILOT> = Readonly<{
 
 /** プレイヤー基本情報 */
 export type Player = PlayerX<Burst, PilotSkill>;
+
+/** Player zodスキーマ */
+export const PlayerSchema = z.object({
+  playerId: PlayerIdSchema,
+  armdozer: ArmdozerSchema,
+  pilot: PilotSchema,
+});
+
+/**
+ * 任意オブジェクトをPlayerにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parsePlayer = (origin: unknown): Player | null => {
+  const result = PlayerSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
