@@ -113,12 +113,14 @@ export {
 } from "./player/burst";
 export {
   BatteryBoostSkill,
+  BatteryBoostSkillSchema,
   BatteryEnchantmentSkill,
   BatteryEnchantmentSkillSchema,
   BuffPowerSkill,
   BuffPowerSkillSchema,
   DamageHalvedSkill,
   DamageHalvedSkillSchema,
+  parseBatteryBoostSkill,
   parseBatteryEnchantmentSkill,
   parseBuffPowerSkill,
   parseDamageHalvedSkill,
