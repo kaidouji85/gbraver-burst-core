@@ -148,6 +148,25 @@ export type PilotSkill =
   | DamageHalvedSkill
   | BatteryBoostSkill;
 
+/** PilotSkill zodスキーマ */
+export const PilotSkillSchema = z.union([
+  RecoverBatterySkillSchema,
+  BuffPowerSkillSchema,
+  BatteryEnchantmentSkillSchema,
+  DamageHalvedSkillSchema,
+  BatteryBoostSkillSchema,
+]);
+
+/**
+ * 任意オブジェクトをPilotSkillにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parsePilotSkill = (origin: unknown): PilotSkill | null => {
+  const result = PilotSkillSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** パイロット */
 export type Pilot = PilotX<PilotSkill>;
 
