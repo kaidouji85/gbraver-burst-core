@@ -37,7 +37,7 @@ export const RecoverBatterySchema = BurstRecoverBatterySchema.extend({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseRecoverBatterySchema = (origin: unknown): RecoverBattery | null => {
+export const parseRecoverBattery = (origin: unknown): RecoverBattery | null => {
   const result = RecoverBatterySchema.safeParse(origin);
   return result.success ? result.data : null;
 }

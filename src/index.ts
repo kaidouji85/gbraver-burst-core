@@ -91,6 +91,10 @@ export type {
   LightningBarrier,
   RecoverBattery,
 } from "./player/burst";
+export {
+  parseRecoverBattery,
+  RecoverBatterySchema,
+} from "./player/burst";
 export type {
   BatteryBoostSkill,
   BatteryEnchantmentSkill,
