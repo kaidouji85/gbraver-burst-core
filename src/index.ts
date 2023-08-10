@@ -82,10 +82,12 @@ export {
 } from "./game/gbraver-burst-core";
 export { ArmDozerIds, ArmDozers } from "./master/armdozers";
 export { PilotIds, Pilots } from "./master/pilots";
-export type { Armdozer, ArmDozerId, ArmdozerX } from "./player/armdozer";
 export {
+  Armdozer, 
+  ArmDozerId, 
   ArmDozerIdSchema,
   ArmdozerSchema,
+  ArmdozerX,
   parseArmdozer,
   parseArmDozerId,
 } from "./player/armdozer";
