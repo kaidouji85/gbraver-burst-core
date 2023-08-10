@@ -139,10 +139,12 @@ export {
   RecoverBatterySkillSchema,
 } from "./player/pilot";
 export { 
+  parsePlayerId,
   Player, 
   PlayerId, 
   PlayerIdSchema,
-  PlayerX} from "./player/player";
+  PlayerX,
+} from "./player/player";
 export type {
   ArmdozerEffect,
   BatteryCorrection,
