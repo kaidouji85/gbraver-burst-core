@@ -1,4 +1,4 @@
-import { parsePilotId,PilotId, PilotIds } from "../../src";
+import { parsePilotId, PilotId, PilotIds } from "../../src";
 
 test("PilotIdはパースできる", () => {
   const data: PilotId = PilotIds.SHINYA;

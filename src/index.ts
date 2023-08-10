@@ -138,11 +138,11 @@ export {
   RecoverBatterySkill,
   RecoverBatterySkillSchema,
 } from "./player/pilot";
-export { 
+export {
   parsePlayer,
   parsePlayerId,
-  Player, 
-  PlayerId, 
+  Player,
+  PlayerId,
   PlayerIdSchema,
   PlayerSchema,
   PlayerX,

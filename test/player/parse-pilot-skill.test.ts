@@ -23,7 +23,7 @@ const pilotSkills: PilotSkill[] = [
   {
     type: "BatteryBoostSkill",
     recoverBattery: 5,
-  }
+  },
 ];
 
 test("PilotSkillはパースできる", () => {
@@ -36,6 +36,6 @@ test("PilotSkill以外はnullを返す", () => {
   const data = {
     type: "RecoverBattery",
     recover: 5,
-  }
+  };
   expect(parsePilotSkill(data)).toBe(null);
 });

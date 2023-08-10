@@ -52,4 +52,4 @@ export const PlayerSchema = z.object({
 export const parsePlayer = (origin: unknown): Player | null => {
   const result = PlayerSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};

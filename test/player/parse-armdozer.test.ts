@@ -6,6 +6,6 @@ test("アームドーザはパースできる", () => {
 });
 
 test("アームドーザ以外だとnullを返す", () => {
-  const data = { maxHp: 3100, power: 2000, speed: 2000};
+  const data = { maxHp: 3100, power: 2000, speed: 2000 };
   expect(parseArmdozer(data)).toBe(null);
 });

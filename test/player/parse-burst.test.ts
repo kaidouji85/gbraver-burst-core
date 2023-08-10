@@ -26,12 +26,12 @@ const bursts: Burst[] = [
     type: "BatteryLimitBreak",
     recoverBattery: 8,
     maxBattery: 8,
-  }
+  },
 ];
 
 test("Burstはパースできる", () => {
-  bursts.forEach(burst => {
-    expect(parseBurst(burst)).toEqual(burst);  
+  bursts.forEach((burst) => {
+    expect(parseBurst(burst)).toEqual(burst);
   });
 });
 
