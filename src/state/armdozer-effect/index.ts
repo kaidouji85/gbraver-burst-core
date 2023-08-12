@@ -5,6 +5,10 @@ import {
   BatteryCorrectionSchema,
 } from "./battery-correction";
 import {
+  BatteryRecoverSkip,
+  BatteryRecoverSkipSchema,
+} from "./battery-recover-skip";
+import {
   ContinuousActivePlayer,
   ContinuousActivePlayerSchema,
 } from "./continuous-active-player";
@@ -18,7 +22,6 @@ import {
   HalveCorrectPower,
   HalveCorrectPowerSchema,
 } from "./halve-correct-power";
-import { BatteryRecoverSkip, BatteryRecoverSkipSchema } from "./battery-recover-skip";
 import { TryReflect, TryReflectSchema } from "./try-reflect";
 
 /**
