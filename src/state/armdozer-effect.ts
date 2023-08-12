@@ -18,10 +18,12 @@ export const TurnLimitEffectSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseTurnLimitEffect = (origin: unknown): TurnLimitEffect | null => {
+export const parseTurnLimitEffect = (
+  origin: unknown,
+): TurnLimitEffect | null => {
   const result = TurnLimitEffectSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** 特殊な有効期限 */
 export type SpecialPeriodEffect = Readonly<{
@@ -38,10 +40,12 @@ export const SpecialPeriodEffectSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseSpecialPeriodEffect = (origin: unknown): SpecialPeriodEffect | null => {
+export const parseSpecialPeriodEffect = (
+  origin: unknown,
+): SpecialPeriodEffect | null => {
   const result = SpecialPeriodEffectSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** エフェクト有効期間 */
 export type EffectPeriod = TurnLimitEffect | SpecialPeriodEffect;
@@ -60,7 +64,7 @@ export const EffectPeriodSchema = z.union([
 export const parseEffectPeriod = (origin: unknown): EffectPeriod | null => {
   const result = EffectPeriodSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /**
  * 何もしない効果
@@ -84,10 +88,12 @@ export const EmptyArmdozerEffectSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseEmptyArmdozerEffect = (origin: unknown): EmptyArmdozerEffect | null => {
+export const parseEmptyArmdozerEffect = (
+  origin: unknown,
+): EmptyArmdozerEffect | null => {
   const result = EmptyArmdozerEffectSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** 攻撃力補正 */
 export type CorrectPower = Readonly<{
@@ -113,7 +119,7 @@ export const CorrectPowerSchema = z.object({
 export const parseCorrectPower = (origin: unknown): CorrectPower | null => {
   const result = CorrectPowerSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** 攻撃力補正半減 */
 export type HalveCorrectPower = Readonly<{
@@ -133,10 +139,12 @@ export const HalveCorrectPowerSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseHalveCorrectPower = (origin: unknown): HalveCorrectPower | null => {
+export const parseHalveCorrectPower = (
+  origin: unknown,
+): HalveCorrectPower | null => {
   const result = HalveCorrectPowerSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** ダメージエフェクトの種類 */
 export type ReflectDamageEffect = "Lightning";
@@ -149,10 +157,12 @@ export const ReflectDamageEffectSchema = z.literal("Lightning");
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseReflectDamageEffect = (origin: unknown): ReflectDamageEffect | null => {
+export const parseReflectDamageEffect = (
+  origin: unknown,
+): ReflectDamageEffect | null => {
   const result = ReflectDamageEffectSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** ダメージ反射 */
 export type TryReflect = Readonly<{
@@ -181,7 +191,7 @@ export const TryReflectSchema = z.object({
 export const parseTryReflect = (origin: unknown): TryReflect | null => {
   const result = TryReflectSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** アクティブプレイヤー継続 */
 export type ContinuousActivePlayer = Readonly<{
@@ -201,10 +211,12 @@ export const ContinuousActivePlayerSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseContinuousActivePlayer = (origin: unknown): ContinuousActivePlayer | null => {
+export const parseContinuousActivePlayer = (
+  origin: unknown,
+): ContinuousActivePlayer | null => {
   const result = ContinuousActivePlayerSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** バッテリー補正 */
 export type BatteryCorrection = Readonly<{
@@ -227,10 +239,12 @@ export const BatteryCorrectionSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseBatteryCorrection = (origin: unknown): BatteryCorrection | null => {
+export const parseBatteryCorrection = (
+  origin: unknown,
+): BatteryCorrection | null => {
   const result = BatteryCorrectionSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** ダメージ半減 */
 export type DamageHalved = Readonly<{
@@ -253,7 +267,7 @@ export const DamageHalvedSchema = z.object({
 export const parseDamageHalved = (origin: unknown): DamageHalved | null => {
   const result = DamageHalvedSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** ターン開始時のバッテリー回復をスキップ */
 export type BatteryRecoverSkip = Readonly<{
@@ -273,10 +287,12 @@ export const BatteryRecoverSkipSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseBatteryRecoverSkip = (origin: unknown): BatteryRecoverSkip | null => {
+export const parseBatteryRecoverSkip = (
+  origin: unknown,
+): BatteryRecoverSkip | null => {
   const result = BatteryRecoverSkipSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /**
  * アームドーザに適用される効果
@@ -312,4 +328,4 @@ export const ArmdozerEffectSchema = z.union([
 export const parseArmdozerEffect = (origin: unknown): ArmdozerEffect | null => {
   const result = ArmdozerEffectSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
