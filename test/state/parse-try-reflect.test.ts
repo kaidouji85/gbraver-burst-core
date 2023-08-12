@@ -16,6 +16,14 @@ test("TryReflectはパースできる", () => {
 });
 
 test("TryReflectではないオブジェクトはパースできない", () => {
-  const invalid = {...tryReflect, type: "InvalidType"};
-  expect(parseTryReflect(invalid)).toBeNull();
+  const data = {
+    type: "TryReflect",
+    effectLabel: "Lightning",
+    reflectDamage: 1000,
+    period: {
+      type: "TurnLimit",
+      remainingTurn: 2,
+    }
+  };
+  expect(parseTryReflect(data)).toBeNull();
 });
