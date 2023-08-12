@@ -9,12 +9,12 @@ import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { BatteryEnchantmentSkill } from "../../../src/player/pilot/pilot";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
   shouldUpdateSnapShot,
 } from "../../snap-shot";
+import {BatteryEnchantmentSkill} from "../../../src/player/pilot/battery-enchantment-skill";
 
 /** バッテリー増強スキル */
 const skill: BatteryEnchantmentSkill = {
