@@ -1,4 +1,4 @@
-import { BuffPowerSkill, parseBuffPowerSkill } from "../../src";
+import { BuffPowerSkill, parseBuffPowerSkill } from "../../../src";
 
 test("BuffPowerSkillはパースできる", () => {
   const data: BuffPowerSkill = {

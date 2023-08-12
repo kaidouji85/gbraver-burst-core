@@ -1,4 +1,4 @@
-import { parseRecoverBatterySkill, RecoverBatterySkill } from "../../src";
+import { parseRecoverBatterySkill, RecoverBatterySkill } from "../../../src";
 
 test("RecoverBatterySkillはパースできる", () => {
   const data: RecoverBatterySkill = {

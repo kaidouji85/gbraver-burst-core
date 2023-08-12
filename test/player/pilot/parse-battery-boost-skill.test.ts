@@ -1,4 +1,4 @@
-import { BatteryBoostSkill, parseBatteryBoostSkill } from "../../src";
+import { BatteryBoostSkill, parseBatteryBoostSkill } from "../../../src";
 
 test("BatteryBoostSkillはパースできる", () => {
   const data: BatteryBoostSkill = {

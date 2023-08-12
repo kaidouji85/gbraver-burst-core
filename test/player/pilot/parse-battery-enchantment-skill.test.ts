@@ -1,7 +1,7 @@
 import {
   BatteryEnchantmentSkill,
   parseBatteryEnchantmentSkill,
-} from "../../src";
+} from "../../../src";
 
 test("BatteryEnchantmentSkillはパースできる", () => {
   const data: BatteryEnchantmentSkill = {

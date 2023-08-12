@@ -1,4 +1,4 @@
-import { EMPTY_PILOT, parsePilot } from "../../src";
+import { EMPTY_PILOT, parsePilot } from "../../../src";
 
 test("Pilotはパースできる", () => {
   const data = EMPTY_PILOT;

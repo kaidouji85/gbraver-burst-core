@@ -1,4 +1,4 @@
-import { DamageHalvedSkill, parseDamageHalvedSkill } from "../../src";
+import { DamageHalvedSkill, parseDamageHalvedSkill } from "../../../src";
 
 test("DamageHalvedSkillはパースできる", () => {
   const data: DamageHalvedSkill = {
