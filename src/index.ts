@@ -133,7 +133,6 @@ export {
   parsePilot,
   parsePilotId,
   parsePilotSkill,
-  parseRecoverBatterySkill,
   Pilot,
   PilotId,
   PilotIdSchema,
@@ -141,8 +140,8 @@ export {
   PilotSkill,
   PilotSkillSchema,
   PilotX,
-  RecoverBatterySkill,
-  RecoverBatterySkillSchema,
+
+
 } from "./player/pilot/pilot";
 export {
   parsePlayer,
@@ -193,3 +192,6 @@ export { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
 export { GameState, GameStateX } from "./state/game-state";
 export { PilotState, PilotStateX } from "./state/pilot-state";
 export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";
+export {parseRecoverBatterySkill} from "./player/pilot/recover-battery-skill";
+export {RecoverBatterySkillSchema} from "./player/pilot/recover-battery-skill";
+export {RecoverBatterySkill} from "./player/pilot/recover-battery-skill";

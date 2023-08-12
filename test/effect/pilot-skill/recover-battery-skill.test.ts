@@ -9,12 +9,12 @@ import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { RecoverBatterySkill } from "../../../src/player/pilot/pilot";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
   shouldUpdateSnapShot,
 } from "../../snap-shot";
+import {RecoverBatterySkill} from "../../../src/player/pilot/recover-battery-skill";
 
 /** スキル バッテリー回復 */
 const skill: RecoverBatterySkill = {
