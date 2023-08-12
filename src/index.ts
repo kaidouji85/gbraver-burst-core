@@ -175,10 +175,12 @@ export {
   parseHalveCorrectPower,
   parseReflectDamageEffect,
   parseSpecialPeriodEffect,
+  parseTryReflect,
   parseTurnLimitEffect,
   ReflectDamageEffectSchema,
   SpecialPeriodEffectSchema,
   TryReflect,
+  TryReflectSchema,
   TurnLimitEffectSchema,
 } from "./state/armdozer-effect";
 export { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";

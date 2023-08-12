@@ -165,6 +165,24 @@ export type TryReflect = Readonly<{
   period: EffectPeriod;
 }>;
 
+/** TryReflect zodスキーマ */
+export const TryReflectSchema = z.object({
+  type: z.literal("TryReflect"),
+  damage: z.number(),
+  effect: ReflectDamageEffectSchema,
+  period: EffectPeriodSchema,
+});
+
+/**
+ * 任意オブジェクトをTryReflectにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseTryReflect = (origin: unknown): TryReflect | null => {
+  const result = TryReflectSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
+
 /** アクティブプレイヤー継続 */
 export type ContinuousActivePlayer = Readonly<{
   type: "ContinuousActivePlayer";
