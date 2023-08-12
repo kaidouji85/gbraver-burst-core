@@ -2,9 +2,9 @@ import { EMPTY_ARMDOZER_EFFECT } from "../../../src/empty/amrdozer-effect";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { SpecialPeriodEffect } from "../../../src/state/armdozer-effect/special-period-effect";
+import { TurnLimitEffect } from "../../../src/state/armdozer-effect/turn-limit-effect";
 import type { GameState } from "../../../src/state/game-state";
-import {TurnLimitEffect} from "../../../src/state/armdozer-effect/turn-limit-effect";
-import {SpecialPeriodEffect} from "../../../src/state/armdozer-effect/special-period-effect";
 
 /** 特殊期限 */
 const specialPeriod: SpecialPeriodEffect = {

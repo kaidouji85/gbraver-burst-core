@@ -1,5 +1,6 @@
-import {EffectPeriod, EffectPeriodSchema} from "./effect-period";
-import {z} from "zod";
+import { z } from "zod";
+
+import { EffectPeriod, EffectPeriodSchema } from "./effect-period";
 
 /** アクティブプレイヤー継続 */
 export type ContinuousActivePlayer = Readonly<{

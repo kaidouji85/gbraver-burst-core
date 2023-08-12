@@ -1,7 +1,7 @@
 import { correctPower } from "../../src";
-import {TurnLimitEffect} from "../../src/state/armdozer-effect/turn-limit-effect";
-import {CorrectPower} from "../../src/state/armdozer-effect/correct-power";
-import {HalveCorrectPower} from "../../src/state/armdozer-effect/halve-correct-power";
+import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
+import { HalveCorrectPower } from "../../src/state/armdozer-effect/halve-correct-power";
+import { TurnLimitEffect } from "../../src/state/armdozer-effect/turn-limit-effect";
 
 const oneTurn: TurnLimitEffect = {
   type: "TurnLimit",

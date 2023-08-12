@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** ターン期限付きのエフェクト */
 export type TurnLimitEffect = Readonly<{

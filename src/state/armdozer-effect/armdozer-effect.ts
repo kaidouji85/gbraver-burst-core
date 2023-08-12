@@ -1,12 +1,25 @@
-import {z} from "zod";
-import {EmptyArmdozerEffect, EmptyArmdozerEffectSchema} from "./empty-armdozer-effect";
-import {CorrectPower, CorrectPowerSchema} from "./correct-power";
-import {HalveCorrectPower, HalveCorrectPowerSchema} from "./halve-correct-power";
-import {TryReflect, TryReflectSchema} from "./try-reflect";
-import {ContinuousActivePlayer, ContinuousActivePlayerSchema} from "./continuous-active-player";
-import {BatteryCorrection, BatteryCorrectionSchema} from "./battery-correction";
-import {DamageHalved, DamageHalvedSchema} from "./damage-halved";
-import {BatteryRecoverSkip, BatteryRecoverSkipSchema} from "./index";
+import { z } from "zod";
+
+import {
+  BatteryCorrection,
+  BatteryCorrectionSchema,
+} from "./battery-correction";
+import {
+  ContinuousActivePlayer,
+  ContinuousActivePlayerSchema,
+} from "./continuous-active-player";
+import { CorrectPower, CorrectPowerSchema } from "./correct-power";
+import { DamageHalved, DamageHalvedSchema } from "./damage-halved";
+import {
+  EmptyArmdozerEffect,
+  EmptyArmdozerEffectSchema,
+} from "./empty-armdozer-effect";
+import {
+  HalveCorrectPower,
+  HalveCorrectPowerSchema,
+} from "./halve-correct-power";
+import { BatteryRecoverSkip, BatteryRecoverSkipSchema } from "./index";
+import { TryReflect, TryReflectSchema } from "./try-reflect";
 
 /**
  * アームドーザに適用される効果

@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** 特殊な有効期限 */
 export type SpecialPeriodEffect = Readonly<{

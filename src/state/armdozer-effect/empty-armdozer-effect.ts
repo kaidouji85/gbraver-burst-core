@@ -1,5 +1,6 @@
-import {EffectPeriod, EffectPeriodSchema} from "./effect-period";
-import {z} from "zod";
+import { z } from "zod";
+
+import { EffectPeriod, EffectPeriodSchema } from "./effect-period";
 
 /**
  * 何もしない効果

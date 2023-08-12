@@ -1,5 +1,6 @@
-import {z} from "zod";
-import {EffectPeriod, EffectPeriodSchema} from "./effect-period";
+import { z } from "zod";
+
+import { EffectPeriod, EffectPeriodSchema } from "./effect-period";
 
 /** ターン開始時のバッテリー回復をスキップ */
 export type BatteryRecoverSkip = Readonly<{
