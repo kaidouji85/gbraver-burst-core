@@ -1,5 +1,5 @@
-import type { PilotSkill } from "../../player/pilot/pilot";
 import type { PlayerId } from "../../player/player";
+import {PilotSkill} from "../../player/pilot/pilot-skill";
 
 /**
  * パイロットスキル発動（型指定あり）

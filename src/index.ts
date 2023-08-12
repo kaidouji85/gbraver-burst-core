@@ -120,13 +120,10 @@ export { RecoverBattery } from "./player/burst/recover-battery";
 export {
   parsePilot,
   parsePilotId,
-  parsePilotSkill,
   Pilot,
   PilotId,
   PilotIdSchema,
   PilotSchema,
-  PilotSkill,
-  PilotSkillSchema,
   PilotX,
 
 
@@ -195,3 +192,6 @@ export {DamageHalvedSkill} from "./player/pilot/damage-halved-skill";
 export {parseBatteryBoostSkill} from "./player/pilot/battery-boost-skill";
 export {BatteryBoostSkillSchema} from "./player/pilot/battery-boost-skill";
 export {BatteryBoostSkill} from "./player/pilot/battery-boost-skill";
+export {parsePilotSkill} from "./player/pilot/pilot-skill";
+export {PilotSkillSchema} from "./player/pilot/pilot-skill";
+export {PilotSkill} from "./player/pilot/pilot-skill";

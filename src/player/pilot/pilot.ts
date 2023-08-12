@@ -1,9 +1,5 @@
 import {z} from "zod";
-import {RecoverBatterySkill, RecoverBatterySkillSchema} from "./recover-battery-skill";
-import {BuffPowerSkill, BuffPowerSkillSchema} from "./buff-power-skill";
-import {BatteryEnchantmentSkill, BatteryEnchantmentSkillSchema} from "./battery-enchantment-skill";
-import {DamageHalvedSkill, DamageHalvedSkillSchema} from "./damage-halved-skill";
-import {BatteryBoostSkill, BatteryBoostSkillSchema} from "./battery-boost-skill";
+import {PilotSkill, PilotSkillSchema} from "./pilot-skill";
 
 /** パイロットID */
 export type PilotId = string;
@@ -18,33 +14,6 @@ export const PilotIdSchema = z.string();
  */
 export const parsePilotId = (origin: unknown): PilotId | null => {
   const result = PilotIdSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/** パイロットスキル */
-export type PilotSkill =
-  | RecoverBatterySkill
-  | BuffPowerSkill
-  | BatteryEnchantmentSkill
-  | DamageHalvedSkill
-  | BatteryBoostSkill;
-
-/** PilotSkill zodスキーマ */
-export const PilotSkillSchema = z.union([
-  RecoverBatterySkillSchema,
-  BuffPowerSkillSchema,
-  BatteryEnchantmentSkillSchema,
-  DamageHalvedSkillSchema,
-  BatteryBoostSkillSchema,
-]);
-
-/**
- * 任意オブジェクトをPilotSkillにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePilotSkill = (origin: unknown): PilotSkill | null => {
-  const result = PilotSkillSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
 
