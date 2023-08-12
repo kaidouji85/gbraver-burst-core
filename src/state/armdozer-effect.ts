@@ -28,7 +28,7 @@ export type SpecialPeriodEffect = Readonly<{
   type: "SpecialPeriod";
 }>;
 
-/** 特殊な有効期限 zodスキーマ */
+/** SpecialPeriodEffect zodスキーマ */
 export const SpecialPeriodEffectSchema = z.object({
   type: z.literal("SpecialPeriod"),
 });
@@ -45,6 +45,22 @@ export const parseSpecialPeriodEffect = (origin: unknown): SpecialPeriodEffect |
 
 /** エフェクト有効期間 */
 export type EffectPeriod = TurnLimitEffect | SpecialPeriodEffect;
+
+/** EffectPeriod zodスキーマ */
+export const EffectPeriodSchema = z.union([
+  TurnLimitEffectSchema,
+  SpecialPeriodEffectSchema,
+]);
+
+/**
+ * 任意オブジェクトをEffectPeriodにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseEffectPeriod = (origin: unknown): EffectPeriod | null => {
+  const result = EffectPeriodSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
 
 /**
  * 何もしない効果
