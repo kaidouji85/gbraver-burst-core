@@ -4,7 +4,7 @@ import {parseTryReflect, TryReflect} from "../../src";
 const tryReflect: TryReflect = {
   type: "TryReflect",
   effect: "Lightning",
-  damage: 1000,
+  damage: 2000,
   period: {
     type: "TurnLimit",
     remainingTurn: 2,

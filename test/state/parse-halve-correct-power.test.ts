@@ -5,7 +5,7 @@ const halveCorrectPower: HalveCorrectPower = {
   type: "HalveCorrectPower",
   period: {
     type: "TurnLimit",
-    remainingTurn: 1,
+    remainingTurn: 2,
   }
 };
 

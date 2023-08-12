@@ -6,7 +6,7 @@ const correctPower: CorrectPower = {
   power: 1000,
   period: {
     type: "TurnLimit",
-    remainingTurn: 1,
+    remainingTurn: 2,
   }
 };
 

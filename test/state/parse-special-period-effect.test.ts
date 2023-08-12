@@ -1,5 +1,6 @@
 import {parseSpecialPeriodEffect, SpecialPeriodEffect} from "../../src/state/armdozer-effect";
 
+/** 有効なSpecialPeriodEffect */
 const specialPeriodEffect: SpecialPeriodEffect = {
   type: "SpecialPeriod",
 };
