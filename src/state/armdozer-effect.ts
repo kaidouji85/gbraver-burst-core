@@ -122,6 +122,22 @@ export type HalveCorrectPower = Readonly<{
   period: EffectPeriod;
 }>;
 
+/** HalveCorrectPower zodスキーマ */
+export const HalveCorrectPowerSchema = z.object({
+  type: z.literal("HalveCorrectPower"),
+  period: EffectPeriodSchema,
+});
+
+/**
+ * 任意オブジェクトをHalveCorrectPowerにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseHalveCorrectPower = (origin: unknown): HalveCorrectPower | null => {
+  const result = HalveCorrectPowerSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
+
 /** ダメージエフェクトの種類 */
 export type ReflectDamageEffect = "Lightning";
 
