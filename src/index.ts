@@ -104,8 +104,6 @@ export {
 export {
   BatteryLimitBreak,
   BatteryLimitBreakSchema,
-  BuffPower,
-  BuffPowerSchema,
   Burst,
   BurstSchema,
   ContinuousAttack,
@@ -113,7 +111,6 @@ export {
   LightningBarrier,
   LightningBarrierSchema,
   parseBatteryLimitBreak,
-  parseBuffPower,
   parseBurst,
   parseContinuousAttack,
   parseLightningBarrier,
@@ -199,3 +196,6 @@ export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";
 export {parseRecoverBattery} from "./player/burst/recover-battery";
 export {RecoverBatterySchema} from "./player/burst/recover-battery";
 export {RecoverBattery} from "./player/burst/recover-battery";
+export {parseBuffPower} from "./player/burst/buff-power";
+export {BuffPowerSchema} from "./player/burst/buff-power";
+export {BuffPower} from "./player/burst/buff-power";
