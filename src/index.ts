@@ -102,11 +102,8 @@ export {
   parseArmDozerId,
 } from "./player/armdozer";
 export {
-  BatteryLimitBreak,
-  BatteryLimitBreakSchema,
   Burst,
   BurstSchema,
-  parseBatteryLimitBreak,
   parseBurst,
 
 
@@ -201,3 +198,6 @@ export {LightningBarrier} from "./player/burst/lightning-barrier";
 export {parseContinuousAttack} from "./player/burst/continuous-attack";
 export {ContinuousAttackSchema} from "./player/burst/continuous-attack";
 export {ContinuousAttack} from "./player/burst/continuous-attack";
+export {parseBatteryLimitBreak} from "./player/burst/battery-limit-break";
+export {BatteryLimitBreakSchema} from "./player/burst/battery-limit-break";
+export {BatteryLimitBreak} from "./player/burst/battery-limit-break";
