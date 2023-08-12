@@ -165,7 +165,9 @@ export {
   CorrectPower,
   DamageHalved,
   EmptyArmdozerEffect,
+  parseTurnLimitEffect,
   TryReflect,
+  TurnLimitEffectSchema,
 } from "./state/armdozer-effect";
 export { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
 export { GameState, GameStateX } from "./state/game-state";
