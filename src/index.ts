@@ -159,6 +159,7 @@ export {
 } from "./player/player";
 export {
   ArmdozerEffect,
+  ArmdozerEffectSchema,
   BatteryCorrection,
   BatteryCorrectionSchema,
   BatteryRecoverSkip,
@@ -173,6 +174,7 @@ export {
   EmptyArmdozerEffect,
   EmptyArmdozerEffectSchema,
   HalveCorrectPowerSchema,
+  parseArmdozerEffect,
   parseBatteryCorrection,
   parseBatteryRecoverSkip,
   parseContinuousActivePlayer,
