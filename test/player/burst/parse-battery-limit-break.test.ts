@@ -1,4 +1,4 @@
-import { BatteryLimitBreak, parseBatteryLimitBreak } from "../../src";
+import { BatteryLimitBreak, parseBatteryLimitBreak } from "../../../src";
 
 test("BatteryLimitBreakはパースできる", () => {
   const data: BatteryLimitBreak = {

@@ -1,4 +1,4 @@
-import { parseRecoverBattery, RecoverBattery } from "../../src";
+import { parseRecoverBattery, RecoverBattery } from "../../../src";
 
 test("RecoverBatteryはパースできる", () => {
   const data: RecoverBattery = {
