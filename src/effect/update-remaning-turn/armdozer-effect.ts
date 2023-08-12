@@ -1,4 +1,4 @@
-import type { ArmdozerEffect } from "../../state/armdozer-effect/armdozer-effect";
+import type { ArmdozerEffect } from "../../state/armdozer-effect";
 
 /**
  * アームドーザ効果の継続ターン数を更新する

@@ -1,5 +1,5 @@
 import type { BatteryCommand } from "../command/battery";
-import type { ArmdozerEffect } from "../state/armdozer-effect/armdozer-effect";
+import type { ArmdozerEffect } from "../state/armdozer-effect";
 
 /**
  * アームドーザ効果のバッテリー補正合計値を計算する

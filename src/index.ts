@@ -153,14 +153,14 @@ export {
   PlayerSchema,
   PlayerX,
 } from "./player/player";
-export { parseBatteryRecoverSkip } from "./state/armdozer-effect";
-export { BatteryRecoverSkipSchema } from "./state/armdozer-effect";
-export { BatteryRecoverSkip } from "./state/armdozer-effect";
+export { parseBatteryRecoverSkip } from "./state/armdozer-effect/battery-recover-skip";
+export { BatteryRecoverSkipSchema } from "./state/armdozer-effect/battery-recover-skip";
+export { BatteryRecoverSkip } from "./state/armdozer-effect/battery-recover-skip";
 export {
   ArmdozerEffect,
   ArmdozerEffectSchema,
   parseArmdozerEffect,
-} from "./state/armdozer-effect/armdozer-effect";
+} from "./state/armdozer-effect";
 export { parseBatteryCorrection } from "./state/armdozer-effect/battery-correction";
 export { BatteryCorrectionSchema } from "./state/armdozer-effect/battery-correction";
 export { BatteryCorrection } from "./state/armdozer-effect/battery-correction";

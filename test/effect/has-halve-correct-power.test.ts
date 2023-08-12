@@ -1,5 +1,5 @@
 import { hasHalveCorrectPower } from "../../src";
-import { ArmdozerEffect } from "../../src/state/armdozer-effect/armdozer-effect";
+import { ArmdozerEffect } from "../../src/state/armdozer-effect";
 import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
 import { HalveCorrectPower } from "../../src/state/armdozer-effect/halve-correct-power";
 import { TurnLimitEffect } from "../../src/state/armdozer-effect/turn-limit-effect";

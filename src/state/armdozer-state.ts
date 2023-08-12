@@ -1,6 +1,6 @@
 import type { Armdozer, ArmdozerX } from "../player/armdozer";
 import type { Burst } from "../player/burst";
-import type { ArmdozerEffect } from "./armdozer-effect/armdozer-effect";
+import type { ArmdozerEffect } from "./armdozer-effect";
 
 /**
  * アームドーザステート（型指定あり）

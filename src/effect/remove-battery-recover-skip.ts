@@ -1,4 +1,4 @@
-import { ArmdozerEffect } from "../state/armdozer-effect/armdozer-effect";
+import { ArmdozerEffect } from "../state/armdozer-effect";
 
 /**
  * バッテリー回復スキップ効果を削除する
