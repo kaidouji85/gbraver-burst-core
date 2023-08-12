@@ -1,4 +1,4 @@
-import { EmptyArmdozerEffect, parseEmptyArmdozerEffect } from "../../src";
+import { EmptyArmdozerEffect, parseEmptyArmdozerEffect } from "../../../src";
 
 /** 有効なEmptyArmdozerEffect */
 const emptyArmdozerEffect: EmptyArmdozerEffect = {

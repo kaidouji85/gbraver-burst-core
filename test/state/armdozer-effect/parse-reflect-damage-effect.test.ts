@@ -1,4 +1,4 @@
-import {parseReflectDamageEffect, ReflectDamageEffect} from "../../src/state/armdozer-effect/reflect-damage-effect";
+import {parseReflectDamageEffect, ReflectDamageEffect} from "../../../src/state/armdozer-effect/reflect-damage-effect";
 
 /** 有効なReflectDamageEffect */
 const reflectDamageEffect: ReflectDamageEffect = "Lightning";

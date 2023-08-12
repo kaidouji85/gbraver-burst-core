@@ -1,4 +1,4 @@
-import { DamageHalved, parseDamageHalved } from "../../src";
+import { DamageHalved, parseDamageHalved } from "../../../src";
 
 /** 有効なDamageHalved */
 const damageHalved: DamageHalved = {

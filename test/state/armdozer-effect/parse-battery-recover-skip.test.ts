@@ -1,4 +1,4 @@
-import { BatteryRecoverSkip, parseBatteryRecoverSkip } from "../../src";
+import { BatteryRecoverSkip, parseBatteryRecoverSkip } from "../../../src";
 
 /** 有効なBatteryRecoverSkip */
 const batteryRecoverSkip: BatteryRecoverSkip = {

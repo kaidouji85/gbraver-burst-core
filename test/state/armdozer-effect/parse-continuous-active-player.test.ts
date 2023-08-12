@@ -1,4 +1,4 @@
-import { ContinuousActivePlayer, parseContinuousActivePlayer } from "../../src";
+import { ContinuousActivePlayer, parseContinuousActivePlayer } from "../../../src";
 
 /** 有効な ContinuousActivePlayer */
 const continuousActivePlayer: ContinuousActivePlayer = {
