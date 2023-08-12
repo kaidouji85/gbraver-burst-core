@@ -165,7 +165,9 @@ export {
   CorrectPower,
   DamageHalved,
   EmptyArmdozerEffect,
+  parseSpecialPeriodEffect,
   parseTurnLimitEffect,
+  SpecialPeriodEffectSchema,
   TryReflect,
   TurnLimitEffectSchema,
 } from "./state/armdozer-effect";
