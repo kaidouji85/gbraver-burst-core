@@ -1,4 +1,4 @@
-import type { Burst } from "../../player/burst/burst";
+import type { Burst } from "../../player/burst";
 import type { ArmdozerState } from "../../state/armdozer-state";
 
 /**

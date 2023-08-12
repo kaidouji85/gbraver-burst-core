@@ -109,7 +109,7 @@ export {
 
 
 
-} from "./player/burst/burst";
+} from "./player/burst";
 export {
   BatteryBoostSkill,
   BatteryBoostSkillSchema,

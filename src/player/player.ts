@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { ArmdozerSchema, ArmdozerX } from "./armdozer";
-import { Burst } from "./burst/burst";
+import { Burst } from "./burst";
 import { PilotSchema, PilotSkill, PilotX } from "./pilot";
 
 /** プレイヤーID */
