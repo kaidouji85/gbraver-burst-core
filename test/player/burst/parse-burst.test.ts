@@ -1,4 +1,4 @@
-import { Burst, parseBurst } from "../../src";
+import { Burst, parseBurst } from "../../../src";
 
 /** 有効なバースト */
 const bursts: Burst[] = [

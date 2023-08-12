@@ -1,4 +1,4 @@
-import { ContinuousAttack, parseContinuousAttack } from "../../src";
+import { ContinuousAttack, parseContinuousAttack } from "../../../src";
 
 test("ContinuousAttackはパースできる", () => {
   const data: ContinuousAttack = {

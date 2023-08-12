@@ -1,4 +1,4 @@
-import type { BuffPower } from "../../player/burst";
+import { BuffPower } from "../../player/burst/buff-power";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";

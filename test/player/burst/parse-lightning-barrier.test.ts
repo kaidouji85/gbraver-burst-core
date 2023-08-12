@@ -1,4 +1,4 @@
-import { LightningBarrier, parseLightningBarrier } from "../../src";
+import { LightningBarrier, parseLightningBarrier } from "../../../src";
 
 test("LightningBarrierはパースできる", () => {
   const data: LightningBarrier = {
