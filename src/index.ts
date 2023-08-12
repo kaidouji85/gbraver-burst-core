@@ -106,11 +106,9 @@ export {
   BatteryLimitBreakSchema,
   Burst,
   BurstSchema,
-  ContinuousAttack,
-  ContinuousAttackSchema,
   parseBatteryLimitBreak,
   parseBurst,
-  parseContinuousAttack,
+
 
 
 
@@ -200,3 +198,6 @@ export {BuffPower} from "./player/burst/buff-power";
 export {parseLightningBarrier} from "./player/burst/lightning-barrier";
 export {LightningBarrierSchema} from "./player/burst/lightning-barrier";
 export {LightningBarrier} from "./player/burst/lightning-barrier";
+export {parseContinuousAttack} from "./player/burst/continuous-attack";
+export {ContinuousAttackSchema} from "./player/burst/continuous-attack";
+export {ContinuousAttack} from "./player/burst/continuous-attack";
