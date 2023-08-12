@@ -1,4 +1,4 @@
-import {CorrectPower, parseCorrectPower} from "../../src";
+import { CorrectPower, parseCorrectPower } from "../../src";
 
 /** 有効なCorrectPower */
 const correctPower: CorrectPower = {
@@ -7,7 +7,7 @@ const correctPower: CorrectPower = {
   period: {
     type: "TurnLimit",
     remainingTurn: 2,
-  }
+  },
 };
 
 test("CorrectPowerはパースできる", () => {
@@ -21,7 +21,7 @@ test("CorrectPower以外はパースできない", () => {
     period: {
       type: "TurnLimit",
       remaining: 1,
-    }
+    },
   };
   expect(parseCorrectPower(data)).toBe(null);
 });

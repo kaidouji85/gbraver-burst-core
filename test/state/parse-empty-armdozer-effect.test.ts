@@ -1,16 +1,18 @@
-import {EmptyArmdozerEffect, parseEmptyArmdozerEffect} from "../../src";
+import { EmptyArmdozerEffect, parseEmptyArmdozerEffect } from "../../src";
 
 /** 有効なEmptyArmdozerEffect */
 const emptyArmdozerEffect: EmptyArmdozerEffect = {
-  type: 'Empty',
+  type: "Empty",
   period: {
-    type: 'TurnLimit',
+    type: "TurnLimit",
     remainingTurn: 1,
-  }
+  },
 };
 
 test("EmptyArmdozerEffectはパースできる", () => {
-  expect(parseEmptyArmdozerEffect(emptyArmdozerEffect)).toEqual(emptyArmdozerEffect);
+  expect(parseEmptyArmdozerEffect(emptyArmdozerEffect)).toEqual(
+    emptyArmdozerEffect,
+  );
 });
 
 test("EmptyArmdozerEffect以外はパースできない", () => {
@@ -19,8 +21,7 @@ test("EmptyArmdozerEffect以外はパースできない", () => {
     period: {
       type: "turnLimit",
       remaining: 1,
-    }
+    },
   };
   expect(parseEmptyArmdozerEffect(data)).toBe(null);
 });
-

@@ -1,15 +1,17 @@
-import {BatteryRecoverSkip, parseBatteryRecoverSkip} from "../../src";
+import { BatteryRecoverSkip, parseBatteryRecoverSkip } from "../../src";
 
 /** 有効なBatteryRecoverSkip */
 const batteryRecoverSkip: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
   period: {
     type: "SpecialPeriod",
-  }
+  },
 };
 
 test("BatteryRecoverSkipはパースできる", () => {
-  expect(parseBatteryRecoverSkip(batteryRecoverSkip)).toEqual(batteryRecoverSkip);
+  expect(parseBatteryRecoverSkip(batteryRecoverSkip)).toEqual(
+    batteryRecoverSkip,
+  );
 });
 
 test("BatteryRecoverSkip以外はパースできない", () => {
@@ -17,7 +19,7 @@ test("BatteryRecoverSkip以外はパースできない", () => {
     type: "recoverSkip",
     period: {
       type: "Special",
-    }
-  }
+    },
+  };
   expect(parseBatteryRecoverSkip(data)).toBeNull();
 });

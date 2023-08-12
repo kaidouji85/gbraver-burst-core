@@ -1,4 +1,4 @@
-import {DamageHalved, parseDamageHalved} from "../../src";
+import { DamageHalved, parseDamageHalved } from "../../src";
 
 /** 有効なDamageHalved */
 const damageHalved: DamageHalved = {
@@ -6,7 +6,7 @@ const damageHalved: DamageHalved = {
   period: {
     type: "TurnLimit",
     remainingTurn: 1,
-  }
+  },
 };
 
 test("DamageHalvedはパースできる", () => {
@@ -19,7 +19,7 @@ test("DamageHalved以外はパースできない", () => {
     period: {
       type: "TurnLimit",
       remaining: 1,
-    }
+    },
   };
   expect(parseDamageHalved(data)).toBeNull();
 });

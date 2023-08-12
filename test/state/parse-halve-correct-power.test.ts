@@ -1,4 +1,7 @@
-import {HalveCorrectPower, parseHalveCorrectPower} from "../../src/state/armdozer-effect";
+import {
+  HalveCorrectPower,
+  parseHalveCorrectPower,
+} from "../../src/state/armdozer-effect";
 
 /** 有効なHalveCorrectPower */
 const halveCorrectPower: HalveCorrectPower = {
@@ -6,7 +9,7 @@ const halveCorrectPower: HalveCorrectPower = {
   period: {
     type: "TurnLimit",
     remainingTurn: 2,
-  }
+  },
 };
 
 test("HalveCorrectPowerはパースできる", () => {
@@ -19,7 +22,7 @@ test("HalveCorrectPower以外はパースできない", () => {
     period: {
       type: "TurnLimit",
       remaining: 1,
-    }
+    },
   };
   expect(parseHalveCorrectPower(data)).toBe(null);
 });

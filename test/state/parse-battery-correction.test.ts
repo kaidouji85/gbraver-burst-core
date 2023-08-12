@@ -1,4 +1,4 @@
-import {BatteryCorrection, parseBatteryCorrection} from "../../src";
+import { BatteryCorrection, parseBatteryCorrection } from "../../src";
 
 /** 有効な BatteryCorrection */
 const batteryCorrection: BatteryCorrection = {
@@ -7,7 +7,7 @@ const batteryCorrection: BatteryCorrection = {
   period: {
     type: "TurnLimit",
     remainingTurn: 2,
-  }
+  },
 };
 
 test("BatteryCorrectionはパースできる", () => {
@@ -21,7 +21,7 @@ test("BatteryCorrection以外はパースできない", () => {
     period: {
       type: "TurnLimit",
       remaining: 2,
-    }
+    },
   };
   expect(parseBatteryCorrection(data)).toBeNull();
 });

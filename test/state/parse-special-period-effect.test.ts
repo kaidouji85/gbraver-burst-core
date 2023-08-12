@@ -1,4 +1,7 @@
-import {parseSpecialPeriodEffect, SpecialPeriodEffect} from "../../src/state/armdozer-effect";
+import {
+  parseSpecialPeriodEffect,
+  SpecialPeriodEffect,
+} from "../../src/state/armdozer-effect";
 
 /** 有効なSpecialPeriodEffect */
 const specialPeriodEffect: SpecialPeriodEffect = {
@@ -6,7 +9,9 @@ const specialPeriodEffect: SpecialPeriodEffect = {
 };
 
 test("SpecialPeriodはパースできる", () => {
-  expect(parseSpecialPeriodEffect(specialPeriodEffect)).toEqual(specialPeriodEffect);
+  expect(parseSpecialPeriodEffect(specialPeriodEffect)).toEqual(
+    specialPeriodEffect,
+  );
 });
 
 test("SpecialPeriod以外はパースできない", () => {

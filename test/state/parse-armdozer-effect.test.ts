@@ -1,13 +1,13 @@
-import {ArmdozerEffect, parseArmdozerEffect} from "../../src";
+import { ArmdozerEffect, parseArmdozerEffect } from "../../src";
 
 /** 有効なArmdozerEffect */
 const armdozerEffects: ArmdozerEffect[] = [
   {
-    type: 'Empty',
+    type: "Empty",
     period: {
-      type: 'TurnLimit',
+      type: "TurnLimit",
       remainingTurn: 1,
-    }
+    },
   },
   {
     type: "CorrectPower",
@@ -15,14 +15,14 @@ const armdozerEffects: ArmdozerEffect[] = [
     period: {
       type: "TurnLimit",
       remainingTurn: 2,
-    }
+    },
   },
   {
     type: "HalveCorrectPower",
     period: {
       type: "TurnLimit",
       remainingTurn: 2,
-    }
+    },
   },
   {
     type: "TryReflect",
@@ -31,13 +31,13 @@ const armdozerEffects: ArmdozerEffect[] = [
     period: {
       type: "TurnLimit",
       remainingTurn: 2,
-    }
+    },
   },
   {
     type: "ContinuousActivePlayer",
     period: {
       type: "SpecialPeriod",
-    }
+    },
   },
   {
     type: "BatteryCorrection",
@@ -45,25 +45,25 @@ const armdozerEffects: ArmdozerEffect[] = [
     period: {
       type: "TurnLimit",
       remainingTurn: 2,
-    }
+    },
   },
   {
     type: "DamageHalved",
     period: {
       type: "TurnLimit",
       remainingTurn: 1,
-    }
+    },
   },
   {
     type: "BatteryRecoverSkip",
     period: {
       type: "SpecialPeriod",
-    }
-  }
+    },
+  },
 ];
 
 test("ArmdozerEffectはパースできる", () => {
-  armdozerEffects.forEach(effect => {
+  armdozerEffects.forEach((effect) => {
     expect(parseArmdozerEffect(effect)).toEqual(effect);
   });
 });
@@ -75,7 +75,7 @@ test("ArmdozerEffect以外はパースできない", () => {
     period: {
       type: "TurnLimit",
       remaining: 1,
-    }
+    },
   };
   expect(parseArmdozerEffect(data)).toBe(null);
 });

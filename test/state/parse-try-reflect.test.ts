@@ -1,4 +1,4 @@
-import {parseTryReflect, TryReflect} from "../../src";
+import { parseTryReflect, TryReflect } from "../../src";
 
 /** 有効なTryReflect */
 const tryReflect: TryReflect = {
@@ -8,7 +8,7 @@ const tryReflect: TryReflect = {
   period: {
     type: "TurnLimit",
     remainingTurn: 2,
-  }
+  },
 };
 
 test("TryReflectはパースできる", () => {
@@ -23,7 +23,7 @@ test("TryReflectではないオブジェクトはパースできない", () => {
     period: {
       type: "TurnLimit",
       remainingTurn: 2,
-    }
+    },
   };
   expect(parseTryReflect(data)).toBeNull();
 });

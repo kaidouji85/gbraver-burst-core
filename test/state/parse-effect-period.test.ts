@@ -1,4 +1,7 @@
-import {EffectPeriod, parseEffectPeriod} from "../../src/state/armdozer-effect";
+import {
+  EffectPeriod,
+  parseEffectPeriod,
+} from "../../src/state/armdozer-effect";
 
 /** 有効なEffectPeriod */
 const effectPeriods: EffectPeriod[] = [
@@ -8,11 +11,11 @@ const effectPeriods: EffectPeriod[] = [
   },
   {
     type: "SpecialPeriod",
-  }
+  },
 ];
 
 test("EffectPeriodはパースできる", () => {
-  effectPeriods.forEach(effectPeriod => {
+  effectPeriods.forEach((effectPeriod) => {
     expect(parseEffectPeriod(effectPeriod)).toEqual(effectPeriod);
   });
 });
@@ -24,4 +27,3 @@ test("EffectPeriod以外はパースできない", () => {
   };
   expect(parseEffectPeriod(data)).toBe(null);
 });
-
