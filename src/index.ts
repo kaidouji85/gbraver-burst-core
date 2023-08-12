@@ -160,14 +160,11 @@ export {
   BatteryCorrectionSchema,
   BatteryRecoverSkip,
   BatteryRecoverSkipSchema,
-  ContinuousActivePlayer,
-  ContinuousActivePlayerSchema,
   DamageHalved,
   DamageHalvedSchema,
   parseArmdozerEffect,
   parseBatteryCorrection,
   parseBatteryRecoverSkip,
-  parseContinuousActivePlayer,
   parseDamageHalved,
 
 
@@ -196,3 +193,6 @@ export {ReflectDamageEffectSchema} from "./state/armdozer-effect/reflect-damage-
 export {parseTryReflect} from "./state/armdozer-effect/try-reflect";
 export {TryReflectSchema} from "./state/armdozer-effect/try-reflect";
 export {TryReflect} from "./state/armdozer-effect/try-reflect";
+export {parseContinuousActivePlayer} from "./state/armdozer-effect/continuous-active-player";
+export {ContinuousActivePlayerSchema} from "./state/armdozer-effect/continuous-active-player";
+export {ContinuousActivePlayer} from "./state/armdozer-effect/continuous-active-player";
