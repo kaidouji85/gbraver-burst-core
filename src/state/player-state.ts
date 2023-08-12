@@ -1,4 +1,4 @@
-import type { Burst } from "../player/burst";
+import type { Burst } from "../player/burst/burst";
 import type { PilotSkill } from "../player/pilot";
 import type { Player, PlayerId } from "../player/player";
 import type { ArmdozerStateX } from "./armdozer-state";

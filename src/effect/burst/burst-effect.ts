@@ -1,4 +1,4 @@
-import type { Burst } from "../../player/burst";
+import type { Burst } from "../../player/burst/burst";
 import type { PlayerId } from "../../player/player";
 
 /** バースト効果 */

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Burst, BurstSchema } from "./burst";
+import { Burst, BurstSchema } from "./burst/burst";
 
 /** アームドーザID */
 export type ArmDozerId = string;

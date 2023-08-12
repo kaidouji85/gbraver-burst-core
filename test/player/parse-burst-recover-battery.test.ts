@@ -1,7 +1,7 @@
 import {
   BurstRecoverBattery,
   parseBurstRecoverBattery,
-} from "../../src/player/burst";
+} from "../../src/player/burst/burst";
 
 test("BurstRecoverBatteryはパースできる", () => {
   const data: BurstRecoverBattery = {

@@ -1,4 +1,4 @@
-import type { BatteryLimitBreak } from "../../player/burst";
+import type { BatteryLimitBreak } from "../../player/burst/burst";
 import type { PlayerId } from "../../player/player";
 import type { ArmdozerState } from "../../state/armdozer-state";
 import type { GameState, GameStateX } from "../../state/game-state";

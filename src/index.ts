@@ -120,7 +120,7 @@ export {
   parseRecoverBattery,
   RecoverBattery,
   RecoverBatterySchema,
-} from "./player/burst";
+} from "./player/burst/burst";
 export {
   BatteryBoostSkill,
   BatteryBoostSkillSchema,

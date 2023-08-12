@@ -1,5 +1,5 @@
 import type { Armdozer } from "../player/armdozer";
-import type { Burst } from "../player/burst";
+import type { Burst } from "../player/burst/burst";
 import type { ArmdozerState } from "../state/armdozer-state";
 
 /** 空のバースト */

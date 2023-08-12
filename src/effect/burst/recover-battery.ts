@@ -1,4 +1,4 @@
-import type { RecoverBattery } from "../../player/burst";
+import type { RecoverBattery } from "../../player/burst/burst";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
