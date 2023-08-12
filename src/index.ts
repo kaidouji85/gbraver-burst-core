@@ -166,8 +166,6 @@ export {
   CorrectPowerSchema,
   DamageHalved,
   DamageHalvedSchema,
-  EmptyArmdozerEffect,
-  EmptyArmdozerEffectSchema,
   HalveCorrectPowerSchema,
   parseArmdozerEffect,
   parseBatteryCorrection,
@@ -175,7 +173,6 @@ export {
   parseContinuousActivePlayer,
   parseCorrectPower,
   parseDamageHalved,
-  parseEmptyArmdozerEffect,
   parseHalveCorrectPower,
   parseReflectDamageEffect,
   parseTryReflect,
@@ -194,3 +191,6 @@ export {parseSpecialPeriodEffect} from "./state/armdozer-effect/special-period-e
 export {SpecialPeriodEffectSchema} from "./state/armdozer-effect/special-period-effect";
 export {parseEffectPeriod} from "./state/armdozer-effect/effect-period";
 export {EffectPeriodSchema} from "./state/armdozer-effect/effect-period";
+export {parseEmptyArmdozerEffect} from "./state/armdozer-effect/empty-armdozer-effect";
+export {EmptyArmdozerEffectSchema} from "./state/armdozer-effect/empty-armdozer-effect";
+export {EmptyArmdozerEffect} from "./state/armdozer-effect/empty-armdozer-effect";
