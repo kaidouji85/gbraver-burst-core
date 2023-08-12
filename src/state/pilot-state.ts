@@ -1,4 +1,4 @@
-import type { Pilot, PilotSkill, PilotX } from "../player/pilot";
+import type { Pilot, PilotSkill, PilotX } from "../player/pilot/pilot";
 
 /**
  * パイロットステート（型指定あり）

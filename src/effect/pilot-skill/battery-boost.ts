@@ -1,4 +1,4 @@
-import { BatteryBoostSkill } from "../../player/pilot";
+import { BatteryBoostSkill } from "../../player/pilot/pilot";
 import { PlayerId } from "../../player/player";
 import { ArmdozerState } from "../../state/armdozer-state";
 import { GameState, GameStateX } from "../../state/game-state";

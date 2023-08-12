@@ -1,4 +1,4 @@
-import type { DamageHalvedSkill } from "../../player/pilot";
+import type { DamageHalvedSkill } from "../../player/pilot/pilot";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";

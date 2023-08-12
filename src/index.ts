@@ -143,7 +143,7 @@ export {
   PilotX,
   RecoverBatterySkill,
   RecoverBatterySkillSchema,
-} from "./player/pilot";
+} from "./player/pilot/pilot";
 export {
   parsePlayer,
   parsePlayerId,
