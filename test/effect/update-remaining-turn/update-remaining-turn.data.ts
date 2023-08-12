@@ -5,7 +5,7 @@ import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type {
   SpecialPeriodEffect,
   TurnLimitEffect,
-} from "../../../src/state/armdozer-effect";
+} from "../../../src/state/armdozer-effect/armdozer-effect";
 import type { GameState } from "../../../src/state/game-state";
 
 /** 特殊期限 */

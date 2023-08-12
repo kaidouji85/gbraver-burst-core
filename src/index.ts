@@ -188,7 +188,7 @@ export {
   TryReflect,
   TryReflectSchema,
   TurnLimitEffectSchema,
-} from "./state/armdozer-effect";
+} from "./state/armdozer-effect/armdozer-effect";
 export { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
 export { GameState, GameStateX } from "./state/game-state";
 export { PilotState, PilotStateX } from "./state/pilot-state";

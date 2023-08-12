@@ -1,4 +1,4 @@
-import type { ArmdozerEffect } from "../state/armdozer-effect";
+import type { ArmdozerEffect } from "../state/armdozer-effect/armdozer-effect";
 
 /**
  * 攻撃補正を計算する

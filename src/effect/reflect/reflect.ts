@@ -2,7 +2,7 @@ import type { PlayerId } from "../../player/player";
 import type {
   ReflectDamageEffect,
   TryReflect,
-} from "../../state/armdozer-effect";
+} from "../../state/armdozer-effect/armdozer-effect";
 import type { PlayerState } from "../../state/player-state";
 import { hasDamageHalved } from "../damage-halved";
 import { toMinDamage } from "../to-min-damage";

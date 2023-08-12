@@ -1,5 +1,5 @@
 import type { PlayerId } from "../../player/player";
-import type { ArmdozerEffect } from "../../state/armdozer-effect";
+import type { ArmdozerEffect } from "../../state/armdozer-effect/armdozer-effect";
 
 /** 終了したアームドーザ効果 */
 export type EndArmdozerEffect = Readonly<{

@@ -2,7 +2,7 @@ import type {
   CorrectPower,
   DamageHalved,
   EmptyArmdozerEffect,
-} from "../state/armdozer-effect";
+} from "../state/armdozer-effect/armdozer-effect";
 
 /** 空のアームドーザエフェクト */
 export const EMPTY_ARMDOZER_EFFECT: EmptyArmdozerEffect = {

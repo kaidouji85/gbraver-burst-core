@@ -1,4 +1,4 @@
-import type { ArmdozerEffect } from "../state/armdozer-effect";
+import type { ArmdozerEffect } from "../state/armdozer-effect/armdozer-effect";
 
 /**
  * ダメージ半減効果を持つか否かを判定する

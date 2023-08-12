@@ -1,7 +1,7 @@
 import {
   parseSpecialPeriodEffect,
   SpecialPeriodEffect,
-} from "../../src/state/armdozer-effect";
+} from "../../src/state/armdozer-effect/armdozer-effect";
 
 /** 有効なSpecialPeriodEffect */
 const specialPeriodEffect: SpecialPeriodEffect = {

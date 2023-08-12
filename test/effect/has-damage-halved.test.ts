@@ -4,7 +4,7 @@ import {
   CorrectPower,
   DamageHalved,
   TurnLimitEffect,
-} from "../../src/state/armdozer-effect";
+} from "../../src/state/armdozer-effect/armdozer-effect";
 
 const oneTurn: TurnLimitEffect = {
   type: "TurnLimit",
