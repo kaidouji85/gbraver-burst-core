@@ -1,4 +1,4 @@
-import type { Pilot } from "../player/pilot/pilot";
+import type { Pilot } from "../player/pilot";
 
 /** パイロットIDを集めたもの */
 export const PilotIds = {
