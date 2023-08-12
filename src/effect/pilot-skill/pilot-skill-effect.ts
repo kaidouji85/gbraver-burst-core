@@ -1,4 +1,4 @@
-import type { PilotSkill } from "../../player/pilot";
+import { PilotSkill } from "../../player/pilot/pilot-skill";
 import type { PlayerId } from "../../player/player";
 
 /**

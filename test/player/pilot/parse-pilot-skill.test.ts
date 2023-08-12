@@ -1,4 +1,4 @@
-import { parsePilotSkill, PilotSkill } from "../../src";
+import { parsePilotSkill, PilotSkill } from "../../../src";
 
 /** 有効なパイロットスキル */
 const pilotSkills: PilotSkill[] = [

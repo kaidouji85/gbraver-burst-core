@@ -1,6 +1,7 @@
 import path from "path";
 
 import {
+  BuffPowerSkill,
   EMPTY_ARMDOZER_EFFECT,
   type GameState,
   type PlayerState,
@@ -9,7 +10,6 @@ import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { BuffPowerSkill } from "../../../src/player/pilot";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,

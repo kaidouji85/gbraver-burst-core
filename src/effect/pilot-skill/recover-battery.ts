@@ -1,4 +1,4 @@
-import type { RecoverBatterySkill } from "../../player/pilot";
+import { RecoverBatterySkill } from "../../player/pilot/recover-battery-skill";
 import type { PlayerId } from "../../player/player";
 import type { ArmdozerState } from "../../state/armdozer-state";
 import type { GameState, GameStateX } from "../../state/game-state";

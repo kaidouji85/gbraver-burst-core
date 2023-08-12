@@ -9,7 +9,7 @@ import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { BatteryEnchantmentSkill } from "../../../src/player/pilot";
+import { BatteryEnchantmentSkill } from "../../../src/player/pilot/battery-enchantment-skill";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,
