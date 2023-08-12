@@ -1,9 +1,9 @@
+import { ContinuousAttack } from "../../player/burst/continuous-attack";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
-import {ContinuousAttack} from "../../player/burst/continuous-attack";
 
 /**
  * アクティブプレイヤー継続を適用する

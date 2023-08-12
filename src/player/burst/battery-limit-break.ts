@@ -1,5 +1,9 @@
-import {BurstRecoverBattery, BurstRecoverBatterySchema} from "./burst-recover-battery";
-import {z} from "zod";
+import { z } from "zod";
+
+import {
+  BurstRecoverBattery,
+  BurstRecoverBatterySchema,
+} from "./burst-recover-battery";
 
 /** バッテリーリミットブレイク */
 export type BatteryLimitBreak = BurstRecoverBattery &

@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** 全バースト共通で利用するバッテリー回復プロパティ */
 export type BurstRecoverBattery = Readonly<{

@@ -1,10 +1,10 @@
+import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import type { PlayerId } from "../../player/player";
 import type { ArmdozerState } from "../../state/armdozer-state";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
-import {BatteryLimitBreak} from "../../player/burst/battery-limit-break";
 
 /**
  * バッテリーリミットブレイクを適用する

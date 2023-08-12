@@ -1,5 +1,9 @@
-import {BurstRecoverBattery, BurstRecoverBatterySchema} from "./burst-recover-battery";
-import {z} from "zod";
+import { z } from "zod";
+
+import {
+  BurstRecoverBattery,
+  BurstRecoverBatterySchema,
+} from "./burst-recover-battery";
 
 /** 連続攻撃 */
 export type ContinuousAttack = BurstRecoverBattery &

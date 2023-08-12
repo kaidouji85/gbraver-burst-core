@@ -1,9 +1,9 @@
+import { RecoverBattery } from "../../player/burst/recover-battery";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
-import {RecoverBattery} from "../../player/burst/recover-battery";
 
 /**
  * バッテリー回復を適用する
