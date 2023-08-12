@@ -6,7 +6,7 @@ import {TryReflect, TryReflectSchema} from "./try-reflect";
 import {ContinuousActivePlayer, ContinuousActivePlayerSchema} from "./continuous-active-player";
 import {BatteryCorrection, BatteryCorrectionSchema} from "./battery-correction";
 import {DamageHalved, DamageHalvedSchema} from "./damage-halved";
-import {BatteryRecoverSkip, BatteryRecoverSkipSchema} from "./battery-recover-skip";
+import {BatteryRecoverSkip, BatteryRecoverSkipSchema} from "./index";
 
 /**
  * アームドーザに適用される効果
