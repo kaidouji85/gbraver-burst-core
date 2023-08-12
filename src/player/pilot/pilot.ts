@@ -2,6 +2,7 @@ import {z} from "zod";
 import {RecoverBatterySkill, RecoverBatterySkillSchema} from "./recover-battery-skill";
 import {BuffPowerSkill, BuffPowerSkillSchema} from "./buff-power-skill";
 import {BatteryEnchantmentSkill, BatteryEnchantmentSkillSchema} from "./battery-enchantment-skill";
+import {DamageHalvedSkill, DamageHalvedSkillSchema} from "./damage-halved-skill";
 
 /** パイロットID */
 export type PilotId = string;
@@ -16,31 +17,6 @@ export const PilotIdSchema = z.string();
  */
 export const parsePilotId = (origin: unknown): PilotId | null => {
   const result = PilotIdSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/** ダメージ半減スキル */
-export type DamageHalvedSkill = Readonly<{
-  type: "DamageHalvedSkill";
-  /** 継続ターン数 */
-  duration: number;
-}>;
-
-/** DamageHalvedSkill zodスキーマ */
-export const DamageHalvedSkillSchema = z.object({
-  type: z.literal("DamageHalvedSkill"),
-  duration: z.number(),
-});
-
-/**
- * 任意オブジェクトをDamageHalvedSkillにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseDamageHalvedSkill = (
-  origin: unknown,
-): DamageHalvedSkill | null => {
-  const result = DamageHalvedSkillSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
 
