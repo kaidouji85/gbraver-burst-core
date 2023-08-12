@@ -1,6 +1,3 @@
-/** エフェクト有効期間 */
-export type EffectPeriod = TurnLimitEffect | SpecialPeriodEffect;
-
 /** ターン期限付きのエフェクト */
 export type TurnLimitEffect = Readonly<{
   type: "TurnLimit";
@@ -13,19 +10,8 @@ export type SpecialPeriodEffect = Readonly<{
   type: "SpecialPeriod";
 }>;
 
-/**
- * アームドーザに適用される効果
- * バフ、デバフなどのターン継続効果を想定している
- */
-export type ArmdozerEffect =
-  | EmptyArmdozerEffect
-  | CorrectPower
-  | HalveCorrectPower
-  | TryReflect
-  | ContinuousActivePlayer
-  | BatteryCorrection
-  | DamageHalved
-  | BatteryRecoverSkip;
+/** エフェクト有効期間 */
+export type EffectPeriod = TurnLimitEffect | SpecialPeriodEffect;
 
 /**
  * 何もしない効果
@@ -97,3 +83,18 @@ export type BatteryRecoverSkip = Readonly<{
   /** エフェクト有効期間 */
   period: EffectPeriod;
 }>;
+
+/**
+ * アームドーザに適用される効果
+ * バフ、デバフなどのターン継続効果を想定している
+ */
+export type ArmdozerEffect =
+  | EmptyArmdozerEffect
+  | CorrectPower
+  | HalveCorrectPower
+  | TryReflect
+  | ContinuousActivePlayer
+  | BatteryCorrection
+  | DamageHalved
+  | BatteryRecoverSkip;
+
