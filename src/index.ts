@@ -169,9 +169,8 @@ export {
   parseBatteryRecoverSkip,
   parseContinuousActivePlayer,
   parseDamageHalved,
-  parseTryReflect,
-  TryReflect,
-  TryReflectSchema,
+
+
 
 } from "./state/armdozer-effect/armdozer-effect";
 export { ArmdozerState, ArmdozerStateX } from "./state/armdozer-state";
@@ -194,3 +193,6 @@ export {parseHalveCorrectPower} from "./state/armdozer-effect/halve-correct-powe
 export {HalveCorrectPowerSchema} from "./state/armdozer-effect/halve-correct-power";
 export {parseReflectDamageEffect} from "./state/armdozer-effect/reflect-damage-effect";
 export {ReflectDamageEffectSchema} from "./state/armdozer-effect/reflect-damage-effect";
+export {parseTryReflect} from "./state/armdozer-effect/try-reflect";
+export {TryReflectSchema} from "./state/armdozer-effect/try-reflect";
+export {TryReflect} from "./state/armdozer-effect/try-reflect";
