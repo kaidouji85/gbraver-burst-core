@@ -156,14 +156,11 @@ export {
 export {
   ArmdozerEffect,
   ArmdozerEffectSchema,
-  BatteryCorrection,
-  BatteryCorrectionSchema,
   BatteryRecoverSkip,
   BatteryRecoverSkipSchema,
   DamageHalved,
   DamageHalvedSchema,
   parseArmdozerEffect,
-  parseBatteryCorrection,
   parseBatteryRecoverSkip,
   parseDamageHalved,
 
@@ -196,3 +193,6 @@ export {TryReflect} from "./state/armdozer-effect/try-reflect";
 export {parseContinuousActivePlayer} from "./state/armdozer-effect/continuous-active-player";
 export {ContinuousActivePlayerSchema} from "./state/armdozer-effect/continuous-active-player";
 export {ContinuousActivePlayer} from "./state/armdozer-effect/continuous-active-player";
+export {parseBatteryCorrection} from "./state/armdozer-effect/battery-correction";
+export {BatteryCorrectionSchema} from "./state/armdozer-effect/battery-correction";
+export {BatteryCorrection} from "./state/armdozer-effect/battery-correction";
