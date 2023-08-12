@@ -164,13 +164,11 @@ export {
   ContinuousActivePlayerSchema,
   DamageHalved,
   DamageHalvedSchema,
-  HalveCorrectPowerSchema,
   parseArmdozerEffect,
   parseBatteryCorrection,
   parseBatteryRecoverSkip,
   parseContinuousActivePlayer,
   parseDamageHalved,
-  parseHalveCorrectPower,
   parseReflectDamageEffect,
   parseTryReflect,
   ReflectDamageEffectSchema,
@@ -194,3 +192,5 @@ export {EmptyArmdozerEffect} from "./state/armdozer-effect/empty-armdozer-effect
 export {parseCorrectPower} from "./state/armdozer-effect/correct-power";
 export {CorrectPowerSchema} from "./state/armdozer-effect/correct-power";
 export {CorrectPower} from "./state/armdozer-effect/correct-power";
+export {parseHalveCorrectPower} from "./state/armdozer-effect/halve-correct-power";
+export {HalveCorrectPowerSchema} from "./state/armdozer-effect/halve-correct-power";
