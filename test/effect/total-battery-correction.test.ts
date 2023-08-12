@@ -2,8 +2,9 @@ import { totalBatteryCorrection } from "../../src/effect/battery-correction";
 import { EMPTY_ARMDOZER_EFFECT } from "../../src/empty/amrdozer-effect";
 import {
   ArmdozerEffect,
-  TurnLimitEffect,
+
 } from "../../src/state/armdozer-effect/armdozer-effect";
+import {TurnLimitEffect} from "../../src/state/armdozer-effect/turn-limit-effect";
 
 test("バッテリー補正合計値が正しく取得できる", () => {
   const oneTurn: TurnLimitEffect = {

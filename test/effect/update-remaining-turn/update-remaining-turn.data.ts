@@ -4,9 +4,10 @@ import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type {
   SpecialPeriodEffect,
-  TurnLimitEffect,
+
 } from "../../../src/state/armdozer-effect/armdozer-effect";
 import type { GameState } from "../../../src/state/game-state";
+import {TurnLimitEffect} from "../../../src/state/armdozer-effect/turn-limit-effect";
 
 /** 特殊期限 */
 const specialPeriod: SpecialPeriodEffect = {
