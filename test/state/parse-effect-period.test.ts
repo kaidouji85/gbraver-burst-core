@@ -1,7 +1,4 @@
-import {
-  EffectPeriod,
-  parseEffectPeriod,
-} from "../../src/state/armdozer-effect/armdozer-effect";
+import {EffectPeriod, parseEffectPeriod} from "../../src/state/armdozer-effect/effect-period";
 
 /** 有効なEffectPeriod */
 const effectPeriods: EffectPeriod[] = [
