@@ -1,11 +1,11 @@
 import { hasDamageHalved } from "../../src/effect/damage-halved";
 import {
   ArmdozerEffect,
-  CorrectPower,
   DamageHalved,
 
 } from "../../src/state/armdozer-effect/armdozer-effect";
 import {TurnLimitEffect} from "../../src/state/armdozer-effect/turn-limit-effect";
+import {CorrectPower} from "../../src/state/armdozer-effect/correct-power";
 
 const oneTurn: TurnLimitEffect = {
   type: "TurnLimit",
