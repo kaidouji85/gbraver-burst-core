@@ -12,5 +12,5 @@ test("TurnLimitはパースできる", () => {
 
 test("TurnLimit以外はパースできない", () => {
   const data = { type: "turnLimit", turn: 1};
-  expect(parseTurnLimitEffect(data)).toEqual(null);
+  expect(parseTurnLimitEffect(data)).toBe(null);
 });

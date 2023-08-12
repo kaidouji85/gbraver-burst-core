@@ -10,5 +10,5 @@ test("SpecialPeriodはパースできる", () => {
 
 test("SpecialPeriod以外はパースできない", () => {
   const data = { type: "specialPeriodEffect" };
-  expect(parseSpecialPeriodEffect(data)).toEqual(null);
+  expect(parseSpecialPeriodEffect(data)).toBe(null);
 });
