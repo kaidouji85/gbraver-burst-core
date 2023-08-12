@@ -180,10 +180,8 @@ export {
   parseEmptyArmdozerEffect,
   parseHalveCorrectPower,
   parseReflectDamageEffect,
-  parseSpecialPeriodEffect,
   parseTryReflect,
   ReflectDamageEffectSchema,
-  SpecialPeriodEffectSchema,
   TryReflect,
   TryReflectSchema,
 
@@ -194,3 +192,5 @@ export { PilotState, PilotStateX } from "./state/pilot-state";
 export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";
 export {parseTurnLimitEffect} from "./state/armdozer-effect/turn-limit-effect";
 export {TurnLimitEffectSchema} from "./state/armdozer-effect/turn-limit-effect";
+export {parseSpecialPeriodEffect} from "./state/armdozer-effect/special-period-effect";
+export {SpecialPeriodEffectSchema} from "./state/armdozer-effect/special-period-effect";
