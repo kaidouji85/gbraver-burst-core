@@ -160,6 +160,7 @@ export {
 export {
   ArmdozerEffect,
   BatteryCorrection,
+  BatteryCorrectionSchema,
   BatteryRecoverSkip,
   ContinuousActivePlayer,
   ContinuousActivePlayerSchema,
@@ -170,6 +171,7 @@ export {
   EmptyArmdozerEffect,
   EmptyArmdozerEffectSchema,
   HalveCorrectPowerSchema,
+  parseBatteryCorrection,
   parseContinuousActivePlayer,
   parseCorrectPower,
   parseEffectPeriod,
