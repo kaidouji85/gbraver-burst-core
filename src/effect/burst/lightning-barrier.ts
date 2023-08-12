@@ -1,9 +1,9 @@
-import type { LightningBarrier } from "../../player/burst/burst";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { BurstEffect } from "./burst-effect";
 import { burstRecoverBattery } from "./burst-recover-battery";
+import {LightningBarrier} from "../../player/burst/lightning-barrier";
 
 /**
  * 電撃バリアを適用する
