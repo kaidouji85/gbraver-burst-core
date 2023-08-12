@@ -1,4 +1,4 @@
-import { parseTryReflect, TryReflect } from "../../src";
+import { parseTryReflect, TryReflect } from "../../../src";
 
 /** 有効なTryReflect */
 const tryReflect: TryReflect = {

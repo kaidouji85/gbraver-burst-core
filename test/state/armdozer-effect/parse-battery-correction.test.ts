@@ -1,4 +1,4 @@
-import { BatteryCorrection, parseBatteryCorrection } from "../../src";
+import { BatteryCorrection, parseBatteryCorrection } from "../../../src";
 
 /** 有効な BatteryCorrection */
 const batteryCorrection: BatteryCorrection = {

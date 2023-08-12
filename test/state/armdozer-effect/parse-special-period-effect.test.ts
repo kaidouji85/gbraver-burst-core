@@ -1,7 +1,5 @@
-import {
-  parseSpecialPeriodEffect,
-  SpecialPeriodEffect,
-} from "../../src/state/armdozer-effect";
+import { parseSpecialPeriodEffect } from "../../../src";
+import { SpecialPeriodEffect } from "../../../src/state/armdozer-effect/special-period-effect";
 
 /** 有効なSpecialPeriodEffect */
 const specialPeriodEffect: SpecialPeriodEffect = {

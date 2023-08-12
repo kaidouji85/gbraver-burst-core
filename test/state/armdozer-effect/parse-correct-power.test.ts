@@ -1,4 +1,4 @@
-import { CorrectPower, parseCorrectPower } from "../../src";
+import { CorrectPower, parseCorrectPower } from "../../../src";
 
 /** 有効なCorrectPower */
 const correctPower: CorrectPower = {

@@ -1,7 +1,7 @@
 import {
   HalveCorrectPower,
   parseHalveCorrectPower,
-} from "../../src/state/armdozer-effect";
+} from "../../../src/state/armdozer-effect/halve-correct-power";
 
 /** 有効なHalveCorrectPower */
 const halveCorrectPower: HalveCorrectPower = {

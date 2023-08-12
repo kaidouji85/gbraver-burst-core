@@ -1,8 +1,6 @@
 import type { PlayerId } from "../../player/player";
-import type {
-  ReflectDamageEffect,
-  TryReflect,
-} from "../../state/armdozer-effect";
+import { ReflectDamageEffect } from "../../state/armdozer-effect/reflect-damage-effect";
+import { TryReflect } from "../../state/armdozer-effect/try-reflect";
 import type { PlayerState } from "../../state/player-state";
 import { hasDamageHalved } from "../damage-halved";
 import { toMinDamage } from "../to-min-damage";

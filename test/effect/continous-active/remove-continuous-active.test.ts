@@ -1,6 +1,6 @@
 import type { ArmdozerEffect, CorrectPower } from "../../../src";
 import { removeContinuousActive } from "../../../src/effect/continuous-active/remove-continuous-active";
-import type { ContinuousActivePlayer } from "../../../src/state/armdozer-effect";
+import { ContinuousActivePlayer } from "../../../src/state/armdozer-effect/continuous-active-player";
 
 const CORRECT_POWER: CorrectPower = {
   type: "CorrectPower",
