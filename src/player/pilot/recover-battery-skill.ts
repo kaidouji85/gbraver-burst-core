@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** パイロットスキル バッテリー回復 */
 export type RecoverBatterySkill = Readonly<{

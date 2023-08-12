@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** ダメージ半減スキル */
 export type DamageHalvedSkill = Readonly<{

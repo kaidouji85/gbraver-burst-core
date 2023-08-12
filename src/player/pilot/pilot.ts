@@ -1,5 +1,6 @@
-import {z} from "zod";
-import {PilotSkill, PilotSkillSchema} from "./pilot-skill";
+import { z } from "zod";
+
+import { PilotSkill, PilotSkillSchema } from "./pilot-skill";
 
 /** パイロットID */
 export type PilotId = string;

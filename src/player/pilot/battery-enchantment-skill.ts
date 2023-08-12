@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** バッテリー増強スキル */
 export type BatteryEnchantmentSkill = Readonly<{

@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 /** パイロットスキル 攻撃バフ */
 export type BuffPowerSkill = Readonly<{

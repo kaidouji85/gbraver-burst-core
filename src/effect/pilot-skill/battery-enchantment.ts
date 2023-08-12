@@ -1,8 +1,8 @@
+import { BatteryEnchantmentSkill } from "../../player/pilot/battery-enchantment-skill";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { PilotSkillEffectX } from "./pilot-skill-effect";
-import {BatteryEnchantmentSkill} from "../../player/pilot/battery-enchantment-skill";
 
 /**
  * バッテリー増強スキルを適用する
