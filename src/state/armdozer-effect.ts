@@ -98,6 +98,23 @@ export type CorrectPower = Readonly<{
   period: EffectPeriod;
 }>;
 
+/** CorrectPower zodスキーマ */
+export const CorrectPowerSchema = z.object({
+  type: z.literal("CorrectPower"),
+  power: z.number(),
+  period: EffectPeriodSchema,
+});
+
+/**
+ * 任意オブジェクトをCorrectPowerにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseCorrectPower = (origin: unknown): CorrectPower | null => {
+  const result = CorrectPowerSchema.safeParse(origin);
+  return result.success ? result.data : null;
+}
+
 /** 攻撃力補正半減 */
 export type HalveCorrectPower = Readonly<{
   type: "HalveCorrectPower";
