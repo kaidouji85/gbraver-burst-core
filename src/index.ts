@@ -122,13 +122,10 @@ export {
   BatteryBoostSkillSchema,
   BatteryEnchantmentSkill,
   BatteryEnchantmentSkillSchema,
-  BuffPowerSkill,
-  BuffPowerSkillSchema,
   DamageHalvedSkill,
   DamageHalvedSkillSchema,
   parseBatteryBoostSkill,
   parseBatteryEnchantmentSkill,
-  parseBuffPowerSkill,
   parseDamageHalvedSkill,
   parsePilot,
   parsePilotId,
@@ -195,3 +192,6 @@ export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";
 export {parseRecoverBatterySkill} from "./player/pilot/recover-battery-skill";
 export {RecoverBatterySkillSchema} from "./player/pilot/recover-battery-skill";
 export {RecoverBatterySkill} from "./player/pilot/recover-battery-skill";
+export {parseBuffPowerSkill} from "./player/pilot/buff-power-skill";
+export {BuffPowerSkillSchema} from "./player/pilot/buff-power-skill";
+export {BuffPowerSkill} from "./player/pilot/buff-power-skill";

@@ -1,8 +1,8 @@
-import type { BuffPowerSkill } from "../../player/pilot/pilot";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { PilotSkillEffectX } from "./pilot-skill-effect";
+import {BuffPowerSkill} from "../../player/pilot/buff-power-skill";
 
 /**
  * 攻撃バフスキルを発動する
