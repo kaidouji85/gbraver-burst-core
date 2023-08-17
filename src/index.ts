@@ -202,5 +202,5 @@ export {
   PilotStateSchema,
   PilotStateX,
 } from "./state/pilot-state";
-export { PlayerState, PlayerStateX } from "./state/player-state";
+export { parsePlayerState, PlayerState, PlayerStateSchema,PlayerStateX } from "./state/player-state";
 export { isPlayerDeath } from "./state/player-state/is-player-death";
