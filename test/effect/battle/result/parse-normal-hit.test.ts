@@ -10,7 +10,7 @@ test("NormalHitはパースできる", () => {
   expect(parseNormalHit(normalHit)).toEqual(normalHit);
 });
 
-test("NormalHit -> JSON.stringify -> JSON.parse、でもパースできる", () => {
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(normalHit);
   const data = JSON.parse(str);
   expect(parseNormalHit(data)).toEqual(data);
