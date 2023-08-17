@@ -4,7 +4,7 @@ import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import type { PlayerCommandX } from "../../../../src/game/command/player-command";
 import type { GameState } from "../../../../src/state/game-state";
-import type { PlayerState } from "../../../../src/state/player-state";
+import type { PlayerState } from "../../../../src/state/player-state/player-state";
 
 /** 攻撃側プレイヤー */
 export const attacker: PlayerState = {

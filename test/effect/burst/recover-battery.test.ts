@@ -5,7 +5,7 @@ import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { PlayerState } from "../../../src/state/player-state";
+import type { PlayerState } from "../../../src/state/player-state/player-state";
 import {
   exportSnapShotJSON,
   importSnapShotJSON,

@@ -1,5 +1,5 @@
 import type { Player } from "../player/player";
-import type { PlayerState } from "../state/player-state";
+import type { PlayerState } from "../state/player-state/player-state";
 import { EMPTY_ARMDOZER, EMPTY_ARMDOZER_STATE } from "./armdozer";
 import { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./pilot";
 

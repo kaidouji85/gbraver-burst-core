@@ -1,6 +1,6 @@
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
-import { PlayerState } from "../../state/player-state";
+import { PlayerState } from "../../state/player-state/player-state";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
 import type { BurstEffect } from "./burst-effect";

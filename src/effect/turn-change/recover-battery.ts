@@ -1,4 +1,4 @@
-import { PlayerState } from "../../state/player-state";
+import { PlayerState } from "../../state/player-state/player-state";
 
 /** ターンチェンジの際に回復するバッテリー */
 export const BATTERY_RECOVERY_VALUE = 3;

@@ -1,6 +1,6 @@
 import type { Player } from "../../player/player";
 import type { GameStateX } from "../../state/game-state";
-import { createPlayerState } from "../../state/player-state";
+import { createPlayerState } from "../../state/player-state/player-state";
 import { getFirstTurnPlayer } from "./first-turn-payer";
 import type { StartGame } from "./start-game";
 

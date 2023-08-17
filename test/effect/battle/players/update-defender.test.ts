@@ -6,7 +6,7 @@ import type { Miss } from "../../../../src/effect/battle/result/miss";
 import type { NormalHit } from "../../../../src/effect/battle/result/normal-hit";
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
-import type { PlayerState } from "../../../../src/state/player-state";
+import type { PlayerState } from "../../../../src/state/player-state/player-state";
 
 const DEFENDER: PlayerState = {
   ...EMPTY_PLAYER_STATE,

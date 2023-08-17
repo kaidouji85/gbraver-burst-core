@@ -1,6 +1,6 @@
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
-import { isPlayerDeath } from "../../state/player-state";
+import { isPlayerDeath } from "../../state/player-state/player-state";
 import type { Battle } from "./battle";
 import { updateDefender } from "./players/update-defender";
 import { battleResult } from "./result/battle-result";

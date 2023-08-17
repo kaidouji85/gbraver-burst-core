@@ -1,7 +1,7 @@
 import { BatteryEnchantmentSkill } from "../../player/pilot/battery-enchantment-skill";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
-import type { PlayerState } from "../../state/player-state";
+import type { PlayerState } from "../../state/player-state/player-state";
 import type { PilotSkillEffectX } from "./pilot-skill-effect";
 
 /**

@@ -1,4 +1,4 @@
-import type { PlayerState } from "../../../state/player-state";
+import type { PlayerState } from "../../../state/player-state/player-state";
 import type { CriticalHit } from "./critical-hit";
 import { criticalHit } from "./critical-hit";
 import type { Feint } from "./feint";

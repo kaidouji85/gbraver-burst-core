@@ -1,7 +1,7 @@
 import type { BatteryCommand } from "../../command/battery";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
-import type { PlayerState } from "../../state/player-state";
+import type { PlayerState } from "../../state/player-state/player-state";
 import { correctedBattery } from "../battery-correction";
 import type { BatteryDeclaration } from "./battery-declaration";
 import { updatePlayer } from "./update-player";

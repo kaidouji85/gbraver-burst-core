@@ -202,4 +202,4 @@ export {
   PilotStateSchema,
   PilotStateX,
 } from "./state/pilot-state";
-export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";
+export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state/player-state";
