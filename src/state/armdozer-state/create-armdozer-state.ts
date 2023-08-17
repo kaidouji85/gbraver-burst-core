@@ -1,5 +1,5 @@
 import { Armdozer } from "../../player/armdozer";
-import { ArmdozerState } from "./armdozer-state";
+import { ArmdozerState } from ".";
 
 /**
  * アームドーザ基本ステータスから戦闘状態を生成する

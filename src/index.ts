@@ -194,7 +194,7 @@ export {
   ArmdozerStateSchema,
   ArmdozerStateX,
   parseArmDozerState,
-} from "./state/armdozer-state/armdozer-state";
+} from "./state/armdozer-state";
 export { GameState, GameStateX } from "./state/game-state";
 export { PilotState, PilotStateX } from "./state/pilot-state";
 export { isPlayerDeath, PlayerState, PlayerStateX } from "./state/player-state";

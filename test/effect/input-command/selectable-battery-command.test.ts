@@ -1,6 +1,6 @@
 import { selectableBatteryCommand } from "../../../src/effect/input-command/selectable-battery-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
-import type { ArmdozerState } from "../../../src/state/armdozer-state/armdozer-state";
+import type { ArmdozerState } from "../../../src/state/armdozer-state";
 
 const ARMDOZER_STATE: ArmdozerState = {
   ...EMPTY_ARMDOZER_STATE,
