@@ -5,6 +5,21 @@ const battleResults: BattleResult[] = [
   {
     name: "NormalHit",
     damage: 2200,
+  },
+  {
+    name: "Guard",
+    damage: 1000,
+  },
+  {
+    name: "CriticalHit",
+    damage: 9999,
+  },
+  {
+    name: "Miss",
+  },
+  {
+    name: "Feint",
+    isDefenderMoved: true,
   }
 ];
 
