@@ -29,4 +29,4 @@ export const PilotStateSchema = PilotSchema.extend({
 export const parsePilotState = (origin: unknown): PilotState | null => {
   const result = PilotStateSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
