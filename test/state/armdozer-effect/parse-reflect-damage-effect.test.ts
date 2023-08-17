@@ -12,6 +12,12 @@ test("ReflectDamageEffectSchemaでパースできる", () => {
   );
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(reflectDamageEffect);
+  const data = JSON.parse(str);
+  expect(parseReflectDamageEffect(data)).toEqual(reflectDamageEffect);
+});
+
 test("ReflectDamageEffectSchemaでパースできない", () => {
   const data = "Fire";
   expect(parseReflectDamageEffect(data)).toBe(null);
