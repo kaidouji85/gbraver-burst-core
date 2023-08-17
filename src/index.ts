@@ -40,7 +40,7 @@ export {
   BattleResult,
   battleResult,
 } from "./effect/battle/result/battle-result";
-export { CriticalHit } from "./effect/battle/result/critical-hit";
+export { CriticalHit, CriticalHitSchema, parseCriticalHit } from "./effect/battle/result/critical-hit";
 export { Feint } from "./effect/battle/result/feint";
 export { Guard, GuardSchema, parseGuard } from "./effect/battle/result/guard";
 export { Miss } from "./effect/battle/result/miss";
