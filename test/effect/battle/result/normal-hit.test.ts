@@ -6,7 +6,7 @@ import {
 } from "../../../../src/empty/amrdozer-effect";
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
-import type { PlayerState } from "../../../../src/state/player-state/player-state";
+import type { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃プレイヤーのパラメータ */
 type AttackerParams = {

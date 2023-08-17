@@ -1,6 +1,6 @@
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
-import { PlayerState } from "../../state/player-state/player-state";
+import { PlayerState } from "../../state/player-state";
 import { batteryBoost } from "./battery-boost";
 import { batteryEnchantment } from "./battery-enchantment";
 import { buffPower } from "./buff-power";

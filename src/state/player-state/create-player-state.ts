@@ -1,7 +1,7 @@
 import { Player } from "../../player/player";
 import { createArmdozerState } from "../armdozer-state/create-armdozer-state";
 import { createPilotState } from "../pilot-state/create-pilot-state";
-import { PlayerState } from "./player-state";
+import { PlayerState } from ".";
 
 /**
  * プレイヤーステートを生成する

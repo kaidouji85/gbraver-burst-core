@@ -1,6 +1,6 @@
 import type { Effect } from "../effect";
 import type { PlayerId } from "../player/player";
-import type { PlayerState } from "./player-state/player-state";
+import type { PlayerState } from "./player-state";
 
 /**
  * ゲームステート（型指定あり）

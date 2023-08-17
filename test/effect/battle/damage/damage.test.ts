@@ -2,7 +2,7 @@ import { normalHitDamage } from "../../../../src/effect/battle/damage/damage";
 import { EMPTY_CORRECT_POWER } from "../../../../src/empty/amrdozer-effect";
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
-import type { PlayerState } from "../../../../src/state/player-state/player-state";
+import type { PlayerState } from "../../../../src/state/player-state";
 
 test("ダメージ = 攻撃力  + 攻撃力補正 +　バッテリーボーナス", () => {
   const attacker: PlayerState = {

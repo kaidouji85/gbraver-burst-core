@@ -1,6 +1,6 @@
 import { battleResult } from "../../../../src/effect/battle/result/battle-result";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
-import type { PlayerState } from "../../../../src/state/player-state/player-state";
+import type { PlayerState } from "../../../../src/state/player-state";
 
 const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "player1" };
 const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "player2" };

@@ -1,4 +1,4 @@
-import type { PlayerState } from "../../../state/player-state/player-state";
+import type { PlayerState } from "../../../state/player-state";
 import { hasDamageHalved } from "../../damage-halved";
 import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";

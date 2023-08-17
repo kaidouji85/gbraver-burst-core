@@ -1,4 +1,4 @@
-import type { PlayerState } from "../../../state/player-state/player-state";
+import type { PlayerState } from "../../../state/player-state";
 import type { BattleResult } from "../result/battle-result";
 
 /**

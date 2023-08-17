@@ -4,7 +4,7 @@ import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { gameEndJudging } from "../../../src/game/end-judging";
 import type { PlayerId } from "../../../src/player/player";
 import type { GameState } from "../../../src/state/game-state";
-import type { PlayerState } from "../../../src/state/player-state/player-state";
+import type { PlayerState } from "../../../src/state/player-state";
 
 /**
  * テストプレイヤーを生成するヘルパー関数

@@ -2,7 +2,7 @@ import { getFirstTurnPlayer } from "../../../src/effect/start-game/first-turn-pa
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { PlayerId } from "../../../src/player/player";
-import type { PlayerState } from "../../../src/state/player-state/player-state";
+import type { PlayerState } from "../../../src/state/player-state";
 
 test("スピードが高いプレイヤーが先行", () => {
   const player1: PlayerState = {

@@ -1,5 +1,5 @@
 import type { PlayerId } from "../../player/player";
-import type { PlayerState } from "../../state/player-state/player-state";
+import type { PlayerState } from "../../state/player-state";
 
 /**
  * 先行ターンのプレイヤーを判定する

@@ -1,4 +1,4 @@
-import { PlayerState } from "./player-state";
+import { PlayerState } from ".";
 
 /**
  * プレイヤーの死亡判定を行う
