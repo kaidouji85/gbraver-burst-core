@@ -1,4 +1,4 @@
-import type { Pilot, PilotX } from "../../player/pilot";
+import type { PilotX } from "../../player/pilot";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
 
 /**
@@ -13,13 +13,3 @@ export type PilotStateX<SKILL> = PilotX<SKILL> &
 
 /** パイロットステート */
 export type PilotState = PilotStateX<PilotSkill>;
-
-/**
- * パイロットステートを生成する
- *
- * @param origin パイロット情報
- * @return 生成結果
- */
-export function createPilotState(origin: Pilot): PilotState {
-  return { ...origin, enableSkill: true };
-}
