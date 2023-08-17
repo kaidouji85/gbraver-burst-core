@@ -1,5 +1,7 @@
-import type { PlayerId } from "../../player/player";
-import type { BattleResult } from "./result/battle-result";
+import { z } from "zod";
+
+import { PlayerId, PlayerIdSchema } from "../../player/player";
+import { BattleResult, BattleResultSchema } from "./result/battle-result";
 
 /**
  * 戦闘（型指定あり）
@@ -17,3 +19,21 @@ export type BattleX<X> = Readonly<{
 
 /** 戦闘 */
 export type Battle = BattleX<BattleResult>;
+
+/** Battle zodスキーマ */
+export const BattleSchema = z.object({
+  name: z.literal("Battle"),
+  attacker: PlayerIdSchema,
+  isDeath: z.boolean(),
+  result: BattleResultSchema,
+});
+
+/**
+ * 任意オブジェクトをBattleにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBattle = (origin: unknown): Battle | null => {
+  const result = BattleSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};

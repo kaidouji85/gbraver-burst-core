@@ -34,17 +34,32 @@ export {
   BatteryDeclarationSchema,
   parseBatteryDeclaration,
 } from "./effect/battery-declaration/battery-declaration";
-export { Battle, BattleX } from "./effect/battle/battle";
+export {
+  Battle,
+  BattleSchema,
+  BattleX,
+  parseBattle,
+} from "./effect/battle/battle";
 export { updateDefender } from "./effect/battle/players/update-defender";
 export {
   BattleResult,
   battleResult,
+  BattleResultSchema,
+  parseBattleResult,
 } from "./effect/battle/result/battle-result";
-export { CriticalHit } from "./effect/battle/result/critical-hit";
-export { Feint } from "./effect/battle/result/feint";
-export { Guard } from "./effect/battle/result/guard";
-export { Miss } from "./effect/battle/result/miss";
-export { NormalHit } from "./effect/battle/result/normal-hit";
+export {
+  CriticalHit,
+  CriticalHitSchema,
+  parseCriticalHit,
+} from "./effect/battle/result/critical-hit";
+export { Feint, FeintSchema, parseFeint } from "./effect/battle/result/feint";
+export { Guard, GuardSchema, parseGuard } from "./effect/battle/result/guard";
+export { Miss, MissSchema, parseMiss } from "./effect/battle/result/miss";
+export {
+  NormalHit,
+  NormalHitSchema,
+  parseNormalHit,
+} from "./effect/battle/result/normal-hit";
 export { BurstEffect } from "./effect/burst/burst-effect";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {

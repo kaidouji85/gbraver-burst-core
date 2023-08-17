@@ -1,16 +1,37 @@
+import { z } from "zod";
+
 import type { PlayerState } from "../../../state/player-state";
 import type { CriticalHit } from "./critical-hit";
-import { criticalHit } from "./critical-hit";
+import { criticalHit, CriticalHitSchema } from "./critical-hit";
 import type { Feint } from "./feint";
-import { feint } from "./feint";
+import { feint, FeintSchema } from "./feint";
 import type { Guard } from "./guard";
-import { guard } from "./guard";
-import type { Miss } from "./miss";
+import { guard, GuardSchema } from "./guard";
+import { type Miss, MissSchema } from "./miss";
 import type { NormalHit } from "./normal-hit";
-import { normalHit } from "./normal-hit";
+import { normalHit, NormalHitSchema } from "./normal-hit";
 
 /** 戦闘結果をまとめたもの */
 export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;
+
+/**BattleResult zodスキーマ  */
+export const BattleResultSchema = z.union([
+  NormalHitSchema,
+  GuardSchema,
+  CriticalHitSchema,
+  MissSchema,
+  FeintSchema,
+]);
+
+/**
+ * 任意オブジェクトをBattleResultにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseBattleResult = (origin: unknown): BattleResult | null => {
+  const result = BattleResultSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
 
 /**
  * 戦闘結果を生成して返す
