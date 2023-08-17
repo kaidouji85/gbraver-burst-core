@@ -1,8 +1,8 @@
-import type { Player } from "../../player/player";
-import type { GameStateX } from "../../state/game-state";
+import { Player } from "../../player/player";
+import { GameStateX } from "../../state/game-state";
 import { createPlayerState } from "../../state/player-state/create-player-state";
 import { getFirstTurnPlayer } from "./first-turn-payer";
-import type { StartGame } from "./start-game";
+import { StartGame } from "./start-game";
 
 /**
  * プレイヤー情報を受け取り、初期ゲームステートを生成する

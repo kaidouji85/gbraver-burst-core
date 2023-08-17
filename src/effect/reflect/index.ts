@@ -1,7 +1,7 @@
-import type { PlayerId } from "../../player/player";
-import type { GameState, GameStateX } from "../../state/game-state";
+import { PlayerId } from "../../player/player";
+import { GameState, GameStateX } from "../../state/game-state";
 import { isPlayerDeath } from "../../state/player-state/is-player-death";
-import type { Reflect, ReflectParam } from "./reflect";
+import { Reflect, ReflectParam } from "./reflect";
 import { reflectDamage } from "./reflect";
 
 /**

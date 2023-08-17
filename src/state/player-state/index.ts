@@ -17,4 +17,3 @@ export type PlayerStateX<BURST, PILOT> = Readonly<{
 
 /** プレイヤーステート */
 export type PlayerState = PlayerStateX<Burst, PilotSkill>;
-
