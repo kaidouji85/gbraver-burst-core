@@ -1,7 +1,7 @@
 import * as R from "ramda";
 
 import type { BatteryCommand } from "../../command/battery";
-import type { ArmdozerState } from "../../state/armdozer-state";
+import type { ArmdozerState } from "../../state/armdozer-state/armdozer-state";
 
 /**
  * アームドーザの状態から実行可能なバッテリーコマンドを返す

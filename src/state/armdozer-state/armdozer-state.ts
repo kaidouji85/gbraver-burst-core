@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import { Armdozer, ArmdozerSchema, ArmdozerX } from "../player/armdozer";
-import { Burst } from "../player/burst";
-import { ArmdozerEffect, ArmdozerEffectSchema } from "./armdozer-effect";
+import { Armdozer, ArmdozerSchema, ArmdozerX } from "../../player/armdozer";
+import { Burst } from "../../player/burst";
+import { ArmdozerEffect, ArmdozerEffectSchema } from "../armdozer-effect";
 
 /**
  * アームドーザステート（型指定あり）

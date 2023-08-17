@@ -1,6 +1,6 @@
 import { BatteryBoostSkill } from "../../player/pilot/battery-boost-skill";
 import { PlayerId } from "../../player/player";
-import { ArmdozerState } from "../../state/armdozer-state";
+import { ArmdozerState } from "../../state/armdozer-state/armdozer-state";
 import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
 import { PilotSkillEffectX } from "./pilot-skill-effect";
