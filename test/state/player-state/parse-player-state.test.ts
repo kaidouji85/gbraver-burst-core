@@ -5,18 +5,18 @@ test("PlayerStateはパースできる", () => {
   expect(parsePlayerState(data)).toEqual(data);
 });
 
-test("PlayerState以外はパースできない", ()=> {
+test("PlayerState以外はパースできない", () => {
   const data = {
     id: "invalid-player-state",
     armdozer: {
       hp: 3000,
       battery: 5,
       power: 2000,
-      speed: 2000
+      speed: 2000,
     },
     pilot: {
-      canSkill: true
-    }
+      canSkill: true,
+    },
   };
   expect(parsePlayerState(data)).toBeNull();
-})
+});
