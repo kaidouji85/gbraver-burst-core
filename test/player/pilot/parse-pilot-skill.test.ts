@@ -32,6 +32,14 @@ test("PilotSkillはパースできる", () => {
   });
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  pilotSkills.forEach((skill) => {
+    const str = JSON.stringify(skill);
+    const data = JSON.parse(str);
+    expect(parsePilotSkill(data)).toEqual(skill);
+  });
+});
+
 test("PilotSkill以外はnullを返す", () => {
   const data = {
     type: "RecoverBattery",
