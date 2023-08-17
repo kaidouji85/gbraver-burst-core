@@ -12,7 +12,7 @@ test("Missはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(miss);
   const data = JSON.parse(str);
-  expect(parseMiss(data)).toEqual(data);
+  expect(parseMiss(data)).toEqual(miss);
 });
 
 test("Miss以外はパースできない", () => {

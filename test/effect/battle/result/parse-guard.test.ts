@@ -13,7 +13,7 @@ test("Guardはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(guard);
   const data = JSON.parse(str);
-  expect(parseGuard(data)).toEqual(data);
+  expect(parseGuard(data)).toEqual(guard);
 });
 
 test("Guard以外はパースできない", () => {

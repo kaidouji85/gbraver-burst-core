@@ -13,7 +13,7 @@ test("NormalHitはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(normalHit);
   const data = JSON.parse(str);
-  expect(parseNormalHit(data)).toEqual(data);
+  expect(parseNormalHit(data)).toEqual(normalHit);
 });
 
 test("NormalHit以外はパースできない", () => {

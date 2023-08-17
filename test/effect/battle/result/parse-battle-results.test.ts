@@ -33,7 +33,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   battleResults.forEach(battleResult => {
     const str = JSON.stringify(battleResult);
     const data = JSON.parse(str);
-    expect(parseBattleResult(data)).toEqual(data);
+    expect(parseBattleResult(data)).toEqual(battleResult);
   });
 });
 

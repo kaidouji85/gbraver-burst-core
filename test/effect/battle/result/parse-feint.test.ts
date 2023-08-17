@@ -13,7 +13,7 @@ test("Feintはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(feint);
   const data = JSON.parse(str);
-  expect(parseFeint(data)).toEqual(data);
+  expect(parseFeint(data)).toEqual(feint);
 });
 
 test("Feint以外はパースできない", () => {

@@ -13,7 +13,7 @@ test("CriticalHitはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(criticalHit);
   const data = JSON.parse(str);
-  expect(parseCriticalHit(data)).toEqual(data);
+  expect(parseCriticalHit(data)).toEqual(criticalHit);
 });
 
 test("CriticalHit以外はパースできない", () => {
