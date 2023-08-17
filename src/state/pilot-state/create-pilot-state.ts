@@ -1,5 +1,5 @@
 import { Pilot } from "../../player/pilot";
-import { PilotState } from "./pilot-state";
+import { PilotState } from ".";
 
 /**
  * パイロットステートを生成する

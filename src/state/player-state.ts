@@ -4,7 +4,7 @@ import { Player, PlayerId } from "../player/player";
 import { ArmdozerStateX } from "./armdozer-state";
 import { createArmdozerState } from "./armdozer-state/create-armdozer-state";
 import { createPilotState } from "./pilot-state/create-pilot-state";
-import { PilotStateX } from "./pilot-state/pilot-state";
+import { PilotStateX } from "./pilot-state";
 
 /**
  * プレイヤーステート（型指定あり）
