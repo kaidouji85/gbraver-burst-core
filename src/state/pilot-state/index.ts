@@ -1,4 +1,4 @@
-import type { PilotX } from "../../player/pilot";
+import { PilotX } from "../../player/pilot";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
 
 /**

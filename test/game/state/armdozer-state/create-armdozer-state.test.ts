@@ -1,5 +1,5 @@
 import { EMPTY_ARMDOZER } from "../../../../src/empty/armdozer";
-import type { Armdozer } from "../../../../src/player/armdozer";
+import { Armdozer } from "../../../../src/player/armdozer";
 import { createArmdozerState } from "../../../../src/state/armdozer-state/create-armdozer-state";
 
 test("追加されたパラメータに正しい値がセットされている", () => {
