@@ -11,7 +11,9 @@ const batteryDeclaration: BatteryDeclaration = {
 };
 
 test("BatteryDeclarationはパースできる", () => {
-  expect(parseBatteryDeclaration(batteryDeclaration)).toEqual(batteryDeclaration);
+  expect(parseBatteryDeclaration(batteryDeclaration)).toEqual(
+    batteryDeclaration,
+  );
 });
 
 test("BatteryDeclaration以外はパースできない", () => {

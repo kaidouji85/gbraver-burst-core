@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { PlayerId,PlayerIdSchema } from "../../player/player";
+import { PlayerId, PlayerIdSchema } from "../../player/player";
 
 /** 攻撃、防御側のバッテリー宣言 */
 export type BatteryDeclaration = Readonly<{
@@ -32,7 +32,9 @@ export const BatteryDeclarationSchema = z.object({
  * @param origin パース元
  * @return パース結果、パースできない場合はnull
  */
-export const parseBatteryDeclaration = (origin: unknown): BatteryDeclaration | null => {
+export const parseBatteryDeclaration = (
+  origin: unknown,
+): BatteryDeclaration | null => {
   const result = BatteryDeclarationSchema.safeParse(origin);
   return result.success ? result.data : null;
 };

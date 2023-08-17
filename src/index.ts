@@ -29,7 +29,11 @@ export {
   correctedBattery,
   totalBatteryCorrection,
 } from "./effect/battery-correction";
-export { BatteryDeclaration, BatteryDeclarationSchema, parseBatteryDeclaration } from "./effect/battery-declaration/battery-declaration";
+export {
+  BatteryDeclaration,
+  BatteryDeclarationSchema,
+  parseBatteryDeclaration,
+} from "./effect/battery-declaration/battery-declaration";
 export { Battle, BattleX } from "./effect/battle/battle";
 export { updateDefender } from "./effect/battle/players/update-defender";
 export {
