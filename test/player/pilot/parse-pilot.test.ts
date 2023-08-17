@@ -1,8 +1,15 @@
-import { EMPTY_PILOT, parsePilot } from "../../../src";
+import { EMPTY_PILOT, parsePilot,Pilot } from "../../../src";
 
 test("Pilotはパースできる", () => {
-  const data = EMPTY_PILOT;
+  const data: Pilot = EMPTY_PILOT;
   expect(parsePilot(data)).toEqual(data);
+});
+
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const origin: Pilot = EMPTY_PILOT;
+  const str = JSON.stringify(EMPTY_PILOT);
+  const data = JSON.parse(str);
+  expect(parsePilot(data)).toEqual(origin);
 });
 
 test("Pilot以外はnullを返す", () => {
