@@ -1,5 +1,5 @@
-import type { PlayerId } from "../../player/player";
-import type { BattleResult } from "./result/battle-result";
+import { PlayerId } from "../../player/player";
+import { BattleResult } from "./result/battle-result";
 
 /**
  * 戦闘（型指定あり）

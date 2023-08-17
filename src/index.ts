@@ -44,7 +44,7 @@ export { CriticalHit } from "./effect/battle/result/critical-hit";
 export { Feint } from "./effect/battle/result/feint";
 export { Guard } from "./effect/battle/result/guard";
 export { Miss } from "./effect/battle/result/miss";
-export { NormalHit } from "./effect/battle/result/normal-hit";
+export { NormalHit, NormalHitSchema, parseNormalHit } from "./effect/battle/result/normal-hit";
 export { BurstEffect } from "./effect/burst/burst-effect";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {

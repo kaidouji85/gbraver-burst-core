@@ -1,4 +1,6 @@
-import type { PlayerState } from "../../../state/player-state";
+import { z } from "zod";
+
+import { PlayerState } from "../../../state/player-state";
 import { hasDamageHalved } from "../../damage-halved";
 import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";
@@ -9,6 +11,22 @@ export type NormalHit = Readonly<{
   /** ダメージ */
   damage: number;
 }>;
+
+/** NormalHit zodスキーマ */
+export const NormalHitSchema = z.object({
+  name: z.literal("NormalHit"),
+  damage: z.number(),
+});
+
+/**
+ * 任意オブジェクトをBatteryDeclarationにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseNormalHit = (origin: unknown): NormalHit | null => {
+  const result = NormalHitSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
 
 /**
  * 攻撃ヒットの戦闘結果を生成する
