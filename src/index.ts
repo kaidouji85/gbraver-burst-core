@@ -39,6 +39,8 @@ export { updateDefender } from "./effect/battle/players/update-defender";
 export {
   BattleResult,
   battleResult,
+  BattleResultSchema,
+  parseBattleResult,
 } from "./effect/battle/result/battle-result";
 export { CriticalHit, CriticalHitSchema, parseCriticalHit } from "./effect/battle/result/critical-hit";
 export { Feint, FeintSchema, parseFeint } from "./effect/battle/result/feint";
