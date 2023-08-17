@@ -3,8 +3,8 @@ import { PilotSkill } from "../player/pilot/pilot-skill";
 import type { Player, PlayerId } from "../player/player";
 import type { ArmdozerStateX } from "./armdozer-state";
 import { createArmdozerState } from "./armdozer-state/create-armdozer-state";
-import type { PilotStateX } from "./pilot-state";
-import { createPilotState } from "./pilot-state";
+import type { PilotStateX } from "./pilot-state/pilot-state";
+import { createPilotState } from "./pilot-state/pilot-state";
 
 /**
  * プレイヤーステート（型指定あり）

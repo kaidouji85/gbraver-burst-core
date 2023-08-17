@@ -1,5 +1,5 @@
 import type { Pilot } from "../player/pilot";
-import type { PilotState } from "../state/pilot-state";
+import type { PilotState } from "../state/pilot-state/pilot-state";
 
 /**
  * 空のパイロット
