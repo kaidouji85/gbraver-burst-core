@@ -16,6 +16,12 @@ test("BatteryDeclarationはパースできる", () => {
   );
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(batteryDeclaration);
+  const data = JSON.parse(str);
+  expect(parseBatteryDeclaration(data)).toEqual(batteryDeclaration);
+});
+
 test("BatteryDeclaration以外はパースできない", () => {
   const data = {
     type: "BatteryDeclaration",
