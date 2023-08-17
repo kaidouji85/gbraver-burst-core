@@ -11,8 +11,8 @@ test("NormalHitはパースできる", () => {
 });
 
 test("NormalHit -> JSON.stringify -> JSON.parse、でもパースできる", () => {
-  const json = JSON.stringify(normalHit);
-  const data = JSON.parse(json);
+  const str = JSON.stringify(normalHit);
+  const data = JSON.parse(str);
   expect(parseNormalHit(data)).toEqual(data);
 });
 
