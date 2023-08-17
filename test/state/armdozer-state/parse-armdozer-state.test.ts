@@ -1,4 +1,4 @@
-import { EMPTY_ARMDOZER_STATE, parseArmDozerState } from "../../src";
+import { EMPTY_ARMDOZER_STATE, parseArmDozerState } from "../../../src";
 
 test("ArmdozerStateはパースできる", () => {
   const data = EMPTY_ARMDOZER_STATE;

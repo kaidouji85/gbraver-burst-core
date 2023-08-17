@@ -1,4 +1,6 @@
-import { PilotX } from "../../player/pilot";
+import { z } from "zod";
+
+import { PilotSchema, PilotX } from "../../player/pilot";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
 
 /**
@@ -13,3 +15,18 @@ export type PilotStateX<SKILL> = PilotX<SKILL> &
 
 /** パイロットステート */
 export type PilotState = PilotStateX<PilotSkill>;
+
+/** PilotState zodスキーマ */
+export const PilotStateSchema = PilotSchema.extend({
+  enableSkill: z.boolean(),
+});
+
+/**
+ * 任意オブジェクトをPilotStateにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parsePilotState = (origin: unknown): PilotState | null => {
+  const result = PilotStateSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
