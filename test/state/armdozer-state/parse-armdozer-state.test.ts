@@ -1,8 +1,17 @@
+import { ArmdozerState } from "../../../lib/src";
 import { EMPTY_ARMDOZER_STATE, parseArmDozerState } from "../../../src";
 
+/** 有効なArmdozerState */
+const armdozerState: ArmdozerState = EMPTY_ARMDOZER_STATE;
+
 test("ArmdozerStateはパースできる", () => {
-  const data = EMPTY_ARMDOZER_STATE;
-  expect(parseArmDozerState(data)).toEqual(data);
+  expect(parseArmDozerState(armdozerState)).toEqual(armdozerState);
+});
+
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(armdozerState);
+  const data = JSON.parse(str);
+  expect(parseArmDozerState(data)).toEqual(armdozerState);
 });
 
 test("ArmdozerState以外はパースできない", () => {
