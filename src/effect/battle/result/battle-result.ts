@@ -2,14 +2,14 @@ import { z } from "zod";
 
 import type { PlayerState } from "../../../state/player-state";
 import type { CriticalHit } from "./critical-hit";
-import { criticalHit,CriticalHitSchema } from "./critical-hit";
+import { criticalHit, CriticalHitSchema } from "./critical-hit";
 import type { Feint } from "./feint";
-import { feint,FeintSchema } from "./feint";
+import { feint, FeintSchema } from "./feint";
 import type { Guard } from "./guard";
-import { guard,GuardSchema } from "./guard";
-import { type Miss,MissSchema } from "./miss";
+import { guard, GuardSchema } from "./guard";
+import { type Miss, MissSchema } from "./miss";
 import type { NormalHit } from "./normal-hit";
-import { normalHit,NormalHitSchema } from "./normal-hit";
+import { normalHit, NormalHitSchema } from "./normal-hit";
 
 /** 戦闘結果をまとめたもの */
 export type BattleResult = NormalHit | Guard | CriticalHit | Miss | Feint;

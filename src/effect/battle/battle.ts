@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 import { PlayerId, PlayerIdSchema } from "../../player/player";
 import { BattleResult, BattleResultSchema } from "./result/battle-result";

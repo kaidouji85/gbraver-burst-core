@@ -20,17 +20,17 @@ const battleResults: BattleResult[] = [
   {
     name: "Feint",
     isDefenderMoved: true,
-  }
+  },
 ];
 
 test("BattleResultはパースできる", () => {
-  battleResults.forEach(battleResult => {
+  battleResults.forEach((battleResult) => {
     expect(parseBattleResult(battleResult)).toEqual(battleResult);
   });
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  battleResults.forEach(battleResult => {
+  battleResults.forEach((battleResult) => {
     const str = JSON.stringify(battleResult);
     const data = JSON.parse(str);
     expect(parseBattleResult(data)).toEqual(battleResult);
