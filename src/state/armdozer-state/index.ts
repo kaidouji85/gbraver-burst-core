@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import { Armdozer, ArmdozerSchema, ArmdozerX } from "../player/armdozer";
-import { Burst } from "../player/burst";
-import { ArmdozerEffect, ArmdozerEffectSchema } from "./armdozer-effect";
+import { ArmdozerSchema, ArmdozerX } from "../../player/armdozer";
+import { Burst } from "../../player/burst";
+import { ArmdozerEffect, ArmdozerEffectSchema } from "../armdozer-effect";
 
 /**
  * アームドーザステート（型指定あり）
@@ -40,18 +40,3 @@ export const parseArmDozerState = (origin: unknown): ArmdozerState | null => {
   const result = ArmdozerStateSchema.safeParse(origin);
   return result.success ? result.data : null;
 };
-
-/**
- * アームドーザ基本ステータスから戦闘状態を生成する
- * @param basic 基本ステータス
- * @return 戦闘状態
- */
-export function createArmdozerState(basic: Armdozer): ArmdozerState {
-  return {
-    ...basic,
-    hp: basic.maxHp,
-    battery: basic.maxBattery,
-    enableBurst: true,
-    effects: [],
-  };
-}
