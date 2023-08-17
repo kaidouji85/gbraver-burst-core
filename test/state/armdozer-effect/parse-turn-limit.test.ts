@@ -13,6 +13,12 @@ test("TurnLimitはパースできる", () => {
   expect(parseTurnLimitEffect(turnLimit)).toEqual(turnLimit);
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(turnLimit);
+  const data = JSON.parse(str);
+  expect(parseTurnLimitEffect(data)).toEqual(turnLimit);
+});
+
 test("TurnLimit以外はパースできない", () => {
   const data = { type: "turnLimit", turn: 1 };
   expect(parseTurnLimitEffect(data)).toBe(null);
