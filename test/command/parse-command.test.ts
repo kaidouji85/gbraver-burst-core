@@ -1,23 +1,20 @@
-import {
-  Command,
-  parseCommand,
-} from "../../src";
+import { Command, parseCommand } from "../../src";
 
 /** 有効なCommand */
 const commands: Command[] = [
-  { 
-    type: "BATTERY_COMMAND", 
-    battery: 4
-  },
-  { 
-    type: "BURST_COMMAND" 
-  },
-  { 
-    type: "PILOT_SKILL_COMMAND"
+  {
+    type: "BATTERY_COMMAND",
+    battery: 4,
   },
   {
-    type: "EMPTY_COMMAND"
-  }
+    type: "BURST_COMMAND",
+  },
+  {
+    type: "PILOT_SKILL_COMMAND",
+  },
+  {
+    type: "EMPTY_COMMAND",
+  },
 ];
 
 test("Commandはパースできる", () => {

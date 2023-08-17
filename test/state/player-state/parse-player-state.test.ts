@@ -1,4 +1,8 @@
-import { EMPTY_PLAYER_STATE, parsePlayerState,PlayerState } from "../../../src";
+import {
+  EMPTY_PLAYER_STATE,
+  parsePlayerState,
+  PlayerState,
+} from "../../../src";
 
 /** 有効なPlayerState */
 const playerState: PlayerState = EMPTY_PLAYER_STATE;

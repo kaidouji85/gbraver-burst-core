@@ -6,7 +6,7 @@ const buffPower: BuffPower = {
   buffPower: 1000,
   duration: 3,
   recoverBattery: 3,
-}
+};
 
 test("BuffPowerはパースできる", () => {
   expect(parseBuffPower(buffPower)).toEqual(buffPower);

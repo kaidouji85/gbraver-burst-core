@@ -5,7 +5,7 @@ const batteryLimitBreak: BatteryLimitBreak = {
   type: "BatteryLimitBreak",
   recoverBattery: 8,
   maxBattery: 8,
-}
+};
 
 test("BatteryLimitBreakはパースできる", () => {
   expect(parseBatteryLimitBreak(batteryLimitBreak)).toEqual(batteryLimitBreak);

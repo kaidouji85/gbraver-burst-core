@@ -11,7 +11,9 @@ const batteryEnchantmentSkill: BatteryEnchantmentSkill = {
 };
 
 test("BatteryEnchantmentSkillはパースできる", () => {
-  expect(parseBatteryEnchantmentSkill(batteryEnchantmentSkill)).toEqual(batteryEnchantmentSkill);
+  expect(parseBatteryEnchantmentSkill(batteryEnchantmentSkill)).toEqual(
+    batteryEnchantmentSkill,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

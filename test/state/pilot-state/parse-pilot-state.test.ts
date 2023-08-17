@@ -1,4 +1,4 @@
-import { EMPTY_PILOT_STATE, parsePilotState,PilotState } from "../../../src";
+import { EMPTY_PILOT_STATE, parsePilotState, PilotState } from "../../../src";
 
 /** 有効なPilotState */
 const pilotState: PilotState = EMPTY_PILOT_STATE;

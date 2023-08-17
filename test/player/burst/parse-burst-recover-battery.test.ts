@@ -9,7 +9,9 @@ const burstRecoverBattery: BurstRecoverBattery = {
 };
 
 test("BurstRecoverBatteryはパースできる", () => {
-  expect(parseBurstRecoverBattery(burstRecoverBattery)).toEqual(burstRecoverBattery);
+  expect(parseBurstRecoverBattery(burstRecoverBattery)).toEqual(
+    burstRecoverBattery,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

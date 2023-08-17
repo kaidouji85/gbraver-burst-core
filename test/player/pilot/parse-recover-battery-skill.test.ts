@@ -7,7 +7,9 @@ const recoverBatterySkill: RecoverBatterySkill = {
 };
 
 test("RecoverBatterySkillはパースできる", () => {
-  expect(parseRecoverBatterySkill(recoverBatterySkill)).toEqual(recoverBatterySkill);
+  expect(parseRecoverBatterySkill(recoverBatterySkill)).toEqual(
+    recoverBatterySkill,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
