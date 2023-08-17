@@ -35,6 +35,14 @@ test("Burstはパースできる", () => {
   });
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  bursts.forEach((burst) => {
+    const str = JSON.stringify(burst);
+    const data = JSON.parse(str);
+    expect(parseBurst(data)).toEqual(burst);
+  });
+});
+
 test("Burst以外はパースできない", () => {
   const data = {
     type: "Continuous",

@@ -5,6 +5,13 @@ test("Playerはパースできる", () => {
   expect(parsePlayer(data)).toEqual(data);
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const origin: Player = EMPTY_PLAYER;
+  const str = JSON.stringify(origin);
+  const data = JSON.parse(str);
+  expect(parsePlayer(data)).toEqual(origin);
+});
+
 test("Player以外はnullを返す", () => {
   const data = {
     id: "player",

@@ -5,6 +5,13 @@ test("バッテリーコマンドを正しくパースできる", () => {
   expect(parseBatteryCommand(data)).toEqual(data);
 });
 
+test("文字列からパースしたオブジェクトでも、正しくパースできる", () => {
+  const origin: BatteryCommand = { type: "BATTERY_COMMAND", battery: 4 };
+  const str = JSON.stringify(origin);
+  const data = JSON.parse(str);
+  expect(parseBatteryCommand(data)).toEqual(origin);
+});
+
 test("余計なプロパティを削除してパースする", () => {
   const origin: BatteryCommand = { type: "BATTERY_COMMAND", battery: 4 };
   const data = { ...origin, test: 12 };

@@ -1,11 +1,21 @@
 import { parseRecoverBatterySkill, RecoverBatterySkill } from "../../../src";
 
+/** 有効なRecoverBatterySkill */
+const recoverBatterySkill: RecoverBatterySkill = {
+  type: "RecoverBatterySkill",
+  recoverBattery: 5,
+};
+
 test("RecoverBatterySkillはパースできる", () => {
-  const data: RecoverBatterySkill = {
-    type: "RecoverBatterySkill",
-    recoverBattery: 5,
-  };
-  expect(parseRecoverBatterySkill(data)).toEqual(data);
+  expect(parseRecoverBatterySkill(recoverBatterySkill)).toEqual(
+    recoverBatterySkill,
+  );
+});
+
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(recoverBatterySkill);
+  const data = JSON.parse(str);
+  expect(parseRecoverBatterySkill(data)).toEqual(recoverBatterySkill);
 });
 
 test("RecoverBatterySkill以外はnullを返す", () => {

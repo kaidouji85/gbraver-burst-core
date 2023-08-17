@@ -20,6 +20,14 @@ test("EffectPeriodはパースできる", () => {
   });
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  effectPeriods.forEach((effectPeriod) => {
+    const str = JSON.stringify(effectPeriod);
+    const data = JSON.parse(str);
+    expect(parseEffectPeriod(data)).toEqual(effectPeriod);
+  });
+});
+
 test("EffectPeriod以外はパースできない", () => {
   const data = {
     type: "TurnLimit",

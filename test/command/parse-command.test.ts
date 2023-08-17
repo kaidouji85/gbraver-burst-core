@@ -1,23 +1,34 @@
-import {
-  BatteryCommand,
-  BurstCommand,
-  parseCommand,
-  PilotSkillCommand,
-} from "../../src";
+import { Command, parseCommand } from "../../src";
 
-test("バッテリーコマンドをパースできる", () => {
-  const data: BatteryCommand = { type: "BATTERY_COMMAND", battery: 4 };
-  expect(parseCommand(data)).toEqual(data);
+/** 有効なCommand */
+const commands: Command[] = [
+  {
+    type: "BATTERY_COMMAND",
+    battery: 4,
+  },
+  {
+    type: "BURST_COMMAND",
+  },
+  {
+    type: "PILOT_SKILL_COMMAND",
+  },
+  {
+    type: "EMPTY_COMMAND",
+  },
+];
+
+test("Commandはパースできる", () => {
+  commands.forEach((command) => {
+    expect(parseCommand(command)).toEqual(command);
+  });
 });
 
-test("バーストコマンドをパースできる", () => {
-  const data: BurstCommand = { type: "BURST_COMMAND" };
-  expect(parseCommand(data)).toEqual(data);
-});
-
-test("パイロットスキルコマンドをパースできる", () => {
-  const data: PilotSkillCommand = { type: "PILOT_SKILL_COMMAND" };
-  expect(parseCommand(data)).toEqual(data);
+test("文字列からパースしたオブジェクトも、正しくパースできる", () => {
+  commands.forEach((command) => {
+    const str = JSON.stringify(command);
+    const data = JSON.parse(str);
+    expect(parseCommand(data)).toEqual(command);
+  });
 });
 
 test("空オブジェクトはパースできない", () => {

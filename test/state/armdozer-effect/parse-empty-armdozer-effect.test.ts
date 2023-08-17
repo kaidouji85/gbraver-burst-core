@@ -15,6 +15,12 @@ test("EmptyArmdozerEffectはパースできる", () => {
   );
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(emptyArmdozerEffect);
+  const data = JSON.parse(str);
+  expect(parseEmptyArmdozerEffect(data)).toEqual(emptyArmdozerEffect);
+});
+
 test("EmptyArmdozerEffect以外はパースできない", () => {
   const data = {
     type: "emptyArmdozerEffect",

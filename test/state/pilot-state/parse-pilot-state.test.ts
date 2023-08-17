@@ -1,8 +1,16 @@
-import { EMPTY_PILOT_STATE, parsePilotState } from "../../../src";
+import { EMPTY_PILOT_STATE, parsePilotState, PilotState } from "../../../src";
+
+/** 有効なPilotState */
+const pilotState: PilotState = EMPTY_PILOT_STATE;
 
 test("PilotStateはパースできる", () => {
-  const data = EMPTY_PILOT_STATE;
-  expect(parsePilotState(data)).toEqual(data);
+  expect(parsePilotState(pilotState)).toEqual(pilotState);
+});
+
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(pilotState);
+  const data = JSON.parse(str);
+  expect(parsePilotState(data)).toEqual(pilotState);
 });
 
 test("PilotState以外はパースできない", () => {
