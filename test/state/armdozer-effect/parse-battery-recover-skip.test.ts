@@ -14,6 +14,12 @@ test("BatteryRecoverSkipはパースできる", () => {
   );
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(batteryRecoverSkip);
+  const data = JSON.parse(str);
+  expect(parseBatteryRecoverSkip(data)).toEqual(batteryRecoverSkip);
+});
+
 test("BatteryRecoverSkip以外はパースできない", () => {
   const data = {
     type: "recoverSkip",
