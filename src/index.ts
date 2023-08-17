@@ -41,7 +41,7 @@ export {
   battleResult,
 } from "./effect/battle/result/battle-result";
 export { CriticalHit, CriticalHitSchema, parseCriticalHit } from "./effect/battle/result/critical-hit";
-export { Feint } from "./effect/battle/result/feint";
+export { Feint, FeintSchema, parseFeint } from "./effect/battle/result/feint";
 export { Guard, GuardSchema, parseGuard } from "./effect/battle/result/guard";
 export { Miss, MissSchema, parseMiss } from "./effect/battle/result/miss";
 export { NormalHit, NormalHitSchema, parseNormalHit } from "./effect/battle/result/normal-hit";
