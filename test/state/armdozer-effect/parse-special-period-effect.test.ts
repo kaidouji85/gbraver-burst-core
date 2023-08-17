@@ -12,6 +12,12 @@ test("SpecialPeriodはパースできる", () => {
   );
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(specialPeriodEffect);
+  const data = JSON.parse(str);
+  expect(parseSpecialPeriodEffect(data)).toEqual(specialPeriodEffect);
+});
+
 test("SpecialPeriod以外はパースできない", () => {
   const data = { type: "specialPeriodEffect" };
   expect(parseSpecialPeriodEffect(data)).toBe(null);
