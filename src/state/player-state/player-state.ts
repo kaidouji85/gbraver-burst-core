@@ -1,10 +1,8 @@
 import { Burst } from "../../player/burst";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
-import { Player, PlayerId } from "../../player/player";
+import { PlayerId } from "../../player/player";
 import { ArmdozerStateX } from "../armdozer-state";
-import { createArmdozerState } from "../armdozer-state/create-armdozer-state";
 import { PilotStateX } from "../pilot-state";
-import { createPilotState } from "../pilot-state/create-pilot-state";
 
 /**
  * プレイヤーステート（型指定あり）
