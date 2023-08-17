@@ -1,5 +1,4 @@
-import { ArmdozerState } from "../../../lib/src";
-import { EMPTY_ARMDOZER_STATE, parseArmDozerState } from "../../../src";
+import { ArmdozerState, EMPTY_ARMDOZER_STATE, parseArmDozerState } from "../../../src";
 
 /** 有効なArmdozerState */
 const armdozerState: ArmdozerState = EMPTY_ARMDOZER_STATE;
