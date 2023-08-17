@@ -1,7 +1,7 @@
-import { EMPTY_ARMDOZER_STATE } from "../../src/empty/armdozer";
-import { EMPTY_PLAYER_STATE } from "../../src/empty/player";
-import type { PlayerState } from "../../src/state/player-state";
-import { isPlayerDeath } from "../../src/state/player-state";
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { PlayerState } from "../../../src/state/player-state";
+import { isPlayerDeath } from "../../../src/state/player-state/is-player-death";
 
 test("HPが0の場合、死亡したと判定する", () => {
   const defender: PlayerState = {

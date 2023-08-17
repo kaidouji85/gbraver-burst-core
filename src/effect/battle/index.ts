@@ -1,7 +1,7 @@
-import type { PlayerId } from "../../player/player";
-import type { GameState, GameStateX } from "../../state/game-state";
-import { isPlayerDeath } from "../../state/player-state";
-import type { Battle } from "./battle";
+import { PlayerId } from "../../player/player";
+import { GameState, GameStateX } from "../../state/game-state";
+import { isPlayerDeath } from "../../state/player-state/is-player-death";
+import { Battle } from "./battle";
 import { updateDefender } from "./players/update-defender";
 import { battleResult } from "./result/battle-result";
 
