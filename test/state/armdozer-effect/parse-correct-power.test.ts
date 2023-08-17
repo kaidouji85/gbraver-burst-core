@@ -14,6 +14,12 @@ test("CorrectPowerはパースできる", () => {
   expect(parseCorrectPower(correctPower)).toEqual(correctPower);
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  const str = JSON.stringify(correctPower);
+  const data = JSON.parse(str);
+  expect(parseCorrectPower(data)).toEqual(correctPower);
+});
+
 test("CorrectPower以外はパースできない", () => {
   const data = {
     type: "CorrectPower",
