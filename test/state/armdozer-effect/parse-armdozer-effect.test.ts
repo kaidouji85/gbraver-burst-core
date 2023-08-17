@@ -68,6 +68,14 @@ test("ArmdozerEffectはパースできる", () => {
   });
 });
 
+test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
+  armdozerEffects.forEach((effect) => {
+    const str = JSON.stringify(effect);
+    const data = JSON.parse(str);
+    expect(parseArmdozerEffect(data)).toEqual(effect);
+  });
+});
+
 test("ArmdozerEffect以外はパースできない", () => {
   const data = {
     type: "CorrectPower",
