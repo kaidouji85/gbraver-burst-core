@@ -60,7 +60,11 @@ export {
   NormalHitSchema,
   parseNormalHit,
 } from "./effect/battle/result/normal-hit";
-export { BurstEffect } from "./effect/burst/burst-effect";
+export {
+  BurstEffect,
+  BurstEffectSchema,
+  parseBurstEffect,
+} from "./effect/burst/burst-effect";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {
   correctPower,
