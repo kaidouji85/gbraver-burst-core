@@ -7,7 +7,7 @@ const burstEffect: BurstEffect = {
   burst: {
     type: "RecoverBattery",
     recoverBattery: 5,
-  }
+  },
 };
 
 test("BurstEffectはパースできる", () => {
@@ -27,7 +27,7 @@ test("BurstEffect以外はパースできない", () => {
     burst: {
       name: "RecoverBattery",
       battery: 5,
-    }
+    },
   };
   expect(parseBurstEffect(data)).toBeNull();
 });
