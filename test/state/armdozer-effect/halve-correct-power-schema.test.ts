@@ -1,7 +1,4 @@
-import {
-  HalveCorrectPower,
-  HalveCorrectPowerSchema,
-} from "../../../src";
+import { HalveCorrectPower, HalveCorrectPowerSchema } from "../../../src";
 
 /** 有効なHalveCorrectPower */
 const halveCorrectPower: HalveCorrectPower = {
@@ -13,7 +10,9 @@ const halveCorrectPower: HalveCorrectPower = {
 };
 
 test("HalveCorrectPowerはパースできる", () => {
-  expect(HalveCorrectPowerSchema.parse(halveCorrectPower)).toEqual(halveCorrectPower);
+  expect(HalveCorrectPowerSchema.parse(halveCorrectPower)).toEqual(
+    halveCorrectPower,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

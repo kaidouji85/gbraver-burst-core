@@ -8,7 +8,9 @@ const batteryLimitBreak: BatteryLimitBreak = {
 };
 
 test("BatteryLimitBreakはパースできる", () => {
-  expect(BatteryLimitBreakSchema.parse(batteryLimitBreak)).toEqual(batteryLimitBreak);
+  expect(BatteryLimitBreakSchema.parse(batteryLimitBreak)).toEqual(
+    batteryLimitBreak,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

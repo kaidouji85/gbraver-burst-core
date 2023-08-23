@@ -1,7 +1,4 @@
-import {
-  TurnLimitEffect,
-  TurnLimitEffectSchema,
-} from "../../../src";
+import { TurnLimitEffect, TurnLimitEffectSchema } from "../../../src";
 
 /** 有効なTurnLimitEffect */
 const turnLimit: TurnLimitEffect = {

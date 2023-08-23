@@ -19,7 +19,9 @@ test("BatteryEnchantmentSkillはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryEnchantmentSkill);
   const data = JSON.parse(str);
-  expect(BatteryEnchantmentSkillSchema.parse(data)).toEqual(batteryEnchantmentSkill);
+  expect(BatteryEnchantmentSkillSchema.parse(data)).toEqual(
+    batteryEnchantmentSkill,
+  );
 });
 
 test("BatteryEnchantmentSkill以外はnullを返す", () => {

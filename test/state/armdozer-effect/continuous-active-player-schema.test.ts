@@ -20,7 +20,9 @@ test("ContinuousActivePlayerはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(continuousActivePlayer);
   const data = JSON.parse(str);
-  expect(ContinuousActivePlayerSchema.parse(data)).toEqual(continuousActivePlayer);
+  expect(ContinuousActivePlayerSchema.parse(data)).toEqual(
+    continuousActivePlayer,
+  );
 });
 
 test("ContinuousActivePlayer以外はパースできない", () => {

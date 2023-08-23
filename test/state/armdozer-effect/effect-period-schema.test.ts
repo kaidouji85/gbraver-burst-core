@@ -1,7 +1,4 @@
-import {
-  EffectPeriod,
-  EffectPeriodSchema,
-} from "../../../src";
+import { EffectPeriod, EffectPeriodSchema } from "../../../src";
 
 /** 有効なEffectPeriod */
 const effectPeriods: EffectPeriod[] = [

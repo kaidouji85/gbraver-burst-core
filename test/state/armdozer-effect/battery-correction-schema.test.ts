@@ -11,7 +11,9 @@ const batteryCorrection: BatteryCorrection = {
 };
 
 test("BatteryCorrectionはパースできる", () => {
-  expect(BatteryCorrectionSchema.parse(batteryCorrection)).toEqual(batteryCorrection);
+  expect(BatteryCorrectionSchema.parse(batteryCorrection)).toEqual(
+    batteryCorrection,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

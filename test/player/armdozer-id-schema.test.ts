@@ -1,4 +1,4 @@
-import { ArmDozerId, ArmDozerIds,ArmDozerIdSchema } from "../../src";
+import { ArmDozerId, ArmDozerIds, ArmDozerIdSchema } from "../../src";
 
 test("ArmDozerIdはパースできる", () => {
   const data: ArmDozerId = ArmDozerIds.SHIN_BRAVER;

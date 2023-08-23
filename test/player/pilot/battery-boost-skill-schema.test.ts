@@ -7,7 +7,9 @@ const batteryBoostSkill: BatteryBoostSkill = {
 };
 
 test("BatteryBoostSkillはパースできる", () => {
-  expect(BatteryBoostSkillSchema.parse(batteryBoostSkill)).toEqual(batteryBoostSkill);
+  expect(BatteryBoostSkillSchema.parse(batteryBoostSkill)).toEqual(
+    batteryBoostSkill,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

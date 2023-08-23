@@ -9,7 +9,9 @@ const lightningBarrier: LightningBarrier = {
 };
 
 test("LightningBarrierはパースできる", () => {
-  expect(LightningBarrierSchema.parse(lightningBarrier)).toEqual(lightningBarrier);
+  expect(LightningBarrierSchema.parse(lightningBarrier)).toEqual(
+    lightningBarrier,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

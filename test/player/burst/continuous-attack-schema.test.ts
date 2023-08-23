@@ -7,7 +7,9 @@ const continuousAttack: ContinuousAttack = {
 };
 
 test("ContinuousAttackはパースできる", () => {
-  expect(ContinuousAttackSchema.parse(continuousAttack)).toEqual(continuousAttack);
+  expect(ContinuousAttackSchema.parse(continuousAttack)).toEqual(
+    continuousAttack,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

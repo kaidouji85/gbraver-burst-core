@@ -7,7 +7,9 @@ const damageHalvedSkill: DamageHalvedSkill = {
 };
 
 test("DamageHalvedSkillはパースできる", () => {
-  expect(DamageHalvedSkillSchema.parse(damageHalvedSkill)).toEqual(damageHalvedSkill);
+  expect(DamageHalvedSkillSchema.parse(damageHalvedSkill)).toEqual(
+    damageHalvedSkill,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
