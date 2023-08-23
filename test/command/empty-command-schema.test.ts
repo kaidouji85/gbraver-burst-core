@@ -24,13 +24,13 @@ test("typeの値が間違っているとパースできない", () => {
 });
 
 test("空オブジェクトはパースできない", () => {
-  expect(EmptyCommandSchema.parse({})).toThrow();
+  expect(() => EmptyCommandSchema.parse({})).toThrow();
 });
 
 test("nullはパースできない", () => {
-  expect(EmptyCommandSchema.parse(null)).toThrow();
+  expect(() => EmptyCommandSchema.parse(null)).toThrow();
 });
 
 test("undefinedはパースできない", () => {
-  expect(EmptyCommandSchema.parse(undefined)).toThrow();
+  expect(() => EmptyCommandSchema.parse(undefined)).toThrow();
 });
