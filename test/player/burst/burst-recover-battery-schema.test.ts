@@ -1,6 +1,6 @@
 import {
   BurstRecoverBattery,
-  parseBurstRecoverBattery,
+  BurstRecoverBatterySchema,
 } from "../../../src/player/burst/burst-recover-battery";
 
 /** 有効なBurstRecoverBattery */
@@ -9,7 +9,7 @@ const burstRecoverBattery: BurstRecoverBattery = {
 };
 
 test("BurstRecoverBatteryはパースできる", () => {
-  expect(parseBurstRecoverBattery(burstRecoverBattery)).toEqual(
+  expect(BurstRecoverBatterySchema.parse(burstRecoverBattery)).toEqual(
     burstRecoverBattery,
   );
 });
@@ -17,12 +17,12 @@ test("BurstRecoverBatteryはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(burstRecoverBattery);
   const data = JSON.parse(str);
-  expect(parseBurstRecoverBattery(data)).toEqual(burstRecoverBattery);
+  expect(BurstRecoverBatterySchema.parse(data)).toEqual(burstRecoverBattery);
 });
 
 test("BurstRecoverBattery以外はnullを返す", () => {
   const data = {
     recover: 3,
   };
-  expect(parseBurstRecoverBattery(data)).toEqual(null);
+  expect(() => BurstRecoverBatterySchema.parse(data)).toThrow();
 });
