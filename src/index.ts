@@ -171,7 +171,6 @@ export {
 } from "./state/armdozer-state";
 export { GameState, GameStateX } from "./state/game-state";
 export {
-  parsePilotState,
   PilotState,
   PilotStateSchema,
   PilotStateX,

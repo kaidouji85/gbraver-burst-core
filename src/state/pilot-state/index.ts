@@ -20,13 +20,3 @@ export type PilotState = PilotStateX<PilotSkill>;
 export const PilotStateSchema = PilotSchema.extend({
   enableSkill: z.boolean(),
 });
-
-/**
- * 任意オブジェクトをPilotStateにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePilotState = (origin: unknown): PilotState | null => {
-  const result = PilotStateSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

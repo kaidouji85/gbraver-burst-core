@@ -1,16 +1,16 @@
-import { EMPTY_PILOT_STATE, parsePilotState, PilotState } from "../../../src";
+import { EMPTY_PILOT_STATE, PilotState, PilotStateSchema } from "../../../src";
 
 /** 有効なPilotState */
 const pilotState: PilotState = EMPTY_PILOT_STATE;
 
 test("PilotStateはパースできる", () => {
-  expect(parsePilotState(pilotState)).toEqual(pilotState);
+  expect(PilotStateSchema.parse(pilotState)).toEqual(pilotState);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(pilotState);
   const data = JSON.parse(str);
-  expect(parsePilotState(data)).toEqual(pilotState);
+  expect(PilotStateSchema.parse(data)).toEqual(pilotState);
 });
 
 test("PilotState以外はパースできない", () => {
@@ -18,5 +18,5 @@ test("PilotState以外はパースできない", () => {
     id: "invalid-pilot",
     canPilotSkill: true,
   };
-  expect(parsePilotState(data)).toBeNull();
+  expect(() => PilotStateSchema.parse(data)).toThrow();
 });
