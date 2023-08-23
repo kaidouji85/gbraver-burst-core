@@ -1,4 +1,4 @@
-import { BatteryCorrection, parseBatteryCorrection } from "../../../src";
+import { BatteryCorrection, BatteryCorrectionSchema } from "../../../src";
 
 /** 有効な BatteryCorrection */
 const batteryCorrection: BatteryCorrection = {
@@ -11,13 +11,13 @@ const batteryCorrection: BatteryCorrection = {
 };
 
 test("BatteryCorrectionはパースできる", () => {
-  expect(parseBatteryCorrection(batteryCorrection)).toEqual(batteryCorrection);
+  expect(BatteryCorrectionSchema.parse(batteryCorrection)).toEqual(batteryCorrection);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryCorrection);
   const data = JSON.parse(str);
-  expect(parseBatteryCorrection(data)).toEqual(batteryCorrection);
+  expect(BatteryCorrectionSchema.parse(data)).toEqual(batteryCorrection);
 });
 
 test("BatteryCorrection以外はパースできない", () => {
@@ -29,5 +29,5 @@ test("BatteryCorrection以外はパースできない", () => {
       remaining: 2,
     },
   };
-  expect(parseBatteryCorrection(data)).toBeNull();
+  expect(() => BatteryCorrectionSchema.parse(data)).toThrow();
 });

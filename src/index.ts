@@ -152,9 +152,7 @@ export {
   ArmdozerEffect,
   ArmdozerEffectSchema,
 } from "./state/armdozer-effect";
-export { parseBatteryCorrection } from "./state/armdozer-effect/battery-correction";
-export { BatteryCorrectionSchema } from "./state/armdozer-effect/battery-correction";
-export { BatteryCorrection } from "./state/armdozer-effect/battery-correction";
+export { BatteryCorrection, BatteryCorrectionSchema } from "./state/armdozer-effect/battery-correction";
 export { parseBatteryRecoverSkip } from "./state/armdozer-effect/battery-recover-skip";
 export { BatteryRecoverSkipSchema } from "./state/armdozer-effect/battery-recover-skip";
 export { BatteryRecoverSkip } from "./state/armdozer-effect/battery-recover-skip";
