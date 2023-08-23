@@ -14,13 +14,3 @@ export const EffectPeriodSchema = z.union([
   TurnLimitEffectSchema,
   SpecialPeriodEffectSchema,
 ]);
-
-/**
- * 任意オブジェクトをEffectPeriodにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseEffectPeriod = (origin: unknown): EffectPeriod | null => {
-  const result = EffectPeriodSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

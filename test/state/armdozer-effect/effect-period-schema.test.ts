@@ -1,7 +1,7 @@
 import {
   EffectPeriod,
-  parseEffectPeriod,
-} from "../../../src/state/armdozer-effect/effect-period";
+  EffectPeriodSchema,
+} from "../../../src";
 
 /** 有効なEffectPeriod */
 const effectPeriods: EffectPeriod[] = [
@@ -16,7 +16,7 @@ const effectPeriods: EffectPeriod[] = [
 
 test("EffectPeriodはパースできる", () => {
   effectPeriods.forEach((effectPeriod) => {
-    expect(parseEffectPeriod(effectPeriod)).toEqual(effectPeriod);
+    expect(EffectPeriodSchema.parse(effectPeriod)).toEqual(effectPeriod);
   });
 });
 
@@ -24,7 +24,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   effectPeriods.forEach((effectPeriod) => {
     const str = JSON.stringify(effectPeriod);
     const data = JSON.parse(str);
-    expect(parseEffectPeriod(data)).toEqual(effectPeriod);
+    expect(EffectPeriodSchema.parse(data)).toEqual(effectPeriod);
   });
 });
 
@@ -33,5 +33,5 @@ test("EffectPeriod以外はパースできない", () => {
     type: "TurnLimit",
     remaining: 1,
   };
-  expect(parseEffectPeriod(data)).toBe(null);
+  expect(() => EffectPeriodSchema.parse(data)).toThrow();
 });

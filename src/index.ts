@@ -157,8 +157,7 @@ export { BatteryRecoverSkip, BatteryRecoverSkipSchema } from "./state/armdozer-e
 export { ContinuousActivePlayer, ContinuousActivePlayerSchema } from "./state/armdozer-effect/continuous-active-player";
 export { CorrectPower, CorrectPowerSchema } from "./state/armdozer-effect/correct-power";
 export { DamageHalved, DamageHalvedSchema } from "./state/armdozer-effect/damage-halved";
-export { parseEffectPeriod } from "./state/armdozer-effect/effect-period";
-export { EffectPeriodSchema } from "./state/armdozer-effect/effect-period";
+export { EffectPeriod, EffectPeriodSchema } from "./state/armdozer-effect/effect-period";
 export { parseEmptyArmdozerEffect } from "./state/armdozer-effect/empty-armdozer-effect";
 export { EmptyArmdozerEffectSchema } from "./state/armdozer-effect/empty-armdozer-effect";
 export { EmptyArmdozerEffect } from "./state/armdozer-effect/empty-armdozer-effect";
