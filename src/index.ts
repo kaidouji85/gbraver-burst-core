@@ -101,8 +101,8 @@ export {
   GameContinue,
   GameContinueSchema,
   GameEndJudging,
+  GameEndJudgingSchema,
   GameOver,
-  parseGameEndJudging,
   parseGameOver,
 } from "./game/end-judging/game-end-judging";
 export {

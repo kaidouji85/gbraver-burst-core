@@ -1,4 +1,4 @@
-import { GameEndJudging, parseGameEndJudging } from "../../../src";
+import { GameEndJudging, GameEndJudgingSchema } from "../../../src";
 
 /** 有効なGameEndJudging */
 const gameEndJudges: GameEndJudging[] = [
@@ -16,7 +16,7 @@ const gameEndJudges: GameEndJudging[] = [
 
 test("GameEndJudgingはパースできる", () => {
   gameEndJudges.forEach((gameEndJudging) => {
-    expect(parseGameEndJudging(gameEndJudging)).toEqual(gameEndJudging);
+    expect(GameEndJudgingSchema.parse(gameEndJudging)).toEqual(gameEndJudging);
   });
 });
 
@@ -24,7 +24,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   gameEndJudges.forEach((gameEndJudging) => {
     const str = JSON.stringify(gameEndJudging);
     const data = JSON.parse(str);
-    expect(parseGameEndJudging(data)).toEqual(gameEndJudging);
+    expect(GameEndJudgingSchema.parse(data)).toEqual(gameEndJudging);
   });
 });
 
@@ -32,5 +32,5 @@ test("GameEndJudging以外はパースできない", () => {
   const data = {
     name: "GameEndJudging",
   };
-  expect(parseGameEndJudging(data)).toBeNull();
+  expect(() => GameEndJudgingSchema.parse(data)).toThrow();
 });

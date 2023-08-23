@@ -54,13 +54,3 @@ export const GameEndJudgingSchema = z.union([
   EvenMatchSchema,
   GameContinueSchema,
 ]);
-
-/**
- * 任意オブジェクトをGameEndJudgingにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseGameEndJudging = (origin: unknown): GameEndJudging | null => {
-  const result = GameEndJudgingSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
