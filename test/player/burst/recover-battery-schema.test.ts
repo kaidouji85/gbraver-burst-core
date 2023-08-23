@@ -1,4 +1,4 @@
-import { parseRecoverBattery, RecoverBattery } from "../../../src";
+import { RecoverBattery, RecoverBatterySchema } from "../../../src";
 
 /** 有効なRecoverBattery */
 const recoverBattery: RecoverBattery = {
@@ -7,13 +7,13 @@ const recoverBattery: RecoverBattery = {
 };
 
 test("RecoverBatteryはパースできる", () => {
-  expect(parseRecoverBattery(recoverBattery)).toEqual(recoverBattery);
+  expect(RecoverBatterySchema.parse(recoverBattery)).toEqual(recoverBattery);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(recoverBattery);
   const data = JSON.parse(str);
-  expect(parseRecoverBattery(data)).toEqual(recoverBattery);
+  expect(RecoverBatterySchema.parse(data)).toEqual(recoverBattery);
 });
 
 test("RecoverBattery以外はnullを返す", () => {
@@ -21,5 +21,5 @@ test("RecoverBattery以外はnullを返す", () => {
     type: "Battery",
     recover: 5,
   };
-  expect(parseRecoverBattery(data)).toEqual(null);
+  expect(() => RecoverBatterySchema.parse(data)).toThrow();
 });

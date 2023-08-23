@@ -127,9 +127,7 @@ export { BatteryLimitBreak, BatteryLimitBreakSchema } from "./player/burst/batte
 export { BuffPower, BuffPowerSchema } from "./player/burst/buff-power";
 export { ContinuousAttack, ContinuousAttackSchema } from "./player/burst/continuous-attack";
 export { LightningBarrier, LightningBarrierSchema } from "./player/burst/lightning-barrier";
-export { parseRecoverBattery } from "./player/burst/recover-battery";
-export { RecoverBatterySchema } from "./player/burst/recover-battery";
-export { RecoverBattery } from "./player/burst/recover-battery";
+export { RecoverBattery, RecoverBatterySchema } from "./player/burst/recover-battery";
 export {
   parsePilot,
   parsePilotId,
