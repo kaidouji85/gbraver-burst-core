@@ -125,9 +125,7 @@ export {
 export { Burst, BurstSchema } from "./player/burst";
 export { BatteryLimitBreak, BatteryLimitBreakSchema } from "./player/burst/battery-limit-break";
 export { BuffPower, BuffPowerSchema } from "./player/burst/buff-power";
-export { parseContinuousAttack } from "./player/burst/continuous-attack";
-export { ContinuousAttackSchema } from "./player/burst/continuous-attack";
-export { ContinuousAttack } from "./player/burst/continuous-attack";
+export { ContinuousAttack, ContinuousAttackSchema } from "./player/burst/continuous-attack";
 export { parseLightningBarrier } from "./player/burst/lightning-barrier";
 export { LightningBarrierSchema } from "./player/burst/lightning-barrier";
 export { LightningBarrier } from "./player/burst/lightning-barrier";
