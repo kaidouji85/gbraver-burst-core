@@ -1,4 +1,4 @@
-import { BatteryLimitBreak, parseBatteryLimitBreak } from "../../../src";
+import { BatteryLimitBreak, BatteryLimitBreakSchema } from "../../../src";
 
 /** 有効なBatteryLimitBreak */
 const batteryLimitBreak: BatteryLimitBreak = {
@@ -8,13 +8,13 @@ const batteryLimitBreak: BatteryLimitBreak = {
 };
 
 test("BatteryLimitBreakはパースできる", () => {
-  expect(parseBatteryLimitBreak(batteryLimitBreak)).toEqual(batteryLimitBreak);
+  expect(BatteryLimitBreakSchema.parse(batteryLimitBreak)).toEqual(batteryLimitBreak);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryLimitBreak);
   const data = JSON.parse(str);
-  expect(parseBatteryLimitBreak(data)).toEqual(batteryLimitBreak);
+  expect(BatteryLimitBreakSchema.parse(data)).toEqual(batteryLimitBreak);
 });
 
 test("BatteryLimitBreak以外はnullを返す", () => {
@@ -23,5 +23,5 @@ test("BatteryLimitBreak以外はnullを返す", () => {
     recover: 8,
     battery: 8,
   };
-  expect(parseBatteryLimitBreak(data)).toBe(null);
+  expect(() => BatteryLimitBreakSchema.parse(data)).toThrow();
 });

@@ -123,9 +123,7 @@ export {
   ArmdozerX,
 } from "./player/armdozer";
 export { Burst, BurstSchema } from "./player/burst";
-export { parseBatteryLimitBreak } from "./player/burst/battery-limit-break";
-export { BatteryLimitBreakSchema } from "./player/burst/battery-limit-break";
-export { BatteryLimitBreak } from "./player/burst/battery-limit-break";
+export { BatteryLimitBreak, BatteryLimitBreakSchema } from "./player/burst/battery-limit-break";
 export { parseBuffPower } from "./player/burst/buff-power";
 export { BuffPowerSchema } from "./player/burst/buff-power";
 export { BuffPower } from "./player/burst/buff-power";
