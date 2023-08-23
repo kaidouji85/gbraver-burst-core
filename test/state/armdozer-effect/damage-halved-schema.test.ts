@@ -1,4 +1,4 @@
-import { DamageHalved, parseDamageHalved } from "../../../src";
+import { DamageHalved, DamageHalvedSchema } from "../../../src";
 
 /** 有効なDamageHalved */
 const damageHalved: DamageHalved = {
@@ -10,13 +10,13 @@ const damageHalved: DamageHalved = {
 };
 
 test("DamageHalvedはパースできる", () => {
-  expect(parseDamageHalved(damageHalved)).toEqual(damageHalved);
+  expect(DamageHalvedSchema.parse(damageHalved)).toEqual(damageHalved);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(damageHalved);
   const data = JSON.parse(str);
-  expect(parseDamageHalved(data)).toEqual(damageHalved);
+  expect(DamageHalvedSchema.parse(data)).toEqual(damageHalved);
 });
 
 test("DamageHalved以外はパースできない", () => {
@@ -27,5 +27,5 @@ test("DamageHalved以外はパースできない", () => {
       remaining: 1,
     },
   };
-  expect(parseDamageHalved(data)).toBeNull();
+  expect(() => DamageHalvedSchema.parse(data)).toThrow();
 });
