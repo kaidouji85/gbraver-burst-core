@@ -35,7 +35,6 @@ export {
   BattleResult,
   battleResult,
   BattleResultSchema,
-  parseBattleResult,
 } from "./effect/battle/result/battle-result";
 export {
   CriticalHit,

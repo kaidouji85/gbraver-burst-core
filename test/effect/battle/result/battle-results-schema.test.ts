@@ -1,4 +1,4 @@
-import { BattleResult, parseBattleResult } from "../../../../src";
+import { BattleResult, BattleResultSchema } from "../../../../src";
 
 /** 有効なBattleResult */
 const battleResults: BattleResult[] = [
@@ -25,7 +25,7 @@ const battleResults: BattleResult[] = [
 
 test("BattleResultはパースできる", () => {
   battleResults.forEach((battleResult) => {
-    expect(parseBattleResult(battleResult)).toEqual(battleResult);
+    expect(BattleResultSchema.parse(battleResult)).toEqual(battleResult);
   });
 });
 
@@ -33,7 +33,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   battleResults.forEach((battleResult) => {
     const str = JSON.stringify(battleResult);
     const data = JSON.parse(str);
-    expect(parseBattleResult(data)).toEqual(battleResult);
+    expect(BattleResultSchema.parse(data)).toEqual(battleResult);
   });
 });
 
@@ -42,5 +42,5 @@ test("BattleResult以外はパースできない", () => {
     type: "NormalHit",
     damaged: 2300,
   };
-  expect(parseBattleResult(data)).toBeNull();
+  expect(() => BattleResultSchema.parse(data)).toThrow();
 });

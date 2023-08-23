@@ -24,16 +24,6 @@ export const BattleResultSchema = z.union([
 ]);
 
 /**
- * 任意オブジェクトをBattleResultにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseBattleResult = (origin: unknown): BattleResult | null => {
-  const result = BattleResultSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * 戦闘結果を生成して返す
  *
  * @param attacker 攻撃側プレイヤー
