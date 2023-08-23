@@ -13,16 +13,6 @@ export const CriticalHitSchema = z.object({
 });
 
 /**
- * 任意オブジェクトをCriticalHitにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseCriticalHit = (origin: unknown): CriticalHit | null => {
-  const result = CriticalHitSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * クリティカルヒットの戦闘結果を生成する
  *
  * @return クリティカルヒットの戦闘結果

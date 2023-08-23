@@ -1,4 +1,4 @@
-import { CriticalHit, parseCriticalHit } from "../../../../src";
+import { CriticalHit, CriticalHitSchema } from "../../../../src";
 
 /** 有効なCriticalHit */
 const criticalHit: CriticalHit = {
@@ -7,13 +7,13 @@ const criticalHit: CriticalHit = {
 };
 
 test("CriticalHitはパースできる", () => {
-  expect(parseCriticalHit(criticalHit)).toEqual(criticalHit);
+  expect(CriticalHitSchema.parse(criticalHit)).toEqual(criticalHit);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(criticalHit);
   const data = JSON.parse(str);
-  expect(parseCriticalHit(data)).toEqual(criticalHit);
+  expect(CriticalHitSchema.parse(data)).toEqual(criticalHit);
 });
 
 test("CriticalHit以外はパースできない", () => {
@@ -21,5 +21,5 @@ test("CriticalHit以外はパースできない", () => {
     type: "CriticalHit",
     damaged: 9999,
   };
-  expect(parseCriticalHit(data)).toBeNull();
+  expect(() => CriticalHitSchema.parse(data)).toThrow();
 });
