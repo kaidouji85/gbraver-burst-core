@@ -1,4 +1,4 @@
-import { parsePilotSkill, PilotSkill } from "../../../src";
+import { PilotSkill, PilotSkillSchema } from "../../../src";
 
 /** 有効なパイロットスキル */
 const pilotSkills: PilotSkill[] = [
@@ -28,7 +28,7 @@ const pilotSkills: PilotSkill[] = [
 
 test("PilotSkillはパースできる", () => {
   pilotSkills.forEach((skill) => {
-    expect(parsePilotSkill(skill)).toEqual(skill);
+    expect(PilotSkillSchema.parse(skill)).toEqual(skill);
   });
 });
 
@@ -36,7 +36,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   pilotSkills.forEach((skill) => {
     const str = JSON.stringify(skill);
     const data = JSON.parse(str);
-    expect(parsePilotSkill(data)).toEqual(skill);
+    expect(PilotSkillSchema.parse(data)).toEqual(skill);
   });
 });
 
@@ -45,5 +45,5 @@ test("PilotSkill以外はnullを返す", () => {
     type: "RecoverBattery",
     recover: 5,
   };
-  expect(parsePilotSkill(data)).toBe(null);
+  expect(() => PilotSkillSchema.parse(data)).toThrow();
 });

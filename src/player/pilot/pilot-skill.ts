@@ -34,13 +34,3 @@ export const PilotSkillSchema = z.union([
   DamageHalvedSkillSchema,
   BatteryBoostSkillSchema,
 ]);
-
-/**
- * 任意オブジェクトをPilotSkillにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePilotSkill = (origin: unknown): PilotSkill | null => {
-  const result = PilotSkillSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
