@@ -48,6 +48,7 @@ export { Effect } from "./effect/index";
 export {
   InputCommand,
   NoChoice,
+  NoChoiceSchema,
   Selectable,
   SelectableSchema,
 } from "./effect/input-command/input-command";

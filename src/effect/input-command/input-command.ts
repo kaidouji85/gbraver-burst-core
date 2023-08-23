@@ -30,6 +30,13 @@ export type NoChoice = Readonly<{
   nextTurnCommand: Command;
 }>;
 
+/** NoChoice zodスキーマ */
+export const NoChoiceSchema = z.object({
+  playerId: PlayerIdSchema,
+  selectable: z.literal(false),
+  nextTurnCommand: CommandSchema,
+});
+
 /** コマンド入力 */
 export type InputCommand = Readonly<{
   name: "InputCommand";
