@@ -49,13 +49,3 @@ export const ArmdozerEffectSchema = z.union([
   DamageHalvedSchema,
   BatteryRecoverSkipSchema,
 ]);
-
-/**
- * 任意オブジェクトをArmdozerEffectにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseArmdozerEffect = (origin: unknown): ArmdozerEffect | null => {
-  const result = ArmdozerEffectSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

@@ -1,4 +1,4 @@
-import { ArmdozerEffect, parseArmdozerEffect } from "../../../src";
+import { ArmdozerEffect, ArmdozerEffectSchema } from "../../../src";
 
 /** 有効なArmdozerEffect */
 const armdozerEffects: ArmdozerEffect[] = [
@@ -64,7 +64,7 @@ const armdozerEffects: ArmdozerEffect[] = [
 
 test("ArmdozerEffectはパースできる", () => {
   armdozerEffects.forEach((effect) => {
-    expect(parseArmdozerEffect(effect)).toEqual(effect);
+    expect(ArmdozerEffectSchema.parse(effect)).toEqual(effect);
   });
 });
 
@@ -72,7 +72,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   armdozerEffects.forEach((effect) => {
     const str = JSON.stringify(effect);
     const data = JSON.parse(str);
-    expect(parseArmdozerEffect(data)).toEqual(effect);
+    expect(ArmdozerEffectSchema.parse(data)).toEqual(effect);
   });
 });
 
@@ -85,5 +85,5 @@ test("ArmdozerEffect以外はパースできない", () => {
       remaining: 1,
     },
   };
-  expect(parseArmdozerEffect(data)).toBe(null);
+  expect(() => ArmdozerEffectSchema.parse(data)).toThrow();
 });

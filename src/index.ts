@@ -151,7 +151,6 @@ export {
 export {
   ArmdozerEffect,
   ArmdozerEffectSchema,
-  parseArmdozerEffect,
 } from "./state/armdozer-effect";
 export { parseBatteryCorrection } from "./state/armdozer-effect/battery-correction";
 export { BatteryCorrectionSchema } from "./state/armdozer-effect/battery-correction";
