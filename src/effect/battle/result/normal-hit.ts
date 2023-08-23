@@ -19,16 +19,6 @@ export const NormalHitSchema = z.object({
 });
 
 /**
- * 任意オブジェクトをBatteryDeclarationにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseNormalHit = (origin: unknown): NormalHit | null => {
-  const result = NormalHitSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * 攻撃ヒットの戦闘結果を生成する
  * @param attacker 攻撃側プレイヤー
  * @param attackerBattery 攻撃側バッテリー

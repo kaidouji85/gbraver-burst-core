@@ -1,4 +1,4 @@
-import { NormalHit, parseNormalHit } from "../../../../src";
+import { NormalHit, NormalHitSchema } from "../../../../src";
 
 /** 有効なNormalHit */
 const normalHit: NormalHit = {
@@ -7,13 +7,13 @@ const normalHit: NormalHit = {
 };
 
 test("NormalHitはパースできる", () => {
-  expect(parseNormalHit(normalHit)).toEqual(normalHit);
+  expect(NormalHitSchema.parse(normalHit)).toEqual(normalHit);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(normalHit);
   const data = JSON.parse(str);
-  expect(parseNormalHit(data)).toEqual(normalHit);
+  expect(NormalHitSchema.parse(data)).toEqual(normalHit);
 });
 
 test("NormalHit以外はパースできない", () => {
@@ -21,5 +21,5 @@ test("NormalHit以外はパースできない", () => {
     type: "NormalHit",
     damaged: 2300,
   };
-  expect(parseNormalHit(data)).toBeNull();
+  expect(() => NormalHitSchema.parse(data)).toThrow();
 });

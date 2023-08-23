@@ -46,7 +46,6 @@ export { Miss, MissSchema } from "./effect/battle/result/miss";
 export {
   NormalHit,
   NormalHitSchema,
-  parseNormalHit,
 } from "./effect/battle/result/normal-hit";
 export {
   BurstEffect,
