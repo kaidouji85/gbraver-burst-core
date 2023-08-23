@@ -42,7 +42,7 @@ export {
 } from "./effect/battle/result/critical-hit";
 export { Feint, FeintSchema } from "./effect/battle/result/feint";
 export { Guard, GuardSchema } from "./effect/battle/result/guard";
-export { Miss, MissSchema, parseMiss } from "./effect/battle/result/miss";
+export { Miss, MissSchema } from "./effect/battle/result/miss";
 export {
   NormalHit,
   NormalHitSchema,

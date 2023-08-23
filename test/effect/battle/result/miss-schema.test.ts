@@ -1,4 +1,4 @@
-import { Miss, parseMiss } from "../../../../src";
+import { Miss, MissSchema } from "../../../../src";
 
 /** 有効なMiss */
 const miss: Miss = {
@@ -6,18 +6,18 @@ const miss: Miss = {
 };
 
 test("Missはパースできる", () => {
-  expect(parseMiss(miss)).toEqual(miss);
+  expect(MissSchema.parse(miss)).toEqual(miss);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(miss);
   const data = JSON.parse(str);
-  expect(parseMiss(data)).toEqual(miss);
+  expect(MissSchema.parse(data)).toEqual(miss);
 });
 
 test("Miss以外はパースできない", () => {
   const data = {
     type: "Miss",
   };
-  expect(parseMiss(data)).toBeNull();
+  expect(() => MissSchema.parse(data)).toThrow();
 });
