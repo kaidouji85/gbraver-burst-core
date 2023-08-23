@@ -1,5 +1,4 @@
-import { parseSpecialPeriodEffect } from "../../../src";
-import { SpecialPeriodEffect } from "../../../src/state/armdozer-effect/special-period-effect";
+import { SpecialPeriodEffect, SpecialPeriodEffectSchema } from "../../../src";
 
 /** 有効なSpecialPeriodEffect */
 const specialPeriodEffect: SpecialPeriodEffect = {
@@ -7,7 +6,7 @@ const specialPeriodEffect: SpecialPeriodEffect = {
 };
 
 test("SpecialPeriodはパースできる", () => {
-  expect(parseSpecialPeriodEffect(specialPeriodEffect)).toEqual(
+  expect(SpecialPeriodEffectSchema.parse(specialPeriodEffect)).toEqual(
     specialPeriodEffect,
   );
 });
@@ -15,10 +14,10 @@ test("SpecialPeriodはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(specialPeriodEffect);
   const data = JSON.parse(str);
-  expect(parseSpecialPeriodEffect(data)).toEqual(specialPeriodEffect);
+  expect(SpecialPeriodEffectSchema.parse(data)).toEqual(specialPeriodEffect);
 });
 
 test("SpecialPeriod以外はパースできない", () => {
   const data = { type: "specialPeriodEffect" };
-  expect(parseSpecialPeriodEffect(data)).toBe(null);
+  expect(() => SpecialPeriodEffectSchema.parse(data)).toThrow();
 });

@@ -161,8 +161,7 @@ export { EffectPeriod, EffectPeriodSchema } from "./state/armdozer-effect/effect
 export { EmptyArmdozerEffect, EmptyArmdozerEffectSchema } from "./state/armdozer-effect/empty-armdozer-effect";
 export { HalveCorrectPower, HalveCorrectPowerSchema } from "./state/armdozer-effect/halve-correct-power";
 export { ReflectDamageEffect, ReflectDamageEffectSchema } from "./state/armdozer-effect/reflect-damage-effect";
-export { parseSpecialPeriodEffect } from "./state/armdozer-effect/special-period-effect";
-export { SpecialPeriodEffectSchema } from "./state/armdozer-effect/special-period-effect";
+export { SpecialPeriodEffect, SpecialPeriodEffectSchema } from "./state/armdozer-effect/special-period-effect";
 export { parseTryReflect } from "./state/armdozer-effect/try-reflect";
 export { TryReflectSchema } from "./state/armdozer-effect/try-reflect";
 export { TryReflect } from "./state/armdozer-effect/try-reflect";
