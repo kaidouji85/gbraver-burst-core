@@ -44,13 +44,3 @@ export const PlayerSchema = z.object({
   armdozer: ArmdozerSchema,
   pilot: PilotSchema,
 });
-
-/**
- * 任意オブジェクトをPlayerにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePlayer = (origin: unknown): Player | null => {
-  const result = PlayerSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

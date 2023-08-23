@@ -1,15 +1,15 @@
-import { EMPTY_PLAYER, parsePlayer, Player } from "../../src";
+import { EMPTY_PLAYER, Player, PlayerSchema } from "../../src";
 
 test("Playerはパースできる", () => {
   const data: Player = EMPTY_PLAYER;
-  expect(parsePlayer(data)).toEqual(data);
+  expect(PlayerSchema.parse(data)).toEqual(data);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const origin: Player = EMPTY_PLAYER;
   const str = JSON.stringify(origin);
   const data = JSON.parse(str);
-  expect(parsePlayer(data)).toEqual(origin);
+  expect(PlayerSchema.parse(data)).toEqual(origin);
 });
 
 test("Player以外はnullを返す", () => {
@@ -29,5 +29,5 @@ test("Player以外はnullを返す", () => {
       },
     },
   };
-  expect(parsePlayer(data)).toBe(null);
+  expect(() => PlayerSchema.parse(data)).toThrow();
 });
