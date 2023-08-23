@@ -168,7 +168,6 @@ export {
   ArmdozerState,
   ArmdozerStateSchema,
   ArmdozerStateX,
-  parseArmDozerState,
 } from "./state/armdozer-state";
 export { GameState, GameStateX } from "./state/game-state";
 export {

@@ -1,20 +1,20 @@
 import {
   ArmdozerState,
+  ArmdozerStateSchema,
   EMPTY_ARMDOZER_STATE,
-  parseArmDozerState,
 } from "../../../src";
 
 /** 有効なArmdozerState */
 const armdozerState: ArmdozerState = EMPTY_ARMDOZER_STATE;
 
 test("ArmdozerStateはパースできる", () => {
-  expect(parseArmDozerState(armdozerState)).toEqual(armdozerState);
+  expect(ArmdozerStateSchema.parse(armdozerState)).toEqual(armdozerState);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(armdozerState);
   const data = JSON.parse(str);
-  expect(parseArmDozerState(data)).toEqual(armdozerState);
+  expect(ArmdozerStateSchema.parse(data)).toEqual(armdozerState);
 });
 
 test("ArmdozerState以外はパースできない", () => {
@@ -26,5 +26,5 @@ test("ArmdozerState以外はパースできない", () => {
     powerValue: 2000,
     speedValue: 2000,
   };
-  expect(parseArmDozerState(data)).toBeNull();
+  expect(() => ArmdozerStateSchema.parse(data)).toThrow();
 });
