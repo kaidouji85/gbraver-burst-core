@@ -142,7 +142,6 @@ export { DamageHalvedSkill, DamageHalvedSkillSchema } from "./player/pilot/damag
 export { PilotSkill, PilotSkillSchema } from "./player/pilot/pilot-skill";
 export { RecoverBatterySkill, RecoverBatterySkillSchema } from "./player/pilot/recover-battery-skill";
 export {
-  parsePlayerId,
   Player,
   PlayerId,
   PlayerIdSchema,

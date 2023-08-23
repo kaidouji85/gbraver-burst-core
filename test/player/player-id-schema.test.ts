@@ -1,18 +1,18 @@
-import { parsePlayerId, PlayerId } from "../../src";
+import { PlayerId, PlayerIdSchema } from "../../src";
 
 test("PlyerIdはパースできる", () => {
   const data: PlayerId = "player";
-  expect(parsePlayerId(data)).toBe(data);
+  expect(PlayerIdSchema.parse(data)).toBe(data);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const origin: PlayerId = "player";
   const str = JSON.stringify(origin);
   const data = JSON.parse(str);
-  expect(parsePlayerId(data)).toBe(origin);
+  expect(PlayerIdSchema.parse(data)).toBe(origin);
 });
 
 test("PlyerId以外はnullを返す", () => {
   const data = 1000;
-  expect(parsePlayerId(data)).toBe(null);
+  expect(() => PlayerIdSchema.parse(data)).toThrow();
 });
