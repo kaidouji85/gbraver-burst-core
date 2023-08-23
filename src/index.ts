@@ -153,9 +153,7 @@ export {
   ArmdozerEffectSchema,
 } from "./state/armdozer-effect";
 export { BatteryCorrection, BatteryCorrectionSchema } from "./state/armdozer-effect/battery-correction";
-export { parseBatteryRecoverSkip } from "./state/armdozer-effect/battery-recover-skip";
-export { BatteryRecoverSkipSchema } from "./state/armdozer-effect/battery-recover-skip";
-export { BatteryRecoverSkip } from "./state/armdozer-effect/battery-recover-skip";
+export { BatteryRecoverSkip, BatteryRecoverSkipSchema } from "./state/armdozer-effect/battery-recover-skip";
 export { parseContinuousActivePlayer } from "./state/armdozer-effect/continuous-active-player";
 export { ContinuousActivePlayerSchema } from "./state/armdozer-effect/continuous-active-player";
 export { ContinuousActivePlayer } from "./state/armdozer-effect/continuous-active-player";

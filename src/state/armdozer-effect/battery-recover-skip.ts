@@ -14,15 +14,3 @@ export const BatteryRecoverSkipSchema = z.object({
   type: z.literal("BatteryRecoverSkip"),
   period: EffectPeriodSchema,
 });
-
-/**
- * 任意オブジェクトをBatteryRecoverSkipにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseBatteryRecoverSkip = (
-  origin: unknown,
-): BatteryRecoverSkip | null => {
-  const result = BatteryRecoverSkipSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

@@ -1,4 +1,4 @@
-import { BatteryRecoverSkip, parseBatteryRecoverSkip } from "../../../src";
+import { BatteryRecoverSkip, BatteryRecoverSkipSchema } from "../../../src";
 
 /** 有効なBatteryRecoverSkip */
 const batteryRecoverSkip: BatteryRecoverSkip = {
@@ -9,7 +9,7 @@ const batteryRecoverSkip: BatteryRecoverSkip = {
 };
 
 test("BatteryRecoverSkipはパースできる", () => {
-  expect(parseBatteryRecoverSkip(batteryRecoverSkip)).toEqual(
+  expect(BatteryRecoverSkipSchema.parse(batteryRecoverSkip)).toEqual(
     batteryRecoverSkip,
   );
 });
@@ -17,7 +17,7 @@ test("BatteryRecoverSkipはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryRecoverSkip);
   const data = JSON.parse(str);
-  expect(parseBatteryRecoverSkip(data)).toEqual(batteryRecoverSkip);
+  expect(BatteryRecoverSkipSchema.parse(data)).toEqual(batteryRecoverSkip);
 });
 
 test("BatteryRecoverSkip以外はパースできない", () => {
@@ -27,5 +27,5 @@ test("BatteryRecoverSkip以外はパースできない", () => {
       type: "Special",
     },
   };
-  expect(parseBatteryRecoverSkip(data)).toBeNull();
+  expect(() => BatteryRecoverSkipSchema.parse(data)).toThrow();
 });
