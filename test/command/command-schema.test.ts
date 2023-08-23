@@ -1,4 +1,4 @@
-import { Command, parseCommand } from "../../src";
+import { Command, CommandSchema } from "../../src";
 
 /** 有効なCommand */
 const commands: Command[] = [
@@ -19,7 +19,7 @@ const commands: Command[] = [
 
 test("Commandはパースできる", () => {
   commands.forEach((command) => {
-    expect(parseCommand(command)).toEqual(command);
+    expect(CommandSchema.parse(command)).toEqual(command);
   });
 });
 
@@ -27,18 +27,18 @@ test("文字列からパースしたオブジェクトも、正しくパース�
   commands.forEach((command) => {
     const str = JSON.stringify(command);
     const data = JSON.parse(str);
-    expect(parseCommand(data)).toEqual(command);
+    expect(CommandSchema.parse(data)).toEqual(command);
   });
 });
 
 test("空オブジェクトはパースできない", () => {
-  expect(parseCommand({})).toEqual(null);
+  expect(() => CommandSchema.parse({})).toThrow();
 });
 
 test("nullはパースできない", () => {
-  expect(parseCommand(null)).toEqual(null);
+  expect(() => CommandSchema.parse(null)).toThrow();
 });
 
 test("undefinedはパースできない", () => {
-  expect(parseCommand(undefined)).toEqual(null);
+  expect(() => CommandSchema.parse(undefined)).toThrow();
 });

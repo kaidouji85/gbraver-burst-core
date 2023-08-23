@@ -7,7 +7,6 @@ export {
   Command,
   CommandSchema,
   isCommandEqual,
-  parseCommand,
 } from "./command/command";
 export {
   EmptyCommand,
