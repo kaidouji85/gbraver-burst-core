@@ -13,7 +13,6 @@ export {
   EmptyCommandSchema,
 } from "./command/empty-command";
 export {
-  parsePilotSkillCommand,
   PilotSkillCommand,
   PilotSkillCommandSchema,
 } from "./command/pilot-skill";
