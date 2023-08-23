@@ -1,4 +1,4 @@
-import { Burst, parseBurst } from "../../../src";
+import { Burst, BurstSchema } from "../../../src";
 
 /** 有効なバースト */
 const bursts: Burst[] = [
@@ -31,7 +31,7 @@ const bursts: Burst[] = [
 
 test("Burstはパースできる", () => {
   bursts.forEach((burst) => {
-    expect(parseBurst(burst)).toEqual(burst);
+    expect(BurstSchema.parse(burst)).toEqual(burst);
   });
 });
 
@@ -39,7 +39,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   bursts.forEach((burst) => {
     const str = JSON.stringify(burst);
     const data = JSON.parse(str);
-    expect(parseBurst(data)).toEqual(burst);
+    expect(BurstSchema.parse(data)).toEqual(burst);
   });
 });
 
@@ -48,5 +48,5 @@ test("Burst以外はパースできない", () => {
     type: "Continuous",
     battery: 3,
   };
-  expect(parseBurst(data)).toBe(null);
+  expect(() => BurstSchema.parse(data)).toThrow();
 });
