@@ -1,4 +1,4 @@
-import { Feint, parseFeint } from "../../../../src";
+import { Feint, FeintSchema } from "../../../../src";
 
 /** 有効なFeint */
 const feint: Feint = {
@@ -7,13 +7,13 @@ const feint: Feint = {
 };
 
 test("Feintはパースできる", () => {
-  expect(parseFeint(feint)).toEqual(feint);
+  expect(FeintSchema.parse(feint)).toEqual(feint);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(feint);
   const data = JSON.parse(str);
-  expect(parseFeint(data)).toEqual(feint);
+  expect(FeintSchema.parse(data)).toEqual(feint);
 });
 
 test("Feint以外はパースできない", () => {
@@ -21,5 +21,5 @@ test("Feint以外はパースできない", () => {
     type: "Feint",
     isDefenderMovedFlag: true,
   };
-  expect(parseFeint(data)).toBeNull();
+  expect(() => FeintSchema.parse(data)).toThrow();
 });
