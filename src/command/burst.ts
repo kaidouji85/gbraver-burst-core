@@ -9,13 +9,3 @@ export type BurstCommand = Readonly<{
 export const BurstCommandSchema = z.object({
   type: z.literal("BURST_COMMAND"),
 });
-
-/**
- * 指定したコマンドをバーストコマンドにパースする
- * @param origin パースするコマンド
- * @return パース結果、パースできない場合はnull
- */
-export function parseBurstCommand(origin: unknown): BurstCommand | null {
-  const result = BurstCommandSchema.safeParse(origin);
-  return result.success ? result.data : null;
-}

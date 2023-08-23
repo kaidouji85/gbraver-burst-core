@@ -1,36 +1,36 @@
-import { BurstCommand, parseBurstCommand } from "../../src";
+import { BurstCommand, BurstCommandSchema } from "../../src";
 
 test("バーストコマンドをパースできる", () => {
   const data: BurstCommand = { type: "BURST_COMMAND" };
-  expect(parseBurstCommand(data)).toEqual(data);
+  expect(BurstCommandSchema.parse(data)).toEqual(data);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const origin: BurstCommand = { type: "BURST_COMMAND" };
   const str = JSON.stringify(origin);
   const data = JSON.parse(str);
-  expect(parseBurstCommand(data)).toEqual(origin);
+  expect(BurstCommandSchema.parse(data)).toEqual(origin);
 });
 
 test("余計なプロパティを削除してパースする", () => {
   const origin: BurstCommand = { type: "BURST_COMMAND" };
   const data = { ...origin, test: 12 };
-  expect(parseBurstCommand(data)).toEqual(origin);
+  expect(BurstCommandSchema.parse(data)).toEqual(origin);
 });
 
 test("typeの値が間違っているとパースできない", () => {
   const data = { type: "burstCommand" };
-  expect(parseBurstCommand(data)).toEqual(null);
+  expect(() => BurstCommandSchema.parse(data)).toThrow();
 });
 
 test("空オブジェクトはパースできない", () => {
-  expect(parseBurstCommand({})).toEqual(null);
+  expect(() => BurstCommandSchema.parse({})).toThrow();
 });
 
 test("nullはパースできない", () => {
-  expect(parseBurstCommand(null)).toEqual(null);
+  expect(() => BurstCommandSchema.parse(null)).toThrow();
 });
 
 test("undefinedはパースできない", () => {
-  expect(parseBurstCommand(undefined)).toEqual(null);
+  expect(() => BurstCommandSchema.parse(undefined)).toThrow();
 });

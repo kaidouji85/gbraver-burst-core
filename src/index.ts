@@ -2,7 +2,6 @@ export { BatteryCommand, BatteryCommandSchema } from "./command/battery";
 export {
   BurstCommand,
   BurstCommandSchema,
-  parseBurstCommand,
 } from "./command/burst";
 export {
   Command,
