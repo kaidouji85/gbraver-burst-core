@@ -60,8 +60,8 @@ export {
 export {
   GameEnd,
   GameEndResult,
+  GameEndResultSchema,
   GameEndX,
-  parseGameEndResult,
 } from "./effect/game-end/game-end";
 export { Effect } from "./effect/index";
 export {
