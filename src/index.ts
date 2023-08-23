@@ -71,7 +71,12 @@ export {
   hasHalveCorrectPower,
   totalCorrectPower,
 } from "./effect/correct-power";
-export { GameEnd, GameEndResult, GameEndX } from "./effect/game-end/game-end";
+export {
+  GameEnd,
+  GameEndResult,
+  GameEndX,
+  parseGameEndResult,
+} from "./effect/game-end/game-end";
 export { Effect } from "./effect/index";
 export {
   InputCommand,
@@ -104,7 +109,16 @@ export { EMPTY_GAME_STATE } from "./empty/game-state";
 export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
 export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
 export { PlayerCommand, PlayerCommandX } from "./game/command/player-command";
-export { EvenMatch, GameOver } from "./game/end-judging/game-end-judging";
+export {
+  EvenMatch,
+  GameContinue,
+  GameEndJudging,
+  GameOver,
+  parseEvenMatch,
+  parseGameContinue,
+  parseGameEndJudging,
+  parseGameOver,
+} from "./game/end-judging/game-end-judging";
 export {
   GbraverBurstCore,
   RestoreGbraverBurst,
