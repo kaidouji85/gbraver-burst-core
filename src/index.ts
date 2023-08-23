@@ -163,8 +163,7 @@ export { HalveCorrectPower, HalveCorrectPowerSchema } from "./state/armdozer-eff
 export { ReflectDamageEffect, ReflectDamageEffectSchema } from "./state/armdozer-effect/reflect-damage-effect";
 export { SpecialPeriodEffect, SpecialPeriodEffectSchema } from "./state/armdozer-effect/special-period-effect";
 export { TryReflect, TryReflectSchema } from "./state/armdozer-effect/try-reflect";
-export { parseTurnLimitEffect } from "./state/armdozer-effect/turn-limit-effect";
-export { TurnLimitEffectSchema } from "./state/armdozer-effect/turn-limit-effect";
+export { TurnLimitEffect, TurnLimitEffectSchema } from "./state/armdozer-effect/turn-limit-effect";
 export {
   ArmdozerState,
   ArmdozerStateSchema,

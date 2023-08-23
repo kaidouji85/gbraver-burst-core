@@ -1,7 +1,7 @@
 import {
-  parseTurnLimitEffect,
   TurnLimitEffect,
-} from "../../../src/state/armdozer-effect/turn-limit-effect";
+  TurnLimitEffectSchema,
+} from "../../../src";
 
 /** 有効なTurnLimitEffect */
 const turnLimit: TurnLimitEffect = {
@@ -10,16 +10,16 @@ const turnLimit: TurnLimitEffect = {
 };
 
 test("TurnLimitはパースできる", () => {
-  expect(parseTurnLimitEffect(turnLimit)).toEqual(turnLimit);
+  expect(TurnLimitEffectSchema.parse(turnLimit)).toEqual(turnLimit);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(turnLimit);
   const data = JSON.parse(str);
-  expect(parseTurnLimitEffect(data)).toEqual(turnLimit);
+  expect(TurnLimitEffectSchema.parse(data)).toEqual(turnLimit);
 });
 
 test("TurnLimit以外はパースできない", () => {
   const data = { type: "turnLimit", turn: 1 };
-  expect(parseTurnLimitEffect(data)).toBe(null);
+  expect(() => TurnLimitEffectSchema.parse(data)).toThrow();
 });
