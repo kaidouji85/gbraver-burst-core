@@ -38,3 +38,19 @@ export type GameEndX<X> = Readonly<{
 
 /** ゲーム終了 */
 export type GameEnd = GameEndX<GameEndResult>;
+
+/** GameEnd zodスキーマ */
+export const GameEndSchema = z.object({
+  name: z.literal("GameEnd"),
+  result: GameEndResultSchema,
+});
+
+/**
+ * 任意オブジェクトをGameEndResultにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseGameEnd = (origin: unknown): GameEnd | null => {
+  const result = GameEndSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
