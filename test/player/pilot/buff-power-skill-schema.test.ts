@@ -1,4 +1,4 @@
-import { BuffPowerSkill, parseBuffPowerSkill } from "../../../src";
+import { BuffPowerSkill, BuffPowerSkillSchema } from "../../../src";
 
 /** 有効なBuffPowerSkill */
 const buffPowerSkill: BuffPowerSkill = {
@@ -8,13 +8,13 @@ const buffPowerSkill: BuffPowerSkill = {
 };
 
 test("BuffPowerSkillはパースできる", () => {
-  expect(parseBuffPowerSkill(buffPowerSkill)).toEqual(buffPowerSkill);
+  expect(BuffPowerSkillSchema.parse(buffPowerSkill)).toEqual(buffPowerSkill);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(buffPowerSkill);
   const data = JSON.parse(str);
-  expect(parseBuffPowerSkill(data)).toEqual(buffPowerSkill);
+  expect(BuffPowerSkillSchema.parse(data)).toEqual(buffPowerSkill);
 });
 
 test("BuffPowerSkill以外はnullを返す", () => {
@@ -23,5 +23,5 @@ test("BuffPowerSkill以外はnullを返す", () => {
     buff: 600,
     effectDuration: 2,
   };
-  expect(parseBuffPowerSkill(data)).toBe(null);
+  expect(() => BuffPowerSkillSchema.parse(data)).toThrow();
 });
