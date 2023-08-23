@@ -9,16 +9,6 @@ export type PilotId = string;
 export const PilotIdSchema = z.string();
 
 /**
- * 任意オブジェクトをPilotIdにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePilotId = (origin: unknown): PilotId | null => {
-  const result = PilotIdSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * パイロット
  * @template X パイロットスキル
  */
