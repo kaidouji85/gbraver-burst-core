@@ -11,7 +11,7 @@ const gameEndJudges: GameEndJudging[] = [
   },
   {
     type: "GameContinue",
-  }
+  },
 ];
 
 test("GameEndJudgingはパースできる", () => {

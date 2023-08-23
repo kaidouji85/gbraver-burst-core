@@ -23,7 +23,7 @@ export const GameOverSchema = z.object({
 export const parseGameOver = (origin: unknown): GameOver | null => {
   const result = GameOverSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** 引き分け */
 export type EvenMatch = Readonly<{
@@ -43,7 +43,7 @@ export const EvenMatchSchema = z.object({
 export const parseEvenMatch = (origin: unknown): EvenMatch | null => {
   const result = EvenMatchSchema.safeParse(origin);
   return result.success ? result.data : null;
-}
+};
 
 /** ゲーム続行 */
 export type GameContinue = Readonly<{
