@@ -121,7 +121,6 @@ export {
   ArmDozerIdSchema,
   ArmdozerSchema,
   ArmdozerX,
-  parseArmdozer,
   parseArmDozerId,
 } from "./player/armdozer";
 export { Burst, BurstSchema, parseBurst } from "./player/burst";

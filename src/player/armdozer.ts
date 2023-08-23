@@ -52,13 +52,3 @@ export const ArmdozerSchema = z.object({
   speed: z.number(),
   burst: BurstSchema,
 });
-
-/**
- * 任意オブジェクトをArmdozerにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseArmdozer = (origin: unknown): Armdozer | null => {
-  const result = ArmdozerSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
