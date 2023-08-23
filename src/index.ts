@@ -24,7 +24,6 @@ export {
 export {
   BatteryDeclaration,
   BatteryDeclarationSchema,
-  parseBatteryDeclaration,
 } from "./effect/battery-declaration/battery-declaration";
 export {
   Battle,

@@ -1,4 +1,4 @@
-import { BatteryDeclaration, parseBatteryDeclaration } from "../../../src";
+import { BatteryDeclaration, BatteryDeclarationSchema } from "../../../src";
 
 /** 有効なBatteryDeclaration */
 const batteryDeclaration: BatteryDeclaration = {
@@ -11,7 +11,7 @@ const batteryDeclaration: BatteryDeclaration = {
 };
 
 test("BatteryDeclarationはパースできる", () => {
-  expect(parseBatteryDeclaration(batteryDeclaration)).toEqual(
+  expect(BatteryDeclarationSchema.parse(batteryDeclaration)).toEqual(
     batteryDeclaration,
   );
 });
@@ -19,7 +19,7 @@ test("BatteryDeclarationはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryDeclaration);
   const data = JSON.parse(str);
-  expect(parseBatteryDeclaration(data)).toEqual(batteryDeclaration);
+  expect(BatteryDeclarationSchema.parse(data)).toEqual(batteryDeclaration);
 });
 
 test("BatteryDeclaration以外はパースできない", () => {
@@ -31,5 +31,5 @@ test("BatteryDeclaration以外はパースできない", () => {
     defenderBattery: 5,
     originalBatteryOfDefender: 5,
   };
-  expect(parseBatteryDeclaration(data)).toBeNull();
+  expect(() => BatteryDeclarationSchema.parse(data)).toThrow();
 });
