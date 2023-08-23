@@ -1,4 +1,4 @@
-import { GameOver, parseGameOver } from "../../../src";
+import { GameOver, GameOverSchema } from "../../../src";
 
 /** 有効なGameOver */
 const gameOver: GameOver = {
@@ -7,13 +7,13 @@ const gameOver: GameOver = {
 };
 
 test("GameOverはパースできる", () => {
-  expect(parseGameOver(parseGameOver(gameOver))).toEqual(gameOver);
+  expect(GameOverSchema.parse(gameOver)).toEqual(gameOver);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(gameOver);
   const data = JSON.parse(str);
-  expect(parseGameOver(data)).toEqual(gameOver);
+  expect(GameOverSchema.parse(data)).toEqual(gameOver);
 });
 
 test("GameOver以外はパースできない", () => {
@@ -21,5 +21,5 @@ test("GameOver以外はパースできない", () => {
     name: "GameOver",
     winnerPlayer: "winner-player",
   };
-  expect(parseGameOver(data)).toBeNull();
+  expect(() => GameOverSchema.parse(data)).toThrow();
 });

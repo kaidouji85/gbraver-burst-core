@@ -15,16 +15,6 @@ export const GameOverSchema = z.object({
   winner: PlayerIdSchema,
 });
 
-/**
- * 任意オブジェクトをGameOverにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseGameOver = (origin: unknown): GameOver | null => {
-  const result = GameOverSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
 /** 引き分け */
 export type EvenMatch = Readonly<{
   type: "EvenMatch";

@@ -103,7 +103,7 @@ export {
   GameEndJudging,
   GameEndJudgingSchema,
   GameOver,
-  parseGameOver,
+  GameOverSchema,
 } from "./game/end-judging/game-end-judging";
 export {
   GbraverBurstCore,
