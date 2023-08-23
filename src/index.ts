@@ -49,6 +49,7 @@ export {
   InputCommand,
   NoChoice,
   Selectable,
+  SelectableSchema,
 } from "./effect/input-command/input-command";
 export {
   PilotSkillEffect,

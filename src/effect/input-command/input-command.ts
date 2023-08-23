@@ -1,5 +1,7 @@
-import type { Command } from "../../command/command";
-import type { PlayerId } from "../../player/player";
+import { z } from "zod";
+
+import { Command,  CommandSchema } from "../../command/command";
+import { PlayerId } from "../../player/player";
 
 /** コマンドが自由に選択できるケース */
 export type Selectable = Readonly<{
@@ -10,6 +12,13 @@ export type Selectable = Readonly<{
   /** プレイヤーが選択できるコマンド */
   command: Command[];
 }>;
+
+/** Selectable zodスキーマ */
+export const SelectableSchema = z.object({
+  playerId: z.string(),
+  selectable: z.literal(true),
+  command: z.array(CommandSchema),
+});
 
 /** コマンドが強制されているケース */
 export type NoChoice = Readonly<{
