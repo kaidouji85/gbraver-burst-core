@@ -1,4 +1,4 @@
-import { EvenMatch, parseEvenMatch } from "../../../src";
+import { EvenMatch, EvenMatchSchema } from "../../../src";
 
 /** 有効なEvenMatch */
 const evenMatch: EvenMatch = {
@@ -6,18 +6,18 @@ const evenMatch: EvenMatch = {
 };
 
 test("EvenMatchはパースできる", () => {
-  expect(parseEvenMatch(evenMatch)).toEqual(evenMatch);
+  expect(EvenMatchSchema.parse(evenMatch)).toEqual(evenMatch);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(evenMatch);
   const data = JSON.parse(str);
-  expect(parseEvenMatch(data)).toEqual(evenMatch);
+  expect(EvenMatchSchema.parse(data)).toEqual(evenMatch);
 });
 
 test("EvenMatch以外はパースできない", () => {
   const data = {
     name: "EvenMatch",
   };
-  expect(parseEvenMatch(data)).toBeNull();
+  expect(() => EvenMatchSchema.parse(data)).toThrow();
 });

@@ -97,10 +97,10 @@ export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
 export { PlayerCommand, PlayerCommandX } from "./game/command/player-command";
 export {
   EvenMatch,
+  EvenMatchSchema,
   GameContinue,
   GameEndJudging,
   GameOver,
-  parseEvenMatch,
   parseGameContinue,
   parseGameEndJudging,
   parseGameOver,
