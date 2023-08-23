@@ -11,7 +11,6 @@ export {
 export {
   EmptyCommand,
   EmptyCommandSchema,
-  parseEmptyCommand,
 } from "./command/empty-command";
 export {
   parsePilotSkillCommand,
