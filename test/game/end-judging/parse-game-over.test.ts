@@ -7,7 +7,7 @@ const gameOver: GameOver = {
 };
 
 test("GameOverはパースできる", () => {
-  expect(parseGameOver(gameOver)).toEqual(gameOver);
+  expect(parseGameOver(parseGameOver(gameOver))).toEqual(gameOver);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
