@@ -176,7 +176,6 @@ export {
   PilotStateX,
 } from "./state/pilot-state";
 export {
-  parsePlayerState,
   PlayerState,
   PlayerStateSchema,
   PlayerStateX,

@@ -1,20 +1,20 @@
 import {
   EMPTY_PLAYER_STATE,
-  parsePlayerState,
   PlayerState,
+  PlayerStateSchema,
 } from "../../../src";
 
 /** 有効なPlayerState */
 const playerState: PlayerState = EMPTY_PLAYER_STATE;
 
 test("PlayerStateはパースできる", () => {
-  expect(parsePlayerState(playerState)).toEqual(playerState);
+  expect(PlayerStateSchema.parse(playerState)).toEqual(playerState);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(playerState);
   const data = JSON.parse(str);
-  expect(parsePlayerState(data)).toEqual(playerState);
+  expect(PlayerStateSchema.parse(data)).toEqual(playerState);
 });
 
 test("PlayerState以外はパースできない", () => {
@@ -30,5 +30,5 @@ test("PlayerState以外はパースできない", () => {
       canSkill: true,
     },
   };
-  expect(parsePlayerState(data)).toBeNull();
+  expect(() => PlayerStateSchema.parse(data)).toThrow();
 });
