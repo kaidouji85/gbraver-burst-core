@@ -1,4 +1,4 @@
-import { CorrectPower, parseCorrectPower } from "../../../src";
+import { CorrectPower, CorrectPowerSchema } from "../../../src";
 
 /** 有効なCorrectPower */
 const correctPower: CorrectPower = {
@@ -11,13 +11,13 @@ const correctPower: CorrectPower = {
 };
 
 test("CorrectPowerはパースできる", () => {
-  expect(parseCorrectPower(correctPower)).toEqual(correctPower);
+  expect(CorrectPowerSchema.parse(correctPower)).toEqual(correctPower);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(correctPower);
   const data = JSON.parse(str);
-  expect(parseCorrectPower(data)).toEqual(correctPower);
+  expect(CorrectPowerSchema.parse(data)).toEqual(correctPower);
 });
 
 test("CorrectPower以外はパースできない", () => {
@@ -29,5 +29,5 @@ test("CorrectPower以外はパースできない", () => {
       remaining: 1,
     },
   };
-  expect(parseCorrectPower(data)).toBe(null);
+  expect(() => CorrectPowerSchema.parse(data)).toThrow();
 });

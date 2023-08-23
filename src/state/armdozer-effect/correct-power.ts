@@ -17,13 +17,3 @@ export const CorrectPowerSchema = z.object({
   power: z.number(),
   period: EffectPeriodSchema,
 });
-
-/**
- * 任意オブジェクトをCorrectPowerにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseCorrectPower = (origin: unknown): CorrectPower | null => {
-  const result = CorrectPowerSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
