@@ -121,7 +121,6 @@ export {
   ArmDozerIdSchema,
   ArmdozerSchema,
   ArmdozerX,
-  parseArmDozerId,
 } from "./player/armdozer";
 export { Burst, BurstSchema, parseBurst } from "./player/burst";
 export { parseBatteryLimitBreak } from "./player/burst/battery-limit-break";
