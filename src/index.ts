@@ -29,7 +29,6 @@ export {
   Battle,
   BattleSchema,
   BattleX,
-  parseBattle,
 } from "./effect/battle/battle";
 export { updateDefender } from "./effect/battle/players/update-defender";
 export {

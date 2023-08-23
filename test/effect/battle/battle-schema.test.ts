@@ -1,4 +1,4 @@
-import { Battle, parseBattle } from "../../../src";
+import { Battle, BattleSchema } from "../../../src";
 
 /** 有効なBattle */
 const battle: Battle = {
@@ -12,13 +12,13 @@ const battle: Battle = {
 };
 
 test("Battleはパースできる", () => {
-  expect(parseBattle(battle)).toEqual(battle);
+  expect(BattleSchema.parse(battle)).toEqual(battle);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(battle);
   const data = JSON.parse(str);
-  expect(parseBattle(data)).toEqual(battle);
+  expect(BattleSchema.parse(data)).toEqual(battle);
 });
 
 test("Battle以外はパースできない", () => {
@@ -31,5 +31,5 @@ test("Battle以外はパースできない", () => {
       damaged: 1000,
     },
   };
-  expect(parseBattle(data)).toBeNull();
+  expect(() => BattleSchema.parse(data)).toThrow();
 });
