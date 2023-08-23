@@ -61,6 +61,7 @@ export {
   GameEnd,
   GameEndResult,
   GameEndResultSchema,
+  GameEndSchema,
   GameEndX,
 } from "./effect/game-end/game-end";
 export { Effect } from "./effect/index";

@@ -1,5 +1,4 @@
-import { GameEnd } from "../../../src";
-import { parseGameEnd } from "../../../src/effect/game-end/game-end";
+import { GameEnd, GameEndSchema } from "../../../src";
 
 /** 有効なGameEnd */
 const gameEnd: GameEnd = {
@@ -11,18 +10,18 @@ const gameEnd: GameEnd = {
 };
 
 test("GameEndはパースできる", () => {
-  expect(parseGameEnd(gameEnd)).toEqual(gameEnd);
+  expect(GameEndSchema.parse(gameEnd)).toEqual(gameEnd);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(gameEnd);
   const data = JSON.parse(str);
-  expect(parseGameEnd(data)).toEqual(gameEnd);
+  expect(GameEndSchema.parse(data)).toEqual(gameEnd);
 });
 
 test("GameEnd以外はパースできない", () => {
   const data = {
     name: "GameEnd",
   };
-  expect(parseGameEnd(data)).toBeNull();
+  expect(() => GameEndSchema.parse(data)).toThrow();
 });
