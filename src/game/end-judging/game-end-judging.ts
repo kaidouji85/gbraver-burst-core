@@ -1,8 +1,5 @@
 import type { PlayerId } from "../../player/player";
 
-/** ゲーム終了判定の結果をまとめたもの */
-export type GameEndJudging = GameOver | EvenMatch | GameContinue;
-
 /** 勝負あり */
 export type GameOver = Readonly<{
   type: "GameOver";
@@ -19,3 +16,6 @@ export type EvenMatch = Readonly<{
 export type GameContinue = Readonly<{
   type: "GameContinue";
 }>;
+
+/** ゲーム終了判定の結果をまとめたもの */
+export type GameEndJudging = GameOver | EvenMatch | GameContinue;
