@@ -14,15 +14,3 @@ export const ContinuousActivePlayerSchema = z.object({
   type: z.literal("ContinuousActivePlayer"),
   period: EffectPeriodSchema,
 });
-
-/**
- * 任意オブジェクトをContinuousActivePlayerにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseContinuousActivePlayer = (
-  origin: unknown,
-): ContinuousActivePlayer | null => {
-  const result = ContinuousActivePlayerSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

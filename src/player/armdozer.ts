@@ -9,16 +9,6 @@ export type ArmDozerId = string;
 export const ArmDozerIdSchema = z.string();
 
 /**
- * 任意オブジェクトをArmDozerIdにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseArmDozerId = (origin: unknown): ArmDozerId | null => {
-  const result = ArmDozerIdSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * アームドーザ基本情報（型指定あり）
  * @template X バースト
  */
@@ -52,13 +42,3 @@ export const ArmdozerSchema = z.object({
   speed: z.number(),
   burst: BurstSchema,
 });
-
-/**
- * 任意オブジェクトをArmdozerにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseArmdozer = (origin: unknown): Armdozer | null => {
-  const result = ArmdozerSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

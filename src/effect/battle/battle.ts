@@ -27,13 +27,3 @@ export const BattleSchema = z.object({
   isDeath: z.boolean(),
   result: BattleResultSchema,
 });
-
-/**
- * 任意オブジェクトをBattleにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseBattle = (origin: unknown): Battle | null => {
-  const result = BattleSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

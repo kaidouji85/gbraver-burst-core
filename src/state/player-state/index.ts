@@ -26,13 +26,3 @@ export const PlayerStateSchema = z.object({
   armdozer: ArmdozerStateSchema,
   pilot: PilotStateSchema,
 });
-
-/**
- * 任意オブジェクトをPlayerStateにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePlayerState = (origin: unknown): PlayerState | null => {
-  const result = PlayerStateSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

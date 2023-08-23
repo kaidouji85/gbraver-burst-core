@@ -30,13 +30,3 @@ export const ArmdozerStateSchema = ArmdozerSchema.extend({
   enableBurst: z.boolean(),
   effects: z.array(ArmdozerEffectSchema),
 });
-
-/**
- * 任意オブジェクトをArmdozerStateにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseArmDozerState = (origin: unknown): ArmdozerState | null => {
-  const result = ArmdozerStateSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

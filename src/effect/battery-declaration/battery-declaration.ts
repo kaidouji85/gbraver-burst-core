@@ -26,15 +26,3 @@ export const BatteryDeclarationSchema = z.object({
   defenderBattery: z.number(),
   originalBatteryOfDefender: z.number(),
 });
-
-/**
- * 任意オブジェクトをBatteryDeclarationにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseBatteryDeclaration = (
-  origin: unknown,
-): BatteryDeclaration | null => {
-  const result = BatteryDeclarationSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

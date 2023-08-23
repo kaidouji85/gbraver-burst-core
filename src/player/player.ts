@@ -12,16 +12,6 @@ export type PlayerId = string;
 export const PlayerIdSchema = z.string();
 
 /**
- * 任意オブジェクトをPlayerIdにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePlayerId = (origin: unknown): PlayerId | null => {
-  const result = PlayerIdSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * プレイヤー基本情報
  * @template BURST バースト
  * @template PILOT パイロットスキル
@@ -44,13 +34,3 @@ export const PlayerSchema = z.object({
   armdozer: ArmdozerSchema,
   pilot: PilotSchema,
 });
-
-/**
- * 任意オブジェクトをPlayerにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parsePlayer = (origin: unknown): Player | null => {
-  const result = PlayerSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

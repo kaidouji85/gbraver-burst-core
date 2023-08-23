@@ -24,13 +24,3 @@ export const TryReflectSchema = z.object({
   effect: ReflectDamageEffectSchema,
   period: EffectPeriodSchema,
 });
-
-/**
- * 任意オブジェクトをTryReflectにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseTryReflect = (origin: unknown): TryReflect | null => {
-  const result = TryReflectSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

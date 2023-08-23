@@ -14,16 +14,6 @@ export const FeintSchema = z.object({
 });
 
 /**
- * 任意オブジェクトをFeintにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseFeint = (origin: unknown): Feint | null => {
-  const result = FeintSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * フェイントの戦闘結果を生成する
  * @param defenderBattery 防御側バッテリー
  * @return フェイントの戦闘結果
