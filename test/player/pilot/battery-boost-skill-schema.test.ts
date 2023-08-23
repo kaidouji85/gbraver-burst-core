@@ -1,4 +1,4 @@
-import { BatteryBoostSkill, parseBatteryBoostSkill } from "../../../src";
+import { BatteryBoostSkill, BatteryBoostSkillSchema } from "../../../src";
 
 /** 有効なBatteryBoostSkill */
 const batteryBoostSkill: BatteryBoostSkill = {
@@ -7,13 +7,13 @@ const batteryBoostSkill: BatteryBoostSkill = {
 };
 
 test("BatteryBoostSkillはパースできる", () => {
-  expect(parseBatteryBoostSkill(batteryBoostSkill)).toEqual(batteryBoostSkill);
+  expect(BatteryBoostSkillSchema.parse(batteryBoostSkill)).toEqual(batteryBoostSkill);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryBoostSkill);
   const data = JSON.parse(str);
-  expect(parseBatteryBoostSkill(data)).toEqual(batteryBoostSkill);
+  expect(BatteryBoostSkillSchema.parse(data)).toEqual(batteryBoostSkill);
 });
 
 test("BatteryBoostSkill以外はnullを返す", () => {
@@ -21,5 +21,5 @@ test("BatteryBoostSkill以外はnullを返す", () => {
     type: "BatteryBoost",
     recover: 5,
   };
-  expect(parseBatteryBoostSkill(data)).toBe(null);
+  expect(() => BatteryBoostSkillSchema.parse(data)).toThrow();
 });
