@@ -50,5 +50,20 @@ export type GameContinue = Readonly<{
   type: "GameContinue";
 }>;
 
+/** GameContinue zodスキーマ */
+export const GameContinueSchema = z.object({
+  type: z.literal("GameContinue"),
+});
+
+/**
+ * 任意オブジェクトをGameContinueにパースする
+ * @param origin パース元
+ * @return パース結果、パースできない場合はnull
+ */
+export const parseGameContinue = (origin: unknown): GameContinue | null => {
+  const result = GameContinueSchema.safeParse(origin);
+  return result.success ? result.data : null;
+};
+
 /** ゲーム終了判定の結果をまとめたもの */
 export type GameEndJudging = GameOver | EvenMatch | GameContinue;
