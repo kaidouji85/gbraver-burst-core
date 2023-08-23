@@ -1,6 +1,6 @@
 import {
   ContinuousActivePlayer,
-  parseContinuousActivePlayer,
+  ContinuousActivePlayerSchema,
 } from "../../../src";
 
 /** 有効な ContinuousActivePlayer */
@@ -12,7 +12,7 @@ const continuousActivePlayer: ContinuousActivePlayer = {
 };
 
 test("ContinuousActivePlayerはパースできる", () => {
-  expect(parseContinuousActivePlayer(continuousActivePlayer)).toEqual(
+  expect(ContinuousActivePlayerSchema.parse(continuousActivePlayer)).toEqual(
     continuousActivePlayer,
   );
 });
@@ -20,7 +20,7 @@ test("ContinuousActivePlayerはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(continuousActivePlayer);
   const data = JSON.parse(str);
-  expect(parseContinuousActivePlayer(data)).toEqual(continuousActivePlayer);
+  expect(ContinuousActivePlayerSchema.parse(data)).toEqual(continuousActivePlayer);
 });
 
 test("ContinuousActivePlayer以外はパースできない", () => {
@@ -30,5 +30,5 @@ test("ContinuousActivePlayer以外はパースできない", () => {
       type: "Special",
     },
   };
-  expect(parseContinuousActivePlayer(data)).toBeNull();
+  expect(() => ContinuousActivePlayerSchema.parse(data)).toThrow();
 });
