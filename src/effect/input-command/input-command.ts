@@ -43,3 +43,9 @@ export type InputCommand = Readonly<{
   /** 各プレイヤーのコマンド */
   players: Array<Selectable | NoChoice>;
 }>;
+
+/** InputCommand zodスキーマ */
+export const InputCommandSchema = z.object({
+  name: z.literal("InputCommand"),
+  players: z.array(z.union([SelectableSchema, NoChoiceSchema])),
+});
