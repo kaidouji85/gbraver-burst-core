@@ -1,13 +1,6 @@
 import type { Command } from "../../command/command";
 import type { PlayerId } from "../../player/player";
 
-/** コマンド入力 */
-export type InputCommand = Readonly<{
-  name: "InputCommand";
-  /** 各プレイヤーのコマンド */
-  players: Array<Selectable | NoChoice>;
-}>;
-
 /** コマンドが自由に選択できるケース */
 export type Selectable = Readonly<{
   /** プレイヤーID */
@@ -26,4 +19,11 @@ export type NoChoice = Readonly<{
   selectable: false;
   /** プレイヤーが次のターンに実行するコマンド */
   nextTurnCommand: Command;
+}>;
+
+/** コマンド入力 */
+export type InputCommand = Readonly<{
+  name: "InputCommand";
+  /** 各プレイヤーのコマンド */
+  players: Array<Selectable | NoChoice>;
 }>;
