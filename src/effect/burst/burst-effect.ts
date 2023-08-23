@@ -18,13 +18,3 @@ export const BurstEffectSchema = z.object({
   burstPlayer: PlayerIdSchema,
   burst: BurstSchema,
 });
-
-/**
- * 任意オブジェクトをBurstEffectにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseBurstEffect = (origin: unknown): BurstEffect | null => {
-  const result = BurstEffectSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

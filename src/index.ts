@@ -50,7 +50,6 @@ export {
 export {
   BurstEffect,
   BurstEffectSchema,
-  parseBurstEffect,
 } from "./effect/burst/burst-effect";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {
