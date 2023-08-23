@@ -129,7 +129,6 @@ export { ContinuousAttack, ContinuousAttackSchema } from "./player/burst/continu
 export { LightningBarrier, LightningBarrierSchema } from "./player/burst/lightning-barrier";
 export { RecoverBattery, RecoverBatterySchema } from "./player/burst/recover-battery";
 export {
-  parsePilot,
   parsePilotId,
   Pilot,
   PilotId,
