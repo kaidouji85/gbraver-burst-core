@@ -21,15 +21,3 @@ export const LightningBarrierSchema = BurstRecoverBatterySchema.extend({
   damage: z.number(),
   duration: z.number(),
 });
-
-/**
- * 任意オブジェクトをLightningBarrierにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseLightningBarrier = (
-  origin: unknown,
-): LightningBarrier | null => {
-  const result = LightningBarrierSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};

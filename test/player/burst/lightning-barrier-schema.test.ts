@@ -1,4 +1,4 @@
-import { LightningBarrier, parseLightningBarrier } from "../../../src";
+import { LightningBarrier, LightningBarrierSchema } from "../../../src";
 
 /** 有効なLightningBarrier */
 const lightningBarrier: LightningBarrier = {
@@ -9,13 +9,13 @@ const lightningBarrier: LightningBarrier = {
 };
 
 test("LightningBarrierはパースできる", () => {
-  expect(parseLightningBarrier(lightningBarrier)).toEqual(lightningBarrier);
+  expect(LightningBarrierSchema.parse(lightningBarrier)).toEqual(lightningBarrier);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(lightningBarrier);
   const data = JSON.parse(str);
-  expect(parseLightningBarrier(data)).toEqual(lightningBarrier);
+  expect(LightningBarrierSchema.parse(data)).toEqual(lightningBarrier);
 });
 
 test("LightningBarrier以外はnullを返す", () => {
@@ -25,5 +25,5 @@ test("LightningBarrier以外はnullを返す", () => {
     effectDuration: 2,
     recover: 3,
   };
-  expect(parseLightningBarrier(data)).toBe(null);
+  expect(() => LightningBarrierSchema.parse(data)).toThrow();
 });
