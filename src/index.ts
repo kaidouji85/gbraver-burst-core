@@ -71,7 +71,7 @@ export {
   hasHalveCorrectPower,
   totalCorrectPower,
 } from "./effect/correct-power";
-export { GameEnd, GameEndResult, GameEndX } from "./effect/game-end/game-end";
+export { GameEnd, GameEndResult, GameEndX, parseGameEndResult } from "./effect/game-end/game-end";
 export { Effect } from "./effect/index";
 export {
   InputCommand,
