@@ -1,4 +1,4 @@
-import { Guard, parseGuard } from "../../../../src";
+import { Guard, GuardSchema } from "../../../../src";
 
 /** 有効なGuard */
 const guard: Guard = {
@@ -7,13 +7,13 @@ const guard: Guard = {
 };
 
 test("Guardはパースできる", () => {
-  expect(parseGuard(guard)).toEqual(guard);
+  expect(GuardSchema.parse(guard)).toEqual(guard);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(guard);
   const data = JSON.parse(str);
-  expect(parseGuard(data)).toEqual(guard);
+  expect(GuardSchema.parse(data)).toEqual(guard);
 });
 
 test("Guard以外はパースできない", () => {
@@ -21,5 +21,5 @@ test("Guard以外はパースできない", () => {
     type: "Guard",
     damaged: 1000,
   };
-  expect(parseGuard(data)).toBeNull();
+  expect(() => GuardSchema.parse(data)).toThrow();
 });

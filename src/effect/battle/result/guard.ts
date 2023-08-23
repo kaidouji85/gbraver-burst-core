@@ -19,16 +19,6 @@ export const GuardSchema = z.object({
 });
 
 /**
- * 任意オブジェクトをGuardにパースする
- * @param origin パース元
- * @return パース結果、パースできない場合はnull
- */
-export const parseGuard = (origin: unknown): Guard | null => {
-  const result = GuardSchema.safeParse(origin);
-  return result.success ? result.data : null;
-};
-
-/**
  * 防御の戦闘結果を生成する
  * @param attacker 攻撃側プレイヤー
  * @param attackerBattery 攻撃側バッテリー
