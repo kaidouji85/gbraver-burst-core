@@ -1,4 +1,4 @@
-import { parseTryReflect, TryReflect } from "../../../src";
+import { TryReflect, TryReflectSchema } from "../../../src";
 
 /** 有効なTryReflect */
 const tryReflect: TryReflect = {
@@ -12,13 +12,13 @@ const tryReflect: TryReflect = {
 };
 
 test("TryReflectはパースできる", () => {
-  expect(parseTryReflect(tryReflect)).toEqual(tryReflect);
+  expect(TryReflectSchema.parse(tryReflect)).toEqual(tryReflect);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(tryReflect);
   const data = JSON.parse(str);
-  expect(parseTryReflect(data)).toEqual(tryReflect);
+  expect(TryReflectSchema.parse(data)).toEqual(tryReflect);
 });
 
 test("TryReflectではないオブジェクトはパースできない", () => {
@@ -31,5 +31,5 @@ test("TryReflectではないオブジェクトはパースできない", () => {
       remainingTurn: 2,
     },
   };
-  expect(parseTryReflect(data)).toBeNull();
+  expect(() => TryReflectSchema.parse(data)).toThrow();
 });
