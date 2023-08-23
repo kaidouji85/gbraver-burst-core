@@ -1,4 +1,4 @@
-import { EmptyArmdozerEffect, parseEmptyArmdozerEffect } from "../../../src";
+import { EmptyArmdozerEffect, EmptyArmdozerEffectSchema } from "../../../src";
 
 /** 有効なEmptyArmdozerEffect */
 const emptyArmdozerEffect: EmptyArmdozerEffect = {
@@ -10,7 +10,7 @@ const emptyArmdozerEffect: EmptyArmdozerEffect = {
 };
 
 test("EmptyArmdozerEffectはパースできる", () => {
-  expect(parseEmptyArmdozerEffect(emptyArmdozerEffect)).toEqual(
+  expect(EmptyArmdozerEffectSchema.parse(emptyArmdozerEffect)).toEqual(
     emptyArmdozerEffect,
   );
 });
@@ -18,7 +18,7 @@ test("EmptyArmdozerEffectはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(emptyArmdozerEffect);
   const data = JSON.parse(str);
-  expect(parseEmptyArmdozerEffect(data)).toEqual(emptyArmdozerEffect);
+  expect(EmptyArmdozerEffectSchema.parse(data)).toEqual(emptyArmdozerEffect);
 });
 
 test("EmptyArmdozerEffect以外はパースできない", () => {
@@ -29,5 +29,5 @@ test("EmptyArmdozerEffect以外はパースできない", () => {
       remaining: 1,
     },
   };
-  expect(parseEmptyArmdozerEffect(data)).toBe(null);
+  expect(() => EmptyArmdozerEffectSchema.parse(data)).toThrow();
 });

@@ -158,9 +158,7 @@ export { ContinuousActivePlayer, ContinuousActivePlayerSchema } from "./state/ar
 export { CorrectPower, CorrectPowerSchema } from "./state/armdozer-effect/correct-power";
 export { DamageHalved, DamageHalvedSchema } from "./state/armdozer-effect/damage-halved";
 export { EffectPeriod, EffectPeriodSchema } from "./state/armdozer-effect/effect-period";
-export { parseEmptyArmdozerEffect } from "./state/armdozer-effect/empty-armdozer-effect";
-export { EmptyArmdozerEffectSchema } from "./state/armdozer-effect/empty-armdozer-effect";
-export { EmptyArmdozerEffect } from "./state/armdozer-effect/empty-armdozer-effect";
+export { EmptyArmdozerEffect, EmptyArmdozerEffectSchema } from "./state/armdozer-effect/empty-armdozer-effect";
 export { parseHalveCorrectPower } from "./state/armdozer-effect/halve-correct-power";
 export { HalveCorrectPowerSchema } from "./state/armdozer-effect/halve-correct-power";
 export { parseReflectDamageEffect } from "./state/armdozer-effect/reflect-damage-effect";
