@@ -1,6 +1,6 @@
 import {
   BatteryEnchantmentSkill,
-  parseBatteryEnchantmentSkill,
+  BatteryEnchantmentSkillSchema,
 } from "../../../src";
 
 /** 有効なBatteryEnchantmentSkill */
@@ -11,7 +11,7 @@ const batteryEnchantmentSkill: BatteryEnchantmentSkill = {
 };
 
 test("BatteryEnchantmentSkillはパースできる", () => {
-  expect(parseBatteryEnchantmentSkill(batteryEnchantmentSkill)).toEqual(
+  expect(BatteryEnchantmentSkillSchema.parse(batteryEnchantmentSkill)).toEqual(
     batteryEnchantmentSkill,
   );
 });
@@ -19,7 +19,7 @@ test("BatteryEnchantmentSkillはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(batteryEnchantmentSkill);
   const data = JSON.parse(str);
-  expect(parseBatteryEnchantmentSkill(data)).toEqual(batteryEnchantmentSkill);
+  expect(BatteryEnchantmentSkillSchema.parse(data)).toEqual(batteryEnchantmentSkill);
 });
 
 test("BatteryEnchantmentSkill以外はnullを返す", () => {
@@ -28,5 +28,5 @@ test("BatteryEnchantmentSkill以外はnullを返す", () => {
     enchantment: 1,
     effectDuration: 2,
   };
-  expect(parseBatteryEnchantmentSkill(data)).toBe(null);
+  expect(() => BatteryEnchantmentSkillSchema.parse(data)).toThrow();
 });

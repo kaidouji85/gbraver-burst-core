@@ -136,9 +136,7 @@ export {
   PilotX,
 } from "./player/pilot";
 export { BatteryBoostSkill, BatteryBoostSkillSchema } from "./player/pilot/battery-boost-skill";
-export { parseBatteryEnchantmentSkill } from "./player/pilot/battery-enchantment-skill";
-export { BatteryEnchantmentSkillSchema } from "./player/pilot/battery-enchantment-skill";
-export { BatteryEnchantmentSkill } from "./player/pilot/battery-enchantment-skill";
+export { BatteryEnchantmentSkill, BatteryEnchantmentSkillSchema } from "./player/pilot/battery-enchantment-skill";
 export { parseBuffPowerSkill } from "./player/pilot/buff-power-skill";
 export { BuffPowerSkillSchema } from "./player/pilot/buff-power-skill";
 export { BuffPowerSkill } from "./player/pilot/buff-power-skill";
