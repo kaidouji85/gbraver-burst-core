@@ -1,34 +1,33 @@
 import { InputCommand, InputCommandSchema } from "../../../src";
 
 /** 有効なInputCommand */
-const inputCommand: InputCommand = 
-  {
-    name: "InputCommand",
-    players: [
-      {
-        playerId: "player1",
-        selectable: false,
-        nextTurnCommand: {
+const inputCommand: InputCommand = {
+  name: "InputCommand",
+  players: [
+    {
+      playerId: "player1",
+      selectable: false,
+      nextTurnCommand: {
+        type: "BATTERY_COMMAND",
+        battery: 3,
+      },
+    },
+    {
+      playerId: "player2",
+      selectable: true,
+      command: [
+        {
           type: "BATTERY_COMMAND",
-          battery: 3,
+          battery: 0,
         },
-      },
-      {
-        playerId: "player2",
-        selectable: true,
-        command: [
-          {
-            type: "BATTERY_COMMAND",
-            battery: 0,
-          },
-          {
-            type: "BATTERY_COMMAND",
-            battery: 1,
-          },
-        ]
-      },
-    ]
-  };
+        {
+          type: "BATTERY_COMMAND",
+          battery: 1,
+        },
+      ],
+    },
+  ],
+};
 
 test("InputCommandはパースできる", () => {
   expect(InputCommandSchema.parse(inputCommand)).toEqual(inputCommand);
@@ -64,9 +63,9 @@ test("InputCommand以外はパースできない", () => {
             type: "BATTERY",
             battery: 1,
           },
-        ]
+        ],
       },
-    ]
+    ],
   };
   expect(() => InputCommandSchema.parse(data)).toThrow();
 });

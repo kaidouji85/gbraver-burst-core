@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Command,  CommandSchema } from "../../command/command";
+import { Command, CommandSchema } from "../../command/command";
 import { PlayerId, PlayerIdSchema } from "../../player/player";
 
 /** コマンドが自由に選択できるケース */

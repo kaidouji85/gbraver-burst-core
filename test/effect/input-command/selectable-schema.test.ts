@@ -13,7 +13,7 @@ const selectable: Selectable = {
       type: "BATTERY_COMMAND",
       battery: 1,
     },
-  ]
+  ],
 };
 
 test("Selectableはパースできる", () => {
@@ -39,7 +39,7 @@ test("Selectable以外はパースできない", () => {
         type: "BATTERY",
         battery: 1,
       },
-    ]
+    ],
   };
   expect(() => SelectableSchema.parse(data)).toThrow();
 });
