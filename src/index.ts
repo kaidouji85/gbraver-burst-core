@@ -99,9 +99,9 @@ export {
   EvenMatch,
   EvenMatchSchema,
   GameContinue,
+  GameContinueSchema,
   GameEndJudging,
   GameOver,
-  parseGameContinue,
   parseGameEndJudging,
   parseGameOver,
 } from "./game/end-judging/game-end-judging";

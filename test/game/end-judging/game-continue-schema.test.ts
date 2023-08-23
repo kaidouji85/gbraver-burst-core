@@ -1,4 +1,4 @@
-import { GameContinue, parseGameContinue } from "../../../src";
+import { GameContinue, GameContinueSchema } from "../../../src";
 
 /** 有効なGameContinue */
 const gameContinue: GameContinue = {
@@ -6,18 +6,18 @@ const gameContinue: GameContinue = {
 };
 
 test("GameContinueはパースできる", () => {
-  expect(parseGameContinue(gameContinue)).toEqual(gameContinue);
+  expect(GameContinueSchema.parse(gameContinue)).toEqual(gameContinue);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(gameContinue);
   const data = JSON.parse(str);
-  expect(parseGameContinue(data)).toEqual(gameContinue);
+  expect(GameContinueSchema.parse(data)).toEqual(gameContinue);
 });
 
 test("GameContinue以外はパースできない", () => {
   const data = {
     name: "GameContinue",
   };
-  expect(parseGameContinue(data)).toBeNull();
+  expect(() => GameContinueSchema.parse(data)).toThrow();
 });
