@@ -47,8 +47,11 @@ export {
 export { Effect } from "./effect/index";
 export {
   InputCommand,
+  InputCommandSchema,
   NoChoice,
+  NoChoiceSchema,
   Selectable,
+  SelectableSchema,
 } from "./effect/input-command/input-command";
 export {
   PilotSkillEffect,

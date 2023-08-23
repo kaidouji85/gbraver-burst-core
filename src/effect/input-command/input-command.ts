@@ -1,12 +1,7 @@
-import type { Command } from "../../command/command";
-import type { PlayerId } from "../../player/player";
+import { z } from "zod";
 
-/** コマンド入力 */
-export type InputCommand = Readonly<{
-  name: "InputCommand";
-  /** 各プレイヤーのコマンド */
-  players: Array<Selectable | NoChoice>;
-}>;
+import { Command, CommandSchema } from "../../command/command";
+import { PlayerId, PlayerIdSchema } from "../../player/player";
 
 /** コマンドが自由に選択できるケース */
 export type Selectable = Readonly<{
@@ -18,6 +13,13 @@ export type Selectable = Readonly<{
   command: Command[];
 }>;
 
+/** Selectable zodスキーマ */
+export const SelectableSchema = z.object({
+  playerId: PlayerIdSchema,
+  selectable: z.literal(true),
+  command: z.array(CommandSchema),
+});
+
 /** コマンドが強制されているケース */
 export type NoChoice = Readonly<{
   /** プレイヤーID */
@@ -27,3 +29,23 @@ export type NoChoice = Readonly<{
   /** プレイヤーが次のターンに実行するコマンド */
   nextTurnCommand: Command;
 }>;
+
+/** NoChoice zodスキーマ */
+export const NoChoiceSchema = z.object({
+  playerId: PlayerIdSchema,
+  selectable: z.literal(false),
+  nextTurnCommand: CommandSchema,
+});
+
+/** コマンド入力 */
+export type InputCommand = Readonly<{
+  name: "InputCommand";
+  /** 各プレイヤーのコマンド */
+  players: Array<Selectable | NoChoice>;
+}>;
+
+/** InputCommand zodスキーマ */
+export const InputCommandSchema = z.object({
+  name: z.literal("InputCommand"),
+  players: z.array(z.union([SelectableSchema, NoChoiceSchema])),
+});
