@@ -124,9 +124,7 @@ export {
 } from "./player/armdozer";
 export { Burst, BurstSchema } from "./player/burst";
 export { BatteryLimitBreak, BatteryLimitBreakSchema } from "./player/burst/battery-limit-break";
-export { parseBuffPower } from "./player/burst/buff-power";
-export { BuffPowerSchema } from "./player/burst/buff-power";
-export { BuffPower } from "./player/burst/buff-power";
+export { BuffPower, BuffPowerSchema } from "./player/burst/buff-power";
 export { parseContinuousAttack } from "./player/burst/continuous-attack";
 export { ContinuousAttackSchema } from "./player/burst/continuous-attack";
 export { ContinuousAttack } from "./player/burst/continuous-attack";

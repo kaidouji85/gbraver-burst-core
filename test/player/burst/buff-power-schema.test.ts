@@ -1,4 +1,4 @@
-import { BuffPower, parseBuffPower } from "../../../src";
+import { BuffPower, BuffPowerSchema } from "../../../src";
 
 /** 有効なBuffPower */
 const buffPower: BuffPower = {
@@ -9,13 +9,13 @@ const buffPower: BuffPower = {
 };
 
 test("BuffPowerはパースできる", () => {
-  expect(parseBuffPower(buffPower)).toEqual(buffPower);
+  expect(BuffPowerSchema.parse(buffPower)).toEqual(buffPower);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(buffPower);
   const data = JSON.parse(str);
-  expect(parseBuffPower(data)).toEqual(buffPower);
+  expect(BuffPowerSchema.parse(data)).toEqual(buffPower);
 });
 
 test("BuffPower以外はnullを返す", () => {
@@ -25,5 +25,5 @@ test("BuffPower以外はnullを返す", () => {
     effectDuration: 3,
     battery: 3,
   };
-  expect(parseBuffPower(data)).toBe(null);
+  expect(() => BuffPowerSchema.parse(data)).toThrow();
 });
