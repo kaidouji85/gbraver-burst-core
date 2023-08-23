@@ -1,7 +1,7 @@
 import {
   HalveCorrectPower,
-  parseHalveCorrectPower,
-} from "../../../src/state/armdozer-effect/halve-correct-power";
+  HalveCorrectPowerSchema,
+} from "../../../src";
 
 /** 有効なHalveCorrectPower */
 const halveCorrectPower: HalveCorrectPower = {
@@ -13,13 +13,13 @@ const halveCorrectPower: HalveCorrectPower = {
 };
 
 test("HalveCorrectPowerはパースできる", () => {
-  expect(parseHalveCorrectPower(halveCorrectPower)).toEqual(halveCorrectPower);
+  expect(HalveCorrectPowerSchema.parse(halveCorrectPower)).toEqual(halveCorrectPower);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(halveCorrectPower);
   const data = JSON.parse(str);
-  expect(parseHalveCorrectPower(data)).toEqual(halveCorrectPower);
+  expect(HalveCorrectPowerSchema.parse(data)).toEqual(halveCorrectPower);
 });
 
 test("HalveCorrectPower以外はパースできない", () => {
@@ -30,5 +30,5 @@ test("HalveCorrectPower以外はパースできない", () => {
       remaining: 1,
     },
   };
-  expect(parseHalveCorrectPower(data)).toBe(null);
+  expect(() => HalveCorrectPowerSchema.parse(data)).toThrow();
 });
