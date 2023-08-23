@@ -160,8 +160,7 @@ export { DamageHalved, DamageHalvedSchema } from "./state/armdozer-effect/damage
 export { EffectPeriod, EffectPeriodSchema } from "./state/armdozer-effect/effect-period";
 export { EmptyArmdozerEffect, EmptyArmdozerEffectSchema } from "./state/armdozer-effect/empty-armdozer-effect";
 export { HalveCorrectPower, HalveCorrectPowerSchema } from "./state/armdozer-effect/halve-correct-power";
-export { parseReflectDamageEffect } from "./state/armdozer-effect/reflect-damage-effect";
-export { ReflectDamageEffectSchema } from "./state/armdozer-effect/reflect-damage-effect";
+export { ReflectDamageEffect, ReflectDamageEffectSchema } from "./state/armdozer-effect/reflect-damage-effect";
 export { parseSpecialPeriodEffect } from "./state/armdozer-effect/special-period-effect";
 export { SpecialPeriodEffectSchema } from "./state/armdozer-effect/special-period-effect";
 export { parseTryReflect } from "./state/armdozer-effect/try-reflect";
