@@ -1,4 +1,7 @@
-import { ReflectParam, ReflectParamSchema } from "../../../src/effect/reflect/reflect";
+import {
+  ReflectParam,
+  ReflectParamSchema,
+} from "../../../src/effect/reflect/reflect";
 
 /** 有効なReflectParam */
 const reflectParam: ReflectParam = {
@@ -7,7 +10,7 @@ const reflectParam: ReflectParam = {
 };
 
 test("ReflectParamはパースできる", () => {
-  expect( ReflectParamSchema.parse(reflectParam)).toEqual(reflectParam);
+  expect(ReflectParamSchema.parse(reflectParam)).toEqual(reflectParam);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
