@@ -58,7 +58,7 @@ export {
   PilotSkillEffectSchema,
   PilotSkillEffectX,
 } from "./effect/pilot-skill/pilot-skill-effect";
-export { Reflect } from "./effect/reflect/reflect";
+export { Reflect, ReflectSchema } from "./effect/reflect/reflect";
 export { RightItself } from "./effect/right-itself/right-itself";
 export { StartGame } from "./effect/start-game/start-game";
 export { TurnChange } from "./effect/turn-change/turn-change";

@@ -2,7 +2,7 @@ import { PlayerId } from "../../player/player";
 import { GameState, GameStateX } from "../../state/game-state";
 import { isPlayerDeath } from "../../state/player-state/is-player-death";
 import { Reflect, ReflectParam } from "./reflect";
-import { reflectDamage } from "./reflect";
+import { reflectDamage } from "./reflect-damage";
 
 /**
  * ダメージ反射を実行する
