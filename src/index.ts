@@ -55,6 +55,7 @@ export {
 } from "./effect/input-command/input-command";
 export {
   PilotSkillEffect,
+  PilotSkillEffectSchema,
   PilotSkillEffectX,
 } from "./effect/pilot-skill/pilot-skill-effect";
 export { Reflect } from "./effect/reflect/reflect";
