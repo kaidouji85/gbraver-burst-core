@@ -1,6 +1,6 @@
 import type { PlayerState } from "../../../src";
 import type { ReflectParam } from "../../../src/effect/reflect/reflect";
-import { reflectDamage } from "../../../src/effect/reflect/reflect";
+import { reflectDamage } from "../../../src/effect/reflect/reflect-damage";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 

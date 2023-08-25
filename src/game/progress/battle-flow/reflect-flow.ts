@@ -1,7 +1,7 @@
 import type { BattleResult } from "../../../effect/battle/result/battle-result";
 import { reflect } from "../../../effect/reflect";
 import type { ReflectParam } from "../../../effect/reflect/reflect";
-import { toReflectParam } from "../../../effect/reflect/reflect";
+import { toReflectParam } from "../../../effect/reflect/to-reflect-param";
 import type { PlayerId } from "../../../player/player";
 import type { GameState } from "../../../state/game-state";
 
