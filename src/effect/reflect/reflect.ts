@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { PlayerId } from "../../player/player";
+import { PlayerId, PlayerIdSchema } from "../../player/player";
 import { ReflectDamageEffect, ReflectDamageEffectSchema } from "../../state/armdozer-effect/reflect-damage-effect";
 
 /** ダメージ反射 パラメータ */
@@ -26,3 +26,10 @@ export type Reflect = ReflectParam &
     /** 死亡フラグ */
     isDeath: boolean;
   }>;
+
+/** Reflect zodスキーマ */
+export const ReflectSchema = ReflectParamSchema.extend({
+  name: z.literal("Reflect"),
+  damagedPlayer: PlayerIdSchema,
+  isDeath: z.boolean(),
+})
