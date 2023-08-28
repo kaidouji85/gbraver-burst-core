@@ -67,7 +67,9 @@ export { StartGame, StartGameSchema } from "./effect/start-game/start-game";
 export { TurnChange, TurnChangeSchema } from "./effect/turn-change/turn-change";
 export {
   EndArmdozerEffect,
+  EndArmdozerEffectSchema,
   UpdateRemainingTurn,
+  UpdateRemainingTurnSchema,
 } from "./effect/update-remaning-turn/update-remaining-turn";
 export {
   EMPTY_ARMDOZER_EFFECT,
