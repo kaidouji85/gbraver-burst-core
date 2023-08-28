@@ -63,7 +63,7 @@ export {
   RightItself,
   RightItselfSchema,
 } from "./effect/right-itself/right-itself";
-export { StartGame } from "./effect/start-game/start-game";
+export { StartGame, StartGameSchema } from "./effect/start-game/start-game";
 export { TurnChange } from "./effect/turn-change/turn-change";
 export {
   EndArmdozerEffect,
