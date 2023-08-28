@@ -1,9 +1,11 @@
 import { Effect, EffectSchema } from "../../src";
+import { validGameEnd } from "./game-end/valid-game-end";
 import { validStartGame } from "./start-game/valid-start-game";
 
 /** 有効なEffect */
 const effects: Effect[] = [
   validStartGame,
+  validGameEnd,
 ];
 
 test("Effectはパースできる", () => {
