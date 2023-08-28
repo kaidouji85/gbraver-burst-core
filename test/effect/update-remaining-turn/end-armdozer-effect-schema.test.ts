@@ -10,11 +10,13 @@ const endArmdozerEffect: EndArmdozerEffect = {
       type: "TurnLimit",
       remainingTurn: 2,
     },
-  }
+  },
 };
 
 test("EndArmdozerEffectはパースできる", () => {
-  expect(EndArmdozerEffectSchema.parse(endArmdozerEffect)).toEqual(endArmdozerEffect);
+  expect(EndArmdozerEffectSchema.parse(endArmdozerEffect)).toEqual(
+    endArmdozerEffect,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {

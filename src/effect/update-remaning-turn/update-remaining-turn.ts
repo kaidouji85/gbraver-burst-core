@@ -1,7 +1,10 @@
 import { z } from "zod";
 
-import { PlayerId,PlayerIdSchema } from "../../player/player";
-import { ArmdozerEffect, ArmdozerEffectSchema } from "../../state/armdozer-effect";
+import { PlayerId, PlayerIdSchema } from "../../player/player";
+import {
+  ArmdozerEffect,
+  ArmdozerEffectSchema,
+} from "../../state/armdozer-effect";
 
 /** 終了したアームドーザ効果 */
 export type EndArmdozerEffect = Readonly<{

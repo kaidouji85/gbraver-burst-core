@@ -13,13 +13,15 @@ const updateRemainingTurn: UpdateRemainingTurn = {
           type: "TurnLimit",
           remainingTurn: 2,
         },
-      }
-    }
-  ]
+      },
+    },
+  ],
 };
 
 test("UpdateRemainingTurnはパースできる", () => {
-  expect(UpdateRemainingTurnSchema.parse(updateRemainingTurn)).toEqual(updateRemainingTurn);
+  expect(UpdateRemainingTurnSchema.parse(updateRemainingTurn)).toEqual(
+    updateRemainingTurn,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
