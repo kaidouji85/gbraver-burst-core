@@ -1,5 +1,7 @@
-import type { PlayerId } from "../../player/player";
-import type { BattleResult } from "../battle/result/battle-result";
+import { z } from "zod";
+
+import { PlayerId,PlayerIdSchema } from "../../player/player";
+import { BattleResult,BattleResultSchema } from "../battle/result/battle-result";
 
 /** 防御側の体勢を立て直す */
 export type RightItself = Readonly<{
@@ -9,3 +11,10 @@ export type RightItself = Readonly<{
   /** 戦闘結果 */
   battleResult: BattleResult;
 }>;
+
+/** RightItself zodスキーマ */
+export const  RightItselfSchema = z.object({
+  name: z.literal("RightItself"),
+  defender: PlayerIdSchema,
+  battleResult: BattleResultSchema,
+});
