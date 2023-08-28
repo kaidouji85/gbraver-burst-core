@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import type { PlayerId } from "../../player/player";
+import { PlayerId,PlayerIdSchema } from "../../player/player";
 import { ArmdozerEffect, ArmdozerEffectSchema } from "../../state/armdozer-effect";
 
 /** 終了したアームドーザ効果 */
@@ -13,7 +13,7 @@ export type EndArmdozerEffect = Readonly<{
 
 /** EndArmdozerEffect zodスキーマ */
 export const EndArmdozerEffectSchema = z.object({
-  playerId: z.string(),
+  playerId: PlayerIdSchema,
   effect: ArmdozerEffectSchema,
 });
 
