@@ -1,22 +1,14 @@
-import { Reflect, ReflectSchema } from "../../../src";
-
-/** 有効なReflect */
-const reflect: Reflect = {
-  name: "Reflect",
-  damagedPlayer: "player1",
-  isDeath: false,
-  damage: 2000,
-  effect: "Lightning",
-};
+import { ReflectSchema } from "../../../src";
+import { validReflect } from "./valid-reflect";
 
 test("Reflectはパースできる", () => {
-  expect(ReflectSchema.parse(reflect)).toEqual(reflect);
+  expect(ReflectSchema.parse(validReflect)).toEqual(validReflect);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(reflect);
+  const str = JSON.stringify(validReflect);
   const data = JSON.parse(str);
-  expect(ReflectSchema.parse(data)).toEqual(reflect);
+  expect(ReflectSchema.parse(data)).toEqual(validReflect);
 });
 
 test("Reflect以外はパースできない", () => {
