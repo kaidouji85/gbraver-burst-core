@@ -1,19 +1,14 @@
-import { TurnChange, TurnChangeSchema } from "../../../src";
-
-/** 有効なTurnChange */
-const turnChange: TurnChange = {
-  name: "TurnChange",
-  recoverBattery: 3,
-};
+import { TurnChangeSchema } from "../../../src";
+import { validTurnChange } from "./valid-turn-change";
 
 test("TurnChangeはパースできる", () => {
-  expect(TurnChangeSchema.parse(turnChange)).toEqual(turnChange);
+  expect(TurnChangeSchema.parse(validTurnChange)).toEqual(validTurnChange);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(turnChange);
+  const str = JSON.stringify(validTurnChange);
   const data = JSON.parse(str);
-  expect(TurnChangeSchema.parse(data)).toEqual(turnChange);
+  expect(TurnChangeSchema.parse(data)).toEqual(validTurnChange);
 });
 
 test("TurnChange以外はパースできない", () => {

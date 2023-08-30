@@ -5,6 +5,7 @@ import { validGameEnd } from "./game-end/valid-game-end";
 import { validInputCommand } from "./input-command/valid-input-command";
 import { validReflect } from "./reflect/valid-reflect";
 import { validStartGame } from "./start-game/valid-start-game";
+import { validTurnChange } from "./turn-change/valid-turn-change";
 
 /** 有効なEffect */
 const effects: Effect[] = [
@@ -14,6 +15,7 @@ const effects: Effect[] = [
   validReflect,
   validBatteryDeclaration,
   validBattle,
+  validTurnChange,
 ];
 
 test("Effectはパースできる", () => {
