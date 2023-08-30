@@ -1,5 +1,6 @@
 import { Effect, EffectSchema } from "../../src";
 import { validBatteryDeclaration } from "./battery-declaration/valid-battery-declaration";
+import { validBattle } from "./battle/valid-battle";
 import { validGameEnd } from "./game-end/valid-game-end";
 import { validInputCommand } from "./input-command/valid-input-command";
 import { validReflect } from "./reflect/valid-reflect";
@@ -12,6 +13,7 @@ const effects: Effect[] = [
   validInputCommand,
   validReflect,
   validBatteryDeclaration,
+  validBattle,
 ];
 
 test("Effectはパースできる", () => {
