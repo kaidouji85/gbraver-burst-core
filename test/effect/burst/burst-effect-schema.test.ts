@@ -1,23 +1,14 @@
-import { BurstEffect, BurstEffectSchema } from "../../../src";
-
-/** 有効なBurstEffect */
-const burstEffect: BurstEffect = {
-  name: "BurstEffect",
-  burstPlayer: "burst-player",
-  burst: {
-    type: "RecoverBattery",
-    recoverBattery: 5,
-  },
-};
+import { BurstEffectSchema } from "../../../src";
+import { validBurstEffect } from "./valid-burst-effect";
 
 test("BurstEffectはパースできる", () => {
-  expect(BurstEffectSchema.parse(burstEffect)).toEqual(burstEffect);
+  expect(BurstEffectSchema.parse(validBurstEffect)).toEqual(validBurstEffect);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(burstEffect);
+  const str = JSON.stringify(validBurstEffect);
   const data = JSON.parse(str);
-  expect(BurstEffectSchema.parse(data)).toEqual(burstEffect);
+  expect(BurstEffectSchema.parse(data)).toEqual(validBurstEffect);
 });
 
 test("BurstEffect以外はパースできない", () => {
