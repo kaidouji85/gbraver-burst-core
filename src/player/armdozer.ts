@@ -1,7 +1,12 @@
-import type { Burst } from "./burst";
+import { z } from "zod";
+
+import { Burst, BurstSchema } from "./burst";
 
 /** アームドーザID */
-export type ArmDozerId = string;
+export type ArmdozerId = string;
+
+/** ArmdozerId zodスキーマ */
+export const ArmdozerIdSchema = z.string();
 
 /**
  * アームドーザ基本情報（型指定あり）
@@ -9,7 +14,7 @@ export type ArmDozerId = string;
  */
 export type ArmdozerX<X> = Readonly<{
   /** アームドーザID */
-  id: ArmDozerId;
+  id: ArmdozerId;
   /** 名前 */
   name: string;
   /** 最大HP */
@@ -26,3 +31,14 @@ export type ArmdozerX<X> = Readonly<{
 
 /** アームドーザ基本情報 */
 export type Armdozer = ArmdozerX<Burst>;
+
+/** Armdozer zodスキーマ */
+export const ArmdozerSchema = z.object({
+  id: ArmdozerIdSchema,
+  name: z.string(),
+  maxHp: z.number(),
+  maxBattery: z.number(),
+  power: z.number(),
+  speed: z.number(),
+  burst: BurstSchema,
+});

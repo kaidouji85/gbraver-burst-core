@@ -1,4 +1,4 @@
-import type { LightningBarrier } from "../../player/burst";
+import { LightningBarrier } from "../../player/burst/lightning-barrier";
 import type { PlayerId } from "../../player/player";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";

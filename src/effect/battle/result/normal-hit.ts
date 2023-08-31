@@ -1,4 +1,6 @@
-import type { PlayerState } from "../../../state/player-state";
+import { z } from "zod";
+
+import { PlayerState } from "../../../state/player-state";
 import { hasDamageHalved } from "../../damage-halved";
 import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";
@@ -9,6 +11,12 @@ export type NormalHit = Readonly<{
   /** ダメージ */
   damage: number;
 }>;
+
+/** NormalHit zodスキーマ */
+export const NormalHitSchema = z.object({
+  name: z.literal("NormalHit"),
+  damage: z.number(),
+});
 
 /**
  * 攻撃ヒットの戦闘結果を生成する

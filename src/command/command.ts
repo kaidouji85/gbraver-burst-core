@@ -25,16 +25,6 @@ export const CommandSchema = z.union([
 ]);
 
 /**
- * コマンドにパースする
- * @param origin パース元
- * @return パース結果、失敗した場合はnull
- */
-export function parseCommand(origin: unknown): Command | null {
-  const result = CommandSchema.safeParse(origin);
-  return result.success ? result.data : null;
-}
-
-/**
  * コマンドが等しいかどうかを判定する
  * @param command1 コマンド1
  * @param command2 コマンド2

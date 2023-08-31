@@ -1,5 +1,7 @@
-import type { Burst } from "../../player/burst";
-import type { PlayerId } from "../../player/player";
+import { z } from "zod";
+
+import { Burst, BurstSchema } from "../../player/burst";
+import { PlayerId, PlayerIdSchema } from "../../player/player";
 
 /** バースト効果 */
 export type BurstEffect = Readonly<{
@@ -9,3 +11,10 @@ export type BurstEffect = Readonly<{
   /** バースト内容 */
   burst: Burst;
 }>;
+
+/** BurstEffect zodスキーマ */
+export const BurstEffectSchema = z.object({
+  name: z.literal("BurstEffect"),
+  burstPlayer: PlayerIdSchema,
+  burst: BurstSchema,
+});

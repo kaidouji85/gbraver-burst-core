@@ -1,4 +1,6 @@
-import type { PlayerState } from "../../../state/player-state";
+import { z } from "zod";
+
+import { PlayerState } from "../../../state/player-state";
 import { hasDamageHalved } from "../../damage-halved";
 import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";
@@ -9,6 +11,12 @@ export type Guard = Readonly<{
   /** ダメージ */
   damage: number;
 }>;
+
+/** Guard zodスキーマ */
+export const GuardSchema = z.object({
+  name: z.literal("Guard"),
+  damage: z.number(),
+});
 
 /**
  * 防御の戦闘結果を生成する

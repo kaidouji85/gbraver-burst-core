@@ -1,9 +1,15 @@
-import type { ArmdozerX } from "./armdozer";
-import type { Burst } from "./burst";
-import type { PilotSkill, PilotX } from "./pilot";
+import { z } from "zod";
+
+import { ArmdozerSchema, ArmdozerX } from "./armdozer";
+import { Burst } from "./burst";
+import { PilotSchema, PilotX } from "./pilot";
+import { PilotSkill } from "./pilot/pilot-skill";
 
 /** プレイヤーID */
 export type PlayerId = string;
+
+/** プレイヤーID zodスキーマ */
+export const PlayerIdSchema = z.string();
 
 /**
  * プレイヤー基本情報
@@ -21,3 +27,10 @@ export type PlayerX<BURST, PILOT> = Readonly<{
 
 /** プレイヤー基本情報 */
 export type Player = PlayerX<Burst, PilotSkill>;
+
+/** Player zodスキーマ */
+export const PlayerSchema = z.object({
+  playerId: PlayerIdSchema,
+  armdozer: ArmdozerSchema,
+  pilot: PilotSchema,
+});
