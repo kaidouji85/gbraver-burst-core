@@ -1,7 +1,7 @@
 import type { Armdozer } from "../player/armdozer";
 
 /** アームドーザIDマスタ */
-export const ArmDozerIds = {
+export const ArmdozerIds = {
   SHIN_BRAVER: "SHIN_BRAVER",
   NEO_LANDOZER: "NEO_LANDOZER",
   LIGHTNING_DOZER: "LIGHTNING_DOZER",
@@ -10,9 +10,9 @@ export const ArmDozerIds = {
 };
 
 /** アームドーザのマスターデータ */
-export const ArmDozers: Armdozer[] = [
+export const Armdozers: Armdozer[] = [
   {
-    id: ArmDozerIds.SHIN_BRAVER,
+    id: ArmdozerIds.SHIN_BRAVER,
     name: "シンブレイバー",
     maxHp: 3100,
     maxBattery: 5,
@@ -24,7 +24,7 @@ export const ArmDozers: Armdozer[] = [
     },
   },
   {
-    id: ArmDozerIds.NEO_LANDOZER,
+    id: ArmdozerIds.NEO_LANDOZER,
     name: "ネオランドーザ",
     maxHp: 3300,
     maxBattery: 5,
@@ -38,7 +38,7 @@ export const ArmDozers: Armdozer[] = [
     },
   },
   {
-    id: ArmDozerIds.LIGHTNING_DOZER,
+    id: ArmdozerIds.LIGHTNING_DOZER,
     name: "ライトニングドーザ",
     maxHp: 3400,
     maxBattery: 5,
@@ -52,7 +52,7 @@ export const ArmDozers: Armdozer[] = [
     },
   },
   {
-    id: ArmDozerIds.WING_DOZER,
+    id: ArmdozerIds.WING_DOZER,
     name: "ウィングドーザ",
     maxHp: 2700,
     maxBattery: 5,
@@ -64,7 +64,7 @@ export const ArmDozers: Armdozer[] = [
     },
   },
   {
-    id: ArmDozerIds.GENESIS_BRAVER,
+    id: ArmdozerIds.GENESIS_BRAVER,
     name: "ジェネシスブレイバー",
     maxHp: 3000,
     maxBattery: 4,
