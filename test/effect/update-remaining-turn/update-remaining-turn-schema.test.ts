@@ -10,7 +10,9 @@ test("UpdateRemainingTurnはパースできる", () => {
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
   const str = JSON.stringify(validUpdateRemainingTurn);
   const data = JSON.parse(str);
-  expect(UpdateRemainingTurnSchema.parse(data)).toEqual(validUpdateRemainingTurn);
+  expect(UpdateRemainingTurnSchema.parse(data)).toEqual(
+    validUpdateRemainingTurn,
+  );
 });
 
 test("UpdateRemainingTurn以外はパースできない", () => {

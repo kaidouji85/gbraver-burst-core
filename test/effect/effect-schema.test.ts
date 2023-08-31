@@ -27,13 +27,13 @@ const effects: Effect[] = [
 ];
 
 test("Effectはパースできる", () => {
-  effects.forEach(effect => {
+  effects.forEach((effect) => {
     expect(EffectSchema.parse(effect)).toEqual(effect);
   });
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  effects.forEach(effect => {
+  effects.forEach((effect) => {
     const str = JSON.stringify(effect);
     const data = JSON.parse(str);
     expect(EffectSchema.parse(data)).toEqual(effect);

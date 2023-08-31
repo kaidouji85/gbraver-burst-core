@@ -2,7 +2,9 @@ import { InputCommandSchema } from "../../../src";
 import { validInputCommand } from "./valid-input-command";
 
 test("InputCommandはパースできる", () => {
-  expect(InputCommandSchema.parse(validInputCommand)).toEqual(validInputCommand);
+  expect(InputCommandSchema.parse(validInputCommand)).toEqual(
+    validInputCommand,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
