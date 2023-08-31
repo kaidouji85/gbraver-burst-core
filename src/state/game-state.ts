@@ -1,6 +1,8 @@
-import type { Effect } from "../effect";
-import type { PlayerId } from "../player/player";
-import type { PlayerState } from "./player-state";
+import { z } from "zod";
+
+import { Effect, EffectSchema } from "../effect";
+import { PlayerId, PlayerIdSchema } from "../player/player";
+import { PlayerState, PlayerStateSchema } from "./player-state";
 
 /**
  * ゲームステート（型指定あり）
@@ -17,3 +19,10 @@ export type GameStateX<X> = Readonly<{
 
 /** ゲームステート */
 export type GameState = GameStateX<Effect>;
+
+/** GameState zodスキーマ */
+export const GameStateSchema = z.object({
+  players: z.array(PlayerStateSchema),
+  activePlayerId: PlayerIdSchema,
+  effect: EffectSchema,
+});
