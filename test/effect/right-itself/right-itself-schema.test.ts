@@ -1,23 +1,14 @@
-import { RightItself, RightItselfSchema } from "../../../src";
-
-/** 有効なRightItself */
-const rightItself: RightItself = {
-  name: "RightItself",
-  defender: "p1",
-  battleResult: {
-    name: "NormalHit",
-    damage: 2000,
-  },
-};
+import { RightItselfSchema } from "../../../src";
+import { validRightItself } from "./valid-right-itself";
 
 test("RightItselfはパースできる", () => {
-  expect(RightItselfSchema.parse(rightItself)).toEqual(rightItself);
+  expect(RightItselfSchema.parse(validRightItself)).toEqual(validRightItself);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(rightItself);
+  const str = JSON.stringify(validRightItself);
   const data = JSON.parse(str);
-  expect(RightItselfSchema.parse(data)).toEqual(rightItself);
+  expect(RightItselfSchema.parse(data)).toEqual(validRightItself);
 });
 
 test("RightItself以外はパースできない", () => {

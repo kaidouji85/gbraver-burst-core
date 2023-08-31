@@ -5,6 +5,7 @@ import { validBurstEffect } from "./burst/valid-burst-effect";
 import { validGameEnd } from "./game-end/valid-game-end";
 import { validInputCommand } from "./input-command/valid-input-command";
 import { validReflect } from "./reflect/valid-reflect";
+import { validRightItself } from "./right-itself/valid-right-itself";
 import { validStartGame } from "./start-game/valid-start-game";
 import { validTurnChange } from "./turn-change/valid-turn-change";
 import { validUpdateRemainingTurn } from "./update-remaining-turn/valid-update-remaining-turn";
@@ -20,6 +21,7 @@ const effects: Effect[] = [
   validTurnChange,
   validBurstEffect,
   validUpdateRemainingTurn,
+  validRightItself,
 ];
 
 test("Effectはパースできる", () => {
