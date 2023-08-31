@@ -219,7 +219,7 @@ export {
   ArmdozerStateSchema,
   ArmdozerStateX,
 } from "./state/armdozer-state";
-export { GameState, GameStateX } from "./state/game-state";
+export { GameState, GameStateSchema, GameStateX } from "./state/game-state";
 export { PilotState, PilotStateSchema, PilotStateX } from "./state/pilot-state";
 export {
   PlayerState,
