@@ -1,6 +1,6 @@
 import path from "path";
 
-import { PlayerCommand } from "../../src";
+import { PlayerCommand, RestoreGBraverBurstSchema } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
 import {
@@ -14,16 +14,21 @@ import {
   shouldUpdateSnapShot,
 } from "../snap-shot";
 
+/** プレイヤー1 */
 const PLAYER1: Player = {
   playerId: "player1",
   pilot: EMPTY_PILOT,
   armdozer: { ...EMPTY_ARMDOZER, speed: 1600 },
 };
+
+/** プレイヤー2 */
 const PLAYER2: Player = {
   playerId: "player2",
   pilot: EMPTY_PILOT,
   armdozer: { ...EMPTY_ARMDOZER, speed: 2000 },
 };
+
+/** プレイヤー1のコマンド */
 const COMMAND1: PlayerCommand = {
   playerId: "player1",
   command: {
@@ -31,6 +36,8 @@ const COMMAND1: PlayerCommand = {
     battery: 3,
   },
 };
+
+/** プレイヤー2のコマンド */
 const COMMAND2: PlayerCommand = {
   playerId: "player2",
   command: {
@@ -86,7 +93,10 @@ test("ゲームステート履歴が正しく更新される", () => {
 test("ダンプ、リストアを正しく行うことができる", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   core.progress([COMMAND1, COMMAND2]);
-  const data = core.dump();
+  const dump = core.dump();
+  const str = JSON.stringify(dump);
+  const parsedJSON = JSON.parse(str);
+  const data = RestoreGBraverBurstSchema.parse(parsedJSON);
   const restoreCore = restoreGBraverBurst(data);
   expect(core.players()).toEqual(restoreCore.players());
   expect(core.stateHistory()).toEqual(restoreCore.stateHistory());
