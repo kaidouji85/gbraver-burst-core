@@ -1,33 +1,16 @@
-import { UpdateRemainingTurn, UpdateRemainingTurnSchema } from "../../../src";
-
-/** 有効なUpdateRemainingTurn */
-const updateRemainingTurn: UpdateRemainingTurn = {
-  name: "UpdateRemainingTurn",
-  endArmdozerEffects: [
-    {
-      playerId: "player1",
-      effect: {
-        type: "CorrectPower",
-        power: 1000,
-        period: {
-          type: "TurnLimit",
-          remainingTurn: 2,
-        },
-      },
-    },
-  ],
-};
+import { UpdateRemainingTurnSchema } from "../../../src";
+import { validUpdateRemainingTurn } from "./valid-update-remaining-turn";
 
 test("UpdateRemainingTurnはパースできる", () => {
-  expect(UpdateRemainingTurnSchema.parse(updateRemainingTurn)).toEqual(
-    updateRemainingTurn,
+  expect(UpdateRemainingTurnSchema.parse(validUpdateRemainingTurn)).toEqual(
+    validUpdateRemainingTurn,
   );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(updateRemainingTurn);
+  const str = JSON.stringify(validUpdateRemainingTurn);
   const data = JSON.parse(str);
-  expect(UpdateRemainingTurnSchema.parse(data)).toEqual(updateRemainingTurn);
+  expect(UpdateRemainingTurnSchema.parse(data)).toEqual(validUpdateRemainingTurn);
 });
 
 test("UpdateRemainingTurn以外はパースできない", () => {

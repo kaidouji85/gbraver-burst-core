@@ -7,6 +7,7 @@ import { validInputCommand } from "./input-command/valid-input-command";
 import { validReflect } from "./reflect/valid-reflect";
 import { validStartGame } from "./start-game/valid-start-game";
 import { validTurnChange } from "./turn-change/valid-turn-change";
+import { validUpdateRemainingTurn } from "./update-remaining-turn/valid-update-remaining-turn";
 
 /** 有効なEffect */
 const effects: Effect[] = [
@@ -18,6 +19,7 @@ const effects: Effect[] = [
   validBattle,
   validTurnChange,
   validBurstEffect,
+  validUpdateRemainingTurn,
 ];
 
 test("Effectはパースできる", () => {
