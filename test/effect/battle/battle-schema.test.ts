@@ -1,24 +1,14 @@
-import { Battle, BattleSchema } from "../../../src";
-
-/** 有効なBattle */
-const battle: Battle = {
-  name: "Battle",
-  attacker: "p1",
-  isDeath: false,
-  result: {
-    name: "NormalHit",
-    damage: 1000,
-  },
-};
+import { BattleSchema } from "../../../src";
+import { validBattle } from "./valid-battle";
 
 test("Battleはパースできる", () => {
-  expect(BattleSchema.parse(battle)).toEqual(battle);
+  expect(BattleSchema.parse(validBattle)).toEqual(validBattle);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(battle);
+  const str = JSON.stringify(validBattle);
   const data = JSON.parse(str);
-  expect(BattleSchema.parse(data)).toEqual(battle);
+  expect(BattleSchema.parse(data)).toEqual(validBattle);
 });
 
 test("Battle以外はパースできない", () => {

@@ -1,22 +1,14 @@
-import { GameEnd, GameEndSchema } from "../../../src";
-
-/** 有効なGameEnd */
-const gameEnd: GameEnd = {
-  name: "GameEnd",
-  result: {
-    type: "GameOver",
-    winner: "player",
-  },
-};
+import { GameEndSchema } from "../../../src";
+import { validGameEnd } from "./valid-game-end";
 
 test("GameEndはパースできる", () => {
-  expect(GameEndSchema.parse(gameEnd)).toEqual(gameEnd);
+  expect(GameEndSchema.parse(validGameEnd)).toEqual(validGameEnd);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(gameEnd);
+  const str = JSON.stringify(validGameEnd);
   const data = JSON.parse(str);
-  expect(GameEndSchema.parse(data)).toEqual(gameEnd);
+  expect(GameEndSchema.parse(data)).toEqual(validGameEnd);
 });
 
 test("GameEnd以外はパースできない", () => {

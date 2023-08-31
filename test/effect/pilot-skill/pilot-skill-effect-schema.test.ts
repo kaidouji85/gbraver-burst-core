@@ -1,25 +1,16 @@
-import { PilotSkillEffect, PilotSkillEffectSchema } from "../../../src";
-
-/** 有効なPilotSkillEffect */
-const pilotSkillEffect: PilotSkillEffect = {
-  name: "PilotSkillEffect",
-  invokerId: "player1",
-  skill: {
-    type: "BatteryBoostSkill",
-    recoverBattery: 5,
-  },
-};
+import { PilotSkillEffectSchema } from "../../../src";
+import { validPilotSkillEffect } from "./valid-pilot-skill-effect";
 
 test("PilotSkillEffectはパースできる", () => {
-  expect(PilotSkillEffectSchema.parse(pilotSkillEffect)).toEqual(
-    pilotSkillEffect,
+  expect(PilotSkillEffectSchema.parse(validPilotSkillEffect)).toEqual(
+    validPilotSkillEffect,
   );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(pilotSkillEffect);
+  const str = JSON.stringify(validPilotSkillEffect);
   const data = JSON.parse(str);
-  expect(PilotSkillEffectSchema.parse(data)).toEqual(pilotSkillEffect);
+  expect(PilotSkillEffectSchema.parse(data)).toEqual(validPilotSkillEffect);
 });
 
 test("PilotSkillEffect以外はパースできない", () => {

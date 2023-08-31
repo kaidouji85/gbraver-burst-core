@@ -1,42 +1,16 @@
-import { InputCommand, InputCommandSchema } from "../../../src";
-
-/** 有効なInputCommand */
-const inputCommand: InputCommand = {
-  name: "InputCommand",
-  players: [
-    {
-      playerId: "player1",
-      selectable: false,
-      nextTurnCommand: {
-        type: "BATTERY_COMMAND",
-        battery: 3,
-      },
-    },
-    {
-      playerId: "player2",
-      selectable: true,
-      command: [
-        {
-          type: "BATTERY_COMMAND",
-          battery: 0,
-        },
-        {
-          type: "BATTERY_COMMAND",
-          battery: 1,
-        },
-      ],
-    },
-  ],
-};
+import { InputCommandSchema } from "../../../src";
+import { validInputCommand } from "./valid-input-command";
 
 test("InputCommandはパースできる", () => {
-  expect(InputCommandSchema.parse(inputCommand)).toEqual(inputCommand);
+  expect(InputCommandSchema.parse(validInputCommand)).toEqual(
+    validInputCommand,
+  );
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(inputCommand);
+  const str = JSON.stringify(validInputCommand);
   const data = JSON.parse(str);
-  expect(InputCommandSchema.parse(data)).toEqual(inputCommand);
+  expect(InputCommandSchema.parse(data)).toEqual(validInputCommand);
 });
 
 test("InputCommand以外はパースできない", () => {

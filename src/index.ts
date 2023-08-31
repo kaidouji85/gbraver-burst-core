@@ -44,7 +44,7 @@ export {
   GameEndSchema,
   GameEndX,
 } from "./effect/game-end/game-end";
-export { Effect } from "./effect/index";
+export { Effect, EffectSchema } from "./effect/index";
 export {
   InputCommand,
   InputCommandSchema,
