@@ -2,21 +2,15 @@ import type { Player } from "../player/player";
 import type { GameState } from "../state/game-state";
 import type { PlayerCommand } from "./command/player-command";
 import { progress } from "./progress";
+import { RestoreGBraverBurst } from "./restore-gbraver-burst";
 import { start } from "./start/start";
 import { isAllPlayerEnteredCommand } from "./validation/is-all-player-entered-command";
 import { isDuplicatePlayers } from "./validation/is-duplicate-players";
 import { isValidCommand } from "./validation/is-valid-command";
 
-/** ゲームを再開するためのデータ */
-export type RestoreGbraverBurst = Readonly<{
-  /** プレイヤー情報 */
-  players: [Player, Player];
-  /** ステートヒストリー */
-  stateHistory: GameState[];
-}>;
 
 /** Gブレイバーバーストコア */
-export interface GbraverBurstCore {
+export interface GBraverBurstCore {
   /**
    * バトルに参加している全プレイヤーを取得する
    * @return 取得結果
@@ -33,7 +27,7 @@ export interface GbraverBurstCore {
    * 現在の状態をダンプする
    * @return ダンプしたデータ
    */
-  dump(): RestoreGbraverBurst;
+  dump(): RestoreGBraverBurst;
 
   /**
    * ゲームを進行させる
@@ -43,33 +37,8 @@ export interface GbraverBurstCore {
   progress(commands: [PlayerCommand, PlayerCommand]): GameState[];
 }
 
-/**
- * Gブレイバーバーストを開始する
- * @param players プレイヤー情報
- * @return Gブレイバーバースト
- */
-export function startGbraverBurst(players: [Player, Player]): GbraverBurstCore {
-  if (isDuplicatePlayers(players)) {
-    throw new Error("duplicate players");
-  }
-
-  const stateHistory = start(players);
-  return new GbraverBurstCoreImpl(players, stateHistory);
-}
-
-/**
- * Gブレイバーバーストを再開する
- * @param data 再開するデータ
- * @return Gブレイバーバースト
- */
-export function restoreGbraverBurst(
-  data: RestoreGbraverBurst,
-): GbraverBurstCore {
-  return new GbraverBurstCoreImpl(data.players, data.stateHistory);
-}
-
 /** Gブレイバーバーストコア実装 */
-class GbraverBurstCoreImpl implements GbraverBurstCore {
+class GBraverBurstCoreImpl implements GBraverBurstCore {
   #players: [Player, Player];
   #stateHistory: GameState[];
 
@@ -95,7 +64,7 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
   }
 
   /** @override */
-  dump(): RestoreGbraverBurst {
+  dump(): RestoreGBraverBurst {
     return {
       players: this.#players,
       stateHistory: this.#stateHistory,
@@ -125,4 +94,29 @@ class GbraverBurstCoreImpl implements GbraverBurstCore {
     this.#stateHistory = [...this.#stateHistory, ...updated];
     return updated;
   }
+}
+
+/**
+ * Gブレイバーバーストを開始する
+ * @param players プレイヤー情報
+ * @return Gブレイバーバースト
+ */
+export function startGBraverBurst(players: [Player, Player]): GBraverBurstCore {
+  if (isDuplicatePlayers(players)) {
+    throw new Error("duplicate players");
+  }
+
+  const stateHistory = start(players);
+  return new GBraverBurstCoreImpl(players, stateHistory);
+}
+
+/**
+ * Gブレイバーバーストを再開する
+ * @param data 再開するデータ
+ * @return Gブレイバーバースト
+ */
+export function restoreGBraverBurst(
+  data: RestoreGBraverBurst,
+): GBraverBurstCore {
+  return new GBraverBurstCoreImpl(data.players, data.stateHistory);
 }

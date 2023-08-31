@@ -96,13 +96,15 @@ export {
   GameOverSchema,
 } from "./game/end-judging/game-end-judging";
 export {
-  GbraverBurstCore,
-  RestoreGbraverBurst,
+  GBraverBurstCore,
 } from "./game/gbraver-burst-core";
 export {
-  restoreGbraverBurst,
-  startGbraverBurst,
+  restoreGBraverBurst,
+  startGBraverBurst,
 } from "./game/gbraver-burst-core";
+export {
+  RestoreGBraverBurst,
+} from "./game/restore-gbraver-burst";
 export { ArmDozerIds, ArmDozers } from "./master/armdozers";
 export { PilotIds, Pilots } from "./master/pilots";
 export {
