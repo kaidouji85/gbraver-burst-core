@@ -84,6 +84,13 @@ export { EMPTY_BATTLE } from "./empty/battle";
 export { EMPTY_GAME_STATE } from "./empty/game-state";
 export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
 export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
+export {
+  GBraverBurstCore,
+} from "./game";
+export {
+  restoreGBraverBurst,
+  startGBraverBurst,
+} from "./game";
 export { PlayerCommand, PlayerCommandX } from "./game/command/player-command";
 export {
   EvenMatch,
@@ -95,13 +102,6 @@ export {
   GameOver,
   GameOverSchema,
 } from "./game/end-judging/game-end-judging";
-export {
-  GBraverBurstCore,
-} from "./game/gbraver-burst-core";
-export {
-  restoreGBraverBurst,
-  startGBraverBurst,
-} from "./game/gbraver-burst-core";
 export {
   RestoreGBraverBurst,
 } from "./game/restore-gbraver-burst";

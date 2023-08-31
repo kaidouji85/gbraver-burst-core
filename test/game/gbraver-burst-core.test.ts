@@ -6,7 +6,7 @@ import { EMPTY_PILOT } from "../../src/empty/pilot";
 import {
   restoreGBraverBurst,
   startGBraverBurst,
-} from "../../src/game/gbraver-burst-core";
+} from "../../src/game";
 import type { Player } from "../../src/player/player";
 import {
   exportSnapShotJSON,
