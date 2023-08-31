@@ -104,6 +104,7 @@ export {
 } from "./game/end-judging/game-end-judging";
 export {
   RestoreGBraverBurst,
+  RestoreGBraverBurstSchema,
 } from "./game/restore-gbraver-burst";
 export { ArmDozerIds, ArmDozers } from "./master/armdozers";
 export { PilotIds, Pilots } from "./master/pilots";
