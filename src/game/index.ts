@@ -8,7 +8,6 @@ import { isAllPlayerEnteredCommand } from "./validation/is-all-player-entered-co
 import { isDuplicatePlayers } from "./validation/is-duplicate-players";
 import { isValidCommand } from "./validation/is-valid-command";
 
-
 /** Gブレイバーバーストコア */
 export interface GBraverBurstCore {
   /**

@@ -15,4 +15,4 @@ export type RestoreGBraverBurst = Readonly<{
 export const RestoreGBraverBurstSchema = z.object({
   players: z.tuple([PlayerSchema, PlayerSchema]),
   stateHistory: z.array(GameStateSchema),
-});  
+});

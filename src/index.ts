@@ -84,13 +84,8 @@ export { EMPTY_BATTLE } from "./empty/battle";
 export { EMPTY_GAME_STATE } from "./empty/game-state";
 export { EMPTY_PILOT, EMPTY_PILOT_STATE } from "./empty/pilot";
 export { EMPTY_PLAYER, EMPTY_PLAYER_STATE } from "./empty/player";
-export {
-  GBraverBurstCore,
-} from "./game";
-export {
-  restoreGBraverBurst,
-  startGBraverBurst,
-} from "./game";
+export { GBraverBurstCore } from "./game";
+export { restoreGBraverBurst, startGBraverBurst } from "./game";
 export { PlayerCommand, PlayerCommandX } from "./game/command/player-command";
 export {
   EvenMatch,

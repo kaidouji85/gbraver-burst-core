@@ -3,10 +3,7 @@ import path from "path";
 import { PlayerCommand, RestoreGBraverBurstSchema } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
-import {
-  restoreGBraverBurst,
-  startGBraverBurst,
-} from "../../src/game";
+import { restoreGBraverBurst, startGBraverBurst } from "../../src/game";
 import type { Player } from "../../src/player/player";
 import {
   exportSnapShotJSON,
