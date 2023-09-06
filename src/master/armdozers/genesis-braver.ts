@@ -5,7 +5,7 @@ import { ArmdozerIds } from "./armdozer-ids";
 export const GenesisBraver: Armdozer = {
   id: ArmdozerIds.GENESIS_BRAVER,
   name: "ジェネシスブレイバー",
-  maxHp: 3000,
+  maxHp: 2600,
   maxBattery: 4,
   power: 2200,
   speed: 1900,
