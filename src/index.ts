@@ -101,7 +101,8 @@ export {
   RestoreGBraverBurst,
   RestoreGBraverBurstSchema,
 } from "./game/restore-gbraver-burst";
-export { ArmdozerIds, Armdozers } from "./master/armdozers";
+export { Armdozers } from "./master/armdozers";
+export { ArmdozerIds } from "./master/armdozers/armdozer-ids";
 export { PilotIds, Pilots } from "./master/pilots";
 export {
   Armdozer,
