@@ -4,6 +4,7 @@ import * as fs from "fs";
 const encode = "utf-8";
 
 /**
+ * @deprecated
  * スナップショットを更新するか否かを判定する
  *
  * @return 判定結果、trueでスナップショットを更新する
@@ -13,6 +14,7 @@ export function shouldUpdateSnapShot(): boolean {
 }
 
 /**
+ * @deprecated
  * 任意のオブジェクトをjson形式でエクスポートする
  *
  * @param path エクスポート先のパス
@@ -28,6 +30,7 @@ export function exportSnapShotJSON(
 }
 
 /**
+ * @deprecated
  * スナップショット用JSONをファイルから読み込む
  *
  * @param path 読み込み先のパス
