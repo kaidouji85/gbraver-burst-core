@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`電撃バリアバーストの適用が正しくできる 1`] = `
+{
+  "activePlayerId": "",
+  "effect": {
+    "burst": {
+      "damage": 1000,
+      "duration": 2,
+      "recoverBattery": 3,
+      "type": "LightningBarrier",
+    },
+    "burstPlayer": "burst",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "other",
+    },
+    {
+      "armdozer": {
+        "battery": 4,
+        "burst": {
+          "damage": 1000,
+          "duration": 2,
+          "recoverBattery": 3,
+          "type": "LightningBarrier",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "damage": 1000,
+            "effect": "Lightning",
+            "period": {
+              "remainingTurn": 2,
+              "type": "TurnLimit",
+            },
+            "type": "TryReflect",
+          },
+        ],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burst",
+    },
+  ],
+}
+`;
