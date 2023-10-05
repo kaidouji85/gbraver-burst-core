@@ -1,14 +1,7 @@
-import path from "path";
-
 import { EMPTY_GAME_STATE, GameState, PlayerState } from "../../../src";
 import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 test("バッテリーリミットブレイクが正しく適用できる", () => {
   const burstPlayer: PlayerState = {
@@ -34,10 +27,5 @@ test("バッテリーリミットブレイクが正しく適用できる", () =>
     players: [otherPlayer, burstPlayer],
   };
   const result = burst(lastState, burstPlayer.playerId);
-  const snapShotPath = path.join(__dirname, "battery-limit-break.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot();
 });
