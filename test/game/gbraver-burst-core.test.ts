@@ -1,15 +1,8 @@
-import path from "path";
-
 import { PlayerCommand, RestoreGBraverBurstSchema } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
 import { restoreGBraverBurst, startGBraverBurst } from "../../src/game";
 import type { Player } from "../../src/player/player";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../snap-shot";
 
 /** プレイヤー1 */
 const PLAYER1: Player = {
@@ -46,15 +39,7 @@ const COMMAND2: PlayerCommand = {
 test("初期状態を正しく作ることができる", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const result = core.stateHistory();
-  const snapShotPath = path.join(
-    __dirname,
-    "gbraver-burst-core__initial-state.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("initial-state");
 });
 
 test("プレイヤー情報が正しくセットされている", () => {
@@ -67,15 +52,7 @@ test("プレイヤー情報が正しくセットされている", () => {
 test("正しくゲームを進めることができる", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const result = core.progress([COMMAND1, COMMAND2]);
-  const snapShotPath = path.join(
-    __dirname,
-    "gbraver-burst-core__progress.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("progress");
 });
 
 test("ゲームステート履歴が正しく更新される", () => {
