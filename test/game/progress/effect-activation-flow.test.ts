@@ -1,5 +1,3 @@
-import path from "path";
-
 import type {
   BatteryCommand,
   BurstCommand,
@@ -11,11 +9,6 @@ import type { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { effectActivationFlow } from "../../../src/game/progress/effect-activation-flow";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };
 const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "defender" };
@@ -47,15 +40,7 @@ test("一人だけ効果適用する場合でも正しく処理される", () =>
     },
   ];
   const result = effectActivationFlow(state, commands);
-  const snapShotPath = path.join(
-    __dirname,
-    "effect-activation-flow__one-player-effective.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("one-player-effective");
 });
 
 test("二人とも効果適用する場合でも正しく処理される", () => {
@@ -75,13 +60,5 @@ test("二人とも効果適用する場合でも正しく処理される", () =>
     },
   ];
   const result = effectActivationFlow(state, commands);
-  const snapShotPath = path.join(
-    __dirname,
-    "effect-activation-flow__two-player-effective.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("two-player-effective");
 });

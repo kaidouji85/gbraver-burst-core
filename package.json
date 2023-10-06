@@ -64,7 +64,6 @@
     "prepublishOnly": "run-s clean lint test build",
     "test": "jest",
     "transpile": "tsc -d --outDir lib",
-    "type-check": "tsc --noEmit",
-    "update-snapshot": "cross-env SHOULD_UPDATE_SNAPSHOT=true jest"
+    "type-check": "tsc --noEmit"
   }
 }

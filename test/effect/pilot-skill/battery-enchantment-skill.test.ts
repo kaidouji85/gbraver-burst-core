@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   EMPTY_ARMDOZER_EFFECT,
   type GameState,
@@ -10,11 +8,6 @@ import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { BatteryEnchantmentSkill } from "../../../src/player/pilot/battery-enchantment-skill";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 /** バッテリー増強スキル */
 const skill: BatteryEnchantmentSkill = {
@@ -46,10 +39,5 @@ const state: GameState = {
 
 test("バッテリー増強スキルが正しく発動できる", () => {
   const result = pilotSkill(state, invoker.playerId);
-  const snapShotPath = path.join(__dirname, "battery-enchantment-skill.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot();
 });

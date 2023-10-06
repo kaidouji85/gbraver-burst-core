@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`連続攻撃バーストが正しく適用できる 1`] = `
+{
+  "activePlayerId": "",
+  "effect": {
+    "burst": {
+      "recoverBattery": 3,
+      "type": "ContinuousAttack",
+    },
+    "burstPlayer": "burstPlayer",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "otherPlayer",
+    },
+    {
+      "armdozer": {
+        "battery": 4,
+        "burst": {
+          "recoverBattery": 3,
+          "type": "ContinuousAttack",
+        },
+        "effects": [
+          {
+            "period": {
+              "type": "SpecialPeriod",
+            },
+            "type": "ContinuousActivePlayer",
+          },
+        ],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burstPlayer",
+    },
+  ],
+}
+`;

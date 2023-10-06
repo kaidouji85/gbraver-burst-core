@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
+[
+  {
+    "activePlayerId": "",
+    "effect": {
+      "damage": 5000,
+      "damagedPlayer": "attacker",
+      "effect": "Lightning",
+      "isDeath": true,
+      "name": "Reflect",
+    },
+    "players": [
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [],
+          "enableBurst": true,
+          "hp": -2000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "attacker",
+      },
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [
+            {
+              "damage": 5000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+          ],
+          "enableBurst": true,
+          "hp": 3000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "defender",
+      },
+    ],
+  },
+]
+`;
+
+exports[`ダメージ反射の重ね掛けも正しく処理される: multi-reflect 1`] = `
+[
+  {
+    "activePlayerId": "",
+    "effect": {
+      "damage": 5000,
+      "damagedPlayer": "attacker",
+      "effect": "Lightning",
+      "isDeath": true,
+      "name": "Reflect",
+    },
+    "players": [
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [],
+          "enableBurst": true,
+          "hp": -2000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "attacker",
+      },
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [
+            {
+              "damage": 5000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+            {
+              "damage": 3000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+            {
+              "damage": 2000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+          ],
+          "enableBurst": true,
+          "hp": 3000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "defender",
+      },
+    ],
+  },
+  {
+    "activePlayerId": "",
+    "effect": {
+      "damage": 3000,
+      "damagedPlayer": "attacker",
+      "effect": "Lightning",
+      "isDeath": true,
+      "name": "Reflect",
+    },
+    "players": [
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [],
+          "enableBurst": true,
+          "hp": -5000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "attacker",
+      },
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [
+            {
+              "damage": 5000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+            {
+              "damage": 3000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+            {
+              "damage": 2000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+          ],
+          "enableBurst": true,
+          "hp": 3000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "defender",
+      },
+    ],
+  },
+  {
+    "activePlayerId": "",
+    "effect": {
+      "damage": 2000,
+      "damagedPlayer": "attacker",
+      "effect": "Lightning",
+      "isDeath": true,
+      "name": "Reflect",
+    },
+    "players": [
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [],
+          "enableBurst": true,
+          "hp": -7000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "attacker",
+      },
+      {
+        "armdozer": {
+          "battery": 5,
+          "burst": {
+            "recoverBattery": 0,
+            "type": "RecoverBattery",
+          },
+          "effects": [
+            {
+              "damage": 5000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+            {
+              "damage": 3000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+            {
+              "damage": 2000,
+              "effect": "Lightning",
+              "period": {
+                "remainingTurn": 2,
+                "type": "TurnLimit",
+              },
+              "type": "TryReflect",
+            },
+          ],
+          "enableBurst": true,
+          "hp": 3000,
+          "id": "id",
+          "maxBattery": 5,
+          "maxHp": 3000,
+          "name": "name",
+          "power": 2000,
+          "speed": 2000,
+        },
+        "pilot": {
+          "enableSkill": true,
+          "id": "EMPTY_PLAYER",
+          "name": "名無し",
+          "skill": {
+            "recoverBattery": 2,
+            "type": "RecoverBatterySkill",
+          },
+        },
+        "playerId": "defender",
+      },
+    ],
+  },
+]
+`;

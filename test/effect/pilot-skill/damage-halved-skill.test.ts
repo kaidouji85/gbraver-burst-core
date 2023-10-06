@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   EMPTY_ARMDOZER_EFFECT,
   type GameState,
@@ -10,11 +8,6 @@ import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { DamageHalvedSkill } from "../../../src/player/pilot/damage-halved-skill";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 /** スキル ダメージ半減 */
 const skill: DamageHalvedSkill = {
@@ -45,10 +38,5 @@ const state: GameState = {
 
 test("ダメージ半減スキルが正しく発動できる", () => {
   const result = pilotSkill(state, invoker.playerId);
-  const snapShotPath = path.join(__dirname, "damage-halved-skill.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot();
 });
