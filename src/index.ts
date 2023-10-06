@@ -70,7 +70,7 @@ export {
   EndArmdozerEffectSchema,
   UpdateRemainingTurn,
   UpdateRemainingTurnSchema,
-} from "./effect/update-remaning-turn/update-remaining-turn";
+} from "./effect/update-remaining-turn/update-remaining-turn";
 export {
   EMPTY_ARMDOZER_EFFECT,
   EMPTY_CORRECT_POWER,

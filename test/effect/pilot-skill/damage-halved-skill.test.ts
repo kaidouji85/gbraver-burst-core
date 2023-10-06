@@ -38,5 +38,5 @@ const state: GameState = {
 
 test("ダメージ半減スキルが正しく発動できる", () => {
   const result = pilotSkill(state, invoker.playerId);
-  expect(result).toMatchSnapshot();  
+  expect(result).toMatchSnapshot();
 });

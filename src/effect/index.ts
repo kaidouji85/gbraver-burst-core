@@ -22,7 +22,7 @@ import { TurnChange, TurnChangeSchema } from "./turn-change/turn-change";
 import {
   UpdateRemainingTurn,
   UpdateRemainingTurnSchema,
-} from "./update-remaning-turn/update-remaining-turn";
+} from "./update-remaining-turn/update-remaining-turn";
 
 /** ゲーム中に発生する効果をまとめたもの */
 export type Effect =
