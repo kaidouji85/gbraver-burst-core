@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   BatteryCommand,
   EMPTY_ARMDOZER_STATE,
@@ -9,11 +7,6 @@ import {
   PlayerState,
 } from "../../../../src";
 import { gameContinueFlow } from "../../../../src/game/progress/battle-flow/game-continue-flow";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../../snap-shot";
 
 test("ターン交代まで正しく実行できる", () => {
   const player1 = {
@@ -42,15 +35,7 @@ test("ターン交代まで正しく実行できる", () => {
     player2.playerId,
     player2Command,
   );
-  const snapShotPath = path.join(
-    __dirname,
-    "game-continue-flow__turn-change.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("turn-change");
 });
 
 test("アクティブプレイヤー継続を正しく処理できる", () => {
@@ -92,13 +77,5 @@ test("アクティブプレイヤー継続を正しく処理できる", () => {
     player2.playerId,
     player2Command,
   );
-  const snapShotPath = path.join(
-    __dirname,
-    "game-continue-flow__continuous-active.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("continuous-active");
 });
