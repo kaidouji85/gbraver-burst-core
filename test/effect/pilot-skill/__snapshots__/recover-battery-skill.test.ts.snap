@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`バッテリー回復スキルを正しく適用できる 1`] = `
+{
+  "activePlayerId": "invoker",
+  "effect": {
+    "invokerId": "invoker",
+    "name": "PilotSkillEffect",
+    "skill": {
+      "recoverBattery": 2,
+      "type": "RecoverBatterySkill",
+    },
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "other",
+    },
+    {
+      "armdozer": {
+        "battery": 4,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": false,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "invoker",
+    },
+  ],
+}
+`;
