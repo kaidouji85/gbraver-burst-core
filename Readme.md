@@ -19,7 +19,7 @@ npm run build
 npm test
 
 # テスト用スナップショット更新
-npm run update-snapshot
+npx jest -u
 
 # 型チェック
 npm run type-check
