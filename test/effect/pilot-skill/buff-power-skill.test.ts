@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   BuffPowerSkill,
   EMPTY_ARMDOZER_EFFECT,
@@ -10,11 +8,6 @@ import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 /** スキル 攻撃バフ */
 const skill: BuffPowerSkill = {
@@ -46,10 +39,5 @@ const state: GameState = {
 
 test("攻撃バフスキルが正しく発動できる", () => {
   const result = pilotSkill(state, invoker.playerId);
-  const snapShotPath = path.join(__dirname, "buff-power-skill.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot();
 });
