@@ -8,14 +8,14 @@
     "email": "kaidouji85@gmail.com"
   },
   "dependencies": {
-    "ramda": "^0.29.0",
-    "zod": "^3.22.2"
+    "ramda": "^0.29.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
-    "@types/ramda": "^0.29.5",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
+    "@types/ramda": "^0.29.6",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
     "codehawk-cli": "^10.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.50.0",
