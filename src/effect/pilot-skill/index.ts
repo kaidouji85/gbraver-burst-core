@@ -1,20 +1,20 @@
-import type { PlayerId } from "../../player/player";
-import type { GameState, GameStateX } from "../../state/game-state";
+import { PlayerId } from "../../player/player";
+import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
 import { batteryBoost } from "./battery-boost";
 import { batteryEnchantment } from "./battery-enchantment";
 import { buffPower } from "./buff-power";
 import { damageHalvedSkill } from "./damage-halved-skill";
-import type { PilotSkillEffect } from "./pilot-skill-effect";
+import { PilotSkillEffect } from "./pilot-skill-effect";
 import { recoverBattery } from "./recover-battery";
 
 /**
- * パイロットスキルを適用する
+ * パイロットスキルを発動する
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
  * @return 更新結果、実行不可能な場合は例外を返す
  */
-function pilotSkillEffect(
+export function invokePilotSkill(
   lastState: GameState,
   invokerId: PlayerId,
 ): GameStateX<PilotSkillEffect> {
@@ -74,6 +74,6 @@ export function pilotSkill(
   lastState: GameState,
   invokerId: PlayerId,
 ): GameStateX<PilotSkillEffect> {
-  const donePilotSkill = pilotSkillEffect(lastState, invokerId);
+  const donePilotSkill = invokePilotSkill(lastState, invokerId);
   return disablePilotSkill(donePilotSkill);
 }

@@ -9,12 +9,12 @@ import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
 
 /**
- * バースト効果を適用する
+ * バースト効果を発動する
  * @param lastState 最新状態
  * @param burstPlayerId バーストするプレイヤーID
  * @return 更新結果、更新できない場合は例外を投げる
  */
-export function burstEffect(
+export function invokeBurst(
   lastState: GameState,
   burstPlayerId: PlayerId,
 ): GameStateX<BurstEffect> {
@@ -88,6 +88,6 @@ export function burst(
   lastState: GameState,
   burstPlayerId: PlayerId,
 ): GameStateX<BurstEffect> {
-  const doneBurstEffect = burstEffect(lastState, burstPlayerId);
+  const doneBurstEffect = invokeBurst(lastState, burstPlayerId);
   return disableBurst(doneBurstEffect);
 }
