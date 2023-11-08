@@ -1,9 +1,9 @@
-import type { PlayerId } from "../../player/player";
-import type { GameState, GameStateX } from "../../state/game-state";
+import { PlayerId } from "../../player/player";
+import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
-import type { BurstEffect } from "./burst-effect";
+import { BurstEffect } from "./burst-effect";
 import { continuousActivePlayer } from "./continuous-active-player";
 import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
