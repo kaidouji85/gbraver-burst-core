@@ -14,7 +14,7 @@ import { recoverBattery } from "./recover-battery";
  * @param burstPlayerId バーストするプレイヤーID
  * @return 更新結果、更新できない場合は例外を投げる
  */
-export function invokeBurst(
+function invokeBurst(
   lastState: GameState,
   burstPlayerId: PlayerId,
 ): GameStateX<BurstEffect> {

@@ -14,7 +14,7 @@ import { recoverBattery } from "./recover-battery";
  * @param invokerId パイロットスキルを発動するプレイヤー
  * @return 更新結果、実行不可能な場合は例外を返す
  */
-export function invokePilotSkill(
+function invokePilotSkill(
   lastState: GameState,
   invokerId: PlayerId,
 ): GameStateX<PilotSkillEffect> {
