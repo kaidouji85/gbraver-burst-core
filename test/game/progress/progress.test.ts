@@ -1,5 +1,3 @@
-import path from "path";
-
 import type {
   BatteryCommand,
   BurstCommand,
@@ -11,11 +9,6 @@ import type { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { progress } from "../../../src/game/progress";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };
 const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "defender" };
@@ -47,12 +40,7 @@ test("戦闘フローを正しく進めることができる", () => {
     },
   ];
   const result = progress(state, commands);
-  const snapShotPath = path.join(__dirname, "progress__battle-flow.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("battle-flow");
 });
 
 test("効果適用フローを正しく進めることができる", () => {
@@ -72,13 +60,5 @@ test("効果適用フローを正しく進めることができる", () => {
     },
   ];
   const result = progress(state, commands);
-  const snapShotPath = path.join(
-    __dirname,
-    "progress__effect-activation-flow.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("effect-activation-flow");
 });

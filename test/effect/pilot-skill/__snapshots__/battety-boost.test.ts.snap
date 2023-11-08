@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`バッテリーブーストスキルを正しく適用できる 1`] = `
+{
+  "activePlayerId": "other",
+  "effect": {
+    "invokerId": "invoker",
+    "name": "PilotSkillEffect",
+    "skill": {
+      "recoverBattery": 5,
+      "type": "BatteryBoostSkill",
+    },
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "power": 1000,
+            "type": "CorrectPower",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "power": 1000,
+            "type": "CorrectPower",
+          },
+          {
+            "period": {
+              "type": "SpecialPeriod",
+            },
+            "type": "BatteryRecoverSkip",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 8,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": false,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 5,
+          "type": "BatteryBoostSkill",
+        },
+      },
+      "playerId": "invoker",
+    },
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "other",
+    },
+  ],
+}
+`;

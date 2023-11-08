@@ -5,7 +5,7 @@ import {
 } from "../../../effect/continuous-active";
 import { inputCommand } from "../../../effect/input-command";
 import { turnChange } from "../../../effect/turn-change";
-import { updateRemainingTurn } from "../../../effect/update-remaning-turn";
+import { updateRemainingTurn } from "../../../effect/update-remaining-turn";
 import type { PlayerId } from "../../../player/player";
 import type { GameState } from "../../../state/game-state";
 import { startGameStateFlow } from "../../game-state-flow";

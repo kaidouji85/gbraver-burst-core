@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   ArmdozerEffect,
   EMPTY_ARMDOZER_STATE,
@@ -10,11 +8,6 @@ import {
   PlayerState,
 } from "../../../src";
 import { pilotSkill } from "../../../src/effect/pilot-skill";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 /** BatteryRecoverSkip以外の効果 */
 const effectOtherThanBatteryRecoverSkip: ArmdozerEffect = {
@@ -64,10 +57,5 @@ const lastState: GameState = {
 
 test("バッテリーブーストスキルを正しく適用できる", () => {
   const result = pilotSkill(lastState, invoker.playerId);
-  const snapShotPath = path.join(__dirname, "battery-boost.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot();
 });

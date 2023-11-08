@@ -1,14 +1,7 @@
-import path from "path";
-
 import type { GameState, PlayerState } from "../../../src";
 import { burst } from "../../../src/effect/burst";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 test("連続攻撃バーストが正しく適用できる", () => {
   const burstPlayer: PlayerState = {
@@ -35,10 +28,5 @@ test("連続攻撃バーストが正しく適用できる", () => {
     players: [otherPlayer, burstPlayer],
   };
   const result = burst(lastState, burstPlayer.playerId);
-  const snapShotPath = path.join(__dirname, "continuous-attack.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot();
 });

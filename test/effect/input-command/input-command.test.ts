@@ -1,14 +1,7 @@
-import path from "path";
-
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 test("戦闘後のコマンド入力フェイズが正しく適用される", () => {
   const player01 = {
@@ -44,12 +37,7 @@ test("戦闘後のコマンド入力フェイズが正しく適用される", ()
       battery: 3,
     },
   );
-  const snapShotPath = path.join(__dirname, "input-command__after-battle.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("after-battle");
 });
 
 test("効果適用フロー後のコマンド入力フェイズ効果が正しく処理される", () => {
@@ -85,13 +73,5 @@ test("効果適用フロー後のコマンド入力フェイズ効果が正し�
       type: "BURST_COMMAND",
     },
   );
-  const snapShotPath = path.join(
-    __dirname,
-    "input-command__after-effect-activation.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("after-effect-activation");
 });

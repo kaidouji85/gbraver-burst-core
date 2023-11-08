@@ -30,6 +30,7 @@ export { Feint, FeintSchema } from "./effect/battle/result/feint";
 export { Guard, GuardSchema } from "./effect/battle/result/guard";
 export { Miss, MissSchema } from "./effect/battle/result/miss";
 export { NormalHit, NormalHitSchema } from "./effect/battle/result/normal-hit";
+export { burst } from "./effect/burst";
 export { BurstEffect, BurstEffectSchema } from "./effect/burst/burst-effect";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {
@@ -53,6 +54,7 @@ export {
   Selectable,
   SelectableSchema,
 } from "./effect/input-command/input-command";
+export { pilotSkill } from "./effect/pilot-skill";
 export {
   PilotSkillEffect,
   PilotSkillEffectSchema,
@@ -70,7 +72,7 @@ export {
   EndArmdozerEffectSchema,
   UpdateRemainingTurn,
   UpdateRemainingTurnSchema,
-} from "./effect/update-remaning-turn/update-remaining-turn";
+} from "./effect/update-remaining-turn/update-remaining-turn";
 export {
   EMPTY_ARMDOZER_EFFECT,
   EMPTY_CORRECT_POWER,

@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   type ArmdozerEffect,
   type BatteryRecoverSkip,
@@ -12,11 +10,6 @@ import { continuousActive } from "../../../src/effect/continuous-active";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import {
-  exportSnapShotJSON,
-  importSnapShotJSON,
-  shouldUpdateSnapShot,
-} from "../../snap-shot";
 
 /** 効果 アクティブプレイヤー継続 */
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
@@ -74,12 +67,7 @@ test("アクティブプレイヤー継続が正しく処理できる", () => {
     activePlayerId: attacker.playerId,
   };
   const result = continuousActive(lastState);
-  const snapShotPath = path.join(__dirname, "continuous-active.json");
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("no-other-effects");
 });
 
 test("BatteryRecoverSkipは取り除かれる", () => {
@@ -90,13 +78,5 @@ test("BatteryRecoverSkipは取り除かれる", () => {
     activePlayerId: attacker.playerId,
   };
   const result = continuousActive(lastState);
-  const snapShotPath = path.join(
-    __dirname,
-    "continuous-active__battery-recover-skip.json",
-  );
-  shouldUpdateSnapShot() && exportSnapShotJSON(snapShotPath, result);
-  const snapShot = shouldUpdateSnapShot()
-    ? result
-    : importSnapShotJSON(snapShotPath);
-  expect(result).toEqual(snapShot);
+  expect(result).toMatchSnapshot("battery-recover-skip");
 });

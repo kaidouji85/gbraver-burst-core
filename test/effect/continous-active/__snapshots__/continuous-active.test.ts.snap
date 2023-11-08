@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
+{
+  "activePlayerId": "attacker",
+  "effect": {
+    "name": "TurnChange",
+    "recoverBattery": 0,
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 2,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "type": "SpecialPeriod",
+            },
+            "type": "ContinuousActivePlayer",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "defender",
+    },
+    {
+      "armdozer": {
+        "battery": 2,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "attacker",
+    },
+  ],
+}
+`;
+
+exports[`アクティブプレイヤー継続が正しく処理できる: no-other-effects 1`] = `
+{
+  "activePlayerId": "attacker",
+  "effect": {
+    "name": "TurnChange",
+    "recoverBattery": 0,
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 2,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "type": "SpecialPeriod",
+            },
+            "type": "ContinuousActivePlayer",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "defender",
+    },
+    {
+      "armdozer": {
+        "battery": 2,
+        "burst": {
+          "recoverBattery": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "attacker",
+    },
+  ],
+}
+`;

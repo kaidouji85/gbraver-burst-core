@@ -1,5 +1,5 @@
 import { ArmdozerEffect } from "../../../src";
-import { isRemainArmdozerEffect } from "../../../src/effect/update-remaning-turn/armdozer-effect";
+import { isRemainArmdozerEffect } from "../../../src/effect/update-remaining-turn/armdozer-effect";
 import { EMPTY_ARMDOZER_EFFECT } from "../../../src/empty/amrdozer-effect";
 
 test("アームドーザ効果継続ターン数が1より大きい場合は効果継続する", () => {
