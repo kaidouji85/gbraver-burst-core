@@ -1,21 +1,19 @@
 import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
-import type { PlayerId } from "../../player/player";
-import type { ArmdozerState } from "../../state/armdozer-state";
-import type { GameState, GameStateX } from "../../state/game-state";
-import type { PlayerState } from "../../state/player-state";
-import type { BurstEffect } from "./burst-effect";
+import { ArmdozerState } from "../../state/armdozer-state";
+import { PlayerState } from "../../state/player-state";
+import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
- * バッテリーリミットブレイクを適用する
- * @param invoker バースト発動者
- * @param burst バースト内容
- * @return 発動後のステート
+ * バースト発動者のステートを更新する
+ * @param invoker バースト発動者のステート
+ * @param burst バースト情報
+ * @return バースト発動後のステート
  */
-function invokeBatteryLimitBreak(
+function updateInvoker(
   invoker: PlayerState,
   burst: BatteryLimitBreak,
-) {
+): PlayerState {
   const updatedArmdozer: ArmdozerState = {
     ...invoker.armdozer,
     maxBattery: burst.maxBattery,
@@ -30,26 +28,16 @@ function invokeBatteryLimitBreak(
 }
 
 /**
- * バッテリーリミットブレイク
- * @param lastState 最新の状態
- * @param burstPlayerId バーストするプレイヤーID
- * @param burst バースト効果
- * @return 更新結果
+ * バースト バッテリーリミットブレイク 発動
+ * @param params バースト発動情報
+ * @return バースト発動結果
  */
 export function batteryLimitBreak(
-  lastState: GameState,
-  burstPlayerId: PlayerId,
-  burst: BatteryLimitBreak,
-): GameStateX<BurstEffect> {
-  const players = lastState.players.map((player) =>
-    player.playerId === burstPlayerId
-      ? invokeBatteryLimitBreak(player, burst)
-      : player,
-  );
-  const effect: BurstEffect = {
-    name: "BurstEffect",
-    burstPlayer: burstPlayerId,
-    burst,
+  params: BurstInvoke<BatteryLimitBreak>
+): BurstInvokeResult {
+  const { invoker, other, burst } = params;
+  return {
+    invoker: updateInvoker(invoker, burst),
+    other,
   };
-  return { ...lastState, players, effect };
 }

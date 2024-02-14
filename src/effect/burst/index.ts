@@ -1,4 +1,5 @@
 import { Burst } from "../../player/burst";
+import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import { BuffPower } from "../../player/burst/buff-power";
 import { ContinuousAttack } from "../../player/burst/continuous-attack";
 import { LightningBarrier } from "../../player/burst/lightning-barrier";
@@ -6,6 +7,7 @@ import { RecoverBattery } from "../../player/burst/recover-battery";
 import { PlayerId } from "../../player/player";
 import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
+import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
 import { BurstEffect } from "./burst-effect";
 import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
@@ -37,7 +39,11 @@ function invokeBurst(params: BurstInvoke<Burst>): BurstInvokeResult {
   if (params.burst.type === "ContinuousAttack") {
     const burst: ContinuousAttack = params.burst;
     return continuousAttack({ ...params, burst });
+  }
 
+  if (params.burst.type === "BatteryLimitBreak") {
+    const burst: BatteryLimitBreak = params.burst;
+    return batteryLimitBreak({ ...params, burst });
   }
 
   throw new Error("burst not found");
