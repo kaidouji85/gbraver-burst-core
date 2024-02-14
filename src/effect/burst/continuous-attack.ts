@@ -1,5 +1,4 @@
-import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
-import { ArmdozerState } from "../../state/armdozer-state";
+import { ContinuousAttack } from "../../player/burst/continuous-attack";
 import { PlayerState } from "../../state/player-state";
 import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
 import { burstRecoverBattery } from "./burst-recover-battery";
@@ -10,30 +9,33 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  * @param burst バースト情報
  * @return バースト発動後のステート
  */
-function updateInvoker(
+const updateInvoker = (
   invoker: PlayerState,
-  burst: BatteryLimitBreak,
-): PlayerState {
-  const updatedArmdozer: ArmdozerState = {
+  burst: ContinuousAttack,
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
     ...invoker.armdozer,
-    maxBattery: burst.maxBattery,
-  };
-  return {
-    ...invoker,
-    armdozer: {
-      ...updatedArmdozer,
-      battery: burstRecoverBattery(updatedArmdozer, burst),
-    },
-  };
-}
+    battery: burstRecoverBattery(invoker.armdozer, burst),
+    effects: [
+      ...invoker.armdozer.effects,
+      {
+        type: "ContinuousActivePlayer",
+        period: {
+          type: "SpecialPeriod",
+        },
+      },
+    ],
+  },
+});
 
 /**
- * バースト バッテリーリミットブレイク 発動
+ * バースト 連続攻撃 発動
  * @param params バースト発動情報
  * @return バースト発動結果
  */
-export function batteryLimitBreak(
-  params: BurstInvoke<BatteryLimitBreak>,
+export function continuousAttack(
+  params: BurstInvoke<ContinuousAttack>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {
