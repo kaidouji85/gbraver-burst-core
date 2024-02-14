@@ -3,6 +3,7 @@ import { BuffPower } from "../../player/burst/buff-power";
 import { RecoverBattery } from "../../player/burst/recover-battery";
 import { PlayerId } from "../../player/player";
 import { GameState, GameStateX } from "../../state/game-state";
+import { PlayerState } from "../../state/player-state";
 import { buffPower } from "./buff-power";
 import { BurstEffect } from "./burst-effect";
 import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
@@ -28,6 +29,23 @@ function invokeBurst(params: BurstInvoke<Burst>): BurstInvokeResult {
 }
 
 /**
+ * 発動者がバーストを発動できない状態にする
+ * @param invoker バースト発動者
+ * @return ステート更新結果
+ */
+function disableInvokerBurst(
+  invoker: PlayerState
+): PlayerState {
+  return {
+    ...invoker,
+    armdozer: {
+      ...invoker.armdozer,
+      enableBurst: false,
+    },
+  };
+}
+
+/**
  * バーストを実行する
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
@@ -45,13 +63,7 @@ export function burst(
 
   const burst = invoker.armdozer.burst;
   const result = invokeBurst({ burst, invoker, other });
-  const updatedInvoker = {
-    ...result.invoker,
-    armdozer: {
-      ...result.invoker.armdozer,
-      enableBurst: false,
-    },
-  };
+  const updatedInvoker = disableInvokerBurst(result.invoker);
   const updatedOther = result.other;
   const players = lastState.players.map((v) =>
     v.playerId === burstPlayerId ? updatedInvoker : updatedOther,
