@@ -36,11 +36,8 @@ export function burst(
     throw new Error("invalid burst player id");
   }
 
-  const result = invokeBurst({
-    burst: invoker.armdozer.burst,
-    invoker,
-    other,
-  });
+  const burst = invoker.armdozer.burst;
+  const result = invokeBurst({ burst, invoker, other });
   const updatedInvoker = {
     ...result.invoker,
     armdozer: {
@@ -58,7 +55,7 @@ export function burst(
     effect: {
       name: "BurstEffect",
       burstPlayer: burstPlayerId,
-      burst: invoker.armdozer.burst,
+      burst,
     },
   };
 }
