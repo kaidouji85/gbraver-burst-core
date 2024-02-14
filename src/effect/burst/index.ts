@@ -1,7 +1,9 @@
 import { Burst } from "../../player/burst";
+import { BuffPower } from "../../player/burst/buff-power";
 import { RecoverBattery } from "../../player/burst/recover-battery";
 import { PlayerId } from "../../player/player";
 import { GameState, GameStateX } from "../../state/game-state";
+import { buffPower } from "./buff-power";
 import { BurstEffect } from "./burst-effect";
 import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
 import { recoverBattery } from "./recover-battery";
@@ -15,6 +17,11 @@ function invokeBurst(params: BurstInvoke<Burst>): BurstInvokeResult {
   if (params.burst.type === "RecoverBattery") {
     const burst: RecoverBattery = params.burst;
     return recoverBattery({ ...params, burst });
+  }
+
+  if (params.burst.type === "BuffPower") {
+    const burst: BuffPower = params.burst;
+    return buffPower({ ...params, burst });
   }
 
   throw new Error("burst not found");
