@@ -5,9 +5,7 @@ import { PlayerState } from "../../state/player-state";
  * @param invoker バースト発動者
  * @return ステート更新結果
  */
-export function disableInvokerBurst(
-  invoker: PlayerState
-): PlayerState {
+export function disableInvokerBurst(invoker: PlayerState): PlayerState {
   return {
     ...invoker,
     armdozer: {

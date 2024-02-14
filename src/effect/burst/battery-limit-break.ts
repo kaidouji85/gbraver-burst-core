@@ -33,7 +33,7 @@ function updateInvoker(
  * @return バースト発動結果
  */
 export function batteryLimitBreak(
-  params: BurstInvoke<BatteryLimitBreak>
+  params: BurstInvoke<BatteryLimitBreak>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {

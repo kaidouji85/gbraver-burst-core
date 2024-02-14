@@ -9,7 +9,10 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  * @param burst バースト情報
  * @return バースト発動後のステート
  */
-const updateInvoker = (invoker: PlayerState, burst: BuffPower): PlayerState => ({
+const updateInvoker = (
+  invoker: PlayerState,
+  burst: BuffPower,
+): PlayerState => ({
   ...invoker,
   armdozer: {
     ...invoker.armdozer,

@@ -1,6 +1,6 @@
 import { PlayerState } from "../../state/player-state";
 
-/** 
+/**
  * バースト発動情報
  * @template X バースト情報
  */
@@ -11,7 +11,7 @@ export type BurstInvoke<X> = {
   invoker: PlayerState;
   /** それ以外のプレイヤー バースト前のステート */
   other: PlayerState;
-}
+};
 
 /** バースト発動結果 */
 export type BurstInvokeResult = {
