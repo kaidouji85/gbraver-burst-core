@@ -1,5 +1,6 @@
 import { Burst } from "../../player/burst";
 import { BuffPower } from "../../player/burst/buff-power";
+import { LightningBarrier } from "../../player/burst/lightning-barrier";
 import { RecoverBattery } from "../../player/burst/recover-battery";
 import { PlayerId } from "../../player/player";
 import { GameState, GameStateX } from "../../state/game-state";
@@ -7,6 +8,7 @@ import { PlayerState } from "../../state/player-state";
 import { buffPower } from "./buff-power";
 import { BurstEffect } from "./burst-effect";
 import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
+import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
 
 /**
@@ -23,6 +25,11 @@ function invokeBurst(params: BurstInvoke<Burst>): BurstInvokeResult {
   if (params.burst.type === "BuffPower") {
     const burst: BuffPower = params.burst;
     return buffPower({ ...params, burst });
+  }
+
+  if (params.burst.type === "LightningBarrier") {
+    const burst: LightningBarrier = params.burst;
+    return lightningBarrier({ ...params, burst });
   }
 
   throw new Error("burst not found");
