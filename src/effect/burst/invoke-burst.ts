@@ -1,9 +1,11 @@
 import { Burst } from "../../player/burst";
+import { BatteryDrain } from "../../player/burst/battery-drain";
 import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import { BuffPower } from "../../player/burst/buff-power";
 import { ContinuousAttack } from "../../player/burst/continuous-attack";
 import { LightningBarrier } from "../../player/burst/lightning-barrier";
 import { RecoverBattery } from "../../player/burst/recover-battery";
+import { batteryDrain } from "./battery-drain";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
 import { BurstInvokeParams } from "./burst-invoke-params";
@@ -43,6 +45,11 @@ export function invokeBurst(
   if (params.burst.type === "BatteryLimitBreak") {
     const burst: BatteryLimitBreak = params.burst;
     return batteryLimitBreak({ ...params, burst });
+  }
+
+  if (params.burst.type === "BatteryDrain") {
+    const burst: BatteryDrain = params.burst;
+    return batteryDrain({ ...params, burst });
   }
 
   throw new Error("burst not found");
