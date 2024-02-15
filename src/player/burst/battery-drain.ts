@@ -17,5 +17,4 @@ export type BatteryDrain = BurstRecoverBattery &
 export const BatteryDrainSchema = BurstRecoverBatterySchema.extend({
   type: z.literal("BatteryDrain"),
   batteryDecrease: z.number(),
-  duration: z.number(),
 });
