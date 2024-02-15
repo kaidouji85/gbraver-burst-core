@@ -31,11 +31,11 @@ const otherPlayer: PlayerState = {
         power: 600,
         period: {
           type: "TurnLimit",
-          remainingTurn: 2
-        }
-      }
-    ]
-  }
+          remainingTurn: 2,
+        },
+      },
+    ],
+  },
 };
 
 /** 最新ステート */
