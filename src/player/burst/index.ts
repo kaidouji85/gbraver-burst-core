@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { BatteryDecrease, BatteryDecreaseSchema } from "./battery-decrease";
+import { BatteryDecrease, BatteryDrainSchema } from "./battery-drain";
 import {
   BatteryLimitBreak,
   BatteryLimitBreakSchema,
@@ -26,5 +26,5 @@ export const BurstSchema = z.union([
   LightningBarrierSchema,
   ContinuousAttackSchema,
   BatteryLimitBreakSchema,
-  BatteryDecreaseSchema,
+  BatteryDrainSchema,
 ]);
