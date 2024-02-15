@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`バッテリー減少が正しく適用できる 1`] = `
+exports[`バッテリードレインが正しく適用できる 1`] = `
 {
   "activePlayerId": "otherPlayer",
   "effect": {

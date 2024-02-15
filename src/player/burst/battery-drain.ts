@@ -5,11 +5,11 @@ import {
   BurstRecoverBatterySchema,
 } from "./burst-recover-battery";
 
-/** バッテリー減少 */
+/** バッテリードレイン */
 export type BatteryDrain = BurstRecoverBattery &
   Readonly<{
     type: "BatteryDrain";
-    /** 相手のバッテリー減少量、-2などマイナスで指定する */
+    /** 相手のバッテリードレイン量、-2などマイナスで指定する */
     batteryDecrease: number;
   }>;
 

@@ -45,7 +45,7 @@ const lastState: GameState = {
   players: [otherPlayer, burstPlayer],
 };
 
-test("バッテリー減少が正しく適用できる", () => {
+test("バッテリードレインが正しく適用できる", () => {
   const result = burst(lastState, burstPlayer.playerId);
   expect(result).toMatchSnapshot();
 });

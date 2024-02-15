@@ -46,7 +46,7 @@ const updateOther = (other: PlayerState, burst: BatteryDrain): PlayerState => ({
 });
 
 /**
- * バースト バッテリー減少 発動
+ * バースト バッテリードレイン 発動
  * @param params バースト発動情報
  * @return バースト発動結果
  */
