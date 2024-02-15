@@ -1,7 +1,8 @@
 import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import { ArmdozerState } from "../../state/armdozer-state";
 import { PlayerState } from "../../state/player-state";
-import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
+import { BurstInvokeParams } from "./burst-invoke-params";
+import { BurstInvokeResult } from "./burst-invoke-result";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
@@ -33,7 +34,7 @@ function updateInvoker(
  * @return バースト発動結果
  */
 export function batteryLimitBreak(
-  params: BurstInvoke<BatteryLimitBreak>,
+  params: BurstInvokeParams<BatteryLimitBreak>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {

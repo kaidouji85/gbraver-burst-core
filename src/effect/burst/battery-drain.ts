@@ -1,4 +1,4 @@
-import { LightningBarrier } from "../../player/burst/lightning-barrier";
+import { BatteryDrain } from "../../player/burst/battery-drain";
 import { PlayerState } from "../../state/player-state";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
@@ -12,21 +12,33 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  */
 const updateInvoker = (
   invoker: PlayerState,
-  burst: LightningBarrier,
+  burst: BatteryDrain,
 ): PlayerState => ({
   ...invoker,
   armdozer: {
     ...invoker.armdozer,
     battery: burstRecoverBattery(invoker.armdozer, burst),
+  },
+});
+
+/**
+ * それ以外のプレイヤーのステートを更新する
+ * @param invoker それ以外のプレイヤーのステート
+ * @param burst バースト情報
+ * @return バースト発動後のステート
+ */
+const updateOther = (other: PlayerState, burst: BatteryDrain): PlayerState => ({
+  ...other,
+  armdozer: {
+    ...other.armdozer,
     effects: [
-      ...invoker.armdozer.effects,
+      ...other.armdozer.effects,
       {
-        type: "TryReflect",
-        damage: burst.damage,
-        effect: "Lightning",
+        type: "BatteryCorrection",
+        batteryCorrection: burst.batteryDecrease,
         period: {
           type: "TurnLimit",
-          remainingTurn: burst.duration,
+          remainingTurn: 1,
         },
       },
     ],
@@ -34,16 +46,16 @@ const updateInvoker = (
 });
 
 /**
- * バースト 電撃バリア 発動
+ * バースト バッテリードレイン 発動
  * @param params バースト発動情報
  * @return バースト発動結果
  */
-export function lightningBarrier(
-  params: BurstInvokeParams<LightningBarrier>,
+export function batteryDrain(
+  params: BurstInvokeParams<BatteryDrain>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {
     invoker: updateInvoker(invoker, burst),
-    other,
+    other: updateOther(other, burst),
   };
 }

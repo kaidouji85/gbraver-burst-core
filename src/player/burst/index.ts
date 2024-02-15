@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { BatteryDrain, BatteryDrainSchema } from "./battery-drain";
 import {
   BatteryLimitBreak,
   BatteryLimitBreakSchema,
@@ -15,7 +16,8 @@ export type Burst =
   | BuffPower
   | LightningBarrier
   | ContinuousAttack
-  | BatteryLimitBreak;
+  | BatteryLimitBreak
+  | BatteryDrain;
 
 /** Burst zodスキーマ */
 export const BurstSchema = z.union([
@@ -24,4 +26,5 @@ export const BurstSchema = z.union([
   LightningBarrierSchema,
   ContinuousAttackSchema,
   BatteryLimitBreakSchema,
+  BatteryDrainSchema,
 ]);

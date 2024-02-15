@@ -1,12 +1,15 @@
 import { Burst } from "../../player/burst";
+import { BatteryDrain } from "../../player/burst/battery-drain";
 import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import { BuffPower } from "../../player/burst/buff-power";
 import { ContinuousAttack } from "../../player/burst/continuous-attack";
 import { LightningBarrier } from "../../player/burst/lightning-barrier";
 import { RecoverBattery } from "../../player/burst/recover-battery";
+import { batteryDrain } from "./battery-drain";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
-import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
+import { BurstInvokeParams } from "./burst-invoke-params";
+import { BurstInvokeResult } from "./burst-invoke-result";
 import { continuousAttack } from "./continuous-attack";
 import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
@@ -16,7 +19,9 @@ import { recoverBattery } from "./recover-battery";
  * @param params バースト発動情報
  * @return バースト発動結果
  */
-export function invokeBurst(params: BurstInvoke<Burst>): BurstInvokeResult {
+export function invokeBurst(
+  params: BurstInvokeParams<Burst>,
+): BurstInvokeResult {
   if (params.burst.type === "RecoverBattery") {
     const burst: RecoverBattery = params.burst;
     return recoverBattery({ ...params, burst });
@@ -40,6 +45,11 @@ export function invokeBurst(params: BurstInvoke<Burst>): BurstInvokeResult {
   if (params.burst.type === "BatteryLimitBreak") {
     const burst: BatteryLimitBreak = params.burst;
     return batteryLimitBreak({ ...params, burst });
+  }
+
+  if (params.burst.type === "BatteryDrain") {
+    const burst: BatteryDrain = params.burst;
+    return batteryDrain({ ...params, burst });
   }
 
   throw new Error("burst not found");

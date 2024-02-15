@@ -115,6 +115,7 @@ export {
   ArmdozerX,
 } from "./player/armdozer";
 export { Burst, BurstSchema } from "./player/burst";
+export { BatteryDrain, BatteryDrainSchema } from "./player/burst/battery-drain";
 export {
   BatteryLimitBreak,
   BatteryLimitBreakSchema,
