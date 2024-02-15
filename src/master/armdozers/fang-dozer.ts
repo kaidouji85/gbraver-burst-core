@@ -10,9 +10,8 @@ export const FangDozer: Armdozer = {
   power: 2000,
   speed: 2500,
   burst: {
-    type: "BatteryDecrease",
+    type: "BatteryDrain",
     recoverBattery: 2,
     batteryDecrease: -2,
-    duration: 1,
   },
 };
