@@ -7,10 +7,8 @@ const batteryDrain: BatteryDrain = {
   batteryDecrease: -2,
 };
 
-test("BatteryLimitDrainはパースできる", () => {
-  expect(BatteryDrainSchema.parse(batteryDrain)).toEqual(
-    batteryDrain,
-  );
+test("BatteryDrainはパースできる", () => {
+  expect(BatteryDrainSchema.parse(batteryDrain)).toEqual(batteryDrain);
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
