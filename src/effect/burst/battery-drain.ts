@@ -1,6 +1,7 @@
 import { BatteryDrain } from "../../player/burst/battery-drain";
 import { PlayerState } from "../../state/player-state";
-import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
+import { BurstInvokeParams } from "./burst-invoke-params";
+import { BurstInvokeResult } from "./burst-invoke-result";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
@@ -50,7 +51,7 @@ const updateOther = (other: PlayerState, burst: BatteryDrain): PlayerState => ({
  * @return バースト発動結果
  */
 export function batteryDrain(
-  params: BurstInvoke<BatteryDrain>,
+  params: BurstInvokeParams<BatteryDrain>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {

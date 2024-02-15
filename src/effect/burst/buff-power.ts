@@ -1,6 +1,7 @@
 import { BuffPower } from "../../player/burst/buff-power";
 import { PlayerState } from "../../state/player-state";
-import { BurstInvoke, BurstInvokeResult } from "./burst-invoke";
+import { BurstInvokeParams } from "./burst-invoke-params";
+import { BurstInvokeResult } from "./burst-invoke-result";
 import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
@@ -36,7 +37,9 @@ const updateInvoker = (
  * @param params バースト発動情報
  * @return バースト発動結果
  */
-export function buffPower(params: BurstInvoke<BuffPower>): BurstInvokeResult {
+export function buffPower(
+  params: BurstInvokeParams<BuffPower>,
+): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {
     invoker: updateInvoker(invoker, burst),
