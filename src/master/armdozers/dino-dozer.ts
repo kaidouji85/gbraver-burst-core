@@ -1,10 +1,10 @@
 import { Armdozer } from "../../player/armdozer";
 import { ArmdozerIds } from "./armdozer-ids";
 
-/** ファングドーザ */
-export const FangDozer: Armdozer = {
-  id: ArmdozerIds.FANG_DOZER,
-  name: "ファングドーザ",
+/** ダイナドーザ */
+export const DinoDozer: Armdozer = {
+  id: ArmdozerIds.DINO_DOZER,
+  name: "ダイナドーザ",
   maxHp: 2600,
   maxBattery: 5,
   power: 2000,
