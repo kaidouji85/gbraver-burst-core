@@ -1,9 +1,8 @@
 import { BatteryBoostSkill } from "../../player/pilot/battery-boost-skill";
-import { PlayerId } from "../../player/player";
 import { ArmdozerState } from "../../state/armdozer-state";
-import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
-import { PilotSkillEffectX } from "./pilot-skill-effect";
+import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
+import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 
 /**
  * ブースト後のバッテリーを計算する
@@ -24,7 +23,7 @@ export function calcBoostedBattery(
  * @param skill スキル内容
  * @return 適用後のステート
  */
-function invokeBatteryBoost(
+function updateInvoker(
   invoker: PlayerState,
   skill: BatteryBoostSkill,
 ): PlayerState {
@@ -54,17 +53,11 @@ function invokeBatteryBoost(
  * @return 更新結果、実行不可能な場合は例外を投げる
  */
 export function batteryBoost(
-  lastState: Readonly<GameState>,
-  invokerId: Readonly<PlayerId>,
-  skill: Readonly<BatteryBoostSkill>,
-): GameStateX<PilotSkillEffectX<BatteryBoostSkill>> {
-  const players = lastState.players.map((v) =>
-    v.playerId === invokerId ? invokeBatteryBoost(v, skill) : v,
-  );
-  const effect: PilotSkillEffectX<BatteryBoostSkill> = {
-    name: "PilotSkillEffect",
-    invokerId: invokerId,
-    skill,
+  params: PilotSkillInvokeParams<BatteryBoostSkill>,
+): PilotSkillInvokeResult {
+  const { invoker, other, skill } = params;
+  return {
+    invoker: updateInvoker(invoker, skill),
+    other,
   };
-  return { ...lastState, players, effect };
 }

@@ -1,7 +1,8 @@
+import { BatteryBoostSkill } from "../../player/pilot/battery-boost-skill";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
+import { batteryBoost } from "./battery-boost";
 import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
-
 
 /**
  * パイロットスキル種別に応じた効果を適用する
@@ -11,6 +12,10 @@ import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 export function invokePilotSkill(
   params: PilotSkillInvokeParams<PilotSkill>,
 ): PilotSkillInvokeResult {
-  // TODO 条件分岐を作る
+  if (params.skill.type === "BatteryBoostSkill") {
+    const skill: BatteryBoostSkill = params.skill;
+    return batteryBoost({ ...params, skill });
+  }
+
   throw new Error("pilotSkill not found");
 }
