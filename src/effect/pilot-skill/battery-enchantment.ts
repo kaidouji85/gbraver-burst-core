@@ -1,8 +1,7 @@
 import { BatteryEnchantmentSkill } from "../../player/pilot/battery-enchantment-skill";
-import type { PlayerId } from "../../player/player";
-import type { GameState, GameStateX } from "../../state/game-state";
-import type { PlayerState } from "../../state/player-state";
-import type { PilotSkillEffectX } from "./pilot-skill-effect";
+import { PlayerState } from "../../state/player-state";
+import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
+import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 
 /**
  * バッテリー増強スキルを適用する
@@ -42,23 +41,15 @@ function invokeBatteryEnchantment(
 
 /**
  * パイロットスキル バッテリー増強
- * @param lastState 最新のステート
- * @param invokerId スキル発動者のID
- * @param skill スキル内容
- * @return 更新結果
+ * @param params パイロットスキル発動情報
+ * @return パイロットスキル発動結果
  */
 export function batteryEnchantment(
-  lastState: GameState,
-  invokerId: PlayerId,
-  skill: BatteryEnchantmentSkill,
-): GameStateX<PilotSkillEffectX<BatteryEnchantmentSkill>> {
-  const players: PlayerState[] = lastState.players.map((v) =>
-    v.playerId === invokerId ? invokeBatteryEnchantment(v, skill) : v,
-  );
-  const effect: PilotSkillEffectX<BatteryEnchantmentSkill> = {
-    name: "PilotSkillEffect",
-    invokerId: invokerId,
-    skill,
+  params: PilotSkillInvokeParams<BatteryEnchantmentSkill>,
+): PilotSkillInvokeResult {
+  const { invoker, other, skill } = params;
+  return {
+    invoker: invokeBatteryEnchantment(invoker, skill),
+    other,
   };
-  return { ...lastState, players, effect };
 }

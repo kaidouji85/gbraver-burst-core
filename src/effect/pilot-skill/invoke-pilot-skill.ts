@@ -1,8 +1,10 @@
 import { BatteryBoostSkill } from "../../player/pilot/battery-boost-skill";
+import { BatteryEnchantmentSkill } from "../../player/pilot/battery-enchantment-skill";
 import { BuffPowerSkill } from "../../player/pilot/buff-power-skill";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
 import { RecoverBatterySkill } from "../../player/pilot/recover-battery-skill";
 import { batteryBoost } from "./battery-boost";
+import { batteryEnchantment } from "./battery-enchantment";
 import { buffPower } from "./buff-power";
 import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
@@ -21,7 +23,6 @@ export function invokePilotSkill(
     return recoverBattery({ ...params, skill });
   }
 
-
   if (params.skill.type === "BatteryBoostSkill") {
     const skill: BatteryBoostSkill = params.skill;
     return batteryBoost({ ...params, skill });
@@ -30,6 +31,11 @@ export function invokePilotSkill(
   if (params.skill.type === "BuffPowerSkill") {
     const skill: BuffPowerSkill = params.skill;
     return buffPower({ ...params, skill });
+  }
+
+  if (params.skill.type === "BatteryEnchantmentSkill") {
+    const skill: BatteryEnchantmentSkill = params.skill;
+    return batteryEnchantment({ ...params, skill });
   }
 
   throw new Error("pilotSkill not found");
