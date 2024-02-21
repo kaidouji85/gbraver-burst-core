@@ -18,32 +18,30 @@ export function calcBoostedBattery(
 }
 
 /**
- * バッテリーブーストをプレイヤーに適用する
- * @param invoker 適用対象のプレイヤー
- * @param skill スキル内容
- * @return 適用後のステート
+ * パイロットスキル発動者のステートを更新する
+ * @param invoker パイロットスキル発動者のステート
+ * @param skill パイロットスキル情報
+ * @return パイロットスキル発動後のステート
  */
-function updateInvoker(
+const updateInvoker = (
   invoker: PlayerState,
   skill: BatteryBoostSkill,
-): PlayerState {
-  return {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      battery: calcBoostedBattery(invoker.armdozer, skill),
-      effects: [
-        ...invoker.armdozer.effects,
-        {
-          type: "BatteryRecoverSkip",
-          period: {
-            type: "SpecialPeriod",
-          },
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
+    ...invoker.armdozer,
+    battery: calcBoostedBattery(invoker.armdozer, skill),
+    effects: [
+      ...invoker.armdozer.effects,
+      {
+        type: "BatteryRecoverSkip",
+        period: {
+          type: "SpecialPeriod",
         },
-      ],
-    },
-  };
-}
+      },
+    ],
+  },
+});
 
 /**
  * パイロットスキル バッテリーブースト

@@ -4,33 +4,31 @@ import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 
 /**
- * 攻撃バフスキルを発動する
- * @param invoker スキル発動者
- * @param skill スキル内容
- * @return 発動後のステート
+ * パイロットスキル発動者のステートを更新する
+ * @param invoker パイロットスキル発動者のステート
+ * @param skill パイロットスキル情報
+ * @return パイロットスキル発動後のステート
  */
-function invokeBuffPower(
+const updateInvoker = (
   invoker: PlayerState,
   skill: BuffPowerSkill,
-): PlayerState {
-  return {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      effects: [
-        ...invoker.armdozer.effects,
-        {
-          type: "CorrectPower",
-          power: skill.buffPower,
-          period: {
-            type: "TurnLimit",
-            remainingTurn: skill.duration,
-          },
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
+    ...invoker.armdozer,
+    effects: [
+      ...invoker.armdozer.effects,
+      {
+        type: "CorrectPower",
+        power: skill.buffPower,
+        period: {
+          type: "TurnLimit",
+          remainingTurn: skill.duration,
         },
-      ],
-    },
-  };
-}
+      },
+    ],
+  },
+});
 
 /**
  * パイロットスキル 攻撃バフ
@@ -42,7 +40,7 @@ export function buffPower(
 ): PilotSkillInvokeResult {
   const { invoker, other, skill } = params;
   return {
-    invoker: invokeBuffPower(invoker, skill),
+    invoker: updateInvoker(invoker, skill),
     other,
   };
 }

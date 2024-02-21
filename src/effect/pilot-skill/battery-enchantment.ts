@@ -4,40 +4,38 @@ import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 
 /**
- * バッテリー増強スキルを適用する
- * @param invoker スキル発動者
- * @param skill スキル内容
- * @return スキル発動後のステート
+ * パイロットスキル発動者のステートを更新する
+ * @param invoker パイロットスキル発動者のステート
+ * @param skill パイロットスキル情報
+ * @return パイロットスキル発動後のステート
  */
-function invokeBatteryEnchantment(
+const updateInvoker = (
   invoker: PlayerState,
   skill: BatteryEnchantmentSkill,
-): PlayerState {
-  return {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      effects: [
-        ...invoker.armdozer.effects,
-        {
-          type: "BatteryCorrection",
-          batteryCorrection: skill.batteryEnchantment,
-          period: {
-            type: "TurnLimit",
-            remainingTurn: skill.duration,
-          },
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
+    ...invoker.armdozer,
+    effects: [
+      ...invoker.armdozer.effects,
+      {
+        type: "BatteryCorrection",
+        batteryCorrection: skill.batteryEnchantment,
+        period: {
+          type: "TurnLimit",
+          remainingTurn: skill.duration,
         },
-        {
-          type: "HalveCorrectPower",
-          period: {
-            type: "TurnLimit",
-            remainingTurn: skill.duration,
-          },
+      },
+      {
+        type: "HalveCorrectPower",
+        period: {
+          type: "TurnLimit",
+          remainingTurn: skill.duration,
         },
-      ],
-    },
-  };
-}
+      },
+    ],
+  },
+});
 
 /**
  * パイロットスキル バッテリー増強
@@ -49,7 +47,7 @@ export function batteryEnchantment(
 ): PilotSkillInvokeResult {
   const { invoker, other, skill } = params;
   return {
-    invoker: invokeBatteryEnchantment(invoker, skill),
+    invoker: updateInvoker(invoker, skill),
     other,
   };
 }

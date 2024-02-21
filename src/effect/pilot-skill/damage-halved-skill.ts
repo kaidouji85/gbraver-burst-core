@@ -4,32 +4,30 @@ import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 
 /**
- * ダメージ半減スキルを発動する
- * @param invoker スキル発動者
- * @param skill スキル内容
- * @return 発動後のステート
+ * パイロットスキル発動者のステートを更新する
+ * @param invoker パイロットスキル発動者のステート
+ * @param skill パイロットスキル情報
+ * @return パイロットスキル発動後のステート
  */
-function invokeDamageHalvedSkill(
+const updateInvoker = (
   invoker: PlayerState,
   skill: DamageHalvedSkill,
-): PlayerState {
-  return {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      effects: [
-        ...invoker.armdozer.effects,
-        {
-          type: "DamageHalved",
-          period: {
-            type: "TurnLimit",
-            remainingTurn: skill.duration,
-          },
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
+    ...invoker.armdozer,
+    effects: [
+      ...invoker.armdozer.effects,
+      {
+        type: "DamageHalved",
+        period: {
+          type: "TurnLimit",
+          remainingTurn: skill.duration,
         },
-      ],
-    },
-  };
-}
+      },
+    ],
+  },
+});
 
 /**
  * パイロットスキル ダメージ半減
@@ -41,7 +39,7 @@ export function damageHalvedSkill(
 ): PilotSkillInvokeResult {
   const { invoker, other, skill } = params;
   return {
-    invoker: invokeDamageHalvedSkill(invoker, skill),
+    invoker: updateInvoker(invoker, skill),
     other,
   };
 }

@@ -18,23 +18,21 @@ export function calcRecoverBattery(
 }
 
 /**
- * バッテリー回復スキルを発動する
- * @param invoker スキル発動者
- * @param skill スキル内容
- * @return 発動後のステート
+ * パイロットスキル発動者のステートを更新する
+ * @param invoker パイロットスキル発動者のステート
+ * @param skill パイロットスキル情報
+ * @return パイロットスキル発動後のステート
  */
-function invokeRecoverBattery(
+const updateInvoker = (
   invoker: PlayerState,
   skill: RecoverBatterySkill,
-): PlayerState {
-  return {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      battery: calcRecoverBattery(invoker.armdozer, skill),
-    },
-  };
-}
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
+    ...invoker.armdozer,
+    battery: calcRecoverBattery(invoker.armdozer, skill),
+  },
+});
 
 /**
  * パイロットスキル バッテリー回復を発動する
@@ -46,7 +44,7 @@ export function recoverBattery(
 ): PilotSkillInvokeResult {
   const { invoker, other, skill } = params;
   return {
-    invoker: invokeRecoverBattery(invoker, skill),
+    invoker: updateInvoker(invoker, skill),
     other,
   };
 }
