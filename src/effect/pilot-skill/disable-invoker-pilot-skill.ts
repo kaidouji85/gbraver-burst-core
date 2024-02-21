@@ -11,6 +11,6 @@ export function disableInvokerPilotSkill(invoker: PlayerState): PlayerState {
     pilot: {
       ...invoker.pilot,
       enableSkill: false,
-    }
+    },
   };
 }
