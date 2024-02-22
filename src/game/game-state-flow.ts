@@ -53,6 +53,7 @@ class SimpleGameStateFlow implements GameStateFlow {
 }
 
 /**
+ * @deprecated
  * ゲームステートフローを開始する
  *
  * @param stateHistory ゲームステート履歴
