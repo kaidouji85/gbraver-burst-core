@@ -32,7 +32,7 @@ export function battleFlow(
   }
 
   return startGameFlow([
-    () => attackFlow(lastState, attacker, defender),
+    (state) => attackFlow(state, attacker, defender),
     (state) => {
       if (state.effect.name === "Battle") {
         const battleEffect: Battle = state.effect;
@@ -64,5 +64,5 @@ export function battleFlow(
           )
         : [gameEnd(state, endJudge)];
     },
-  ]);
+  ], lastState);
 }
