@@ -6,7 +6,6 @@ import type { GameState } from "../../../state/game-state";
 import type { PlayerCommandX } from "../../command/player-command";
 import { gameEndJudging } from "../../end-judging";
 import { startGameFlow } from "../../game-flow";
-import { startGameStateFlow } from "../../game-state-flow";
 import { attackFlow } from "./attack-flow";
 import { gameContinueFlow } from "./game-continue-flow";
 import { canReflectFlow, reflectFlow } from "./reflect-flow";
@@ -31,7 +30,7 @@ export function battleFlow(
   if (!attacker || !defender) {
     throw new Error("not found attacker or defender command");
   }
-  
+
   return startGameFlow([
     () => attackFlow(lastState, attacker, defender),
     (state) => {
@@ -40,19 +39,19 @@ export function battleFlow(
       }
 
       const battleEffect: Battle = state.effect;
-      return startGameStateFlow([state])
-      .add((state) =>
-        canReflectFlow(battleEffect.result)
-          ? reflectFlow(state, attacker.playerId)
-          : [],
-      )
-      .add((state) =>
-        canRightItself(battleEffect)
-          ? [rightItself(state, battleEffect)]
-          : [],
-      )
-      .toGameStateHistory()
-      .slice(1);
+      return startGameFlow(
+        [
+          (subState) =>
+            canReflectFlow(battleEffect.result)
+              ? reflectFlow(subState, attacker.playerId)
+              : [],
+          (subState) =>
+            canRightItself(battleEffect)
+              ? [rightItself(subState, battleEffect)]
+              : [],
+        ],
+        state,
+      );
     },
     (state) => {
       const endJudge = gameEndJudging(state);
@@ -65,6 +64,6 @@ export function battleFlow(
             defender.command,
           )
         : [gameEnd(state, endJudge)];
-    }
+    },
   ]);
 }
