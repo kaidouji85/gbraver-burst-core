@@ -49,9 +49,8 @@ export function battleFlow(
           ],
           state,
         );
-      } else {
-        return [];
       }
+      return [];
     },
     (state) => {
       const endJudge = gameEndJudging(state);
