@@ -6,7 +6,6 @@ import { startGameFlow } from "../game-flow";
 
 /**
  * ゲームの初期状態を生成する
- *
  * @param players ゲーム参加プレイヤー
  * @return ゲーム初期状態
  */

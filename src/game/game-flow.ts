@@ -1,8 +1,19 @@
 import { EMPTY_GAME_STATE } from "../empty/game-state";
 import { GameState } from "../state/game-state";
 
+/**
+ * ステートヒストリー追加関数
+ * @param state 最新のゲームステート
+ * @return 追加されたゲームステート
+ */
 type AddStateHistory = (state: GameState) => GameState[];
 
+/**
+ * ゲームフローを開始する
+ * @param fns ステートヒストリー追加関数を順に適用する
+ * @param lastState フロー開始前の最新ステート
+ * @return 本フローで追加されたゲームステート
+ */
 export const startGameFlow = (
   fns: AddStateHistory[],
   lastState?: GameState,
