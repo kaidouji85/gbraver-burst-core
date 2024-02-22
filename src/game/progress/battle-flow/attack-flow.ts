@@ -3,7 +3,7 @@ import { batteryDeclaration } from "../../../effect/battery-declaration";
 import { battle } from "../../../effect/battle";
 import type { GameState } from "../../../state/game-state";
 import type { PlayerCommandX } from "../../command/player-command";
-import { startGameStateFlow } from "../../game-state-flow";
+import { startGameFlow } from "../../game-flow";
 
 /**
  * プレイヤー攻撃フロー
@@ -17,8 +17,8 @@ export function attackFlow(
   attacker: PlayerCommandX<BatteryCommand>,
   defender: PlayerCommandX<BatteryCommand>,
 ): GameState[] {
-  return startGameStateFlow([lastState])
-    .add((state) => [
+  return startGameFlow([
+    (state) => [
       batteryDeclaration(
         state,
         attacker.playerId,
@@ -26,8 +26,8 @@ export function attackFlow(
         defender.playerId,
         defender.command,
       ),
-    ])
-    .add((state) =>
+    ],
+    (state) =>
       state.effect.name === "BatteryDeclaration"
         ? [
             battle(
@@ -39,7 +39,5 @@ export function attackFlow(
             ),
           ]
         : [],
-    )
-    .toGameStateHistory()
-    .slice(1);
+  ], lastState);
 }
