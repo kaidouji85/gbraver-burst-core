@@ -26,23 +26,20 @@ export function gameContinueFlow(
   defenderId: PlayerId,
   defenderCommand: Command,
 ): GameState[] {
-  return startGameFlow(
-    [
-      (state) => [updateRemainingTurn(state)],
-      (state) =>
-        canContinuousActive(state)
-          ? [continuousActive(state)]
-          : [turnChange(state)],
-      (state) => [
-        inputCommand(
-          state,
-          attackerId,
-          attackerCommand,
-          defenderId,
-          defenderCommand,
-        ),
-      ],
+  return startGameFlow(lastState, [
+    (state) => [updateRemainingTurn(state)],
+    (state) =>
+      canContinuousActive(state)
+        ? [continuousActive(state)]
+        : [turnChange(state)],
+    (state) => [
+      inputCommand(
+        state,
+        attackerId,
+        attackerCommand,
+        defenderId,
+        defenderCommand,
+      ),
     ],
-    lastState,
-  );
+  ]);
 }

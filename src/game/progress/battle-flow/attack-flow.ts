@@ -17,30 +17,27 @@ export function attackFlow(
   attacker: PlayerCommandX<BatteryCommand>,
   defender: PlayerCommandX<BatteryCommand>,
 ): GameState[] {
-  return startGameFlow(
-    [
-      (state) => [
-        batteryDeclaration(
-          state,
-          attacker.playerId,
-          attacker.command,
-          defender.playerId,
-          defender.command,
-        ),
-      ],
-      (state) =>
-        state.effect.name === "BatteryDeclaration"
-          ? [
-              battle(
-                state,
-                state.effect.attacker,
-                state.effect.attackerBattery,
-                defender.playerId,
-                state.effect.defenderBattery,
-              ),
-            ]
-          : [],
+  return startGameFlow(lastState, [
+    (state) => [
+      batteryDeclaration(
+        state,
+        attacker.playerId,
+        attacker.command,
+        defender.playerId,
+        defender.command,
+      ),
     ],
-    lastState,
-  );
+    (state) =>
+      state.effect.name === "BatteryDeclaration"
+        ? [
+            battle(
+              state,
+              state.effect.attacker,
+              state.effect.attackerBattery,
+              defender.playerId,
+              state.effect.defenderBattery,
+            ),
+          ]
+        : [],
+  ]);
 }

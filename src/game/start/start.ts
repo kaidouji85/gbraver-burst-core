@@ -10,8 +10,9 @@ import { startGameFlow } from "../game-flow";
  * @return ゲーム初期状態
  */
 export function start(players: [Player, Player]): GameState[] {
-  return startGameFlow([
-    () => [startGame(players)],
+  const firstState = startGame(players);
+  return startGameFlow(firstState, [
+    () => [firstState],
     (state) => [gameStartInputCommand(state)],
   ]);
 }
