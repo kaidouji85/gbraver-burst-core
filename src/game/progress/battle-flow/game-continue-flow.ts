@@ -8,7 +8,7 @@ import { turnChange } from "../../../effect/turn-change";
 import { updateRemainingTurn } from "../../../effect/update-remaining-turn";
 import type { PlayerId } from "../../../player/player";
 import type { GameState } from "../../../state/game-state";
-import { startGameStateFlow } from "../../game-state-flow";
+import { startGameFlow } from "../../game-flow";
 
 /**
  * ゲーム継続フロー
@@ -26,13 +26,13 @@ export function gameContinueFlow(
   defenderId: PlayerId,
   defenderCommand: Command,
 ): GameState[] {
-  return startGameStateFlow([updateRemainingTurn(lastState)])
-    .add((state) =>
+  return startGameFlow(lastState, [
+    (state) => [updateRemainingTurn(state)],
+    (state) =>
       canContinuousActive(state)
         ? [continuousActive(state)]
         : [turnChange(state)],
-    )
-    .add((state) => [
+    (state) => [
       inputCommand(
         state,
         attackerId,
@@ -40,6 +40,6 @@ export function gameContinueFlow(
         defenderId,
         defenderCommand,
       ),
-    ])
-    .toGameStateHistory();
+    ],
+  ]);
 }
