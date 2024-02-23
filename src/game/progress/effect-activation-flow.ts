@@ -62,22 +62,26 @@ export function effectActivationFlow(
     throw new Error("not found attacker or defender command");
   }
 
-  return startGameFlow([
-    (state) => {
-      const done = activationOrNot(state, attackerCommand);
-      return done ? [done] : [];
-    },
-    (state) => {
-      const done = activationOrNot(state, defenderCommand);
-      return done ? [done] : [];
-    },
-    (state) => [inputCommand(
-      state,
-      attackerCommand.playerId,
-      attackerCommand.command,
-      defenderCommand.playerId,
-      defenderCommand.command,
-    )]
-
-  ], lastState);
+  return startGameFlow(
+    [
+      (state) => {
+        const done = activationOrNot(state, attackerCommand);
+        return done ? [done] : [];
+      },
+      (state) => {
+        const done = activationOrNot(state, defenderCommand);
+        return done ? [done] : [];
+      },
+      (state) => [
+        inputCommand(
+          state,
+          attackerCommand.playerId,
+          attackerCommand.command,
+          defenderCommand.playerId,
+          defenderCommand.command,
+        ),
+      ],
+    ],
+    lastState,
+  );
 }

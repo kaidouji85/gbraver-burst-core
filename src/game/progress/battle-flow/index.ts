@@ -31,38 +31,41 @@ export function battleFlow(
     throw new Error("not found attacker or defender command");
   }
 
-  return startGameFlow([
-    (state) => attackFlow(state, attacker, defender),
-    (state) => {
-      if (state.effect.name === "Battle") {
-        const battleEffect: Battle = state.effect;
-        return startGameFlow(
-          [
-            (subState) =>
-              canReflectFlow(battleEffect.result)
-                ? reflectFlow(subState, attacker.playerId)
-                : [],
-            (subState) =>
-              canRightItself(battleEffect)
-                ? [rightItself(subState, battleEffect)]
-                : [],
-          ],
-          state,
-        );
-      }
-      return [];
-    },
-    (state) => {
-      const endJudge = gameEndJudging(state);
-      return endJudge.type === "GameContinue"
-        ? gameContinueFlow(
+  return startGameFlow(
+    [
+      (state) => attackFlow(state, attacker, defender),
+      (state) => {
+        if (state.effect.name === "Battle") {
+          const battleEffect: Battle = state.effect;
+          return startGameFlow(
+            [
+              (subState) =>
+                canReflectFlow(battleEffect.result)
+                  ? reflectFlow(subState, attacker.playerId)
+                  : [],
+              (subState) =>
+                canRightItself(battleEffect)
+                  ? [rightItself(subState, battleEffect)]
+                  : [],
+            ],
             state,
-            attacker.playerId,
-            attacker.command,
-            defender.playerId,
-            defender.command,
-          )
-        : [gameEnd(state, endJudge)];
-    },
-  ], lastState);
+          );
+        }
+        return [];
+      },
+      (state) => {
+        const endJudge = gameEndJudging(state);
+        return endJudge.type === "GameContinue"
+          ? gameContinueFlow(
+              state,
+              attacker.playerId,
+              attacker.command,
+              defender.playerId,
+              defender.command,
+            )
+          : [gameEnd(state, endJudge)];
+      },
+    ],
+    lastState,
+  );
 }

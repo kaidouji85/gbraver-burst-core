@@ -11,7 +11,7 @@ type AddStateHistory = (state: GameState) => GameState[];
 /**
  * ゲームフローを開始する
  * @param fns ステートヒストリー追加関数を順に適用する
- * @param lastState フロー開始前の最新ステート
+ * @param lastState フロー開始前の最新ステート、指定されない場合はEMPTY_GAME_STATEがセットされる
  * @return 本フローで追加されたゲームステート
  */
 export const startGameFlow = (
