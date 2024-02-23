@@ -12,7 +12,6 @@ import { canReflectFlow, reflectFlow } from "./reflect-flow";
 
 /**
  * 戦闘フロー
- *
  * @param lastState 最後の状態
  * @param commands コマンド
  * @return 更新されたゲームステート
