@@ -1,5 +1,5 @@
 import type { GameState, PlayerState } from "../../../src";
-import { gameStartInputCommand } from "../../../src/effect/input-command";
+import { inputCommandOnGameStart } from "../../../src/effect/input-command";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 
@@ -32,7 +32,7 @@ test("ゲームスタート時 コマンド入力フェイズが正しく適用�
     players: [ATTACKER, DEFENDER],
     activePlayerId: ATTACKER.playerId,
   };
-  const result = gameStartInputCommand(state);
+  const result = inputCommandOnGameStart(state);
   const expected = {
     ...state,
     effect: {
