@@ -1,4 +1,5 @@
 import { Armdozer } from "../../player/armdozer";
+import { DinoDozer } from "./dino-dozer";
 import { GenesisBraver } from "./genesis-braver";
 import { LightningDozer } from "./lightning-dozer";
 import { NeoLandozer } from "./neo-landozer";
@@ -12,4 +13,5 @@ export const Armdozers: Armdozer[] = [
   NeoLandozer,
   LightningDozer,
   GenesisBraver,
+  DinoDozer,
 ];

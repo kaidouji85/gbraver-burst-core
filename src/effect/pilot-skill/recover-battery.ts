@@ -1,9 +1,8 @@
 import { RecoverBatterySkill } from "../../player/pilot/recover-battery-skill";
-import type { PlayerId } from "../../player/player";
-import type { ArmdozerState } from "../../state/armdozer-state";
-import type { GameState, GameStateX } from "../../state/game-state";
-import type { PlayerState } from "../../state/player-state";
-import type { PilotSkillEffectX } from "./pilot-skill-effect";
+import { ArmdozerState } from "../../state/armdozer-state";
+import { PlayerState } from "../../state/player-state";
+import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
+import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
 
 /**
  * 回復後のバッテリーを計算する
@@ -19,43 +18,33 @@ export function calcRecoverBattery(
 }
 
 /**
- * バッテリー回復スキルを発動する
- * @param invoker スキル発動者
- * @param skill スキル内容
- * @return 発動後のステート
+ * パイロットスキル発動者のステートを更新する
+ * @param invoker パイロットスキル発動者のステート
+ * @param skill パイロットスキル情報
+ * @return パイロットスキル発動後のステート
  */
-function invokeRecoverBattery(
+const updateInvoker = (
   invoker: PlayerState,
   skill: RecoverBatterySkill,
-): PlayerState {
-  return {
-    ...invoker,
-    armdozer: {
-      ...invoker.armdozer,
-      battery: calcRecoverBattery(invoker.armdozer, skill),
-    },
-  };
-}
+): PlayerState => ({
+  ...invoker,
+  armdozer: {
+    ...invoker.armdozer,
+    battery: calcRecoverBattery(invoker.armdozer, skill),
+  },
+});
 
 /**
  * パイロットスキル バッテリー回復を発動する
- * @param lastState 最新のゲーム状態
- * @param invokerId 発動するプレイヤー
- * @param skill スキル内容
- * @return 更新結果
+ * @param params パイロットスキル発動情報
+ * @return パイロットスキル発動結果
  */
 export function recoverBattery(
-  lastState: GameState,
-  invokerId: PlayerId,
-  skill: RecoverBatterySkill,
-): GameStateX<PilotSkillEffectX<RecoverBatterySkill>> {
-  const players: PlayerState[] = lastState.players.map((v) =>
-    v.playerId === invokerId ? invokeRecoverBattery(v, skill) : v,
-  );
-  const effect: PilotSkillEffectX<RecoverBatterySkill> = {
-    name: "PilotSkillEffect",
-    invokerId: invokerId,
-    skill,
+  params: PilotSkillInvokeParams<RecoverBatterySkill>,
+): PilotSkillInvokeResult {
+  const { invoker, other, skill } = params;
+  return {
+    invoker: updateInvoker(invoker, skill),
+    other,
   };
-  return { ...lastState, players, effect: effect };
 }

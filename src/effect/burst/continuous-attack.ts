@@ -1,4 +1,4 @@
-import { LightningBarrier } from "../../player/burst/lightning-barrier";
+import { ContinuousAttack } from "../../player/burst/continuous-attack";
 import { PlayerState } from "../../state/player-state";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
@@ -12,7 +12,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  */
 const updateInvoker = (
   invoker: PlayerState,
-  burst: LightningBarrier,
+  burst: ContinuousAttack,
 ): PlayerState => ({
   ...invoker,
   armdozer: {
@@ -21,12 +21,9 @@ const updateInvoker = (
     effects: [
       ...invoker.armdozer.effects,
       {
-        type: "TryReflect",
-        damage: burst.damage,
-        effect: "Lightning",
+        type: "ContinuousActivePlayer",
         period: {
-          type: "TurnLimit",
-          remainingTurn: burst.duration,
+          type: "SpecialPeriod",
         },
       },
     ],
@@ -34,12 +31,12 @@ const updateInvoker = (
 });
 
 /**
- * バースト 電撃バリア 発動
+ * バースト 連続攻撃 発動
  * @param params バースト発動情報
  * @return バースト発動結果
  */
-export function lightningBarrier(
-  params: BurstInvokeParams<LightningBarrier>,
+export function continuousAttack(
+  params: BurstInvokeParams<ContinuousAttack>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {

@@ -9,14 +9,60 @@ import { selectableBurstCommand } from "./selectable-burst-command";
 import { selectablePilotSkillCommand } from "./selectable-pilot-skill-command";
 
 /**
+ * コマンド選択可能なケース
+ *
+ * @param player プレイヤー情報
+ * @return プレイヤーが次のターンに入力可能なコマンド
+ */
+function selectable(player: PlayerState): Selectable {
+  return {
+    playerId: player.playerId,
+    selectable: true,
+    command: [
+      ...selectableBatteryCommand(player.armdozer),
+      ...selectableBurstCommand(player.armdozer),
+      ...selectablePilotSkillCommand(player.pilot),
+    ],
+  };
+}
+
+/**
+ * コマンド選択が不可能なケース
+ * このターンに選択したコマンドをそのまま次も選択する
+ *
+ * @param player プレイヤー情報
+ * @param command このターンの入力したコマンド
+ * @return プレイヤーが次のターンに入力可能なコマンド
+ */
+function noChoice(player: PlayerState, command: Command): NoChoice {
+  return {
+    playerId: player.playerId,
+    selectable: false,
+    nextTurnCommand: command,
+  };
+}
+
+/**
+ * コマンド選択不可能か否かを判定する
+ *
+ * @param myCommand 自分のコマンド
+ * @param otherCommand 相手のコマンド
+ * @return {boolean}
+ */
+export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
+  return (
+    myCommand.type === "BATTERY_COMMAND" && !!castQuickCommand(otherCommand)
+  );
+}
+
+/**
  * ゲームスタート時だけに利用するInputCommand
  * InputCommandはそのターンに入力したコマンドを参照する想定だが、
  * ゲーム開始時にコマンド入力できないので、本関数を用意した
- *
- * @param lastState 最新状態
+ * @param lastState 最新のゲームステート
  * @return 更新結果
  */
-export function gameStartInputCommand(lastState: GameState): GameState {
+export function inputCommandOnGameStart(lastState: GameState): GameState {
   return {
     ...lastState,
     effect: {
@@ -25,8 +71,8 @@ export function gameStartInputCommand(lastState: GameState): GameState {
     },
   };
 }
-// TODO 引数を[PlayerCommand, PlayerCommand]に変更する
 
+// TODO 引数を[PlayerCommand, PlayerCommand]に変更する
 /**
  * コマンド入力フェイズのステートを生成する
  *
@@ -63,51 +109,4 @@ export function inputCommand(
     players: playerCommands,
   };
   return { ...lastState, effect: effect };
-}
-
-/**
- * コマンド選択不可能か否かを判定する
- *
- * @param myCommand 自分のコマンド
- * @param otherCommand 相手のコマンド
- * @return {boolean}
- */
-export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
-  return (
-    myCommand.type === "BATTERY_COMMAND" && !!castQuickCommand(otherCommand)
-  );
-}
-
-/**
- * コマンド選択可能なケース
- *
- * @param player プレイヤー情報
- * @return プレイヤーが次のターンに入力可能なコマンド
- */
-function selectable(player: PlayerState): Selectable {
-  return {
-    playerId: player.playerId,
-    selectable: true,
-    command: [
-      ...selectableBatteryCommand(player.armdozer),
-      ...selectableBurstCommand(player.armdozer),
-      ...selectablePilotSkillCommand(player.pilot),
-    ],
-  };
-}
-
-/**
- * コマンド選択が不可能なケース
- * このターンに選択したコマンドをそのまま次も選択する
- *
- * @param player プレイヤー情報
- * @param command このターンの入力したコマンド
- * @return プレイヤーが次のターンに入力可能なコマンド
- */
-function noChoice(player: PlayerState, command: Command): NoChoice {
-  return {
-    playerId: player.playerId,
-    selectable: false,
-    nextTurnCommand: command,
-  };
 }
