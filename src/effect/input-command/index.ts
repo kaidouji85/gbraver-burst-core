@@ -59,7 +59,7 @@ export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
  * ゲームスタート時だけに利用するInputCommand
  * InputCommandはそのターンに入力したコマンドを参照する想定だが、
  * ゲーム開始時にコマンド入力できないので、本関数を用意した
- * @param lastState 最新状態
+ * @param lastState 最新のゲームステート
  * @return 更新結果
  */
 export function inputCommandOnGameStart(lastState: GameState): GameState {
