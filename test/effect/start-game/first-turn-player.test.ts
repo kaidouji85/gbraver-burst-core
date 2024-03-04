@@ -23,13 +23,13 @@ const fastPlayer = cratePlayer("fast-player", 3000);
 const slowPlayer = cratePlayer("slow-player", 1000);
 
 test.each([
-  [fastPlayer, slowPlayer, 0],
-  [fastPlayer, slowPlayer, 0.5],
-  [slowPlayer, fastPlayer, 0],
-  [slowPlayer, fastPlayer, 0.5],
+  { p1: fastPlayer, p2: slowPlayer, random: 0 },
+  { p1: fastPlayer, p2: slowPlayer, random: 0.5 },
+  { p1: slowPlayer, p2: fastPlayer, random: 0 },
+  { p1: slowPlayer, p2: fastPlayer, random: 0.5 },
 ])(
-  "ランダム値、引数順番に関わらず、機動力が高いプレイヤーが先行となる",
-  (p1, p2, random) => {
+  "ランダム値、プレイヤー順番に関わらず、機動力が高いプレイヤーが先行となる(players=[$p1.playerId, $p2.playerId], random=$random)",
+  ({ p1, p2, random }) => {
     expect(getFirstTurnPlayer(p1, p2, random)).toBe("fast-player");
   },
 );
@@ -41,10 +41,13 @@ const sameSpeedPlayer1 = cratePlayer("same-speed-player1", 1000);
 const sameSpeedPlayer2: PlayerState = cratePlayer("same-speed-player2", 1000);
 
 test.each([
-  [0, "same-speed-player1"],
-  [0.5, "same-speed-player2"],
-])("スピードが同じ場合にはランダムで先行を決定", (random, expected) => {
-  expect(getFirstTurnPlayer(sameSpeedPlayer1, sameSpeedPlayer2, random)).toBe(
-    expected,
-  );
-});
+  { random: 0, expected: "same-speed-player1" },
+  { random: 0.5, expected: "same-speed-player2" },
+])(
+  "スピードが同じ場合にはランダム値で先行プレイヤーを決定(random=$random)",
+  ({ random, expected }) => {
+    expect(getFirstTurnPlayer(sameSpeedPlayer1, sameSpeedPlayer2, random)).toBe(
+      expected,
+    );
+  },
+);
