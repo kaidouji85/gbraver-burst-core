@@ -3,27 +3,27 @@ import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { PlayerState } from "../../../src/state/player-state";
 
-test("ランダム値、引数順番に関わらず、機動力が高いプレイヤーが先行となる", () => {
-  const fastPlayer: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: "fast-player",
-    armdozer: { ...EMPTY_ARMDOZER_STATE, speed: 3000 },
-  };
-  const slowPlayer: PlayerState = {
-    ...EMPTY_PLAYER_STATE,
-    playerId: "slow-player",
-    armdozer: { ...EMPTY_ARMDOZER_STATE, speed: 1000 },
-  };
+/** 機動力が高いプレイヤー */
+const fastPlayer: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
+  playerId: "fast-player",
+  armdozer: { ...EMPTY_ARMDOZER_STATE, speed: 3000 },
+};
 
-  const data = [
-    [fastPlayer, slowPlayer, 0],
-    [fastPlayer, slowPlayer, 0.5],
-    [slowPlayer, fastPlayer, 0],
-    [slowPlayer, fastPlayer, 0.5],
-  ] as const;
-  data.forEach(([p1, p2, random]) => {
-    expect(getFirstTurnPlayer(p1, p2, random)).toBe(fastPlayer.playerId);
-  });
+/** 機動力が低いプレイヤー */
+const slowPlayer: PlayerState = {
+  ...EMPTY_PLAYER_STATE,
+  playerId: "slow-player",
+  armdozer: { ...EMPTY_ARMDOZER_STATE, speed: 1000 },
+};
+
+test.each([
+  [fastPlayer, slowPlayer, 0],
+  [fastPlayer, slowPlayer, 0.5],
+  [slowPlayer, fastPlayer, 0],
+  [slowPlayer, fastPlayer, 0.5],
+])('ランダム値、引数順番に関わらず、機動力が高いプレイヤーが先行となる', (p1, p2, random) => {
+  expect(getFirstTurnPlayer(p1, p2, random)).toBe(fastPlayer.playerId);
 });
 
 test("スピードが同じ場合にはランダムで先行を決定", () => {
