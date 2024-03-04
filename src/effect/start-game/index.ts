@@ -17,6 +17,7 @@ export function startGame(players: [Player, Player]): GameStateX<StartGame> {
     activePlayerId: getFirstTurnPlayer(
       openPlayerStateList[0],
       openPlayerStateList[1],
+      Math.random,
     ),
     effect: {
       name: "StartGame",
