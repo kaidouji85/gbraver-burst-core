@@ -11,13 +11,13 @@ import { StartGame } from "./start-game";
  * @return 初期ゲームステート
  */
 export function startGame(players: [Player, Player]): GameStateX<StartGame> {
-  const openPlayerStateList = players.map((v) => createPlayerState(v));
+  const playerStates = players.map((v) => createPlayerState(v));
   return {
-    players: openPlayerStateList,
+    players: playerStates,
     activePlayerId: getFirstTurnPlayer(
-      openPlayerStateList[0],
-      openPlayerStateList[1],
-      Math.random,
+      playerStates[0],
+      playerStates[1],
+      Math.random(),
     ),
     effect: {
       name: "StartGame",

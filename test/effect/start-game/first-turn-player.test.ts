@@ -39,10 +39,10 @@ test("スピードが同じ場合にはランダムで先行を決定", () => {
   };
 
   const data = [
-    { random: 0, expected: player1.playerId },
-    { random: 0.5, expected: player2.playerId },
+    [0, player1.playerId],
+    [0.5, player2.playerId],
   ] as const;
-  data.forEach(({ random, expected }) => {
+  data.forEach(([random, expected]) => {
     expect(getFirstTurnPlayer(player1, player2, random)).toBe(expected);
   });
 });
