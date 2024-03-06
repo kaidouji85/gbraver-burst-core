@@ -6,7 +6,6 @@ export {
   PilotSkillCommand,
   PilotSkillCommandSchema,
 } from "./command/pilot-skill";
-export { QuickCommand } from "./command/quick-command";
 export {
   correctedBattery,
   totalBatteryCorrection,

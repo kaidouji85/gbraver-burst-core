@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`アクティブプレイヤー継続を正しく処理できる: continuous-active 1`] = `
+exports[`ゲーム継続フロー（アクティブプレイヤー継続）を正しく処理することができる: continuous-active 1`] = `
 [
   {
     "activePlayerId": "player1",
@@ -272,7 +272,7 @@ exports[`アクティブプレイヤー継続を正しく処理できる: contin
 ]
 `;
 
-exports[`ターン交代まで正しく実行できる: turn-change 1`] = `
+exports[`ゲーム継続フロー（ターン交代）を正しく処理することができる: turn-change 1`] = `
 [
   {
     "activePlayerId": "player2",
