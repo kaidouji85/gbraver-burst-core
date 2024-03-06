@@ -8,7 +8,7 @@ import {
 } from "../../../../src";
 import { gameContinueFlow } from "../../../../src/game/progress/battle-flow/game-continue-flow";
 
-test("ターン交代まで正しく実行できる", () => {
+test("ゲーム継続フロー（ターン交代）を正しく処理することができる", () => {
   const player1 = {
     ...EMPTY_PLAYER_STATE,
     playerId: "player1",
@@ -28,17 +28,19 @@ test("ターン交代まで正しく実行できる", () => {
     players: [player1, player2],
     activePlayerId: player2.playerId,
   };
-  const result = gameContinueFlow(
-    lastState,
-    player1.playerId,
-    player1Command,
-    player2.playerId,
-    player2Command,
-  );
-  expect(result).toMatchSnapshot("turn-change");
+
+  expect(
+    gameContinueFlow(
+      lastState,
+      player1.playerId,
+      player1Command,
+      player2.playerId,
+      player2Command,
+    ),
+  ).toMatchSnapshot("turn-change");
 });
 
-test("アクティブプレイヤー継続を正しく処理できる", () => {
+test("ゲーム継続フロー（アクティブプレイヤー継続）を正しく処理することができる", () => {
   const player1: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: "player1",
@@ -70,12 +72,14 @@ test("アクティブプレイヤー継続を正しく処理できる", () => {
     players: [player1, player2],
     activePlayerId: player1.playerId,
   };
-  const result = gameContinueFlow(
-    lastState,
-    player1.playerId,
-    player1Command,
-    player2.playerId,
-    player2Command,
-  );
-  expect(result).toMatchSnapshot("continuous-active");
+
+  expect(
+    gameContinueFlow(
+      lastState,
+      player1.playerId,
+      player1Command,
+      player2.playerId,
+      player2Command,
+    ),
+  ).toMatchSnapshot("continuous-active");
 });
