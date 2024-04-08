@@ -1,9 +1,9 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import jest from 'eslint-plugin-jest';
-import simpleImportSort from "eslint-plugin-simple-import-sort";
+const eslint = require("@eslint/js");
+const tseslint = require("typescript-eslint");
+const jest = require("eslint-plugin-jest");
+const simpleImportSort = require("eslint-plugin-simple-import-sort");
 
-export default [
+module.exports = [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
