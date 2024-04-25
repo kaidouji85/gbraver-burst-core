@@ -1,4 +1,4 @@
-import { batteryBonus } from "../../../../src/effect/battle/damage/battery-bonus";
+import { batteryBonus } from "../../src/effect/battery-bonus";
 
 test("ダメージのバッテリーボーナス = 100 * (攻撃側バッテリー - 防御側バッテリー - 1)", () => {
   const result = batteryBonus(5, 1);

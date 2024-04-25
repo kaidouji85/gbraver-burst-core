@@ -59,6 +59,7 @@ export {
   PilotSkillEffectSchema,
   PilotSkillEffectX,
 } from "./effect/pilot-skill/pilot-skill-effect";
+export { predicatedDamage } from "./effect/predicated-damage";
 export { Reflect, ReflectSchema } from "./effect/reflect/reflect";
 export {
   RightItself,

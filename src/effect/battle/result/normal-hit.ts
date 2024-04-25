@@ -1,9 +1,10 @@
 import { z } from "zod";
 
 import { PlayerState } from "../../../state/player-state";
-import { hasDamageHalved } from "../../damage-halved";
+import { batteryBonus } from "../../battery-bonus";
+import { correctPower } from "../../correct-power";
+import { damageReduction } from "../../damage-reduction";
 import { toMinDamage } from "../../to-min-damage";
-import { normalHitDamage } from "../damage/damage";
 
 /** 攻撃ヒット */
 export type NormalHit = Readonly<{
@@ -32,16 +33,14 @@ export function normalHit(
   defender: PlayerState,
   defenderBattery: number,
 ): NormalHit {
-  const normalHit = normalHitDamage(
-    attacker,
-    attackerBattery,
-    defender,
-    defenderBattery,
+  const damage = toMinDamage(
+    (attacker.armdozer.power +
+      correctPower(attacker.armdozer.effects) +
+      batteryBonus(attackerBattery, defenderBattery)) *
+      damageReduction(defender),
   );
-  const reduction = hasDamageHalved(defender.armdozer.effects) ? 0.5 : 1;
-  const damage = toMinDamage(normalHit * reduction);
   return {
     name: "NormalHit",
-    damage: damage,
+    damage,
   };
 }

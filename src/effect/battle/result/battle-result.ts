@@ -43,7 +43,7 @@ export function battleResult(
   }
 
   if (attackerBattery === defenderBattery) {
-    return guard(attacker, attackerBattery, defender, defenderBattery);
+    return guard(attacker, defender);
   }
 
   if (defenderBattery < attackerBattery && defenderBattery === 0) {
