@@ -29,7 +29,7 @@ const attacker = {
  * 防御側プレイヤーを生成する
  * @param battery 現在のバッテリー値
  * @param effects 現在の効果
- * @return 生成結果
+ * @returns 生成結果
  */
 const createDefender = (battery: number, effects: ArmdozerEffect[]) => ({
   ...EMPTY_PLAYER_STATE,

@@ -19,7 +19,7 @@ const batteryRecoverSkip: BatteryRecoverSkip = {
  * テスト用プレイヤーを生成する
  * @param battery 現在のバッテリー
  * @param effects 現在の効果
- * @return 生成結果
+ * @returns 生成結果
  */
 const createPlayer = (
   battery: number,

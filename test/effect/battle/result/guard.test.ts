@@ -19,7 +19,7 @@ type AttackerParams = {
 /**
  * 攻撃側プレイヤーを生成する
  * @param params パラメータ
- * @return 生成結果
+ * @returns 生成結果
  */
 const createAttacker = (params: AttackerParams): PlayerState => ({
   ...EMPTY_PLAYER_STATE,
@@ -35,7 +35,7 @@ type DefenderParams = {
 /**
  * 防御側プレイヤーを生成する
  * @param params パラメータ
- * @return 生成結果
+ * @returns 生成結果
  */
 const createDefender = (params: DefenderParams): PlayerState => ({
   ...EMPTY_PLAYER_STATE,
