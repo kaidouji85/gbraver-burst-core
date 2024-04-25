@@ -5,7 +5,7 @@ import type { GameEndJudging } from "./game-end-judging";
 /**
  * ゲーム終了判定を行う
  * @param lastState 最新の状態
- * @return 判定結果
+ * @returns 判定結果
  */
 export function gameEndJudging(lastState: GameState): GameEndJudging {
   const deathPlayer = lastState.players.filter((v) => isPlayerDeath(v));

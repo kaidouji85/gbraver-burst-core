@@ -10,7 +10,7 @@ import { startGameFlow } from "../../game-flow";
  * @param lastState 最終ステート
  * @param attacker 攻撃側バッテリーコマンド
  * @param defender 防御側バッテリーコマンド
- * @return 更新されたゲームステート
+ * @returns 更新されたゲームステート
  */
 export function attackFlow(
   lastState: GameState,

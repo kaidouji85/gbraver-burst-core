@@ -14,7 +14,7 @@ type Ret = {
 /**
  * ターン開始時のバッテリー回復処理計算
  * @param player プレイヤーステート
- * @return 計算結果
+ * @returns 計算結果
  */
 export function calcTurnChangeRecoverBattery(player: PlayerState): Ret {
   const hasBatteryRecoverSkip = player.armdozer.effects.some(

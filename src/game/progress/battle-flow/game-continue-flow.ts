@@ -17,7 +17,7 @@ import { startGameFlow } from "../../game-flow";
  * @param attackerCommand 攻撃側コマンド
  * @param defenderId 防御側プレイヤーID
  * @param defenderCommand 防御側コマンド
- * @return 更新結果
+ * @returns 更新結果
  */
 export function gameContinueFlow(
   lastState: GameState,

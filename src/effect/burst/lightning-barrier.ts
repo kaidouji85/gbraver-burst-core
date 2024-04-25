@@ -8,7 +8,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  * バースト発動者のステートを更新する
  * @param invoker バースト発動者のステート
  * @param burst バースト情報
- * @return バースト発動後のステート
+ * @returns バースト発動後のステート
  */
 const updateInvoker = (
   invoker: PlayerState,
@@ -36,7 +36,7 @@ const updateInvoker = (
 /**
  * バースト 電撃バリア 発動
  * @param params バースト発動情報
- * @return バースト発動結果
+ * @returns バースト発動結果
  */
 export function lightningBarrier(
   params: BurstInvokeParams<LightningBarrier>,

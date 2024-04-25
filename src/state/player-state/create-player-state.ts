@@ -6,7 +6,7 @@ import { PlayerState } from ".";
 /**
  * プレイヤーステートを生成する
  * @param player プレイヤー情報
- * @return 生成結果
+ * @returns 生成結果
  */
 export function createPlayerState(player: Player): PlayerState {
   return {

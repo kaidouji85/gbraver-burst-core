@@ -5,7 +5,7 @@ import type { PilotState } from "../../state/pilot-state";
  * 現在、利用可能なパイロットスキルコマンドを返す
  *
  * @param pilot パイロットステート
- * @return 利用可能なパイロットスキルコマンド
+ * @returns 利用可能なパイロットスキルコマンド
  */
 export function selectablePilotSkillCommand(
   pilot: PilotState,

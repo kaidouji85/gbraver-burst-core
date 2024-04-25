@@ -5,7 +5,7 @@ import type { ArmdozerEffect } from "../state/armdozer-effect";
  * アームドーザ効果のバッテリー補正合計値を計算する
  *
  * @param effects アームドーザエフェクト
- * @return バッテリー補正値合計
+ * @returns バッテリー補正値合計
  */
 export function totalBatteryCorrection(effects: ArmdozerEffect[]): number {
   return effects
@@ -18,7 +18,7 @@ export function totalBatteryCorrection(effects: ArmdozerEffect[]): number {
  *
  * @param command バッテリーコマンド
  * @param effects アームドーザ効果
- * @return 補正後のバッテリー
+ * @returns 補正後のバッテリー
  */
 export function correctedBattery(
   command: BatteryCommand,

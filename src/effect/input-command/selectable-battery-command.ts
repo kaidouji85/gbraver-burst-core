@@ -7,7 +7,7 @@ import type { ArmdozerState } from "../../state/armdozer-state";
  * アームドーザの状態から実行可能なバッテリーコマンドを返す
  *
  * @param armdozer アームドーザの状態
- * @return 計算結果
+ * @returns 計算結果
  */
 export function selectableBatteryCommand(
   armdozer: ArmdozerState,

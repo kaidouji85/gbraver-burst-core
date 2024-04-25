@@ -25,7 +25,7 @@ export const NormalHitSchema = z.object({
  * @param attackerBattery 攻撃側バッテリー
  * @param defender 防御側プレイヤー
  * @param defenderBattery 防御側バッテリー
- * @return 攻撃ヒットの戦闘結果
+ * @returns 攻撃ヒットの戦闘結果
  */
 export function normalHit(
   attacker: PlayerState,

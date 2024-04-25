@@ -6,7 +6,7 @@ import type { TurnChange } from "./turn-change";
 /**
  * ターンチェンジを実行する
  * @param lastState 更新前のゲームステート
- * @return 実行結果、実行不可能な場合はnullを返す
+ * @returns 実行結果、実行不可能な場合はnullを返す
  */
 export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   const nextActivePlayer = lastState.players.find(

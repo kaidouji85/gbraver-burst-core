@@ -15,7 +15,7 @@ export const CriticalHitSchema = z.object({
 /**
  * クリティカルヒットの戦闘結果を生成する
  *
- * @return クリティカルヒットの戦闘結果
+ * @returns クリティカルヒットの戦闘結果
  */
 export function criticalHit(): CriticalHit {
   return {
