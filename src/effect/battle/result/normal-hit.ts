@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 import { PlayerState } from "../../../state/player-state";
+import { batteryBonus } from "../../battery-bonus";
 import { correctPower } from "../../correct-power";
 import { damageReduction } from "../../damage-reduction";
 import { toMinDamage } from "../../to-min-damage";
-import { batteryBonus } from "../damage/battery-bonus";
 
 /** 攻撃ヒット */
 export type NormalHit = Readonly<{
