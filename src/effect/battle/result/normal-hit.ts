@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { PlayerState } from "../../../state/player-state";
-import { hasDamageHalved } from "../../damage-halved";
+import { damageReduction } from "../../damage-reduction";
 import { toMinDamage } from "../../to-min-damage";
 import { normalHitDamage } from "../damage/damage";
 
@@ -38,7 +38,7 @@ export function normalHit(
     defender,
     defenderBattery,
   );
-  const reduction = hasDamageHalved(defender.armdozer.effects) ? 0.5 : 1;
+  const reduction = damageReduction(defender);
   const damage = toMinDamage(normalHit * reduction);
   return {
     name: "NormalHit",
