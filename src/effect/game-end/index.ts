@@ -6,7 +6,7 @@ import type { GameEnd, GameEndResult } from "./game-end";
  *
  * @param lastState 最新のゲーム ステート
  * @param result ゲーム終了結果
- * @return 更新結果
+ * @returns 更新結果
  */
 export function gameEnd(
   lastState: GameState,

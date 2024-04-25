@@ -8,7 +8,7 @@ import { invokeBurst } from "./invoke-burst";
  * バーストを実行する
  * @param lastState 最新の状態
  * @param burstPlayerId バーストするプレイヤーID
- * @return バースト結果、実行不可能な場合はnullを返す
+ * @returns バースト結果、実行不可能な場合はnullを返す
  */
 export function burst(
   lastState: GameState,

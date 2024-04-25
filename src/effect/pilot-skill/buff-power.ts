@@ -7,7 +7,7 @@ import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
  * パイロットスキル発動者のステートを更新する
  * @param invoker パイロットスキル発動者のステート
  * @param skill パイロットスキル情報
- * @return パイロットスキル発動後のステート
+ * @returns パイロットスキル発動後のステート
  */
 const updateInvoker = (
   invoker: PlayerState,
@@ -33,7 +33,7 @@ const updateInvoker = (
 /**
  * パイロットスキル 攻撃バフ
  * @param params パイロットスキル発動情報
- * @return パイロットスキル発動結果
+ * @returns パイロットスキル発動結果
  */
 export function buffPower(
   params: PilotSkillInvokeParams<BuffPowerSkill>,

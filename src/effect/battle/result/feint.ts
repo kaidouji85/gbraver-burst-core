@@ -16,7 +16,7 @@ export const FeintSchema = z.object({
 /**
  * フェイントの戦闘結果を生成する
  * @param defenderBattery 防御側バッテリー
- * @return フェイントの戦闘結果
+ * @returns フェイントの戦闘結果
  */
 export function feint(defenderBattery: number): Feint {
   return {

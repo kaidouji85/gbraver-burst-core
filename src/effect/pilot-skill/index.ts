@@ -8,7 +8,7 @@ import { PilotSkillEffect } from "./pilot-skill-effect";
  * パイロットスキルを発動する
  * @param lastState 最新の状態
  * @param invokerId パイロットスキルを発動するプレイヤー
- * @return 更新結果、実行不可能な場合は例外を返す
+ * @returns 更新結果、実行不可能な場合は例外を返す
  */
 export function pilotSkill(
   lastState: GameState,

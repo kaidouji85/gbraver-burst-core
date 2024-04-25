@@ -8,7 +8,7 @@ import { burstRecoverBattery } from "./burst-recover-battery";
  * バースト発動者のステートを更新する
  * @param invoker バースト発動者のステート
  * @param burst バースト情報
- * @return バースト発動後のステート
+ * @returns バースト発動後のステート
  */
 const updateInvoker = (invoker: PlayerState, burst: RecoverBattery) => ({
   ...invoker,
@@ -21,7 +21,7 @@ const updateInvoker = (invoker: PlayerState, burst: RecoverBattery) => ({
 /**
  * バースト バッテリー回復 を発動する
  * @param params パラメータ
- * @return バースト発動結果
+ * @returns バースト発動結果
  */
 export function recoverBattery(
   params: BurstInvokeParams<RecoverBattery>,

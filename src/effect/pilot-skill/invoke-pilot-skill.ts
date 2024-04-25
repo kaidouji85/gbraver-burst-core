@@ -15,7 +15,7 @@ import { recoverBattery } from "./recover-battery";
 /**
  * パイロットスキル種別に応じた効果を適用する
  * @param params パイロットスキル発動情報
- * @return パイロットスキル発動結果
+ * @returns パイロットスキル発動結果
  */
 export function invokePilotSkill(
   params: PilotSkillInvokeParams<PilotSkill>,

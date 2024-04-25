@@ -17,7 +17,7 @@ import { recoverBattery } from "./recover-battery";
 /**
  * バースト種別に応じた効果を適用する
  * @param params バースト発動情報
- * @return バースト発動結果
+ * @returns バースト発動結果
  */
 export function invokeBurst(
   params: BurstInvokeParams<Burst>,

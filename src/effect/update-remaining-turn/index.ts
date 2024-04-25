@@ -12,7 +12,7 @@ import type {
  * 効果継続ターン数を更新する
  *
  * @param lastState 最新状態
- * @return 更新結果
+ * @returns 更新結果
  */
 export function updateRemainingTurn(
   lastState: GameState,

@@ -12,7 +12,7 @@ import { isValidCommand } from "../../../src/game/validation/is-valid-command";
 /**
  * バッテリーコマンドを生成する
  * @param value バッテリー値
- * @return バッテリーコマンド
+ * @returns バッテリーコマンド
  */
 const batteryCommand = (value: number): BatteryCommand => ({
   type: "BATTERY_COMMAND",

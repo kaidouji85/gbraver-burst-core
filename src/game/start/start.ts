@@ -7,7 +7,7 @@ import { startGameFlow } from "../game-flow";
 /**
  * ゲームの初期状態を生成する
  * @param players ゲーム参加プレイヤー
- * @return ゲーム初期状態
+ * @returns ゲーム初期状態
  */
 export function start(players: [Player, Player]): GameState[] {
   return startGameFlow(startGame(players), [

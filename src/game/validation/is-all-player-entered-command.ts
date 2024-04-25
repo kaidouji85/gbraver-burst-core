@@ -6,7 +6,7 @@ import type { PlayerCommand } from "../command/player-command";
  *
  * @param players ゲーム参加プレイヤー
  * @param commands 入力したコマンド
- * @return 判定結果、trueで全プレイヤーがコマンド入力した
+ * @returns 判定結果、trueで全プレイヤーがコマンド入力した
  */
 export function isAllPlayerEnteredCommand(
   players: [Player, Player],

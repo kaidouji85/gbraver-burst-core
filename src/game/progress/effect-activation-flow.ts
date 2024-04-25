@@ -8,7 +8,7 @@ import { startGameFlow } from "../game-flow";
 /**
  * 効果発動フローを行うか否かを判定する
  * @param commands プレイヤーが選択したコマンド
- * @return 判定結果、trueでバーストフェイズを行う
+ * @returns 判定結果、trueでバーストフェイズを行う
  */
 export function isEffectActivationFlow(
   commands: [PlayerCommand, PlayerCommand],
@@ -24,7 +24,7 @@ export function isEffectActivationFlow(
  * 何もしない場合はnullを返す
  * @param state 最新のゲームステート
  * @param command コマンド
- * @return 更新結果
+ * @returns 更新結果
  */
 export function activationOrNot(
   state: GameState,
@@ -46,7 +46,7 @@ export function activationOrNot(
  * 現状ではバースト、パイロットスキルを想定している
  * @param lastState 最後の状態
  * @param commands コマンド
- * @return 更新されたゲームの状態
+ * @returns 更新されたゲームの状態
  */
 export function effectActivationFlow(
   lastState: GameState,

@@ -30,7 +30,7 @@ export const BattleResultSchema = z.union([
  * @param attackerBattery 攻撃側バッテリー
  * @param defender 防御側プレイヤー
  * @param defenderBattery 防御側バッテリー
- * @return 戦闘結果
+ * @returns 戦闘結果
  */
 export function battleResult(
   attacker: PlayerState,
@@ -43,7 +43,7 @@ export function battleResult(
   }
 
   if (attackerBattery === defenderBattery) {
-    return guard(attacker, attackerBattery, defender, defenderBattery);
+    return guard(attacker, defender);
   }
 
   if (defenderBattery < attackerBattery && defenderBattery === 0) {

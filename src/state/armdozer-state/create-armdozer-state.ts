@@ -4,7 +4,7 @@ import { ArmdozerState } from ".";
 /**
  * アームドーザ基本ステータスから戦闘状態を生成する
  * @param basic 基本ステータス
- * @return 戦闘状態
+ * @returns 戦闘状態
  */
 export function createArmdozerState(basic: Armdozer): ArmdozerState {
   return {

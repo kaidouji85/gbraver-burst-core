@@ -28,7 +28,7 @@ export const CommandSchema = z.union([
  * コマンドが等しいかどうかを判定する
  * @param command1 コマンド1
  * @param command2 コマンド2
- * @return trueで等しいコマンド
+ * @returns trueで等しいコマンド
  */
 export function isCommandEqual(command1: Command, command2: Command): boolean {
   return (
