@@ -8,7 +8,7 @@ import { calcBoostedBattery } from "../../../src/effect/pilot-skill/battery-boos
 /**
  * アームドーザ生成ヘルパー関数
  * @param battery 現在のバッテリー値
- * @return 生成結果
+ * @returns 生成結果
  */
 const createArmdozer = (battery: number): ArmdozerState => ({
   ...EMPTY_ARMDOZER_STATE,
@@ -19,7 +19,7 @@ const createArmdozer = (battery: number): ArmdozerState => ({
 /**
  * BatteryBoostSkill生成ヘルパー関数
  * @param recoverBattery バッテリー回復量
- * @return 生成結果
+ * @returns 生成結果
  */
 const createSkill = (recoverBattery: number): BatteryBoostSkill => ({
   type: "BatteryBoostSkill",

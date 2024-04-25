@@ -7,7 +7,7 @@ import { toMinDamage } from "./to-min-damage";
  * ダメージ予想を計算する
  * @param attacker 攻撃側ステート
  * @param defender 防御側ステート
- * @return 計算結果
+ * @returns 計算結果
  */
 export const predicatedDamage = (
   attacker: PlayerState,

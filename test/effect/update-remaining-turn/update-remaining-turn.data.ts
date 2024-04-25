@@ -14,7 +14,7 @@ const specialPeriod: SpecialPeriodEffect = {
 /**
  * ターン制限効果を生成するヘルパー関数
  * @param turn 効果継続ターン数
- * @return 生成結果
+ * @returns 生成結果
  */
 const turnLimit = (turn: number): TurnLimitEffect => ({
   type: "TurnLimit",

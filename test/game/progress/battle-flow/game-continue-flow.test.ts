@@ -13,7 +13,7 @@ import { gameContinueFlow } from "../../../../src/game/progress/battle-flow/game
  * プレイヤー1を生成する
  * @param battery バッテリー
  * @param effects アームドーザ効果
- * @return 生成結果
+ * @returns 生成結果
  */
 const createPlayer1 = (battery: number, effects: ArmdozerEffect[]) => ({
   ...EMPTY_PLAYER_STATE,

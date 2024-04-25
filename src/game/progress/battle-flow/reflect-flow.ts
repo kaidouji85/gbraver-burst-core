@@ -8,7 +8,7 @@ import type { GameState } from "../../../state/game-state";
 /**
  * ダメージ反射フローを実行できるか否かを判定する
  * @param result 戦闘結果
- * @return 判定結果、trueでダメージ反射フローを行う
+ * @returns 判定結果、trueでダメージ反射フローを行う
  */
 export function canReflectFlow(result: BattleResult): boolean {
   return (
@@ -23,7 +23,7 @@ export function canReflectFlow(result: BattleResult): boolean {
  *
  * @param lastState 最新のゲームステート
  * @param attackerId 攻撃側のプレイヤーID
- * @return 更新結果
+ * @returns 更新結果
  */
 export function reflectFlow(
   lastState: GameState,

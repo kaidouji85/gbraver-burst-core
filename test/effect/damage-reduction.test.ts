@@ -19,7 +19,7 @@ const damageHalved: DamageHalved = {
 /**
  * テスト用プレイヤーを生成する
  * @param effects アームドーザ効果
- * @return 生成結果
+ * @returns 生成結果
  */
 const createPlayer = (effects: ArmdozerEffect[]): PlayerState => ({
   ...EMPTY_PLAYER_STATE,

@@ -9,7 +9,7 @@ import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
  * @param playerId プレイヤーID
  * @param battery バッテリー
  * @param enableBurst バースト発動可能か否か、trueで発動可能
- * @return 生成されたプレイヤー
+ * @returns 生成されたプレイヤー
  */
 const createPlayer = (
   playerId: PlayerId,
@@ -29,7 +29,7 @@ const createPlayer = (
 /**
  * バッテリーコマンドを生成する
  * @param battery バッテリー
- * @return 生成されたバッテリーコマンド
+ * @returns 生成されたバッテリーコマンド
  */
 const createBatteryCommand = (battery: number): BatteryCommand => ({
   type: "BATTERY_COMMAND",

@@ -10,7 +10,7 @@ import type { PlayerState } from "../../../src/state/player-state";
  * テストプレイヤーを生成するヘルパー関数
  * @param playerId プレイヤーID
  * @param hp HP
- * @return 生成結果
+ * @returns 生成結果
  */
 function createPlayer(playerId: PlayerId, hp: number): PlayerState {
   return {

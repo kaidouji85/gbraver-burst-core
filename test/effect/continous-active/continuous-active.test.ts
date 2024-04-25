@@ -31,7 +31,7 @@ const BATTERY_RECOVER_SKIP: BatteryRecoverSkip = {
  * 攻撃側プレイヤーを生成する
  * @param battery 現在のバッテリー値
  * @param effects 現在の効果
- * @return 生成結果
+ * @returns 生成結果
  */
 const createAttacker = (
   battery: number,

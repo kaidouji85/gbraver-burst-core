@@ -11,7 +11,7 @@ import { reflectDamage } from "./reflect-damage";
  * @param lastState 最新状態
  * @param damagedPlayerId ダメージを受けるプレイヤー
  * @param reflect ダメージ反射パラメータ
- * @return 更新結果
+ * @returns 更新結果
  */
 export function reflect(
   lastState: GameState,

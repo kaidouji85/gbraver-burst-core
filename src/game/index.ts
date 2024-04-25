@@ -12,26 +12,26 @@ import { isValidCommand } from "./validation/is-valid-command";
 export interface GBraverBurstCore {
   /**
    * バトルに参加している全プレイヤーを取得する
-   * @return 取得結果
+   * @returns 取得結果
    */
   players(): [Player, Player];
 
   /**
    * ゲームステート履歴を取得する
-   * @return 取得結果
+   * @returns 取得結果
    */
   stateHistory(): GameState[];
 
   /**
    * 現在の状態をダンプする
-   * @return ダンプしたデータ
+   * @returns ダンプしたデータ
    */
   dump(): RestoreGBraverBurst;
 
   /**
    * ゲームを進行させる
    * @param commands コマンド
-   * @return 更新されたゲーム状態
+   * @returns 更新されたゲーム状態
    */
   progress(commands: [PlayerCommand, PlayerCommand]): GameState[];
 }
@@ -98,7 +98,7 @@ class GBraverBurstCoreImpl implements GBraverBurstCore {
 /**
  * Gブレイバーバーストを開始する
  * @param players プレイヤー情報
- * @return Gブレイバーバースト
+ * @returns Gブレイバーバースト
  */
 export function startGBraverBurst(players: [Player, Player]): GBraverBurstCore {
   if (isDuplicatePlayers(players)) {
@@ -112,7 +112,7 @@ export function startGBraverBurst(players: [Player, Player]): GBraverBurstCore {
 /**
  * Gブレイバーバーストを再開する
  * @param data 再開するデータ
- * @return Gブレイバーバースト
+ * @returns Gブレイバーバースト
  */
 export function restoreGBraverBurst(
   data: RestoreGBraverBurst,

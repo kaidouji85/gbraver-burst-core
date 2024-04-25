@@ -12,7 +12,7 @@ import {
  *
  * @param lastState 最後の状態
  * @param commands コマンド
- * @return 更新されたゲーム状態
+ * @returns 更新されたゲーム状態
  */
 export function progress(
   lastState: GameState,

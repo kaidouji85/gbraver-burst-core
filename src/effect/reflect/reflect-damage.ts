@@ -7,7 +7,7 @@ import { ReflectParam } from "./reflect";
  * ダメージ反射量を計算する
  * @param reflect ダメージ反射パラメータ
  * @param damagedPlayer ダメージ反射されるプレイヤー
- * @return ダメージ
+ * @returns ダメージ
  */
 export function reflectDamage(
   reflect: ReflectParam,

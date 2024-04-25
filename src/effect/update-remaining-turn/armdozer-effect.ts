@@ -4,7 +4,7 @@ import type { ArmdozerEffect } from "../../state/armdozer-effect";
  * アームドーザ効果の継続ターン数を更新する
  *
  * @param effect 更新前
- * @return 更新結果
+ * @returns 更新結果
  */
 export function updateArmdozerEffect(effect: ArmdozerEffect): ArmdozerEffect {
   if (effect.period.type === "TurnLimit") {
@@ -22,7 +22,7 @@ export function updateArmdozerEffect(effect: ArmdozerEffect): ArmdozerEffect {
  * アームドーザ効果が継続するか否かを判定する、trueで継続する
  *
  * @param effect 判定対象
- * @return 判定結果
+ * @returns 判定結果
  */
 export function isRemainArmdozerEffect(effect: ArmdozerEffect): boolean {
   if (effect.period.type === "TurnLimit") {

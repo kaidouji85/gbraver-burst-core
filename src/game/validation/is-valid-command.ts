@@ -6,7 +6,7 @@ import { PlayerCommand } from "../command/player-command";
  * 選択可能なプレイヤーコマンドであるか否かを判定する
  * @param playerCommand 判定対象のプレイヤーコマンド
  * @param inputCommand 「コマンド入力」ステート
- * @return 判定結果、trueで選択可能なプレイヤーコマンド
+ * @returns 判定結果、trueで選択可能なプレイヤーコマンド
  */
 export function isValidCommand(
   playerCommand: PlayerCommand,

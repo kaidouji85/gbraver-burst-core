@@ -11,7 +11,7 @@ import type { PlayerState } from "../../state/player-state";
  * @param player1 1人目プレイヤーの状態
  * @param player2 2人目プレイヤーの状態
  * @param random 0から1未満で指定するランダム値
- * @return 先行プレイヤーのID
+ * @returns 先行プレイヤーのID
  */
 export function getFirstTurnPlayer(
   player1: PlayerState,

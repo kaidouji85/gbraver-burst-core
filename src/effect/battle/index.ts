@@ -13,7 +13,7 @@ import { battleResult } from "./result/battle-result";
  * @param attackerBattery 攻撃側バッテリー
  * @param defenderId 防御側プレイヤーID
  * @param defenderBattery 防御側バッテリー
- * @return 戦闘後の更新ステート、戦闘できない場合はnullを返す
+ * @returns 戦闘後の更新ステート、戦闘できない場合はnullを返す
  */
 export function battle(
   lastState: GameState,

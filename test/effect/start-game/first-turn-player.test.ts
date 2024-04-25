@@ -8,7 +8,7 @@ import { PlayerState } from "../../../src/state/player-state";
  * テスト用のプレイヤーを生成する
  * @param playerId プレイヤーID
  * @param speed 機動力
- * @return 生成結果
+ * @returns 生成結果
  */
 const cratePlayer = (playerId: PlayerId, speed: number): PlayerState => ({
   ...EMPTY_PLAYER_STATE,

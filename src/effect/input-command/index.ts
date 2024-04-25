@@ -10,7 +10,7 @@ import { selectablePilotSkillCommand } from "./selectable-pilot-skill-command";
 /**
  * コマンド選択可能なケース
  * @param player プレイヤー情報
- * @return プレイヤーが次のターンに入力可能なコマンド
+ * @returns プレイヤーが次のターンに入力可能なコマンド
  */
 function selectable(player: PlayerState): Selectable {
   return {
@@ -29,7 +29,7 @@ function selectable(player: PlayerState): Selectable {
  * このターンに選択したコマンドをそのまま次も選択する
  * @param player プレイヤー情報
  * @param command このターンの入力したコマンド
- * @return プレイヤーが次のターンに入力可能なコマンド
+ * @returns プレイヤーが次のターンに入力可能なコマンド
  */
 function noChoice(player: PlayerState, command: Command): NoChoice {
   return {
@@ -43,7 +43,7 @@ function noChoice(player: PlayerState, command: Command): NoChoice {
  * コマンド選択不可能か否かを判定する
  * @param myCommand 自分のコマンド
  * @param otherCommand 相手のコマンド
- * @return 判定結果、自分のコマンドが選択不可能な場合はtrue
+ * @returns 判定結果、自分のコマンドが選択不可能な場合はtrue
  */
 export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
   return (
@@ -58,7 +58,7 @@ export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
  * InputCommandはそのターンに入力したコマンドを参照する想定だが、
  * ゲーム開始時にコマンド入力できないので、本関数を用意した
  * @param lastState 最新のゲームステート
- * @return 更新結果
+ * @returns 更新結果
  */
 export function inputCommandOnGameStart(lastState: GameState): GameState {
   return {
@@ -78,7 +78,7 @@ export function inputCommandOnGameStart(lastState: GameState): GameState {
  * @param attackerCommand 攻撃側コマンド
  * @param defenderId 防御側プレイヤーID
  * @param defenderCommand 防御側コマンド
- * @return 更新結果
+ * @returns 更新結果
  */
 export function inputCommand(
   lastState: GameState,

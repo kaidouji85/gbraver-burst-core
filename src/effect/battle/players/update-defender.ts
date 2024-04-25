@@ -6,7 +6,7 @@ import type { BattleResult } from "../result/battle-result";
  *
  * @param result 戦闘結果
  * @param defender 更新前の防御側ステータス
- * @return 更新された防御側ステータス
+ * @returns 更新された防御側ステータス
  */
 export function updateDefender(
   result: BattleResult,
@@ -26,7 +26,7 @@ export function updateDefender(
  *
  * @param result 戦闘結果
  * @param hp 更新前の防御側HP
- * @return 更新後の防御側HP
+ * @returns 更新後の防御側HP
  */
 export function updateDefenderHP(result: BattleResult, hp: number): number {
   switch (result.name) {

@@ -10,7 +10,7 @@ import { removeContinuousActive } from "./remove-continuous-active";
  * アクティブプレイヤー継続を実行できるか否かを判定する
  *
  * @param state ゲーム ステート
- * @return 判定結果、trueで実行できる
+ * @returns 判定結果、trueで実行できる
  */
 export function canContinuousActive(state: GameState): boolean {
   const activePlayer = state.players.find(
@@ -27,7 +27,7 @@ export function canContinuousActive(state: GameState): boolean {
 /**
  * アクティブプレイヤー継続を実行する
  * @param state 更新前のゲーム ステート
- * @return 更新結果、実行不可能な場合はnullを返す
+ * @returns 更新結果、実行不可能な場合はnullを返す
  */
 export function continuousActive(state: GameState): GameStateX<TurnChange> {
   const activePlayer = state.players.find(
