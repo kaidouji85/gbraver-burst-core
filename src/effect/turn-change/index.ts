@@ -1,7 +1,7 @@
-import type { GameState, GameStateX } from "../../state/game-state";
+import { GameState, GameStateX } from "../../state/game-state";
 import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
 import { calcRecoverBattery } from "./recover-battery";
-import type { TurnChange } from "./turn-change";
+import { TurnChange } from "./turn-change";
 
 /**
  * ターンチェンジを実行する
@@ -10,9 +10,8 @@ import type { TurnChange } from "./turn-change";
  */
 export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   const nextActivePlayer = lastState.players.find(
-    (v) => v.playerId !== lastState.activePlayerId,
+    (p) => p.playerId !== lastState.activePlayerId,
   );
-
   if (!nextActivePlayer) {
     throw new Error("not found next active player");
   }
@@ -27,8 +26,8 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
       effects: removeBatteryRecoverSkip(nextActivePlayer.armdozer.effects),
     },
   };
-  const updatedPlayerList = lastState.players.map((v) =>
-    v.playerId === updatedPlayer.playerId ? updatedPlayer : v,
+  const updatedPlayerList = lastState.players.map((p) =>
+    p.playerId === updatedPlayer.playerId ? updatedPlayer : p,
   );
   return {
     ...lastState,
