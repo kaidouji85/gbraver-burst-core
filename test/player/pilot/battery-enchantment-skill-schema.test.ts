@@ -27,7 +27,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
 test("BatteryEnhancementSkill以外はnullを返す", () => {
   const data = {
     type: "BatteryEnhancement",
-    enchantment: 1,
+    enhancement: 1,
     effectDuration: 2,
   };
   expect(() => BatteryEnhancementSkillSchema.parse(data)).toThrow();
