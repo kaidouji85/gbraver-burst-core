@@ -7,9 +7,9 @@ exports[`バッテリー増強スキルが正しく発動できる 1`] = `
     "invokerId": "invoker",
     "name": "PilotSkillEffect",
     "skill": {
-      "batteryEnchantment": 1,
+      "batteryEnhancement": 1,
       "duration": 2,
-      "type": "BatteryEnchantmentSkill",
+      "type": "BatteryEnhancementSkill",
     },
   },
   "players": [
@@ -93,9 +93,9 @@ exports[`バッテリー増強スキルが正しく発動できる 1`] = `
         "id": "EMPTY_PLAYER",
         "name": "名無し",
         "skill": {
-          "batteryEnchantment": 1,
+          "batteryEnhancement": 1,
           "duration": 2,
-          "type": "BatteryEnchantmentSkill",
+          "type": "BatteryEnhancementSkill",
         },
       },
       "playerId": "invoker",

@@ -7,12 +7,12 @@ import { pilotSkill } from "../../../src/effect/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import { BatteryEnchantmentSkill } from "../../../src/player/pilot/battery-enchantment-skill";
+import { BatteryEnhancementSkill } from "../../../src/player/pilot/battery-enhancement-skill";
 
 /** バッテリー増強スキル */
-const skill: BatteryEnchantmentSkill = {
-  type: "BatteryEnchantmentSkill",
-  batteryEnchantment: 1,
+const skill: BatteryEnhancementSkill = {
+  type: "BatteryEnhancementSkill",
+  batteryEnhancement: 1,
   duration: 2,
 };
 

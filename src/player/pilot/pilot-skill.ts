@@ -5,9 +5,9 @@ import {
   BatteryBoostSkillSchema,
 } from "./battery-boost-skill";
 import {
-  BatteryEnchantmentSkill,
-  BatteryEnchantmentSkillSchema,
-} from "./battery-enchantment-skill";
+  BatteryEnhancementSkill,
+  BatteryEnhancementSkillSchema,
+} from "./battery-enhancement-skill";
 import { BuffPowerSkill, BuffPowerSkillSchema } from "./buff-power-skill";
 import {
   DamageHalvedSkill,
@@ -22,7 +22,7 @@ import {
 export type PilotSkill =
   | RecoverBatterySkill
   | BuffPowerSkill
-  | BatteryEnchantmentSkill
+  | BatteryEnhancementSkill
   | DamageHalvedSkill
   | BatteryBoostSkill;
 
@@ -30,7 +30,7 @@ export type PilotSkill =
 export const PilotSkillSchema = z.union([
   RecoverBatterySkillSchema,
   BuffPowerSkillSchema,
-  BatteryEnchantmentSkillSchema,
+  BatteryEnhancementSkillSchema,
   DamageHalvedSkillSchema,
   BatteryBoostSkillSchema,
 ]);
