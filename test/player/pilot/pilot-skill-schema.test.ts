@@ -12,8 +12,8 @@ const pilotSkills: PilotSkill[] = [
     duration: 2,
   },
   {
-    type: "BatteryEnchantmentSkill",
-    batteryEnchantment: 1,
+    type: "BatteryEnhancementSkill",
+    batteryEnhancement: 1,
     duration: 2,
   },
   {

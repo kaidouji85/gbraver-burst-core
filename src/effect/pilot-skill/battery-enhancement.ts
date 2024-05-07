@@ -1,4 +1,4 @@
-import { BatteryEnchantmentSkill } from "../../player/pilot/battery-enchantment-skill";
+import { BatteryEnhancementSkill } from "../../player/pilot/battery-enhancement-skill";
 import { PlayerState } from "../../state/player-state";
 import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
@@ -11,7 +11,7 @@ import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
  */
 const updateInvoker = (
   invoker: PlayerState,
-  skill: BatteryEnchantmentSkill,
+  skill: BatteryEnhancementSkill,
 ): PlayerState => ({
   ...invoker,
   armdozer: {
@@ -20,7 +20,7 @@ const updateInvoker = (
       ...invoker.armdozer.effects,
       {
         type: "BatteryCorrection",
-        batteryCorrection: skill.batteryEnchantment,
+        batteryCorrection: skill.batteryEnhancement,
         period: {
           type: "TurnLimit",
           remainingTurn: skill.duration,
@@ -42,8 +42,8 @@ const updateInvoker = (
  * @param params パイロットスキル発動情報
  * @returns パイロットスキル発動結果
  */
-export function batteryEnchantment(
-  params: PilotSkillInvokeParams<BatteryEnchantmentSkill>,
+export function batteryEnhancement(
+  params: PilotSkillInvokeParams<BatteryEnhancementSkill>,
 ): PilotSkillInvokeResult {
   const { invoker, other, skill } = params;
   return {
