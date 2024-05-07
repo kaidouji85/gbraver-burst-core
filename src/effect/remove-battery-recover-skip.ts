@@ -2,7 +2,7 @@ import { ArmdozerEffect } from "../state/armdozer-effect";
 
 /**
  * バッテリー回復スキップ効果を削除する
- * @param player 効果削除対象のアームドーザ効果コレクション
+ * @param effects 効果削除対象のアームドーザ効果コレクション
  * @returns 更新結果
  */
 export function removeBatteryRecoverSkip(
