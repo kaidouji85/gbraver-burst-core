@@ -1,11 +1,11 @@
 import { BatteryBoostSkill } from "../../player/pilot/battery-boost-skill";
-import { BatteryEnchantmentSkill } from "../../player/pilot/battery-enchantment-skill";
+import { BatteryEnhancementSkill } from "../../player/pilot/battery-enhancement-skill";
 import { BuffPowerSkill } from "../../player/pilot/buff-power-skill";
 import { DamageHalvedSkill } from "../../player/pilot/damage-halved-skill";
 import { PilotSkill } from "../../player/pilot/pilot-skill";
 import { RecoverBatterySkill } from "../../player/pilot/recover-battery-skill";
 import { batteryBoost } from "./battery-boost";
-import { batteryEnchantment } from "./battery-enchantment";
+import { batteryEnhancement } from "./battery-enhancement";
 import { buffPower } from "./buff-power";
 import { damageHalvedSkill } from "./damage-halved-skill";
 import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
@@ -35,9 +35,9 @@ export function invokePilotSkill(
     return buffPower({ ...params, skill });
   }
 
-  if (params.skill.type === "BatteryEnchantmentSkill") {
-    const skill: BatteryEnchantmentSkill = params.skill;
-    return batteryEnchantment({ ...params, skill });
+  if (params.skill.type === "BatteryEnhancementSkill") {
+    const skill: BatteryEnhancementSkill = params.skill;
+    return batteryEnhancement({ ...params, skill });
   }
 
   if (params.skill.type === "DamageHalvedSkill") {

@@ -5,7 +5,7 @@ import {
   EMPTY_PLAYER_STATE,
   PlayerState,
 } from "../../../src";
-import { calcTurnChangeRecoverBattery } from "../../../src/effect/turn-change/recover-battery";
+import { calcRecoverBattery } from "../../../src/effect/turn-change/recover-battery";
 
 /** 効果 ターン開始時のバッテリー回復をスキップ */
 const batteryRecoverSkip: BatteryRecoverSkip = {
@@ -37,7 +37,7 @@ const createPlayer = (
 
 test("ターン開始時のバッテリーが3回復する", () => {
   const player = createPlayer(1, []);
-  expect(calcTurnChangeRecoverBattery(player)).toEqual({
+  expect(calcRecoverBattery(player)).toEqual({
     battery: 4,
     recoverBattery: 3,
   });
@@ -45,7 +45,7 @@ test("ターン開始時のバッテリーが3回復する", () => {
 
 test("バッテリー最大値以上にはならない", () => {
   const player = createPlayer(4, []);
-  expect(calcTurnChangeRecoverBattery(player)).toEqual({
+  expect(calcRecoverBattery(player)).toEqual({
     battery: 5,
     recoverBattery: 3,
   });
@@ -53,7 +53,7 @@ test("バッテリー最大値以上にはならない", () => {
 
 test("BatteryRecoverSkipが適用されている場合、ターン開始時のバッテリー回復はなし", () => {
   const player = createPlayer(1, [batteryRecoverSkip]);
-  expect(calcTurnChangeRecoverBattery(player)).toEqual({
+  expect(calcRecoverBattery(player)).toEqual({
     battery: 1,
     recoverBattery: 0,
   });

@@ -6,8 +6,8 @@ export const Tsubasa: Pilot = {
   id: PilotIds.TSUBASA,
   name: "ツバサ",
   skill: {
-    type: "BatteryEnchantmentSkill",
-    batteryEnchantment: 1,
+    type: "BatteryEnhancementSkill",
+    batteryEnhancement: 1,
     duration: 2,
   },
 };

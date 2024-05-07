@@ -145,9 +145,9 @@ export {
   BatteryBoostSkillSchema,
 } from "./player/pilot/battery-boost-skill";
 export {
-  BatteryEnchantmentSkill,
-  BatteryEnchantmentSkillSchema,
-} from "./player/pilot/battery-enchantment-skill";
+  BatteryEnhancementSkill,
+  BatteryEnhancementSkillSchema,
+} from "./player/pilot/battery-enhancement-skill";
 export {
   BuffPowerSkill,
   BuffPowerSkillSchema,
