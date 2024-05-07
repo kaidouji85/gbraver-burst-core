@@ -16,7 +16,7 @@ type Ret = {
  * @param player プレイヤーステート
  * @returns 計算結果
  */
-export function calcTurnChangeRecoverBattery(player: PlayerState): Ret {
+export function calcRecoverBattery(player: PlayerState): Ret {
   const hasBatteryRecoverSkip = player.armdozer.effects.some(
     (v) => v.type === "BatteryRecoverSkip",
   );

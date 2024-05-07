@@ -1,6 +1,6 @@
 import type { GameState, GameStateX } from "../../state/game-state";
 import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
-import { calcTurnChangeRecoverBattery } from "./recover-battery";
+import { calcRecoverBattery } from "./recover-battery";
 import type { TurnChange } from "./turn-change";
 
 /**
@@ -18,7 +18,7 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   }
 
   const { recoverBattery, battery } =
-    calcTurnChangeRecoverBattery(nextActivePlayer);
+    calcRecoverBattery(nextActivePlayer);
   const updatedPlayer = {
     ...nextActivePlayer,
     armdozer: {
