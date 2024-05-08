@@ -1,7 +1,7 @@
 import { PlayerState } from "../../state/player-state";
 
-/** ターンチェンジの際に回復するバッテリー */
-export const BATTERY_RECOVERY_VALUE = 3;
+/** ターン開始時に回復するバッテリーの基礎値 */
+const BASIC_BATTERY_RECOVER = 3;
 
 /** バッテリー回復結果 */
 type RecoverBatteryResult = {
@@ -26,13 +26,17 @@ const batteryRecoverSkip = (player: PlayerState) => ({
  * @param player プレイヤーステート
  * @return 計算結果
  */
-const turnStartRecoverBattery = (player: PlayerState) => ({
-  recoverBattery: BATTERY_RECOVERY_VALUE,
-  battery: Math.min(
-    player.armdozer.battery + BATTERY_RECOVERY_VALUE,
+const turnStartRecoverBattery = (player: PlayerState) => {
+  const correct = player.armdozer.effects
+    .map((e) => (e.type === "TurnStartBatteryCorrect" ? e.correctBattery : 0))
+    .reduce((total, v) => total + v);
+  const recoverBattery = BASIC_BATTERY_RECOVER + correct;
+  const battery = Math.min(
+    player.armdozer.battery + recoverBattery,
     player.armdozer.maxBattery,
-  ),
-});
+  );
+  return { recoverBattery, battery };
+};
 
 /**
  * ターン開始時のバッテリー回復処理計算
