@@ -1,6 +1,9 @@
+import * as R from "ramda";
+
 import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
 import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
+import { removeTurnStartBatteryCorrect } from "../remove-turn-start-battery-correct";
 import { calcRecoverBattery } from "./recover-battery";
 import { TurnChange } from "./turn-change";
 
@@ -18,7 +21,10 @@ const updateNextActivePlayer = (
   armdozer: {
     ...player.armdozer,
     battery,
-    effects: removeBatteryRecoverSkip(player.armdozer.effects),
+    effects: R.pipe(
+      removeBatteryRecoverSkip,
+      removeTurnStartBatteryCorrect,
+    )(player.armdozer.effects),
   },
 });
 
