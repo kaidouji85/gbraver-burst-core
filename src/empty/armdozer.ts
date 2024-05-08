@@ -6,6 +6,7 @@ import type { ArmdozerState } from "../state/armdozer-state";
 export const EMPTY_BURST: Burst = {
   type: "RecoverBattery",
   recoverBattery: 0,
+  turnStartBatteryCorrect: 0,
 };
 
 /** 空のアームドーザデータ */
