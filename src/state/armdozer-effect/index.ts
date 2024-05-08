@@ -23,6 +23,7 @@ import {
   HalveCorrectPowerSchema,
 } from "./halve-correct-power";
 import { TryReflect, TryReflectSchema } from "./try-reflect";
+import { TurnStartBatteryCorrect } from "./turn-start-battery-correction";
 
 /**
  * アームドーザに適用される効果
@@ -36,7 +37,8 @@ export type ArmdozerEffect =
   | ContinuousActivePlayer
   | BatteryCorrection
   | DamageHalved
-  | BatteryRecoverSkip;
+  | BatteryRecoverSkip
+  | TurnStartBatteryCorrect;
 
 /** ArmdozerEffect zodスキーマ */
 export const ArmdozerEffectSchema = z.union([
