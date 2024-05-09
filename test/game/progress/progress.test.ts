@@ -1,42 +1,51 @@
-import type {
+import {
   BatteryCommand,
   BurstCommand,
   GameState,
   PlayerCommand,
   PlayerState,
 } from "../../../src";
-import type { PilotSkillCommand } from "../../../src/command/pilot-skill";
+import { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import { progress } from "../../../src/game/progress";
 
-const ATTACKER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };
-const DEFENDER: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "defender" };
-const BATTERY_COMMAND: BatteryCommand = {
+/** 攻撃側プレイヤー */
+const attacker: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };
+
+/** 防御側プレイヤー */
+const defender: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "defender" };
+
+/** バッテリーコマンド */
+const batteryCommand: BatteryCommand = {
   type: "BATTERY_COMMAND",
   battery: 1,
 };
-const BURST_COMMAND: BurstCommand = {
+
+/** バーストコマンド */
+const burstCommand: BurstCommand = {
   type: "BURST_COMMAND",
 };
-const PILOT_SKILL_COMMAND: PilotSkillCommand = {
+
+/** パイロットスキルコマンド */
+const pilotSkillCommand: PilotSkillCommand = {
   type: "PILOT_SKILL_COMMAND",
 };
 
 test("戦闘フローを正しく進めることができる", () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [DEFENDER, ATTACKER],
-    activePlayerId: ATTACKER.playerId,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
     {
-      playerId: ATTACKER.playerId,
-      command: BATTERY_COMMAND,
+      playerId: attacker.playerId,
+      command: batteryCommand,
     },
     {
-      playerId: DEFENDER.playerId,
-      command: BATTERY_COMMAND,
+      playerId: defender.playerId,
+      command: batteryCommand,
     },
   ];
   const result = progress(state, commands);
@@ -46,17 +55,17 @@ test("戦闘フローを正しく進めることができる", () => {
 test("効果適用フローを正しく進めることができる", () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
-    players: [DEFENDER, ATTACKER],
-    activePlayerId: ATTACKER.playerId,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
     {
-      playerId: ATTACKER.playerId,
-      command: BURST_COMMAND,
+      playerId: attacker.playerId,
+      command: burstCommand,
     },
     {
-      playerId: DEFENDER.playerId,
-      command: PILOT_SKILL_COMMAND,
+      playerId: defender.playerId,
+      command: pilotSkillCommand,
     },
   ];
   const result = progress(state, commands);

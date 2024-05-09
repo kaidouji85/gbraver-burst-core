@@ -46,8 +46,8 @@ exports[`効果適用フロー後のコマンド入力フェイズ効果が正�
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -75,8 +75,8 @@ exports[`効果適用フロー後のコマンド入力フェイズ効果が正�
       "armdozer": {
         "battery": 3,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -178,8 +178,8 @@ exports[`戦闘後のコマンド入力フェイズが正しく適用される: 
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -207,8 +207,8 @@ exports[`戦闘後のコマンド入力フェイズが正しく適用される: 
       "armdozer": {
         "battery": 3,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],

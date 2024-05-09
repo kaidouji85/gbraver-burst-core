@@ -17,8 +17,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -46,8 +46,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -99,8 +99,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -128,8 +128,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -179,8 +179,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -208,8 +208,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -258,8 +258,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -287,8 +287,8 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -344,8 +344,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -373,8 +373,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -416,8 +416,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -445,8 +445,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -487,8 +487,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -516,8 +516,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -554,8 +554,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -583,8 +583,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -621,8 +621,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -650,8 +650,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -749,8 +749,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -778,8 +778,8 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -825,8 +825,8 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -854,8 +854,8 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -897,8 +897,8 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -926,8 +926,8 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -967,8 +967,8 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -996,8 +996,8 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],

@@ -12,8 +12,8 @@ exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: 
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -41,8 +41,8 @@ exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: 
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -82,8 +82,8 @@ exports[`TurnStartBatteryCorrectがある場合、回復量が補正される: t
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -111,8 +111,8 @@ exports[`TurnStartBatteryCorrectがある場合、回復量が補正される: t
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -152,8 +152,8 @@ exports[`ターン交代が正しく処理できる: has-no-effects 1`] = `
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -181,8 +181,8 @@ exports[`ターン交代が正しく処理できる: has-no-effects 1`] = `
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],

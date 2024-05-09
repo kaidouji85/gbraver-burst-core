@@ -18,8 +18,8 @@ exports[`攻撃力バフが正しく適用される 1`] = `
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
-          "turnStartBatteryCorrect": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],

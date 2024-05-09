@@ -6,8 +6,8 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
     "activePlayerId": "attacker",
     "effect": {
       "burst": {
-        "recoverBattery": 0,
-        "turnStartBatteryCorrect": 0,
+        "recoverBattery": 5,
+        "turnStartBatteryCorrect": 1,
         "type": "RecoverBattery",
       },
       "burstPlayer": "attacker",
@@ -18,8 +18,8 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -47,13 +47,13 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
             {
-              "correctBattery": 0,
+              "correctBattery": 1,
               "period": {
                 "type": "SpecialPeriod",
               },
@@ -97,8 +97,8 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -126,13 +126,13 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
             {
-              "correctBattery": 0,
+              "correctBattery": 1,
               "period": {
                 "type": "SpecialPeriod",
               },
@@ -239,8 +239,8 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -268,13 +268,13 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
             {
-              "correctBattery": 0,
+              "correctBattery": 1,
               "period": {
                 "type": "SpecialPeriod",
               },
@@ -323,8 +323,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -352,8 +352,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -395,8 +395,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -424,8 +424,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -466,8 +466,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -495,8 +495,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -533,8 +533,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -562,8 +562,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -600,8 +600,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -629,8 +629,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -736,8 +736,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -765,8 +765,8 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],

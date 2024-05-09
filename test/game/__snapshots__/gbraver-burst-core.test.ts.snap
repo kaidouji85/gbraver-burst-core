@@ -12,8 +12,8 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -41,8 +41,8 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -152,8 +152,8 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -181,8 +181,8 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -228,8 +228,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -257,8 +257,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -299,8 +299,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -328,8 +328,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -369,8 +369,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -398,8 +398,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -436,8 +436,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -465,8 +465,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -503,8 +503,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -532,8 +532,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -635,8 +635,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -664,8 +664,8 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
-            "turnStartBatteryCorrect": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
