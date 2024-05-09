@@ -1,6 +1,7 @@
 import {
   ArmdozerEffect,
   BatteryRecoverSkip,
+  CorrectPower,
   EMPTY_ARMDOZER_STATE,
   EMPTY_PLAYER_STATE,
   PlayerState,
@@ -30,6 +31,15 @@ const createTurnStartBatteryCorrect = (
     type: "SpecialPeriod",
   },
 });
+
+/** その他 効果 */
+const otherEffect: CorrectPower = {
+  type: "CorrectPower",
+  power: 1000,
+  period: {
+    type: "SpecialPeriod",
+  },
+};
 
 /**
  * テスト用プレイヤーを生成する
@@ -84,7 +94,12 @@ test("TurnStartBatteryCorrectが適用されている、ターン開始時回復
 });
 
 test("TurnStartBatteryCorrectが複数適用されている場合、バッテリー補正はその合計値となる", () => {
-  const player = createPlayer(0, [createTurnStartBatteryCorrect(1), createTurnStartBatteryCorrect(1)]);
+  const player = createPlayer(0, [
+    createTurnStartBatteryCorrect(1),
+    otherEffect,
+    otherEffect,
+    createTurnStartBatteryCorrect(1),
+  ]);
   expect(calcRecoverBattery(player)).toEqual({
     battery: 5,
     recoverBattery: 5,
@@ -92,7 +107,10 @@ test("TurnStartBatteryCorrectが複数適用されている場合、バッテリ
 });
 
 test("BatteryRecoverSkip、TurnStartBatteryCorrectが同時適用されている場合、ターン開始時のバッテリー回復はなし", () => {
-  const player = createPlayer(1, [batteryRecoverSkip, createTurnStartBatteryCorrect(1)]);
+  const player = createPlayer(1, [
+    batteryRecoverSkip,
+    createTurnStartBatteryCorrect(1),
+  ]);
   expect(calcRecoverBattery(player)).toEqual({
     battery: 1,
     recoverBattery: 0,
