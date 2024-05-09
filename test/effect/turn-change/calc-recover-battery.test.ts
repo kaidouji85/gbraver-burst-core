@@ -18,7 +18,7 @@ const batteryRecoverSkip: BatteryRecoverSkip = {
 };
 
 /**
- * 効果 ターン開始時バッテリー回復量の補正 を生成する
+ * 効果 ターン開始時バッテリー回復量補正 を生成する
  * @param correctBattery バッテリー補正値
  * @returns 生成結果
  */

@@ -1,10 +1,11 @@
 import {
-  type ArmdozerEffect,
-  type BatteryRecoverSkip,
-  type ContinuousActivePlayer,
+  ArmdozerEffect,
+  BatteryRecoverSkip,
+  ContinuousActivePlayer,
   EMPTY_ARMDOZER_EFFECT,
-  type GameState,
-  type PlayerState,
+  GameState,
+  PlayerState,
+  TurnStartBatteryCorrect,
 } from "../../../src";
 import { continuousActive } from "../../../src/effect/continuous-active";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
@@ -22,6 +23,15 @@ const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
 /** 効果 ターン開始時バッテリー回復スキップ */
 const BATTERY_RECOVER_SKIP: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
+  period: {
+    type: "SpecialPeriod",
+  },
+};
+
+/** ターン開始時バッテリー回復量補正 */
+const TURN_START_BATTERY_CORRECT: TurnStartBatteryCorrect = {
+  type: "TurnStartBatteryCorrect",
+  correctBattery: 1,
   period: {
     type: "SpecialPeriod",
   },
@@ -70,8 +80,12 @@ test("アクティブプレイヤー継続が正しく処理できる", () => {
   expect(result).toMatchSnapshot("no-other-effects");
 });
 
-test("BatteryRecoverSkipは取り除かれる", () => {
-  const attacker = createAttacker(2, [CONTINUOUS_ACTIVE, BATTERY_RECOVER_SKIP]);
+test("BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる", () => {
+  const attacker = createAttacker(2, [
+    CONTINUOUS_ACTIVE,
+    BATTERY_RECOVER_SKIP,
+    TURN_START_BATTERY_CORRECT,
+  ]);
   const lastState: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],

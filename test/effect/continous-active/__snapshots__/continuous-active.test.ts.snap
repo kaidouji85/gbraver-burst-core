@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
+exports[`BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる: battery-recover-skip 1`] = `
 {
   "activePlayerId": "attacker",
   "effect": {

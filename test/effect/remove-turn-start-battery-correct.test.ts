@@ -1,7 +1,7 @@
 import { CorrectPower, TurnStartBatteryCorrect } from "../../src";
 import { removeTurnStartBatteryCorrect } from "../../src/effect/remove-turn-start-battery-correct";
 
-/** ターン開始時バッテリー回復量の補正  */
+/** ターン開始時バッテリー回復量補正  */
 const turnStartBatteryCorrect: TurnStartBatteryCorrect = {
   type: "TurnStartBatteryCorrect",
   correctBattery: 1,

@@ -9,7 +9,7 @@ import {
 export type RecoverBattery = BurstRecoverBattery &
   Readonly<{
     type: "RecoverBattery";
-    /** ターン開始時バッテリー回復量の補正 */
+    /** ターン開始時バッテリー回復量補正 */
     turnStartBatteryCorrect: number;
   }>;
 
