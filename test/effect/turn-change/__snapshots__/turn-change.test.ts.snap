@@ -70,6 +70,76 @@ exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: 
 }
 `;
 
+exports[`TurnStartBatteryCorrectがある場合、回復量が補正される: turn-start-battery-correct 1`] = `
+{
+  "activePlayerId": "defender",
+  "effect": {
+    "name": "TurnChange",
+    "recoverBattery": 4,
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "defender",
+    },
+    {
+      "armdozer": {
+        "battery": 2,
+        "burst": {
+          "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "attacker",
+    },
+  ],
+}
+`;
+
 exports[`ターン交代が正しく処理できる: has-no-effects 1`] = `
 {
   "activePlayerId": "defender",

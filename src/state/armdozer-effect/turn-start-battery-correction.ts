@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { EffectPeriod, EffectPeriodSchema } from "./effect-period";
 
-/** ターン開始時バッテリー回復量の補正 */
+/** ターン開始時バッテリー回復量補正 */
 export type TurnStartBatteryCorrect = {
   type: "TurnStartBatteryCorrect";
   /** バッテリー補正値 */
