@@ -22,7 +22,7 @@ const updateInvoker = (
       ...invoker.armdozer.effects,
       {
         type: "TurnStartBatteryCorrect",
-        correctBattery: 1,
+        correctBattery: burst.turnStartBatteryCorrect,
         period: {
           type: "SpecialPeriod",
         },

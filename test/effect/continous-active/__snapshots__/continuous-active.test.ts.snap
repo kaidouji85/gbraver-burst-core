@@ -13,6 +13,7 @@ exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
         "battery": 2,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -48,6 +49,7 @@ exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
         "battery": 2,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -103,6 +105,7 @@ exports[`アクティブプレイヤー継続が正しく処理できる: no-oth
         "battery": 2,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -138,6 +141,7 @@ exports[`アクティブプレイヤー継続が正しく処理できる: no-oth
         "battery": 2,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [

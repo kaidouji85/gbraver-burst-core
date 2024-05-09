@@ -18,6 +18,7 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
           "battery": 2,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -46,6 +47,7 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -88,6 +90,7 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
           "battery": 2,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -116,6 +119,7 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],

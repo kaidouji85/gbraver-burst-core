@@ -17,6 +17,7 @@ exports[`バッテリー回復スキルを正しく適用できる 1`] = `
         "battery": 5,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -45,6 +46,7 @@ exports[`バッテリー回復スキルを正しく適用できる 1`] = `
         "battery": 4,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [

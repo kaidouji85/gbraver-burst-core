@@ -19,6 +19,7 @@ exports[`電撃バリアバーストの適用が正しくできる 1`] = `
         "battery": 5,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],

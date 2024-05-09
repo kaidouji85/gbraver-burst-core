@@ -41,14 +41,15 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
   }
 
   const { recoverBattery, battery } = calcRecoverBattery(nextActivePlayer);
+  const updatedPlayers = players.map((p) =>
+    p.playerId === nextActivePlayer.playerId
+      ? updateNextActivePlayer(p, battery)
+      : p,
+  );
   return {
     ...lastState,
     activePlayerId: nextActivePlayer.playerId,
-    players: players.map((p) =>
-      p.playerId === nextActivePlayer.playerId
-        ? updateNextActivePlayer(p, battery)
-        : p,
-    ),
+    players: updatedPlayers,
     effect: {
       name: "TurnChange",
       recoverBattery,

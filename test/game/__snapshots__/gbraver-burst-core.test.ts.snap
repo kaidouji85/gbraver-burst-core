@@ -13,6 +13,7 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -41,6 +42,7 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -151,6 +153,7 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -179,6 +182,7 @@ exports[`初期状態を正しく作ることができる: initial-state 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -225,6 +229,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 2,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -253,6 +258,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -294,6 +300,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 2,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -322,6 +329,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -362,6 +370,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 2,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -390,6 +399,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -427,6 +437,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 2,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -455,6 +466,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -492,6 +504,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -520,6 +533,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -622,6 +636,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -650,6 +665,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],

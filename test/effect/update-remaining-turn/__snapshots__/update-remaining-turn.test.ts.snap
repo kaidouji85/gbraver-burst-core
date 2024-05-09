@@ -34,6 +34,7 @@ exports[`効果継続ターン更新が正しく処理される 1`] = `
         "battery": 5,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -76,6 +77,7 @@ exports[`効果継続ターン更新が正しく処理される 1`] = `
         "battery": 5,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [

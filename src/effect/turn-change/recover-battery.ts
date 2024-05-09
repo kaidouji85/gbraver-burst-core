@@ -29,7 +29,7 @@ const batteryRecoverSkip = (player: PlayerState) => ({
 const turnStartRecoverBattery = (player: PlayerState) => {
   const correct = player.armdozer.effects
     .map((e) => (e.type === "TurnStartBatteryCorrect" ? e.correctBattery : 0))
-    .reduce((total, v) => total + v);
+    .reduce((total, v) => total + v, 0);
   const recoverBattery = BASIC_BATTERY_RECOVER + correct;
   const battery = Math.min(
     player.armdozer.battery + recoverBattery,

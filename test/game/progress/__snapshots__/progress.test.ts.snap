@@ -7,6 +7,7 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
     "effect": {
       "burst": {
         "recoverBattery": 0,
+        "turnStartBatteryCorrect": 0,
         "type": "RecoverBattery",
       },
       "burstPlayer": "attacker",
@@ -18,6 +19,7 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -46,9 +48,18 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -87,6 +98,7 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -115,9 +127,18 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -219,6 +240,7 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -247,9 +269,18 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -293,6 +324,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -321,6 +353,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -363,6 +396,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -391,6 +425,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -432,6 +467,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -460,6 +496,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -497,6 +534,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -525,6 +563,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -562,6 +601,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -590,6 +630,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -696,6 +737,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -724,6 +766,7 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],

@@ -14,6 +14,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -49,6 +50,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -86,6 +88,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -114,6 +117,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -216,6 +220,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
           "battery": 3,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -244,6 +249,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -286,6 +292,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
           "battery": 1,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -314,6 +321,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -351,6 +359,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -379,6 +388,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -485,6 +495,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
           "battery": 4,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -513,6 +524,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],

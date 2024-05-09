@@ -17,6 +17,7 @@ exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -45,6 +46,7 @@ exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -100,6 +102,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -128,6 +131,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -196,6 +200,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -224,6 +229,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -292,6 +298,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -320,6 +327,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [

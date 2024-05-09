@@ -47,6 +47,7 @@ exports[`効果適用フロー後のコマンド入力フェイズ効果が正�
         "battery": 2,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -75,6 +76,7 @@ exports[`効果適用フロー後のコマンド入力フェイズ効果が正�
         "battery": 3,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -177,6 +179,7 @@ exports[`戦闘後のコマンド入力フェイズが正しく適用される: 
         "battery": 5,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -205,6 +208,7 @@ exports[`戦闘後のコマンド入力フェイズが正しく適用される: 
         "battery": 3,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],

@@ -7,6 +7,7 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
     "effect": {
       "burst": {
         "recoverBattery": 0,
+        "turnStartBatteryCorrect": 0,
         "type": "RecoverBattery",
       },
       "burstPlayer": "attacker",
@@ -18,6 +19,7 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -46,9 +48,18 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -125,6 +136,7 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -153,9 +165,18 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -188,6 +209,7 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
     "effect": {
       "burst": {
         "recoverBattery": 0,
+        "turnStartBatteryCorrect": 0,
         "type": "RecoverBattery",
       },
       "burstPlayer": "attacker",
@@ -199,6 +221,7 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -227,9 +250,18 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -268,6 +300,7 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -296,9 +329,18 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -400,6 +442,7 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -428,9 +471,18 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
           "battery": 5,
           "burst": {
             "recoverBattery": 0,
+            "turnStartBatteryCorrect": 0,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 0,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",

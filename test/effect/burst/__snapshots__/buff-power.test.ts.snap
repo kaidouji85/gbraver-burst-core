@@ -19,6 +19,7 @@ exports[`攻撃力バフが正しく適用される 1`] = `
         "battery": 5,
         "burst": {
           "recoverBattery": 0,
+          "turnStartBatteryCorrect": 0,
           "type": "RecoverBattery",
         },
         "effects": [],
