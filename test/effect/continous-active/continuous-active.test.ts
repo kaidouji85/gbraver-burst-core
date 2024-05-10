@@ -77,7 +77,7 @@ test("アクティブプレイヤー継続が正しく処理できる", () => {
     activePlayerId: attacker.playerId,
   };
   const result = continuousActive(lastState);
-  expect(result).toMatchSnapshot("no-other-effects");
+  expect(result).toMatchSnapshot();
 });
 
 test("BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる", () => {
@@ -92,5 +92,5 @@ test("BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる", () => 
     activePlayerId: attacker.playerId,
   };
   const result = continuousActive(lastState);
-  expect(result).toMatchSnapshot("battery-recover-skip");
+  expect(result).toMatchSnapshot();
 });
