@@ -18,7 +18,8 @@ exports[`電撃バリアバーストの適用が正しくできる 1`] = `
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],

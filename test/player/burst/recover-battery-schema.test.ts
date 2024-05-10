@@ -4,6 +4,7 @@ import { RecoverBattery, RecoverBatterySchema } from "../../../src";
 const recoverBattery: RecoverBattery = {
   type: "RecoverBattery",
   recoverBattery: 5,
+  turnStartBatteryCorrect: 1,
 };
 
 test("RecoverBatteryはパースできる", () => {
@@ -20,6 +21,7 @@ test("RecoverBattery以外はnullを返す", () => {
   const data = {
     type: "Battery",
     recover: 5,
+    turnStartBattery: 1,
   };
   expect(() => RecoverBatterySchema.parse(data)).toThrow();
 });

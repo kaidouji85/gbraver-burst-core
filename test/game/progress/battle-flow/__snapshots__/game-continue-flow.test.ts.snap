@@ -13,7 +13,8 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [
@@ -48,7 +49,8 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -85,7 +87,8 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -113,7 +116,8 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -215,7 +219,8 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -243,7 +248,8 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -285,7 +291,8 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
         "armdozer": {
           "battery": 1,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -313,7 +320,8 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -350,7 +358,8 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -378,7 +387,8 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -484,7 +494,8 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
         "armdozer": {
           "battery": 4,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -512,7 +523,8 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],

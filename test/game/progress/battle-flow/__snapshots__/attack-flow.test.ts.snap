@@ -17,7 +17,8 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -45,7 +46,8 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -87,7 +89,8 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
         "armdozer": {
           "battery": 2,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -115,7 +118,8 @@ exports[`バッテリー宣言から攻撃までを正しく進めることが�
         "armdozer": {
           "battery": 3,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],

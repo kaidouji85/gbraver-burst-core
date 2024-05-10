@@ -16,7 +16,8 @@ exports[`連続攻撃バーストが正しく適用できる 1`] = `
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],

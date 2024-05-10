@@ -5,6 +5,7 @@ const bursts: Burst[] = [
   {
     type: "RecoverBattery",
     recoverBattery: 5,
+    turnStartBatteryCorrect: 1,
   },
   {
     type: "BuffPower",

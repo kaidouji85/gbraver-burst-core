@@ -6,7 +6,8 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
     "activePlayerId": "attacker",
     "effect": {
       "burst": {
-        "recoverBattery": 0,
+        "recoverBattery": 5,
+        "turnStartBatteryCorrect": 1,
         "type": "RecoverBattery",
       },
       "burstPlayer": "attacker",
@@ -17,7 +18,8 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -45,10 +47,19 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 1,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -124,7 +135,8 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -152,10 +164,19 @@ exports[`一人だけ効果適用する場合でも正しく処理される: one
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 1,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -187,7 +208,8 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
     "activePlayerId": "attacker",
     "effect": {
       "burst": {
-        "recoverBattery": 0,
+        "recoverBattery": 5,
+        "turnStartBatteryCorrect": 1,
         "type": "RecoverBattery",
       },
       "burstPlayer": "attacker",
@@ -198,7 +220,8 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -226,10 +249,19 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 1,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -267,7 +299,8 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -295,10 +328,19 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 1,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",
@@ -399,7 +441,8 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
           "effects": [],
@@ -427,10 +470,19 @@ exports[`二人とも効果適用する場合でも正しく処理される: two
         "armdozer": {
           "battery": 5,
           "burst": {
-            "recoverBattery": 0,
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
             "type": "RecoverBattery",
           },
-          "effects": [],
+          "effects": [
+            {
+              "correctBattery": 1,
+              "period": {
+                "type": "SpecialPeriod",
+              },
+              "type": "TurnStartBatteryCorrect",
+            },
+          ],
           "enableBurst": false,
           "hp": 3000,
           "id": "id",

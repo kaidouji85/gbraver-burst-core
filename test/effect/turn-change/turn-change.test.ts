@@ -1,13 +1,26 @@
-import { ArmdozerEffect, BatteryRecoverSkip } from "../../../src";
+import {
+  ArmdozerEffect,
+  BatteryRecoverSkip,
+  TurnStartBatteryCorrect,
+} from "../../../src";
 import { turnChange } from "../../../src/effect/turn-change";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import type { GameState } from "../../../src/state/game-state";
+import { GameState } from "../../../src/state/game-state";
 
 /** 効果 ターン開始時バッテリー回復スキップ */
 const batteryRecoverSkip: BatteryRecoverSkip = {
   type: "BatteryRecoverSkip",
+  period: {
+    type: "SpecialPeriod",
+  },
+};
+
+/** 効果 ターン開始時バッテリー回復量補正 */
+const turnStartBatteryCorrect: TurnStartBatteryCorrect = {
+  type: "TurnStartBatteryCorrect",
+  correctBattery: 1,
   period: {
     type: "SpecialPeriod",
   },
@@ -62,4 +75,15 @@ test("BatteryRecoverSkipがある場合は、バッテリー回復しない", ()
   };
   const result = turnChange(lastState);
   expect(result).toMatchSnapshot("battery-recover-skip");
+});
+
+test("TurnStartBatteryCorrectがある場合、回復量が補正される", () => {
+  const defender = createDefender(2, [turnStartBatteryCorrect]);
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
+  };
+  const result = turnChange(lastState);
+  expect(result).toMatchSnapshot("turn-start-battery-correct");
 });

@@ -12,5 +12,6 @@ export const ShinBraver: Armdozer = {
   burst: {
     type: "RecoverBattery",
     recoverBattery: 5,
+    turnStartBatteryCorrect: 1,
   },
 };
