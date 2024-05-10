@@ -5,7 +5,7 @@ import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import type { PlayerState } from "../../../src/state/player-state";
 
-test("削除 バースト効果バッテリー回復が正しく適用される", () => {
+test("バースト効果バッテリー回復が正しく適用される", () => {
   const burstPlayer: PlayerState = {
     ...EMPTY_PLAYER_STATE,
     playerId: "player01",
@@ -17,6 +17,7 @@ test("削除 バースト効果バッテリー回復が正しく適用される"
       burst: {
         type: "RecoverBattery",
         recoverBattery: 5,
+        turnStartBatteryCorrect: 1,
       },
     },
   };

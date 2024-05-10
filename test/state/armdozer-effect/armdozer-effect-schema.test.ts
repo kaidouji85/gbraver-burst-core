@@ -60,6 +60,14 @@ const armdozerEffects: ArmdozerEffect[] = [
       type: "SpecialPeriod",
     },
   },
+  {
+    type: "TurnStartBatteryCorrect",
+    correctBattery: 1,
+    period: {
+      type: "TurnLimit",
+      remainingTurn: 1,
+    },
+  },
 ];
 
 test("ArmdozerEffectはパースできる", () => {

@@ -1,8 +1,9 @@
 import * as R from "ramda";
 
-import type { GameState, GameStateX } from "../../state/game-state";
+import { GameState, GameStateX } from "../../state/game-state";
 import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
-import type { TurnChange } from "../turn-change/turn-change";
+import { removeTurnStartBatteryCorrect } from "../remove-turn-start-battery-correct";
+import { TurnChange } from "../turn-change/turn-change";
 import { hasContinuousActive } from "./has-continuous-active";
 import { removeContinuousActive } from "./remove-continuous-active";
 
@@ -45,6 +46,7 @@ export function continuousActive(state: GameState): GameStateX<TurnChange> {
       effects: R.pipe(
         removeContinuousActive,
         removeBatteryRecoverSkip,
+        removeTurnStartBatteryCorrect,
       )(activePlayer.armdozer.effects),
     },
   };

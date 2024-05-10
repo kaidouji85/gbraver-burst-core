@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
+exports[`BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる 1`] = `
 {
   "activePlayerId": "attacker",
   "effect": {
@@ -12,7 +12,8 @@ exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -47,7 +48,8 @@ exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -90,7 +92,7 @@ exports[`BatteryRecoverSkipは取り除かれる: battery-recover-skip 1`] = `
 }
 `;
 
-exports[`アクティブプレイヤー継続が正しく処理できる: no-other-effects 1`] = `
+exports[`アクティブプレイヤー継続が正しく処理できる 1`] = `
 {
   "activePlayerId": "attacker",
   "effect": {
@@ -102,7 +104,8 @@ exports[`アクティブプレイヤー継続が正しく処理できる: no-oth
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [
@@ -137,7 +140,8 @@ exports[`アクティブプレイヤー継続が正しく処理できる: no-oth
       "armdozer": {
         "battery": 2,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [

@@ -7,5 +7,6 @@ export const validBurstEffect: BurstEffect = {
   burst: {
     type: "RecoverBattery",
     recoverBattery: 5,
+    turnStartBatteryCorrect: 1,
   },
 };

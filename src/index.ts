@@ -218,6 +218,10 @@ export {
   TurnLimitEffectSchema,
 } from "./state/armdozer-effect/turn-limit-effect";
 export {
+  TurnStartBatteryCorrect,
+  TurnStartBatteryCorrectSchema,
+} from "./state/armdozer-effect/turn-start-battery-correction";
+export {
   ArmdozerState,
   ArmdozerStateSchema,
   ArmdozerStateX,

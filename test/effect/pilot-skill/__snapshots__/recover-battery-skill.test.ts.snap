@@ -16,7 +16,8 @@ exports[`バッテリー回復スキルを正しく適用できる 1`] = `
       "armdozer": {
         "battery": 5,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [],
@@ -44,7 +45,8 @@ exports[`バッテリー回復スキルを正しく適用できる 1`] = `
       "armdozer": {
         "battery": 4,
         "burst": {
-          "recoverBattery": 0,
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
           "type": "RecoverBattery",
         },
         "effects": [
