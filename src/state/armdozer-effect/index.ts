@@ -23,7 +23,10 @@ import {
   HalveCorrectPowerSchema,
 } from "./halve-correct-power";
 import { TryReflect, TryReflectSchema } from "./try-reflect";
-import { TurnStartBatteryCorrect } from "./turn-start-battery-correction";
+import {
+  TurnStartBatteryCorrect,
+  TurnStartBatteryCorrectSchema,
+} from "./turn-start-battery-correction";
 
 /**
  * アームドーザに適用される効果
@@ -50,4 +53,5 @@ export const ArmdozerEffectSchema = z.union([
   BatteryCorrectionSchema,
   DamageHalvedSchema,
   BatteryRecoverSkipSchema,
+  TurnStartBatteryCorrectSchema,
 ]);
