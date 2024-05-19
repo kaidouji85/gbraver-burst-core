@@ -12,7 +12,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(PlayerSchema.parse(data)).toEqual(origin);
 });
 
-test("Player以外はnullを返す", () => {
+test("Player以外は例外を投げる", () => {
   const data = {
     id: "player",
     armdozer: {

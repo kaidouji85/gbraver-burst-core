@@ -18,7 +18,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(DamageHalvedSkillSchema.parse(data)).toEqual(damageHalvedSkill);
 });
 
-test("DamageHalvedSkill以外はnullを返す", () => {
+test("DamageHalvedSkill以外は例外を投げる", () => {
   const data = {
     type: "DamageHalved",
     effectDuration: 1,

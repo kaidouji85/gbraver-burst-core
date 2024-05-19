@@ -18,7 +18,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(ContinuousAttackSchema.parse(data)).toEqual(continuousAttack);
 });
 
-test("ContinuousAttack以外はnullを返す", () => {
+test("ContinuousAttack以外は例外を投げる", () => {
   const data = {
     type: "Continuous",
     recover: 3,

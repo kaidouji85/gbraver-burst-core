@@ -40,7 +40,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   });
 });
 
-test("PilotSkill以外はnullを返す", () => {
+test("PilotSkill以外は例外を投げる", () => {
   const data = {
     type: "RecoverBattery",
     recover: 5,
