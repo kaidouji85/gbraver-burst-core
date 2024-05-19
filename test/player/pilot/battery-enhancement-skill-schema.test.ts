@@ -24,7 +24,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   );
 });
 
-test("BatteryEnhancementSkill以外はnullを返す", () => {
+test("BatteryEnhancementSkill以外は例外を投げる", () => {
   const data = {
     type: "BatteryEnhancement",
     enhancement: 1,

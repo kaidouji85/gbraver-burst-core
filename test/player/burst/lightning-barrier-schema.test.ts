@@ -20,7 +20,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(LightningBarrierSchema.parse(data)).toEqual(lightningBarrier);
 });
 
-test("LightningBarrier以外はnullを返す", () => {
+test("LightningBarrier以外は例外を投げる", () => {
   const data = {
     type: "Barrier",
     reflectedDamage: 2000,

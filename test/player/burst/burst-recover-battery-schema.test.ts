@@ -20,7 +20,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(BurstRecoverBatterySchema.parse(data)).toEqual(burstRecoverBattery);
 });
 
-test("BurstRecoverBattery以外はnullを返す", () => {
+test("BurstRecoverBattery以外は例外を投げる", () => {
   const data = {
     recover: 3,
   };

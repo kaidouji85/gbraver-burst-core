@@ -12,7 +12,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(PilotIdSchema.parse(data)).toBe(origin);
 });
 
-test("PilotId以外はnullを返す", () => {
+test("PilotId以外は例外を投げる", () => {
   const data = 1000;
   expect(() => PilotIdSchema.parse(data)).toThrow();
 });

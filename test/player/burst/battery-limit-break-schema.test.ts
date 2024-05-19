@@ -19,7 +19,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(BatteryLimitBreakSchema.parse(data)).toEqual(batteryLimitBreak);
 });
 
-test("BatteryLimitBreak以外はnullを返す", () => {
+test("BatteryLimitBreak以外は例外を投げる", () => {
   const data = {
     type: "LimitBreak",
     recover: 8,

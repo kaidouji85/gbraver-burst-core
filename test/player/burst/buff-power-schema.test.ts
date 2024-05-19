@@ -18,7 +18,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(BuffPowerSchema.parse(data)).toEqual(buffPower);
 });
 
-test("BuffPower以外はnullを返す", () => {
+test("BuffPower以外は例外を投げる", () => {
   const data = {
     type: "Buff",
     power: 1000,
