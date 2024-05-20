@@ -1,8 +1,9 @@
-import type { PlayerState } from "../../../src";
+import { PlayerState } from "../../../src";
 import { canContinuousActive } from "../../../src/effect/continuous-active";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 
+/** 連続攻撃を持つプレイヤー */
 const continuousActivePlayer: PlayerState = {
   ...EMPTY_PLAYER_STATE,
   playerId: "isContinuousActivePlayer",
@@ -18,10 +19,14 @@ const continuousActivePlayer: PlayerState = {
     ],
   },
 };
+
+/** 連続攻撃を持たないプレイヤー */
 const noContinuousActivePlayer = {
   ...EMPTY_PLAYER_STATE,
   playerId: "noContinuousActivePlayer",
 };
+
+/** その他プレイヤー */
 const otherPlayer = { ...EMPTY_PLAYER_STATE, playerId: "otherPlayer" };
 
 test("攻撃側がアクティブプレイヤー継続を持つ場合、同効果は発動可能である", () => {

@@ -9,20 +9,15 @@ import { removeContinuousActive } from "./remove-continuous-active";
 
 /**
  * アクティブプレイヤー継続を実行できるか否かを判定する
- *
- * @param state ゲーム ステート
+ * @param state ゲームステート
  * @returns 判定結果、trueで実行できる
  */
 export function canContinuousActive(state: GameState): boolean {
-  const activePlayer = state.players.find(
-    (v) => v.playerId === state.activePlayerId,
-  );
-
-  if (!activePlayer) {
-    return false;
-  }
-
-  return hasContinuousActive(activePlayer.armdozer.effects);
+  const { activePlayerId, players } = state;
+  const activePlayer = players.find((p) => p.playerId === activePlayerId);
+  return activePlayer
+    ? hasContinuousActive(activePlayer.armdozer.effects)
+    : false;
 }
 
 /**
@@ -31,10 +26,8 @@ export function canContinuousActive(state: GameState): boolean {
  * @returns 更新結果、実行不可能な場合はnullを返す
  */
 export function continuousActive(state: GameState): GameStateX<TurnChange> {
-  const activePlayer = state.players.find(
-    (v) => v.playerId === state.activePlayerId,
-  );
-
+  const { players, activePlayerId } = state;
+  const activePlayer = players.find((p) => p.playerId === activePlayerId);
   if (!activePlayer) {
     throw new Error("not found active player");
   }
@@ -50,12 +43,12 @@ export function continuousActive(state: GameState): GameStateX<TurnChange> {
       )(activePlayer.armdozer.effects),
     },
   };
-  const updatedPlayers = state.players.map((v) =>
-    v.playerId === activePlayer.playerId ? updatedActivePlayer : v,
+  const updatedPlayers = players.map((p) =>
+    p.playerId === activePlayer.playerId ? updatedActivePlayer : p,
   );
   const effect: TurnChange = {
     name: "TurnChange",
     recoverBattery: 0,
   };
-  return { ...state, players: updatedPlayers, effect: effect };
+  return { ...state, players: updatedPlayers, effect };
 }
