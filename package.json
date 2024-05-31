@@ -16,6 +16,7 @@
     "@types/ramda": "^0.30.0",
     "codehawk-cli": "^10.1.0",
     "cross-env": "^7.0.3",
+    "dependency-cruiser": "^16.3.2",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^28.5.0",
     "eslint-plugin-simple-import-sort": "^12.1.0",
