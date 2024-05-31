@@ -3,7 +3,7 @@ module.exports = {
   forbidden: [
     {
       name: 'no-circular',
-      severity: 'warn',
+      severity: 'error',
       comment:
         'This dependency is part of a circular relationship. You might want to revise ' +
         'your solution (i.e. use dependency inversion, make sure the modules have a single responsibility) ',
@@ -20,7 +20,7 @@ module.exports = {
         "add an exception for it in your dependency-cruiser configuration. By default " +
         "this rule does not scrutinize dot-files (e.g. .eslintrc.js), TypeScript declaration " +
         "files (.d.ts), tsconfig.json and some of the babel and webpack configs.",
-      severity: 'warn',
+      severity: 'error',
       from: {
         orphan: true,
         pathNot: [
@@ -37,7 +37,7 @@ module.exports = {
       comment:
         'A module depends on a node core module that has been deprecated. Find an alternative - these are ' +
         "bound to exist - node doesn't deprecate lightly.",
-      severity: 'warn',
+      severity: 'error',
       from: {},
       to: {
         dependencyTypes: [
@@ -72,7 +72,7 @@ module.exports = {
       comment:
         'This module uses a (version of an) npm module that has been deprecated. Either upgrade to a later ' +
         'version of that module, or find an alternative. Deprecated modules are a security risk.',
-      severity: 'warn',
+      severity: 'error',
       from: {},
       to: {
         dependencyTypes: [
@@ -113,7 +113,7 @@ module.exports = {
         "Likely this module depends on an external ('npm') package that occurs more than once " +
         "in your package.json i.e. bot as a devDependencies and in dependencies. This will cause " +
         "maintenance problems later on.",
-      severity: 'warn',
+      severity: 'error',
       from: {},
       to: {
         moreThanOneDependencyType: true,
@@ -180,7 +180,7 @@ module.exports = {
     },
     {
       name: 'optional-deps-used',
-      severity: 'info',
+      severity: 'error',
       comment:
         "This module depends on an npm package that is declared as an optional dependency " +
         "in your package.json. As this makes sense in limited situations only, it's flagged here. " +
@@ -200,7 +200,7 @@ module.exports = {
         "in your package.json. This makes sense if your package is e.g. a plugin, but in " +
         "other cases - maybe not so much. If the use of a peer dependency is intentional " +
         "add an exception to your dependency-cruiser configuration.",
-      severity: 'warn',
+      severity: 'error',
       from: {},
       to: {
         dependencyTypes: [
