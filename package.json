@@ -14,7 +14,6 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/ramda": "^0.30.0",
-    "codehawk-cli": "^10.1.0",
     "cross-env": "^7.0.3",
     "dependency-cruiser": "^16.3.2",
     "eslint": "^8.57.0",
@@ -47,7 +46,6 @@
   "scripts": {
     "build": "run-s clean transpile",
     "clean": "rimraf lib",
-    "code-analysis": "codehawk src",
     "code-format": "run-s code-format:*",
     "code-format-check": "run-s code-format-check:*",
     "code-format-check:src": "prettier --check src",
