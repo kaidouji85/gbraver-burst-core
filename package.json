@@ -37,7 +37,7 @@
   "keywords": [
     "gbraver-burst"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/src/index.js",
   "repository": {
     "type": "git",
