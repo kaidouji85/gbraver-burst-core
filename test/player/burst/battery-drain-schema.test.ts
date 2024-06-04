@@ -17,7 +17,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(BatteryDrainSchema.parse(data)).toEqual(batteryDrain);
 });
 
-test("BatteryDrain以外はnullを返す", () => {
+test("BatteryDrain以外は例外を投げる", () => {
   const data = {
     type: "BatteryDrain",
     recover: 2,

@@ -27,9 +27,6 @@ npm run type-check
 # lint
 npm run lint
 
-# 静的コード解析
-npm run code-analysis
-
 # ライブラリ公開時の脆弱性チェック
 npm audit --omit=dev
 
@@ -38,3 +35,6 @@ npm audit --omit=dev
 # https://www.npmjs.com/package/fixpack
 fixpack
 ```
+
+## License
+MIT

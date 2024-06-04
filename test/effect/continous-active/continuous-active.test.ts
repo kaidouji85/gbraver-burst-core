@@ -3,14 +3,13 @@ import {
   BatteryRecoverSkip,
   ContinuousActivePlayer,
   EMPTY_ARMDOZER_EFFECT,
-  GameState,
+  EMPTY_ARMDOZER_STATE,
+  EMPTY_GAME_STATE,
+  EMPTY_PLAYER_STATE,
   PlayerState,
   TurnStartBatteryCorrect,
 } from "../../../src";
 import { continuousActive } from "../../../src/effect/continuous-active";
-import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
-import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
-import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 
 /** 効果 アクティブプレイヤー継続 */
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {
@@ -71,13 +70,13 @@ const defender: PlayerState = {
 
 test("アクティブプレイヤー継続が正しく処理できる", () => {
   const attacker = createAttacker(2, [CONTINUOUS_ACTIVE]);
-  const lastState: GameState = {
-    ...EMPTY_GAME_STATE,
-    players: [defender, attacker],
-    activePlayerId: attacker.playerId,
-  };
-  const result = continuousActive(lastState);
-  expect(result).toMatchSnapshot();
+  expect(
+    continuousActive({
+      ...EMPTY_GAME_STATE,
+      players: [defender, attacker],
+      activePlayerId: attacker.playerId,
+    }),
+  ).toMatchSnapshot();
 });
 
 test("BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる", () => {
@@ -86,11 +85,11 @@ test("BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる", () => 
     BATTERY_RECOVER_SKIP,
     TURN_START_BATTERY_CORRECT,
   ]);
-  const lastState: GameState = {
-    ...EMPTY_GAME_STATE,
-    players: [defender, attacker],
-    activePlayerId: attacker.playerId,
-  };
-  const result = continuousActive(lastState);
-  expect(result).toMatchSnapshot();
+  expect(
+    continuousActive({
+      ...EMPTY_GAME_STATE,
+      players: [defender, attacker],
+      activePlayerId: attacker.playerId,
+    }),
+  ).toMatchSnapshot();
 });

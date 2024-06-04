@@ -7,7 +7,6 @@ import { battleResult } from "./result/battle-result";
 
 /**
  * 戦闘を行う
- *
  * @param lastState 更新前の状態
  * @param attackerId 攻撃側プレイヤーID
  * @param attackerBattery 攻撃側バッテリー
@@ -22,9 +21,8 @@ export function battle(
   defenderId: PlayerId,
   defenderBattery: number,
 ): GameStateX<Battle> {
-  const attacker = lastState.players.find((v) => v.playerId === attackerId);
-  const defender = lastState.players.find((v) => v.playerId === defenderId);
-
+  const attacker = lastState.players.find((p) => p.playerId === attackerId);
+  const defender = lastState.players.find((p) => p.playerId === defenderId);
   if (!attacker || !defender) {
     throw new Error("not found attacker or defender");
   }
@@ -36,8 +34,8 @@ export function battle(
     defenderBattery,
   );
   const updatedDefender = updateDefender(result, defender);
-  const updatedPlayers = lastState.players.map((v) =>
-    v.playerId === updatedDefender.playerId ? updatedDefender : v,
+  const updatedPlayers = lastState.players.map((p) =>
+    p.playerId === updatedDefender.playerId ? updatedDefender : p,
   );
   const effect: Battle = {
     name: "Battle",
@@ -45,5 +43,5 @@ export function battle(
     isDeath: isPlayerDeath(updatedDefender),
     result: result,
   };
-  return { ...lastState, players: updatedPlayers, effect: effect };
+  return { ...lastState, players: updatedPlayers, effect };
 }
