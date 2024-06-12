@@ -3,7 +3,7 @@ import { ArmdozerState } from "../../state/armdozer-state";
 import { PlayerState } from "../../state/player-state";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
-import { burstRecoverBattery } from "./burst-recover-battery";
+import { getRecoverBattery } from "../get-recover-battery";
 
 /**
  * バースト発動者のステートを更新する
@@ -23,7 +23,7 @@ function updateInvoker(
     ...invoker,
     armdozer: {
       ...updatedArmdozer,
-      battery: burstRecoverBattery(updatedArmdozer, burst),
+      battery: getRecoverBattery(invoker, burst.recoverBattery),
     },
   };
 }
