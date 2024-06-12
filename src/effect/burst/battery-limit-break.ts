@@ -23,7 +23,10 @@ function updateInvoker(
     ...invoker,
     armdozer: {
       ...updatedArmdozer,
-      battery: getRecoverBattery(invoker, burst.recoverBattery),
+      battery: getRecoverBattery(
+        { ...invoker, armdozer: updatedArmdozer },
+        burst.recoverBattery,
+      ),
     },
   };
 }
