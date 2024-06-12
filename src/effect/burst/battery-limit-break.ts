@@ -1,9 +1,9 @@
 import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import { ArmdozerState } from "../../state/armdozer-state";
 import { PlayerState } from "../../state/player-state";
+import { getRecoverBattery } from "../get-recover-battery";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
-import { getRecoverBattery } from "../get-recover-battery";
 
 /**
  * バースト発動者のステートを更新する
