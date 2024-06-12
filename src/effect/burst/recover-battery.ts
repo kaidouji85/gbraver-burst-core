@@ -1,8 +1,8 @@
 import { RecoverBattery } from "../../player/burst/recover-battery";
 import { PlayerState } from "../../state/player-state";
+import { getRecoverBattery } from "../get-recover-battery";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
-import { burstRecoverBattery } from "./burst-recover-battery";
 
 /**
  * バースト発動者のステートを更新する
@@ -17,7 +17,7 @@ const updateInvoker = (
   ...invoker,
   armdozer: {
     ...invoker.armdozer,
-    battery: burstRecoverBattery(invoker.armdozer, burst),
+    battery: getRecoverBattery(invoker, burst.recoverBattery),
     effects: [
       ...invoker.armdozer.effects,
       {

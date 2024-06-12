@@ -1,21 +1,8 @@
 import { RecoverBatterySkill } from "../../player/pilot/recover-battery-skill";
-import { ArmdozerState } from "../../state/armdozer-state";
 import { PlayerState } from "../../state/player-state";
+import { getRecoverBattery } from "../get-recover-battery";
 import { PilotSkillInvokeParams } from "./pilot-skill-invoke-params";
 import { PilotSkillInvokeResult } from "./pilot-skill-invoke-result";
-
-/**
- * 回復後のバッテリーを計算する
- * @param armdozer アームドーザステート
- * @param skill スキル内容
- * @returns 回復後のバッテリー
- */
-export function calcRecoverBattery(
-  armdozer: ArmdozerState,
-  skill: RecoverBatterySkill,
-): number {
-  return Math.min(armdozer.battery + skill.recoverBattery, armdozer.maxBattery);
-}
 
 /**
  * パイロットスキル発動者のステートを更新する
@@ -30,7 +17,7 @@ const updateInvoker = (
   ...invoker,
   armdozer: {
     ...invoker.armdozer,
-    battery: calcRecoverBattery(invoker.armdozer, skill),
+    battery: getRecoverBattery(invoker, skill.recoverBattery),
   },
 });
 
