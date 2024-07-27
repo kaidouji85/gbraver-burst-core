@@ -15,7 +15,7 @@
     "@types/jest": "^29.5.12",
     "@types/ramda": "^0.30.1",
     "cross-env": "^7.0.3",
-    "dependency-cruiser": "^16.3.9",
+    "dependency-cruiser": "^16.3.10",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
@@ -24,8 +24,8 @@
     "prettier": "3.3.3",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.3",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^7.16.1"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.17.0"
   },
   "engines": {
     "node": "20.x"
