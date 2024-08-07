@@ -4,7 +4,7 @@ import { GameState, GameStateX } from "../../state/game-state";
 import { PlayerState } from "../../state/player-state";
 import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
 import { removeTurnStartBatteryCorrect } from "../remove-turn-start-battery-correct";
-import { calcRecoverBattery } from "./recover-battery";
+import { recoverBatteryOnTurnStart } from "./recover-battery-on-turn-start";
 import { TurnChange } from "./turn-change";
 
 /**
@@ -40,7 +40,8 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
     throw new Error("not found next active player");
   }
 
-  const { recoverBattery, battery } = calcRecoverBattery(nextActivePlayer);
+  const { recoverBattery, battery } =
+    recoverBatteryOnTurnStart(nextActivePlayer);
   const updatedPlayers = players.map((p) =>
     p.playerId === nextActivePlayer.playerId
       ? updateNextActivePlayer(p, battery)
