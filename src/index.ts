@@ -66,6 +66,7 @@ export {
   RightItselfSchema,
 } from "./effect/right-itself/right-itself";
 export { StartGame, StartGameSchema } from "./effect/start-game/start-game";
+export { recoverBatteryOnTurnStart } from "./effect/turn-change/recover-battery-on-turn-start";
 export { TurnChange, TurnChangeSchema } from "./effect/turn-change/turn-change";
 export {
   EndArmdozerEffect,

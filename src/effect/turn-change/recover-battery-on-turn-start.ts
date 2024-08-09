@@ -13,21 +13,21 @@ type RecoverBatteryResult = {
 };
 
 /**
- * バッテリー回復スキップ
+ * バッテリー回復スキップ時の処理
  * @param player プレイヤーステート
  * @return 計算結果
  */
-const batteryRecoverSkip = (player: PlayerState) => ({
+const onBatteryRecoverSkip = (player: PlayerState) => ({
   recoverBattery: 0,
   battery: player.armdozer.battery,
 });
 
 /**
- * ターン開始時のバッテリー回復
+ * バッテリー回復時の処理
  * @param player プレイヤーステート
  * @return 計算結果
  */
-const turnStartRecoverBattery = (player: PlayerState) => {
+const onBatteryRecover = (player: PlayerState) => {
   const correct = player.armdozer.effects
     .map((e) => (e.type === "TurnStartBatteryCorrect" ? e.correctBattery : 0))
     .reduce((total, v) => total + v, 0);
@@ -41,13 +41,15 @@ const turnStartRecoverBattery = (player: PlayerState) => {
  * @param player プレイヤーステート
  * @returns 計算結果
  */
-export function calcRecoverBattery(player: PlayerState): RecoverBatteryResult {
+export function recoverBatteryOnTurnStart(
+  player: PlayerState,
+): RecoverBatteryResult {
   const hasBatteryRecoverSkip = player.armdozer.effects.some(
     (e) => e.type === "BatteryRecoverSkip",
   );
   if (hasBatteryRecoverSkip) {
-    return batteryRecoverSkip(player);
+    return onBatteryRecoverSkip(player);
   }
 
-  return turnStartRecoverBattery(player);
+  return onBatteryRecover(player);
 }
