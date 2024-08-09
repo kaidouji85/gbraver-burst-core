@@ -7,7 +7,7 @@ import {
   PlayerState,
   TurnStartBatteryCorrect,
 } from "../../../src";
-import { calcRecoverBattery } from "../../../src/effect/turn-change/recover-battery";
+import { recoverBatteryOnTurnStart } from "../../../src/effect/turn-change/recover-battery-on-turn-start";
 
 /** 効果 ターン開始時のバッテリー回復をスキップ */
 const batteryRecoverSkip: BatteryRecoverSkip = {
@@ -63,7 +63,7 @@ const createPlayer = (
 
 test("ターン開始時にバッテリーが3回復する", () => {
   const player = createPlayer(1, []);
-  expect(calcRecoverBattery(player)).toEqual({
+  expect(recoverBatteryOnTurnStart(player)).toEqual({
     battery: 4,
     recoverBattery: 3,
   });
@@ -71,7 +71,7 @@ test("ターン開始時にバッテリーが3回復する", () => {
 
 test("バッテリー最大値以上にはならない", () => {
   const player = createPlayer(4, []);
-  expect(calcRecoverBattery(player)).toEqual({
+  expect(recoverBatteryOnTurnStart(player)).toEqual({
     battery: 5,
     recoverBattery: 3,
   });
@@ -79,7 +79,7 @@ test("バッテリー最大値以上にはならない", () => {
 
 test("BatteryRecoverSkipが適用されている場合、ターン開始時のバッテリー回復はなし", () => {
   const player = createPlayer(1, [batteryRecoverSkip]);
-  expect(calcRecoverBattery(player)).toEqual({
+  expect(recoverBatteryOnTurnStart(player)).toEqual({
     battery: 1,
     recoverBattery: 0,
   });
@@ -87,7 +87,7 @@ test("BatteryRecoverSkipが適用されている場合、ターン開始時の�
 
 test("TurnStartBatteryCorrectが適用されている、ターン開始時回復バッテリーが補正される", () => {
   const player = createPlayer(1, [createTurnStartBatteryCorrect(1)]);
-  expect(calcRecoverBattery(player)).toEqual({
+  expect(recoverBatteryOnTurnStart(player)).toEqual({
     battery: 5,
     recoverBattery: 4,
   });
@@ -100,7 +100,7 @@ test("TurnStartBatteryCorrectが複数適用されている場合、バッテリ
     otherEffect,
     createTurnStartBatteryCorrect(1),
   ]);
-  expect(calcRecoverBattery(player)).toEqual({
+  expect(recoverBatteryOnTurnStart(player)).toEqual({
     battery: 5,
     recoverBattery: 5,
   });
@@ -111,7 +111,7 @@ test("BatteryRecoverSkip、TurnStartBatteryCorrectが同時適用されている
     batteryRecoverSkip,
     createTurnStartBatteryCorrect(1),
   ]);
-  expect(calcRecoverBattery(player)).toEqual({
+  expect(recoverBatteryOnTurnStart(player)).toEqual({
     battery: 1,
     recoverBattery: 0,
   });
