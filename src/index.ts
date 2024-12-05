@@ -127,6 +127,10 @@ export {
   ContinuousAttackSchema,
 } from "./player/burst/continuous-attack";
 export {
+  ForceTurnEnd,
+  ForceTurnEndSchema,
+} from "./player/burst/force-turn-end";
+export {
   LightningBarrier,
   LightningBarrierSchema,
 } from "./player/burst/lightning-barrier";
