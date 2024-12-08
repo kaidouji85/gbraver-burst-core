@@ -2,38 +2,7 @@ import { inputCommand } from "../../../effect/input-command";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
 import { startGameFlow } from "../../game-flow";
-import { activateEffectOrNot } from "./activate-effect-or-not";
-import { updateRemainingTurn } from "../../../effect/update-remaining-turn";
-
-type PlayerEffectActivationFlowResult = {
-  stateHistory: GameState[];
-  shouldNextEffectActivationSkip: boolean;
-};
-
-function playereffectActivationFlow(
-  lastState: GameState,
-  command: PlayerCommand,
-): PlayerEffectActivationFlowResult {
-  const done = activateEffectOrNot(lastState, command);
-  if (!done) {
-    return { stateHistory: [], shouldNextEffectActivationSkip: false };
-  }
-
-  const isForceTurnEndActivated =
-    done.effect.name === "BurstEffect" &&
-    done.effect.burst.type === "ForceTurnEnd";
-  if (isForceTurnEndActivated) {
-    const postForceTurnEnd = startGameFlow(done, [
-      (state) => [updateRemainingTurn(state)],
-    ]);
-    return {
-      stateHistory: [done, ...postForceTurnEnd],
-      shouldNextEffectActivationSkip: true,
-    };
-  }
-
-  return { stateHistory: [done], shouldNextEffectActivationSkip: false };
-}
+import { playerEffectActivationFlow } from "./player-effect-activation-flow";
 
 /**
  * 効果発動フロー
@@ -58,12 +27,18 @@ export function effectActivationFlow(
 
   return startGameFlow(lastState, [
     (state) => {
-      const done = activateEffectOrNot(state, attackerCommand);
-      return done ? [done] : [];
-    },
-    (state) => {
-      const done = activateEffectOrNot(state, defenderCommand);
-      return done ? [done] : [];
+      const attackerResult = playerEffectActivationFlow(state, attackerCommand);
+      if (attackerResult.shouldNextEffectActivationSkip) {
+        return attackerResult.stateHistory;
+      }
+
+      const stateAfterAttackerEffect =
+        attackerResult.stateHistory.at(-1) ?? state;
+      const defenderResult = playerEffectActivationFlow(
+        stateAfterAttackerEffect,
+        defenderCommand,
+      );
+      return [...attackerResult.stateHistory, ...defenderResult.stateHistory];
     },
     (state) => [
       inputCommand(
