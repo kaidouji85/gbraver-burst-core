@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`強制ターン終了バーストの適用が正しくできる 1`] = `
+{
+  "activePlayerId": "other",
+  "effect": {
+    "burst": {
+      "recoverBattery": 2,
+      "type": "ForceTurnEnd",
+    },
+    "burstPlayer": "burst",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "other",
+    },
+    {
+      "armdozer": {
+        "battery": 3,
+        "burst": {
+          "recoverBattery": 2,
+          "type": "ForceTurnEnd",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+        ],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burst",
+    },
+  ],
+}
+`;
