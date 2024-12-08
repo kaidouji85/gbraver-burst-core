@@ -583,13 +583,21 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
               "type": "BATTERY_COMMAND",
             },
             {
+              "battery": 4,
+              "type": "BATTERY_COMMAND",
+            },
+            {
+              "battery": 5,
+              "type": "BATTERY_COMMAND",
+            },
+            {
               "type": "BURST_COMMAND",
             },
             {
               "type": "PILOT_SKILL_COMMAND",
             },
           ],
-          "playerId": "player2",
+          "playerId": "player1",
           "selectable": true,
         },
         {
@@ -611,21 +619,13 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
               "type": "BATTERY_COMMAND",
             },
             {
-              "battery": 4,
-              "type": "BATTERY_COMMAND",
-            },
-            {
-              "battery": 5,
-              "type": "BATTERY_COMMAND",
-            },
-            {
               "type": "BURST_COMMAND",
             },
             {
               "type": "PILOT_SKILL_COMMAND",
             },
           ],
-          "playerId": "player1",
+          "playerId": "player2",
           "selectable": true,
         },
       ],

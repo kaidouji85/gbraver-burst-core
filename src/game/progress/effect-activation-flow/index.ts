@@ -41,13 +41,10 @@ export function effectActivationFlow(
       return [...attackerResult.stateHistory, ...defenderResult.stateHistory];
     },
     (state) => [
-      inputCommand(
-        state,
-        attackerCommand.playerId,
-        attackerCommand.command,
-        defenderCommand.playerId,
-        defenderCommand.command,
-      ),
+      inputCommand({
+        lastState: state,
+        noChoices: commands.filter((c) => c.command.type === "BATTERY_COMMAND"),
+      }),
     ],
   ]);
 }
