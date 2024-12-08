@@ -9,8 +9,8 @@ import { inputCommand } from "../../../effect/input-command";
 type PlayerEffectActivationFlowResult = {
   /** 更新されたステート */
   stateHistory: GameState[];
-  /** 次プレイヤーの効果発動をスキップするか、trueでスキップする */
-  shouldNextEffectActivationSkip: boolean;
+  /** 強制ターンエンドが発動したか、trueで発動した */
+  hasForceTurnEnd: boolean;
 };
 
 /**
@@ -25,7 +25,7 @@ export function playerEffectActivationFlow(
 ): PlayerEffectActivationFlowResult {
   const done = activateEffectOrNot(lastState, command);
   if (!done) {
-    return { stateHistory: [], shouldNextEffectActivationSkip: false };
+    return { stateHistory: [], hasForceTurnEnd: false };
   }
 
   const isForceTurnEndActivated =
@@ -38,9 +38,9 @@ export function playerEffectActivationFlow(
     ]);
     return {
       stateHistory: [done, ...postForceTurnEnd],
-      shouldNextEffectActivationSkip: true,
+      hasForceTurnEnd: true,
     };
   }
 
-  return { stateHistory: [done], shouldNextEffectActivationSkip: false };
+  return { stateHistory: [done], hasForceTurnEnd: false };
 }

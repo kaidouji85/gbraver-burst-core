@@ -1,7 +1,6 @@
 import { inputCommand } from "../../../effect/input-command";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
-import { startGameFlow } from "../../game-flow";
 import { playerEffectActivationFlow } from "./player-effect-activation-flow";
 
 /**
@@ -25,35 +24,43 @@ export function effectActivationFlow(
     throw new Error("not found attacker or defender command");
   }
 
-  return startGameFlow(lastState, [
-    (state) => {
-      const attackerResult = playerEffectActivationFlow(state, attackerCommand);
-      if (attackerResult.shouldNextEffectActivationSkip) {
-        return attackerResult.stateHistory;
+  const orderedCommands = [attackerCommand, defenderCommand];
+  const initial = { state: lastState, history: [], hasForceTurnEnd: false };
+  const stateActivatedEffect = orderedCommands.reduce(
+    (
+      ac: { state: GameState; history: GameState[]; hasForceTurnEnd: boolean },
+      command,
+    ) => {
+      if (ac.hasForceTurnEnd) {
+        return ac;
       }
 
-      const stateAfterAttackerEffect =
-        attackerResult.stateHistory.at(-1) ?? state;
-      const defenderResult = playerEffectActivationFlow(
-        stateAfterAttackerEffect,
-        defenderCommand,
-      );
-      if (defenderResult.shouldNextEffectActivationSkip) {
-        return [...attackerResult.stateHistory, ...defenderResult.stateHistory];
+      const result = playerEffectActivationFlow(ac.state, command);
+      if (result.hasForceTurnEnd) {
+        return {
+          state: result.stateHistory.at(-1) ?? ac.state,
+          history: [...ac.history, ...result.stateHistory],
+          hasForceTurnEnd: true,
+        };
       }
 
-      const stateAfterDefenderEffect =
-        defenderResult.stateHistory.at(-1) ?? stateAfterAttackerEffect;
-      return [
-        ...attackerResult.stateHistory,
-        ...defenderResult.stateHistory,
+      return {
+        state: result.stateHistory.at(-1) ?? ac.state,
+        history: [...ac.history, ...result.stateHistory],
+        hasForceTurnEnd: false,
+      };
+    },
+    initial,
+  );
+  return stateActivatedEffect.hasForceTurnEnd
+    ? stateActivatedEffect.history
+    : [
+        ...stateActivatedEffect.history,
         inputCommand({
-          lastState: stateAfterDefenderEffect,
+          lastState: stateActivatedEffect.state,
           noChoices: commands.filter(
             (c) => c.command.type === "BATTERY_COMMAND",
           ),
         }),
       ];
-    },
-  ]);
 }
