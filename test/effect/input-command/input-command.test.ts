@@ -1,4 +1,4 @@
-import { BatteryCommand, BurstCommand, PlayerId } from "../../../src";
+import { BurstCommand, PlayerId } from "../../../src";
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
@@ -26,16 +26,6 @@ const createPlayer = (
   },
 });
 
-/**
- * バッテリーコマンドを生成する
- * @param battery バッテリー
- * @returns 生成されたバッテリーコマンド
- */
-const createBatteryCommand = (battery: number): BatteryCommand => ({
-  type: "BATTERY_COMMAND",
-  battery,
-});
-
 /** バーストコマンド */
 const burstCommand: BurstCommand = {
   type: "BURST_COMMAND",
@@ -43,36 +33,25 @@ const burstCommand: BurstCommand = {
 
 test("戦闘後のコマンド入力フェイズが正しく適用される", () => {
   const player01 = createPlayer("player01", 5, true);
-  const player01Command = createBatteryCommand(3);
   const player02 = createPlayer("player02", 3, false);
-  const player02Command = createBatteryCommand(3);
   const lastState = { ...EMPTY_GAME_STATE, players: [player01, player02] };
 
-  expect(
-    inputCommand(
-      lastState,
-      player01.playerId,
-      player01Command,
-      player02.playerId,
-      player02Command,
-    ),
-  ).toMatchSnapshot("after-battle");
+  expect(inputCommand({ lastState })).toMatchSnapshot("after-battle");
 });
 
 test("効果適用フロー後のコマンド入力フェイズ効果が正しく処理される", () => {
   const player01 = createPlayer("player01", 2, true);
-  const player01Command = createBatteryCommand(3);
   const player02 = createPlayer("player02", 3, false);
-  const player02Command = burstCommand;
-  const lastState = { ...EMPTY_GAME_STATE, players: [player01, player02] };
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: player02.playerId,
+    players: [player01, player02],
+  };
 
   expect(
-    inputCommand(
+    inputCommand({
       lastState,
-      player01.playerId,
-      player01Command,
-      player02.playerId,
-      player02Command,
-    ),
+      attackerNoChoice: burstCommand,
+    }),
   ).toMatchSnapshot("after-effect-activation");
 });

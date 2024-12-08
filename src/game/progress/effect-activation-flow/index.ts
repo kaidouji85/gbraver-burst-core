@@ -35,13 +35,10 @@ export function effectActivationFlow(
       return done ? [done] : [];
     },
     (state) => [
-      inputCommand(
-        state,
-        attackerCommand.playerId,
-        attackerCommand.command,
-        defenderCommand.playerId,
-        defenderCommand.command,
-      ),
+      inputCommand({
+        // TODO バッテリーコマンドを選択した場合にnoChoiceに設定する処理をかく
+        lastState: state
+      }),
     ],
   ]);
 }
