@@ -120,6 +120,22 @@ test("攻撃側が強制ターン終了を発動した場合、防御側の効�
   expect(result).toMatchSnapshot();
 });
 
+test("攻撃側が強制ターン終了を発動した場合、防御側がバッテリーコマンドでも他のコマンドが選択できる", () => {
+  const attacker = createPlayer("attacker", FORCE_TURN_END);
+  const defender = createPlayer("defender");
+  const state: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
+  };
+  const commands: [PlayerCommand, PlayerCommand] = [
+    { playerId: attacker.playerId, command: BURST_COMMAND },
+    { playerId: defender.playerId, command: BATTERY_COMMAND },
+  ];
+  const result = effectActivationFlow(state, commands);
+  expect(result).toMatchSnapshot();
+});
+
 test("防御側が強制ターン終了を発動した場合、攻撃側の効果は発動されるが攻撃プレイヤーが交換される", () => {
   const attacker = createPlayer("attacker");
   const defender = createPlayer("defender", FORCE_TURN_END);
@@ -130,6 +146,22 @@ test("防御側が強制ターン終了を発動した場合、攻撃側の効�
   };
   const commands: [PlayerCommand, PlayerCommand] = [
     { playerId: attacker.playerId, command: BURST_COMMAND },
+    { playerId: defender.playerId, command: BURST_COMMAND },
+  ];
+  const result = effectActivationFlow(state, commands);
+  expect(result).toMatchSnapshot();
+});
+
+test("防御側が強制ターン終了を発動した場合、攻撃側がバッテリーコマンドでも他のコマンドが選択できる", () => {
+  const attacker = createPlayer("attacker");
+  const defender = createPlayer("defender", FORCE_TURN_END);
+  const state: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
+  };
+  const commands: [PlayerCommand, PlayerCommand] = [
+    { playerId: attacker.playerId, command: BATTERY_COMMAND },
     { playerId: defender.playerId, command: BURST_COMMAND },
   ];
   const result = effectActivationFlow(state, commands);
