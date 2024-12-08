@@ -1,4 +1,5 @@
 import type { Command } from "../../command/command";
+import { PlayerCommand } from "../../game/command/player-command";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { InputCommand, NoChoice, Selectable } from "./input-command";
@@ -59,10 +60,8 @@ export function inputCommandOnGameStart(lastState: GameState): GameState {
 type InputCommandParams = {
   /** 最新のゲームステート */
   lastState: GameState;
-  /** 攻撃側がコマンド選択可能でない場合、強制するコマンドを指定する */
-  attackerNoChoice?: Command | null;
-  /** 防御側がコマンド選択可能でない場合、強制するコマンドを指定する */
-  defenderNoChoice?: Command | null;
+  /** 特定プレイヤーのコマンドを強制する場合にセットする変数 */
+  noChoices: PlayerCommand[];
 };
 
 /**
@@ -73,7 +72,7 @@ type InputCommandParams = {
 export function inputCommand(
   params: InputCommandParams,
 ): GameStateX<InputCommand> {
-  const { lastState, attackerNoChoice, defenderNoChoice } = params;
+  const { lastState, noChoices } = params;
   const attacker = lastState.players.find(
     (v) => v.playerId === lastState.activePlayerId,
   );
@@ -84,11 +83,17 @@ export function inputCommand(
     throw new Error("not found attacker or defender");
   }
 
+  const attackerNoChoice = noChoices.find(
+    (v) => v.playerId === attacker.playerId,
+  );
   const nextAttackerCommand = attackerNoChoice
-    ? noChoice(attacker, attackerNoChoice)
+    ? noChoice(attacker, attackerNoChoice.command)
     : selectable(attacker);
+  const defenderNoChoice = noChoices.find(
+    (v) => v.playerId !== defender.playerId,
+  );
   const nextDefenderCommand = defenderNoChoice
-    ? noChoice(defender, defenderNoChoice)
+    ? noChoice(defender, defenderNoChoice.command)
     : selectable(defender);
   const playerCommands = [nextAttackerCommand, nextDefenderCommand];
   const effect: InputCommand = {

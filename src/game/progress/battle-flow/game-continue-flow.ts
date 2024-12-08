@@ -20,6 +20,6 @@ export function gameContinueFlow(lastState: GameState): GameState[] {
       canContinuousActive(state)
         ? [continuousActive(state)]
         : [turnChange(state)],
-    (state) => [inputCommand({ lastState: state })],
+    (state) => [inputCommand({ lastState: state, noChoices: [] })],
   ]);
 }

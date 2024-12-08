@@ -36,8 +36,8 @@ export function effectActivationFlow(
     },
     (state) => [
       inputCommand({
-        // TODO バッテリーコマンドを選択した場合にnoChoiceに設定する処理をかく
-        lastState: state
+        lastState: state,
+        noChoices: commands.filter((c) => c.command.type === "BATTERY_COMMAND"),
       }),
     ],
   ]);
