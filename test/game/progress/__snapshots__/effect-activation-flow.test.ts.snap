@@ -1053,7 +1053,7 @@ exports[`防御側が強制ターン終了を発動した場合、攻撃側の�
               "type": "PILOT_SKILL_COMMAND",
             },
           ],
-          "playerId": "attacker",
+          "playerId": "defender",
           "selectable": true,
         },
         {
@@ -1086,7 +1086,7 @@ exports[`防御側が強制ターン終了を発動した場合、攻撃側の�
               "type": "PILOT_SKILL_COMMAND",
             },
           ],
-          "playerId": "defender",
+          "playerId": "attacker",
           "selectable": true,
         },
       ],
