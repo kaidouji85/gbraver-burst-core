@@ -36,18 +36,10 @@ export function effectActivationFlow(
       }
 
       const result = playerEffectActivationFlow(ac.state, command);
-      if (result.hasForceTurnEnd) {
-        return {
-          state: result.stateHistory.at(-1) ?? ac.state,
-          history: [...ac.history, ...result.stateHistory],
-          hasForceTurnEnd: true,
-        };
-      }
-
       return {
         state: result.stateHistory.at(-1) ?? ac.state,
         history: [...ac.history, ...result.stateHistory],
-        hasForceTurnEnd: false,
+        hasForceTurnEnd: result.hasForceTurnEnd,
       };
     },
     initial,
