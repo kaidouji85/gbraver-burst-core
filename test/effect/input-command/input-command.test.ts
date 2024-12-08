@@ -1,4 +1,4 @@
-import { BatteryCommand, BurstCommand, PlayerId } from "../../../src";
+import { BatteryCommand, PlayerId } from "../../../src";
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
@@ -39,7 +39,11 @@ const createBatteryCommand = (battery: number): BatteryCommand => ({
 test("プレイヤーの状況に応じて、選択可能なコマンドがセットされる", () => {
   const player01 = createPlayer("player01", 5, true);
   const player02 = createPlayer("player02", 3, false);
-  const lastState = { ...EMPTY_GAME_STATE, players: [player01, player02] };
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: player01.playerId,
+    players: [player01, player02],
+  };
 
   expect(inputCommand({ lastState, noChoices: [] })).toMatchSnapshot();
 });
