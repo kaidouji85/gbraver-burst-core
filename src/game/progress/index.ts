@@ -2,10 +2,8 @@ import type { BatteryCommand } from "../../command/battery";
 import type { GameState } from "../../state/game-state";
 import type { PlayerCommand } from "../command/player-command";
 import { battleFlow } from "./battle-flow";
-import {
-  effectActivationFlow,
-  isEffectActivationFlow,
-} from "./effect-activation-flow";
+import { effectActivationFlow } from "./effect-activation-flow";
+import { isEffectActivationFlow } from "./effect-activation-flow/is-effect-activation-flow";
 
 /**
  * ゲームを進める

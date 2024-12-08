@@ -1,6 +1,6 @@
 import type { BatteryCommand, BurstCommand } from "../../../src";
 import type { PilotSkillCommand } from "../../../src/command/pilot-skill";
-import { isEffectActivationFlow } from "../../../src/game/progress/effect-activation-flow";
+import { isEffectActivationFlow } from "../../../src/game/progress/effect-activation-flow/is-effect-activation-flow";
 
 const BURST_COMMAND: BurstCommand = {
   type: "BURST_COMMAND",
