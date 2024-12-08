@@ -684,13 +684,17 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
               "type": "BATTERY_COMMAND",
             },
             {
+              "battery": 5,
+              "type": "BATTERY_COMMAND",
+            },
+            {
               "type": "BURST_COMMAND",
             },
             {
               "type": "PILOT_SKILL_COMMAND",
             },
           ],
-          "playerId": "attacker",
+          "playerId": "defender",
           "selectable": true,
         },
         {
@@ -716,17 +720,13 @@ exports[`戦闘フローを正しく進めることができる: battle-flow 1`]
               "type": "BATTERY_COMMAND",
             },
             {
-              "battery": 5,
-              "type": "BATTERY_COMMAND",
-            },
-            {
               "type": "BURST_COMMAND",
             },
             {
               "type": "PILOT_SKILL_COMMAND",
             },
           ],
-          "playerId": "defender",
+          "playerId": "attacker",
           "selectable": true,
         },
       ],
