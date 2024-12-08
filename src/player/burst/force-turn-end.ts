@@ -13,5 +13,5 @@ export type ForceTurnEnd = BurstRecoverBattery &
 
 /** ForceTurnEnd zodスキーマ */
 export const ForceTurnEndSchema = BurstRecoverBatterySchema.extend({
-  type: z.literal("BatteryDrain"),
+  type: z.literal("ForceTurnEnd"),
 });

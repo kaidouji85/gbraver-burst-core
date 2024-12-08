@@ -13,6 +13,8 @@ import { BurstInvokeResult } from "./burst-invoke-result";
 import { continuousAttack } from "./continuous-attack";
 import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
+import { ForceTurnEnd } from "../../player/burst/force-turn-end";
+import { forceTurnEnd } from "./force-turn-skip";
 
 /**
  * バースト種別に応じた効果を適用する
@@ -50,6 +52,11 @@ export function invokeBurst(
   if (params.burst.type === "BatteryDrain") {
     const burst: BatteryDrain = params.burst;
     return batteryDrain({ ...params, burst });
+  }
+
+  if (params.burst.type === "ForceTurnEnd") {
+    const burst: ForceTurnEnd = params.burst;
+    return forceTurnEnd({ ...params, burst });
   }
 
   throw new Error("burst not found");
