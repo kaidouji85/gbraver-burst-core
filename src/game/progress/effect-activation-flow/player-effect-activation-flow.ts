@@ -8,7 +8,7 @@ import { activateEffectOrNot } from "./activate-effect-or-not";
 /** プレイヤー単体の効果発動フローの実行結果 */
 type PlayerEffectActivationFlowResult = {
   /** 更新されたステート */
-  stateHistory: GameState[];
+  history: GameState[];
   /** 強制ターンエンドが発動したか、trueで発動した */
   hasForceTurnEnd: boolean;
 };
@@ -25,7 +25,7 @@ export function playerEffectActivationFlow(
 ): PlayerEffectActivationFlowResult {
   const done = activateEffectOrNot(lastState, command);
   if (!done) {
-    return { stateHistory: [], hasForceTurnEnd: false };
+    return { history: [], hasForceTurnEnd: false };
   }
 
   const isForceTurnEndActivated =
@@ -37,10 +37,10 @@ export function playerEffectActivationFlow(
       (state) => [inputCommand({ lastState: state, noChoices: [] })],
     ]);
     return {
-      stateHistory: [done, ...postForceTurnEnd],
+      history: [done, ...postForceTurnEnd],
       hasForceTurnEnd: true,
     };
   }
 
-  return { stateHistory: [done], hasForceTurnEnd: false };
+  return { history: [done], hasForceTurnEnd: false };
 }

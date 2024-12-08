@@ -37,8 +37,8 @@ export function effectActivationFlow(
 
       const result = playerEffectActivationFlow(ac.state, command);
       return {
-        state: result.stateHistory.at(-1) ?? ac.state,
-        history: [...ac.history, ...result.stateHistory],
+        state: result.history.at(-1) ?? ac.state,
+        history: [...ac.history, ...result.history],
         hasForceTurnEnd: result.hasForceTurnEnd,
       };
     },
