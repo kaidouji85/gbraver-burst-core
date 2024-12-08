@@ -2,7 +2,7 @@
 
 exports[`バースト効果バッテリー回復が正しく適用される 1`] = `
 {
-  "activePlayerId": "",
+  "activePlayerId": "player02",
   "effect": {
     "burst": {
       "recoverBattery": 5,

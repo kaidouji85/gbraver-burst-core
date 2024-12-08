@@ -28,14 +28,25 @@ const burstPlayer: PlayerState = {
 /** それ以外のプレイヤー */
 const otherPlayer: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "other" };
 
-/** ゲームステート */
-const lastState: GameState = {
-  ...EMPTY_GAME_STATE,
-  activePlayerId: otherPlayer.playerId,
-  players: [otherPlayer, burstPlayer],
-};
+/** ゲームに参加しているプレイヤー */
+const players = [otherPlayer, burstPlayer];
 
-test("強制ターン終了バーストの適用が正しくできる", () => {
+test("相手ターンに強制ターンエンドを発動した場合、自分が攻撃プレイヤーになる", () => {
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: otherPlayer.playerId,
+    players,
+  };
+  const result = burst(lastState, burstPlayer.playerId);
+  expect(result).toMatchSnapshot();
+});
+
+test("自分ターンに強制ターンエンドを発動した場合、引き続き自分が攻撃プレイヤーである", () => {
+  const lastState: GameState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: burstPlayer.playerId,
+    players,
+  };
   const result = burst(lastState, burstPlayer.playerId);
   expect(result).toMatchSnapshot();
 });
