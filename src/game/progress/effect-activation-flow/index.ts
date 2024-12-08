@@ -3,6 +3,37 @@ import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
 import { startGameFlow } from "../../game-flow";
 import { activateEffectOrNot } from "./activate-effect-or-not";
+import { updateRemainingTurn } from "../../../effect/update-remaining-turn";
+
+type PlayerEffectActivationFlowResult = {
+  stateHistory: GameState[];
+  shouldNextEffectActivationSkip: boolean;
+};
+
+function playereffectActivationFlow(
+  lastState: GameState,
+  command: PlayerCommand,
+): PlayerEffectActivationFlowResult {
+  const done = activateEffectOrNot(lastState, command);
+  if (!done) {
+    return { stateHistory: [], shouldNextEffectActivationSkip: false };
+  }
+
+  const isForceTurnEndActivated =
+    done.effect.name === "BurstEffect" &&
+    done.effect.burst.type === "ForceTurnEnd";
+  if (isForceTurnEndActivated) {
+    const postForceTurnEnd = startGameFlow(done, [
+      (state) => [updateRemainingTurn(state)],
+    ]);
+    return {
+      stateHistory: [done, ...postForceTurnEnd],
+      shouldNextEffectActivationSkip: true,
+    };
+  }
+
+  return { stateHistory: [done], shouldNextEffectActivationSkip: false };
+}
 
 /**
  * 効果発動フロー
