@@ -3,6 +3,7 @@ import { BatteryDrain } from "../../player/burst/battery-drain";
 import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
 import { BuffPower } from "../../player/burst/buff-power";
 import { ContinuousAttack } from "../../player/burst/continuous-attack";
+import { ForceTurnEnd } from "../../player/burst/force-turn-end";
 import { LightningBarrier } from "../../player/burst/lightning-barrier";
 import { RecoverBattery } from "../../player/burst/recover-battery";
 import { batteryDrain } from "./battery-drain";
@@ -11,10 +12,9 @@ import { buffPower } from "./buff-power";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
 import { continuousAttack } from "./continuous-attack";
+import { forceTurnEnd } from "./force-turn-skip";
 import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
-import { ForceTurnEnd } from "../../player/burst/force-turn-end";
-import { forceTurnEnd } from "./force-turn-skip";
 
 /**
  * バースト種別に応じた効果を適用する

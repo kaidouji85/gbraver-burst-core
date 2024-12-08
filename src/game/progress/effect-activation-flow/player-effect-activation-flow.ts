@@ -1,9 +1,9 @@
+import { inputCommand } from "../../../effect/input-command";
 import { updateRemainingTurn } from "../../../effect/update-remaining-turn";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
 import { startGameFlow } from "../../game-flow";
 import { activateEffectOrNot } from "./activate-effect-or-not";
-import { inputCommand } from "../../../effect/input-command";
 
 /** プレイヤー単体の効果発動フローの実行結果 */
 type PlayerEffectActivationFlowResult = {
