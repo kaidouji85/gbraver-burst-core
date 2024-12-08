@@ -49,7 +49,7 @@ const PILOT_SKILL_COMMAND: PilotSkillCommand = {
   type: "PILOT_SKILL_COMMAND",
 };
 
-test("一人だけ効果適用する場合でも正しく処理される", () => {
+test("攻撃側だけが効果発動してもフローが正しく実行される", () => {
   const attacker = createPlayer("attacker");
   const defender = createPlayer("defender");
   const state: GameState = {
@@ -58,20 +58,14 @@ test("一人だけ効果適用する場合でも正しく処理される", () =>
     activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
-    {
-      playerId: attacker.playerId,
-      command: BURST_COMMAND,
-    },
-    {
-      playerId: defender.playerId,
-      command: BATTERY_COMMAND,
-    },
+    { playerId: attacker.playerId, command: BURST_COMMAND },
+    { playerId: defender.playerId, command: BATTERY_COMMAND },
   ];
   const result = effectActivationFlow(state, commands);
-  expect(result).toMatchSnapshot("one-player-effective");
+  expect(result).toMatchSnapshot();
 });
 
-test("二人とも効果適用する場合でも正しく処理される", () => {
+test("防御側だけが効果発動してもフローが正しく実行される", () => {
   const attacker = createPlayer("attacker");
   const defender = createPlayer("defender");
   const state: GameState = {
@@ -80,15 +74,25 @@ test("二人とも効果適用する場合でも正しく処理される", () =>
     activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
-    {
-      playerId: attacker.playerId,
-      command: BURST_COMMAND,
-    },
-    {
-      playerId: defender.playerId,
-      command: PILOT_SKILL_COMMAND,
-    },
+    { playerId: attacker.playerId, command: BATTERY_COMMAND },
+    { playerId: defender.playerId, command: PILOT_SKILL_COMMAND },
   ];
   const result = effectActivationFlow(state, commands);
-  expect(result).toMatchSnapshot("two-player-effective");
+  expect(result).toMatchSnapshot();
+});
+
+test("攻撃側、防御側の両方で効果を発動してもフローが正しく実行される", () => {
+  const attacker = createPlayer("attacker");
+  const defender = createPlayer("defender");
+  const state: GameState = {
+    ...EMPTY_GAME_STATE,
+    players: [defender, attacker],
+    activePlayerId: attacker.playerId,
+  };
+  const commands: [PlayerCommand, PlayerCommand] = [
+    { playerId: attacker.playerId, command: BURST_COMMAND },
+    { playerId: defender.playerId, command: PILOT_SKILL_COMMAND },
+  ];
+  const result = effectActivationFlow(state, commands);
+  expect(result).toMatchSnapshot();
 });
