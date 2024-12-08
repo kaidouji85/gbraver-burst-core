@@ -38,13 +38,22 @@ export function effectActivationFlow(
         stateAfterAttackerEffect,
         defenderCommand,
       );
-      return [...attackerResult.stateHistory, ...defenderResult.stateHistory];
+      if (defenderResult.shouldNextEffectActivationSkip) {
+        return [...attackerResult.stateHistory, ...defenderResult.stateHistory];
+      }
+
+      const stateAfterDefenderEffect =
+        defenderResult.stateHistory.at(-1) ?? stateAfterAttackerEffect;
+      return [
+        ...attackerResult.stateHistory,
+        ...defenderResult.stateHistory,
+        inputCommand({
+          lastState: stateAfterDefenderEffect,
+          noChoices: commands.filter(
+            (c) => c.command.type === "BATTERY_COMMAND",
+          ),
+        }),
+      ];
     },
-    (state) => [
-      inputCommand({
-        lastState: state,
-        noChoices: commands.filter((c) => c.command.type === "BATTERY_COMMAND"),
-      }),
-    ],
   ]);
 }
