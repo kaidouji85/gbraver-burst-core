@@ -1,9 +1,9 @@
-import { burst } from "../../effect/burst";
-import { inputCommand } from "../../effect/input-command";
-import { pilotSkill } from "../../effect/pilot-skill";
-import type { GameState } from "../../state/game-state";
-import type { PlayerCommand } from "../command/player-command";
-import { startGameFlow } from "../game-flow";
+import { burst } from "../../../effect/burst";
+import { inputCommand } from "../../../effect/input-command";
+import { pilotSkill } from "../../../effect/pilot-skill";
+import type { GameState } from "../../../state/game-state";
+import type { PlayerCommand } from "../../command/player-command";
+import { startGameFlow } from "../../game-flow";
 
 /**
  * 効果発動フローを行うか否かを判定する
