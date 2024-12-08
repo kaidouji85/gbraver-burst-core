@@ -90,7 +90,7 @@ export function inputCommand(
     ? noChoice(attacker, attackerNoChoice.command)
     : selectable(attacker);
   const defenderNoChoice = noChoices.find(
-    (v) => v.playerId !== defender.playerId,
+    (v) => v.playerId === defender.playerId,
   );
   const nextDefenderCommand = defenderNoChoice
     ? noChoice(defender, defenderNoChoice.command)
