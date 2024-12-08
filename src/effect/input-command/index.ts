@@ -1,5 +1,5 @@
 import type { Command } from "../../command/command";
-import type { PlayerId } from "../../player/player";
+import { PlayerCommand } from "../../game/command/player-command";
 import type { GameState, GameStateX } from "../../state/game-state";
 import type { PlayerState } from "../../state/player-state";
 import type { InputCommand, NoChoice, Selectable } from "./input-command";
@@ -40,20 +40,6 @@ function noChoice(player: PlayerState, command: Command): NoChoice {
 }
 
 /**
- * コマンド選択不可能か否かを判定する
- * @param myCommand 自分のコマンド
- * @param otherCommand 相手のコマンド
- * @returns 判定結果、自分のコマンドが選択不可能な場合はtrue
- */
-export function isNoChoice(myCommand: Command, otherCommand: Command): boolean {
-  return (
-    myCommand.type === "BATTERY_COMMAND" &&
-    (otherCommand.type === "BURST_COMMAND" ||
-      otherCommand.type === "PILOT_SKILL_COMMAND")
-  );
-}
-
-/**
  * ゲームスタート時だけに利用するInputCommand
  * InputCommandはそのターンに入力したコマンドを参照する想定だが、
  * ゲーム開始時にコマンド入力できないので、本関数を用意した
@@ -70,34 +56,44 @@ export function inputCommandOnGameStart(lastState: GameState): GameState {
   };
 }
 
-// TODO 引数を[PlayerCommand, PlayerCommand]に変更する
+/** InputCommandのパラメータ */
+type InputCommandParams = {
+  /** 最新のゲームステート */
+  lastState: GameState;
+  /** 特定プレイヤーのコマンドを強制する場合にセットする変数 */
+  noChoices: PlayerCommand[];
+};
+
 /**
  * コマンド入力フェイズのステートを生成する
- * @param lastState 更新前の状態
- * @param attackerId 攻撃側プレイヤーID
- * @param attackerCommand 攻撃側コマンド
- * @param defenderId 防御側プレイヤーID
- * @param defenderCommand 防御側コマンド
+ * @param params パラメータ
  * @returns 更新結果
  */
 export function inputCommand(
-  lastState: GameState,
-  attackerId: PlayerId,
-  attackerCommand: Command,
-  defenderId: PlayerId,
-  defenderCommand: Command,
+  params: InputCommandParams,
 ): GameStateX<InputCommand> {
-  const attacker = lastState.players.find((v) => v.playerId === attackerId);
-  const defender = lastState.players.find((v) => v.playerId === defenderId);
+  const { lastState, noChoices } = params;
+  const attacker = lastState.players.find(
+    (v) => v.playerId === lastState.activePlayerId,
+  );
+  const defender = lastState.players.find(
+    (v) => v.playerId !== lastState.activePlayerId,
+  );
   if (!attacker || !defender) {
     throw new Error("not found attacker or defender");
   }
 
-  const nextAttackerCommand = isNoChoice(attackerCommand, defenderCommand)
-    ? noChoice(attacker, attackerCommand)
+  const attackerNoChoice = noChoices.find(
+    (v) => v.playerId === attacker.playerId,
+  );
+  const nextAttackerCommand = attackerNoChoice
+    ? noChoice(attacker, attackerNoChoice.command)
     : selectable(attacker);
-  const nextDefenderCommand = isNoChoice(defenderCommand, attackerCommand)
-    ? noChoice(defender, defenderCommand)
+  const defenderNoChoice = noChoices.find(
+    (v) => v.playerId === defender.playerId,
+  );
+  const nextDefenderCommand = defenderNoChoice
+    ? noChoice(defender, defenderNoChoice.command)
     : selectable(defender);
   const playerCommands = [nextAttackerCommand, nextDefenderCommand];
   const effect: InputCommand = {

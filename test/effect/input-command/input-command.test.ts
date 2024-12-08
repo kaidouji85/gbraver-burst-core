@@ -1,4 +1,4 @@
-import { BatteryCommand, BurstCommand, PlayerId } from "../../../src";
+import { BatteryCommand, PlayerId } from "../../../src";
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
@@ -28,7 +28,7 @@ const createPlayer = (
 
 /**
  * バッテリーコマンドを生成する
- * @param battery バッテリー
+ * @param battery バッテリー値
  * @returns 生成されたバッテリーコマンド
  */
 const createBatteryCommand = (battery: number): BatteryCommand => ({
@@ -36,43 +36,35 @@ const createBatteryCommand = (battery: number): BatteryCommand => ({
   battery,
 });
 
-/** バーストコマンド */
-const burstCommand: BurstCommand = {
-  type: "BURST_COMMAND",
-};
-
-test("戦闘後のコマンド入力フェイズが正しく適用される", () => {
+test("プレイヤーの状況に応じて、選択可能なコマンドがセットされる", () => {
   const player01 = createPlayer("player01", 5, true);
-  const player01Command = createBatteryCommand(3);
   const player02 = createPlayer("player02", 3, false);
-  const player02Command = createBatteryCommand(3);
-  const lastState = { ...EMPTY_GAME_STATE, players: [player01, player02] };
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: player01.playerId,
+    players: [player01, player02],
+  };
 
-  expect(
-    inputCommand(
-      lastState,
-      player01.playerId,
-      player01Command,
-      player02.playerId,
-      player02Command,
-    ),
-  ).toMatchSnapshot("after-battle");
+  expect(inputCommand({ lastState, noChoices: [] })).toMatchSnapshot();
 });
 
 test("効果適用フロー後のコマンド入力フェイズ効果が正しく処理される", () => {
   const player01 = createPlayer("player01", 2, true);
-  const player01Command = createBatteryCommand(3);
   const player02 = createPlayer("player02", 3, false);
-  const player02Command = burstCommand;
-  const lastState = { ...EMPTY_GAME_STATE, players: [player01, player02] };
+  const player02Command = {
+    playerId: player02.playerId,
+    command: createBatteryCommand(2),
+  };
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: player02.playerId,
+    players: [player01, player02],
+  };
 
   expect(
-    inputCommand(
+    inputCommand({
       lastState,
-      player01.playerId,
-      player01Command,
-      player02.playerId,
-      player02Command,
-    ),
+      noChoices: [player02Command],
+    }),
   ).toMatchSnapshot("after-effect-activation");
 });
