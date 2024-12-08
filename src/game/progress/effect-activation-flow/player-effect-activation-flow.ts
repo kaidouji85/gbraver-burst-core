@@ -32,12 +32,14 @@ export function playerEffectActivationFlow(
     done.effect.name === "BurstEffect" &&
     done.effect.burst.type === "ForceTurnEnd";
   if (isForceTurnEndActivated) {
-    const postForceTurnEnd = startGameFlow(done, [
-      (state) => [updateRemainingTurn(state)],
-      (state) => [inputCommand({ lastState: state, noChoices: [] })],
-    ]);
     return {
-      history: [done, ...postForceTurnEnd],
+      history: [
+        done,
+        ...startGameFlow(done, [
+          (state) => [updateRemainingTurn(state)],
+          (state) => [inputCommand({ lastState: state, noChoices: [] })],
+        ]),
+      ],
       hasForceTurnEnd: true,
     };
   }
