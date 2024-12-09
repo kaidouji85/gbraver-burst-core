@@ -7,11 +7,11 @@ import {
   PlayerCommand,
   PlayerId,
   PlayerState,
-} from "../../../src";
-import { PilotSkillCommand } from "../../../src/command/pilot-skill";
-import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
-import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import { effectActivationFlow } from "../../../src/game/progress/effect-activation-flow";
+} from "../../../../src";
+import { PilotSkillCommand } from "../../../../src/command/pilot-skill";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import { effectActivationFlow } from "../../../../src/game/progress/effect-activation-flow";
 
 /**
  * テストプレイヤーを生成うる

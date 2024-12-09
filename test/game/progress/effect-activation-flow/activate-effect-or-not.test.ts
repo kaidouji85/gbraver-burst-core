@@ -7,8 +7,8 @@ import {
   PilotSkillCommand,
   PlayerCommand,
   PlayerState,
-} from "../../../src";
-import { activateEffectOrNot } from "../../../src/game/progress/effect-activation-flow/activate-effect-or-not";
+} from "../../../../src";
+import { activateEffectOrNot } from "../../../../src/game/progress/effect-activation-flow/activate-effect-or-not";
 
 /** バーストコマンド */
 const BURST_COMMAND: BurstCommand = {
