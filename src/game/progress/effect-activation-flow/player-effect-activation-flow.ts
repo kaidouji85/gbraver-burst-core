@@ -5,44 +5,33 @@ import { PlayerCommand } from "../../command/player-command";
 import { startGameFlow } from "../../game-flow";
 import { activateEffectOrNot } from "./activate-effect-or-not";
 
-/** プレイヤー単体の効果発動フローの実行結果 */
-type PlayerEffectActivationFlowResult = {
-  /** 更新されたステート */
-  history: GameState[];
-  /** 強制ターンエンドが発動したか、trueで発動した */
-  hasForceTurnEnd: boolean;
-};
-
 /**
  * プレイヤー単体の効果発動フローを実行する
  * @param lastState 最後のゲームステート
  * @param command プレイヤーが出したコマンド
- * @returns 実行結果
+ * @returns 更新されたゲームの状態
  */
 export function playerEffectActivationFlow(
   lastState: GameState,
   command: PlayerCommand,
-): PlayerEffectActivationFlowResult {
+): GameState[] {
   const done = activateEffectOrNot(lastState, command);
   if (!done) {
-    return { history: [], hasForceTurnEnd: false };
+    return [];
   }
 
   const isForceTurnEndActivated =
     done.effect.name === "BurstEffect" &&
     done.effect.burst.type === "ForceTurnEnd";
   if (isForceTurnEndActivated) {
-    return {
-      history: [
-        done,
-        ...startGameFlow(done, [
-          (state) => [updateRemainingTurn(state)],
-          (state) => [inputCommand({ lastState: state, noChoices: [] })],
-        ]),
-      ],
-      hasForceTurnEnd: true,
-    };
+    return [
+      done,
+      ...startGameFlow(done, [
+        (state) => [updateRemainingTurn(state)],
+        (state) => [inputCommand({ lastState: state, noChoices: [] })],
+      ]),
+    ];
   }
 
-  return { history: [done], hasForceTurnEnd: false };
+  return [done];
 }

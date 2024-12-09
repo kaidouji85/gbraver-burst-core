@@ -35,24 +35,30 @@ export function effectActivationFlow(
         return ac;
       }
 
-      const result = playerEffectActivationFlow(ac.state, command);
+      const update = playerEffectActivationFlow(ac.state, command);
+      const hasForceTurnEnd = update.some(
+        (s) =>
+          s.effect.name === "BurstEffect" &&
+          s.effect.burst.type === "ForceTurnEnd",
+      );
       return {
-        state: result.history.at(-1) ?? ac.state,
-        history: [...ac.history, ...result.history],
-        hasForceTurnEnd: result.hasForceTurnEnd,
+        state: update.at(-1) ?? ac.state,
+        history: [...ac.history, ...update],
+        hasForceTurnEnd,
       };
     },
     initial,
   );
-  return stateActivatedEffect.hasForceTurnEnd
-    ? stateActivatedEffect.history
-    : [
-        ...stateActivatedEffect.history,
-        inputCommand({
-          lastState: stateActivatedEffect.state,
-          noChoices: commands.filter(
-            (c) => c.command.type === "BATTERY_COMMAND",
-          ),
-        }),
-      ];
+
+  if (stateActivatedEffect.hasForceTurnEnd) {
+    return stateActivatedEffect.history;
+  }
+
+  return [
+    ...stateActivatedEffect.history,
+    inputCommand({
+      lastState: stateActivatedEffect.state,
+      noChoices: commands.filter((c) => c.command.type === "BATTERY_COMMAND"),
+    }),
+  ];
 }
