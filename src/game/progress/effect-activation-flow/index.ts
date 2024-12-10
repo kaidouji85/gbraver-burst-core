@@ -1,7 +1,9 @@
 import { inputCommand } from "../../../effect/input-command";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
-import { playerEffectActivationFlow } from "./player-effect-activation-flow";
+import { activateEffectOrNot } from "./activate-effect-or-not";
+import { startGameFlow } from "../../game-flow";
+import { postForceTurnEndFlow } from "./post-force-turn-end-flow";
 
 /**
  * 効果発動フロー
@@ -35,23 +37,25 @@ export function effectActivationFlow(
         return ac;
       }
 
-      const update = playerEffectActivationFlow(ac.state, command);
-      const hasForceTurnEnd = update.some(
-        (s) =>
-          s.effect.name === "BurstEffect" &&
-          s.effect.burst.type === "ForceTurnEnd",
-      );
-      return {
-        state: update.at(-1) ?? ac.state,
-        history: [...ac.history, ...update],
-        hasForceTurnEnd,
-      };
+      const done = activateEffectOrNot(ac.state, command);
+      const state = done ?? ac.state;
+      const history = done ? [...ac.history, done] : ac.history;
+      const hasForceTurnEnd =
+        done !== null &&
+        done.effect.name === "BurstEffect" &&
+        done.effect.burst.type === "ForceTurnEnd";
+      return { state, history, hasForceTurnEnd };
     },
     initial,
   );
 
   if (stateActivatedEffect.hasForceTurnEnd) {
-    return stateActivatedEffect.history;
+    return [
+      ...stateActivatedEffect.history,
+      ...startGameFlow(stateActivatedEffect.state, [
+        (state) => postForceTurnEndFlow(state),
+      ]),
+    ];
   }
 
   return [
