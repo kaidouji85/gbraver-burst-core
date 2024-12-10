@@ -3,6 +3,7 @@ import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
 import { activateEffectOrNot } from "./activate-effect-or-not";
 import { postForceTurnEndFlow } from "./post-force-turn-end-flow";
+import { sortCommandByAttackerFirst } from "./sort-command-by-attacker-first";
 
 /**
  * 効果発動フロー
@@ -15,17 +16,7 @@ export function effectActivationFlow(
   lastState: GameState,
   commands: [PlayerCommand, PlayerCommand],
 ): GameState[] {
-  const attackerCommand = commands.find(
-    (v) => v.playerId === lastState.activePlayerId,
-  );
-  const defenderCommand = commands.find(
-    (v) => v.playerId !== lastState.activePlayerId,
-  );
-  if (!attackerCommand || !defenderCommand) {
-    throw new Error("not found attacker or defender command");
-  }
-
-  const orderedCommands = [attackerCommand, defenderCommand];
+  const orderedCommands = sortCommandByAttackerFirst(commands, lastState);
   const initial = { state: lastState, history: [], hasForceTurnEnd: false };
   const stateActivatedEffect = orderedCommands.reduce(
     (
