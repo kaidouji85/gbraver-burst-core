@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`強制ターンエンド発動後のフローが正しく実行される 1`] = `
+exports[`強制ターンエンド発動後には、UpdateRemainingTurn、InputCommandが実行される 1`] = `
 [
   {
-    "activePlayerId": "otherPlayer",
+    "activePlayerId": "burstPlayer",
     "effect": {
       "endArmdozerEffects": [
         {
@@ -55,8 +55,9 @@ exports[`強制ターンエンド発動後のフローが正しく実行され�
         "armdozer": {
           "battery": 1,
           "burst": {
-            "recoverBattery": 2,
-            "type": "ForceTurnEnd",
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
+            "type": "RecoverBattery",
           },
           "effects": [
             {
@@ -90,10 +91,30 @@ exports[`強制ターンエンド発動後のフローが正しく実行され�
     ],
   },
   {
-    "activePlayerId": "otherPlayer",
+    "activePlayerId": "burstPlayer",
     "effect": {
       "name": "InputCommand",
       "players": [
+        {
+          "command": [
+            {
+              "battery": 0,
+              "type": "BATTERY_COMMAND",
+            },
+            {
+              "battery": 1,
+              "type": "BATTERY_COMMAND",
+            },
+            {
+              "type": "BURST_COMMAND",
+            },
+            {
+              "type": "PILOT_SKILL_COMMAND",
+            },
+          ],
+          "playerId": "burstPlayer",
+          "selectable": true,
+        },
         {
           "command": [
             {
@@ -128,26 +149,6 @@ exports[`強制ターンエンド発動後のフローが正しく実行され�
             },
           ],
           "playerId": "otherPlayer",
-          "selectable": true,
-        },
-        {
-          "command": [
-            {
-              "battery": 0,
-              "type": "BATTERY_COMMAND",
-            },
-            {
-              "battery": 1,
-              "type": "BATTERY_COMMAND",
-            },
-            {
-              "type": "BURST_COMMAND",
-            },
-            {
-              "type": "PILOT_SKILL_COMMAND",
-            },
-          ],
-          "playerId": "burstPlayer",
           "selectable": true,
         },
       ],
@@ -186,8 +187,9 @@ exports[`強制ターンエンド発動後のフローが正しく実行され�
         "armdozer": {
           "battery": 1,
           "burst": {
-            "recoverBattery": 2,
-            "type": "ForceTurnEnd",
+            "recoverBattery": 5,
+            "turnStartBatteryCorrect": 1,
+            "type": "RecoverBattery",
           },
           "effects": [
             {
