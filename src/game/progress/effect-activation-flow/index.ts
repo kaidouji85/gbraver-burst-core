@@ -1,7 +1,6 @@
 import { inputCommand } from "../../../effect/input-command";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
-import { startGameFlow } from "../../game-flow";
 import { activateEffectOrNot } from "./activate-effect-or-not";
 import { postForceTurnEndFlow } from "./post-force-turn-end-flow";
 
@@ -52,9 +51,7 @@ export function effectActivationFlow(
   if (stateActivatedEffect.hasForceTurnEnd) {
     return [
       ...stateActivatedEffect.history,
-      ...startGameFlow(stateActivatedEffect.state, [
-        (state) => postForceTurnEndFlow(state),
-      ]),
+      ...postForceTurnEndFlow(stateActivatedEffect.state),
     ];
   }
 
