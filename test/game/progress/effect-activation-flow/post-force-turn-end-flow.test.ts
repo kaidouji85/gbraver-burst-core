@@ -1,15 +1,12 @@
 import {
   ArmdozerEffect,
   Burst,
-  BurstCommand,
   EMPTY_GAME_STATE,
   EMPTY_PLAYER_STATE,
   PilotSkill,
-  PilotSkillCommand,
-  PlayerCommandX,
   PlayerState,
 } from "../../../../src";
-import { playerEffectActivationFlow } from "../../../../src/game/progress/effect-activation-flow/player-effect-activation-flow";
+import { postForceTurnEndFlow } from "../../../../src/game/progress/effect-activation-flow/post-force-turn-end-flow";
 
 /** バースト発動プレイヤーID */
 const burstPlayerId = "burstPlayer";
@@ -48,52 +45,7 @@ const otherPlayer = {
   playerId: "otherPlayer",
 };
 
-/** バーストコマンド */
-const BURST_COMMAND: PlayerCommandX<BurstCommand> = {
-  playerId: burstPlayerId,
-  command: { type: "BURST_COMMAND" },
-};
-
-/** パイロットスキルコマンド */
-const PILOT_SKILL_COMMAND: PlayerCommandX<PilotSkillCommand> = {
-  playerId: burstPlayerId,
-  command: { type: "PILOT_SKILL_COMMAND" },
-};
-
-test("バーストが正しく発動される", () => {
-  const burstPlayer = createBurstPlayer({
-    burst: {
-      type: "RecoverBattery",
-      recoverBattery: 3,
-      turnStartBatteryCorrect: 1,
-    },
-  });
-  const lastState = {
-    ...EMPTY_GAME_STATE,
-    activePlayerId: otherPlayer.playerId,
-    players: [otherPlayer, burstPlayer],
-  };
-  const result = playerEffectActivationFlow(lastState, BURST_COMMAND);
-  expect(result).toMatchSnapshot();
-});
-
-test("パイロットスキルが正しく発動される", () => {
-  const burstPlayer = createBurstPlayer({
-    pilotSkill: {
-      type: "RecoverBatterySkill",
-      recoverBattery: 2,
-    },
-  });
-  const lastState = {
-    ...EMPTY_GAME_STATE,
-    activePlayerId: otherPlayer.playerId,
-    players: [otherPlayer, burstPlayer],
-  };
-  const result = playerEffectActivationFlow(lastState, PILOT_SKILL_COMMAND);
-  expect(result).toMatchSnapshot();
-});
-
-test("強制ターン終了を発動した場合、バースト効果、UpdateRemainingTurn、InputCommandが実行される", () => {
+test("強制ターンエンド発動後のフローが正しく実行される", () => {
   const burstPlayer = createBurstPlayer({
     burst: {
       type: "ForceTurnEnd",
@@ -123,6 +75,6 @@ test("強制ターン終了を発動した場合、バースト効果、UpdateRe
     activePlayerId: otherPlayer.playerId,
     players: [otherPlayer, burstPlayer],
   };
-  const result = playerEffectActivationFlow(lastState, BURST_COMMAND);
+  const result = postForceTurnEndFlow(lastState);
   expect(result).toMatchSnapshot();
 });
