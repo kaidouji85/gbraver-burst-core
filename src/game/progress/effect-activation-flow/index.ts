@@ -1,8 +1,8 @@
 import { inputCommand } from "../../../effect/input-command";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
-import { activateEffectOrNot } from "./activate-effect-or-not";
 import { startGameFlow } from "../../game-flow";
+import { activateEffectOrNot } from "./activate-effect-or-not";
 import { postForceTurnEndFlow } from "./post-force-turn-end-flow";
 
 /**
