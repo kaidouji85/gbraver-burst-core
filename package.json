@@ -38,7 +38,7 @@
     "gbraver-burst"
   ],
   "license": "MIT",
-  "main": "lib/src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/kaidouji85/gbraver-burst-core"
@@ -64,7 +64,9 @@
     "prepublishOnly": "run-s clean lint dependency-check test build",
     "test": "jest",
     "transpile": "tsc -d --outDir lib",
-    "type-check": "tsc --noEmit"
+    "type-check": "run-s type-check:*",
+    "type-check:src": "tsc --noEmit",
+    "type-check:test": "tsc --noEmit -p tsconfig.test.json"
   },
   "type": "commonjs"
 }
