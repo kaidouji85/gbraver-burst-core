@@ -1,11 +1,4 @@
 import { Burst } from "../../player/burst";
-import { BatteryDrain } from "../../player/burst/battery-drain";
-import { BatteryLimitBreak } from "../../player/burst/battery-limit-break";
-import { BuffPower } from "../../player/burst/buff-power";
-import { ContinuousAttack } from "../../player/burst/continuous-attack";
-import { ForceTurnEnd } from "../../player/burst/force-turn-end";
-import { LightningBarrier } from "../../player/burst/lightning-barrier";
-import { RecoverBattery } from "../../player/burst/recover-battery";
 import { batteryDrain } from "./battery-drain";
 import { batteryLimitBreak } from "./battery-limit-break";
 import { buffPower } from "./buff-power";
@@ -25,38 +18,31 @@ export function invokeBurst(
   params: BurstInvokeParams<Burst>,
 ): BurstInvokeResult {
   if (params.burst.type === "RecoverBattery") {
-    const burst: RecoverBattery = params.burst;
-    return recoverBattery({ ...params, burst });
+    return recoverBattery({ ...params, burst: params.burst });
   }
 
   if (params.burst.type === "BuffPower") {
-    const burst: BuffPower = params.burst;
-    return buffPower({ ...params, burst });
+    return buffPower({ ...params, burst: params.burst });
   }
 
   if (params.burst.type === "LightningBarrier") {
-    const burst: LightningBarrier = params.burst;
-    return lightningBarrier({ ...params, burst });
+    return lightningBarrier({ ...params, burst: params.burst });
   }
 
   if (params.burst.type === "ContinuousAttack") {
-    const burst: ContinuousAttack = params.burst;
-    return continuousAttack({ ...params, burst });
+    return continuousAttack({ ...params, burst: params.burst });
   }
 
   if (params.burst.type === "BatteryLimitBreak") {
-    const burst: BatteryLimitBreak = params.burst;
-    return batteryLimitBreak({ ...params, burst });
+    return batteryLimitBreak({ ...params, burst: params.burst });
   }
 
   if (params.burst.type === "BatteryDrain") {
-    const burst: BatteryDrain = params.burst;
-    return batteryDrain({ ...params, burst });
+    return batteryDrain({ ...params, burst: params.burst });
   }
 
   if (params.burst.type === "ForceTurnEnd") {
-    const burst: ForceTurnEnd = params.burst;
-    return forceTurnEnd({ ...params, burst });
+    return forceTurnEnd({ ...params, burst: params.burst });
   }
 
   throw new Error("burst not found");
