@@ -34,6 +34,6 @@ export function invokeBurst(
     case "ForceTurnEnd":
       return forceTurnEnd({ ...params, burst });
     default:
-      throw new Error("burst not found");  
+      throw new Error("burst not found");
   }
 }
