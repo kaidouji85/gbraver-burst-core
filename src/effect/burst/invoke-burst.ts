@@ -18,33 +18,22 @@ export function invokeBurst(
   params: BurstInvokeParams<Burst>,
 ): BurstInvokeResult {
   const { burst } = params;
-  if (burst.type === "RecoverBattery") {
-    return recoverBattery({ ...params, burst });
+  switch (burst.type) {
+    case "RecoverBattery":
+      return recoverBattery({ ...params, burst });
+    case "BuffPower":
+      return buffPower({ ...params, burst });
+    case "LightningBarrier":
+      return lightningBarrier({ ...params, burst });
+    case "ContinuousAttack":
+      return continuousAttack({ ...params, burst });
+    case "BatteryLimitBreak":
+      return batteryLimitBreak({ ...params, burst });
+    case "BatteryDrain":
+      return batteryDrain({ ...params, burst });
+    case "ForceTurnEnd":
+      return forceTurnEnd({ ...params, burst });
+    default:
+      throw new Error("burst not found");  
   }
-
-  if (burst.type === "BuffPower") {
-    return buffPower({ ...params, burst });
-  }
-
-  if (burst.type === "LightningBarrier") {
-    return lightningBarrier({ ...params, burst });
-  }
-
-  if (burst.type === "ContinuousAttack") {
-    return continuousAttack({ ...params, burst });
-  }
-
-  if (burst.type === "BatteryLimitBreak") {
-    return batteryLimitBreak({ ...params, burst });
-  }
-
-  if (burst.type === "BatteryDrain") {
-    return batteryDrain({ ...params, burst });
-  }
-
-  if (burst.type === "ForceTurnEnd") {
-    return forceTurnEnd({ ...params, burst });
-  }
-
-  throw new Error("burst not found");
 }
