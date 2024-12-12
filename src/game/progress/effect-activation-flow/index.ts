@@ -1,8 +1,9 @@
 import { inputCommand } from "../../../effect/input-command";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommand } from "../../command/player-command";
-import { startGameFlow } from "../../game-flow";
 import { activateEffectOrNot } from "./activate-effect-or-not";
+import { postForceTurnEndFlow } from "./post-force-turn-end-flow";
+import { sortCommandByAttackerFirst } from "./sort-command-by-attacker-first";
 
 /**
  * 効果発動フロー
@@ -15,30 +16,41 @@ export function effectActivationFlow(
   lastState: GameState,
   commands: [PlayerCommand, PlayerCommand],
 ): GameState[] {
-  const attackerCommand = commands.find(
-    (v) => v.playerId === lastState.activePlayerId,
+  const orderedCommands = sortCommandByAttackerFirst(commands, lastState);
+  const initial = { state: lastState, history: [], hasForceTurnEnd: false };
+  const stateActivatedEffect = orderedCommands.reduce(
+    (
+      ac: { state: GameState; history: GameState[]; hasForceTurnEnd: boolean },
+      command,
+    ) => {
+      if (ac.hasForceTurnEnd) {
+        return ac;
+      }
+
+      const done = activateEffectOrNot(ac.state, command);
+      const state = done ?? ac.state;
+      const history = done ? [...ac.history, done] : ac.history;
+      const hasForceTurnEnd =
+        done !== null &&
+        done.effect.name === "BurstEffect" &&
+        done.effect.burst.type === "ForceTurnEnd";
+      return { state, history, hasForceTurnEnd };
+    },
+    initial,
   );
-  const defenderCommand = commands.find(
-    (v) => v.playerId !== lastState.activePlayerId,
-  );
-  if (!attackerCommand || !defenderCommand) {
-    throw new Error("not found attacker or defender command");
+
+  if (stateActivatedEffect.hasForceTurnEnd) {
+    return [
+      ...stateActivatedEffect.history,
+      ...postForceTurnEndFlow(stateActivatedEffect.state),
+    ];
   }
 
-  return startGameFlow(lastState, [
-    (state) => {
-      const done = activateEffectOrNot(state, attackerCommand);
-      return done ? [done] : [];
-    },
-    (state) => {
-      const done = activateEffectOrNot(state, defenderCommand);
-      return done ? [done] : [];
-    },
-    (state) => [
-      inputCommand({
-        lastState: state,
-        noChoices: commands.filter((c) => c.command.type === "BATTERY_COMMAND"),
-      }),
-    ],
-  ]);
+  return [
+    ...stateActivatedEffect.history,
+    inputCommand({
+      lastState: stateActivatedEffect.state,
+      noChoices: commands.filter((c) => c.command.type === "BATTERY_COMMAND"),
+    }),
+  ];
 }

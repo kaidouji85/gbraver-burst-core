@@ -2,7 +2,7 @@
 
 exports[`電撃バリアバーストの適用が正しくできる 1`] = `
 {
-  "activePlayerId": "",
+  "activePlayerId": "other",
   "effect": {
     "burst": {
       "damage": 1000,

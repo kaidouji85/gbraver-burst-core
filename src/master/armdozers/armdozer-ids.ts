@@ -6,4 +6,5 @@ export const ArmdozerIds = {
   WING_DOZER: "WING_DOZER",
   GENESIS_BRAVER: "GENESIS_BRAVER",
   DINO_DOZER: "DINO_DOZER",
+  GRAN_DOZER: "GRAN_DOZER",
 };

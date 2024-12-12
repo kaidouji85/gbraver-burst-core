@@ -2,7 +2,7 @@
 
 exports[`バッテリーリミットブレイクが正しく適用できる 1`] = `
 {
-  "activePlayerId": "",
+  "activePlayerId": "otherPlayer",
   "effect": {
     "burst": {
       "maxBattery": 8,
