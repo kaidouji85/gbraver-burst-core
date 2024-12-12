@@ -17,32 +17,33 @@ import { recoverBattery } from "./recover-battery";
 export function invokeBurst(
   params: BurstInvokeParams<Burst>,
 ): BurstInvokeResult {
-  if (params.burst.type === "RecoverBattery") {
-    return recoverBattery({ ...params, burst: params.burst });
+  const { burst } = params;
+  if (burst.type === "RecoverBattery") {
+    return recoverBattery({ ...params, burst });
   }
 
-  if (params.burst.type === "BuffPower") {
-    return buffPower({ ...params, burst: params.burst });
+  if (burst.type === "BuffPower") {
+    return buffPower({ ...params, burst });
   }
 
-  if (params.burst.type === "LightningBarrier") {
-    return lightningBarrier({ ...params, burst: params.burst });
+  if (burst.type === "LightningBarrier") {
+    return lightningBarrier({ ...params, burst });
   }
 
-  if (params.burst.type === "ContinuousAttack") {
-    return continuousAttack({ ...params, burst: params.burst });
+  if (burst.type === "ContinuousAttack") {
+    return continuousAttack({ ...params, burst });
   }
 
-  if (params.burst.type === "BatteryLimitBreak") {
-    return batteryLimitBreak({ ...params, burst: params.burst });
+  if (burst.type === "BatteryLimitBreak") {
+    return batteryLimitBreak({ ...params, burst });
   }
 
-  if (params.burst.type === "BatteryDrain") {
-    return batteryDrain({ ...params, burst: params.burst });
+  if (burst.type === "BatteryDrain") {
+    return batteryDrain({ ...params, burst });
   }
 
-  if (params.burst.type === "ForceTurnEnd") {
-    return forceTurnEnd({ ...params, burst: params.burst });
+  if (burst.type === "ForceTurnEnd") {
+    return forceTurnEnd({ ...params, burst });
   }
 
   throw new Error("burst not found");
