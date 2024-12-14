@@ -51,13 +51,7 @@ export function battleFlow(
     (state) => {
       const endJudge = gameEndJudging(state);
       return endJudge.type === "GameContinue"
-        ? gameContinueFlow(
-            state,
-            attacker.playerId,
-            attacker.command,
-            defender.playerId,
-            defender.command,
-          )
+        ? gameContinueFlow(state)
         : [gameEnd(state, endJudge)];
     },
   ]);

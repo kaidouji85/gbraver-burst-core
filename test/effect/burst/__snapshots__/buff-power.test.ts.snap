@@ -2,7 +2,7 @@
 
 exports[`攻撃力バフが正しく適用される 1`] = `
 {
-  "activePlayerId": "",
+  "activePlayerId": "otherPlayer",
   "effect": {
     "burst": {
       "buffPower": 1000,

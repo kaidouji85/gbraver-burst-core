@@ -1,112 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`効果適用フロー後のコマンド入力フェイズ効果が正しく処理される: after-effect-activation 1`] = `
+exports[`プレイヤーの状況に応じて、選択可能なコマンドがセットされる 1`] = `
 {
-  "activePlayerId": "",
-  "effect": {
-    "name": "InputCommand",
-    "players": [
-      {
-        "nextTurnCommand": {
-          "battery": 3,
-          "type": "BATTERY_COMMAND",
-        },
-        "playerId": "player01",
-        "selectable": false,
-      },
-      {
-        "command": [
-          {
-            "battery": 0,
-            "type": "BATTERY_COMMAND",
-          },
-          {
-            "battery": 1,
-            "type": "BATTERY_COMMAND",
-          },
-          {
-            "battery": 2,
-            "type": "BATTERY_COMMAND",
-          },
-          {
-            "battery": 3,
-            "type": "BATTERY_COMMAND",
-          },
-          {
-            "type": "PILOT_SKILL_COMMAND",
-          },
-        ],
-        "playerId": "player02",
-        "selectable": true,
-      },
-    ],
-  },
-  "players": [
-    {
-      "armdozer": {
-        "battery": 2,
-        "burst": {
-          "recoverBattery": 5,
-          "turnStartBatteryCorrect": 1,
-          "type": "RecoverBattery",
-        },
-        "effects": [],
-        "enableBurst": true,
-        "hp": 3000,
-        "id": "id",
-        "maxBattery": 5,
-        "maxHp": 3000,
-        "name": "name",
-        "power": 2000,
-        "speed": 2000,
-      },
-      "pilot": {
-        "enableSkill": true,
-        "id": "EMPTY_PLAYER",
-        "name": "名無し",
-        "skill": {
-          "recoverBattery": 2,
-          "type": "RecoverBatterySkill",
-        },
-      },
-      "playerId": "player01",
-    },
-    {
-      "armdozer": {
-        "battery": 3,
-        "burst": {
-          "recoverBattery": 5,
-          "turnStartBatteryCorrect": 1,
-          "type": "RecoverBattery",
-        },
-        "effects": [],
-        "enableBurst": false,
-        "hp": 3000,
-        "id": "id",
-        "maxBattery": 5,
-        "maxHp": 3000,
-        "name": "name",
-        "power": 2000,
-        "speed": 2000,
-      },
-      "pilot": {
-        "enableSkill": true,
-        "id": "EMPTY_PLAYER",
-        "name": "名無し",
-        "skill": {
-          "recoverBattery": 2,
-          "type": "RecoverBatterySkill",
-        },
-      },
-      "playerId": "player02",
-    },
-  ],
-}
-`;
-
-exports[`戦闘後のコマンド入力フェイズが正しく適用される: after-battle 1`] = `
-{
-  "activePlayerId": "",
+  "activePlayerId": "player01",
   "effect": {
     "name": "InputCommand",
     "players": [
@@ -177,6 +73,109 @@ exports[`戦闘後のコマンド入力フェイズが正しく適用される: 
     {
       "armdozer": {
         "battery": 5,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "player01",
+    },
+    {
+      "armdozer": {
+        "battery": 3,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "player02",
+    },
+  ],
+}
+`;
+
+exports[`効果適用フロー後のコマンド入力フェイズ効果が正しく処理される: after-effect-activation 1`] = `
+{
+  "activePlayerId": "player02",
+  "effect": {
+    "name": "InputCommand",
+    "players": [
+      {
+        "nextTurnCommand": {
+          "battery": 2,
+          "type": "BATTERY_COMMAND",
+        },
+        "playerId": "player02",
+        "selectable": false,
+      },
+      {
+        "command": [
+          {
+            "battery": 0,
+            "type": "BATTERY_COMMAND",
+          },
+          {
+            "battery": 1,
+            "type": "BATTERY_COMMAND",
+          },
+          {
+            "battery": 2,
+            "type": "BATTERY_COMMAND",
+          },
+          {
+            "type": "BURST_COMMAND",
+          },
+          {
+            "type": "PILOT_SKILL_COMMAND",
+          },
+        ],
+        "playerId": "player01",
+        "selectable": true,
+      },
+    ],
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 2,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,

@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`相手ターンに強制ターンエンドを発動した場合、自分が攻撃プレイヤーになる 1`] = `
+{
+  "activePlayerId": "burst",
+  "effect": {
+    "burst": {
+      "recoverBattery": 2,
+      "type": "ForceTurnEnd",
+    },
+    "burstPlayer": "burst",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "other",
+    },
+    {
+      "armdozer": {
+        "battery": 3,
+        "burst": {
+          "recoverBattery": 2,
+          "type": "ForceTurnEnd",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+        ],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burst",
+    },
+  ],
+}
+`;
+
+exports[`自分ターンに強制ターンエンドを発動した場合、引き続き自分が攻撃プレイヤーである 1`] = `
+{
+  "activePlayerId": "burst",
+  "effect": {
+    "burst": {
+      "recoverBattery": 2,
+      "type": "ForceTurnEnd",
+    },
+    "burstPlayer": "burst",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "other",
+    },
+    {
+      "armdozer": {
+        "battery": 3,
+        "burst": {
+          "recoverBattery": 2,
+          "type": "ForceTurnEnd",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "Empty",
+          },
+        ],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burst",
+    },
+  ],
+}
+`;

@@ -27,8 +27,11 @@ export function burst(
   const players = lastState.players.map((v) =>
     v.playerId === burstPlayerId ? updatedInvoker : updatedOther,
   );
+  const activePlayerId =
+    burst.type === "ForceTurnEnd" ? burstPlayerId : lastState.activePlayerId;
   return {
     ...lastState,
+    activePlayerId,
     players,
     effect: {
       name: "BurstEffect",

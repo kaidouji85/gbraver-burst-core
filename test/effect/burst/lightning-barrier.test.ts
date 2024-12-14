@@ -30,6 +30,7 @@ const otherPlayer: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "other" };
 /** ゲームステート */
 const lastState: GameState = {
   ...EMPTY_GAME_STATE,
+  activePlayerId: otherPlayer.playerId,
   players: [otherPlayer, burstPlayer],
 };
 
