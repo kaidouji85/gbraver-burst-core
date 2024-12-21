@@ -1,6 +1,11 @@
+import * as R from "ramda";
+
 import { ForceTurnEnd } from "../../player/burst/force-turn-end";
 import { PlayerState } from "../../state/player-state";
+import { removeContinuousActive } from "../continuous-active/remove-continuous-active";
 import { getRecoverBattery } from "../get-recover-battery";
+import { removeBatteryRecoverSkip } from "../remove-battery-recover-skip";
+import { removeTurnStartBatteryCorrect } from "../remove-turn-start-battery-correct";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
 
@@ -18,6 +23,13 @@ const updateInvoker = (
   armdozer: {
     ...invoker.armdozer,
     battery: getRecoverBattery(invoker, burst.recoverBattery),
+    effects: [
+      ...R.pipe(
+        removeContinuousActive,
+        removeBatteryRecoverSkip,
+        removeTurnStartBatteryCorrect,
+      )(invoker.armdozer.effects),
+    ],
   },
 });
 
