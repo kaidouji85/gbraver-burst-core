@@ -6,16 +6,14 @@ import { effectActivationFlow } from "./effect-activation-flow";
 import { isEffectActivationFlow } from "./effect-activation-flow/is-effect-activation-flow";
 
 /**
- * バッテリーコマンドにキャストする
- * @param origin キャスト元
- * @returns キャスト結果、キャストできない場合はnull
+ * PlayerCommandX<BatteryCommand>の型ガード関数
+ * @param command 判定元のコマンド
+ * @returns 判定結果
  */
-const castBatteryCommand = (
-  origin: PlayerCommand,
-): PlayerCommandX<BatteryCommand> | null =>
-  origin.command.type === "BATTERY_COMMAND"
-    ? { ...origin, command: origin.command }
-    : null;
+const isBatteryCommand = (
+  command: PlayerCommand,
+): command is PlayerCommandX<BatteryCommand> =>
+  command.command.type === "BATTERY_COMMAND";
 
 /**
  * ゲームを進める
@@ -31,10 +29,8 @@ export function progress(
     return effectActivationFlow(lastState, commands);
   }
 
-  const batteryCommand1 = castBatteryCommand(commands[0]);
-  const batteryCommand2 = castBatteryCommand(commands[1]);
-  if (batteryCommand1 && batteryCommand2) {
-    return battleFlow(lastState, [batteryCommand1, batteryCommand2]);
+  if (isBatteryCommand(commands[0]) && isBatteryCommand(commands[1])) {
+    return battleFlow(lastState, [commands[0], commands[1]]);
   }
 
   throw new Error("invalid commands");
