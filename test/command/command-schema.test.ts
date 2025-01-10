@@ -12,9 +12,6 @@ const commands: Command[] = [
   {
     type: "PILOT_SKILL_COMMAND",
   },
-  {
-    type: "EMPTY_COMMAND",
-  },
 ];
 
 test("Commandはパースできる", () => {
