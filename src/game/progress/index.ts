@@ -1,6 +1,5 @@
-import { BatteryCommand } from "../../command/battery";
 import { GameState } from "../../state/game-state";
-import { PlayerCommand, PlayerCommandX } from "../command/player-command";
+import { PlayerCommand } from "../command/player-command";
 import { battleFlow } from "./battle-flow";
 import { effectActivationFlow } from "./effect-activation-flow";
 import { isEffectActivationFlow } from "./effect-activation-flow/is-effect-activation-flow";
@@ -19,12 +18,10 @@ export function progress(
     return effectActivationFlow(lastState, commands);
   }
 
-  const batteryCommands: PlayerCommandX<BatteryCommand>[] = commands
-    .map((c) => {
-      const { command } = c;
-      return command.type === "BATTERY_COMMAND" ? { ...c, command } : null;
-    })
-    .filter((c) => c !== null);
+  const batteryCommands = commands.map((c) => {
+    const { command } = c;
+    return command.type === "BATTERY_COMMAND" ? { ...c, command } : null;
+  });
   const batteryCommand1 = batteryCommands.at(0);
   const batteryCommand2 = batteryCommands.at(1);
   if (batteryCommand1 && batteryCommand2) {
