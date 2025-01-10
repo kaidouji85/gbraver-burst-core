@@ -2,7 +2,7 @@ import { PlayerCommand, RestoreGBraverBurstSchema } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
 import { restoreGBraverBurst, startGBraverBurst } from "../../src/game";
-import type { Player } from "../../src/player/player";
+import { Player } from "../../src/player/player";
 
 /** プレイヤー1 */
 const PLAYER1: Player = {
