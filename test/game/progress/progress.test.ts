@@ -39,14 +39,8 @@ test("両方のプレイヤーがバッテリーコマンドを出した場合�
     activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
-    {
-      playerId: attacker.playerId,
-      command: batteryCommand,
-    },
-    {
-      playerId: defender.playerId,
-      command: batteryCommand,
-    },
+    { playerId: attacker.playerId, command: batteryCommand },
+    { playerId: defender.playerId, command: batteryCommand },
   ];
   const result = progress(state, commands);
   expect(result).toMatchSnapshot("battle-flow");
@@ -59,14 +53,8 @@ test("それ以外の場合は効果適用フローを進める", () => {
     activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
-    {
-      playerId: attacker.playerId,
-      command: burstCommand,
-    },
-    {
-      playerId: defender.playerId,
-      command: pilotSkillCommand,
-    },
+    { playerId: attacker.playerId, command: burstCommand },
+    { playerId: defender.playerId, command: pilotSkillCommand },
   ];
   const result = progress(state, commands);
   expect(result).toMatchSnapshot("effect-activation-flow");
