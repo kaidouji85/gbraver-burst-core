@@ -32,7 +32,7 @@ const pilotSkillCommand: PilotSkillCommand = {
   type: "PILOT_SKILL_COMMAND",
 };
 
-test("戦闘フローを正しく進めることができる", () => {
+test("両方のプレイヤーがバッテリーコマンドを出した場合は戦闘フローを進める", () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
@@ -52,7 +52,7 @@ test("戦闘フローを正しく進めることができる", () => {
   expect(result).toMatchSnapshot("battle-flow");
 });
 
-test("効果適用フローを正しく進めることができる", () => {
+test("それ以外の場合は効果適用フローを進める", () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
