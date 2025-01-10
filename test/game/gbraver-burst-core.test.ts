@@ -42,6 +42,12 @@ test("初期状態を正しく作ることができる", () => {
   expect(result).toMatchSnapshot("initial-state");
 });
 
+test("同じIDをもつプレイヤーでゲーム開始すると、例外が発生する", () => {
+  expect(() => {
+    startGBraverBurst([PLAYER1, PLAYER1]);
+  }).toThrow();
+});
+
 test("プレイヤー情報が正しくセットされている", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const result = core.players();
