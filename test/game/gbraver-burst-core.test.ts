@@ -55,6 +55,13 @@ test("正しくゲームを進めることができる", () => {
   expect(result).toMatchSnapshot("progress");
 });
 
+test("ゲームに参加しているプレイヤーのコマンドが存在しない場合、例外が発生する", () => {
+  const core = startGBraverBurst([PLAYER1, PLAYER2]);
+  expect(() => {
+    core.progress([COMMAND1, { ...COMMAND2, playerId: "no-exist-player" }]);
+  }).toThrow();
+});
+
 test("ゲームステート履歴が正しく更新される", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const initialState = core.stateHistory();
