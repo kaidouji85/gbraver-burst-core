@@ -2,7 +2,7 @@ import { PlayerCommand, RestoreGBraverBurstSchema } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
 import { restoreGBraverBurst, startGBraverBurst } from "../../src/game";
-import type { Player } from "../../src/player/player";
+import { Player } from "../../src/player/player";
 
 /** プレイヤー1 */
 const PLAYER1: Player = {
@@ -42,6 +42,12 @@ test("初期状態を正しく作ることができる", () => {
   expect(result).toMatchSnapshot("initial-state");
 });
 
+test("同じIDをもつプレイヤーでゲーム開始すると、例外が発生する", () => {
+  expect(() => {
+    startGBraverBurst([PLAYER1, PLAYER1]);
+  }).toThrow();
+});
+
 test("プレイヤー情報が正しくセットされている", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const result = core.players();
@@ -53,6 +59,38 @@ test("正しくゲームを進めることができる", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const result = core.progress([COMMAND1, COMMAND2]);
   expect(result).toMatchSnapshot("progress");
+});
+
+test("ゲームに参加しているプレイヤーのコマンドが存在しない場合、例外が発生する", () => {
+  const core = startGBraverBurst([PLAYER1, PLAYER2]);
+  expect(() => {
+    core.progress([COMMAND1, { ...COMMAND2, playerId: "no-exist-player" }]);
+  }).toThrow();
+});
+
+test("ステートヒストリーが空の場合にprogressを呼ぶと、例外が発生する", () => {
+  const core = restoreGBraverBurst({
+    players: [PLAYER1, PLAYER2],
+    stateHistory: [],
+  });
+  expect(() => {
+    core.progress([COMMAND1, COMMAND2]);
+  }).toThrow();
+});
+
+test("選択不可能なコマンドを入力すると、例外が発生する", () => {
+  const core = startGBraverBurst([PLAYER1, PLAYER2]);
+  const player1BurstCommand: PlayerCommand = {
+    playerId: PLAYER1.playerId,
+    command: { type: "BURST_COMMAND" },
+  };
+  expect(() => {
+    // プレイヤー1がバーストコマンドを2回実行する
+    // バーストは1試合に1回しか使えないので2回目は選択不可能である
+    // よってこのケースでは例外が発生する
+    core.progress([player1BurstCommand, COMMAND2]);
+    core.progress([player1BurstCommand, COMMAND2]);
+  }).toThrow();
 });
 
 test("ゲームステート履歴が正しく更新される", () => {
