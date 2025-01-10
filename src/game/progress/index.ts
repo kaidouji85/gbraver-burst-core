@@ -2,7 +2,6 @@ import { GameState } from "../../state/game-state";
 import { PlayerCommand } from "../command/player-command";
 import { battleFlow } from "./battle-flow";
 import { effectActivationFlow } from "./effect-activation-flow";
-import { isEffectActivationFlow } from "./effect-activation-flow/is-effect-activation-flow";
 
 /**
  * ゲームを進める
@@ -14,10 +13,6 @@ export function progress(
   lastState: GameState,
   commands: [PlayerCommand, PlayerCommand],
 ): GameState[] {
-  if (isEffectActivationFlow(commands)) {
-    return effectActivationFlow(lastState, commands);
-  }
-
   const batteryCommands = commands.map((c) => {
     const { command } = c;
     return command.type === "BATTERY_COMMAND" ? { ...c, command } : null;
@@ -28,5 +23,5 @@ export function progress(
     return battleFlow(lastState, [batteryCommand1, batteryCommand2]);
   }
 
-  throw new Error("invalid commands");
+  return effectActivationFlow(lastState, commands);
 }

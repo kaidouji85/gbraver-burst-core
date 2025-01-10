@@ -32,41 +32,29 @@ const pilotSkillCommand: PilotSkillCommand = {
   type: "PILOT_SKILL_COMMAND",
 };
 
-test("戦闘フローを正しく進めることができる", () => {
+test("両方のプレイヤーがバッテリーコマンドを出した場合は戦闘フローを進める", () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
     activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
-    {
-      playerId: attacker.playerId,
-      command: batteryCommand,
-    },
-    {
-      playerId: defender.playerId,
-      command: batteryCommand,
-    },
+    { playerId: attacker.playerId, command: batteryCommand },
+    { playerId: defender.playerId, command: batteryCommand },
   ];
   const result = progress(state, commands);
   expect(result).toMatchSnapshot("battle-flow");
 });
 
-test("効果適用フローを正しく進めることができる", () => {
+test("それ以外の場合は効果適用フローを進める", () => {
   const state: GameState = {
     ...EMPTY_GAME_STATE,
     players: [defender, attacker],
     activePlayerId: attacker.playerId,
   };
   const commands: [PlayerCommand, PlayerCommand] = [
-    {
-      playerId: attacker.playerId,
-      command: burstCommand,
-    },
-    {
-      playerId: defender.playerId,
-      command: pilotSkillCommand,
-    },
+    { playerId: attacker.playerId, command: burstCommand },
+    { playerId: defender.playerId, command: pilotSkillCommand },
   ];
   const result = progress(state, commands);
   expect(result).toMatchSnapshot("effect-activation-flow");
