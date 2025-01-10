@@ -72,6 +72,21 @@ test("ステートヒストリーが空の場合にprogressを呼ぶと、例外
   }).toThrow();
 });
 
+test("選択不可能なコマンドを入力すると、例外が発生する", () => {
+  const core = startGBraverBurst([PLAYER1, PLAYER2]);
+  const player1BurstCommand: PlayerCommand = {
+    playerId: PLAYER1.playerId,
+    command: { type: "BURST_COMMAND" },
+  };
+  expect(() => {
+    // プレイヤー1がバーストコマンドを2回実行する
+    // バーストは1試合に1回しか使えないので2回目は選択不可能である
+    // よってこのケースでは例外が発生する
+    core.progress([player1BurstCommand, COMMAND2]);
+    core.progress([player1BurstCommand, COMMAND2]);
+  }).toThrow();
+});
+
 test("ゲームステート履歴が正しく更新される", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const initialState = core.stateHistory();
