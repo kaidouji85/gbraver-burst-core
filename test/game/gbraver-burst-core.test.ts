@@ -62,6 +62,16 @@ test("ゲームに参加しているプレイヤーのコマンドが存在し�
   }).toThrow();
 });
 
+test("ステートヒストリーが空の場合にprogressを呼ぶと、例外が発生する", () => {
+  const core = restoreGBraverBurst({
+    players: [PLAYER1, PLAYER2],
+    stateHistory: [],
+  });
+  expect(() => {
+    core.progress([COMMAND1, COMMAND2]);
+  }).toThrow();
+});
+
 test("ゲームステート履歴が正しく更新される", () => {
   const core = startGBraverBurst([PLAYER1, PLAYER2]);
   const initialState = core.stateHistory();
