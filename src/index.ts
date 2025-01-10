@@ -1,7 +1,6 @@
 export { BatteryCommand, BatteryCommandSchema } from "./command/battery";
 export { BurstCommand, BurstCommandSchema } from "./command/burst";
 export { Command, CommandSchema, isCommandEqual } from "./command/command";
-export { EmptyCommand, EmptyCommandSchema } from "./command/empty-command";
 export {
   PilotSkillCommand,
   PilotSkillCommandSchema,

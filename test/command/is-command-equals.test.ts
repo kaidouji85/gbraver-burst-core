@@ -1,18 +1,5 @@
 import { Command, isCommandEqual } from "../../src/command/command";
 
-test("等しい空コマンドと判定できる", () => {
-  expect(
-    isCommandEqual(
-      {
-        type: "EMPTY_COMMAND",
-      },
-      {
-        type: "EMPTY_COMMAND",
-      },
-    ),
-  ).toBe(true);
-});
-
 test("等しいバッテリーコマンドと判定できる", () => {
   expect(
     isCommandEqual(
@@ -71,7 +58,6 @@ test("等しいパイロットスキルコマンドと判定できる", () => {
 
 test("コマンド種別がことなると別コマンドだと判定できる", () => {
   const commands: Command[] = [
-    { type: "EMPTY_COMMAND" },
     { type: "BATTERY_COMMAND", battery: 3 },
     { type: "BURST_COMMAND" },
   ];
