@@ -36,5 +36,12 @@ npm audit --omit=dev
 fixpack
 ```
 
+## GitHub Actions設定
+
+**secrets**
+| 変数名 | 値 |
+|-------|----|
+| CC_TEST_REPORTER_ID | code climate reporter id |
+
 ## License
 MIT
