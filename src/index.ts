@@ -129,6 +129,7 @@ export {
   ForceTurnEnd,
   ForceTurnEndSchema,
 } from "./player/burst/force-turn-end";
+export { Ineffective, IneffectiveSchema } from "./player/burst/ineffective";
 export {
   LightningBarrier,
   LightningBarrierSchema,
