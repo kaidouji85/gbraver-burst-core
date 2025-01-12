@@ -20,12 +20,9 @@ export function battleFlow(
   lastState: GameState,
   commands: [PlayerCommandX<BatteryCommand>, PlayerCommandX<BatteryCommand>],
 ): GameState[] {
-  const attacker = commands.find(
-    (v) => v.playerId === lastState.activePlayerId,
-  );
-  const defender = commands.find(
-    (v) => v.playerId !== lastState.activePlayerId,
-  );
+  const { activePlayerId } = lastState;
+  const attacker = commands.find((v) => v.playerId === activePlayerId);
+  const defender = commands.find((v) => v.playerId !== activePlayerId);
   if (!attacker || !defender) {
     throw new Error("not found attacker or defender command");
   }
