@@ -5,8 +5,8 @@ import {
   EMPTY_ARMDOZER_STATE,
   EMPTY_PLAYER_STATE,
   PlayerState,
-} from "../../../../src";
-import { hasArmdozerEffectsDisabled } from "../../../../src/game/progress/battle-flow/has-armdozer-effects-disabled";
+} from "../../src";
+import { hasArmdozerEffectsDisabled } from "../../src/effect/has-armdozer-effects-disabled";
 
 /**
  * テストプレイヤーを生成する

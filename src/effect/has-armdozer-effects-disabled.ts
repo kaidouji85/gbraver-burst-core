@@ -1,4 +1,4 @@
-import { PlayerState } from "../../../state/player-state";
+import { PlayerState } from "../state/player-state";
 
 /**
  * アームドーザ効果無効であるかを判定する
