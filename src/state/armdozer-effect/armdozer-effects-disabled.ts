@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { EffectPeriod, EffectPeriodSchema } from "./effect-period";
 
-/** アームドーザ効果無効 */
+/** 戦闘中にアームドーザ効果が無効となる */
 export type ArmdozerEffectsDisabled = Readonly<{
   type: "ArmdozerEffectsDisabled";
   /** エフェクト有効期間 */
