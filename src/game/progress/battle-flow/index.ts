@@ -20,25 +20,25 @@ export function battleFlow(
   lastState: GameState,
   commands: [PlayerCommandX<BatteryCommand>, PlayerCommandX<BatteryCommand>],
 ): GameState[] {
-  const attacker = commands.find(
+  const attackerCommand = commands.find(
     (v) => v.playerId === lastState.activePlayerId,
   );
-  const defender = commands.find(
+  const defenderCommand = commands.find(
     (v) => v.playerId !== lastState.activePlayerId,
   );
-  if (!attacker || !defender) {
+  if (!attackerCommand || !defenderCommand) {
     throw new Error("not found attacker or defender command");
   }
 
   return startGameFlow(lastState, [
-    (state) => attackFlow(state, attacker, defender),
+    (state) => attackFlow(state, attackerCommand, defenderCommand),
     (state) => {
       if (state.effect.name === "Battle") {
         const battleEffect: Battle = state.effect;
         return startGameFlow(state, [
           (subState) =>
             canReflectFlow(battleEffect.result)
-              ? reflectFlow(subState, attacker.playerId)
+              ? reflectFlow(subState, attackerCommand.playerId)
               : [],
           (subState) =>
             canRightItself(battleEffect)
