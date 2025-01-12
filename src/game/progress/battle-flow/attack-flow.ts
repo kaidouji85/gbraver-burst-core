@@ -3,7 +3,6 @@ import { batteryDeclaration } from "../../../effect/battery-declaration";
 import { battle } from "../../../effect/battle";
 import { GameState } from "../../../state/game-state";
 import { PlayerCommandX } from "../../command/player-command";
-import { startGameFlow } from "../../game-flow";
 
 /**
  * プレイヤー攻撃フロー
@@ -17,25 +16,17 @@ export function attackFlow(
   attackerCommand: PlayerCommandX<BatteryCommand>,
   defenderCommand: PlayerCommandX<BatteryCommand>,
 ): GameState[] {
-  return startGameFlow(lastState, [
-    (state) => [
-      batteryDeclaration({
-        lastState: state,
-        attackerCommand: attackerCommand,
-        defenderCommand: defenderCommand,
-      }),
-    ],
-    (state) =>
-      state.effect.name === "BatteryDeclaration"
-        ? [
-            battle({
-              lastState: state,
-              attackerId: attackerCommand.playerId,
-              attackerBattery: state.effect.attackerBattery,
-              defenderId: defenderCommand.playerId,
-              defenderBattery: state.effect.defenderBattery,
-            }),
-          ]
-        : [],
-  ]);
+  const doneBatteryDeclaration = batteryDeclaration({
+    lastState,
+    attackerCommand,
+    defenderCommand,
+  });
+  const doneBattle = battle({
+    lastState: doneBatteryDeclaration,
+    attackerId: attackerCommand.playerId,
+    attackerBattery: doneBatteryDeclaration.effect.attackerBattery,
+    defenderId: defenderCommand.playerId,
+    defenderBattery: doneBatteryDeclaration.effect.defenderBattery,
+  });
+  return [doneBatteryDeclaration, doneBattle];
 }
