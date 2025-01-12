@@ -23,7 +23,7 @@ const updateInvoker = (
 
 /**
  * それ以外のプレイヤーのステートを更新する
- * @param invoker それ以外のプレイヤーのステート
+ * @param other それ以外のプレイヤーのステート
  * @param burst バースト情報
  * @returns バースト発動後のステート
  */
