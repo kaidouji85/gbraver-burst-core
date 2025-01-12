@@ -28,13 +28,13 @@ export function attackFlow(
     (state) =>
       state.effect.name === "BatteryDeclaration"
         ? [
-            battle(
-              state,
-              state.effect.attacker,
-              state.effect.attackerBattery,
-              defenderCommand.playerId,
-              state.effect.defenderBattery,
-            ),
+            battle({
+              lastState: state,
+              attackerId: attackerCommand.playerId,
+              attackerBattery: state.effect.attackerBattery,
+              defenderId: defenderCommand.playerId,
+              defenderBattery: state.effect.defenderBattery,
+            }),
           ]
         : [],
   ]);

@@ -5,22 +5,33 @@ import { Battle } from "./battle";
 import { updateDefender } from "./players/update-defender";
 import { battleResult } from "./result/battle-result";
 
+/** オプション */
+type Options = {
+  /** 更新前の状態 */
+  lastState: GameState;
+  /** 攻撃側プレイヤーID */
+  attackerId: PlayerId;
+  /** 攻撃側バッテリー */
+  attackerBattery: number;
+  /** 防御側プレイヤーID */
+  defenderId: PlayerId;
+  /** 防御側バッテリー */
+  defenderBattery: number;
+};
+
 /**
  * 戦闘を行う
- * @param lastState 更新前の状態
- * @param attackerId 攻撃側プレイヤーID
- * @param attackerBattery 攻撃側バッテリー
- * @param defenderId 防御側プレイヤーID
- * @param defenderBattery 防御側バッテリー
+ * @param options オプション
  * @returns 戦闘後の更新ステート、戦闘できない場合はnullを返す
  */
-export function battle(
-  lastState: GameState,
-  attackerId: PlayerId,
-  attackerBattery: number,
-  defenderId: PlayerId,
-  defenderBattery: number,
-): GameStateX<Battle> {
+export function battle(options: Options): GameStateX<Battle> {
+  const {
+    lastState,
+    attackerId,
+    attackerBattery,
+    defenderId,
+    defenderBattery,
+  } = options;
   const attacker = lastState.players.find((p) => p.playerId === attackerId);
   const defender = lastState.players.find((p) => p.playerId === defenderId);
   if (!attacker || !defender) {
