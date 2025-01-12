@@ -32,7 +32,13 @@ test("戦闘を実行した後の状態に正しく更新できる", () => {
     players: [defender, attacker],
     activePlayerId: attacker.playerId,
   };
-  const result = battle(lastState, attacker.playerId, 3, defender.playerId, 2);
+  const result = battle({
+    lastState,
+    attackerId: attacker.playerId,
+    attackerBattery: 3,
+    defenderId: defender.playerId,
+    defenderBattery: 2,
+  });
   const expected = {
     ...lastState,
     players: [
