@@ -15,5 +15,5 @@ export const predicatedDamage = (
 ): number =>
   toMinDamage(
     (attacker.armdozer.power + correctPower(attacker.armdozer.effects)) *
-      damageReduction(defender),
+      damageReduction(defender.armdozer.effects),
   );
