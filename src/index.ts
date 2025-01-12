@@ -175,6 +175,10 @@ export {
 } from "./player/player";
 export { ArmdozerEffect, ArmdozerEffectSchema } from "./state/armdozer-effect";
 export {
+  ArmdozerEffectsDisabled,
+  ArmdozerEffectsDisabledSchema,
+} from "./state/armdozer-effect/armdozer-effects-disabled";
+export {
   BatteryCorrection,
   BatteryCorrectionSchema,
 } from "./state/armdozer-effect/battery-correction";
