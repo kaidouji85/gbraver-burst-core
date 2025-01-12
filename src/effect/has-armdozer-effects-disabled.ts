@@ -1,11 +1,9 @@
-import { PlayerState } from "../state/player-state";
+import { ArmdozerEffect } from "../state/armdozer-effect";
 
 /**
  * アームドーザ効果無効であるかを判定する
- * @param player 判定対象のプレイヤー
+ * @param effects 適用されているアームドーザ効果
  * @returns 判定結果、trueでアームドーザ効果無効
  */
-export const hasArmdozerEffectsDisabled = (player: PlayerState) =>
-  player.armdozer.effects.some(
-    (effect) => effect.type === "ArmdozerEffectsDisabled",
-  );
+export const hasArmdozerEffectsDisabled = (effects: ArmdozerEffect[]) =>
+  effects.some((effect) => effect.type === "ArmdozerEffectsDisabled");
