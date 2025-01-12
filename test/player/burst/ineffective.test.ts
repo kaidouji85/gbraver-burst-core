@@ -18,7 +18,7 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
 
 test("Ineffective 以外は例外を投げる", () => {
   const data = {
-    type: "Innffective",
+    type: "Ineffective",
     recover: 3,
   };
   expect(() => IneffectiveSchema.parse(data)).toThrow();
