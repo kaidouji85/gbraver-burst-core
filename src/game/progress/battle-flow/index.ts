@@ -1,16 +1,14 @@
-import type { BatteryCommand } from "../../../command/battery";
-import type { Battle } from "../../../effect/battle/battle";
-import { gameEnd } from "../../../effect/game-end";
-import { canRightItself, rightItself } from "../../../effect/right-itself";
-import type { GameState } from "../../../state/game-state";
-import type { PlayerCommandX } from "../../command/player-command";
-import { gameEndJudging } from "../../end-judging";
-import { startGameFlow } from "../../game-flow";
-import { attackFlow } from "./attack-flow";
-import { gameContinueFlow } from "./game-continue-flow";
-import { canReflectFlow, reflectFlow } from "./reflect-flow";
+import { BatteryCommand } from "../../../command/battery";
 import { batteryDeclaration } from "../../../effect/battery-declaration";
 import { battle } from "../../../effect/battle";
+import { gameEnd } from "../../../effect/game-end";
+import { canRightItself, rightItself } from "../../../effect/right-itself";
+import { GameState } from "../../../state/game-state";
+import { PlayerCommandX } from "../../command/player-command";
+import { gameEndJudging } from "../../end-judging";
+import { startGameFlow } from "../../game-flow";
+import { gameContinueFlow } from "./game-continue-flow";
+import { canReflectFlow, reflectFlow } from "./reflect-flow";
 
 /**
  * 戦闘フロー
@@ -42,23 +40,20 @@ export function battleFlow(
         attackerId: attackerCommand.playerId,
         defenderId: defenderCommand.playerId,
       });
-      return [doneBatteryDeclaration, doneBattle];
-    },
-    (state) => {
-      if (state.effect.name === "Battle") {
-        const battleEffect: Battle = state.effect;
-        return startGameFlow(state, [
-          (subState) =>
-            canReflectFlow(battleEffect.result)
-              ? reflectFlow(subState, attackerCommand.playerId)
+      return [
+        doneBatteryDeclaration,
+        doneBattle,
+        ...startGameFlow(doneBattle, [
+          (state) =>
+            canReflectFlow(doneBattle.effect.result)
+              ? reflectFlow(state, attackerCommand.playerId)
               : [],
-          (subState) =>
-            canRightItself(battleEffect)
-              ? [rightItself(subState, battleEffect)]
+          (state) =>
+            canRightItself(doneBattle.effect)
+              ? [rightItself(state, doneBattle.effect)]
               : [],
-        ]);
-      }
-      return [];
+        ]),
+      ];
     },
     (state) => {
       const endJudge = gameEndJudging(state);
