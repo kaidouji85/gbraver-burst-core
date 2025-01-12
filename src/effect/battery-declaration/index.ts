@@ -1,28 +1,34 @@
 import { BatteryCommand } from "../../command/battery";
-import { PlayerId } from "../../player/player";
+import { PlayerCommandX } from "../../game/command/player-command";
 import { GameState, GameStateX } from "../../state/game-state";
 import { correctedBattery } from "../battery-correction";
 import { BatteryDeclaration } from "./battery-declaration";
 import { consumePlayerBattery } from "./consume-player-battery";
 
+/** オプション */
+type Options = {
+  /** 最新状態 */
+  lastState: GameState;
+  /** 攻撃側のバッテリーコマンド */
+  attackerCommand: PlayerCommandX<BatteryCommand>;
+  /** 防御側のバッテリーコマンド */
+  defenderCommand: PlayerCommandX<BatteryCommand>;
+};
+
 /**
  * 攻撃、防御のバッテリー宣言を実行する
- * @param lastState 最新状態
- * @param attackerId 攻撃プレイヤーID
- * @param attackerBattery 攻撃バッテリー
- * @param defenderId 防御プレイヤーID
- * @param defenderBattery 防御バッテリー
+ * @param options オプション
  * @returns 更新結果、実行不可能な場合はnullを返す
  */
 export function batteryDeclaration(
-  lastState: GameState,
-  attackerId: PlayerId,
-  attackerBattery: BatteryCommand,
-  defenderId: PlayerId,
-  defenderBattery: BatteryCommand,
+  options: Options,
 ): GameStateX<BatteryDeclaration> {
+  const { lastState, attackerCommand, defenderCommand } = options;
+  const { playerId: attackerId, command: attackerBattery } = attackerCommand;
+  const { playerId: defenderId, command: defenderBattery } = defenderCommand;
   const attacker = lastState.players.find((p) => p.playerId === attackerId);
   const defender = lastState.players.find((p) => p.playerId === defenderId);
+
   if (!attacker || !defender) {
     throw new Error("not found attacker or defender");
   }
