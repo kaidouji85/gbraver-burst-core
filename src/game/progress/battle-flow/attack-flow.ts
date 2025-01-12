@@ -1,31 +1,29 @@
-import type { BatteryCommand } from "../../../command/battery";
+import { BatteryCommand } from "../../../command/battery";
 import { batteryDeclaration } from "../../../effect/battery-declaration";
 import { battle } from "../../../effect/battle";
-import type { GameState } from "../../../state/game-state";
-import type { PlayerCommandX } from "../../command/player-command";
+import { GameState } from "../../../state/game-state";
+import { PlayerCommandX } from "../../command/player-command";
 import { startGameFlow } from "../../game-flow";
 
 /**
  * プレイヤー攻撃フロー
  * @param lastState 最終ステート
- * @param attacker 攻撃側バッテリーコマンド
- * @param defender 防御側バッテリーコマンド
+ * @param attackerCommand 攻撃側バッテリーコマンド
+ * @param defenderCommand 防御側バッテリーコマンド
  * @returns 更新されたゲームステート
  */
 export function attackFlow(
   lastState: GameState,
-  attacker: PlayerCommandX<BatteryCommand>,
-  defender: PlayerCommandX<BatteryCommand>,
+  attackerCommand: PlayerCommandX<BatteryCommand>,
+  defenderCommand: PlayerCommandX<BatteryCommand>,
 ): GameState[] {
   return startGameFlow(lastState, [
     (state) => [
-      batteryDeclaration(
-        state,
-        attacker.playerId,
-        attacker.command,
-        defender.playerId,
-        defender.command,
-      ),
+      batteryDeclaration({
+        lastState: state,
+        attackerCommand: attackerCommand,
+        defenderCommand: defenderCommand,
+      }),
     ],
     (state) =>
       state.effect.name === "BatteryDeclaration"
@@ -34,7 +32,7 @@ export function attackFlow(
               state,
               state.effect.attacker,
               state.effect.attackerBattery,
-              defender.playerId,
+              defenderCommand.playerId,
               state.effect.defenderBattery,
             ),
           ]
