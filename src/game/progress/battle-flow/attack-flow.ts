@@ -6,6 +6,7 @@ import { PlayerCommandX } from "../../command/player-command";
 import { startGameFlow } from "../../game-flow";
 
 /**
+ * @deprecated
  * プレイヤー攻撃フロー
  * @param lastState 最終ステート
  * @param attackerCommand 攻撃側バッテリーコマンド

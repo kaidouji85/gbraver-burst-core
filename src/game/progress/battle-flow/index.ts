@@ -9,6 +9,8 @@ import { startGameFlow } from "../../game-flow";
 import { attackFlow } from "./attack-flow";
 import { gameContinueFlow } from "./game-continue-flow";
 import { canReflectFlow, reflectFlow } from "./reflect-flow";
+import { batteryDeclaration } from "../../../effect/battery-declaration";
+import { battle } from "../../../effect/battle";
 
 /**
  * 戦闘フロー
@@ -28,7 +30,20 @@ export function battleFlow(
   }
 
   return startGameFlow(lastState, [
-    (state) => attackFlow(state, attackerCommand, defenderCommand),
+    (state) => {
+      const doneBatteryDeclaration = batteryDeclaration({
+        lastState: state,
+        attackerCommand,
+        defenderCommand,
+      });
+      const doneBattle = battle({
+        ...doneBatteryDeclaration.effect,
+        lastState: doneBatteryDeclaration,
+        attackerId: attackerCommand.playerId,
+        defenderId: defenderCommand.playerId,
+      });
+      return [doneBatteryDeclaration, doneBattle];
+    },
     (state) => {
       if (state.effect.name === "Battle") {
         const battleEffect: Battle = state.effect;
