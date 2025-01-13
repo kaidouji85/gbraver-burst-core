@@ -7,9 +7,9 @@ import { GameState } from "../../../state/game-state";
 import { PlayerCommandX } from "../../command/player-command";
 import { gameEndJudging } from "../../end-judging";
 import { startGameFlow } from "../../game-flow";
+import { canReflectFlow } from "./can-reflect-flow";
 import { gameContinueFlow } from "./game-continue-flow";
 import { reflectFlow } from "./reflect-flow";
-import { canReflectFlow } from "./can-reflect-flow";
 
 /**
  * 戦闘フロー

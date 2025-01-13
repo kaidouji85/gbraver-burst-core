@@ -1,7 +1,7 @@
 import { Battle } from "../../../effect/battle/battle";
-import { PlayerState } from "../../../state/player-state";
-import { hasArmdozerEffectsDisabled } from "../../../effect/has-armdozer-effects-disabled";
 import { isAttackHit } from "../../../effect/battle/result/is-attack-hit";
+import { hasArmdozerEffectsDisabled } from "../../../effect/has-armdozer-effects-disabled";
+import { PlayerState } from "../../../state/player-state";
 
 /**
  * ダメージ反射フロー実施判定のオプション

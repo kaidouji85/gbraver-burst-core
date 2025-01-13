@@ -1,7 +1,6 @@
 import {
   ArmdozerEffectsDisabled,
   ArmdozerEffectsDisabledSchema,
-  CorrectPowerSchema,
 } from "../../../src";
 
 /** 有効なArmdozerEffectsDisabled */
