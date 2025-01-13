@@ -3,7 +3,7 @@
 exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
 [
   {
-    "activePlayerId": "",
+    "activePlayerId": "attacker",
     "effect": {
       "damage": 5000,
       "damagedPlayer": "attacker",
@@ -88,7 +88,7 @@ exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
 exports[`ダメージ反射の重ね掛けも正しく処理される: multi-reflect 1`] = `
 [
   {
-    "activePlayerId": "",
+    "activePlayerId": "attacker",
     "effect": {
       "damage": 5000,
       "damagedPlayer": "attacker",
@@ -186,7 +186,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
     ],
   },
   {
-    "activePlayerId": "",
+    "activePlayerId": "attacker",
     "effect": {
       "damage": 3000,
       "damagedPlayer": "attacker",
@@ -284,7 +284,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
     ],
   },
   {
-    "activePlayerId": "",
+    "activePlayerId": "attacker",
     "effect": {
       "damage": 2000,
       "damagedPlayer": "attacker",
