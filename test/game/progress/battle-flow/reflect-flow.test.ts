@@ -62,3 +62,14 @@ test("ダメージ反射の重ね掛けも正しく処理される", () => {
   const result = reflectFlow(lastState, "attacker");
   expect(result).toMatchSnapshot("multi-reflect");
 });
+
+test("防御側プレイヤーが見つからない場合は例外を投げる", () => {
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: ATTACKER.playerId,
+    // テスト対象の関数は、攻撃側プレイヤーとIDが一致したいものを防御側とみなしている
+    // 防御側プレイヤーが存在しない状況を再現するために、攻撃側プレイヤーのみを設定している
+    players: [ATTACKER, ATTACKER],
+  };
+  expect(() => reflectFlow(lastState, "attacker")).toThrow();
+});
