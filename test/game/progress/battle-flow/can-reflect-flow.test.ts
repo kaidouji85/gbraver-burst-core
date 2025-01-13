@@ -46,9 +46,30 @@ const armdozerEffectDisabled: ArmdozerEffectsDisabled = {
   period: { type: "TurnLimit", remainingTurn: 2 },
 };
 
-test("攻撃ヒットかつ攻撃側に効果無視が適用されていない場合、ダメージ反射フローを実行しない", () => {
+test("攻撃ヒットかつ攻撃側に効果無視が適用されていない場合、ダメージ反射フローを実行する", () => {
   const attacker = createAttacker([]);
   expect(
     canReflectFlow({ effect: attackHit, players: [defender, attacker] }),
   ).toBe(true);
+});
+
+test("攻撃ヒットかつ攻撃側に効果無視が適用されている場合、ダメージ反射フローを実行しない", () => {
+  const attacker = createAttacker([armdozerEffectDisabled]);
+  expect(
+    canReflectFlow({ effect: attackHit, players: [defender, attacker] }),
+  ).toBe(false);
+});
+
+test("攻撃ヒットでないかつ攻撃側に効果無視が適用されていない場合、ダメージ反射フローを実行しない", () => {
+  const attacker = createAttacker([]);
+  expect(
+    canReflectFlow({ effect: notAttackHit, players: [defender, attacker] }),
+  ).toBe(false);
+});
+
+test("攻撃ヒットでないかつ攻撃側に効果無視が適用されている場合、ダメージ反射フローを実行しない", () => {
+  const attacker = createAttacker([armdozerEffectDisabled]);
+  expect(
+    canReflectFlow({ effect: notAttackHit, players: [defender, attacker] }),
+  ).toBe(false);
 });
