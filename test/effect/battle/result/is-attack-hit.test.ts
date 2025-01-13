@@ -1,5 +1,5 @@
 import { CriticalHit, Feint, Guard, Miss, NormalHit } from "../../../../src";
-import { canReflectFlow } from "../../../../src/game/progress/battle-flow/reflect-flow";
+import { isAttackHit } from "../../../../src/effect/battle/result/is-attack-hit";
 
 /** 通常ヒット */
 const normalHit: NormalHit = { name: "NormalHit", damage: 2000 };
@@ -16,27 +16,27 @@ const miss: Miss = { name: "Miss" };
 /** フェイント */
 const feint: Feint = { name: "Feint", isDefenderMoved: true };
 
-test("通常ヒットの場合はダメージ反射を行う", () => {
-  const result = canReflectFlow(normalHit);
+test("通常ヒットは攻撃ヒットである", () => {
+  const result = isAttackHit(normalHit);
   expect(result).toBe(true);
 });
 
-test("ガードの場合はダメージ反射を行う", () => {
-  const result = canReflectFlow(guard);
+test("ガードは攻撃ヒットである", () => {
+  const result = isAttackHit(guard);
   expect(result).toBe(true);
 });
 
-test("クリティカルの場合はダメージ反射を行う", () => {
-  const result = canReflectFlow(criticalHit);
+test("クリティカルは攻撃ヒットである", () => {
+  const result = isAttackHit(criticalHit);
   expect(result).toBe(true);
 });
 
-test("ミスの場合はダメージ反射をしない", () => {
-  const result = canReflectFlow(miss);
+test("ミスは攻撃ヒットでない", () => {
+  const result = isAttackHit(miss);
   expect(result).toBe(false);
 });
 
-test("フェイントの場合はダメージ反射をしない", () => {
-  const result = canReflectFlow(feint);
+test("フェイントは攻撃ヒットでない", () => {
+  const result = isAttackHit(feint);
   expect(result).toBe(false);
 });

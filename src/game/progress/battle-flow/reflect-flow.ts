@@ -1,22 +1,8 @@
-import { BattleResult } from "../../../effect/battle/result/battle-result";
 import { reflect } from "../../../effect/reflect";
 import { ReflectParam } from "../../../effect/reflect/reflect";
 import { toReflectParam } from "../../../effect/reflect/to-reflect-param";
 import { PlayerId } from "../../../player/player";
 import { GameState } from "../../../state/game-state";
-
-/**
- * ダメージ反射フローを実行できるか否かを判定する
- * @param result 戦闘結果
- * @returns 判定結果、trueでダメージ反射フローを行う
- */
-export function canReflectFlow(result: BattleResult): boolean {
-  return (
-    result.name === "NormalHit" ||
-    result.name === "Guard" ||
-    result.name === "CriticalHit"
-  );
-}
 
 /**
  * ダメージ反射フロー

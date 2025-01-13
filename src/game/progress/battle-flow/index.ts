@@ -8,7 +8,8 @@ import { PlayerCommandX } from "../../command/player-command";
 import { gameEndJudging } from "../../end-judging";
 import { startGameFlow } from "../../game-flow";
 import { gameContinueFlow } from "./game-continue-flow";
-import { canReflectFlow, reflectFlow } from "./reflect-flow";
+import { reflectFlow } from "./reflect-flow";
+import { isAttackHit } from "../../../effect/battle/result/is-attack-hit";
 
 /**
  * 戦闘フロー
@@ -45,7 +46,7 @@ export function battleFlow(
         doneBattle,
         ...startGameFlow(doneBattle, [
           (state) =>
-            canReflectFlow(doneBattle.effect.result)
+            isAttackHit(doneBattle.effect.result)
               ? reflectFlow(state, attackerCommand.playerId)
               : [],
           (state) =>
