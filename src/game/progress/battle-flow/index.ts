@@ -1,6 +1,7 @@
 import { BatteryCommand } from "../../../command/battery";
 import { batteryDeclaration } from "../../../effect/battery-declaration";
 import { battle } from "../../../effect/battle";
+import { isAttackHit } from "../../../effect/battle/result/is-attack-hit";
 import { gameEnd } from "../../../effect/game-end";
 import { canRightItself, rightItself } from "../../../effect/right-itself";
 import { GameState } from "../../../state/game-state";
@@ -8,7 +9,7 @@ import { PlayerCommandX } from "../../command/player-command";
 import { gameEndJudging } from "../../end-judging";
 import { startGameFlow } from "../../game-flow";
 import { gameContinueFlow } from "./game-continue-flow";
-import { canReflectFlow, reflectFlow } from "./reflect-flow";
+import { reflectFlow } from "./reflect-flow";
 
 /**
  * 戦闘フロー
@@ -45,7 +46,7 @@ export function battleFlow(
         doneBattle,
         ...startGameFlow(doneBattle, [
           (state) =>
-            canReflectFlow(doneBattle.effect.result)
+            isAttackHit(doneBattle.effect.result)
               ? reflectFlow(state, attackerCommand.playerId)
               : [],
           (state) =>
