@@ -73,3 +73,11 @@ test("攻撃ヒットでないかつ攻撃側に効果無視が適用されて�
     canReflectFlow({ effect: notAttackHit, players: [defender, attacker] }),
   ).toBe(false);
 });
+
+test("攻撃側プレイヤーが存在しない場合、例外を投げる", () => {
+  expect(() =>
+    // 本関数はeffect.attackerとプレイヤーIDが一致するものを攻撃側とみなしている
+    // 攻撃側が存在しない状況を再現するために、防御側プレイヤーを2人配置している
+    canReflectFlow({ effect: notAttackHit, players: [defender, defender] }),
+  ).toThrow();
+});
