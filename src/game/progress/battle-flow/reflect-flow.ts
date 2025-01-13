@@ -20,6 +20,8 @@ export function canReflectFlow(result: BattleResult): boolean {
 
 /**
  * ダメージ反射フロー
+ * ダメージ反射効果が適用されている場合、ダメージ反射を行う
+ * それ以外の場合は何もせずに、空の配列を返す
  * @param lastState 最新のゲームステート
  * @param attackerId 攻撃側のプレイヤーID
  * @returns 更新結果
