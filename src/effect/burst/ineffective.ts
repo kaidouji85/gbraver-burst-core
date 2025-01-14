@@ -1,4 +1,4 @@
-import { BatteryDrain } from "../../player/burst/battery-drain";
+import { Ineffective } from "../../player/burst/ineffective";
 import { PlayerState } from "../../state/player-state";
 import { getRecoverBattery } from "../get-recover-battery";
 import { BurstInvokeParams } from "./burst-invoke-params";
@@ -12,7 +12,7 @@ import { BurstInvokeResult } from "./burst-invoke-result";
  */
 const updateInvoker = (
   invoker: PlayerState,
-  burst: BatteryDrain,
+  burst: Ineffective,
 ): PlayerState => ({
   ...invoker,
   armdozer: {
@@ -24,38 +24,33 @@ const updateInvoker = (
 /**
  * それ以外のプレイヤーのステートを更新する
  * @param other それ以外のプレイヤーのステート
- * @param burst バースト情報
  * @returns バースト発動後のステート
  */
-const updateOther = (other: PlayerState, burst: BatteryDrain): PlayerState => ({
+const updateOther = (other: PlayerState): PlayerState => ({
   ...other,
   armdozer: {
     ...other.armdozer,
     effects: [
       ...other.armdozer.effects,
       {
-        type: "BatteryCorrection",
-        batteryCorrection: burst.batteryDecrease,
-        period: {
-          type: "TurnLimit",
-          remainingTurn: 1,
-        },
+        type: "ArmdozerEffectsDisabled",
+        period: { type: "TurnLimit", remainingTurn: 1 },
       },
     ],
   },
 });
 
 /**
- * バースト バッテリードレイン 発動
+ * バースト 効果無効 発動
  * @param params バースト発動情報
  * @returns バースト発動結果
  */
-export function batteryDrain(
-  params: BurstInvokeParams<BatteryDrain>,
+export function ineffective(
+  params: BurstInvokeParams<Ineffective>,
 ): BurstInvokeResult {
   const { invoker, other, burst } = params;
   return {
     invoker: updateInvoker(invoker, burst),
-    other: updateOther(other, burst),
+    other: updateOther(other),
   };
 }

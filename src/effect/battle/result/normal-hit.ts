@@ -37,7 +37,7 @@ export function normalHit(
     (attacker.armdozer.power +
       correctPower(attacker.armdozer.effects) +
       batteryBonus(attackerBattery, defenderBattery)) *
-      damageReduction(defender),
+      damageReduction(defender.armdozer.effects),
   );
   return {
     name: "NormalHit",

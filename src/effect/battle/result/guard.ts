@@ -27,7 +27,7 @@ export const GuardSchema = z.object({
 export function guard(attacker: PlayerState, defender: PlayerState): Guard {
   const damage = toMinDamage(
     (attacker.armdozer.power + correctPower(attacker.armdozer.effects)) *
-      damageReduction(defender) *
+      damageReduction(defender.armdozer.effects) *
       0.5,
   );
   return {

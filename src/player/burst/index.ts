@@ -8,6 +8,7 @@ import {
 import { BuffPower, BuffPowerSchema } from "./buff-power";
 import { ContinuousAttack, ContinuousAttackSchema } from "./continuous-attack";
 import { ForceTurnEnd, ForceTurnEndSchema } from "./force-turn-end";
+import { Ineffective, IneffectiveSchema } from "./ineffective";
 import { LightningBarrier, LightningBarrierSchema } from "./lightning-barrier";
 import { RecoverBattery, RecoverBatterySchema } from "./recover-battery";
 
@@ -19,7 +20,8 @@ export type Burst =
   | ContinuousAttack
   | BatteryLimitBreak
   | BatteryDrain
-  | ForceTurnEnd;
+  | ForceTurnEnd
+  | Ineffective;
 
 /** Burst zodスキーマ */
 export const BurstSchema = z.union([
@@ -30,4 +32,5 @@ export const BurstSchema = z.union([
   BatteryLimitBreakSchema,
   BatteryDrainSchema,
   ForceTurnEndSchema,
+  IneffectiveSchema,
 ]);

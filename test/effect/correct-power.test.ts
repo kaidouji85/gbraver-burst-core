@@ -1,25 +1,34 @@
-import { correctPower } from "../../src";
-import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
-import { HalveCorrectPower } from "../../src/state/armdozer-effect/halve-correct-power";
-import { TurnLimitEffect } from "../../src/state/armdozer-effect/turn-limit-effect";
+import {
+  ArmdozerEffectsDisabled,
+  CorrectPower,
+  correctPower,
+  HalveCorrectPower,
+} from "../../src";
 
-const oneTurn: TurnLimitEffect = {
-  type: "TurnLimit",
-  remainingTurn: 1,
-};
+/** 攻撃補正半減 */
 const halveCorrect: HalveCorrectPower = {
   type: "HalveCorrectPower",
-  period: oneTurn,
+  period: { type: "TurnLimit", remainingTurn: 1 },
 };
+
+/** 攻撃+1000 */
 const plusCorrect: CorrectPower = {
   type: "CorrectPower",
   power: 1000,
-  period: oneTurn,
+  period: { type: "TurnLimit", remainingTurn: 1 },
 };
+
+/** 攻撃-1000 */
 const minusCorrect: CorrectPower = {
   type: "CorrectPower",
   power: -1000,
-  period: oneTurn,
+  period: { type: "TurnLimit", remainingTurn: 1 },
+};
+
+/** アームドーザ効果無効 */
+const armdozerEffectsDisabled: ArmdozerEffectsDisabled = {
+  type: "ArmdozerEffectsDisabled",
+  period: { type: "TurnLimit", remainingTurn: 1 },
 };
 
 test("攻撃補正半減効果を持たない場合、攻撃補正効果の合計が最終的な値になる", () => {
@@ -38,4 +47,20 @@ test("攻撃補正合計がマイナスの場合でも、攻撃補正半減効�
   const effects = [plusCorrect, minusCorrect, minusCorrect, halveCorrect];
   const result = correctPower(effects);
   expect(result).toBe(-500);
+});
+
+test("アームドーザ効果無効が含まれる場合、補正値は0となる", () => {
+  const effects = [
+    plusCorrect,
+    minusCorrect,
+    halveCorrect,
+    armdozerEffectsDisabled,
+  ];
+  const result = correctPower(effects);
+  expect(result).toBe(0);
+});
+
+test("アームドーザ効果が存在しない場合、補正値は0となる", () => {
+  const result = correctPower([]);
+  expect(result).toBe(0);
 });

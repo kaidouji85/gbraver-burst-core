@@ -14,7 +14,7 @@ import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { effectActivationFlow } from "../../../../src/game/progress/effect-activation-flow";
 
 /**
- * テストプレイヤーを生成うる
+ * テストプレイヤーを生成する
  * @param playerId プレイヤーID
  * @param burst バースト
  */

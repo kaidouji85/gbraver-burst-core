@@ -1,7 +1,6 @@
 export { BatteryCommand, BatteryCommandSchema } from "./command/battery";
 export { BurstCommand, BurstCommandSchema } from "./command/burst";
 export { Command, CommandSchema, isCommandEqual } from "./command/command";
-export { EmptyCommand, EmptyCommandSchema } from "./command/empty-command";
 export {
   PilotSkillCommand,
   PilotSkillCommandSchema,
@@ -130,6 +129,7 @@ export {
   ForceTurnEnd,
   ForceTurnEndSchema,
 } from "./player/burst/force-turn-end";
+export { Ineffective, IneffectiveSchema } from "./player/burst/ineffective";
 export {
   LightningBarrier,
   LightningBarrierSchema,
@@ -174,6 +174,10 @@ export {
   PlayerX,
 } from "./player/player";
 export { ArmdozerEffect, ArmdozerEffectSchema } from "./state/armdozer-effect";
+export {
+  ArmdozerEffectsDisabled,
+  ArmdozerEffectsDisabledSchema,
+} from "./state/armdozer-effect/armdozer-effects-disabled";
 export {
   BatteryCorrection,
   BatteryCorrectionSchema,

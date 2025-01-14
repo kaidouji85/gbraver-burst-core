@@ -26,7 +26,6 @@ export function rightItself(
   const defender = lastState.players.find(
     (v) => v.playerId !== battle.attacker,
   );
-
   if (!defender) {
     throw new Error("not found defender");
   }

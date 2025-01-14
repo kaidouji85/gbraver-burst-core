@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`効果適用フローを正しく進めることができる: effect-activation-flow 1`] = `
+exports[`それ以外の場合は効果適用フローを進める: effect-activation-flow 1`] = `
 [
   {
     "activePlayerId": "attacker",
@@ -306,7 +306,7 @@ exports[`効果適用フローを正しく進めることができる: effect-ac
 ]
 `;
 
-exports[`戦闘フローを正しく進めることができる: battle-flow 1`] = `
+exports[`両方のプレイヤーがバッテリーコマンドを出した場合は戦闘フローを進める: battle-flow 1`] = `
 [
   {
     "activePlayerId": "attacker",

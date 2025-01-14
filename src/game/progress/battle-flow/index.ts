@@ -1,14 +1,15 @@
-import type { BatteryCommand } from "../../../command/battery";
-import type { Battle } from "../../../effect/battle/battle";
+import { BatteryCommand } from "../../../command/battery";
+import { batteryDeclaration } from "../../../effect/battery-declaration";
+import { battle } from "../../../effect/battle";
 import { gameEnd } from "../../../effect/game-end";
 import { canRightItself, rightItself } from "../../../effect/right-itself";
-import type { GameState } from "../../../state/game-state";
-import type { PlayerCommandX } from "../../command/player-command";
+import { GameState } from "../../../state/game-state";
+import { PlayerCommandX } from "../../command/player-command";
 import { gameEndJudging } from "../../end-judging";
 import { startGameFlow } from "../../game-flow";
-import { attackFlow } from "./attack-flow";
+import { canReflectFlow } from "./can-reflect-flow";
 import { gameContinueFlow } from "./game-continue-flow";
-import { canReflectFlow, reflectFlow } from "./reflect-flow";
+import { reflectFlow } from "./reflect-flow";
 
 /**
  * 戦闘フロー
@@ -20,33 +21,40 @@ export function battleFlow(
   lastState: GameState,
   commands: [PlayerCommandX<BatteryCommand>, PlayerCommandX<BatteryCommand>],
 ): GameState[] {
-  const attacker = commands.find(
-    (v) => v.playerId === lastState.activePlayerId,
-  );
-  const defender = commands.find(
-    (v) => v.playerId !== lastState.activePlayerId,
-  );
-  if (!attacker || !defender) {
+  const { activePlayerId } = lastState;
+  const attackerCommand = commands.find((v) => v.playerId === activePlayerId);
+  const defenderCommand = commands.find((v) => v.playerId !== activePlayerId);
+  if (!attackerCommand || !defenderCommand) {
     throw new Error("not found attacker or defender command");
   }
 
   return startGameFlow(lastState, [
-    (state) => attackFlow(state, attacker, defender),
     (state) => {
-      if (state.effect.name === "Battle") {
-        const battleEffect: Battle = state.effect;
-        return startGameFlow(state, [
-          (subState) =>
-            canReflectFlow(battleEffect.result)
-              ? reflectFlow(subState, attacker.playerId)
+      const doneBatteryDeclaration = batteryDeclaration({
+        lastState: state,
+        attackerCommand,
+        defenderCommand,
+      });
+      const doneBattle = battle({
+        ...doneBatteryDeclaration.effect,
+        lastState: doneBatteryDeclaration,
+        attackerId: attackerCommand.playerId,
+        defenderId: defenderCommand.playerId,
+      });
+      return [
+        doneBatteryDeclaration,
+        doneBattle,
+        ...startGameFlow(doneBattle, [
+          (state) =>
+            canReflectFlow(doneBattle)
+              ? reflectFlow(state, attackerCommand.playerId)
               : [],
-          (subState) =>
-            canRightItself(battleEffect)
-              ? [rightItself(subState, battleEffect)]
+          (state) =>
+            canRightItself(doneBattle.effect)
+              ? [rightItself(state, doneBattle.effect)]
               : [],
-        ]);
-      }
-      return [];
+        ]),
+      ];
     },
     (state) => {
       const endJudge = gameEndJudging(state);
