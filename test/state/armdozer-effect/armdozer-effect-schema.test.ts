@@ -68,6 +68,13 @@ const armdozerEffects: ArmdozerEffect[] = [
       remainingTurn: 1,
     },
   },
+  {
+    type: "ArmdozerEffectsDisabled",
+    period: {
+      type: "TurnLimit",
+      remainingTurn: 1,
+    },
+  },
 ];
 
 test("ArmdozerEffectはパースできる", () => {

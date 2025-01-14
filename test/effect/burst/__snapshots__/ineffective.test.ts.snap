@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`効果無効が正しく適用できる 1`] = `
+{
+  "activePlayerId": "otherPlayer",
+  "effect": {
+    "burst": {
+      "recoverBattery": 3,
+      "type": "Ineffective",
+    },
+    "burstPlayer": "burstPlayer",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 2,
+              "type": "TurnLimit",
+            },
+            "power": 600,
+            "type": "CorrectPower",
+          },
+          {
+            "period": {
+              "remainingTurn": 1,
+              "type": "TurnLimit",
+            },
+            "type": "ArmdozerEffectsDisabled",
+          },
+        ],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "otherPlayer",
+    },
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 3,
+          "type": "Ineffective",
+        },
+        "effects": [],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burstPlayer",
+    },
+  ],
+}
+`;

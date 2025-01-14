@@ -6,6 +6,7 @@ import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
 import { continuousAttack } from "./continuous-attack";
 import { forceTurnEnd } from "./force-turn-skip";
+import { ineffective } from "./ineffective";
 import { lightningBarrier } from "./lightning-barrier";
 import { recoverBattery } from "./recover-battery";
 
@@ -33,6 +34,8 @@ export function invokeBurst(
       return batteryDrain({ ...params, burst });
     case "ForceTurnEnd":
       return forceTurnEnd({ ...params, burst });
+    case "Ineffective":
+      return ineffective({ ...params, burst });
     default:
       throw new Error("burst not found");
   }

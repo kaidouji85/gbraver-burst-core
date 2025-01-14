@@ -28,6 +28,10 @@ const bursts: Burst[] = [
     recoverBattery: 8,
     maxBattery: 8,
   },
+  {
+    type: "Ineffective",
+    recoverBattery: 3,
+  },
 ];
 
 test("Burstはパースできる", () => {

@@ -1,6 +1,10 @@
 import { z } from "zod";
 
 import {
+  ArmdozerEffectsDisabled,
+  ArmdozerEffectsDisabledSchema,
+} from "./armdozer-effects-disabled";
+import {
   BatteryCorrection,
   BatteryCorrectionSchema,
 } from "./battery-correction";
@@ -41,7 +45,8 @@ export type ArmdozerEffect =
   | BatteryCorrection
   | DamageHalved
   | BatteryRecoverSkip
-  | TurnStartBatteryCorrect;
+  | TurnStartBatteryCorrect
+  | ArmdozerEffectsDisabled;
 
 /** ArmdozerEffect zodスキーマ */
 export const ArmdozerEffectSchema = z.union([
@@ -54,4 +59,5 @@ export const ArmdozerEffectSchema = z.union([
   DamageHalvedSchema,
   BatteryRecoverSkipSchema,
   TurnStartBatteryCorrectSchema,
+  ArmdozerEffectsDisabledSchema,
 ]);

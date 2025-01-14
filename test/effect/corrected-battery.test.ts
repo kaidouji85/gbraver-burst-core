@@ -14,6 +14,12 @@ const createBatteryCorrection = (
   period: { type: "TurnLimit", remainingTurn: 1 },
 });
 
+/** アームドーザ効果無効 */
+const armdozerEffectsDisabled: ArmdozerEffect = {
+  type: "ArmdozerEffectsDisabled",
+  period: { type: "TurnLimit", remainingTurn: 1 },
+};
+
 test("補正後バッテリーが正しく計算できる", () => {
   const battery: BatteryCommand = { type: "BATTERY_COMMAND", battery: 1 };
   const effects = [createBatteryCorrection(2)];
@@ -33,6 +39,13 @@ test("補正後バッテリーが0より小さい場合、結果を0とみなす
   const effects = [createBatteryCorrection(-4)];
   const result = correctedBattery(battery, effects);
   expect(result).toBe(0);
+});
+
+test("アームドーザ効果無効が適用されている場合、バッテリー補正は0になる", () => {
+  const battery: BatteryCommand = { type: "BATTERY_COMMAND", battery: 3 };
+  const effects = [createBatteryCorrection(2), armdozerEffectsDisabled];
+  const result = correctedBattery(battery, effects);
+  expect(result).toBe(3);
 });
 
 test("アームドーザ効果が空の場合、元の値をそのまま返す", () => {

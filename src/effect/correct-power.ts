@@ -1,4 +1,5 @@
 import { ArmdozerEffect } from "../state/armdozer-effect";
+import { hasArmdozerEffectsDisabled } from "./has-armdozer-effects-disabled";
 
 /**
  * 攻撃補正半減を持つか否かを判定する
@@ -26,6 +27,10 @@ export function totalCorrectPower(effects: ArmdozerEffect[]): number {
  * @returns 計算結果
  */
 export function correctPower(effects: ArmdozerEffect[]): number {
+  if (hasArmdozerEffectsDisabled(effects)) {
+    return 0;
+  }
+
   const total = totalCorrectPower(effects);
   const coefficient = hasHalveCorrectPower(effects) ? 0.5 : 1;
   return total * coefficient;

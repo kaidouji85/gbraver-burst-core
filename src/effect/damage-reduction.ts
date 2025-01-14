@@ -1,5 +1,6 @@
 import { ArmdozerEffect } from "../state/armdozer-effect";
 import { hasDamageHalved } from "./damage-halved";
+import { hasArmdozerEffectsDisabled } from "./has-armdozer-effects-disabled";
 
 /**
  * ダメージ減少率を計算する
@@ -7,4 +8,4 @@ import { hasDamageHalved } from "./damage-halved";
  * @returns 計算結果
  */
 export const damageReduction = (effects: ArmdozerEffect[]): number =>
-  hasDamageHalved(effects) ? 0.5 : 1;
+  hasDamageHalved(effects) && !hasArmdozerEffectsDisabled(effects) ? 0.5 : 1;
