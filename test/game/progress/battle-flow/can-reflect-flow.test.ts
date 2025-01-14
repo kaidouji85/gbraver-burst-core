@@ -21,7 +21,6 @@ const createDefender = (effects: ArmdozerEffect[]): PlayerState => ({
   armdozer: { ...EMPTY_ARMDOZER_STATE, effects },
 });
 
-
 /** 攻撃ヒットの戦闘結果 */
 const attackHit: Battle = {
   name: "Battle",
