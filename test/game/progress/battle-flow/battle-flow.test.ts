@@ -231,3 +231,30 @@ test("防御側に効果無視が適用されている場合、すべての防�
     ]),
   ).toMatchSnapshot("defender-effects-disabled");
 });
+
+test("互いに効果無視が適用されている場合、すべての効果を無視して戦闘を行う", () => {
+  const attacker = createPlayer({
+    playerId: "attacker",
+    hp: 3000,
+    battery: 4,
+    effects: [armdozerEffectsDisabled, correctPower, batteryCorrection],
+  });
+  const defender = createPlayer({
+    playerId: "defender",
+    hp: 3000,
+    battery: 5,
+    effects: [
+      armdozerEffectsDisabled,
+      batteryCorrection,
+      tryReflect,
+      damageHalved,
+    ],
+  });
+  const lastState = createLastState({ attacker, defender });
+  expect(
+    battleFlow(lastState, [
+      createBatteryCommand(attacker.playerId, 2),
+      createBatteryCommand(defender.playerId, 1),
+    ]),
+  ).toMatchSnapshot("all-effects-disabled");
+});
