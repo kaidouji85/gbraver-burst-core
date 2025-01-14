@@ -14,6 +14,8 @@ import * as DrawData from "./battle-flow__draw.data";
 type AttackerOptions = {
   /** プレイヤーID */
   playerId: PlayerId;
+  /** HP */
+  hp: number;
   /** バッテリー */
   battery: number;
   /** 適用中の効果 */
@@ -26,13 +28,13 @@ type AttackerOptions = {
  * @returns プレイヤー
  */
 const createPlayer = (options: AttackerOptions): PlayerState => {
-  const { playerId, battery, effects } = options;
+  const { playerId, hp, battery, effects } = options;
   return {
     ...EMPTY_PLAYER_STATE,
     playerId,
     armdozer: {
       ...EMPTY_ARMDOZER_STATE,
-      hp: 3000,
+      hp,
       maxHp: 3000,
       power: 2000,
       battery,
@@ -59,11 +61,13 @@ const createBatteryCommand = (
 test("戦闘したが、相手を倒しきれなかったのでゲーム続行", () => {
   const attacker = createPlayer({
     playerId: "attacker",
+    hp: 3000,
     battery: 4,
     effects: [],
   });
   const defender = createPlayer({
     playerId: "defender",
+    hp: 3000,
     battery: 5,
     effects: [],
   });
@@ -81,9 +85,29 @@ test("戦闘したが、相手を倒しきれなかったのでゲーム続行",
 });
 
 test("攻撃で防御側のHPを0以下にした場合、ゲームが終了する", () => {
-  const { lastState, commands } = DeathData;
-  const result = battleFlow(lastState, commands);
-  expect(result).toMatchSnapshot("death");
+  const attacker = createPlayer({
+    playerId: "attacker",
+    hp: 3000,
+    battery: 4,
+    effects: [],
+  });
+  const defender = createPlayer({
+    playerId: "defender",
+    hp: 100,
+    battery: 5,
+    effects: [],
+  });
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: attacker.playerId,
+    players: [attacker, defender],
+  };
+  expect(
+    battleFlow(lastState, [
+      createBatteryCommand(attacker.playerId, 2),
+      createBatteryCommand(defender.playerId, 1),
+    ]),
+  ).toMatchSnapshot("death");
 });
 
 test("ダメージ反射でHPが0になった場合は引き分け", () => {
