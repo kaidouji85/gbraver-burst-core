@@ -39,7 +39,7 @@ const tryReflect: TryReflect = {
 const damageHalved: DamageHalved = {
   type: "DamageHalved",
   period: { type: "TurnLimit", remainingTurn: 1 },
-}
+};
 
 /** 効果無効 */
 const armdozerEffectsDisabled: ArmdozerEffectsDisabled = {
@@ -183,7 +183,7 @@ test("ダメージ反射でHPが0になった場合は引き分け", () => {
   ).toMatchSnapshot("draw");
 });
 
-test("攻撃側に効果無視が適用されている場合、攻撃側すべてに適用中の効果を無視して戦闘を行う", () => {
+test("攻撃側に効果無視が適用されている場合、すべての攻撃側効果を無視して戦闘を行う", () => {
   const attacker = createPlayer({
     playerId: "attacker",
     hp: 3000,
@@ -203,4 +203,31 @@ test("攻撃側に効果無視が適用されている場合、攻撃側すべ�
       createBatteryCommand(defender.playerId, 1),
     ]),
   ).toMatchSnapshot("attacker-effects-disabled");
+});
+
+test("防御側に効果無視が適用されている場合、すべての防御側効果を無視して戦闘を行う", () => {
+  const attacker = createPlayer({
+    playerId: "attacker",
+    hp: 3000,
+    battery: 4,
+    effects: [correctPower, batteryCorrection],
+  });
+  const defender = createPlayer({
+    playerId: "defender",
+    hp: 3000,
+    battery: 5,
+    effects: [
+      armdozerEffectsDisabled,
+      batteryCorrection,
+      tryReflect,
+      damageHalved,
+    ],
+  });
+  const lastState = createLastState({ attacker, defender });
+  expect(
+    battleFlow(lastState, [
+      createBatteryCommand(attacker.playerId, 2),
+      createBatteryCommand(defender.playerId, 1),
+    ]),
+  ).toMatchSnapshot("defender-effects-disabled");
 });
