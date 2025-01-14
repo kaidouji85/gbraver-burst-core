@@ -6,8 +6,16 @@ import { PlayerCommandX } from "../../../../src/game/command/player-command";
 import { battleFlow } from "../../../../src/game/progress/battle-flow";
 import { PlayerId } from "../../../../src/player/player";
 import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
+import { TryReflect } from "../../../../src/state/armdozer-effect/try-reflect";
 import { PlayerState } from "../../../../src/state/player-state";
-import * as DrawData from "./battle-flow__draw.data";
+
+/** ダメージ反射 */
+const tryReflect: TryReflect = {
+  type: "TryReflect",
+  damage: 5000,
+  effect: "Lightning",
+  period: { type: "TurnLimit", remainingTurn: 1 },
+};
 
 /** プレイヤー生成オプション */
 type AttackerOptions = {
@@ -110,7 +118,25 @@ test("攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
 });
 
 test("ダメージ反射でHPが0になった場合は引き分け", () => {
-  const { lastState, commands } = DrawData;
-  const result = battleFlow(lastState, commands);
-  expect(result).toMatchSnapshot("draw");
+  const attacker = createPlayer({
+    playerId: "attacker",
+    hp: 3000,
+    battery: 4,
+    effects: [],
+  });
+  const defender = createPlayer({
+    playerId: "defender",
+    hp: 3000,
+    battery: 5,
+    effects: [tryReflect],
+  });
+  const lastState = {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: attacker.playerId,
+    players: [attacker, defender],
+  };
+  expect(battleFlow(lastState, [
+    createBatteryCommand(attacker.playerId, 2),
+    createBatteryCommand(defender.playerId, 0),
+  ])).toMatchSnapshot("draw");
 });
