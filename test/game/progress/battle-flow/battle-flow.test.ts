@@ -65,6 +65,28 @@ const createBatteryCommand = (
   command: { type: "BATTERY_COMMAND", battery },
 });
 
+/** 最新ステート生成オプション */
+type LastStateOptions = {
+  /** 攻撃側プレイヤー */
+  attacker: PlayerState;
+  /** 防御側プレイヤー */
+  defender: PlayerState;
+};
+
+/**
+ * 最新ゲームステートを生成する
+ * @param options 生成オプション
+ * @returns 最新ゲームスート
+ */
+const createLastState = (options: LastStateOptions) => {
+  const { attacker, defender } = options;
+  return {
+    ...EMPTY_GAME_STATE,
+    activePlayerId: attacker.playerId,
+    players: [attacker, defender],
+  };
+};
+
 test("戦闘したが、相手を倒しきれなかったのでゲーム続行", () => {
   const attacker = createPlayer({
     playerId: "attacker",
@@ -78,11 +100,7 @@ test("戦闘したが、相手を倒しきれなかったのでゲーム続行",
     battery: 5,
     effects: [],
   });
-  const lastState = {
-    ...EMPTY_GAME_STATE,
-    activePlayerId: attacker.playerId,
-    players: [attacker, defender],
-  };
+  const lastState = createLastState({ attacker, defender });
   expect(
     battleFlow(lastState, [
       createBatteryCommand(attacker.playerId, 2),
@@ -104,11 +122,7 @@ test("攻撃で防御側のHPを0以下にした場合、ゲームが終了す�
     battery: 5,
     effects: [],
   });
-  const lastState = {
-    ...EMPTY_GAME_STATE,
-    activePlayerId: attacker.playerId,
-    players: [attacker, defender],
-  };
+  const lastState = createLastState({ attacker, defender });
   expect(
     battleFlow(lastState, [
       createBatteryCommand(attacker.playerId, 2),
@@ -130,13 +144,11 @@ test("ダメージ反射でHPが0になった場合は引き分け", () => {
     battery: 5,
     effects: [tryReflect],
   });
-  const lastState = {
-    ...EMPTY_GAME_STATE,
-    activePlayerId: attacker.playerId,
-    players: [attacker, defender],
-  };
-  expect(battleFlow(lastState, [
-    createBatteryCommand(attacker.playerId, 2),
-    createBatteryCommand(defender.playerId, 0),
-  ])).toMatchSnapshot("draw");
+  const lastState = createLastState({ attacker, defender });
+  expect(
+    battleFlow(lastState, [
+      createBatteryCommand(attacker.playerId, 2),
+      createBatteryCommand(defender.playerId, 0),
+    ]),
+  ).toMatchSnapshot("draw");
 });
