@@ -20,13 +20,13 @@ type Options = {
  */
 export function canReflectFlow(options: Options) {
   const { effect, players } = options;
-  const attacker = players.find((v) => v.playerId === effect.attacker);
-  if (!attacker) {
-    throw new Error("not found attacker");
+  const defender = players.find((v) => v.playerId !== effect.attacker);
+  if (!defender) {
+    throw new Error("not found defender");
   }
 
   return (
-    !hasArmdozerEffectsDisabled(attacker.armdozer.effects) &&
+    !hasArmdozerEffectsDisabled(defender.armdozer.effects) &&
     isAttackHit(effect.result)
   );
 }
