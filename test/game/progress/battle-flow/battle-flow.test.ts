@@ -7,7 +7,6 @@ import { battleFlow } from "../../../../src/game/progress/battle-flow";
 import { PlayerId } from "../../../../src/player/player";
 import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
 import { PlayerState } from "../../../../src/state/player-state";
-import * as DeathData from "./battle-flow__death.data";
 import * as DrawData from "./battle-flow__draw.data";
 
 /** プレイヤー生成オプション */
