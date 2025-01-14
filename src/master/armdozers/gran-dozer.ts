@@ -10,7 +10,7 @@ export const GranDozer: Armdozer = {
   power: 3000,
   speed: 800,
   burst: {
-    type: "ForceTurnEnd",
+    type: "Ineffective",
     recoverBattery: 3,
   },
 };
