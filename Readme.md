@@ -46,6 +46,7 @@ fixpack
 | シークレット名 | 値 |
 |-------|----|
 | CC_TEST_REPORTER_ID | code climate reporter id |
+| NPM_TOKEN | npmの[Personal Access Token](https://docs.npmjs.com/creating-and-viewing-access-tokens)  |
 
 ## License
 MIT
