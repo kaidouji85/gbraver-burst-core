@@ -5,10 +5,10 @@ import { ArmdozerIds } from "./armdozer-ids";
 export const GranDozer: Armdozer = {
   id: ArmdozerIds.GRAN_DOZER,
   name: "グランドーザ",
-  maxHp: 3500,
+  maxHp: 3400,
   maxBattery: 5,
   power: 3000,
-  speed: 600,
+  speed: 700,
   burst: {
     type: "Ineffective",
     recoverBattery: 2,
