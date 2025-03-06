@@ -6,11 +6,13 @@ GブレイバーBURSTの戦闘ロジックを集めたものです。
 ## 各種コマンド
 
 ### セットアップ
+
 ```shell
 npm ci
 ```
 
 ### 各種コマンド
+
 ```shell
 # ビルド
 npm run build
@@ -39,6 +41,7 @@ fixpack
 ## GitHub Actions設定
 
 ### Secrets設定
+
 [ここ](https://docs.github.com/ja/actions/security-guides/using-secrets-in-github-actions)を参考にGitHub ActionsのSecretsを設定する。
 以下が設定内容である。
 
@@ -46,7 +49,8 @@ fixpack
 | シークレット名 | 値 |
 |-------|----|
 | CC_TEST_REPORTER_ID | code climate reporter id |
-| NPM_TOKEN | npmの[Personal Access Token](https://docs.npmjs.com/creating-and-viewing-access-tokens)  |
+| NPM_TOKEN | npmの[Personal Access Token](https://docs.npmjs.com/creating-and-viewing-access-tokens) |
 
 ## License
+
 MIT
