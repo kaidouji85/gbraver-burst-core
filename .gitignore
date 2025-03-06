@@ -1,6 +1,5 @@
-.idea/
+.idea/*
 .vscode/*
 node_modules
-lib/
-coverage
-generated
+lib/*
+coverage/*
