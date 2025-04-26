@@ -1,7 +1,6 @@
-.idea/
+.idea/*
 .vscode/*
-node_modules
-lib/
-coverage
-generated
+node_modules/*
+lib/*
+coverage/*
 *.json
