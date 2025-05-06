@@ -32,6 +32,10 @@ const bursts: Burst[] = [
     type: "Ineffective",
     recoverBattery: 3,
   },
+  {
+    type: "EffectClear",
+    recoverBattery: 2,
+  },
 ];
 
 test("Burstはパースできる", () => {
