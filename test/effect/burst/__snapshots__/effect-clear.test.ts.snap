@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`効果クリアを適用したので、相手の効果だけが削除される 1`] = `
+{
+  "activePlayerId": "otherPlayer",
+  "effect": {
+    "burst": {
+      "recoverBattery": 2,
+      "type": "EffectClear",
+    },
+    "burstPlayer": "burstPlayer",
+    "name": "BurstEffect",
+  },
+  "players": [
+    {
+      "armdozer": {
+        "battery": 5,
+        "burst": {
+          "recoverBattery": 5,
+          "turnStartBatteryCorrect": 1,
+          "type": "RecoverBattery",
+        },
+        "effects": [],
+        "enableBurst": true,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "otherPlayer",
+    },
+    {
+      "armdozer": {
+        "battery": 4,
+        "burst": {
+          "recoverBattery": 2,
+          "type": "EffectClear",
+        },
+        "effects": [
+          {
+            "period": {
+              "remainingTurn": 2,
+              "type": "TurnLimit",
+            },
+            "power": 600,
+            "type": "CorrectPower",
+          },
+        ],
+        "enableBurst": false,
+        "hp": 3000,
+        "id": "id",
+        "maxBattery": 5,
+        "maxHp": 3000,
+        "name": "name",
+        "power": 2000,
+        "speed": 2000,
+      },
+      "pilot": {
+        "enableSkill": true,
+        "id": "EMPTY_PLAYER",
+        "name": "名無し",
+        "skill": {
+          "recoverBattery": 2,
+          "type": "RecoverBatterySkill",
+        },
+      },
+      "playerId": "burstPlayer",
+    },
+  ],
+}
+`;
