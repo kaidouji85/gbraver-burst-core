@@ -5,6 +5,7 @@ import { buffPower } from "./buff-power";
 import { BurstInvokeParams } from "./burst-invoke-params";
 import { BurstInvokeResult } from "./burst-invoke-result";
 import { continuousAttack } from "./continuous-attack";
+import { effectClear } from "./effect-clear";
 import { forceTurnEnd } from "./force-turn-skip";
 import { ineffective } from "./ineffective";
 import { lightningBarrier } from "./lightning-barrier";
@@ -36,6 +37,8 @@ export function invokeBurst(
       return forceTurnEnd({ ...params, burst });
     case "Ineffective":
       return ineffective({ ...params, burst });
+    case "EffectClear":
+      return effectClear({ ...params, burst });
     default:
       throw new Error("burst not found");
   }
