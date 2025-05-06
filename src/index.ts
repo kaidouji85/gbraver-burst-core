@@ -125,6 +125,7 @@ export {
   ContinuousAttack,
   ContinuousAttackSchema,
 } from "./player/burst/continuous-attack";
+export { EffectClear, EffectClearSchema } from "./player/burst/effect-clear";
 export {
   ForceTurnEnd,
   ForceTurnEndSchema,
