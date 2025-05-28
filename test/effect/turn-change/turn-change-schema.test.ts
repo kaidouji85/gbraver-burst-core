@@ -3,21 +3,22 @@ import {
   TurnChangeSchema,
 } from "../../../src/effect/turn-change/turn-change";
 
-// reason: "TurnEnd" のTurnChange
-const turnEnd: TurnChange = {
+/** reason: "Normal" のTurnChange */
+const normal: TurnChange = {
   name: "TurnChange",
   recoverBattery: 3,
-  reason: "TurnEnd",
+  reason: "Normal",
 };
-// reason: "ContinuousActive" のTurnChange
+
+/** reason: "ContinuousActive" のTurnChange */
 const continuousActive: TurnChange = {
   name: "TurnChange",
   recoverBattery: 0,
   reason: "ContinuousActive",
 };
 
-test("reason: 'TurnEnd' のTurnChangeはパースできる", () => {
-  expect(TurnChangeSchema.parse(turnEnd)).toEqual(turnEnd);
+test("reason: 'Normal' のTurnChangeはパースできる", () => {
+  expect(TurnChangeSchema.parse(normal)).toEqual(normal);
 });
 
 test("reason: 'ContinuousActive' のTurnChangeはパースできる", () => {
@@ -25,9 +26,9 @@ test("reason: 'ContinuousActive' のTurnChangeはパースできる", () => {
 });
 
 test("文字からJSONパースしたオブジェクトでも、正しくパースできる", () => {
-  const str = JSON.stringify(turnEnd);
+  const str = JSON.stringify(normal);
   const data = JSON.parse(str);
-  expect(TurnChangeSchema.parse(data)).toEqual(turnEnd);
+  expect(TurnChangeSchema.parse(data)).toEqual(normal);
 });
 
 test("TurnChange以外はパースできない", () => {

@@ -496,7 +496,7 @@ exports[`正しくゲームを進めることができる: progress 1`] = `
     "activePlayerId": "player1",
     "effect": {
       "name": "TurnChange",
-      "reason": "TurnEnd",
+      "reason": "Normal",
       "recoverBattery": 3,
     },
     "players": [
