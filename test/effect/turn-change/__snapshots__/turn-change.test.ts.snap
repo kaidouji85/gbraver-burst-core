@@ -5,6 +5,7 @@ exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: 
   "activePlayerId": "defender",
   "effect": {
     "name": "TurnChange",
+    "reason": "Normal",
     "recoverBattery": 0,
   },
   "players": [
@@ -75,6 +76,7 @@ exports[`TurnStartBatteryCorrectがある場合、回復量が補正される: t
   "activePlayerId": "defender",
   "effect": {
     "name": "TurnChange",
+    "reason": "Normal",
     "recoverBattery": 4,
   },
   "players": [
@@ -145,6 +147,7 @@ exports[`ターン交代が正しく処理できる: has-no-effects 1`] = `
   "activePlayerId": "defender",
   "effect": {
     "name": "TurnChange",
+    "reason": "Normal",
     "recoverBattery": 3,
   },
   "players": [
