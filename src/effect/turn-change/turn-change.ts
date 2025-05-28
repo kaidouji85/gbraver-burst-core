@@ -7,7 +7,6 @@ export type TurnChange = Readonly<{
   recoverBattery: number;
   /**
    * ターン変更の理由
-   *
    * "Normal" は通常のターン変更
    * "ContinuousActive" はアクティブプレイヤー継続でのターン変更
    */
@@ -18,5 +17,5 @@ export type TurnChange = Readonly<{
 export const TurnChangeSchema: z.ZodSchema<TurnChange> = z.object({
   name: z.literal("TurnChange"),
   recoverBattery: z.number(),
-  reason: z.union([z.literal("Normal"), z.literal("ContinuousActive")]),
+  reason: z.enum(["Normal", "ContinuousActive"]),
 });
