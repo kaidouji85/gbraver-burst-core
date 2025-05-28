@@ -1,4 +1,7 @@
-import { TurnChange, TurnChangeSchema } from "../../../src/effect/turn-change/turn-change";
+import {
+  TurnChange,
+  TurnChangeSchema,
+} from "../../../src/effect/turn-change/turn-change";
 
 // reason: "TurnEnd" のTurnChange
 const turnEnd: TurnChange = {
