@@ -593,6 +593,7 @@ exports[`両方のプレイヤーがバッテリーコマンドを出した場�
     "activePlayerId": "defender",
     "effect": {
       "name": "TurnChange",
+      "reason": "TurnEnd",
       "recoverBattery": 3,
     },
     "players": [

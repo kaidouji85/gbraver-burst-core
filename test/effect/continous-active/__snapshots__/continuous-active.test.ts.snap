@@ -5,6 +5,7 @@ exports[`BatteryRecoverSkip、TurnStartBatteryCorrectは取り除かれる 1`] =
   "activePlayerId": "attacker",
   "effect": {
     "name": "TurnChange",
+    "reason": "ContinuousActive",
     "recoverBattery": 0,
   },
   "players": [
@@ -97,6 +98,7 @@ exports[`アクティブプレイヤー継続が正しく処理できる 1`] = `
   "activePlayerId": "attacker",
   "effect": {
     "name": "TurnChange",
+    "reason": "ContinuousActive",
     "recoverBattery": 0,
   },
   "players": [

@@ -858,6 +858,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
     "activePlayerId": "defender",
     "effect": {
       "name": "TurnChange",
+      "reason": "TurnEnd",
       "recoverBattery": 3,
     },
     "players": [
@@ -1339,6 +1340,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
     "activePlayerId": "defender",
     "effect": {
       "name": "TurnChange",
+      "reason": "TurnEnd",
       "recoverBattery": 3,
     },
     "players": [

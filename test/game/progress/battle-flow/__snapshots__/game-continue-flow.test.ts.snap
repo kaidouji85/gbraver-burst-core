@@ -80,6 +80,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
     "activePlayerId": "player1",
     "effect": {
       "name": "TurnChange",
+      "reason": "ContinuousActive",
       "recoverBattery": 0,
     },
     "players": [
@@ -351,6 +352,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
     "activePlayerId": "player1",
     "effect": {
       "name": "TurnChange",
+      "reason": "TurnEnd",
       "recoverBattery": 3,
     },
     "players": [

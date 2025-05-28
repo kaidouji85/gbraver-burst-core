@@ -54,6 +54,7 @@ export function turnChange(lastState: GameState): GameStateX<TurnChange> {
     effect: {
       name: "TurnChange",
       recoverBattery,
+      reason: "TurnEnd",
     },
   };
 }

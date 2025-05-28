@@ -5,10 +5,13 @@ export type TurnChange = Readonly<{
   name: "TurnChange";
   /** バッテリー回復量 */
   recoverBattery: number;
+  /** ターン変更の理由 */
+  reason: "TurnEnd" | "ContinuousActive";
 }>;
 
 /** TurnChange zodスキーマ */
 export const TurnChangeSchema: z.ZodSchema<TurnChange> = z.object({
   name: z.literal("TurnChange"),
   recoverBattery: z.number(),
+  reason: z.union([z.literal("TurnEnd"), z.literal("ContinuousActive")]),
 });
