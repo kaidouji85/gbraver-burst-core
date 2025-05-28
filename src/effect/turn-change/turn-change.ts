@@ -5,7 +5,12 @@ export type TurnChange = Readonly<{
   name: "TurnChange";
   /** バッテリー回復量 */
   recoverBattery: number;
-  /** ターン変更の理由 */
+  /**
+   * ターン変更の理由
+   *
+   * "Normal" は通常のターン変更
+   * "ContinuousActive" はアクティブプレイヤー継続でのターン変更
+   */
   reason: "Normal" | "ContinuousActive";
 }>;
 
