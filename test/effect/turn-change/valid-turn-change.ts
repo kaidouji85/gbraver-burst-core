@@ -4,4 +4,5 @@ import { TurnChange } from "../../../src";
 export const validTurnChange: TurnChange = {
   name: "TurnChange",
   recoverBattery: 3,
+  reason: "Normal",
 };

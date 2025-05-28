@@ -49,6 +49,7 @@ export function continuousActive(state: GameState): GameStateX<TurnChange> {
   const effect: TurnChange = {
     name: "TurnChange",
     recoverBattery: 0,
+    reason: "ContinuousActive",
   };
   return { ...state, players: updatedPlayers, effect };
 }
