@@ -31,6 +31,15 @@ test("文字からJSONパースしたオブジェクトでも、正しくパー�
   expect(TurnChangeSchema.parse(data)).toEqual(normal);
 });
 
+test("reasonが不正な値の場合はパースできず例外を投げる", () => {
+  const invalidReason = {
+    name: "TurnChange",
+    recoverBattery: 3,
+    reason: "invalid",
+  };
+  expect(() => TurnChangeSchema.parse(invalidReason)).toThrow();
+});
+
 test("TurnChange以外はパースできない", () => {
   const data = {
     type: "TurnChange",
