@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
 [
@@ -15,6 +15,7 @@ exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -44,6 +45,7 @@ exports[`ダメージ反射が正しく適用される: single-reflect 1`] = `
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -100,6 +102,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -129,6 +132,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -198,6 +202,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -227,6 +232,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -296,6 +302,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -325,6 +332,7 @@ exports[`ダメージ反射の重ね掛けも正しく処理される: multi-ref
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`相手ターンに強制ターンエンドを発動した場合、自分が攻撃プレイヤーになる 1`] = `
 {
@@ -15,6 +15,7 @@ exports[`相手ターンに強制ターンエンドを発動した場合、自�
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -44,6 +45,7 @@ exports[`相手ターンに強制ターンエンドを発動した場合、自�
     {
       "armdozer": {
         "battery": 3,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 2,
           "type": "ForceTurnEnd",
@@ -103,6 +105,7 @@ exports[`自分ターンに強制ターンエンドを発動した場合、引�
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -132,6 +135,7 @@ exports[`自分ターンに強制ターンエンドを発動した場合、引�
     {
       "armdozer": {
         "battery": 3,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 2,
           "type": "ForceTurnEnd",

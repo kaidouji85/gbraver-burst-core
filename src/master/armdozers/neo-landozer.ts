@@ -7,6 +7,7 @@ export const NeoLandozer: Armdozer = {
   name: "ネオランドーザ",
   maxHp: 3300,
   maxBattery: 5,
+  batteryAutoRecovery: 3,
   power: 2300,
   speed: 1500,
   burst: {

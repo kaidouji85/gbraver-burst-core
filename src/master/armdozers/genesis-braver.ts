@@ -7,6 +7,7 @@ export const GenesisBraver: Armdozer = {
   name: "ジェネシスブレイバー",
   maxHp: 3000,
   maxBattery: 4,
+  batteryAutoRecovery: 3,
   power: 2200,
   speed: 1900,
   burst: {

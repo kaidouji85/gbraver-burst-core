@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ゲーム継続フロー（アクティブプレイヤー継続）を正しく処理することができる: continuous-active 1`] = `
 [
@@ -12,6 +12,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
       {
         "armdozer": {
           "battery": 3,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -48,6 +49,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -87,6 +89,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
       {
         "armdozer": {
           "battery": 3,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -116,6 +119,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -219,6 +223,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
       {
         "armdozer": {
           "battery": 3,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -248,6 +253,7 @@ exports[`ゲーム継続フロー（アクティブプレイヤー継続）を�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -291,6 +297,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
       {
         "armdozer": {
           "battery": 1,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -320,6 +327,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -359,6 +367,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -388,6 +397,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -495,6 +505,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -524,6 +535,7 @@ exports[`ゲーム継続フロー（ターン交代）を正しく処理する�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: battery-recover-skip 1`] = `
 {
@@ -12,6 +12,7 @@ exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: 
     {
       "armdozer": {
         "battery": 2,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -41,6 +42,7 @@ exports[`BatteryRecoverSkipがある場合は、バッテリー回復しない: 
     {
       "armdozer": {
         "battery": 2,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -83,6 +85,7 @@ exports[`TurnStartBatteryCorrectがある場合、回復量が補正される: t
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -112,6 +115,7 @@ exports[`TurnStartBatteryCorrectがある場合、回復量が補正される: t
     {
       "armdozer": {
         "battery": 2,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -154,6 +158,7 @@ exports[`ターン交代が正しく処理できる: has-no-effects 1`] = `
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -183,6 +188,7 @@ exports[`ターン交代が正しく処理できる: has-no-effects 1`] = `
     {
       "armdozer": {
         "battery": 2,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,

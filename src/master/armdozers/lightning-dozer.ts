@@ -7,6 +7,7 @@ export const LightningDozer: Armdozer = {
   name: "ライトニングドーザ",
   maxHp: 3400,
   maxBattery: 5,
+  batteryAutoRecovery: 3,
   power: 1900,
   speed: 1800,
   burst: {
