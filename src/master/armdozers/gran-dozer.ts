@@ -7,6 +7,7 @@ export const GranDozer: Armdozer = {
   name: "グランドーザ",
   maxHp: 3400,
   maxBattery: 5,
+  batteryAutoRecovery: 3,
   power: 3000,
   speed: 700,
   burst: {

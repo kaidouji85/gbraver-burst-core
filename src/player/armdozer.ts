@@ -21,6 +21,8 @@ export type ArmdozerX<X> = Readonly<{
   maxHp: number;
   /** 最大バッテリー */
   maxBattery: number;
+  /** バッテリー自動回復量 */
+  batteryAutoRecovery: number;
   /** 攻撃 */
   power: number;
   /** スピード */
@@ -38,6 +40,7 @@ export const ArmdozerSchema = z.object({
   name: z.string(),
   maxHp: z.number(),
   maxBattery: z.number(),
+  batteryAutoRecovery: z.number(),
   power: z.number(),
   speed: z.number(),
   burst: BurstSchema,
