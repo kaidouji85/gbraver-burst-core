@@ -1,4 +1,4 @@
-import { BurstEffect } from "../../../src";
+import { BurstEffect } from "../../../src/effect/burst/burst-effect";
 
 /** 有効なBurstEffect */
 export const validBurstEffect: BurstEffect = {

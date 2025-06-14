@@ -1,4 +1,4 @@
-import { RightItself } from "../../../src";
+import { RightItself } from "../../../src/effect/right-itself/right-itself";
 
 /** 有効なRightItself */
 export const validRightItself: RightItself = {

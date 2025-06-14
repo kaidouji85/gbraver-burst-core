@@ -1,4 +1,7 @@
-import { NoChoice, NoChoiceSchema } from "../../../src";
+import {
+  NoChoice,
+  NoChoiceSchema,
+} from "../../../src/effect/input-command/input-command";
 
 /** 有効なNoChoice */
 const noChoice: NoChoice = {

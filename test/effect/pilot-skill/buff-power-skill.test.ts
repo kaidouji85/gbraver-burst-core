@@ -1,13 +1,11 @@
-import {
-  BuffPowerSkill,
-  EMPTY_ARMDOZER_EFFECT,
-  type GameState,
-  type PlayerState,
-} from "../../../src";
 import { pilotSkill } from "../../../src/effect/pilot-skill";
+import { EMPTY_ARMDOZER_EFFECT } from "../../../src/empty/amrdozer-effect";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PILOT } from "../../../src/empty/pilot";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { BuffPowerSkill } from "../../../src/player/pilot/buff-power-skill";
+import { GameState } from "../../../src/state/game-state";
+import { PlayerState } from "../../../src/state/player-state";
 
 /** スキル 攻撃バフ */
 const skill: BuffPowerSkill = {
