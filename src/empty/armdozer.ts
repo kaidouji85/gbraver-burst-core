@@ -15,6 +15,7 @@ export const EMPTY_ARMDOZER: Armdozer = {
   name: "name",
   maxHp: 3000,
   maxBattery: 5,
+  batteryAutoRecovery: 3,
   power: 2000,
   speed: 2000,
   burst: EMPTY_BURST,

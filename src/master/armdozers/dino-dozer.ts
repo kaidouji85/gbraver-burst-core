@@ -7,6 +7,7 @@ export const DinoDozer: Armdozer = {
   name: "ダイナドーザ",
   maxHp: 2600,
   maxBattery: 5,
+  batteryAutoRecovery: 3,
   power: 2000,
   speed: 2500,
   burst: {

@@ -7,6 +7,7 @@ export const ShinBraver: Armdozer = {
   name: "シンブレイバー",
   maxHp: 3100,
   maxBattery: 5,
+  batteryAutoRecovery: 3,
   power: 2000,
   speed: 2000,
   burst: {
