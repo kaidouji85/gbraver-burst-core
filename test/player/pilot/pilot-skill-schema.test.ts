@@ -1,4 +1,7 @@
-import { PilotSkill, PilotSkillSchema } from "../../../src";
+import {
+  PilotSkill,
+  PilotSkillSchema,
+} from "../../../src/player/pilot/pilot-skill";
 
 /** 有効なパイロットスキル */
 const pilotSkills: PilotSkill[] = [

@@ -1,7 +1,7 @@
 import {
   TurnStartBatteryCorrect,
   TurnStartBatteryCorrectSchema,
-} from "../../../src";
+} from "../../../src/state/armdozer-effect/turn-start-battery-correction";
 
 /** 有効なTurnStartBatteryCorrect */
 const turnStartBatteryCorrect: TurnStartBatteryCorrect = {

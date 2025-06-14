@@ -1,4 +1,7 @@
-import { BuffPower, BuffPowerSchema } from "../../../src";
+import {
+  BuffPower,
+  BuffPowerSchema,
+} from "../../../src/player/burst/buff-power";
 
 /** 有効なBuffPower */
 const buffPower: BuffPower = {

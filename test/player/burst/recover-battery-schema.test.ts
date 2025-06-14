@@ -1,4 +1,7 @@
-import { RecoverBattery, RecoverBatterySchema } from "../../../src";
+import {
+  RecoverBattery,
+  RecoverBatterySchema,
+} from "../../../src/player/burst/recover-battery";
 
 /** 有効なRecoverBattery */
 const recoverBattery: RecoverBattery = {

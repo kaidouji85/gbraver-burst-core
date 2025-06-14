@@ -4,7 +4,8 @@ export default {
   forbidden: [
     {
       name: "no-import-src-index",
-      comment: "src/index.tsはnpm利用者専用。プロダクト・テストコードからimport禁止。",
+      comment:
+        "src/index.tsはnpm利用者専用。プロダクト・テストコードからimport禁止。",
       severity: "error",
       from: { pathNot: "^src/index\\.ts$" },
       to: { path: "^src/index\\.ts$" },

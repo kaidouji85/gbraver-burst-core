@@ -1,4 +1,5 @@
-import { PilotId, PilotIds, PilotIdSchema } from "../../src";
+import { PilotIds } from "../../src/master/pilots/pilot-ids";
+import { PilotId, PilotIdSchema } from "../../src/player/pilot";
 
 test("PilotIdはパースできる", () => {
   const data: PilotId = PilotIds.SHINYA;

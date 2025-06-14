@@ -1,4 +1,7 @@
-import { BuffPowerSkill, BuffPowerSkillSchema } from "../../../src";
+import {
+  BuffPowerSkill,
+  BuffPowerSkillSchema,
+} from "../../../src/player/pilot/buff-power-skill";
 
 /** 有効なBuffPowerSkill */
 const buffPowerSkill: BuffPowerSkill = {

@@ -1,4 +1,5 @@
-import { EMPTY_GAME_STATE, GameStateSchema } from "../../src";
+import { EMPTY_GAME_STATE } from "../../src/empty/game-state";
+import { GameStateSchema } from "../../src/state/game-state";
 
 test("GameStateはパースできる", () => {
   expect(GameStateSchema.parse(EMPTY_GAME_STATE)).toEqual(EMPTY_GAME_STATE);

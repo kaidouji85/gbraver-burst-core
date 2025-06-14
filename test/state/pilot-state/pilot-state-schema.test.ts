@@ -1,4 +1,5 @@
-import { EMPTY_PILOT_STATE, PilotState, PilotStateSchema } from "../../../src";
+import { EMPTY_PILOT_STATE } from "../../../src/empty/pilot";
+import { PilotState, PilotStateSchema } from "../../../src/state/pilot-state";
 
 /** 有効なPilotState */
 const pilotState: PilotState = EMPTY_PILOT_STATE;

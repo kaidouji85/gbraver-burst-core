@@ -1,4 +1,7 @@
-import { EmptyArmdozerEffect, EmptyArmdozerEffectSchema } from "../../../src";
+import {
+  EmptyArmdozerEffect,
+  EmptyArmdozerEffectSchema,
+} from "../../../src/state/armdozer-effect/empty-armdozer-effect";
 
 /** 有効なEmptyArmdozerEffect */
 const emptyArmdozerEffect: EmptyArmdozerEffect = {

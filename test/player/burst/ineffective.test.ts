@@ -1,4 +1,7 @@
-import { Ineffective, IneffectiveSchema } from "../../../src";
+import {
+  Ineffective,
+  IneffectiveSchema,
+} from "../../../src/player/burst/ineffective";
 
 /** Ineffective */
 const ineffective: Ineffective = {

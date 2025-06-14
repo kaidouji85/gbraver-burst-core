@@ -1,7 +1,7 @@
 import {
   ArmdozerEffectsDisabled,
   ArmdozerEffectsDisabledSchema,
-} from "../../../src";
+} from "../../../src/state/armdozer-effect/armdozer-effects-disabled";
 
 /** 有効なArmdozerEffectsDisabled */
 const armdozerEffectsDisabledTest: ArmdozerEffectsDisabled = {

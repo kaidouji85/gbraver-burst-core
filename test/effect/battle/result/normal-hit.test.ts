@@ -1,5 +1,8 @@
 import { normalHit } from "../../../../src/effect/battle/result/normal-hit";
-import { EMPTY_CORRECT_POWER, EMPTY_DAMAGE_HALVED } from "../../../../src/empty/amrdozer-effect";
+import {
+  EMPTY_CORRECT_POWER,
+  EMPTY_DAMAGE_HALVED,
+} from "../../../../src/empty/amrdozer-effect";
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";

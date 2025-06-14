@@ -1,4 +1,7 @@
-import { DamageHalved, DamageHalvedSchema } from "../../../src";
+import {
+  DamageHalved,
+  DamageHalvedSchema,
+} from "../../../src/state/armdozer-effect/damage-halved";
 
 /** 有効なDamageHalved */
 const damageHalved: DamageHalved = {

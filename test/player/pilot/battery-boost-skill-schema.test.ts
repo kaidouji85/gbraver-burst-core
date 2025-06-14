@@ -1,4 +1,7 @@
-import { BatteryBoostSkill, BatteryBoostSkillSchema } from "../../../src";
+import {
+  BatteryBoostSkill,
+  BatteryBoostSkillSchema,
+} from "../../../src/player/pilot/battery-boost-skill";
 
 /** 有効なBatteryBoostSkill */
 const batteryBoostSkill: BatteryBoostSkill = {
