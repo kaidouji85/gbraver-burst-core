@@ -1,7 +1,7 @@
-import { PlayerState } from "../../../../src";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { PlayerCommand } from "../../../../src/game/command/player-command";
 import { sortCommandByAttackerFirst } from "../../../../src/game/progress/effect-activation-flow/sort-command-by-attacker-first";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃側プレイヤー */
 const attacker: PlayerState = {

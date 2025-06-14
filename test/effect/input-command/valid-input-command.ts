@@ -1,4 +1,4 @@
-import { InputCommand } from "../../../src";
+import { InputCommand } from "../../../src/effect/input-command/input-command";
 
 /** 有効なInputCommand */
 export const validInputCommand: InputCommand = {

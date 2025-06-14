@@ -1,4 +1,4 @@
-import { PilotSkillEffect } from "../../../src";
+import { PilotSkillEffect } from "../../../src/effect/pilot-skill/pilot-skill-effect";
 
 /** 有効なPilotSkillEffect */
 export const validPilotSkillEffect: PilotSkillEffect = {
