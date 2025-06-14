@@ -1,10 +1,8 @@
-import {
-  ArmdozerEffect,
-  EMPTY_GAME_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-} from "../../../../src";
+import { PlayerState } from "../../../../src";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { postForceTurnEndFlow } from "../../../../src/game/progress/effect-activation-flow/post-force-turn-end-flow";
+import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
 
 /** バースト発動プレイヤーID */
 const burstPlayerId = "burstPlayer";

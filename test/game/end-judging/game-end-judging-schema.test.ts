@@ -1,4 +1,4 @@
-import { GameEndJudging, GameEndJudgingSchema } from "../../../src";
+import { GameEndJudging, GameEndJudgingSchema } from "../../../src/game/end-judging/game-end-judging";
 
 /** 有効なGameEndJudging */
 const gameEndJudges: GameEndJudging[] = [

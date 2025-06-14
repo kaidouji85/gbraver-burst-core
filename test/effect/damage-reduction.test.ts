@@ -1,5 +1,6 @@
-import { ArmdozerEffectsDisabled, DamageHalved } from "../../src";
 import { damageReduction } from "../../src/effect/damage-reduction";
+import { ArmdozerEffectsDisabled } from "../../src/state/armdozer-effect/armdozer-effects-disabled";
+import { DamageHalved } from "../../src/state/armdozer-effect/damage-halved";
 
 /** ダメージ半減効果 */
 const damageHalved: DamageHalved = {

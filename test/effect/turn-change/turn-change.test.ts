@@ -1,12 +1,10 @@
-import {
-  ArmdozerEffect,
-  BatteryRecoverSkip,
-  TurnStartBatteryCorrect,
-} from "../../../src";
 import { turnChange } from "../../../src/effect/turn-change";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { ArmdozerEffect } from "../../../src/state/armdozer-effect";
+import { BatteryRecoverSkip } from "../../../src/state/armdozer-effect/battery-recover-skip";
+import { TurnStartBatteryCorrect } from "../../../src/state/armdozer-effect/turn-start-battery-correction";
 import { GameState } from "../../../src/state/game-state";
 
 /** 効果 ターン開始時バッテリー回復スキップ */

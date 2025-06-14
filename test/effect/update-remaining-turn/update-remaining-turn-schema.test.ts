@@ -1,4 +1,4 @@
-import { UpdateRemainingTurnSchema } from "../../../src";
+import { UpdateRemainingTurnSchema } from "../../../src/effect/update-remaining-turn/update-remaining-turn";
 import { validUpdateRemainingTurn } from "./valid-update-remaining-turn";
 
 test("UpdateRemainingTurnはパースできる", () => {

@@ -1,7 +1,7 @@
-import { PlayerId } from "../../../src";
 import { getFirstTurnPlayer } from "../../../src/effect/start-game/first-turn-payer";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { PlayerId } from "../../../src/player/player";
 import { PlayerState } from "../../../src/state/player-state";
 
 /**

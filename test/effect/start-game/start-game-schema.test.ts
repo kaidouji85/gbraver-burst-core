@@ -1,4 +1,4 @@
-import { StartGameSchema } from "../../../src";
+import { StartGameSchema } from "../../../src/effect/start-game/start-game";
 import { validStartGame } from "./valid-start-game";
 
 test("StartGameはパースできる", () => {

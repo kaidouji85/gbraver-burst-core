@@ -1,4 +1,4 @@
-import { TurnChange } from "../../../src";
+import { TurnChange } from "../../../src/effect/turn-change/turn-change";
 
 /** 有効なTurnChange */
 export const validTurnChange: TurnChange = {

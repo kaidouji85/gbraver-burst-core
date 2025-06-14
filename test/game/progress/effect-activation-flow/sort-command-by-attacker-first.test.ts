@@ -1,8 +1,6 @@
-import {
-  EMPTY_PLAYER_STATE,
-  PlayerCommand,
-  PlayerState,
-} from "../../../../src";
+import { PlayerState } from "../../../../src";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import { PlayerCommand } from "../../../../src/game/command/player-command";
 import { sortCommandByAttackerFirst } from "../../../../src/game/progress/effect-activation-flow/sort-command-by-attacker-first";
 
 /** 攻撃側プレイヤー */

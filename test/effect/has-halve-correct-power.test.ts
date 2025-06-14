@@ -1,4 +1,4 @@
-import { hasHalveCorrectPower } from "../../src";
+import { hasHalveCorrectPower } from "../../src/effect/correct-power";
 import { ArmdozerEffect } from "../../src/state/armdozer-effect";
 import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
 import { HalveCorrectPower } from "../../src/state/armdozer-effect/halve-correct-power";
