@@ -2,7 +2,7 @@ import { burst } from "../../../src/effect/burst";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
-import { GameState } from "../../../src/state/game-state.ts";
+import { GameState } from "../../../src/state/game-state";
 import { PlayerState } from "../../../src/state/player-state";
 
 /** バースト発動者 */

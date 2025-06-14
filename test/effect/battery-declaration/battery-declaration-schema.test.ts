@@ -1,4 +1,4 @@
-import { BatteryDeclarationSchema } from "../../../src/effect/battery-declaration/battery-declaration.ts";
+import { BatteryDeclarationSchema } from "../../../src/effect/battery-declaration/battery-declaration";
 import { validBatteryDeclaration } from "./valid-battery-declaration";
 
 test("BatteryDeclarationはパースできる", () => {
