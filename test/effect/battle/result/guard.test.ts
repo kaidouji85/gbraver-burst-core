@@ -1,4 +1,3 @@
-import { ArmdozerEffect } from "../../../../src";
 import { guard } from "../../../../src/effect/battle/result/guard";
 import {
   EMPTY_CORRECT_POWER,
@@ -6,6 +5,7 @@ import {
 } from "../../../../src/empty/amrdozer-effect";
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
 import { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃側のパラメータ */

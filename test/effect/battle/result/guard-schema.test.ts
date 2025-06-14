@@ -1,4 +1,4 @@
-import { Guard, GuardSchema } from "../../../../src";
+import { Guard, GuardSchema } from "../../../../src/effect/battle/result/guard";
 
 /** 有効なGuard */
 const guard: Guard = {
