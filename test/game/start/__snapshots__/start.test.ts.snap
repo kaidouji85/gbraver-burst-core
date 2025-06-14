@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ゲームを正しく開始できる 1`] = `
 [
@@ -11,6 +11,7 @@ exports[`ゲームを正しく開始できる 1`] = `
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -40,6 +41,7 @@ exports[`ゲームを正しく開始できる 1`] = `
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -151,6 +153,7 @@ exports[`ゲームを正しく開始できる 1`] = `
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -180,6 +183,7 @@ exports[`ゲームを正しく開始できる 1`] = `
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,

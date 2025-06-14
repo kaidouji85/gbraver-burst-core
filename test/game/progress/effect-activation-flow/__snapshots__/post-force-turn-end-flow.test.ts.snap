@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`強制ターンエンド発動後には、UpdateRemainingTurn、InputCommandが実行される 1`] = `
 [
@@ -25,6 +25,7 @@ exports[`強制ターンエンド発動後には、UpdateRemainingTurn、InputCo
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -54,6 +55,7 @@ exports[`強制ターンエンド発動後には、UpdateRemainingTurn、InputCo
       {
         "armdozer": {
           "battery": 1,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -157,6 +159,7 @@ exports[`強制ターンエンド発動後には、UpdateRemainingTurn、InputCo
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -186,6 +189,7 @@ exports[`強制ターンエンド発動後には、UpdateRemainingTurn、InputCo
       {
         "armdozer": {
           "battery": 1,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,

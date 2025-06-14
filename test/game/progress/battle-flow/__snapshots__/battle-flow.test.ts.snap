@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] = `
 [
@@ -16,6 +16,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -45,6 +46,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -98,6 +100,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -127,6 +130,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -178,6 +182,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -207,6 +212,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -257,6 +263,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -286,6 +293,7 @@ exports[`ダメージ反射でHPが0になった場合は引き分け: draw 1`] 
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -343,6 +351,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -396,6 +405,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -471,6 +481,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -524,6 +535,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -598,6 +610,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -651,6 +664,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -797,6 +811,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -826,6 +841,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -865,6 +881,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -894,6 +911,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -993,6 +1011,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1022,6 +1041,7 @@ exports[`互いに効果無視が適用されている場合、すべての効�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1069,6 +1089,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1098,6 +1119,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1141,6 +1163,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1170,6 +1193,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1212,6 +1236,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1241,6 +1266,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1279,6 +1305,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1308,6 +1335,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1347,6 +1375,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1376,6 +1405,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1475,6 +1505,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1504,6 +1535,7 @@ exports[`戦闘したが、相手を倒しきれなかったのでゲーム続�
       {
         "armdozer": {
           "battery": 5,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1551,6 +1583,7 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1580,6 +1613,7 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1623,6 +1657,7 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1652,6 +1687,7 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1693,6 +1729,7 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1722,6 +1759,7 @@ exports[`攻撃で防御側のHPを0以下にした場合、ゲームが終了�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1769,6 +1807,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1822,6 +1861,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1890,6 +1930,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -1943,6 +1984,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2009,6 +2051,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2062,6 +2105,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2129,6 +2173,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2182,6 +2227,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2248,6 +2294,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2301,6 +2348,7 @@ exports[`攻撃側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2373,6 +2421,7 @@ exports[`防御側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2419,6 +2468,7 @@ exports[`防御側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2494,6 +2544,7 @@ exports[`防御側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2540,6 +2591,7 @@ exports[`防御側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2613,6 +2665,7 @@ exports[`防御側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 2,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,
@@ -2659,6 +2712,7 @@ exports[`防御側に効果無視が適用されている場合、すべての�
       {
         "armdozer": {
           "battery": 4,
+          "batteryAutoRecovery": 3,
           "burst": {
             "recoverBattery": 5,
             "turnStartBatteryCorrect": 1,

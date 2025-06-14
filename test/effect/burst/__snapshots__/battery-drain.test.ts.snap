@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`バッテリードレインが正しく適用できる 1`] = `
 {
@@ -16,6 +16,7 @@ exports[`バッテリードレインが正しく適用できる 1`] = `
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -62,6 +63,7 @@ exports[`バッテリードレインが正しく適用できる 1`] = `
     {
       "armdozer": {
         "battery": 4,
+        "batteryAutoRecovery": 3,
         "burst": {
           "batteryDecrease": -2,
           "recoverBattery": 2,

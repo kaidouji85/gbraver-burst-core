@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`効果継続ターン更新が正しく処理される 1`] = `
 {
@@ -32,6 +32,7 @@ exports[`効果継続ターン更新が正しく処理される 1`] = `
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
@@ -75,6 +76,7 @@ exports[`効果継続ターン更新が正しく処理される 1`] = `
     {
       "armdozer": {
         "battery": 5,
+        "batteryAutoRecovery": 3,
         "burst": {
           "recoverBattery": 5,
           "turnStartBatteryCorrect": 1,
