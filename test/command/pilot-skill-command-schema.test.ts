@@ -1,4 +1,7 @@
-import { PilotSkillCommand, PilotSkillCommandSchema } from "../../src";
+import {
+  PilotSkillCommand,
+  PilotSkillCommandSchema,
+} from "../../src/command/pilot-skill";
 
 test("パイロットスキルコマンドをパースできる", () => {
   const data: PilotSkillCommand = { type: "PILOT_SKILL_COMMAND" };

@@ -1,4 +1,7 @@
-import { BatteryCommand, BatteryCommandSchema } from "../../src";
+import {
+  BatteryCommand,
+  BatteryCommandSchema,
+} from "../../src/command/battery";
 
 test("バッテリーコマンドを正しくパースできる", () => {
   const data: BatteryCommand = { type: "BATTERY_COMMAND", battery: 4 };
