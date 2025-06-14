@@ -1,4 +1,7 @@
-import { BatteryLimitBreak, BatteryLimitBreakSchema } from "../../../src";
+import {
+  BatteryLimitBreak,
+  BatteryLimitBreakSchema,
+} from "../../../src/player/burst/battery-limit-break";
 
 /** 有効なBatteryLimitBreak */
 const batteryLimitBreak: BatteryLimitBreak = {

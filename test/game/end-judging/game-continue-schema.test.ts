@@ -1,4 +1,7 @@
-import { GameContinue, GameContinueSchema } from "../../../src";
+import {
+  GameContinue,
+  GameContinueSchema,
+} from "../../../src/game/end-judging/game-end-judging";
 
 /** 有効なGameContinue */
 const gameContinue: GameContinue = {

@@ -1,4 +1,7 @@
-import { ForceTurnEnd, ForceTurnEndSchema } from "../../../src";
+import {
+  ForceTurnEnd,
+  ForceTurnEndSchema,
+} from "../../../src/player/burst/force-turn-end";
 
 /** 有効なForceTurnEnd */
 const forceTurnEnd: ForceTurnEnd = {

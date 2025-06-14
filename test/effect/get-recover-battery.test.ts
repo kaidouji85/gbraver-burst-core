@@ -1,9 +1,7 @@
-import {
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-} from "../../src";
 import { getRecoverBattery } from "../../src/effect/get-recover-battery";
+import { EMPTY_ARMDOZER_STATE } from "../../src/empty/armdozer";
+import { EMPTY_PLAYER_STATE } from "../../src/empty/player";
+import { PlayerState } from "../../src/state/player-state";
 
 /**
  * プレイヤーステートを生成する

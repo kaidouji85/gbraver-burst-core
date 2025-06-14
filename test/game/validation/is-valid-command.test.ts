@@ -1,12 +1,12 @@
+import { BatteryCommand } from "../../../src/command/battery";
+import { BurstCommand } from "../../../src/command/burst";
+import { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import {
-  BatteryCommand,
-  BurstCommand,
   InputCommand,
   NoChoice,
-  PilotSkillCommand,
-  PlayerCommand,
   Selectable,
-} from "../../../src";
+} from "../../../src/effect/input-command/input-command";
+import { PlayerCommand } from "../../../src/game/command/player-command";
 import { isValidCommand } from "../../../src/game/validation/is-valid-command";
 
 /**

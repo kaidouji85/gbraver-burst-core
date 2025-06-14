@@ -1,4 +1,4 @@
-import { RightItselfSchema } from "../../../src";
+import { RightItselfSchema } from "../../../src/effect/right-itself/right-itself";
 import { validRightItself } from "./valid-right-itself";
 
 test("RightItselfはパースできる", () => {

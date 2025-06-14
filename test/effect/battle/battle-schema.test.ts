@@ -1,4 +1,4 @@
-import { BattleSchema } from "../../../src";
+import { BattleSchema } from "../../../src/effect/battle/battle";
 import { validBattle } from "./valid-battle";
 
 test("Battleはパースできる", () => {

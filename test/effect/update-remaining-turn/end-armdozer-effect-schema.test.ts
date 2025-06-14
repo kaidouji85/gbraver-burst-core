@@ -1,4 +1,7 @@
-import { EndArmdozerEffect, EndArmdozerEffectSchema } from "../../../src";
+import {
+  EndArmdozerEffect,
+  EndArmdozerEffectSchema,
+} from "../../../src/effect/update-remaining-turn/update-remaining-turn";
 
 /** 有効なEndArmdozerEffect */
 const endArmdozerEffect: EndArmdozerEffect = {

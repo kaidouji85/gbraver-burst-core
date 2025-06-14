@@ -1,5 +1,6 @@
-import { BatteryRecoverSkip, CorrectPower } from "../../src";
 import { removeBatteryRecoverSkip } from "../../src/effect/remove-battery-recover-skip";
+import { BatteryRecoverSkip } from "../../src/state/armdozer-effect/battery-recover-skip";
+import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
 
 /** 効果 ターン開始時バッテリー回復スキップ */
 const batteryRecoverSkip: BatteryRecoverSkip = {

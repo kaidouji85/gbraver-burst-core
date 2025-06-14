@@ -1,4 +1,7 @@
-import { EvenMatch, EvenMatchSchema } from "../../../src";
+import {
+  EvenMatch,
+  EvenMatchSchema,
+} from "../../../src/game/end-judging/game-end-judging";
 
 /** 有効なEvenMatch */
 const evenMatch: EvenMatch = {

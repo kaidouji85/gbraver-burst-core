@@ -1,12 +1,10 @@
-import {
-  ArmdozerEffect,
-  CorrectPower,
-  DamageHalved,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-  predicatedDamage,
-} from "../../src";
+import { predicatedDamage } from "../../src/effect/predicated-damage";
+import { EMPTY_ARMDOZER_STATE } from "../../src/empty/armdozer";
+import { EMPTY_PLAYER_STATE } from "../../src/empty/player";
+import { ArmdozerEffect } from "../../src/state/armdozer-effect";
+import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
+import { DamageHalved } from "../../src/state/armdozer-effect/damage-halved";
+import { PlayerState } from "../../src/state/player-state";
 
 /**
  * 攻撃側プレイヤーのステートを生成する

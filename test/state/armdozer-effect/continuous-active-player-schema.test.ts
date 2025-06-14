@@ -1,7 +1,7 @@
 import {
   ContinuousActivePlayer,
   ContinuousActivePlayerSchema,
-} from "../../../src";
+} from "../../../src/state/armdozer-effect/continuous-active-player";
 
 /** 有効な ContinuousActivePlayer */
 const continuousActivePlayer: ContinuousActivePlayer = {

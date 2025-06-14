@@ -1,15 +1,13 @@
-import {
-  ArmdozerEffect,
-  BatteryRecoverSkip,
-  ContinuousActivePlayer,
-  EMPTY_ARMDOZER_EFFECT,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_GAME_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-  TurnStartBatteryCorrect,
-} from "../../../src";
 import { continuousActive } from "../../../src/effect/continuous-active";
+import { EMPTY_ARMDOZER_EFFECT } from "../../../src/empty/amrdozer-effect";
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { ArmdozerEffect } from "../../../src/state/armdozer-effect";
+import { BatteryRecoverSkip } from "../../../src/state/armdozer-effect/battery-recover-skip";
+import { ContinuousActivePlayer } from "../../../src/state/armdozer-effect/continuous-active-player";
+import { TurnStartBatteryCorrect } from "../../../src/state/armdozer-effect/turn-start-battery-correction";
+import { PlayerState } from "../../../src/state/player-state";
 
 /** 効果 アクティブプレイヤー継続 */
 const CONTINUOUS_ACTIVE: ContinuousActivePlayer = {

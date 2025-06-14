@@ -1,4 +1,4 @@
-import { InputCommandSchema } from "../../../src";
+import { InputCommandSchema } from "../../../src/effect/input-command/input-command";
 import { validInputCommand } from "./valid-input-command";
 
 test("InputCommandはパースできる", () => {

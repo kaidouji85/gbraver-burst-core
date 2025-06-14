@@ -1,4 +1,7 @@
-import { GameEndResult, GameEndResultSchema } from "../../../src";
+import {
+  GameEndResult,
+  GameEndResultSchema,
+} from "../../../src/effect/game-end/game-end";
 
 /** 有効なGameEndResult */
 const gameEndResults: GameEndResult[] = [

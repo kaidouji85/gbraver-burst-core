@@ -1,10 +1,8 @@
-import {
-  BatteryCommand,
-  EMPTY_PLAYER,
-  Player,
-  PlayerCommand,
-} from "../../../src";
+import { BatteryCommand } from "../../../src/command/battery";
+import { EMPTY_PLAYER } from "../../../src/empty/player";
+import { PlayerCommand } from "../../../src/game/command/player-command";
 import { isAllPlayerEnteredCommand } from "../../../src/game/validation/is-all-player-entered-command";
+import { Player } from "../../../src/player/player";
 
 const player1 = { ...EMPTY_PLAYER, playerId: "player1" };
 const player2 = { ...EMPTY_PLAYER, playerId: "player2" };

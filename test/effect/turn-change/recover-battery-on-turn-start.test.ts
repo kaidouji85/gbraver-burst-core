@@ -1,13 +1,11 @@
-import {
-  ArmdozerEffect,
-  BatteryRecoverSkip,
-  CorrectPower,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-  TurnStartBatteryCorrect,
-} from "../../../src";
 import { recoverBatteryOnTurnStart } from "../../../src/effect/turn-change/recover-battery-on-turn-start";
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { ArmdozerEffect } from "../../../src/state/armdozer-effect";
+import { BatteryRecoverSkip } from "../../../src/state/armdozer-effect/battery-recover-skip";
+import { CorrectPower } from "../../../src/state/armdozer-effect/correct-power";
+import { TurnStartBatteryCorrect } from "../../../src/state/armdozer-effect/turn-start-battery-correction";
+import { PlayerState } from "../../../src/state/player-state";
 
 /** 効果 ターン開始時のバッテリー回復をスキップ */
 const batteryRecoverSkip: BatteryRecoverSkip = {

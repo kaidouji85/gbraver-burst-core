@@ -1,4 +1,4 @@
-import { Miss, MissSchema } from "../../../../src";
+import { Miss, MissSchema } from "../../../../src/effect/battle/result/miss";
 
 /** 有効なMiss */
 const miss: Miss = {

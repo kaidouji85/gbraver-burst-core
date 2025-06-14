@@ -1,4 +1,4 @@
-import { Feint, FeintSchema } from "../../../../src";
+import { Feint, FeintSchema } from "../../../../src/effect/battle/result/feint";
 
 /** 有効なFeint */
 const feint: Feint = {

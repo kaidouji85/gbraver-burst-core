@@ -1,4 +1,7 @@
-import { TryReflect, TryReflectSchema } from "../../../src";
+import {
+  TryReflect,
+  TryReflectSchema,
+} from "../../../src/state/armdozer-effect/try-reflect";
 
 /** 有効なTryReflect */
 const tryReflect: TryReflect = {

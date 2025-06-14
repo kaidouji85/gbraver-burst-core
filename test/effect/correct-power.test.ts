@@ -1,9 +1,7 @@
-import {
-  ArmdozerEffectsDisabled,
-  CorrectPower,
-  correctPower,
-  HalveCorrectPower,
-} from "../../src";
+import { correctPower } from "../../src/effect/correct-power";
+import { ArmdozerEffectsDisabled } from "../../src/state/armdozer-effect/armdozer-effects-disabled";
+import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
+import { HalveCorrectPower } from "../../src/state/armdozer-effect/halve-correct-power";
 
 /** 攻撃補正半減 */
 const halveCorrect: HalveCorrectPower = {

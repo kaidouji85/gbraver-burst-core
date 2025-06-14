@@ -1,9 +1,7 @@
-import type {
-  ArmdozerEffect,
-  ContinuousActivePlayer,
-  CorrectPower,
-} from "../../../src";
 import { hasContinuousActive } from "../../../src/effect/continuous-active/has-continuous-active";
+import { ArmdozerEffect } from "../../../src/state/armdozer-effect";
+import { ContinuousActivePlayer } from "../../../src/state/armdozer-effect/continuous-active-player";
+import { CorrectPower } from "../../../src/state/armdozer-effect/correct-power";
 
 const continuousActivePlayer: ContinuousActivePlayer = {
   type: "ContinuousActivePlayer",

@@ -1,13 +1,11 @@
-import {
-  ArmdozerEffect,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_GAME_STATE,
-  EMPTY_PILOT_STATE,
-  EMPTY_PLAYER_STATE,
-  GameState,
-  PlayerState,
-} from "../../../src";
 import { pilotSkill } from "../../../src/effect/pilot-skill";
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
+import { EMPTY_PILOT_STATE } from "../../../src/empty/pilot";
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { ArmdozerEffect } from "../../../src/state/armdozer-effect";
+import { GameState } from "../../../src/state/game-state";
+import { PlayerState } from "../../../src/state/player-state";
 
 /** BatteryRecoverSkip以外の効果 */
 const effectOtherThanBatteryRecoverSkip: ArmdozerEffect = {

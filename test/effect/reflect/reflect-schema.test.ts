@@ -1,4 +1,4 @@
-import { ReflectSchema } from "../../../src";
+import { ReflectSchema } from "../../../src/effect/reflect/reflect";
 import { validReflect } from "./valid-reflect";
 
 test("Reflectはパースできる", () => {

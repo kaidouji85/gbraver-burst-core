@@ -1,5 +1,6 @@
-import { CorrectPower, TurnStartBatteryCorrect } from "../../src";
 import { removeTurnStartBatteryCorrect } from "../../src/effect/remove-turn-start-battery-correct";
+import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
+import { TurnStartBatteryCorrect } from "../../src/state/armdozer-effect/turn-start-battery-correction";
 
 /** ターン開始時バッテリー回復量補正  */
 const turnStartBatteryCorrect: TurnStartBatteryCorrect = {

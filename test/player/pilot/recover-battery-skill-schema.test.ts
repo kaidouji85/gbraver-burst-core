@@ -1,4 +1,7 @@
-import { RecoverBatterySkill, RecoverBatterySkillSchema } from "../../../src";
+import {
+  RecoverBatterySkill,
+  RecoverBatterySkillSchema,
+} from "../../../src/player/pilot/recover-battery-skill";
 
 /** 有効なRecoverBatterySkill */
 const recoverBatterySkill: RecoverBatterySkill = {

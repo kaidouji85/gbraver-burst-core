@@ -1,5 +1,6 @@
-import { ArmdozerEffectsDisabled, CorrectPower } from "../../src";
 import { hasArmdozerEffectsDisabled } from "../../src/effect/has-armdozer-effects-disabled";
+import { ArmdozerEffectsDisabled } from "../../src/state/armdozer-effect/armdozer-effects-disabled";
+import { CorrectPower } from "../../src/state/armdozer-effect/correct-power";
 
 /** アームドーザ効果無効 */
 const armdozerEffectDisabled: ArmdozerEffectsDisabled = {

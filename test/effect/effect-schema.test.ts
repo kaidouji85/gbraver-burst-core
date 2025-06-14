@@ -1,4 +1,4 @@
-import { Effect, EffectSchema } from "../../src";
+import { Effect, EffectSchema } from "../../src/effect";
 import { validBatteryDeclaration } from "./battery-declaration/valid-battery-declaration";
 import { validBattle } from "./battle/valid-battle";
 import { validBurstEffect } from "./burst/valid-burst-effect";

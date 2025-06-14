@@ -1,12 +1,10 @@
-import {
-  ArmdozerEffect,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_GAME_STATE,
-  EMPTY_PLAYER_STATE,
-  GameState,
-  PlayerState,
-} from "../../../../src";
+import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { gameContinueFlow } from "../../../../src/game/progress/battle-flow/game-continue-flow";
+import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
+import { GameState } from "../../../../src/state/game-state";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /**
  * プレイヤー1を生成する

@@ -1,4 +1,7 @@
-import { Selectable, SelectableSchema } from "../../../src";
+import {
+  Selectable,
+  SelectableSchema,
+} from "../../../src/effect/input-command/input-command";
 
 /** 有効なSelectable */
 const selectable: Selectable = {

@@ -1,4 +1,7 @@
-import { CorrectPower, CorrectPowerSchema } from "../../../src";
+import {
+  CorrectPower,
+  CorrectPowerSchema,
+} from "../../../src/state/armdozer-effect/correct-power";
 
 /** 有効なCorrectPower */
 const correctPower: CorrectPower = {

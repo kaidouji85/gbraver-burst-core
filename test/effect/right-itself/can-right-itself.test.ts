@@ -1,4 +1,4 @@
-import type { Battle } from "../../../src";
+import { Battle } from "../../../src/effect/battle/battle";
 import { canRightItself } from "../../../src/effect/right-itself";
 import { EMPTY_BATTLE } from "../../../src/empty/battle";
 

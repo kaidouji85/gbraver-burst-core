@@ -1,4 +1,5 @@
-import { Armdozer, ArmdozerSchema, EMPTY_ARMDOZER } from "../../src";
+import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
+import { Armdozer, ArmdozerSchema } from "../../src/player/armdozer";
 
 test("アームドーザはパースできる", () => {
   const data: Armdozer = EMPTY_ARMDOZER;

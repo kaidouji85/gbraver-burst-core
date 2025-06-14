@@ -1,12 +1,10 @@
-import {
-  ArmdozerEffect,
-  ArmdozerEffectsDisabled,
-  Battle,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-} from "../../../../src";
+import { Battle } from "../../../../src/effect/battle/battle";
+import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { canReflectFlow } from "../../../../src/game/progress/battle-flow/can-reflect-flow";
+import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
+import { ArmdozerEffectsDisabled } from "../../../../src/state/armdozer-effect/armdozer-effects-disabled";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /** 防御側プレイヤー */
 const attacker: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };

@@ -1,4 +1,5 @@
-import { ArmdozerId, ArmdozerIds, ArmdozerIdSchema } from "../../src";
+import { ArmdozerIds } from "../../src/master/armdozers/armdozer-ids";
+import { ArmdozerId, ArmdozerIdSchema } from "../../src/player/armdozer";
 
 test("ArmDozerIdはパースできる", () => {
   const data: ArmdozerId = ArmdozerIds.SHIN_BRAVER;

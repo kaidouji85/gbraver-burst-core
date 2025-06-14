@@ -1,4 +1,7 @@
-import { NormalHit, NormalHitSchema } from "../../../../src";
+import {
+  NormalHit,
+  NormalHitSchema,
+} from "../../../../src/effect/battle/result/normal-hit";
 
 /** 有効なNormalHit */
 const normalHit: NormalHit = {

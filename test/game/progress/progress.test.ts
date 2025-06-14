@@ -1,14 +1,12 @@
-import {
-  BatteryCommand,
-  BurstCommand,
-  GameState,
-  PlayerCommand,
-  PlayerState,
-} from "../../../src";
+import { BatteryCommand } from "../../../src/command/battery";
+import { BurstCommand } from "../../../src/command/burst";
 import { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { PlayerCommand } from "../../../src/game/command/player-command";
 import { progress } from "../../../src/game/progress";
+import { GameState } from "../../../src/state/game-state";
+import { PlayerState } from "../../../src/state/player-state";
 
 /** 攻撃側プレイヤー */
 const attacker: PlayerState = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };

@@ -1,4 +1,7 @@
-import { LightningBarrier, LightningBarrierSchema } from "../../../src";
+import {
+  LightningBarrier,
+  LightningBarrierSchema,
+} from "../../../src/player/burst/lightning-barrier";
 
 /** 有効なLightningBarrier */
 const lightningBarrier: LightningBarrier = {

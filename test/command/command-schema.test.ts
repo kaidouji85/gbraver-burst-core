@@ -1,4 +1,4 @@
-import { Command, CommandSchema } from "../../src";
+import { Command, CommandSchema } from "../../src/command/command";
 
 /** 有効なCommand */
 const commands: Command[] = [

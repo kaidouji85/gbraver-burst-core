@@ -1,4 +1,4 @@
-import { BurstCommand, BurstCommandSchema } from "../../src";
+import { BurstCommand, BurstCommandSchema } from "../../src/command/burst";
 
 test("バーストコマンドをパースできる", () => {
   const data: BurstCommand = { type: "BURST_COMMAND" };

@@ -1,4 +1,7 @@
-import { CriticalHit, CriticalHitSchema } from "../../../../src";
+import {
+  CriticalHit,
+  CriticalHitSchema,
+} from "../../../../src/effect/battle/result/critical-hit";
 
 /** 有効なCriticalHit */
 const criticalHit: CriticalHit = {

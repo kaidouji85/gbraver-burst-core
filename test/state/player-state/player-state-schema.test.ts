@@ -1,8 +1,8 @@
+import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
 import {
-  EMPTY_PLAYER_STATE,
   PlayerState,
   PlayerStateSchema,
-} from "../../../src";
+} from "../../../src/state/player-state";
 
 /** 有効なPlayerState */
 const playerState: PlayerState = EMPTY_PLAYER_STATE;
