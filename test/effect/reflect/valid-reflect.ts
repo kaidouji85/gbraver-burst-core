@@ -1,4 +1,4 @@
-import { Reflect } from "../../../src";
+import { Reflect } from "../../../src/effect/reflect/reflect";
 
 /** 有効なReflect */
 export const validReflect: Reflect = {

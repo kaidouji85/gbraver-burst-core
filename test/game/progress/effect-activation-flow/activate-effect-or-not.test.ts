@@ -1,14 +1,12 @@
-import {
-  BatteryCommand,
-  BurstCommand,
-  EMPTY_GAME_STATE,
-  EMPTY_PLAYER_STATE,
-  GameState,
-  PilotSkillCommand,
-  PlayerCommand,
-  PlayerState,
-} from "../../../../src";
+import { BatteryCommand } from "../../../../src/command/battery";
+import { BurstCommand } from "../../../../src/command/burst";
+import { PilotSkillCommand } from "../../../../src/command/pilot-skill";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import { PlayerCommand } from "../../../../src/game/command/player-command";
 import { activateEffectOrNot } from "../../../../src/game/progress/effect-activation-flow/activate-effect-or-not";
+import { GameState } from "../../../../src/state/game-state";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /** バーストコマンド */
 const BURST_COMMAND: BurstCommand = {

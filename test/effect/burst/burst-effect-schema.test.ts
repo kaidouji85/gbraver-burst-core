@@ -1,4 +1,4 @@
-import { BurstEffectSchema } from "../../../src";
+import { BurstEffectSchema } from "../../../src/effect/burst/burst-effect";
 import { validBurstEffect } from "./valid-burst-effect";
 
 test("BurstEffectはパースできる", () => {

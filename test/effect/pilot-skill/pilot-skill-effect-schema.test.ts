@@ -1,4 +1,4 @@
-import { PilotSkillEffectSchema } from "../../../src";
+import { PilotSkillEffectSchema } from "../../../src/effect/pilot-skill/pilot-skill-effect";
 import { validPilotSkillEffect } from "./valid-pilot-skill-effect";
 
 test("PilotSkillEffectはパースできる", () => {

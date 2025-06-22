@@ -1,4 +1,4 @@
-import { Burst, BurstSchema } from "../../../src";
+import { Burst, BurstSchema } from "../../../src/player/burst";
 
 /** 有効なバースト */
 const bursts: Burst[] = [

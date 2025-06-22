@@ -1,4 +1,7 @@
-import { BatteryCorrection, BatteryCorrectionSchema } from "../../../src";
+import {
+  BatteryCorrection,
+  BatteryCorrectionSchema,
+} from "../../../src/state/armdozer-effect/battery-correction";
 
 /** 有効な BatteryCorrection */
 const batteryCorrection: BatteryCorrection = {

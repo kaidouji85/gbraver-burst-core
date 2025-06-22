@@ -1,4 +1,4 @@
-import { EMPTY_PLAYER } from "../../../src";
+import { EMPTY_PLAYER } from "../../../src/empty/player";
 import { isDuplicatePlayers } from "../../../src/game/validation/is-duplicate-players";
 
 const player1 = { ...EMPTY_PLAYER, playerId: "player1" };

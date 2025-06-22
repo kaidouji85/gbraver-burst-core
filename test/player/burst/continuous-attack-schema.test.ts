@@ -1,4 +1,7 @@
-import { ContinuousAttack, ContinuousAttackSchema } from "../../../src";
+import {
+  ContinuousAttack,
+  ContinuousAttackSchema,
+} from "../../../src/player/burst/continuous-attack";
 
 /** 有効なContinuousAttack */
 const continuousAttack: ContinuousAttack = {

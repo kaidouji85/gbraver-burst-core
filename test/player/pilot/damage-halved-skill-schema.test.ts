@@ -1,4 +1,7 @@
-import { DamageHalvedSkill, DamageHalvedSkillSchema } from "../../../src";
+import {
+  DamageHalvedSkill,
+  DamageHalvedSkillSchema,
+} from "../../../src/player/pilot/damage-halved-skill";
 
 /** 有効なDamageHalvedSkill */
 const damageHalvedSkill: DamageHalvedSkill = {

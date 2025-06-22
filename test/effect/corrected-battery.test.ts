@@ -1,5 +1,7 @@
-import { ArmdozerEffect, BatteryCommand, BatteryCorrection } from "../../src";
+import { BatteryCommand } from "../../src/command/battery";
 import { correctedBattery } from "../../src/effect/battery-correction";
+import { ArmdozerEffect } from "../../src/state/armdozer-effect";
+import { BatteryCorrection } from "../../src/state/armdozer-effect/battery-correction";
 
 /**
  * バッテリー補正を作成する

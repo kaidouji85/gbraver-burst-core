@@ -1,7 +1,7 @@
 import {
   BatteryEnhancementSkill,
   BatteryEnhancementSkillSchema,
-} from "../../../src";
+} from "../../../src/player/pilot/battery-enhancement-skill";
 
 /** 有効なBatteryEnhancementSkill */
 const batteryEnhancementSkill: BatteryEnhancementSkill = {

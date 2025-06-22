@@ -1,4 +1,4 @@
-import { PlayerId, PlayerIdSchema } from "../../src";
+import { PlayerId, PlayerIdSchema } from "../../src/player/player";
 
 test("PlyerIdはパースできる", () => {
   const data: PlayerId = "player";

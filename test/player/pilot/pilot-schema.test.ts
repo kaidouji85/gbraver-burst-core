@@ -1,4 +1,5 @@
-import { EMPTY_PILOT, Pilot, PilotSchema } from "../../../src";
+import { EMPTY_PILOT } from "../../../src/empty/pilot";
+import { Pilot, PilotSchema } from "../../../src/player/pilot";
 
 test("Pilotはパースできる", () => {
   const data: Pilot = EMPTY_PILOT;

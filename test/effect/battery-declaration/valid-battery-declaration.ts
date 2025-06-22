@@ -1,4 +1,4 @@
-import { BatteryDeclaration } from "../../../src";
+import { BatteryDeclaration } from "../../../src/effect/battery-declaration/battery-declaration";
 
 /** 有効なBatteryDeclaration */
 export const validBatteryDeclaration: BatteryDeclaration = {

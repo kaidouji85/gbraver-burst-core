@@ -1,4 +1,7 @@
-import { TurnLimitEffect, TurnLimitEffectSchema } from "../../../src";
+import {
+  TurnLimitEffect,
+  TurnLimitEffectSchema,
+} from "../../../src/state/armdozer-effect/turn-limit-effect";
 
 /** 有効なTurnLimitEffect */
 const turnLimit: TurnLimitEffect = {

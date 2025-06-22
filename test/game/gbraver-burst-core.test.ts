@@ -1,7 +1,8 @@
-import { PlayerCommand, RestoreGBraverBurstSchema } from "../../src";
 import { EMPTY_ARMDOZER } from "../../src/empty/armdozer";
 import { EMPTY_PILOT } from "../../src/empty/pilot";
 import { restoreGBraverBurst, startGBraverBurst } from "../../src/game";
+import { PlayerCommand } from "../../src/game/command/player-command";
+import { RestoreGBraverBurstSchema } from "../../src/game/restore-gbraver-burst";
 import { Player } from "../../src/player/player";
 
 /** プレイヤー1 */

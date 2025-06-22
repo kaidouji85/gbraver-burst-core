@@ -1,4 +1,7 @@
-import { BatteryRecoverSkip, BatteryRecoverSkipSchema } from "../../../src";
+import {
+  BatteryRecoverSkip,
+  BatteryRecoverSkipSchema,
+} from "../../../src/state/armdozer-effect/battery-recover-skip";
 
 /** 有効なBatteryRecoverSkip */
 const batteryRecoverSkip: BatteryRecoverSkip = {

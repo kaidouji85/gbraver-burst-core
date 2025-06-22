@@ -1,7 +1,8 @@
-import type { GameState, PlayerState } from "../../../src";
 import { inputCommandOnGameStart } from "../../../src/effect/input-command";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { GameState } from "../../../src/state/game-state";
+import { PlayerState } from "../../../src/state/player-state";
 
 const ATTACKER: PlayerState = {
   ...EMPTY_PLAYER_STATE,

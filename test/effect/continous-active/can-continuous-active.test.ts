@@ -1,7 +1,7 @@
-import { PlayerState } from "../../../src";
 import { canContinuousActive } from "../../../src/effect/continuous-active";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { PlayerState } from "../../../src/state/player-state";
 
 /** 連続攻撃を持つプレイヤー */
 const continuousActivePlayer: PlayerState = {

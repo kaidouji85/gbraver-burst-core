@@ -1,17 +1,15 @@
-import {
-  BatteryCommand,
-  Burst,
-  BurstCommand,
-  ForceTurnEnd,
-  GameState,
-  PlayerCommand,
-  PlayerId,
-  PlayerState,
-} from "../../../../src";
+import { BatteryCommand } from "../../../../src/command/battery";
+import { BurstCommand } from "../../../../src/command/burst";
 import { PilotSkillCommand } from "../../../../src/command/pilot-skill";
 import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
+import { PlayerCommand } from "../../../../src/game/command/player-command";
 import { effectActivationFlow } from "../../../../src/game/progress/effect-activation-flow";
+import { Burst } from "../../../../src/player/burst";
+import { ForceTurnEnd } from "../../../../src/player/burst/force-turn-end";
+import { PlayerId } from "../../../../src/player/player";
+import { GameState } from "../../../../src/state/game-state";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /**
  * テストプレイヤーを生成する

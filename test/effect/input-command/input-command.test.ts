@@ -1,8 +1,9 @@
-import { BatteryCommand, PlayerId } from "../../../src";
+import { BatteryCommand } from "../../../src/command/battery";
 import { inputCommand } from "../../../src/effect/input-command";
 import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { PlayerId } from "../../../src/player/player";
 
 /**
  * プレイヤーを生成する

@@ -1,4 +1,7 @@
-import { ArmdozerEffect, ArmdozerEffectSchema } from "../../../src";
+import {
+  ArmdozerEffect,
+  ArmdozerEffectSchema,
+} from "../../../src/state/armdozer-effect";
 
 /** 有効なArmdozerEffect */
 const armdozerEffects: ArmdozerEffect[] = [

@@ -1,4 +1,7 @@
-import { BattleResult, BattleResultSchema } from "../../../../src";
+import {
+  BattleResult,
+  BattleResultSchema,
+} from "../../../../src/effect/battle/result/battle-result";
 
 /** 有効なBattleResult */
 const battleResults: BattleResult[] = [

@@ -1,4 +1,4 @@
-import { Battle } from "../../../src";
+import { Battle } from "../../../src/effect/battle/battle";
 
 /** 有効なBattle */
 export const validBattle: Battle = {

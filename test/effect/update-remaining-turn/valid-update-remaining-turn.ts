@@ -1,4 +1,4 @@
-import { UpdateRemainingTurn } from "../../../src";
+import { UpdateRemainingTurn } from "../../../src/effect/update-remaining-turn/update-remaining-turn";
 
 /** 有効なUpdateRemainingTurn */
 export const validUpdateRemainingTurn: UpdateRemainingTurn = {

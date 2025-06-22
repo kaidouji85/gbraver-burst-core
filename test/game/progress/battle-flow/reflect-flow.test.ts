@@ -1,11 +1,9 @@
-import {
-  ArmdozerEffect,
-  EMPTY_ARMDOZER_STATE,
-  EMPTY_GAME_STATE,
-  EMPTY_PLAYER_STATE,
-  PlayerState,
-} from "../../../../src";
+import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
+import { EMPTY_GAME_STATE } from "../../../../src/empty/game-state";
+import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
 import { reflectFlow } from "../../../../src/game/progress/battle-flow/reflect-flow";
+import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃側プレイヤー */
 const ATTACKER: PlayerState = {

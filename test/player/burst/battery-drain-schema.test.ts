@@ -1,4 +1,7 @@
-import { BatteryDrain, BatteryDrainSchema } from "../../../src";
+import {
+  BatteryDrain,
+  BatteryDrainSchema,
+} from "../../../src/player/burst/battery-drain";
 
 /** 有効なBatteryLimitDrain */
 const batteryDrain: BatteryDrain = {

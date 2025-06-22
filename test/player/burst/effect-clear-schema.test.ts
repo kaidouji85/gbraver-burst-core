@@ -1,4 +1,7 @@
-import { EffectClear, EffectClearSchema } from "../../../src";
+import {
+  EffectClear,
+  EffectClearSchema,
+} from "../../../src/player/burst/effect-clear";
 
 /** EffectClear */
 const effectClear: EffectClear = {

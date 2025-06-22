@@ -1,7 +1,8 @@
-import { Battle, GameState } from "../../../src";
+import { Battle } from "../../../src/effect/battle/battle";
 import { rightItself } from "../../../src/effect/right-itself";
 import { EMPTY_GAME_STATE } from "../../../src/empty/game-state";
 import { EMPTY_PLAYER_STATE } from "../../../src/empty/player";
+import { GameState } from "../../../src/state/game-state";
 
 /** 攻撃側プレイヤー */
 const attacker = { ...EMPTY_PLAYER_STATE, playerId: "attacker" };

@@ -1,4 +1,3 @@
-import { ArmdozerEffect } from "../../../../src";
 import { normalHit } from "../../../../src/effect/battle/result/normal-hit";
 import {
   EMPTY_CORRECT_POWER,
@@ -6,7 +5,8 @@ import {
 } from "../../../../src/empty/amrdozer-effect";
 import { EMPTY_ARMDOZER_STATE } from "../../../../src/empty/armdozer";
 import { EMPTY_PLAYER_STATE } from "../../../../src/empty/player";
-import type { PlayerState } from "../../../../src/state/player-state";
+import { ArmdozerEffect } from "../../../../src/state/armdozer-effect";
+import { PlayerState } from "../../../../src/state/player-state";
 
 /** 攻撃プレイヤーのパラメータ */
 type AttackerParams = {

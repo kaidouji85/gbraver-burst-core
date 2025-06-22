@@ -1,4 +1,5 @@
-import { EMPTY_PLAYER, Player, PlayerSchema } from "../../src";
+import { EMPTY_PLAYER } from "../../src/empty/player";
+import { Player, PlayerSchema } from "../../src/player/player";
 
 test("Playerはパースできる", () => {
   const data: Player = EMPTY_PLAYER;

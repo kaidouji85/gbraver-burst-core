@@ -1,8 +1,8 @@
+import { EMPTY_ARMDOZER_STATE } from "../../../src/empty/armdozer";
 import {
   ArmdozerState,
   ArmdozerStateSchema,
-  EMPTY_ARMDOZER_STATE,
-} from "../../../src";
+} from "../../../src/state/armdozer-state";
 
 /** 有効なArmdozerState */
 const armdozerState: ArmdozerState = EMPTY_ARMDOZER_STATE;

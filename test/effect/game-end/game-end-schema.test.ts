@@ -1,4 +1,4 @@
-import { GameEndSchema } from "../../../src";
+import { GameEndSchema } from "../../../src/effect/game-end/game-end";
 import { validGameEnd } from "./valid-game-end";
 
 test("GameEndはパースできる", () => {

@@ -1,4 +1,4 @@
-import { PilotSkillCommand } from "../../../src";
+import { PilotSkillCommand } from "../../../src/command/pilot-skill";
 import { selectablePilotSkillCommand } from "../../../src/effect/input-command/selectable-pilot-skill-command";
 import { EMPTY_PILOT_STATE } from "../../../src/empty/pilot";
 import { PilotState } from "../../../src/state/pilot-state";
