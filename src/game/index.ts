@@ -1,6 +1,6 @@
-import type { Player } from "../player/player";
-import type { GameState } from "../state/game-state";
-import type { PlayerCommand } from "./command/player-command";
+import { Player } from "../player/player";
+import { GameState } from "../state/game-state";
+import { PlayerCommand } from "./command/player-command";
 import { progress } from "./progress";
 import { RestoreGBraverBurst } from "./restore-gbraver-burst";
 import { start } from "./start/start";
@@ -38,7 +38,9 @@ export interface GBraverBurstCore {
 
 /** Gブレイバーバーストコア実装 */
 class GBraverBurstCoreImpl implements GBraverBurstCore {
-  #players: [Player, Player];
+  /** バトルに参加している全プレイヤー */
+  readonly #players: [Player, Player];
+  /** ゲームステートヒストリー */
   #stateHistory: GameState[];
 
   /**
