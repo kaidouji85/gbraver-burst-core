@@ -8,8 +8,7 @@
     "email": "kaidouji85@gmail.com"
   },
   "dependencies": {
-    "ramda": "^0.31.3",
-    "zod": "^4.0.14"
+    "ramda": "^0.31.3"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
@@ -25,10 +24,14 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.1",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.38.0"
+    "typescript-eslint": "^8.38.0",
+    "zod": "^4.0.14"
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "peerDependencies": {
+    "zod": "^4.0.14"
   },
   "files": [
     "lib/"
