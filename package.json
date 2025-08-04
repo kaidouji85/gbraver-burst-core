@@ -25,13 +25,10 @@
     "ts-jest": "^29.4.1",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
-    "zod": "^4.0.14"
+    "zod": "*"
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "peerDependencies": {
-    "zod": "^4.0.14"
   },
   "files": [
     "lib/"
@@ -42,6 +39,9 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
+  "peerDependencies": {
+    "zod": "^4.0.14"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kaidouji85/gbraver-burst-core"
