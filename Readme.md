@@ -48,8 +48,8 @@ fixpack
 **secrets**
 | シークレット名 | 値 |
 |-------|----|
-| CC_TEST_REPORTER_ID | code climate reporter id |
 | NPM_TOKEN | npmの[Personal Access Token](https://docs.npmjs.com/creating-and-viewing-access-tokens) |
+| SONAR_TOKEN | SonarQube CloudのToken |
 
 ## License
 

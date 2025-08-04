@@ -36,7 +36,7 @@ export function updateRemainingTurn(
           effect: effect,
         })),
     )
-    .reduce((a, b) => a.concat(b));
+    .reduce((a, b) => a.concat(b), []);
   return {
     ...lastState,
     players: updatePlayers,
