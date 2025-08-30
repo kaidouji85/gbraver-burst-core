@@ -243,4 +243,5 @@ export {
   PlayerStateSchema,
   PlayerStateX,
 } from "./state/player-state";
+export { createPlayerState } from "./state/player-state/create-player-state";
 export { isPlayerDeath } from "./state/player-state/is-player-death";
