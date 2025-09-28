@@ -49,7 +49,6 @@ fixpack
 | シークレット名 | 値 |
 |-------|----|
 | NPM_TOKEN | npmの[Personal Access Token](https://docs.npmjs.com/creating-and-viewing-access-tokens) |
-| SONAR_TOKEN | SonarQube CloudのToken |
 
 ## License
 
