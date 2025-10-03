@@ -1,7 +1,7 @@
 {
   "name": "gbraver-burst-core",
   "description": "braver burst core",
-  "version": "1.41.0",
+  "version": "1.42.0",
   "author": "y.takeuchi",
   "bugs": {
     "url": "https://github.com/kaidouji85/gbraver-burst-core/issues",
@@ -13,7 +13,7 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/ramda": "^0.31.1",
-    "cross-env": "^10.0.0",
+    "cross-env": "^10.1.0",
     "dependency-cruiser": "^17.0.1",
     "eslint": "^9.36.0",
     "eslint-plugin-jest": "^29.0.1",
@@ -23,8 +23,8 @@
     "prettier": "3.6.2",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.4",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.44.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.45.0",
     "zod": "^4.1.11"
   },
   "engines": {
