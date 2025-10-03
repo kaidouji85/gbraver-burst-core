@@ -7,6 +7,6 @@ export const Shinya: Pilot = {
   name: "シンヤ",
   skill: {
     type: "RecoverBatterySkill",
-    recoverBattery: 2,
+    recoverBattery: 3,
   },
 };
