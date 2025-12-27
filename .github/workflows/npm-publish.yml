@@ -16,6 +16,18 @@ jobs:
           node-version: "24.x"
           registry-url: "https://registry.npmjs.org"
       - run: npm ci
-      - run: npm publish --provenance --access public
+      # semver-ベータ（例: 1.43.0-beta.1）のフォーマットをベータ版とみなす
+      # ベータ版の場合は beta タグで publish
+      # 正式版の場合は latest タグ（デフォルト）で publish
+      - name: Publish to npm
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *"-"* ]]; then
+            echo "Publishing prerelease version: $VERSION with tag beta"
+            npm publish --provenance --access public --tag beta
+          else
+            echo "Publishing stable version: $VERSION"
+            npm publish --provenance --access public
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
