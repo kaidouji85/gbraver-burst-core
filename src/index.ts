@@ -30,6 +30,7 @@ export { Miss, MissSchema } from "./effect/battle/result/miss";
 export { NormalHit, NormalHitSchema } from "./effect/battle/result/normal-hit";
 export { burst } from "./effect/burst";
 export { BurstEffect, BurstEffectSchema } from "./effect/burst/burst-effect";
+export { invokeBurst } from "./effect/burst/invoke-burst";
 export { hasContinuousActive } from "./effect/continuous-active/has-continuous-active";
 export {
   correctPower,
