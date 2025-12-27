@@ -20,6 +20,7 @@ jobs:
       # ベータ版の場合は beta タグで publish
       # 正式版の場合は latest タグ（デフォルト）で publish
       - name: Publish to npm
+        shell: bash
         run: |
           VERSION=$(node -p "require('./package.json').version")
           if [[ "$VERSION" == *"-"* ]]; then
