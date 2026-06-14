@@ -38,18 +38,6 @@ npm audit --omit=dev
 fixpack
 ```
 
-## GitHub Actions設定
-
-### Secrets設定
-
-[ここ](https://docs.github.com/ja/actions/security-guides/using-secrets-in-github-actions)を参考にGitHub ActionsのSecretsを設定する。
-以下が設定内容である。
-
-**secrets**
-| シークレット名 | 値 |
-|-------|----|
-| NPM_TOKEN | npmの[Personal Access Token](https://docs.npmjs.com/creating-and-viewing-access-tokens) |
-
 ## License
 
 MIT

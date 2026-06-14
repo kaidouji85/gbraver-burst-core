@@ -24,11 +24,7 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           if [[ "$VERSION" == *"-"* ]]; then
-            echo "Publishing prerelease version: $VERSION with tag beta"
-            npm publish --provenance --access public --tag beta
+            npm publish --provenance --tag beta
           else
-            echo "Publishing stable version: $VERSION"
-            npm publish --provenance --access public
+            npm publish --provenance
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
