@@ -16,17 +16,17 @@
     "@types/ramda": "^0.32.0",
     "cross-env": "^10.1.0",
     "dependency-cruiser": "^18.2.0",
-    "eslint": "^10.8.1",
-    "eslint-plugin-jest": "^29.16.1",
+    "eslint": "^10.9.1",
+    "eslint-plugin-jest": "^29.16.6",
     "eslint-plugin-simple-import-sort": "^14.0.0",
-    "jest": "^30.4.2",
+    "jest": "^30.5.1",
     "npm-run-all": "^4.1.5",
     "prettier": "3.9.6",
     "rimraf": "^6.1.3",
     "ts-jest": "^29.4.12",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0",
-    "zod": "^4.4.3"
+    "typescript-eslint": "^8.69.0",
+    "zod": "^4.5.4"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -41,7 +41,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "peerDependencies": {
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   },
   "repository": {
     "type": "git",
